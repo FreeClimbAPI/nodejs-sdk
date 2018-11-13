@@ -1,7 +1,8 @@
 ## Introduction
 The Persephony Javascript SDK will allow you to easily use the Persephony API in a Javascript application.
 
-[![Build Status](https://travis-ci.com/PersephonyAPI/javascript-sdk.svg?branch=master)](https://travis-ci.com/PersephonyAPI/javascript-sdk)
+[![Build Status](https://travis-ci.com/PersephonyAPI/javascript-sdk.svg?branch=master)](https://travis-ci.com/PersephonyAPI/javascript-sdk) 
+[![npm version](https://badge.fury.io/js/%40persephony%2Fsdk.svg)](https://badge.fury.io/js/%40persephony%2Fsdk)
 
 ## Installation
 
