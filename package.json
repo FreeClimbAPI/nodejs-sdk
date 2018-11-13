@@ -9,6 +9,10 @@
   "license":"MIT",
   "author":"",
   "main": "src/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:PersephonyAPI/javascript-sdk.git"
+  },
   "scripts": {
     "test": "jest",
     "watch": "jest --watch",
