@@ -1,6 +1,6 @@
 {
   "name": "@persephony/sdk",
-  "version": "0.0.0-rc.1",
+  "version": "0.0.1",
   "description": "The SDK for the Persephony API",
   "homepage":"https://www.persephony.com",
   "bugs":{
@@ -12,6 +12,9 @@
   "repository": {
     "type": "git",
     "url": "git@github.com:PersephonyAPI/javascript-sdk.git"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "scripts": {
     "test": "jest",
