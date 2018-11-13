@@ -16,7 +16,6 @@ pipeline {
     NAMESPACE = 'persephony'
     IMAGE = 'js-sdk-docs'
     DOCS_PRODUCTION_BRANCH = 'master'
-    VERSION = getVersion()
     DOCKER_REGISTRY_URL = 'https://shipyard-dev.vail'
     SLACK_CHANNEL = 'builds'
     SLACK_TEAM_DOMAIN = 'persephony'
@@ -30,13 +29,16 @@ pipeline {
         script {
           gitCommit()
           gitCommitAuthor()
+          def packageJSON = readJSON(file: 'package.json')
+          version = packageJSON.version
+          sh "echo version is ${version}"
           dir('docker') {
-            sh "echo 'ENV VERSION ${VERSION}.${BUILD_NUMBER}' >> Dockerfile"
+            sh "echo 'ENV VERSION ${version}.${BUILD_NUMBER}' >> Dockerfile"
             sh "echo 'ENV COMMIT ${GIT_COMMIT}' >> Dockerfile"
           }
           sh 'env'
           images = dockerMultiStageBuild(
-            name: "shipyard-dev.vail/${NAMESPACE}/${IMAGE}:${VERSION}.${BUILD_NUMBER}",
+            name: "shipyard-dev.vail/${NAMESPACE}/${IMAGE}:${version}.${BUILD_NUMBER}",
             args: "-f docker/Dockerfile ."
           )
           sh "echo ${images}"
@@ -50,8 +52,8 @@ pipeline {
           if (env.BRANCH_NAME == env.DEFAULT_LATEST_BRANCH && currentBuild.resultIsBetterOrEqualTo('SUCCESS')) {
             images[1].push("latest")
           }
-          images[1].push("${VERSION}")
-          images[1].push("${VERSION}.${BUILD_NUMBER}")
+          images[1].push("${version}")
+          images[1].push("${version}.${BUILD_NUMBER}")
         }
       }
     }
@@ -59,7 +61,7 @@ pipeline {
 
   post {
     always {
-      sendNotifications(currentBuild.result, "Pushed ${DOCKER_REGISTRY_URL}/${NAMESPACE}/${IMAGE}:${VERSION}.${BUILD_NUMBER}")
+      sendNotifications(currentBuild.result, "Pushed ${DOCKER_REGISTRY_URL}/${NAMESPACE}/${IMAGE}:${version}.${BUILD_NUMBER}")
 
       script {
         if (!currentBuild.resultIsBetterOrEqualTo('SUCCESS')) {
