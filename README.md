@@ -31,7 +31,7 @@ When you run this code you should get a phone call. On answering the call, you s
 ```
 
 ## Documentation
-The [Persephony documentation ](www.persephony.com/docs) has guides on [getting started](www.persephony.com/docs/getting-started) with Persephony, as well as the [API reference](www.persephony.com/docs/api), [PerCL reference](www.persephony.com/docs/percl), and several useful [tutorials.](www.persephony.com/docs/tutorials)
+The [Persephony documentation ](https://www.persephony.com/docs) has guides on [getting started](https://www.persephony.com/docs/getting-started) with Persephony, as well as the [API reference](https://www.persephony.com/docs/api), [PerCL reference](https://www.persephony.com/docs/percl), and several useful [tutorials.](https://www.persephony.com/docs/tutorials)
 
 The SDK documentation is not generated from source code comments, as at the time of writing no existing tool could be found that parsed the comments adequately. Instead the documentation is manually curated in the files at `docs/source`  in the .rst (ReStructuredText) format. Developers should ensure that changes to the SDK are reflected in the documentation.
 
