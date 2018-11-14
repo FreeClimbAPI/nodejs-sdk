@@ -135,7 +135,7 @@ describe('participants', function () {
       })
     })
   })
-  describe('paticipants#getNextPage', function () {
+  describe('participants#getNextPage', function () {
     var nextPageUri = '/Accounts/AC234213512423/Conferences/231423512342135214/Participants?cursor=32142135123412351234235'
     var errorMsg = 'Could not retrieve participant list'
     it('should call commonGetBuilder with the credentials, nextPageUri, query, and errorMsg', function () {

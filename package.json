@@ -18,6 +18,7 @@
   },
   "scripts": {
     "test": "jest",
+    "test:coverage": "jest --config jest-coverage.config.js",
     "watch": "jest --watch",
     "standard": "standard --env jest src/**"
   },
