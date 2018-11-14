@@ -5,6 +5,8 @@ The Persephony Javascript SDK will allow you to easily use the Persephony API in
 [![npm version](https://badge.fury.io/js/%40persephony%2Fsdk.svg)](https://badge.fury.io/js/%40persephony%2Fsdk)
 [![Maintainability](https://api.codeclimate.com/v1/badges/ce6d2d1f879c3139c1ed/maintainability)](https://codeclimate.com/github/PersephonyAPI/javascript-sdk/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/ce6d2d1f879c3139c1ed/test_coverage)](https://codeclimate.com/github/PersephonyAPI/javascript-sdk/test_coverage)
+[![Documentation Status](https://readthedocs.org/projects/persephony-js-sdk/badge/?version=latest)](https://persephony-js-sdk.readthedocs.io/en/latest/?badge=latest)
+
 
 ## Installation
 
