@@ -4,3 +4,4 @@ node_modules
 /out/
 /docs/build/
 /venv/
+/coverage/

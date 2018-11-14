@@ -1,4 +1,16 @@
+env:
+  global:
+    # Code climate key
+    - CC_TEST_REPORTER_ID=e2f093ec0ab71bc4fc72464902f6408f46ab601be057b3e090f9af8bb8c0c7c0
 language: node_js
+before_script:
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
+script:
+  - npm run test:coverage
+after_script:
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
 deploy:
   provider: npm
   email: support@persephony.com
