@@ -22,19 +22,19 @@ Setup
 
 To get started using the Persephony JavaScript SDK, add it as a dependency using your package manager.
 
-    ``npm install --save @vail/persy-java-sdk``
+    ``npm install --save @persephony/sdk``
 
-    ``yarn add @vail/persy-java-sdk``
+    ``yarn add @persephony/sdk``
 
 Once you have imported the project, require it and provide the initial configuration ::
 
-    import PersephonySDK from '@vail/persy-java-sdk'
+    import PersephonySDK from '@persephony/sdk'
     // see the Dashboard API Keys page for these values
     const accountId = 'MOCK_ACCOUNT_ID'
     const authToken = 'MOCK_AUTH_TOKEN'
     const persy = PersephonySDK(accountId, authToken)
     // Because Persephony is hosted multiple places, the SDK must be told which one you are using
-    persy.api.setPersyUrl('https://persephony.vail/apiserver')
+    persy.api.setPersyUrl('https://persephony.com/apiserver')
 
 Module
 ======
