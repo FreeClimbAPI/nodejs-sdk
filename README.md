@@ -15,7 +15,7 @@ The Persephony Javascript SDK will allow you to easily use the Persephony API in
 `yarn add @persephony/sdk`
 
 ## Testing your Installation
-Test the SDK is working by sending yourself a phone call.
+Test the SDK is working by sending yourself a text message.
 
 ```javascript
 var persephonySDK = require('@persephony/sdk')
@@ -23,16 +23,10 @@ var persy = persephonySDK('ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXX', 'your_auth_token')
 var to = 'your_phone_number'
 var from = 'a_persephony_phone_number_in_your_account'
 
-persy.api.calls.create(to, from, {callConnectUrl:'https://www.persephony.com/testApp/voice'})
+persy.api.messages.create(from, to, 'Welcome to Persephony!')
 ```
 
-When you run this code you should get a phone call. On answering the call, you should hear a short message ("Thanks for using Persephony!"). This indicates that you've successfully setup your SDK.
-
-`https://www.persephony.com/testApp/voice` contains a small Persephony application. When a request is made to its `/voice` endpoint, it will respond with the following PerCL script, which produces the message you heard.
-
-```json
-[{"Say": {"text": "Thanks for using Persephony!"}}]
-```
+When you run this code you should get a text message. This indicates that you've successfully setup your SDK.
 
 ## Documentation
 The [Persephony documentation ](https://www.persephony.com/docs) has guides on [getting started](https://www.persephony.com/docs/getting-started) with Persephony, as well as the [API reference](https://www.persephony.com/docs/api), [PerCL reference](https://www.persephony.com/docs/percl), and several useful [tutorials.](https://www.persephony.com/docs/tutorials)

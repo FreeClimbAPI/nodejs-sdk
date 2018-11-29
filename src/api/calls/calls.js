@@ -86,12 +86,13 @@ function calls (accountId, authToken) {
    *
    * @param {string} to - The number to call out to (DNIS). This can be any valid phone number formatted in #.164 format in Persephony's service area.
    * @param {string} from - The number to call from (ANI). This must be a number purchased from Persephony or a verified phone number owned by the user.
-   * @param {object} options - Additional properties to set the behavior of the call to be placed. Must include either {@code callConnectUrl} or {@code applicationId}.
+   * @param {string} applicationId - The Id of the application Persephony should use to handle this phone call.
+   * @param {object} [options] - Additional properties to set the behavior of the call to be placed.
    * @returns {Promise<object>} call - Resolves to the newly placed call
    * @throws will throw an error on a failed response
    */
-  function create (to, from, options) {
-    return commonPoster(rootUrl, assign({to: to, from: from}, options), 'Could not create call')
+  function create (to, from, applicationId, options) {
+    return commonPoster(rootUrl, assign({to: to, from:from, applicationId:applicationId}, options), 'Could not create call')
   }
 
   return {
