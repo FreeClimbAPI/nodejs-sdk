@@ -156,12 +156,11 @@ describe('calls', function () {
       var to = '+14534534345'
       var from = '+143453464345'
       var applicationId = 'AP2341353452345234523452345234623452346'
-      var callConnectUrl = 'http://url.com'
-      var options = {applicationId: applicationId, callConnectUrl: callConnectUrl, statusCallbackUrl: 'http://url.com', sendDigits: '1234#', ifMachine: 'redirect', ifMachineUrl: 'http://redirect.com', timeout: 45}
-      var expectedBody = {to: to, from: from, applicationId: applicationId, callConnectUrl: callConnectUrl, statusCallbackUrl: options.statusCallbackUrl, sendDigits: options.sendDigits, ifMachine: options.ifMachine, ifMachineUrl: options.ifMachineUrl, timeout: options.timeout}
+      var options = {sendDigits: '1234#', ifMachine: 'redirect', ifMachineUrl: 'http://redirect.com', timeout: 45}
+      var expectedBody = {to: to, from: from, applicationId: applicationId, sendDigits: options.sendDigits, ifMachine: options.ifMachine, ifMachineUrl: options.ifMachineUrl, timeout: options.timeout}
 
       expect.assertions(1)
-      return calls(accountId, authToken).create(to, from, options).then(function () {
+      return calls(accountId, authToken).create(to, from, applicationId, options).then(function () {
         expect(postMock).toHaveBeenCalledWith(accountId, authToken, '/Accounts/' + accountId + '/Calls', expectedBody)
       })
     })
