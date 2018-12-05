@@ -1,6 +1,5 @@
 env:
   global:
-    # Code climate key
     - CC_TEST_REPORTER_ID=e2f093ec0ab71bc4fc72464902f6408f46ab601be057b3e090f9af8bb8c0c7c0
 language: node_js
 before_script:
@@ -21,3 +20,6 @@ deploy:
     tags: true
     repo: PersephonyAPI/javascript-sdk
     branch: master
+notifications:
+  slack:
+    secure: IJdigAKNUug9MpUPFfygXXQMi5JSTHl47U2o2VcNiqJ/slflryDJtebXqmwf4ymIOozrFLU6s2jQtHz4txWjEZg3xw+P01eCAgQau2VFkVZqYWeQPnpG8ZWal4RFYkmXa5R6AUklhb3MR0Mqg8o+yZf7FBMK1X1Zs2GBCp1x/FolHJVNNMJaIPq5h71A06BS61wtISjyNHQt5/ZiTRTvs+yCi2BG3g48P1QELloFVPNWhIo42qpoe7YfxwVY+8Qo5997K3ljaVHVpFeViKkv+ILRHzdT67phZXdUgsUd9sth0Qa0lqkZPW6MnGaXwkBNmzjvTehlhFOlvHzo1x2gW76lK0lYzxXxY2R0KH/ceKn8Cyi4SWWvpb1IZmMI/4s0qnNITM2j9rKZGV4i/YpYNVLG8byAjNu1/noQzaT4waajrGD6q+RFJEtoN3esigpN6MtOWPq9rL8rWpLXT2LQc1RM/awkJtV51rkLKLoAhxOFZGLEvCIWI6TacxFLrO5AV2BMn005+yDUCr5szpfH0Goj0TLHo8oQSGdIwWsxzUDkTvVBSRgRlxj4TDmViwDaUt06aA00xHkdA+EVgCP7TPaUvC2+CYkyk4pRHc42JszgKhfl93KX94ElLAOd/0OCRzHkZaQrFRl57Md1PW363JTVEZSzclTGUsMQFgMcowU=
