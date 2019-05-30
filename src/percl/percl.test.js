@@ -164,6 +164,12 @@ describe('percl', function () {
       expect(percl.play(file, {loop: loop, conferenceId: conferenceId})).toEqual({Play: {file: file, loop: loop, conferenceId: conferenceId}})
     })
   })
+  describe('playEarlyMedia', function () {
+    var file = 'http://file.url'
+    it('should create a playEarlyMedia command', function () {
+      expect(percl.playEarlyMedia(file)).toEqual({PlayEarlyMedia: {file: file}})
+    })
+  })
   describe('say', function () {
     it('should return a Say command with the text set to the parameter value', function () {
       var expectedText = 'Hello World'
