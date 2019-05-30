@@ -160,6 +160,15 @@ play(file, options)
 
     :returns: {{Play}} An object representing a Play command.
 
+playEarlyMedia(file)
+--------------------
+
+    Build a PlayEarlyMedia PerCL command.
+
+    :file: {string} The URL of the audio file to be played to the caller.
+
+    :returns: {{PlayEarlyMedia}} An object representing a PlayEarlyMedia command.
+
 say(text, options)
 --------------------
 

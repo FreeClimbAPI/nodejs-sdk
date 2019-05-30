@@ -189,6 +189,16 @@ function play (file, options) {
 }
 
 /**
+ * Build a PlayEarlyMedia PerCL command.
+ *
+ * @param {string} file - The URL of the audio file to be played to the caller.
+ * @returns {{PlayEarlyMedia}} - An object representing a PlayEarlyMedia command.
+ */
+function playEarlyMedia (file) {
+  return {PlayEarlyMedia: {file: file}}
+}
+
+/**
  * Build a Say PerCL command.
  *
  * @param {string} text - The message to be played to the caller using TTS. String size is limited to 4 KB. An empty string will cause the command to be skipped over.
@@ -263,6 +273,7 @@ module.exports = {
   recordUtterance: recordUtterance,
   startRecordCall: startRecordCall,
   play: play,
+  playEarlyMedia: playEarlyMedia,
   say: say,
   getDigits: getDigits,
   getSpeech: getSpeech,
