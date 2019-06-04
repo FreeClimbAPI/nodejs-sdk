@@ -5,8 +5,7 @@ var querystring = require('querystring')
 /**
  * The URL of the Persephony API
  */
-// TODO - change this to https://www.persephony.com/apiserver
-var persyURL = 'https://localhost/apiserver'
+var persyURL = 'https://www.persephony.com/apiserver'
 // TODO - delete this, very insecure
 var agent = new https.Agent({
   rejectUnauthorized: false
