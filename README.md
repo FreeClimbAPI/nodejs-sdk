@@ -33,7 +33,7 @@ The [Persephony documentation ](https://www.persephony.com/docs) has guides on [
 
 The SDK documentation is not generated from source code comments, as at the time of writing no existing tool could be found that parsed the comments adequately. Instead the documentation is manually curated in the files at `docs/source`  in the .rst (ReStructuredText) format. Developers should ensure that changes to the SDK are reflected in the documentation.
 
-It is built using the Python package Sphinx and a few other libraries. To install the dependencies in a python virtual environment, run setup.sh. 
+It is built using the Python package Sphinx and a few other libraries. To install the dependencies in a python virtual environment, run setup.sh.
 
 To generate the documentation, activate the virtual environment and run `make html`. For livereload, run `make watch`
 
