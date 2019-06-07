@@ -4,7 +4,7 @@ var persy = persephonySDK('AC79df825d6690cc51111673d64aed6ed121dd39e1', '865442d
 describe('index', function () {
   describe('percl', function () {
     it('builds a valid percl script', function () {
-      expect(persy.percl.build(persy.percl.say('Hello World', {language: persy.enums.language.ENGLISH_US}))).toEqual([{Say: {text: 'Hello World', language: 'en-US'}}])
+      expect(persy.percl.build(persy.percl.say('Hello World', { language: persy.enums.language.ENGLISH_US }))).toEqual([{ Say: { text: 'Hello World', language: 'en-US' } }])
     })
   })
 })
