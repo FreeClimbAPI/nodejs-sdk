@@ -19,7 +19,9 @@ Test the SDK is working by sending yourself a text message.
 
 ```javascript
 var persephonySDK = require('@persephony/sdk')
-var persy = persephonySDK('your_account_id', 'your_auth_token')
+var accountID = 'your_account_id'
+var authToken = 'your_auth_token'
+var persy = persephonySDK(accountID, authToken)
 var to = 'your_phone_number'
 var from = 'a_persephony_phone_number_in_your_account'
 
