@@ -1,6 +1,6 @@
 {
   "name": "@persephony/sdk",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "The SDK for the Persephony API",
   "homepage": "https://www.persephony.com",
   "bugs": {
