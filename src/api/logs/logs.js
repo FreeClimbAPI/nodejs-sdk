@@ -17,7 +17,7 @@ var common = require('../common/index')
  *
  * @param {string} accountId - The accountId for authentication.
  * @param {string} authToken - The authToken for authentication.
- * @returns {LogsRequester} requester - returns a LogRequester
+ * @returns {LogsRequester} requester - A LogRequester
  */
 function logs (accountId, authToken) {
   var getter = common.commonGetBuilder(accountId, authToken)

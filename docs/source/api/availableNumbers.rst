@@ -8,7 +8,7 @@ getList(filters)
 
     :[filters]: {object} Optional properties to filter the list.
 
-    :returns: {Promise<object>} Returns a promise that resolves to a page of phone numbers.
+    :returns: {Promise<object>} A promise that resolves to a page of phone numbers.
     :throws: Will throw an error on a failed response.
 
 getNextPage(nextPageUri)

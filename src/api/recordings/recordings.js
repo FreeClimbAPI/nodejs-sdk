@@ -22,7 +22,7 @@ var path = require('path')
  *
  * @param {string} accountId - The accountId for authentication
  * @param {string} authToken - The authToken for authentication
- * @returns {RecordingsRequester} requester - returns a RecordingsRequester
+ * @returns {RecordingsRequester} requester - A RecordingsRequester
  */
 function recordings (accountId, authToken) {
   var getter = common.commonGetBuilder(accountId, authToken)

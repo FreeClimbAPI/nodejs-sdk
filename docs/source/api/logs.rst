@@ -8,7 +8,7 @@ get(filters)
 
     :[filters]: {object} An object containing a number of ways to filter the logs returned by Perspehony.
 
-    :returns: {Promise<object>} Returns a promise that resolves to a page of logs.
+    :returns: {Promise<object>} A promise that resolves to a page of logs.
     :throws: Will throw an error on a failed response.
 
 getNextPage(nextPageUri)

@@ -9,7 +9,7 @@ get(messageId)
 
     :messageId: {string} The :code:`messageId` of the desired message.
 
-    :returns: {Promise<object>} Returns a promise that resolves to the message matching the :code:`messageId` provided.
+    :returns: {Promise<object>} A promise that resolves to the message matching the :code:`messageId` provided.
     :throws: Will throw an error on a failed response.
 
 getList(filters)
@@ -19,7 +19,7 @@ getList(filters)
 
     :[filters]: {object} Optional properties to filter the list.
 
-    :returns: {Promise<object>} Returns a promise that resolves to a page of messages.
+    :returns: {Promise<object>} A promise that resolves to a page of messages.
     :throws: Will throw an error on a failed response.
 
 getNextPage(nextPageUri)
@@ -41,5 +41,5 @@ create(from, to, text)
     :to: {string} The phone number to send the message to.
     :text: {string} The text contained in the message. (maximum 254 characters.)
 
-    :returns: {Promise<object>} Returns a promise that resolves to the newly created message.
+    :returns: {Promise<object>} A promise that resolves to the newly created message.
     :throws: Will throw an error on a failed response.

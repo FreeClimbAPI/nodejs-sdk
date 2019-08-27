@@ -13,7 +13,7 @@ get(conferenceId)
 
     :conferenceId: {string} The :code:`conferenceId` of the desired conference.
 
-    :returns: {Promise<object>} Returns a promise that resolves to the conference matching the :code:`conferenceId` provided.
+    :returns: {Promise<object>} A promise that resolves to the conference matching the :code:`conferenceId` provided.
     :throws: Will throw an error on a failed response.
 
 update(conferenceId, options)
@@ -24,7 +24,7 @@ update(conferenceId, options)
     :conferenceId: {string} The :code:`conferenceId` of the desired conference.
     :options: {object} THe properties to change in the target conference.
 
-    :returns: {Promise<object>} Returns a promise that will resolve to the conference matching the :code:`conferenceId` provided.
+    :returns: {Promise<object>} A promise that will resolve to the conference matching the :code:`conferenceId` provided.
     :throws: Will throw an error on a failed response.
 
 getList(filters)
@@ -34,7 +34,7 @@ getList(filters)
 
     :[filters]: {object} Optional properties to filter the list
 
-    :returns: {Promise<object>} Returns a promise that resolves to a conference list.
+    :returns: {Promise<object>} A promise that resolves to a conference list.
     :throws: Will throw an error on a failed response.
 
 getNextPage(nextPageUri)
@@ -44,7 +44,7 @@ getNextPage(nextPageUri)
 
     :nextPageUri: {string} The URL to the next page of results.
 
-    :returns: {Promise<object>} Returns a promise that resolves to the next page of conferences.
+    :returns: {Promise<object>} A promise that resolves to the next page of conferences.
     :throws: Will throw an error on a failed response.
 
 create(options)
@@ -54,7 +54,7 @@ create(options)
 
     :[options]: {object} Optional properties to set when creating a conference.
 
-    :returns: {Promise<object>} Returns a promise that resolves to the newly created conference.
+    :returns: {Promise<object>} A promise that resolves to the newly created conference.
     :throws: Will throw an error on a failed response.
 
 .. _API-conferences-participants-label:

@@ -8,7 +8,7 @@ get(callId)
 
     :callId: {string} The :code:`callId` of the desired call.
 
-    :returns: {Promise<object>} Returns a promise that resolves to the call matching the :code:`callId` provided.
+    :returns: {Promise<object>} A promise that resolves to the call matching the :code:`callId` provided.
     :throws: Will throw an error on a failed response.
 
 update(callId, status)
@@ -19,7 +19,7 @@ update(callId, status)
     :callId: {string} The :code:`callId` of the desired call.
     :status: {string} The status to set the target call to. Can be either :ref:`Enums-callStatus-label`.CANCELED or :ref:`Enums-callStatus-label`.COMPLETED.
 
-    :returns: {Promise<null>} Returns a promise that resolves to null on success
+    :returns: {Promise<null>} A promise that resolves to null on success
     :throws: Will throw an error on a failed response.
 
 getList(filters)
@@ -29,7 +29,7 @@ getList(filters)
 
     :[filters]: {object} Optional filters containing a number of possible ways to filter the calls returned by Persephony.
 
-    :returns: {Promise<object>} Returns a promise that resolves to a list of call instances matching the filters if provided.
+    :returns: {Promise<object>} A promise that resolves to a list of call instances matching the filters if provided.
     :throws: Will throw an error on a failed response.
 
 getNextPage(nextPageUri)
@@ -39,7 +39,7 @@ getNextPage(nextPageUri)
 
     :nextPageUri: {string} The URL to the next page of results.
 
-    :returns: {Promise<oobject>} Returns a promise that resolves to the next page of calls
+    :returns: {Promise<oobject>} A promise that resolves to the next page of calls
     :throws: Will throw an error on a filed response.
 
 create(to, from, applicationId, options)
@@ -52,5 +52,5 @@ create(to, from, applicationId, options)
     :applicationId: {string} The id of the application Persephony should use to handle the phone call.
     :[options]: {object} Additional properties to set the behavior of the call to be placed.
 
-    :returns: {Promise<object>} returns a promise that resolves to the newly placed call.
+    :returns: {Promise<object>} A promise that resolves to the newly placed call.
     :throws: Will throw an error on a failed response.

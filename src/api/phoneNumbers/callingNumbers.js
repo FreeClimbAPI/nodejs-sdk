@@ -20,7 +20,7 @@ var common = require('../common/index')
  *
  * @param {string} accountId - The accountId for authentication.
  * @param {string} authToken - The authToken for authentication.
- * @returns {CallingNumbersRequester} requester - returns a CallingNumbersRequester
+ * @returns {CallingNumbersRequester} requester - A CallingNumbersRequester
  */
 function callingNumbers (accountId, authToken) {
   var getter = common.commonGetBuilder(accountId, authToken)

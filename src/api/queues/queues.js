@@ -21,7 +21,7 @@ var members = require('./members/index')
  *
  * @param {string} accountId - The accountId for authentication.
  * @param {string} authToken - The authToken for authentication.
- * @returns {QueuesRequester} requester - returns a QueuesRequester.
+ * @returns {QueuesRequester} requester - A QueuesRequester.
  */
 function queues (accountId, authToken) {
   var getter = common.commonGetBuilder(accountId, authToken)

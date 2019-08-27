@@ -8,7 +8,7 @@ get(incomingNumberId)
 
     :incomingNumberId: {string} The :code:`incomingPhoneNumberId` of the desirect incoming phone number.
 
-    :returns: {Promise<object>} Returns a promise that resolves to the desired number.
+    :returns: {Promise<object>} A promise that resolves to the desired number.
     :throws: Will throw an error on a failed response.
 
 update(incomingNumberId, options)
@@ -19,7 +19,7 @@ update(incomingNumberId, options)
     :incomingNumberId: {string} The :code:`incomingPhoneNumberId` of the desired incoming phone number.
     :options: {object} The properties to change in the target incoming phone number.
 
-    :returns: {Promise<object>} Returns a promise that resolves to the modified incoming phone number.
+    :returns: {Promise<object>} A promise that resolves to the modified incoming phone number.
     :throws: Will throw an error on a failed response.
 
 getList(filter)
@@ -29,7 +29,7 @@ getList(filter)
 
     :[filter]: {object} Optional properties to filter the list.
 
-    :returns: {Promise<object>} Returns a promise that resolves to a page of incoming phone numbers.
+    :returns: {Promise<object>} A promise that resolves to a page of incoming phone numbers.
     :throws: Will throw an error on a failed response.
 
 getNextPage(nextPageUri)
@@ -50,7 +50,7 @@ purchase(phoneNumber, options)
     :phoneNumber: {string} The phone number to purchase in E.164 format (as returned in the list of Available Phone Numbers)
     :[options]: {object} Optional properties to set on the newly purchased number.
 
-    :returns: {Promise<object>} Returns a promise that resolves to the newly purchased incoming phone number.
+    :returns: {Promise<object>} A promise that resolves to the newly purchased incoming phone number.
     :throws: Will throw an error on a failed response.
 
 delete(incomingNumberId)
@@ -60,5 +60,5 @@ delete(incomingNumberId)
 
     :incomingNumberId: {string} The id of the incoming phone number to delete.
 
-    :returns: {Promise<null>} Returns a promise that resolves to null on success.
+    :returns: {Promise<null>} A promise that resolves to null on success.
     :throws: Will throw an error on a failed response.
