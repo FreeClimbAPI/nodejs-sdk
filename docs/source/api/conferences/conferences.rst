@@ -22,7 +22,7 @@ update(conferenceId, options)
     Update the existing conference associated with the :code:`conferenceId`
 
     :conferenceId: {string} The :code:`conferenceId` of the desired conference.
-    :options: {object} THe properties to change in the target conference.
+    :options: {object} The properties to change in the target conference.
 
     :returns: {Promise<object>} A promise that will resolve to the conference matching the :code:`conferenceId` provided.
     :throws: Will throw an error on a failed response.

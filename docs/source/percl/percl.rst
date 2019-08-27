@@ -60,7 +60,7 @@ createConference(actionUrl, options)
 
     Build a CreateConference PerCL command.
 
-    :actionUrl: {string} The URl to request once the conference is created.
+    :actionUrl: {string} The URL to request once the conference is created.
     :[options]: {object} Additional properties to include in the command.
 
     :returns: {{CreateConference}} An object representing a CreateConference command.
@@ -194,7 +194,7 @@ getSpeech(actionUrl, grammarFile, options)
 
     Build a GetSpeech PerCL command.
 
-    :actionUrl: {string} The URl to be invoked when the caller has finished speaking or on a timeout.
+    :actionUrl: {string} The URL to be invoked when the caller has finished speaking or on a timeout.
     :grammarFile: {string} The grammar file to be used for speech recognition. If grammarType is set to :ref:`Enums-grammarType-label`.URL this attribute is specified as a dowload URL. Otherwise it must be one of the built-ins. See :ref:`Enums-grammarFileBuiltIn-label`
     :[options]: {object} Additional properties to include in the command.
 

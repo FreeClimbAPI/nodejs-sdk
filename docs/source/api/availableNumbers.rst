@@ -4,7 +4,7 @@ Available Numbers
 getList(filters)
 ^^^^^^^^^^^^^^^^^^
 
-    Retrieve the list of available phone numbers for purchase.`
+    Retrieve a list of available phone numbers for purchase.
 
     :[filters]: {object} Optional properties to filter the list.
 

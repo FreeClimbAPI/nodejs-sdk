@@ -16,8 +16,8 @@ update(applicationId, options)
 
     Update the existing application associated with :code:`applicationId`.
 
-    :applicationId: {stirng} The :code:`applicationId` of the desired application.
-    :options: {object} The properites to change in the target application.
+    :applicationId: {string} The :code:`applicationId` of the desired application.
+    :options: {object} The properties to change in the target application.
 
     :returns: {Promise<object>} A promise that resolves to the application matching the :code:`applicationId` provided.
     :throws: Will throw an error on a failed response.

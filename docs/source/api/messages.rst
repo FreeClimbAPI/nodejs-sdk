@@ -37,7 +37,7 @@ create(from, to, text)
 
     Send an SMS message through the Persephony API.
 
-    :from: {string} The phone number to use as the sender. This must be an incoming phone number you have purchased from Persephony.
+    :from: {string} The phone number to use as the sender. This must be an incoming phone number you have purchased from Persephony (E.164 format).
     :to: {string} The phone number to send the message to.
     :text: {string} The text contained in the message. (maximum 254 characters.)
 

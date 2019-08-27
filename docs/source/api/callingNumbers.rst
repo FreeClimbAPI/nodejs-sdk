@@ -25,7 +25,7 @@ update(callingNumberId, options)
 getList(options)
 ^^^^^^^^^^^^^^^^^^
 
-    Retrieve the list of calling numbers associated with the :code:`accountId`.
+    Retrieve a list of calling numbers associated with the :code:`accountId`.
 
     :[options]: {object} Optional properties to filter the list.
 

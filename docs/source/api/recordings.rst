@@ -39,7 +39,7 @@ download(recordingId, filePath)
     :recordingId: {string} The :code:`recordingId` of the desired recording.
     :filePath: {string} The path to the location on disk and filename to save the recording to.
 
-    :returns {Promise<undefined>} A promise that resolves to undefined once the request succeeds.
+    :returns: {Promise<undefined>} A promise that resolves to undefined once the request succeeds.
     :throws: Will throw an error on a failed response.
 
 stream(recordingId)

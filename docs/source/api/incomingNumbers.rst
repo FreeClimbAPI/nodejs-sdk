@@ -6,7 +6,7 @@ get(incomingNumberId)
 
     Retrieve a single incoming phone number from Persephony.
 
-    :incomingNumberId: {string} The :code:`incomingPhoneNumberId` of the desirect incoming phone number.
+    :incomingNumberId: {string} The :code:`incomingPhoneNumberId` of the desired incoming phone number.
 
     :returns: {Promise<object>} A promise that resolves to the desired number.
     :throws: Will throw an error on a failed response.
@@ -25,7 +25,7 @@ update(incomingNumberId, options)
 getList(filter)
 ^^^^^^^^^^^^^^^^^^
 
-    Retrieve the list of incoming phone numbers associated with the :code:`accountId`.
+    Retrieve a list of incoming phone numbers associated with the :code:`accountId`.
 
     :[filter]: {object} Optional properties to filter the list.
 
@@ -56,7 +56,7 @@ purchase(phoneNumber, options)
 delete(incomingNumberId)
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    Remove the incoming phone number with a matching :code:`incomingPhoneNumberId` as an incoming number. Persephony will no longer answer calls to this number.
+    Remove the incoming phone number with a matching :code:`incomingPhoneNumberId`. Persephony will no longer answer calls to this number.
 
     :incomingNumberId: {string} The id of the incoming phone number to delete.
 
