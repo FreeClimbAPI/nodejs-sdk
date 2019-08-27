@@ -32,7 +32,7 @@ getList(filters)
 
     Retrieve a list of queues associated with the :code:`accountId`.
 
-    :[filters]: {object} An optional object containing a number of possible ways to filter the queues returned by Persephony.
+    :[filters]: {object} Object containing a number of possible ways to filter the queues returned by Persephony.
 
     :returns: {Promise<object>} A promise that resolves to a queue list page.
     :throws: Will throw an error on a failed response.
@@ -52,7 +52,7 @@ create(options)
 
     Create a new queue through the Persephony API.
 
-    :[options]: {object} An optional object to set the properties on the newly created queue.
+    :[options]: {object} An Object to set the properties on the newly created queue.
 
     :returns: {Promise<object>} A promise that resolves to the newly created queue.
     :throws: Will throw an error on a failed response.

@@ -47,7 +47,7 @@ function recordings (accountId, authToken) {
   /**
    * Retrieve a list of recording metadata associated with the {@code accountId}
    *
-   * @param {object} [filters] - Optional properties to filter the recording list Persephony will return
+   * @param {object} [filters] - Properties to filter the recording list Persephony will return
    * @returns {Promise<object>} recording list - A list of metadata about the available recordings
    * @throws will throw an error on a failed response
    */

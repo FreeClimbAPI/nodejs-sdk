@@ -32,7 +32,7 @@ getList(filters)
 
     Retrieve a list of conference associated with the :code:`accountId`
 
-    :[filters]: {object} Optional properties to filter the list
+    :[filters]: {object} Properties to filter the list
 
     :returns: {Promise<object>} A promise that resolves to a conference list.
     :throws: Will throw an error on a failed response.
@@ -52,7 +52,7 @@ create(options)
 
     Create a new conference through the Persephony API.
 
-    :[options]: {object} Optional properties to set when creating a conference.
+    :[options]: {object} Properties to set when creating a conference.
 
     :returns: {Promise<object>} A promise that resolves to the newly created conference.
     :throws: Will throw an error on a failed response.

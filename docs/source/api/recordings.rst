@@ -16,7 +16,7 @@ getList(filters)
 
     Retrieve a list of recording metadata associated with the :code:`accountId`.
 
-    :[filters]: {object} Optional properties to filter the recording list Persephony will return.
+    :[filters]: {object} Properties to filter the recording list Persephony will return.
 
     :returns: {Promise<object>} A promise that resolves into a page of metadata about the available recordings.
     :throws: Will throw an error on a failed response.

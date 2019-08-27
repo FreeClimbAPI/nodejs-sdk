@@ -27,7 +27,7 @@ getList(filters)
 
     Retrieve a list of calls associated with the :code:`accountId`
 
-    :[filters]: {object} Optional filters containing a number of possible ways to filter the calls returned by Persephony.
+    :[filters]: {object} Filters containing a number of possible ways to filter the calls returned by Persephony.
 
     :returns: {Promise<object>} A promise that resolves to a list of call instances matching the filters if provided.
     :throws: Will throw an error on a failed response.

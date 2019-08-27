@@ -27,7 +27,7 @@ getList(filter)
 
     Retrieve a list of incoming phone numbers associated with the :code:`accountId`.
 
-    :[filter]: {object} Optional properties to filter the list.
+    :[filter]: {object} Properties to filter the list.
 
     :returns: {Promise<object>} A promise that resolves to a page of incoming phone numbers.
     :throws: Will throw an error on a failed response.
@@ -48,7 +48,7 @@ purchase(phoneNumber, options)
     Purchase a new incoming phone number through the Persephony API.
 
     :phoneNumber: {string} The phone number to purchase in E.164 format (as returned in the list of Available Phone Numbers)
-    :[options]: {object} Optional properties to set on the newly purchased number.
+    :[options]: {object} Properties to set on the newly purchased number.
 
     :returns: {Promise<object>} A promise that resolves to the newly purchased incoming phone number.
     :throws: Will throw an error on a failed response.

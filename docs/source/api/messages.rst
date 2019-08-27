@@ -17,7 +17,7 @@ getList(filters)
 
     Retrieve a list of messages associated with the :code:`accountId`
 
-    :[filters]: {object} Optional properties to filter the list.
+    :[filters]: {object} Properties to filter the list.
 
     :returns: {Promise<object>} A promise that resolves to a page of messages.
     :throws: Will throw an error on a failed response.

@@ -6,7 +6,7 @@ getList(filters)
 
     Retrieve a list of available phone numbers for purchase.
 
-    :[filters]: {object} Optional properties to filter the list.
+    :[filters]: {object} Properties to filter the list.
 
     :returns: {Promise<object>} A promise that resolves to a page of phone numbers.
     :throws: Will throw an error on a failed response.

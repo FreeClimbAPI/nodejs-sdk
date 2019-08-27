@@ -61,7 +61,7 @@ function calls (accountId, authToken) {
   /**
    * Retrieve a list of calls associated with the {@code accountId}
    *
-   * @param {object} [filters] - Optional filters containing a number of possible ways to filter the calls returned by Persephony.
+   * @param {object} [filters] - Filters containing a number of possible ways to filter the calls returned by Persephony.
    * @returns {Promise<object>} call list - A list of call instances matching the filters if provided.
    * @throws an error on a failed response
    */

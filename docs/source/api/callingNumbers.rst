@@ -27,7 +27,7 @@ getList(options)
 
     Retrieve a list of calling numbers associated with the :code:`accountId`.
 
-    :[options]: {object} Optional properties to filter the list.
+    :[options]: {object} Properties to filter the list.
 
     :returns: {Promise<object>} A promise that resolves to a page of calling numbers.
     :throws: Will throw an error on a failed response.
@@ -48,7 +48,7 @@ create(phoneNumber, options)
     Create a new calling number through the Persephony API.
 
     :phoneNumber: {string} The phone number to add. Should be formatted with a '+' and country code e.g. +16175551212 (E.164 format). Persephony will also accept unformatted US number e.g. (415) 555-1212, 415-555-1212.
-    :[options]: {object} The optional properties to set on the new calling number.
+    :[options]: {object} Properties to set on the new calling number.
 
     :returns: {Promise<object>} A promise that resolves to the newly created calling number.
     :throws: Will throw an error on a failed response.
