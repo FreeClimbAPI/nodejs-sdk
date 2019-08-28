@@ -39,7 +39,7 @@ getNextPage(nextPageUri)
 
     :nextPageUri: {string} The URL to the next page of results.
 
-    :returns: {Promise<oobject>} A promise that resolves to the next page of calls
+    :returns: {Promise<object>} A promise that resolves to the next page of calls
     :throws: Will throw an error on a filed response.
 
 create(to, from, applicationId, options)
