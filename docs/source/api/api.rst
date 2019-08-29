@@ -18,6 +18,6 @@ API
 setPersyUrl(newUrl)
 ^^^^^^^^^^^^^^^^^^^^^
 
-    Change the Persephony instance the SDK interacts with. Persy Url defaults to https://persephony.com/apiserver
+    Change the Persephony instance the SDK interacts with. https://persephony.com/apiserver by default
 
     :newUrl: {string} The URL to the api of the Persephony instance to use. e.g https://persephony.com/apiserver

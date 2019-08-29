@@ -47,8 +47,8 @@ create(to, from, applicationId, options)
 
     Create a new call through the Persephony API.
 
-    :to: {string} The number to call out to (DNIS). This can be any valid phone number formatted in E.164 format in Persephony's service area. Must be associated with application specified with :code:`applicationId`
-    :from: {string} The number to call from (ANI). This must be a number purchased from Persephony or a verified phone number owned by the user.
+    :to: {string} The number to call out to (DNIS). This can be any valid phone number formatted in E.164 format in Persephony's service area.
+    :from: {string} The number to call from (ANI). This must be a number purchased from Persephony or a verified phone number owned by the user. Must be associated with application specified with :code:`applicationId`
     :applicationId: {string} The id of the application Persephony should use to handle the phone call.
     :[options]: {object} Additional properties to set the behavior of the call to be placed.
 
