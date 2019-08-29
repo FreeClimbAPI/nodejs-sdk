@@ -40,7 +40,7 @@ getNextPage(nextPageUri)
     :nextPageUri: {string} The URL to the next page of results.
 
     :returns: {Promise<object>} A promise that resolves to the next page of calls
-    :throws: Will throw an error on a filed response.
+    :throws: Will throw an error on a failed response.
 
 create(to, from, applicationId, options)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
