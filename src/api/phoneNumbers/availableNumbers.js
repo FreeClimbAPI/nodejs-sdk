@@ -6,7 +6,7 @@ var common = require('../common/index')
 /**
  * @typedef AvailableNumbersRequester
  * @type {Object}
- * @property {function} getList - Retrieve the list of available phone numbers for purchase.
+ * @property {function} getList - Retrieve a list of available phone numbers for purchase.
  */
 
 /**
@@ -26,7 +26,7 @@ function availableNumbers (accountId, authToken) {
   var rootUrl = '/AvailablePhoneNumbers'
 
   /**
-   * Retrieve the list of available phone numbers for purchase.
+   * Retrieve a list of available phone numbers for purchase.
    * @param {object} [filters] - An object containing a number of possible ways to filter the available phone numbers returned by Persephony.
    * @returns {Promise<object>} phone number list - The list of phone numbers available for purchase.
    * @throws will throw an error on a failed response

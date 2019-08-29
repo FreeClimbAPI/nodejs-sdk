@@ -148,8 +148,8 @@ Enum for the allowed values for the language property of the Say command.
 - ENGLISH_UK
 - ENGLISH_IN
 - ENGLISH_US
-- ENGLISH-ES
-- ENGLISH-MX
+- ENGLIS_ES
+- ENGLISH_MX
 - FINNISH
 - FRENCH_CA
 - FRENCH_FE

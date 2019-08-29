@@ -59,7 +59,7 @@ function incomingNumbers (accountId, authToken) {
 
   /**
    * Retrieve a list of IncomingPhoneNumbers associated with the {@code accountId}.
-   * @param {object} [filter] - An optional object containing a number of possible ways to filter the incoming numbers list returned by Persephony.
+   * @param {object} [filter] - An Object containing a number of possible ways to filter the incoming numbers list returned by Persephony.
    * @returns {Promise<object>} incoming number list - A list of Incoming Phone Numbers.
    * @throws will throw an error on a failed response
    */
@@ -83,7 +83,7 @@ function incomingNumbers (accountId, authToken) {
    * Purchase a new incoming phone number through the Persephony API.
    *
    * @param {string} phoneNumber - The phone number to purchase in E.164 format (as returned in the list of Available Phone Numbers)
-   * @param {object} [options] - Optional properties to set on the newly purchased number.
+   * @param {object} [options] - Properties to set on the newly purchased number.
    * @returns {Promise<object>} incoming number - The newly purchased incoming phone number.
    * @throws will throw an error on a failed response
    */

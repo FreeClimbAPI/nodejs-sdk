@@ -20,7 +20,7 @@ var common = require('../../common/index')
  * @param {string} accountId - The accountId for authentication.
  * @param {string} authToken - The authToken for authentication.
  * @param {string} queueId - The queueId to operate against.
- * @returns {MembersRequester} requester - returns a MembersRequester
+ * @returns {MembersRequester} requester - A MembersRequester
  */
 function members (accountId, authToken, queueId) {
   var getter = common.commonGetBuilder(accountId, authToken)

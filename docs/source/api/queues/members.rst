@@ -12,7 +12,7 @@ get(memberId)
 
     :memberId: {string} The :code:`callId` of the desired member.
 
-    :returns: {Promise<object>} Returns a promise that resolves to the member matching the :code:`callId` provided.
+    :returns: {Promise<object>} A promise that resolves to the member matching the :code:`callId` provided.
     :throws: Will throw an error on a failed response.
 
 getFront()
@@ -20,7 +20,7 @@ getFront()
 
     Retrieve a single member from the front of the queue.
 
-    :returns: {Promise<object>} Returns a promise that resolves to the member at the front of the queue.
+    :returns: {Promise<object>} A promise that resolves to the member at the front of the queue.
     :throws: Will throw an error on a failed response.
 
 getList()
@@ -28,7 +28,7 @@ getList()
 
     Retrieve a list of members associated with the queue.
 
-    :returns: {Promise<object>} Returns a promise that resolves to a list of members.
+    :returns: {Promise<object>} A promise that resolves to a list of members.
     :throws: Will throw an error on a failed response.
 
 getNextPage(nextPageUri)
@@ -38,7 +38,7 @@ getNextPage(nextPageUri)
 
     :nextPageUri: {string} The URL to the next page of results.
 
-    :returns: {Promise<object>} Returns a promise that resolves to the next page of results.
+    :returns: {Promise<object>} A promise that resolves to the next page of results.
     :throws: Will throw an error on a failed response.
 
 dequeue(memberId)
@@ -48,7 +48,7 @@ dequeue(memberId)
 
     :memberId: {string} The :code:`callId` of the desired member.
 
-    :returns: {Promise<object>} Returns a promise that resolves to the member matching the :code:`callId` provided.
+    :returns: {Promise<object>} A promise that resolves to the member matching the :code:`callId` provided.
     :throws: Will throw an error on a failed response.
 
 dequeueFront()
@@ -56,5 +56,5 @@ dequeueFront()
 
     Dequeue a single member from the front of the queue.
 
-    :returns: {Promise<object>} Returns a promise that resolves to the member at the front of the queue.
+    :returns: {Promise<object>} A promise that resolves to the member at the front of the queue.
     :throws: Will throw an error on a failed response.

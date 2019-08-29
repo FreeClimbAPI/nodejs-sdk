@@ -20,7 +20,7 @@ var common = require('../common/index')
  *
  * @param {string} accountId - The accountId for authentication.
  * @param {string} authToken - The authToken for authentication.
- * @returns {CallingNumbersRequester} requester - returns a CallingNumbersRequester
+ * @returns {CallingNumbersRequester} requester - A CallingNumbersRequester
  */
 function callingNumbers (accountId, authToken) {
   var getter = common.commonGetBuilder(accountId, authToken)
@@ -56,7 +56,7 @@ function callingNumbers (accountId, authToken) {
 
   /**
    * Retrieve a list of calling numbers associated with the {@code accountId}.
-   * @param {object} [options] - An optional object containing a number of possible ways to filter the calling numbers returned by Persephony.
+   * @param {object} [options] - An Object containing a number of possible ways to filter the calling numbers returned by Persephony.
    * @returns {Promise<object>} calling number list - A list of calling numbers
    * @throws will throw an error on a failed response
    */
@@ -80,7 +80,7 @@ function callingNumbers (accountId, authToken) {
    * Create a new CallingNumber through the Persephony API.
    *
    * @param {string} phoneNumber - The phone number to add. Should be formatted with a '+' and country code e.g. +16175551212 (E.164 format). Persephony will also accept unformatted US numbers e.g. (415) 555-1212, 415-555-1212.
-   * @param {object} [options] - The optional properties to set on the new calling number.
+   * @param {object} [options] - The Properties to set on the new calling number.
    * @returns {Promise<object>} calling number - The newly created calling number
    * @throws will throw an error on a failed response
    */

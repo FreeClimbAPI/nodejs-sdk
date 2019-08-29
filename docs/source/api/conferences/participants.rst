@@ -12,7 +12,7 @@ get(participantId)
 
     :participantId: {string} The :code:`callId` of the desired participant.
 
-    :returns: {Promise<object>} Returns a promise that resolves to the participant matching the :code:`callId` provided.
+    :returns: {Promise<object>} A promise that resolves to the participant matching the :code:`callId` provided.
     :throws: Will throw an error on a failed response.
 
 update(participantId, options)
@@ -23,7 +23,7 @@ update(participantId, options)
     :participantId: {string} The :code:`callId` of the desired participant.
     :options: {object} The properites to change on the target participant.
 
-    :returns: {Promise<object>} Returns a promise that resolves to the participant matching the :code:`callId` provided.
+    :returns: {Promise<object>} A promise that resolves to the participant matching the :code:`callId` provided.
     :throws: Will throw an error on a failed response.
 
 getList(filters)
@@ -33,7 +33,7 @@ getList(filters)
 
     :[filters]: {object} An object containing a number of possible ways to filter the participants returned by Persephony.
 
-    :returns: {Promise<object>} Returns a promise that resolves to the list of participants for the conference.
+    :returns: {Promise<object>} A promise that resolves to the list of participants for the conference.
     :throws: Will throw an error on a failed response.
 
 getNextPage(nextPageUri)
@@ -43,7 +43,7 @@ getNextPage(nextPageUri)
 
     :nextPageUri: {string} The URL to the next page of results.
 
-    :returns: {Promise<object>} Returns a promise that resolves to the next page of participants.
+    :returns: {Promise<object>} A promise that resolves to the next page of participants.
     :throws: Will throw an error on a failed response.
 
 delete(participantId)
@@ -53,5 +53,5 @@ delete(participantId)
 
     :participantId: {string} The :code:`callId` of the desired participant.
 
-    :returns: {Promise<null>} Returns a promise that resolves to null on success.
+    :returns: {Promise<null>} A promise that resolves to null on success.
     :throws: Will throw an error on a failed response.
