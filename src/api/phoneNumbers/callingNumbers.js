@@ -1,5 +1,5 @@
 /**
- * @module persephony-sdk/api/callingNumbers
+ * @module free-climb-sdk/api/callingNumbers
  */
 var assign = require('lodash.assign')
 var common = require('../common/index')
@@ -15,8 +15,8 @@ var common = require('../common/index')
  */
 
 /**
- * Represents the set of wrappers around the Persephony CallingNumbers API.
- * It provides methods to handle all the operations supported by the Persephony CallingNumbers API.
+ * Represents the set of wrappers around the FreeClimb CallingNumbers API.
+ * It provides methods to handle all the operations supported by the FreeClimb CallingNumbers API.
  *
  * @param {string} accountId - The accountId for authentication.
  * @param {string} authToken - The authToken for authentication.
@@ -33,7 +33,7 @@ function callingNumbers (accountId, authToken) {
   var rootUrl = '/Accounts/' + accountId + '/CallingNumbers'
 
   /**
-   * Retrieve a single calling number from Persephony.
+   * Retrieve a single calling number from FreeClimb.
    *
    * @param {string} callingNumberId - The {@code callingNumberId} of the desired calling number.
    * @returns {Promise<object>} CallingNumber - The calling number matching the {@code callingNumberId} provided.
@@ -56,7 +56,7 @@ function callingNumbers (accountId, authToken) {
 
   /**
    * Retrieve a list of calling numbers associated with the {@code accountId}.
-   * @param {object} [options] - An optional object containing a number of possible ways to filter the calling numbers returned by Persephony.
+   * @param {object} [options] - An optional object containing a number of possible ways to filter the calling numbers returned by FreeClimb.
    * @returns {Promise<object>} calling number list - A list of calling numbers
    * @throws will throw an error on a failed response
    */
@@ -77,9 +77,9 @@ function callingNumbers (accountId, authToken) {
   }
 
   /**
-   * Create a new CallingNumber through the Persephony API.
+   * Create a new CallingNumber through the FreeClimb API.
    *
-   * @param {string} phoneNumber - The phone number to add. Should be formatted with a '+' and country code e.g. +16175551212 (E.164 format). Persephony will also accept unformatted US numbers e.g. (415) 555-1212, 415-555-1212.
+   * @param {string} phoneNumber - The phone number to add. Should be formatted with a '+' and country code e.g. +16175551212 (E.164 format). FreeClimb will also accept unformatted US numbers e.g. (415) 555-1212, 415-555-1212.
    * @param {object} [options] - The optional properties to set on the new calling number.
    * @returns {Promise<object>} calling number - The newly created calling number
    * @throws will throw an error on a failed response
@@ -89,7 +89,7 @@ function callingNumbers (accountId, authToken) {
   }
 
   /**
-   * Delete a CallingNumber through the Persephony API.
+   * Delete a CallingNumber through the FreeClimb API.
    *
    * @param {string} callingNumberId - The {@code} callingNumberId} of the calling number to delete.
    * @returns {Promise<null>} null - resolves to null on success

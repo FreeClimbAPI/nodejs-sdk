@@ -1,5 +1,5 @@
 /**
- * @module persephony-sdk/api/logs
+ * @module free-climb-sdk/api/logs
  */
 
 var assign = require('lodash.assign')
@@ -12,8 +12,8 @@ var common = require('../common/index')
  */
 
 /**
- * Represents the set of wrappers around the Persephony Logs API.
- * It provides methods to handle all the operations supported by the Persephony Logs API.
+ * Represents the set of wrappers around the FreeClimb Logs API.
+ * It provides methods to handle all the operations supported by the FreeClimb Logs API.
  *
  * @param {string} accountId - The accountId for authentication.
  * @param {string} authToken - The authToken for authentication.

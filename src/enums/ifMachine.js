@@ -1,5 +1,5 @@
 /**
- * @module persephony-sdk/enums/ifMachine
+ * @module free-climb-sdk/enums/ifMachine
  */
 
 /**

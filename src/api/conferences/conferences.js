@@ -1,5 +1,5 @@
 /**
- * @module persephony-sdk/api/conferences
+ * @module free-climb-sdk/api/conferences
  */
 
 var participants = require('./participants/index')
@@ -8,16 +8,16 @@ var common = require('../common/index')
 /**
  * @typedef ConferencesRequester
  * @type {Object}
- * @property {function} get - Retrieve a single conference from Persephony
+ * @property {function} get - Retrieve a single conference from FreeClimb
  * @property {function} update - Update an existing conference
  * @property {function} getList - Retrieve a list of conferences associated with this accountId
  * @property {function} create - Create a new conference
- * @property {module:persephony-sdk/api/conferences/participants.ParticipantsRequester} participants - Interact with the participants of a specific conference
+ * @property {module:free-climb-sdk/api/conferences/participants.ParticipantsRequester} participants - Interact with the participants of a specific conference
  */
 
 /**
- * Represents the set of wrappers around the Persephony Conferences API.
- * It provides methods to handle all the operations supported by the Persephony Conferences API.
+ * Represents the set of wrappers around the FreeClimb Conferences API.
+ * It provides methods to handle all the operations supported by the FreeClimb Conferences API.
  *
  * @param {string} accountId - The accountId for authentication.
  * @param {string} authToken - The authToken for authentication.
@@ -33,7 +33,7 @@ function conferences (accountId, authToken) {
   var rootUrl = '/Accounts/' + accountId + '/Conferences'
 
   /**
-   * Retrieve a single conference from Persephony.
+   * Retrieve a single conference from FreeClimb.
    *
    * @param {string} conferenceId - The {@code conferenceId} of the desired conference.
    *
@@ -80,7 +80,7 @@ function conferences (accountId, authToken) {
   }
 
   /**
-   * Create a new conference through the Persephony API.
+   * Create a new conference through the FreeClimb API.
    *
    * @param {object} [options] - optional properties to set when creating a conference.
    * @returns {Promise<object>} conference - The newly created conference
@@ -91,7 +91,7 @@ function conferences (accountId, authToken) {
   }
 
   /**
-   * Creates a {@link module:persephony-sdk/api/conferences/participants.ParticipantsRequester} bound to a specific conference.
+   * Creates a {@link module:free-climb-sdk/api/conferences/participants.ParticipantsRequester} bound to a specific conference.
    *
    * @param {string} conferenceId - The {@code conferenceId} to bind the ParticipantsRequester to.
    * @returns {ParticipantsRequester} requester - the ParticipantsRequester that was created.

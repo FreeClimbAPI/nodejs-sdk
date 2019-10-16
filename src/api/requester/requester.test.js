@@ -11,7 +11,7 @@ describe('requester', function () {
   var expectedAuthHeader = 'Basic ' + btoa(accountId + ':' + authToken)
   var path = '/test/path'
   describe('requester#get', function () {
-    it('should call fetch with a url composed of the persyUrl, path, and query parameters with the correct auth header', function () {
+    it('should call fetch with a url composed of the fcURL, path, and query parameters with the correct auth header', function () {
       fetch.mockReturnValue(Promise.resolve({}))
       expect.assertions(3)
       var queryParams = {test: 'value', other: false}
@@ -19,7 +19,7 @@ describe('requester', function () {
 
       return requester.GET(accountId, authToken, path, queryParams).then(function (response) {
         expect(fetch.mock.calls.length).toBe(1)
-        expect(fetch.mock.calls[0][0]).toBe(requester.persyURL + path + queryString)
+        expect(fetch.mock.calls[0][0]).toBe(requester.fcURL + path + queryString)
         expect(fetch.mock.calls[0][1].headers).toEqual({Authorization: expectedAuthHeader})
       })
     })
@@ -33,7 +33,7 @@ describe('requester', function () {
     })
   })
   describe('requester#post', function () {
-    it('should call fetch with a url composed of the persyURl and the path, with the body stringified', function () {
+    it('should call fetch with a url composed of the fcURL and the path, with the body stringified', function () {
       fetch.mockReturnValue(Promise.resolve({}))
       var body = {test: 'value'}
 
@@ -41,7 +41,7 @@ describe('requester', function () {
 
       return requester.POST(accountId, authToken, path, body).then(function (response) {
         expect(fetch.mock.calls.length).toBe(1)
-        expect(fetch.mock.calls[0][0]).toBe(requester.persyURL + path)
+        expect(fetch.mock.calls[0][0]).toBe(requester.fcURL + path)
         expect(fetch.mock.calls[0][1].method).toEqual('POST')
         expect(fetch.mock.calls[0][1].headers).toEqual({Authorization: expectedAuthHeader, 'Content-Type': 'application/json'})
         expect(fetch.mock.calls[0][1].body).toEqual(JSON.stringify(body))
@@ -54,7 +54,7 @@ describe('requester', function () {
         return requester.POST(accountId, authToken, path, null).then(function (response) {
           expect(fetch.mock.calls.length).toBe(1)
           var args = fetch.mock.calls[0]
-          expect(args[0]).toBe(requester.persyURL + path)
+          expect(args[0]).toBe(requester.fcURL + path)
           expect(args[1].method).toEqual('POST')
           expect(args[1].headers).toEqual({Authorization: expectedAuthHeader, 'Content-Type': 'application/json'})
           expect(args[1].body).toEqual(JSON.stringify({}))
@@ -63,13 +63,13 @@ describe('requester', function () {
     })
   })
   describe('requester#delete', function () {
-    it('should call fetch with a url composed of the persyURL and the path, using the DELETE method', function () {
+    it('should call fetch with a url composed of the fcURL and the path, using the DELETE method', function () {
       fetch.mockReturnValue(Promise.resolve({}))
 
       expect.assertions(4)
       return requester.DELETE(accountId, authToken, path).then(function (response) {
         expect(fetch.mock.calls.length).toBe(1)
-        expect(fetch.mock.calls[0][0]).toBe(requester.persyURL + path)
+        expect(fetch.mock.calls[0][0]).toBe(requester.fcURL + path)
         expect(fetch.mock.calls[0][1].method).toEqual('DELETE')
         expect(fetch.mock.calls[0][1].headers).toEqual({Authorization: expectedAuthHeader})
       })

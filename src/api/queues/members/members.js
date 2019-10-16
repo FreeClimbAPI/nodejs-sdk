@@ -1,5 +1,5 @@
 /**
- * @module persephony-sdk/api/queues/members
+ * @module free-climb-sdk/api/queues/members
  */
 var common = require('../../common/index')
 
@@ -14,8 +14,8 @@ var common = require('../../common/index')
  */
 
 /**
- * Represents the set of wrappers around the Persephony Members API.
- * It provides methods to handle all the operations supported by the Persephony Members API.
+ * Represents the set of wrappers around the FreeClimb Members API.
+ * It provides methods to handle all the operations supported by the FreeClimb Members API.
  *
  * @param {string} accountId - The accountId for authentication.
  * @param {string} authToken - The authToken for authentication.

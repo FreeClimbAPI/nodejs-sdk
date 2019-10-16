@@ -1,5 +1,5 @@
 /**
- * @module persephony-sdk/api/messages
+ * @module free-climb-sdk/api/messages
  */
 
 var common = require('../common/index')
@@ -7,12 +7,12 @@ var common = require('../common/index')
 /**
  * @typedef MessagesRequester
  * @type {Object}
- * @property {function } get - Retrieve a single message from Persephony
+ * @property {function } get - Retrieve a single message from FreeClimb
  */
 
 /**
- * Represents the set of wrappers around the Persephony Messages API.
- * It provides methods to handle all the operations supported by the Persephony Messages API.
+ * Represents the set of wrappers around the FreeClimb Messages API.
+ * It provides methods to handle all the operations supported by the FreeClimb Messages API.
  *
  * @param {string} accountId - The accountId for authentication.
  * @param {string} authToken - The authToken for authentication.
@@ -28,7 +28,7 @@ function messages (accountId, authToken) {
   var rootUrl = '/Accounts/' + accountId + '/Messages'
 
   /**
-   * Retrieve a single message from Persephony.
+   * Retrieve a single message from FreeClimb.
    *
    * @param {string} messageId - The {@code messageId} of the desired message.
    * @returns {Promise<object>} message - The message matching the {@code messageId} provided.
@@ -62,9 +62,9 @@ function messages (accountId, authToken) {
   }
 
   /**
-   * Send an SMS message through the Persephony API.
+   * Send an SMS message through the FreeClimb API.
    *
-   * @param {string} from - The phone number to use as the sender. This must be an incoming phone number you have purchased from Persephony.
+   * @param {string} from - The phone number to use as the sender. This must be an incoming phone number you have purchased from FreeClimb.
    * @param {string} to - The phone number to send the message to.
    * @param {string} text - The text contained in the message. (maximum 254 characters)
    * @returns {Promise<object>} message - The newly created message

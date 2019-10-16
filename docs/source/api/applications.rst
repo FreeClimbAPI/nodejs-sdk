@@ -4,7 +4,7 @@ Applications
 get(applicationId)
 ^^^^^^^^^^^^^^^^^^
 
-    Retrieve a single application from Persephony.
+    Retrieve a single application from FreeClimb.
 
     :applicationId: {string} The :code:`applicationId` of the desired application.
 
@@ -45,9 +45,9 @@ getNextPage(nextPageUri)
 create(options)
 ^^^^^^^^^^^^^^^^
 
-    Create a new application through the Persephony API.
+    Create a new application through the FreeClimb API.
 
-    :options: {object} Arguments that can be provided when creating an application. See Persephony documentation for details.
+    :options: {object} Arguments that can be provided when creating an application. See FreeClimb documentation for details.
 
     :returns: {Promise<object>} Returns a promise that resolves to the newly created application.
     :throws: Will throw an error on a failed response.

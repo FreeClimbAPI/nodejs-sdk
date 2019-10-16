@@ -1,5 +1,5 @@
 /**
- * @module persephony-sdk/api/incomingNumbers
+ * @module free-climb-sdk/api/incomingNumbers
  */
 
 var assign = require('lodash.assign')
@@ -16,8 +16,8 @@ var common = require('../common/index')
  */
 
 /**
- * Represents the set of wrappers around the Persephony IncomingNumbers API.
- * It provides methods to handle all the operations supported by the Persephony IncomingNumbers API.
+ * Represents the set of wrappers around the FreeClimb IncomingNumbers API.
+ * It provides methods to handle all the operations supported by the FreeClimb IncomingNumbers API.
  *
  * @param {string} accountId - The accountId for authentication.
  * @param {string} authToken - The authToken for authentication.
@@ -35,7 +35,7 @@ function incomingNumbers (accountId, authToken) {
   var rootUrl = '/Accounts/' + accountId + '/IncomingPhoneNumbers'
 
   /**
-   * Retrieve a single incoming phone number from Persephony.
+   * Retrieve a single incoming phone number from FreeClimb.
    *
    * @param {string} incomingNumberId - The {@code incomingPhoneNumberId} of the desired incoming phone number.
    * @returns {Promise<object>} incoming number - The incoming phone number matching the {@code incomingPhoneNumberId} provided.
@@ -59,7 +59,7 @@ function incomingNumbers (accountId, authToken) {
 
   /**
    * Retrieve a list of IncomingPhoneNumbers associated with the {@code accountId}.
-   * @param {object} [filter] - An optional object containing a number of possible ways to filter the incoming numbers list returned by Persephony.
+   * @param {object} [filter] - An optional object containing a number of possible ways to filter the incoming numbers list returned by FreeClimb.
    * @returns {Promise<object>} incoming number list - A list of Incoming Phone Numbers.
    * @throws will throw an error on a failed response
    */
@@ -80,7 +80,7 @@ function incomingNumbers (accountId, authToken) {
   }
 
   /**
-   * Purchase a new incoming phone number through the Persephony API.
+   * Purchase a new incoming phone number through the FreeClimb API.
    *
    * @param {string} phoneNumber - The phone number to purchase in E.164 format (as returned in the list of Available Phone Numbers)
    * @param {object} [options] - Optional properties to set on the newly purchased number.
@@ -93,7 +93,7 @@ function incomingNumbers (accountId, authToken) {
 
   /**
    * Remove the incoming phone number with a matching {@code incomingPhoneNumberId} as an incoming number.
-   * Persephony will no longer answer calls to this number.
+   * FreeClimb will no longer answer calls to this number.
    *
    * @param {string} incomingNumberId - The id of the incoming phone number to delete.
    * @returns {Promise<null>} null - resolves to null on success

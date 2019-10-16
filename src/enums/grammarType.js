@@ -1,5 +1,5 @@
 /**
- * @module persephony-sdk/enums/grammarType
+ * @module free-climb-sdk/enums/grammarType
  */
 
 /**

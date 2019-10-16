@@ -1,4 +1,4 @@
-Welcome to Persephony JavaScript SDK's documentation!
+Welcome to FreeClimb JavaScript SDK's documentation!
 =====================================================
 
 * :ref:`search`
@@ -15,56 +15,56 @@ Contents
 Introduction
 ============
 
-The Persephony Javascript SDK provides helpful functions to greatly simplify sending requests to the Persephony API and building PerCL scripts.
+The FreeClimb Javascript SDK provides helpful functions to greatly simplify sending requests to the FreeClimb API and building PerCL scripts.
 
 Setup
 =========
 
-To get started using the Persephony JavaScript SDK, add it as a dependency using your package manager.
+To get started using the FreeClimb JavaScript SDK, add it as a dependency using your package manager.
 
-    ``npm install --save @persephony/sdk``
+    ``npm install --save @free-climb/sdk``
 
-    ``yarn add @persephony/sdk``
+    ``yarn add @free-climb/sdk``
 
 Once you have imported the project, require it and provide the initial configuration ::
 
-    import PersephonySDK from '@persephony/sdk'
+    import FreeClimbSDK from '@free-climb/sdk'
     // see the Dashboard API Keys page for these values
     const accountId = 'MOCK_ACCOUNT_ID'
     const authToken = 'MOCK_AUTH_TOKEN'
-    const persy = PersephonySDK(accountId, authToken)
+    const fc = FreeClimbSDK(accountId, authToken)
 
 Module
 ======
 
-The SDK exports one function that accepts a Persephony users' API credentials.
+The SDK exports one function that accepts a FreeClimb users' API credentials.
 
-persephonySDK(accountId, authToken)
+FreeClimbSDK(accountId, authToken)
 
-    The top level function of the persephony SDK
+    The top level function of the FreeClimb SDK
 
     :accountId: {string} accountId The ID of the account making API requests
     :authToken: {string} authToken The auth token of the account making API requests
 
     :returns: {object} SDK - API, PerCL, and Enum modules
 
-After calling the persephonySDK function the returned object exposes three helper modules for interacting with Persephony.
+After calling the FreeClimbSDK function the returned object exposes three helper modules for interacting with FreeClimb.
 Make API requests using the api module. Example::
 
-    const persy = PersephonySDK(accountId, authToken)
-    persy.api.accounts.get(accountId).then(account => console.log(account))
+    const fc = FreeClimbSDK(accountId, authToken)
+    fc.api.accounts.get(accountId).then(account => console.log(account))
 
 Build PerCL responses using the percl module. Example::
 
     app.post('/callConnected', (req, res) => {
-        const percl = persy.percl.build(persy.percl.say('Hello world'))
+        const percl = fc.percl.build(fc.percl.say('Hello world'))
         res.send(200).json(percl)
     })
 
-Use the enums module when comparing against Persephony requests or when providing arguments to api requests. Example::
+Use the enums module when comparing against FreeClimb requests or when providing arguments to api requests. Example::
 
     app.post('/digitsReceived', (req, res) => {
-        if(req.body.reason === persy.enums.getDigitsReason.TIMEOUT) {
+        if(req.body.reason === fc.enums.getDigitsReason.TIMEOUT) {
             //...
         } else {
             //...

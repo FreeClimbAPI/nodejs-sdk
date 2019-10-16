@@ -1,7 +1,7 @@
 Enums
 ======
 
-These Enum values are used to ensure correctness when comparing against values sent by Persephony and for certain value in API requests.
+These Enum values are used to ensure correctness when comparing against values sent by FreeClimb and for certain value in API requests.
 
 .. _Enums-accountStatus-label:
 

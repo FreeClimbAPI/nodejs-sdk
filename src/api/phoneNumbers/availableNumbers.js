@@ -1,5 +1,5 @@
 /**
- * @module persephony-sdk/api/availablePhoneNumbers
+ * @module free-climb-sdk/api/availablePhoneNumbers
  */
 var common = require('../common/index')
 
@@ -10,7 +10,7 @@ var common = require('../common/index')
  */
 
 /**
- * Represents the set of wrappers around the Persephony AvailableNumbers API.
+ * Represents the set of wrappers around the FreeClimb AvailableNumbers API.
  * It provides methods to handle all the operations supported by the Perspehony AvailableNumbers API.
  *
  * @param {string} accountId - The accountId for authentication.
@@ -27,7 +27,7 @@ function availableNumbers (accountId, authToken) {
 
   /**
    * Retrieve the list of available phone numbers for purchase.
-   * @param {object} [filters] - An object containing a number of possible ways to filter the available phone numbers returned by Persephony.
+   * @param {object} [filters] - An object containing a number of possible ways to filter the available phone numbers returned by FreeClimb.
    * @returns {Promise<object>} phone number list - The list of phone numbers available for purchase.
    * @throws will throw an error on a failed response
    */

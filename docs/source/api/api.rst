@@ -18,6 +18,6 @@ API
 setPersyUrl(newUrl)
 ^^^^^^^^^^^^^^^^^^^^^
 
-    Change the Persephony instance the SDK interacts with.
+    Change the FreeClimb instance the SDK interacts with.
 
-    :newUrl: {string} The URL to the api of the Persephony instance to use. e.g https://persephony.com/apiserver
+    :newUrl: {string} The URL to the api of the FreeClimb instance to use. e.g https://persephony.com/apiserver

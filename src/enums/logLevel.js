@@ -1,5 +1,5 @@
 /**
- * @module persephony-sdk/enums/logLevel
+ * @module free-climb-sdk/enums/logLevel
  */
 
 /**

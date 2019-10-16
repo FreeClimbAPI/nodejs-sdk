@@ -5,15 +5,15 @@ var common = require('../common/index')
 /**
  * @typedef CallsRequester
  * @type {Object}
- * @property {function} get - Retrieve a single call from Persephony
+ * @property {function} get - Retrieve a single call from FreeClimb
  * @property {function} update - Update a live call
- * @property {function} getList - retrieve a list of calls from Persephony
- * @property {function} create - Create a new call through the Persephony API
+ * @property {function} getList - retrieve a list of calls from FreeClimb
+ * @property {function} create - Create a new call through the FreeClimb API
  */
 
 /**
- * Represents the set of wrappers around the Persephony Calls API.
- * It provides methods to handle all the operations supported by the Persephony Calls API.
+ * Represents the set of wrappers around the FreeClimb Calls API.
+ * It provides methods to handle all the operations supported by the FreeClimb Calls API.
  *
  * @param {string} accountId - The accountId for authentication.
  * @param {string} authToken - The authToken for authentication.
@@ -29,7 +29,7 @@ function calls (accountId, authToken) {
   var rootUrl = '/Accounts/' + accountId + '/Calls'
 
   /**
-   * Retrieve a single call from Persephony.
+   * Retrieve a single call from FreeClimb.
    *
    * @param {string} callId - The {@code callId} of the desired call.
    * @returns {Promise<object>} call - The call matching the {@code callId} provided.
@@ -43,7 +43,7 @@ function calls (accountId, authToken) {
    * Update the existing call associated with the {@code callId}.
    *
    * @param {string} callId - The {@code callId} of the desired call.
-   * @param {string} status - The status to set the target call to. Can be either {@link module:persephony-sdk/enums/callStatus.CANCELED} or {@link module:persephony-sdk/enums/callStatus.COMPLETED}.
+   * @param {string} status - The status to set the target call to. Can be either {@link module:free-climb-sdk/enums/callStatus.CANCELED} or {@link module:free-climb-sdk/enums/callStatus.COMPLETED}.
    * @returns {Promise<null>} null - Will resolve to null on a success.
    * @throws will throw an error on a failed response
    */
@@ -61,7 +61,7 @@ function calls (accountId, authToken) {
   /**
    * Retrieve a list of calls associated with the {@code accountId}
    *
-   * @param {object} [filters] - Optional filters containing a number of possible ways to filter the calls returned by Persephony.
+   * @param {object} [filters] - Optional filters containing a number of possible ways to filter the calls returned by FreeClimb.
    * @returns {Promise<object>} call list - A list of call instances matching the filters if provided.
    * @throws an error on a failed response
    */
@@ -82,11 +82,11 @@ function calls (accountId, authToken) {
   }
 
   /**
-   * Create a new call through the Persephony API.
+   * Create a new call through the FreeClimb API.
    *
-   * @param {string} to - The number to call out to (DNIS). This can be any valid phone number formatted in #.164 format in Persephony's service area.
-   * @param {string} from - The number to call from (ANI). This must be a number purchased from Persephony or a verified phone number owned by the user.
-   * @param {string} applicationId - The Id of the application Persephony should use to handle this phone call.
+   * @param {string} to - The number to call out to (DNIS). This can be any valid phone number formatted in #.164 format in FreeClimb's service area.
+   * @param {string} from - The number to call from (ANI). This must be a number purchased from FreeClimb or a verified phone number owned by the user.
+   * @param {string} applicationId - The Id of the application FreeClimb should use to handle this phone call.
    * @param {object} [options] - Additional properties to set the behavior of the call to be placed.
    * @returns {Promise<object>} call - Resolves to the newly placed call
    * @throws will throw an error on a failed response

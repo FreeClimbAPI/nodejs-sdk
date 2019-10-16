@@ -4,7 +4,7 @@ Calling Numbers
 get(callingNumberId)
 ^^^^^^^^^^^^^^^^^^^^
 
-    Retrieve a single calling number from Persephony.
+    Retrieve a single calling number from FreeClimb.
 
     :callingNumberId: {string} The :code:`callingNumberId` of the desired calling number.
 
@@ -45,9 +45,9 @@ getNextPage(nextPageUri)
 create(phoneNumber, options)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    Create a new calling number through the Persephony API.
+    Create a new calling number through the FreeClimb API.
 
-    :phoneNumber: {string} The phone number to add. Should be formatted with a '+' and country code e.g. +16175551212 (E.164 format). Persephony will also accept unformatted US number e.g. (415) 555-1212, 415-555-1212.
+    :phoneNumber: {string} The phone number to add. Should be formatted with a '+' and country code e.g. +16175551212 (E.164 format). FreeClimb will also accept unformatted US number e.g. (415) 555-1212, 415-555-1212.
     :[options]: {object} The optional properties to set on the new calling number.
 
     :returns: {Promise<object>} Returns a promise that resolves to the newly created calling number.
@@ -56,7 +56,7 @@ create(phoneNumber, options)
 delete(callingNumberId)
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    Delete a CallingNumber through the Persephony API.
+    Delete a CallingNumber through the FreeClimb API.
 
     :callingNumberId: {string} The id of the calling number to delete.
 

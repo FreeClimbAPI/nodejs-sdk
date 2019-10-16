@@ -1,5 +1,5 @@
 /**
- * @module persephony-sdk/enums/messageStatus
+ * @module free-climb-sdk/enums/messageStatus
  */
 /**
  * Enum for Message status values.

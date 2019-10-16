@@ -1,5 +1,5 @@
 /**
- * @module persephony-sdk/enums/callStatus
+ * @module free-climb-sdk/enums/callStatus
  */
 
 /**

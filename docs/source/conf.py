@@ -19,9 +19,9 @@
 
 # -- Project information -----------------------------------------------------
 
-project = u'Persephony JavaScript SDK'
-copyright = u'2018, Persephony Team'
-author = u'Persephony Team'
+project = u'FreeClimb JavaScript SDK'
+copyright = u'2018, FreeClimb Team'
+author = u'FreeClimb Team'
 
 # The short X.Y version
 version = u''
@@ -107,7 +107,7 @@ html_static_path = ['.static']
 # -- Options for HTMLHelp output ---------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'PersephonyJavaScriptSDKdoc'
+htmlhelp_basename = 'FreeClimbJavaScriptSDKdoc'
 
 
 # -- Options for LaTeX output ------------------------------------------------
@@ -134,8 +134,8 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'PersephonyJavaScriptSDK.tex', u'Persephony JavaScript SDK Documentation',
-     u'Persephony Team', 'manual'),
+    (master_doc, 'FreeClimbJavaScriptSDK.tex', u'FreeClimb JavaScript SDK Documentation',
+     u'FreeClimb Team', 'manual'),
 ]
 
 
@@ -144,7 +144,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'persephonyjavascriptsdk', u'Persephony JavaScript SDK Documentation',
+    (master_doc, 'FreeClimbjavascriptsdk', u'FreeClimb JavaScript SDK Documentation',
      [author], 1)
 ]
 
@@ -155,8 +155,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'PersephonyJavaScriptSDK', u'Persephony JavaScript SDK Documentation',
-     author, 'PersephonyJavaScriptSDK', 'One line description of project.',
+    (master_doc, 'FreeClimbJavaScriptSDK', u'FreeClimb JavaScript SDK Documentation',
+     author, 'FreeClimbJavaScriptSDK', 'One line description of project.',
      'Miscellaneous'),
 ]
 

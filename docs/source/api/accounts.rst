@@ -4,7 +4,7 @@ Accounts
 get(accountId)
 ^^^^^^^^^^^^^^
 
-    Retrieve a single account from Persephony
+    Retrieve a single account from FreeClimb
 
     :accountId: {string} The :code:`accountId` of the desired account.
 

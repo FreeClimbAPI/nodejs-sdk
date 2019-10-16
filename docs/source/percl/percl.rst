@@ -1,6 +1,6 @@
 PerCL
 ======
-The PerCL module exposes functions to create PerCL commands, and to combine those commands into a script to be sent to Persephony.
+The PerCL module exposes functions to create PerCL commands, and to combine those commands into a script to be sent to FreeClimb.
 
 Commands
 ^^^^^^^^^
@@ -11,7 +11,7 @@ outDial(to, from, actionUrl, callConnectUrl, options)
      Build an OutDial PerCL command.
 
      :to: {string} The E.164 representation of the target phone number.
-     :from: {string} The caller ID that will appear to the called party when Persephony calls. Can be the :code:`To` or :code:`From` number from the callConnectUrl that is requesting this command, or any phone number purchased or verified on Persephony.
+     :from: {string} The caller ID that will appear to the called party when FreeClimb calls. Can be the :code:`To` or :code:`From` number from the callConnectUrl that is requesting this command, or any phone number purchased or verified on FreeClimb.
      :actionUrl: {string} The URL which will be requested immediately on processing an OutDial command. This is used to continue control of the parent call that has requested the OutDial.
      :callConnectUrl: {string} The URL which will be requested informing the result of the OutDial. PerCL is expected if the call status is :ref:`Enums-callStatus-label`.IN_PROGRESS.
      :[options]: {object} Additional properties to include in the command.
@@ -32,7 +32,7 @@ pause(length)
 
     Build a Pause PerCL command.
 
-    :length: {integer} The length in millisecond Persephony will wait silently before continuing on.
+    :length: {integer} The length in millisecond FreeClimb will wait silently before continuing on.
 
     :returns: {{Pause}} An object representing a Pause command.
 
@@ -205,7 +205,7 @@ sms(from, to, text, options)
 
     Build an Sms PerCL command.
 
-    :from: {string} E.164 representation of the phone number to use as the sender. This must be an incoming phone number you have purchased from Persephony.
+    :from: {string} E.164 representation of the phone number to use as the sender. This must be an incoming phone number you have purchased from FreeClimb.
     :to: {string} E.164 representation of the phone number to which the message will be sent.
     :text: {string} The text contained in the message. (maximum 254 characters)
     :[options]: {object} Additional properties to include in the command.

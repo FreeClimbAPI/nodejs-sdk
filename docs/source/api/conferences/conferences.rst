@@ -9,7 +9,7 @@ Conferences
 get(conferenceId)
 ^^^^^^^^^^^^^^^^^
 
-    Retrieve a single conference from Persephony.
+    Retrieve a single conference from FreeClimb.
 
     :conferenceId: {string} The :code:`conferenceId` of the desired conference.
 
@@ -50,7 +50,7 @@ getNextPage(nextPageUri)
 create(options)
 ^^^^^^^^^^^^^^^
 
-    Create a new conference through the Persephony API.
+    Create a new conference through the FreeClimb API.
 
     :[options]: {object} Optional properties to set when creating a conference.
 

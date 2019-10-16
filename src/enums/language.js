@@ -1,5 +1,5 @@
 /**
- * @module persephony-sdk/enums/language
+ * @module free-climb-sdk/enums/language
  */
 
 /**

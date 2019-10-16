@@ -1,5 +1,5 @@
 /**
- * @module persephony-sdk/enums/conferenceStatus
+ * @module free-climb-sdk/enums/conferenceStatus
  */
 
 /**

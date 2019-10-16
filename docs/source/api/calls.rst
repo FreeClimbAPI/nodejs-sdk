@@ -4,7 +4,7 @@ Calls
 get(callId)
 ^^^^^^^^^^^
 
-    Retrieve a single call from Persephony.
+    Retrieve a single call from FreeClimb.
 
     :callId: {string} The :code:`callId` of the desired call.
 
@@ -27,7 +27,7 @@ getList(filters)
 
     Retrieve a list of calls associated with the :code:`accountId`
 
-    :[filters]: {object} Optional filters containing a number of possible ways to filter the calls returned by Persephony.
+    :[filters]: {object} Optional filters containing a number of possible ways to filter the calls returned by FreeClimb.
 
     :returns: {Promise<object>} Returns a promise that resolves to a list of call instances matching the filters if provided.
     :throws: Will throw an error on a failed response.
@@ -45,11 +45,11 @@ getNextPage(nextPageUri)
 create(to, from, applicationId, options)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    Create a new call through the Persephony API.
+    Create a new call through the FreeClimb API.
 
-    :to: {string} The number to call out to (DNIS). This can be any valid phone number formatted in E.164 format in Persephony's service area.
-    :from: {string} The number to call from (ANI). This must be a number purchased from Persephony or a verified phone number owned by the user.
-    :applicationId: {string} The id of the application Persephony should use to handle the phone call.
+    :to: {string} The number to call out to (DNIS). This can be any valid phone number formatted in E.164 format in FreeClimb's service area.
+    :from: {string} The number to call from (ANI). This must be a number purchased from FreeClimb or a verified phone number owned by the user.
+    :applicationId: {string} The id of the application FreeClimb should use to handle the phone call.
     :[options]: {object} Additional properties to set the behavior of the call to be placed.
 
     :returns: {Promise<object>} returns a promise that resolves to the newly placed call.

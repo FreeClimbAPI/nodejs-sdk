@@ -1,5 +1,5 @@
 /**
- * @module persephony-sdk/enums/machineType
+ * @module free-climb-sdk/enums/machineType
  */
 
 /**

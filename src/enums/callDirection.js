@@ -1,5 +1,5 @@
 /**
- * @module persephony-sdk/enums/callDirection
+ * @module free-climb-sdk/enums/callDirection
  */
 
 /**

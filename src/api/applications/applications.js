@@ -1,12 +1,12 @@
 /**
- * @module persephony-sdk/api/applications
+ * @module free-climb-sdk/api/applications
  */
 var common = require('../common/index')
 
 /**
  * @typedef ApplicationRequester
  * @type {Object}
- * @property {function} get - Retrieve a single application from Persephony
+ * @property {function} get - Retrieve a single application from FreeClimb
  * @property {function} update - Update an existing application
  * @property {function} getList - Retrieve a list of applications associated with this accountId
  * @property {function} create - Create a new application
@@ -14,8 +14,8 @@ var common = require('../common/index')
  */
 
 /**
- * Represents the set of wrappers around the Persephony Applications API.
- * It provides methods to handle all the operations supported by the Persephony Applications API.
+ * Represents the set of wrappers around the FreeClimb Applications API.
+ * It provides methods to handle all the operations supported by the FreeClimb Applications API.
  *
  * @param {string} accountId - The accountId for authentication.
  * @param {string} authToken - The authToken for authentication.
@@ -32,7 +32,7 @@ function applications (accountId, authToken) {
   var rootUrl = '/Accounts/' + accountId + '/Applications'
 
   /**
-   * Retrieve a single application from Persephony
+   * Retrieve a single application from FreeClimb
    *
    * @param {string} applicationId - The {@code applicationId} of the desired application.
    * @returns {Promise<object>} application - The application matching the {@code applicationId} provided.
@@ -78,9 +78,9 @@ function applications (accountId, authToken) {
   }
 
   /**
-   * Create a new application through the Persephony API.
+   * Create a new application through the FreeClimb API.
    *
-   * @param {object} [options] - arguments that can be provided when creating an application. See Persephony documentation for details.
+   * @param {object} [options] - arguments that can be provided when creating an application. See FreeClimb documentation for details.
    * @returns {Promise<object>} application - The newly created application
    * @throws will throw an error on a failed response
    */

@@ -176,7 +176,7 @@ describe('callingNumbers', function () {
     describe('on failure', function () {
       it('should throw an error', function () {
         var body = {
-          message: 'from persy'
+          message: 'from fc'
         }
         var status = 424
         var statusText = 'Bad Request'

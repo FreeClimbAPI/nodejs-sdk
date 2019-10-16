@@ -1,5 +1,5 @@
 /**
- * @module persephony-sdk/enums/getDigitsReason
+ * @module free-climb-sdk/enums/getDigitsReason
  */
 
 /**

@@ -5,7 +5,7 @@ Messages
 get(messageId)
 ^^^^^^^^^^^^^^^
 
-    Retrieve a single message from Persephony.
+    Retrieve a single message from FreeClimb.
 
     :messageId: {string} The :code:`messageId` of the desired message.
 
@@ -35,9 +35,9 @@ getNextPage(nextPageUri)
 create(from, to, text)
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-    Send an SMS message through the Persephony API.
+    Send an SMS message through the FreeClimb API.
 
-    :from: {string} The phone number to use as the sender. This must be an incoming phone number you have purchased from Persephony.
+    :from: {string} The phone number to use as the sender. This must be an incoming phone number you have purchased from FreeClimb.
     :to: {string} The phone number to send the message to.
     :text: {string} The text contained in the message. (maximum 254 characters.)
 

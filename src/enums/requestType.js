@@ -1,5 +1,5 @@
 /**
- * @module persephony-sdk/enums/requestType
+ * @module free-climb-sdk/enums/requestType
  */
 
 /**

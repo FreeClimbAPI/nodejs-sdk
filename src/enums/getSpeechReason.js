@@ -1,5 +1,5 @@
 /**
- * @module persephony-sdk/enums/getSpeechReason
+ * @module free-climb-sdk/enums/getSpeechReason
  */
 
 /**

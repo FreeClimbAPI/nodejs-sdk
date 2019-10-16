@@ -1,5 +1,5 @@
 /**
- * @module persephony-sdk/api/conferences/participants
+ * @module free-climb-sdk/api/conferences/participants
  */
 
 var common = require('../../common/index')
@@ -14,8 +14,8 @@ var common = require('../../common/index')
  */
 
 /**
- * Represents the set of wrappers around the Persephony Participants API.
- * It provides methods to handle all the operations supported by the Persephony Participants API.
+ * Represents the set of wrappers around the FreeClimb Participants API.
+ * It provides methods to handle all the operations supported by the FreeClimb Participants API.
  *
  * @param {string} accountId - The accountId for authentication.
  * @param {string} authToken - The authToken for authentication.
@@ -33,7 +33,7 @@ function participants (accountId, authToken, conferenceId) {
   var rootUrl = '/Accounts/' + accountId + '/Conferences/' + conferenceId + '/Participants'
 
   /**
-   * Retrieve a single participant from Persephony.
+   * Retrieve a single participant from FreeClimb.
    *
    * @param {string} participantId - The {@code callId} of the desired participant.
    * @returns {Promise<object>} participant - The participant matching the {@code callId} provided.
@@ -58,7 +58,7 @@ function participants (accountId, authToken, conferenceId) {
   /**
    * Retrieve a list of participants associated with the conference.
    *
-   * @param {object} [filters] - An object containing a number of possible ways to filter the participants returned by Persephony.
+   * @param {object} [filters] - An object containing a number of possible ways to filter the participants returned by FreeClimb.
    * @returns {Promise<object>} participant list - A list of participants for this conference.
    * @throws will throw an error on a failed response
    */

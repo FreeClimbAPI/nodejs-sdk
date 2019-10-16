@@ -1,5 +1,5 @@
 /**
- * @module persephony-sdk/enums
+ * @module free-climb-sdk/enums
  */
 
 var language = require('./language')

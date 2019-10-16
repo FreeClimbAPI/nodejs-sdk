@@ -1,5 +1,5 @@
 /**
- * @module persephony-sdk/enums/queueResult
+ * @module free-climb-sdk/enums/queueResult
  */
 
 /**

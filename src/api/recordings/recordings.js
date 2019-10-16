@@ -1,5 +1,5 @@
 /**
- * @module persephony-sdk/api/recordings
+ * @module free-climb-sdk/api/recordings
  */
 var requester = require('../requester/index')
 var common = require('../common/index')
@@ -17,8 +17,8 @@ var path = require('path')
  */
 
 /**
- * Represents the set of wrappers around the Persephony Recordings API.
- * It provides methods to handle all the operations supported by the Persephony Recordings API.
+ * Represents the set of wrappers around the FreeClimb Recordings API.
+ * It provides methods to handle all the operations supported by the FreeClimb Recordings API.
  *
  * @param {string} accountId - The accountId for authentication
  * @param {string} authToken - The authToken for authentication
@@ -47,7 +47,7 @@ function recordings (accountId, authToken) {
   /**
    * Retrieve a list of recording metadata associated with the {@code accountId}
    *
-   * @param {object} [filters] - Optional properties to filter the recording list Persephony will return
+   * @param {object} [filters] - Optional properties to filter the recording list FreeClimb will return
    * @returns {Promise<object>} recording list - A list of metadata about the available recordings
    * @throws will throw an error on a failed response
    */

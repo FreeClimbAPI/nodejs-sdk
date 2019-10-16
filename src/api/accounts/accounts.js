@@ -1,5 +1,5 @@
 /**
- * @module persephony-sdk/api/accounts
+ * @module free-climb-sdk/api/accounts
  */
 
 var common = require('../common/index')
@@ -7,13 +7,13 @@ var common = require('../common/index')
 /**
  * @typedef AccountRequester
  * @type {Object}
- * @property {function} get - Retrieve a single account from Persephony
+ * @property {function} get - Retrieve a single account from FreeClimb
  * @property {function} update - update an account
  */
 
 /**
- * Represents the set of wrappers around the Persephony Accounts API.
- * It provides methods to handle all the operations supported by the Persephony Accounts API.
+ * Represents the set of wrappers around the FreeClimb Accounts API.
+ * It provides methods to handle all the operations supported by the FreeClimb Accounts API.
  *
  * @param {string} accountId - The accountId for authentication.
  * @param {string} authToken - The authToken for authentication.
@@ -28,7 +28,7 @@ function accounts (accountId, authToken) {
   var rootPath = '/Accounts/' + accountId
 
   /**
-   * Retrieve a single account from Persephony.
+   * Retrieve a single account from FreeClimb.
    *
    * @function get
    * @async

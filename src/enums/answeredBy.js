@@ -1,5 +1,5 @@
 /**
- * @module persephony-sdk/enums/answeredBy
+ * @module free-climb-sdk/enums/answeredBy
  */
 
 /**

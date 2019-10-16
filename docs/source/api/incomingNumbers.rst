@@ -4,7 +4,7 @@ Incoming Numbers
 get(incomingNumberId)
 ^^^^^^^^^^^^^^^^^^^^^^
 
-    Retrieve a single incoming phone number from Persephony.
+    Retrieve a single incoming phone number from FreeClimb.
 
     :incomingNumberId: {string} The :code:`incomingPhoneNumberId` of the desirect incoming phone number.
 
@@ -45,7 +45,7 @@ getNextPage(nextPageUri)
 purchase(phoneNumber, options)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    Purchase a new incoming phone number through the Persephony API.
+    Purchase a new incoming phone number through the FreeClimb API.
 
     :phoneNumber: {string} The phone number to purchase in E.164 format (as returned in the list of Available Phone Numbers)
     :[options]: {object} Optional properties to set on the newly purchased number.
@@ -56,7 +56,7 @@ purchase(phoneNumber, options)
 delete(incomingNumberId)
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    Remove the incoming phone number with a matching :code:`incomingPhoneNumberId` as an incoming number. Persephony will no longer answer calls to this number.
+    Remove the incoming phone number with a matching :code:`incomingPhoneNumberId` as an incoming number. FreeClimb will no longer answer calls to this number.
 
     :incomingNumberId: {string} The id of the incoming phone number to delete.
 

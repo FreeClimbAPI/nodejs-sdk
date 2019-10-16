@@ -9,7 +9,7 @@ Queues
 get(queueId)
 ^^^^^^^^^^^^
 
-    Retrieve a single queue from Persephony.
+    Retrieve a single queue from FreeClimb.
 
     :queueId: {string} The :code:`queueId` of the desired queue.
 
@@ -32,7 +32,7 @@ getList(filters)
 
     Retrieve a list of queues associated with the :code:`accountId`.
 
-    :[filters]: {object} An optional object containing a number of possible ways to filter the queues returned by Persephony.
+    :[filters]: {object} An optional object containing a number of possible ways to filter the queues returned by FreeClimb.
 
     :returns: {Promise<object>} Returns a promise that resolves to a queue list page.
     :throws: Will throw an error on a failed response.
@@ -50,7 +50,7 @@ getNextPage(nextPageUri)
 create(options)
 ^^^^^^^^^^^^^^^
 
-    Create a new queue through the Persephony API.
+    Create a new queue through the FreeClimb API.
 
     :[options]: {object} An optional object to set the properties on the newly created queue.
 

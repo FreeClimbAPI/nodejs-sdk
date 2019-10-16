@@ -1,5 +1,5 @@
 /**
- * @module persephony-sdk/percl
+ * @module free-climb-sdk/percl
  */
 var assign = require('lodash.assign')
 
@@ -7,9 +7,9 @@ var assign = require('lodash.assign')
  * Build an OutDial PerCL command.
  *
  * @param {string} to - The E.164 representation of the target phone number.
- * @param {string} from - The caller ID that will appear to the called party when Persephony calls. Can be the {@code To} or {@code From} number from the callConnectUrl that is requesting this command, or any phone number purchased or verified on Persephony.
+ * @param {string} from - The caller ID that will appear to the called party when FreeClimb calls. Can be the {@code To} or {@code From} number from the callConnectUrl that is requesting this command, or any phone number purchased or verified on FreeClimb.
  * @param {string} actionUrl - The URL which will be requested immediately on processing an OutDial command. This is used to continue control of the parent call that has requested the OutDial.
- * @param {string} callConnectUrl - The URL which will be requested informing the result of the OutDial. PerCL is expected if the call status is {@code module:persephony-sdk/enums/callStatus.IN_PROGRESS}.
+ * @param {string} callConnectUrl - The URL which will be requested informing the result of the OutDial. PerCL is expected if the call status is {@code module:free-climb-sdk/enums/callStatus.IN_PROGRESS}.
  * @param {object} [options] - Additional properties to include in the command.
  * @returns {{OutDial}} - An object representing an OutDial command.
  */
@@ -30,7 +30,7 @@ function hangup (options) {
 /**
  * Build a Pause PerCL command.
  *
- * @param {integer} length - The length in milliseconds Persephony will wait silently before continuing on.
+ * @param {integer} length - The length in milliseconds FreeClimb will wait silently before continuing on.
  * @returns {{Pause}} - An object representing a Pause command.
  */
 function pause (length) {
@@ -224,7 +224,7 @@ function getDigits (actionUrl, options) {
  * Build a GetSpeech PerCL command.
  *
  * @param {string} actionUrl - The URl to be invoked when the caller has finished speaking or on a timeout.
- * @param {string} grammarFile - The grammar file to be used for speech recognition. If grammarType is set to {@code module:persephony-sdk/enums/grammarType.URL} this attribute is specified as a download URL. Otherwise it must be one of the built-ins. {@see module:persephony-sdk/enums/grammarFileBuiltin}
+ * @param {string} grammarFile - The grammar file to be used for speech recognition. If grammarType is set to {@code module:free-climb-sdk/enums/grammarType.URL} this attribute is specified as a download URL. Otherwise it must be one of the built-ins. {@see module:free-climb-sdk/enums/grammarFileBuiltin}
  * @param {object} [options] - Additional properties to include in the command.
  * @returns {{GetSpeech}} - An object representing a GetSpeech command.
  */
@@ -235,7 +235,7 @@ function getSpeech (actionUrl, grammarFile, options) {
 /**
  * Build an Sms PerCL command.
  *
- * @param {string} from - E.164 representation of the phone number to use as the sender. This must be an incoming phone number you have purchased from Persephony.
+ * @param {string} from - E.164 representation of the phone number to use as the sender. This must be an incoming phone number you have purchased from FreeClimb.
  * @param {string} to - E.164 representation of the phone number to which the message will be sent.
  * @param {string} text - The text contained in the message. (maximum 254 characters)
  * @param {object} [options] - Additional properties to include in the command.

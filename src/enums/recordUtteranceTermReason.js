@@ -1,5 +1,5 @@
 /**
- * @module persephony-sdk/enums/recordUtteranceTermReason
+ * @module free-climb-sdk/enums/recordUtteranceTermReason
  */
 
 /**

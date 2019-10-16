@@ -1,5 +1,5 @@
 /**
- * @module persephony-sdk/api
+ * @module free-climb-sdk/api
  */
 
 var accounts = require('./accounts/index')
@@ -16,20 +16,20 @@ var requester = require('./requester/index')
 /**
  * @typedef API
  * @type {Object}
- * @property {module:persephony-sdk/api/accounts} accounts - The Accounts module
- * @property {module:peresephony-sdk/api/applications} applications - The Applications module
- * @property {module:persephony-sdk/api/availableNumbers} availableNumbers - The Available Numbers module
- * @property {module:persephony-sdk/api/incomingNumbers} incomingNumbers - the Incoming Numbers module
- * @property {module:persephony-sdk/api/callingNumbers} callingNumbers - the Calling Numbers module
- * @property {module:persephony-sdk/api/calls} calls - the Calls module
- * @property {module:persephony-sdk/api/conferences} conferences - the Conferences module
- * @property {module:persephony-sdk/api/queues} queues - the Queues module
- * @property {module:persephony-sdk/api/logs} logs - the Logs module
- * @property {module:persephony-sdk/api/recordings} recordings - the Recordings module
+ * @property {module:free-climb-sdk/api/accounts} accounts - The Accounts module
+ * @property {module:free-climb-sdk/api/applications} applications - The Applications module
+ * @property {module:free-climb-sdk/api/availableNumbers} availableNumbers - The Available Numbers module
+ * @property {module:free-climb-sdk/api/incomingNumbers} incomingNumbers - the Incoming Numbers module
+ * @property {module:free-climb-sdk/api/callingNumbers} callingNumbers - the Calling Numbers module
+ * @property {module:free-climb-sdk/api/calls} calls - the Calls module
+ * @property {module:free-climb-sdk/api/conferences} conferences - the Conferences module
+ * @property {module:free-climb-sdk/api/queues} queues - the Queues module
+ * @property {module:free-climb-sdk/api/logs} logs - the Logs module
+ * @property {module:free-climb-sdk/api/recordings} recordings - the Recordings module
  */
 
 /**
- * The API module exposes all the Persephony API endpoints
+ * The API module exposes all the FreeClimb API endpoints
  * @param {string} accountId - the accountId for authentication
  * @param {string} authToken - the authToken for authentication
  * @returns {API} API - the modules for each individual set of endpoints

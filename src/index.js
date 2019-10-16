@@ -1,6 +1,6 @@
 /**
  * SDK Module
- * @module persephony-sdk
+ * @module free-climb-sdk
  */
 
 var api = require('./api')
@@ -8,22 +8,22 @@ var percl = require('./percl')
 var enums = require('./enums')
 
 /**
- * The publicly exposed modules of the Persephony SDK
+ * The publicly exposed modules of the FreeClimb SDK
  *
- * @typedef PersephonySDK
+ * @typedef FreeClimbSDK
  * @type {Object}
- * @property {module:persephony-sdk/api} api - The API module
- * @property {module:persephony-sdk/percl} percl - The PerCL module
- * @property {module:persephony-sdk/enums} enums - The Enums module
+ * @property {module:free-climb-sdk/api} api - The API module
+ * @property {module:free-climb-sdk/percl} percl - The PerCL module
+ * @property {module:free-climb-sdk/enums} enums - The Enums module
  */
 
 /**
- * The top level module of the persephony SDK
+ * The top level module of the FreeClimb SDK
  * @param {string} accountId The ID of the account making API requests
  * @param {string} authToken The auth token of the account making API requests
- * @returns {PersephonySDK} SDK - API, PerCL, and Enum modules
+ * @returns {FreeClimbSDK} SDK - API, PerCL, and Enum modules
  */
-function persephonySDK (accountId, authToken) {
+function freeClimbSDK (accountId, authToken) {
   return {
     api: api(accountId, authToken),
     percl: percl,
@@ -31,4 +31,4 @@ function persephonySDK (accountId, authToken) {
   }
 }
 
-module.exports = persephonySDK
+module.exports = freeClimbSDK

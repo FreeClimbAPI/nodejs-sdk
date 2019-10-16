@@ -8,7 +8,7 @@ This function can/should only be accessed through the :ref:`API-conferences-part
 get(participantId)
 ^^^^^^^^^^^^^^^^^^^
 
-    Retrieve a single participant from Persephony.
+    Retrieve a single participant from FreeClimb.
 
     :participantId: {string} The :code:`callId` of the desired participant.
 
@@ -31,7 +31,7 @@ getList(filters)
 
     Retrieve a list of participants associated with the conference.
 
-    :[filters]: {object} An object containing a number of possible ways to filter the participants returned by Persephony.
+    :[filters]: {object} An object containing a number of possible ways to filter the participants returned by FreeClimb.
 
     :returns: {Promise<object>} Returns a promise that resolves to the list of participants for the conference.
     :throws: Will throw an error on a failed response.

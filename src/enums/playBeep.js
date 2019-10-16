@@ -1,5 +1,5 @@
 /**
- * @module persephony-sdk/enums/playBeep
+ * @module free-climb-sdk/enums/playBeep
  */
 
 /**

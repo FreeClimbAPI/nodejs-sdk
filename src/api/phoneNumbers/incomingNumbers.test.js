@@ -182,7 +182,7 @@ describe('incomingNumbers', function () {
     describe('on failure', function () {
       it('should throw an error', function () {
         var body = {
-          error: 'this is the error body from persy'
+          error: 'this is the error body from fc'
         }
         var status = 943
         var statusText = 'mock error text'
@@ -223,7 +223,7 @@ describe('incomingNumbers', function () {
     describe('on failure', function () {
       it('should throw an error', function () {
         var body = {
-          message: 'this is the message from persy'
+          message: 'this is the message from fc'
         }
         var status = 234
         var statusText = 'MOCK_ERROR'
