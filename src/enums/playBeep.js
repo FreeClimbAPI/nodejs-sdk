@@ -1,5 +1,5 @@
 /**
- * @module free-climb-sdk/enums/playBeep
+ * @module freeclimb-sdk/enums/playBeep
  */
 
 /**

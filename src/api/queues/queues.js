@@ -1,5 +1,5 @@
 /**
- * @module free-climb-sdk/api/queues
+ * @module freeclimb-sdk/api/queues
  */
 
 var common = require('../common/index')
@@ -12,7 +12,7 @@ var members = require('./members/index')
  * @property {function} update - Update an existing queue associated with the {@code accountId}
  * @property {function} getList - Retrieve a list of queues associated with the {@code accountId}
  * @property {function} create - Create a new queue through the FreeClimb API
- * @property {module:free-climb-sdk/api/queues/members.MembersRequester} members - Interact with the members of a specific queue
+ * @property {module:freeclimb-sdk/api/queues/members.MembersRequester} members - Interact with the members of a specific queue
  */
 
 /**
@@ -91,7 +91,7 @@ function queues (accountId, authToken) {
   }
 
   /**
-   * Creates a {@link module:free-climb-sdk/api/queues/members.MembersRequester} bound to a specific queue.
+   * Creates a {@link module:freeclimb-sdk/api/queues/members.MembersRequester} bound to a specific queue.
    * @param {string} queueId - The {@code queueId} to bind the MembersRequester to.
    * @returns {MembersRequester} requester - The MembersRequester that was created.
    */

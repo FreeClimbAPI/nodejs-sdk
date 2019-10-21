@@ -1,5 +1,5 @@
 /**
- * @module free-climb-sdk/enums
+ * @module freeclimb-sdk/enums
  */
 
 var language = require('./language')

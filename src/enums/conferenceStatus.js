@@ -1,5 +1,5 @@
 /**
- * @module free-climb-sdk/enums/conferenceStatus
+ * @module freeclimb-sdk/enums/conferenceStatus
  */
 
 /**

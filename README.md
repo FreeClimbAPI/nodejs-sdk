@@ -10,15 +10,15 @@ The FreeClimb Javascript SDK will allow you to easily use the FreeClimb API in a
 
 ## Installation
 
-`npm install @free-climb/sdk --save`
+`npm install @freeclimb/sdk --save`
 
-`yarn add @free-climb/sdk`
+`yarn add @freeclimb/sdk`
 
 ## Testing your Installation
 Test the SDK is working by sending yourself a text message.
 
 ```javascript
-var freeClimbSDK = require('@free-climb/sdk')
+var freeClimbSDK = require('@freeclimb/sdk')
 var accountID = 'your_account_id'
 var authToken = 'your_auth_token'
 var fc = freeClimbSDK(accountID, authToken)

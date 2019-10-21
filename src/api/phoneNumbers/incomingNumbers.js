@@ -1,5 +1,5 @@
 /**
- * @module free-climb-sdk/api/incomingNumbers
+ * @module freeclimb-sdk/api/incomingNumbers
  */
 
 var assign = require('lodash.assign')

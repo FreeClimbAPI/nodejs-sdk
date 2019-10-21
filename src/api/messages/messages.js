@@ -1,5 +1,5 @@
 /**
- * @module free-climb-sdk/api/messages
+ * @module freeclimb-sdk/api/messages
  */
 
 var common = require('../common/index')

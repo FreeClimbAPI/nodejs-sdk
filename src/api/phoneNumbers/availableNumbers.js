@@ -1,5 +1,5 @@
 /**
- * @module free-climb-sdk/api/availablePhoneNumbers
+ * @module freeclimb-sdk/api/availablePhoneNumbers
  */
 var common = require('../common/index')
 

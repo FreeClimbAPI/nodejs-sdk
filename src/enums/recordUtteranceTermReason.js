@@ -1,5 +1,5 @@
 /**
- * @module free-climb-sdk/enums/recordUtteranceTermReason
+ * @module freeclimb-sdk/enums/recordUtteranceTermReason
  */
 
 /**

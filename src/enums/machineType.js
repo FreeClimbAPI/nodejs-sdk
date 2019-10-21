@@ -1,5 +1,5 @@
 /**
- * @module free-climb-sdk/enums/machineType
+ * @module freeclimb-sdk/enums/machineType
  */
 
 /**

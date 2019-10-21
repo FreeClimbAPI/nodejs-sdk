@@ -22,13 +22,13 @@ Setup
 
 To get started using the FreeClimb JavaScript SDK, add it as a dependency using your package manager.
 
-    ``npm install --save @free-climb/sdk``
+    ``npm install --save @freeclimb/sdk``
 
-    ``yarn add @free-climb/sdk``
+    ``yarn add @freeclimb/sdk``
 
 Once you have imported the project, require it and provide the initial configuration ::
 
-    import FreeClimbSDK from '@free-climb/sdk'
+    import FreeClimbSDK from '@freeclimb/sdk'
     // see the Dashboard API Keys page for these values
     const accountId = 'MOCK_ACCOUNT_ID'
     const authToken = 'MOCK_AUTH_TOKEN'

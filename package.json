@@ -1,10 +1,10 @@
 {
-  "name": "@free-climb/sdk",
+  "name": "@freeclimb/sdk",
   "version": "1.1.1",
   "description": "The SDK for the FreeClimp API",
-  "homepage": "https://www.persephony.com",
+  "homepage": "https://www.freeclimb.com",
   "bugs": {
-    "email": "support@persephony.com"
+    "email": "support@freeclimb.com"
   },
   "license": "MIT",
   "author": "",

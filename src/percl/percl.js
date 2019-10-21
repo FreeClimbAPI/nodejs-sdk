@@ -1,5 +1,5 @@
 /**
- * @module free-climb-sdk/percl
+ * @module freeclimb-sdk/percl
  */
 var assign = require('lodash.assign')
 
@@ -9,7 +9,7 @@ var assign = require('lodash.assign')
  * @param {string} to - The E.164 representation of the target phone number.
  * @param {string} from - The caller ID that will appear to the called party when FreeClimb calls. Can be the {@code To} or {@code From} number from the callConnectUrl that is requesting this command, or any phone number purchased or verified on FreeClimb.
  * @param {string} actionUrl - The URL which will be requested immediately on processing an OutDial command. This is used to continue control of the parent call that has requested the OutDial.
- * @param {string} callConnectUrl - The URL which will be requested informing the result of the OutDial. PerCL is expected if the call status is {@code module:free-climb-sdk/enums/callStatus.IN_PROGRESS}.
+ * @param {string} callConnectUrl - The URL which will be requested informing the result of the OutDial. PerCL is expected if the call status is {@code module:freeclimb-sdk/enums/callStatus.IN_PROGRESS}.
  * @param {object} [options] - Additional properties to include in the command.
  * @returns {{OutDial}} - An object representing an OutDial command.
  */
@@ -224,7 +224,7 @@ function getDigits (actionUrl, options) {
  * Build a GetSpeech PerCL command.
  *
  * @param {string} actionUrl - The URl to be invoked when the caller has finished speaking or on a timeout.
- * @param {string} grammarFile - The grammar file to be used for speech recognition. If grammarType is set to {@code module:free-climb-sdk/enums/grammarType.URL} this attribute is specified as a download URL. Otherwise it must be one of the built-ins. {@see module:free-climb-sdk/enums/grammarFileBuiltin}
+ * @param {string} grammarFile - The grammar file to be used for speech recognition. If grammarType is set to {@code module:freeclimb-sdk/enums/grammarType.URL} this attribute is specified as a download URL. Otherwise it must be one of the built-ins. {@see module:freeclimb-sdk/enums/grammarFileBuiltin}
  * @param {object} [options] - Additional properties to include in the command.
  * @returns {{GetSpeech}} - An object representing a GetSpeech command.
  */

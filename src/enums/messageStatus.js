@@ -1,5 +1,5 @@
 /**
- * @module free-climb-sdk/enums/messageStatus
+ * @module freeclimb-sdk/enums/messageStatus
  */
 /**
  * Enum for Message status values.

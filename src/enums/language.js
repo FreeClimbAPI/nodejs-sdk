@@ -1,5 +1,5 @@
 /**
- * @module free-climb-sdk/enums/language
+ * @module freeclimb-sdk/enums/language
  */
 
 /**

@@ -1,5 +1,5 @@
 /**
- * @module free-climb-sdk/api/recordings
+ * @module freeclimb-sdk/api/recordings
  */
 var requester = require('../requester/index')
 var common = require('../common/index')

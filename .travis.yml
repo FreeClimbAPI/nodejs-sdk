@@ -13,7 +13,7 @@ after_script:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
 deploy:
   provider: npm
-  email: support@persephony.com
+  email: support@freeclimb.com
   api_key:
     secure: R4BaKvobSBKpaLTffW+5GTIhlbgGTWkdFmSaqoT2C5XKKxaXX39Gh9MPD5XOxSIe5LU6C6sZVaQr+UTRW/e3VRRU0iSbCobgWIrUWmfYeTV7CUt1vlzWju+gVT59pduppakBoR+6d+x9SxbBrnqAvWY9XSyEDOZe0Wp5W788WFBwUAwJge8yETcUfm/OczwKaNPbMT/JHAEJ2qcURQ/zfyeyvoNnGf1RbEdEUFqEh6el+FqEkQAZxuWWDkiQqYdFsp6DZH5t82O1HYHTEEaPyWvSTh9E0VzdUYjON4emnkZEKq1s9nk4dQV3ojraOATZA2+Y7q5qOGk/r5ZHmqmwaHEtDI16wo14BOYnnXir97fVcwB7I7aOI/CAEPUcrIWONejOw82CU12WMnLhD9zv9nn1kKk2Bbusi8nR8uGklY1kg+zytE1IeTICer/CyCvIzMRyBRuBoa4DHDLDHZGZQGJWpso+1Z4e2RVtSMfDkHf2rjpjTpyVZd5O2KusjLHHIigkJ6FGlVO/PmhZYNZbgeVBHOZLZVSFJ9L/q2u06n7UxqqfN0dqddoWqHk5eziZFpVYIjTf7KyPZB8NWMPUJ/hLnasho4WOAg59X46c3FGmGC9NY+14b3AuWTuuXLVEHxMow6kAxLXmQ34LL33gUiWj3CgymMeOxr4e4t6HHQc=
   on:

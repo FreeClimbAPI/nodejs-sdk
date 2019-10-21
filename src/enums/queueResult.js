@@ -1,5 +1,5 @@
 /**
- * @module free-climb-sdk/enums/queueResult
+ * @module freeclimb-sdk/enums/queueResult
  */
 
 /**

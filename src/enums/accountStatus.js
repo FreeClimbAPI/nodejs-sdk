@@ -1,5 +1,5 @@
 /**
- * @module free-climb-sdk/enums/accountStatus
+ * @module freeclimb-sdk/enums/accountStatus
  */
 
 /**

@@ -1,5 +1,5 @@
 /**
- * @module free-climb-sdk/enums/getDigitsReason
+ * @module freeclimb-sdk/enums/getDigitsReason
  */
 
 /**

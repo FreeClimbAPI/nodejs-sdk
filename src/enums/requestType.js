@@ -1,5 +1,5 @@
 /**
- * @module free-climb-sdk/enums/requestType
+ * @module freeclimb-sdk/enums/requestType
  */
 
 /**

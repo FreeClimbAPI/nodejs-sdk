@@ -1,6 +1,6 @@
 /**
  * SDK Module
- * @module free-climb-sdk
+ * @module freeclimb-sdk
  */
 
 var api = require('./api')
@@ -12,9 +12,9 @@ var enums = require('./enums')
  *
  * @typedef FreeClimbSDK
  * @type {Object}
- * @property {module:free-climb-sdk/api} api - The API module
- * @property {module:free-climb-sdk/percl} percl - The PerCL module
- * @property {module:free-climb-sdk/enums} enums - The Enums module
+ * @property {module:freeclimb-sdk/api} api - The API module
+ * @property {module:freeclimb-sdk/percl} percl - The PerCL module
+ * @property {module:freeclimb-sdk/enums} enums - The Enums module
  */
 
 /**

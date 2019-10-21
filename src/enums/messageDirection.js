@@ -1,5 +1,5 @@
 /**
- *  @module free-climb-sdk/enums/messageDirection
+ *  @module freeclimb-sdk/enums/messageDirection
  */
 
 /**

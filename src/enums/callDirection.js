@@ -1,5 +1,5 @@
 /**
- * @module free-climb-sdk/enums/callDirection
+ * @module freeclimb-sdk/enums/callDirection
  */
 
 /**

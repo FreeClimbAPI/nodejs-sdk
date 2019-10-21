@@ -1,5 +1,5 @@
 /**
- * @module free-climb-sdk/api
+ * @module freeclimb-sdk/api
  */
 
 var accounts = require('./accounts/index')
@@ -16,16 +16,16 @@ var requester = require('./requester/index')
 /**
  * @typedef API
  * @type {Object}
- * @property {module:free-climb-sdk/api/accounts} accounts - The Accounts module
- * @property {module:free-climb-sdk/api/applications} applications - The Applications module
- * @property {module:free-climb-sdk/api/availableNumbers} availableNumbers - The Available Numbers module
- * @property {module:free-climb-sdk/api/incomingNumbers} incomingNumbers - the Incoming Numbers module
- * @property {module:free-climb-sdk/api/callingNumbers} callingNumbers - the Calling Numbers module
- * @property {module:free-climb-sdk/api/calls} calls - the Calls module
- * @property {module:free-climb-sdk/api/conferences} conferences - the Conferences module
- * @property {module:free-climb-sdk/api/queues} queues - the Queues module
- * @property {module:free-climb-sdk/api/logs} logs - the Logs module
- * @property {module:free-climb-sdk/api/recordings} recordings - the Recordings module
+ * @property {module:freeclimb-sdk/api/accounts} accounts - The Accounts module
+ * @property {module:freeclimb-sdk/api/applications} applications - The Applications module
+ * @property {module:freeclimb-sdk/api/availableNumbers} availableNumbers - The Available Numbers module
+ * @property {module:freeclimb-sdk/api/incomingNumbers} incomingNumbers - the Incoming Numbers module
+ * @property {module:freeclimb-sdk/api/callingNumbers} callingNumbers - the Calling Numbers module
+ * @property {module:freeclimb-sdk/api/calls} calls - the Calls module
+ * @property {module:freeclimb-sdk/api/conferences} conferences - the Conferences module
+ * @property {module:freeclimb-sdk/api/queues} queues - the Queues module
+ * @property {module:freeclimb-sdk/api/logs} logs - the Logs module
+ * @property {module:freeclimb-sdk/api/recordings} recordings - the Recordings module
  */
 
 /**

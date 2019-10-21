@@ -1,5 +1,5 @@
 /**
- * @module free-climb-sdk/enums/getSpeechReason
+ * @module freeclimb-sdk/enums/getSpeechReason
  */
 
 /**

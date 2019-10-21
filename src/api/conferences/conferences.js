@@ -1,5 +1,5 @@
 /**
- * @module free-climb-sdk/api/conferences
+ * @module freeclimb-sdk/api/conferences
  */
 
 var participants = require('./participants/index')
@@ -12,7 +12,7 @@ var common = require('../common/index')
  * @property {function} update - Update an existing conference
  * @property {function} getList - Retrieve a list of conferences associated with this accountId
  * @property {function} create - Create a new conference
- * @property {module:free-climb-sdk/api/conferences/participants.ParticipantsRequester} participants - Interact with the participants of a specific conference
+ * @property {module:freeclimb-sdk/api/conferences/participants.ParticipantsRequester} participants - Interact with the participants of a specific conference
  */
 
 /**
@@ -91,7 +91,7 @@ function conferences (accountId, authToken) {
   }
 
   /**
-   * Creates a {@link module:free-climb-sdk/api/conferences/participants.ParticipantsRequester} bound to a specific conference.
+   * Creates a {@link module:freeclimb-sdk/api/conferences/participants.ParticipantsRequester} bound to a specific conference.
    *
    * @param {string} conferenceId - The {@code conferenceId} to bind the ParticipantsRequester to.
    * @returns {ParticipantsRequester} requester - the ParticipantsRequester that was created.

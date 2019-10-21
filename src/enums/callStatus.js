@@ -1,5 +1,5 @@
 /**
- * @module free-climb-sdk/enums/callStatus
+ * @module freeclimb-sdk/enums/callStatus
  */
 
 /**

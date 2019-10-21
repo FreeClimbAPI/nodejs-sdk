@@ -1,5 +1,5 @@
 /**
- * @module free-climb-sdk/enums/answeredBy
+ * @module freeclimb-sdk/enums/answeredBy
  */
 
 /**

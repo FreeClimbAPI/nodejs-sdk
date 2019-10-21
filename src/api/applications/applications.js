@@ -1,5 +1,5 @@
 /**
- * @module free-climb-sdk/api/applications
+ * @module freeclimb-sdk/api/applications
  */
 var common = require('../common/index')
 

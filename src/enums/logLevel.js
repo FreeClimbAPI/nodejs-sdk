@@ -1,5 +1,5 @@
 /**
- * @module free-climb-sdk/enums/logLevel
+ * @module freeclimb-sdk/enums/logLevel
  */
 
 /**

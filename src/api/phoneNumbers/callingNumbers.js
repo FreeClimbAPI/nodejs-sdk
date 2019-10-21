@@ -1,5 +1,5 @@
 /**
- * @module free-climb-sdk/api/callingNumbers
+ * @module freeclimb-sdk/api/callingNumbers
  */
 var assign = require('lodash.assign')
 var common = require('../common/index')

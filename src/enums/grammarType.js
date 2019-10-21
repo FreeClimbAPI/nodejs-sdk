@@ -1,5 +1,5 @@
 /**
- * @module free-climb-sdk/enums/grammarType
+ * @module freeclimb-sdk/enums/grammarType
  */
 
 /**

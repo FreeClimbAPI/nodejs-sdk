@@ -43,7 +43,7 @@ function calls (accountId, authToken) {
    * Update the existing call associated with the {@code callId}.
    *
    * @param {string} callId - The {@code callId} of the desired call.
-   * @param {string} status - The status to set the target call to. Can be either {@link module:free-climb-sdk/enums/callStatus.CANCELED} or {@link module:free-climb-sdk/enums/callStatus.COMPLETED}.
+   * @param {string} status - The status to set the target call to. Can be either {@link module:freeclimb-sdk/enums/callStatus.CANCELED} or {@link module:freeclimb-sdk/enums/callStatus.COMPLETED}.
    * @returns {Promise<null>} null - Will resolve to null on a success.
    * @throws will throw an error on a failed response
    */

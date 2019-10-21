@@ -1,5 +1,5 @@
 /**
- * @module free-climb-sdk/enums/ifMachine
+ * @module freeclimb-sdk/enums/ifMachine
  */
 
 /**
