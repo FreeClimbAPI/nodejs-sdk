@@ -5,7 +5,7 @@ var querystring = require('querystring')
 /**
  * The URL of the FreeClimb API
  */
-var fcURL = 'https://www.freeclimb.com/apiserver'
+var fcURL = 'https://www.persephony.com/apiserver'
 // TODO - delete this, very insecure
 var agent = new https.Agent({
   rejectUnauthorized: false
