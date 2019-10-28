@@ -8,7 +8,7 @@ get(recordingId)
 
     :recordingId: {string} The :code:`recordingId` of the desired recording.
 
-    :returns: {Promise<object>} Returns a promise that resolves to the recording metadata about the recording matching the :code:`recordingId` provided.
+    :returns: {Promise<object>} A promise that resolves to the recording metadata about the recording matching the :code:`recordingId` provided.
     :throws: Will throw an error on a failed response.
 
 getList(filters)
@@ -18,7 +18,7 @@ getList(filters)
 
     :[filters]: {object} Optional properties to filter the recording list FreeClimb will return.
 
-    :returns: {Promise<object>} Returns a promise that resolves into a page of metadata about the available recordings.
+    :returns: {Promise<object>} A promise that resolves into a page of metadata about the available recordings.
     :throws: Will throw an error on a failed response.
 
 getNextPage(nextPageUri)
@@ -28,7 +28,7 @@ getNextPage(nextPageUri)
 
     :nextPageUri: {string} The URL to the next page of results.
 
-    :returns: {Promise<object>} Returns a promise that resolves to the next page of recording metadata.
+    :returns: {Promise<object>} A promise that resolves to the next page of recording metadata.
     :throws: Will throw an error on a failed response.
 
 download(recordingId, filePath)
@@ -39,7 +39,7 @@ download(recordingId, filePath)
     :recordingId: {string} The :code:`recordingId` of the desired recording.
     :filePath: {string} The path to the location on disk and filename to save the recording to.
 
-    :returns {Promise<undefined>} Returns a promise that resolves to undefined once the request succeeds.
+    :returns: {Promise<undefined>} A promise that resolves to undefined once the request succeeds.
     :throws: Will throw an error on a failed response.
 
 stream(recordingId)
@@ -49,7 +49,7 @@ stream(recordingId)
 
     :recordingId: {string} The :code:`recordingId` of the desired recording.
 
-    :returns: {Promise<Stream>} Returns a promise that resolves to a ReadableStream - A Node.js Readable Stream for independent decoding. See `here <https://nodejs.org/api/stream.html#stream_readable_streams>`_.
+    :returns: {Promise<Stream>} A promise that resolves to a ReadableStream - A Node.js Readable Stream for independent decoding. See `here <https://nodejs.org/api/stream.html#stream_readable_streams>`_.
     :throws: Will throw an error on a failed response.
 
 delete(recordingId)
@@ -59,5 +59,5 @@ delete(recordingId)
 
     :recordingId: {string} The :code:`recordingId` of the recording to delete.
 
-    :returns: {Promise<null>} Returns a promise that resolves to null on success.
+    :returns: {Promise<null>} A promise that resolves to null on success.
     :throws: Will throw an error on a failed response.

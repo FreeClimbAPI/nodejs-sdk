@@ -18,6 +18,7 @@ API
 setPersyUrl(newUrl)
 ^^^^^^^^^^^^^^^^^^^^^
 
+
     Change the FreeClimb instance the SDK interacts with.
 
     :newUrl: {string} The URL to the api of the FreeClimb instance to use. e.g https://freeclimb.com/apiserver

@@ -6,7 +6,7 @@ var common = require('../common/index')
 /**
  * @typedef AvailableNumbersRequester
  * @type {Object}
- * @property {function} getList - Retrieve the list of available phone numbers for purchase.
+ * @property {function} getList - Retrieve a list of available phone numbers for purchase.
  */
 
 /**

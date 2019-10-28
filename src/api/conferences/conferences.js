@@ -21,7 +21,7 @@ var common = require('../common/index')
  *
  * @param {string} accountId - The accountId for authentication.
  * @param {string} authToken - The authToken for authentication.
- * @returns {ConferencesRequester} requester - returns a ConferencesRequester
+ * @returns {ConferencesRequester} requester - A ConferencesRequester
  */
 function conferences (accountId, authToken) {
   var getter = common.commonGetBuilder(accountId, authToken)
@@ -59,7 +59,7 @@ function conferences (accountId, authToken) {
   /**
    * Retrieve a list of conferences associated with the {@code accountId}.
    *
-   * @param {object} [filters] - Optional properties to filter the list
+   * @param {object} [filters] - Properties to filter the list
    * @returns {Promise<object>} conference list - The list of conferences
    * @throws will throw an error on a failed response
    */
@@ -82,7 +82,7 @@ function conferences (accountId, authToken) {
   /**
    * Create a new conference through the FreeClimb API.
    *
-   * @param {object} [options] - optional properties to set when creating a conference.
+   * @param {object} [options] - Properties to set when creating a conference.
    * @returns {Promise<object>} conference - The newly created conference
    * @throws will throw an error on a failed response
    */

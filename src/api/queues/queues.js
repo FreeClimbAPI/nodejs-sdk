@@ -21,7 +21,7 @@ var members = require('./members/index')
  *
  * @param {string} accountId - The accountId for authentication.
  * @param {string} authToken - The authToken for authentication.
- * @returns {QueuesRequester} requester - returns a QueuesRequester.
+ * @returns {QueuesRequester} requester - A QueuesRequester.
  */
 function queues (accountId, authToken) {
   var getter = common.commonGetBuilder(accountId, authToken)
@@ -82,7 +82,7 @@ function queues (accountId, authToken) {
   /**
    * Create a new queue through the FreeClimb API.
    *
-   * @param {object} [options] - An optional object to set the properties on the newly created queue.
+   * @param {object} [options] - An Object to set the properties on the newly created queue.
    * @returns {Promise<object>} queue - The newly created queue.
    * @throws will throw an error on a failed response
    */

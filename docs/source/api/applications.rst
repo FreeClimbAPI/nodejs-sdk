@@ -8,7 +8,7 @@ get(applicationId)
 
     :applicationId: {string} The :code:`applicationId` of the desired application.
 
-    :returns: {Promise<object>} Returns a promise that resolves to the application matching the :code:`applicationId` provided.
+    :returns: {Promise<object>} A promise that resolves to the application matching the :code:`applicationId` provided.
     :throws: Will throw an error on a failed response.
 
 update(applicationId, options)
@@ -16,10 +16,10 @@ update(applicationId, options)
 
     Update the existing application associated with :code:`applicationId`.
 
-    :applicationId: {stirng} The :code:`applicationId` of the desired application.
-    :options: {object} The properites to change in the target application.
+    :applicationId: {string} The :code:`applicationId` of the desired application.
+    :options: {object} The properties to change in the target application.
 
-    :returns: {Promise<object>} Returns a promise that resolves to the application matching the :code:`applicationId` provided.
+    :returns: {Promise<object>} A promise that resolves to the application matching the :code:`applicationId` provided.
     :throws: Will throw an error on a failed response.
 
 getList(filters)
@@ -29,7 +29,7 @@ getList(filters)
 
     :[filters]: {object} An object containing a number of possible ways to filter the applications.
 
-    :returns: {Promise<object>} Returns a promise that resolves to an application list.
+    :returns: {Promise<object>} A promise that resolves to an application list.
     :throws: Will throw an error on a failed response.
 
 getNextPage(nextPageUri)
@@ -49,7 +49,7 @@ create(options)
 
     :options: {object} Arguments that can be provided when creating an application. See FreeClimb documentation for details.
 
-    :returns: {Promise<object>} Returns a promise that resolves to the newly created application.
+    :returns: {Promise<object>} A promise that resolves to the newly created application.
     :throws: Will throw an error on a failed response.
 
 delete(applicationId)
@@ -59,5 +59,5 @@ delete(applicationId)
 
     :applicationId: {string} The :code:`applicationId` of the application to delete.
 
-    :returns: {Promise<null>} Returns a promise that resolves to null on success.
+    :returns: {Promise<null>} A promise that resolves to null on success.
     :throws: Will throw an error on a failed response.

@@ -13,7 +13,7 @@ get(queueId)
 
     :queueId: {string} The :code:`queueId` of the desired queue.
 
-    :returns: {Promise<object>} Returns a promise that resolves to the queue matching the provided id.
+    :returns: {Promise<object>} A promise that resolves to the queue matching the provided id.
     :throws: Will throw an error on a failed response.
 
 update(queueId, options)
@@ -24,7 +24,7 @@ update(queueId, options)
     :queueId: {string} The :code:`queueId` of the desired queue.
     :options: {object} The properties to change in the target queue.
 
-    :returns: {Promise<object>} Returns a promise that resolves to the queue matching the :code:`queueId` provided.
+    :returns: {Promise<object>} A promise that resolves to the queue matching the :code:`queueId` provided.
     :throws: Will throw an error on a failed response.
 
 getList(filters)
@@ -34,7 +34,7 @@ getList(filters)
 
     :[filters]: {object} An optional object containing a number of possible ways to filter the queues returned by FreeClimb.
 
-    :returns: {Promise<object>} Returns a promise that resolves to a queue list page.
+    :returns: {Promise<object>} A promise that resolves to a queue list page.
     :throws: Will throw an error on a failed response.
 
 getNextPage(nextPageUri)
@@ -44,7 +44,7 @@ getNextPage(nextPageUri)
 
     :nextPageUri: {string} The URL to the next page of results.
 
-    :returns: {Promise<object>} Returns a promise that resolves to the next page of queues.
+    :returns: {Promise<object>} A promise that resolves to the next page of queues.
     :throws: Will throw an error on a failed response.
 
 create(options)
@@ -52,9 +52,9 @@ create(options)
 
     Create a new queue through the FreeClimb API.
 
-    :[options]: {object} An optional object to set the properties on the newly created queue.
+    :[options]: {object} An Object to set the properties on the newly created queue.
 
-    :returns: {Promise<object>} Returns a promise that resolves to the newly created queue.
+    :returns: {Promise<object>} A promise that resolves to the newly created queue.
     :throws: Will throw an error on a failed response.
 
 .. _API-queues-members-label:

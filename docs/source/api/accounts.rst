@@ -8,7 +8,7 @@ get(accountId)
 
     :accountId: {string} The :code:`accountId` of the desired account.
 
-    :returns: {Promise<object>} Returns a promise that resolves to the account matching the :code:`accountId` provided.
+    :returns: {Promise<object>} A promise that resolves to the account matching the :code:`accountId` provided.
     :throws: Will throw an error on a failed response.
 
 
@@ -20,5 +20,5 @@ update(accountId, options)
     :accountId: {string} The :code:`accountId` of the desired account.
     :options: {object} The properties to change in the target account.
 
-    :returns: {Promise<object>} Returns a promise that resolves to the account matching the :code:`accountId` provided.
+    :returns: {Promise<object>} A promise that resolves to the account matching the :code:`accountId` provided.
     :throws: Will throw an error on a failed response.

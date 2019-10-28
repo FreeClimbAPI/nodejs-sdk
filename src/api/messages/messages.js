@@ -16,7 +16,7 @@ var common = require('../common/index')
  *
  * @param {string} accountId - The accountId for authentication.
  * @param {string} authToken - The authToken for authentication.
- * @returns {MessagesRequester} requester - returns a MessagesRequester
+ * @returns {MessagesRequester} requester - A MessagesRequester
  */
 function messages (accountId, authToken) {
   var getter = common.commonGetBuilder(accountId, authToken)
@@ -41,7 +41,7 @@ function messages (accountId, authToken) {
   /**
    * Retrieve a list of messages associated with the {@code accountId}.
    *
-   * @param {object} [filters] - Optional properties to filter the list
+   * @param {object} [filters] - Properties to filter the list
    * @returns {Promise<object>} message list - The list of messages
    * @throws will throw an error on a failed response
    */

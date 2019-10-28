@@ -83,7 +83,7 @@ function incomingNumbers (accountId, authToken) {
    * Purchase a new incoming phone number through the FreeClimb API.
    *
    * @param {string} phoneNumber - The phone number to purchase in E.164 format (as returned in the list of Available Phone Numbers)
-   * @param {object} [options] - Optional properties to set on the newly purchased number.
+   * @param {object} [options] - Properties to set on the newly purchased number.
    * @returns {Promise<object>} incoming number - The newly purchased incoming phone number.
    * @throws will throw an error on a failed response
    */

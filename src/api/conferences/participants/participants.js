@@ -20,7 +20,7 @@ var common = require('../../common/index')
  * @param {string} accountId - The accountId for authentication.
  * @param {string} authToken - The authToken for authentication.
  * @param {string} conferenceId - The conferenceId to operate against.
- * @returns {ParticipantsRequester} requester - returns a ParticipantsRequester
+ * @returns {ParticipantsRequester} requester - A ParticipantsRequester
  */
 function participants (accountId, authToken, conferenceId) {
   var getter = common.commonGetBuilder(accountId, authToken)
