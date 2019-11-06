@@ -101,7 +101,7 @@ describe('incomingNumbers', function () {
       var getMock = jest.fn().mockReturnValue(Promise.resolve({ok: true, json: jest.fn().mockReturnValue(Promise.resolve({}))}))
       requester.GET = getMock
 
-      var filter = {phoneNumber: '^\\+1[0-9]{3}3243$', alias: '(123) 324-5843'}
+      var filter = {phoneNumber: '^\+1[0-9]{3}3243$', alias: '(123) 324-5843'}
 
       expect.assertions(1)
       return incomingNumbers(accountId, authToken).getList(filter).then(function (list) {

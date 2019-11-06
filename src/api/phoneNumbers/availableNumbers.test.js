@@ -9,7 +9,7 @@ describe('availableNumbers', function () {
   var authToken = 'mock_auth_token'
   describe('availableNumbers#getList', function () {
     it('should call fetch get with the availablePhoneNumbers endpoint and the query options', function () {
-      var queryOptions = {alias: '(234) 234-2432', phoneNumber: '^\\+1847[0-9]{7}$'}
+      var queryOptions = {alias: '(234) 234-2432', phoneNumber: '^\+1847[0-9]{7}$'}
       var getMock = jest.fn().mockReturnValue(Promise.resolve({ok: true, json: jest.fn().mockReturnValue(Promise.resolve({}))}))
       requester.GET = getMock
 
