@@ -1,5 +1,6 @@
 var common = require('./common')
 var requester = require('../requester/index')
+var { Response } = require('node-fetch')
 
 describe('common', function () {
   var accountId = 'accountId'
@@ -9,7 +10,7 @@ describe('common', function () {
   describe('commonGetBuilder', function () {
     var query = {alias: 'app alias'}
     it('should return a function that when called called requester#get with all the provided args', function () {
-      var getMock = jest.fn().mockReturnValue(Promise.resolve({ok: true, json: jest.fn().mockReturnValue(Promise.resolve({}))}))
+      var getMock = jest.fn().mockResolvedValue(new Response('{}'))
       requester.GET = getMock
 
       expect.assertions(1)
@@ -20,7 +21,7 @@ describe('common', function () {
     describe('on success', function () {
       it('should return the json payload', function () {
         var expectedPayload = {mock: 'payload'}
-        requester.GET = jest.fn().mockReturnValue(Promise.resolve({ok: true, json: jest.fn().mockReturnValue(Promise.resolve(expectedPayload))}))
+        requester.GET = jest.fn().mockResolvedValue(new Response(JSON.stringify(expectedPayload)))
 
         expect.assertions(1)
         return common.commonGetBuilder()().then(function (result) {
@@ -30,11 +31,7 @@ describe('common', function () {
       describe('when the response is not JSON', function () {
         it('should return the text payload', function () {
           var expectedPayload = 'payload'
-          requester.GET = jest.fn().mockReturnValue(Promise.resolve({
-            ok: true,
-            json: jest.fn().mockReturnValue(Promise.reject(new Error('error'))),
-            text: jest.fn().mockReturnValue(Promise.resolve(expectedPayload))
-          }))
+          requester.GET = jest.fn().mockResolvedValue(new Response(expectedPayload))
 
           expect.assertions(1)
           return common.commonGetBuilder()().then(function (result) {
@@ -50,12 +47,7 @@ describe('common', function () {
         }
         var status = 493
         var statusText = 'Bad Something'
-        requester.GET = jest.fn().mockReturnValue(Promise.resolve({
-          ok: false,
-          status: status,
-          statusText: statusText,
-          json: jest.fn().mockReturnValue(Promise.resolve(body))
-        }))
+        requester.GET = jest.fn().mockResolvedValue(new Response(JSON.stringify(body), {status, statusText}))
 
         expect.assertions(1)
         return common.commonGetBuilder()(path, query, errorMsg).catch(function (error) {
@@ -67,13 +59,7 @@ describe('common', function () {
           var body = 'notAnObject'
           var status = 403
           var statusText = 'Bad Response Body'
-          requester.GET = jest.fn().mockReturnValue(Promise.resolve({
-            ok: false,
-            status: status,
-            statusText: statusText,
-            json: jest.fn().mockReturnValue(Promise.reject(new Error('error'))),
-            text: jest.fn().mockReturnValue(Promise.resolve(body))
-          }))
+          requester.GET = jest.fn().mockResolvedValue(new Response(body, {status, statusText}))
 
           expect.assertions(1)
           return common.commonGetBuilder()(path, query, errorMsg).catch(function (error) {
@@ -86,7 +72,7 @@ describe('common', function () {
   describe('commonPostBuilder', function () {
     var body = {option: 'value'}
     it('should return a function that when called calls requester#post with all the provided args', function () {
-      var postMock = jest.fn().mockReturnValue(Promise.resolve({ok: true, json: jest.fn().mockReturnValue(Promise.resolve({}))}))
+      var postMock = jest.fn().mockResolvedValue(new Response('{}'))
       requester.POST = postMock
 
       expect.assertions(1)
@@ -97,7 +83,7 @@ describe('common', function () {
     describe('on success', function () {
       it('should return the json payload', function () {
         var expectedPayload = {mock: 'payload'}
-        requester.POST = jest.fn().mockReturnValue(Promise.resolve({ok: true, json: jest.fn().mockReturnValue(Promise.resolve(expectedPayload))}))
+        requester.POST = jest.fn().mockResolvedValue(new Response(JSON.stringify(expectedPayload)))
 
         expect.assertions(1)
         return common.commonPostBuilder()().then(function (result) {
@@ -107,11 +93,7 @@ describe('common', function () {
       describe('when the response is not JSON', function () {
         it('should return the text payload', function () {
           var expectedPayload = 'payload'
-          requester.POST = jest.fn().mockReturnValue(Promise.resolve({
-            ok: true,
-            json: jest.fn().mockReturnValue(Promise.reject(new Error('error'))),
-            text: jest.fn().mockReturnValue(Promise.resolve(expectedPayload))
-          }))
+          requester.POST = jest.fn().mockResolvedValue(new Response(expectedPayload))
 
           expect.assertions(1)
           return common.commonPostBuilder()().then(function (result) {
@@ -127,12 +109,7 @@ describe('common', function () {
         }
         var status = 888
         var statusText = 'Status Text'
-        requester.POST = jest.fn().mockReturnValue(Promise.resolve({
-          ok: false,
-          status: status,
-          statusText: statusText,
-          json: jest.fn().mockReturnValue(Promise.resolve(failBody))
-        }))
+        requester.POST = jest.fn().mockResolvedValue(new Response(JSON.stringify(failBody), {status, statusText}))
 
         expect.assertions(1)
         return common.commonPostBuilder(accountId, authToken)(path, body, errorMsg).catch(function (error) {
@@ -144,13 +121,7 @@ describe('common', function () {
           var body = 'notAnObject'
           var status = 888
           var statusText = 'Status Text'
-          requester.POST = jest.fn().mockReturnValue(Promise.resolve({
-            ok: false,
-            status: status,
-            statusText: statusText,
-            json: jest.fn().mockReturnValue(Promise.reject(new Error('error'))),
-            text: jest.fn().mockReturnValue(Promise.resolve(body))
-          }))
+          requester.POST = jest.fn().mockResolvedValue(new Response(body, {status, statusText}))
 
           expect.assertions(1)
           return common.commonPostBuilder(accountId, authToken)(path, body, errorMsg).catch(function (error) {
@@ -162,7 +133,7 @@ describe('common', function () {
   })
   describe('commonDeleteBuilder', function () {
     it('should return a function that when called calls requester#delete with all the provided args', function () {
-      var deleteMock = jest.fn().mockReturnValue(Promise.resolve({ok: true}))
+      var deleteMock = jest.fn().mockResolvedValue(new Response())
       requester.DELETE = deleteMock
 
       expect.assertions(1)
@@ -172,7 +143,7 @@ describe('common', function () {
     })
     describe('on success', function () {
       it('should return null', function () {
-        requester.DELETE = jest.fn().mockReturnValue(Promise.resolve({ok: true}))
+        requester.DELETE = jest.fn().mockResolvedValue(new Response())
         expect.assertions(1)
         return common.commonDeleteBuilder(accountId, authToken)(path, errorMsg).then(function (result) {
           expect(result).toBeNull()
@@ -184,14 +155,9 @@ describe('common', function () {
         var body = {
           message: 'message'
         }
-        var status = 844
+        var status = 500
         var statusText = 'Status Text'
-        requester.DELETE = jest.fn().mockReturnValue(Promise.resolve({
-          ok: false,
-          status: status,
-          statusText: statusText,
-          json: jest.fn().mockReturnValue(Promise.resolve(body))
-        }))
+        requester.DELETE = jest.fn().mockResolvedValue(new Response(JSON.stringify(body), {status, statusText}))
 
         expect.assertions(1)
         return common.commonDeleteBuilder(accountId, authToken)(path, errorMsg).catch(function (error) {
@@ -201,15 +167,9 @@ describe('common', function () {
       describe('when the failure body is not JSON', function () {
         it('should throw an error using the provided message with the body text', function () {
           var body = 'message'
-          var status = 844
+          var status = 500
           var statusText = 'Status Text'
-          requester.DELETE = jest.fn().mockReturnValue(Promise.resolve({
-            ok: false,
-            status: status,
-            statusText: statusText,
-            json: jest.fn().mockReturnValue(Promise.reject(new Error('error'))),
-            text: jest.fn().mockReturnValue(Promise.resolve(body))
-          }))
+          requester.DELETE = jest.fn().mockResolvedValue(new Response(body, {status, statusText}))
 
           expect.assertions(1)
           return common.commonDeleteBuilder(accountId, authToken)(path, errorMsg).catch(function (error) {
