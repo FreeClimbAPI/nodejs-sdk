@@ -3,6 +3,8 @@ var requester = require('../requester/index')
 var common = require('../common/index')
 var recordings = require('./recordings')
 var fs = require('fs')
+var { Response } = require('node-fetch')
+var Readable = require('stream').Readable
 
 describe('recordings', function () {
   var accountId = 'accountId'
@@ -11,7 +13,7 @@ describe('recordings', function () {
   var filePath = '../test/fileName.wav'
   describe('recordings#get', function () {
     it('should call requester#get with the path', function () {
-      var getMock = jest.fn().mockReturnValue(Promise.resolve({ok: true, json: jest.fn().mockReturnValue(Promise.resolve({}))}))
+      var getMock = jest.fn().mockResolvedValue(new Response('{}'))
       requester.GET = getMock
 
       expect.assertions(1)
@@ -22,7 +24,7 @@ describe('recordings', function () {
     describe('on success', function () {
       it('should return the response payload', function () {
         var expectedPayload = {mock: 'recording meta'}
-        requester.GET = jest.fn().mockReturnValue(Promise.resolve({ok: true, json: jest.fn().mockReturnValue(Promise.resolve(expectedPayload))}))
+        requester.GET = jest.fn().mockResolvedValue(new Response(JSON.stringify(expectedPayload)))
 
         expect.assertions(1)
         return recordings().get().then(function (result) {
@@ -37,12 +39,7 @@ describe('recordings', function () {
         }
         var status = 999
         var statusText = 'text'
-        requester.GET = jest.fn().mockReturnValue(Promise.resolve({
-          ok: false,
-          status: status,
-          statusText: statusText,
-          json: jest.fn().mockReturnValue(Promise.resolve(body))
-        }))
+        requester.GET = jest.fn().mockResolvedValue(new Response(JSON.stringify(body), {status, statusText}))
 
         expect.assertions(1)
         return recordings().get(recordingId).catch(function (error) {
@@ -53,7 +50,7 @@ describe('recordings', function () {
   })
   describe('recordings#getList', function () {
     it('should call requester#get with the path and query parameters', function () {
-      var getMock = jest.fn().mockReturnValue(Promise.resolve({ok: true, json: jest.fn().mockReturnValue(Promise.resolve({}))}))
+      var getMock = jest.fn().mockResolvedValue(new Response())
       requester.GET = getMock
 
       var filters = {callId: 'CA4232346324632453245', dateCreated: '2017-12-25'}
@@ -65,7 +62,7 @@ describe('recordings', function () {
     describe('on success', function () {
       it('should return the response payload', function () {
         var expectedPayload = {mock: 'recording list'}
-        requester.GET = jest.fn().mockReturnValue(Promise.resolve({ok: true, json: jest.fn().mockReturnValue(Promise.resolve(expectedPayload))}))
+        requester.GET = jest.fn().mockResolvedValue(new Response(JSON.stringify(expectedPayload)))
 
         expect.assertions(1)
         return recordings().getList().then(function (result) {
@@ -80,12 +77,7 @@ describe('recordings', function () {
         }
         var status = 888
         var statusText = 'text'
-        requester.GET = jest.fn().mockReturnValue(Promise.resolve({
-          ok: false,
-          status: status,
-          statusText: statusText,
-          json: jest.fn().mockReturnValue(Promise.resolve(body))
-        }))
+        requester.GET = jest.fn().mockResolvedValue(new Response(JSON.stringify(body), {status, statusText}))
 
         expect.assertions(1)
         return recordings().getList().catch(function (error) {
@@ -98,7 +90,7 @@ describe('recordings', function () {
     var nextPageUri = '/Accounts/AC32151235421512346/Recordings?cursor=2341235124215123324125425'
     var errorMsg = 'Could not retrieve recording list'
     it('should call commonGetBuilder with the credentials, nextPageUri, query, and errorMsg', function () {
-      var innerMock = jest.fn().mockReturnValue(Promise.resolve({}))
+      var innerMock = jest.fn().mockResolvedValue()
       var getMock = jest.fn().mockReturnValue(innerMock)
       common.commonGetBuilder = getMock
 
@@ -111,7 +103,9 @@ describe('recordings', function () {
   })
   describe('recordings#download', function () {
     it('should call requester#get with the path', function () {
-      var getMock = jest.fn().mockReturnValue(Promise.resolve({ok: true, body: {pipe: jest.fn()}}))
+      var readable = new Readable()
+      jest.spyOn(readable, 'pipe').mockImplementation(() => {})
+      var getMock = jest.fn().mockResolvedValue(new Response(readable))
       requester.GET = getMock
 
       expect.assertions(1)
@@ -124,8 +118,9 @@ describe('recordings', function () {
         var destinationMock = []
         var writeStreamMock = jest.fn().mockReturnValue(destinationMock)
         fs.createWriteStream = writeStreamMock
-        var mockPipe = jest.fn()
-        requester.GET = jest.fn().mockReturnValue(Promise.resolve({ok: true, body: {pipe: mockPipe}}))
+        var readable = new Readable()
+        var mockPipe = jest.spyOn(readable, 'pipe').mockImplementation(() => {})
+        requester.GET = jest.fn().mockResolvedValue(new Response(readable))
 
         expect.assertions(2)
         return recordings().download(recordingId, filePath).then(function () {
@@ -141,11 +136,11 @@ describe('recordings', function () {
         }
         var status = 577
         var statusText = 'Recording Download Failure Reason'
-        requester.GET = jest.fn().mockReturnValue(Promise.resolve({
+        requester.GET = jest.fn().mockResolvedValue(Promise.resolve({
           ok: false,
           status: status,
           statusText: statusText,
-          json: jest.fn().mockReturnValue(Promise.resolve(body))
+          json: jest.fn().mockResolvedValue(Promise.resolve(body))
         }))
 
         expect.assertions(1)
@@ -157,7 +152,7 @@ describe('recordings', function () {
   })
   describe('recordings#stream', function () {
     it('should call requester#get with the path', function () {
-      var getMock = jest.fn().mockReturnValue(Promise.resolve({ok: true, body: {}}))
+      var getMock = jest.fn().mockResolvedValue(new Response('{}'))
       requester.GET = getMock
 
       expect.assertions(1)
@@ -167,12 +162,12 @@ describe('recordings', function () {
     })
     describe('on success', function () {
       it('should return the readable stream', function () {
-        var mockBody = jest.fn()
-        requester.GET = jest.fn().mockReturnValue(Promise.resolve({ok: true, body: mockBody}))
+        var stream = new Readable()
+        requester.GET = jest.fn().mockResolvedValue(new Response(stream))
 
         expect.assertions(1)
         return recordings().stream(recordingId).then(function (result) {
-          expect(result).toEqual(mockBody)
+          expect(result).toEqual(stream)
         })
       })
     })
@@ -183,12 +178,7 @@ describe('recordings', function () {
         }
         var status = 577
         var statusText = 'Recording Stream Failure Reason'
-        requester.GET = jest.fn().mockReturnValue(Promise.resolve({
-          ok: false,
-          status: status,
-          statusText: statusText,
-          json: jest.fn().mockReturnValue(Promise.resolve(body))
-        }))
+        requester.GET = jest.fn().mockResolvedValue(new Response(JSON.stringify(body), {status, statusText}))
 
         expect.assertions(1)
         return recordings().stream(recordingId).catch(function (error) {
@@ -199,7 +189,7 @@ describe('recordings', function () {
   })
   describe('recordings#delete', function () {
     it('should call requester#delete with the path', function () {
-      var deleteMock = jest.fn().mockReturnValue(Promise.resolve({ok: true, json: jest.fn().mockReturnValue(Promise.resolve({}))}))
+      var deleteMock = jest.fn().mockResolvedValue(new Response())
       requester.DELETE = deleteMock
 
       expect.assertions(1)
@@ -209,7 +199,7 @@ describe('recordings', function () {
     })
     describe('on success', function () {
       it('should return null', function () {
-        requester.DELETE = jest.fn().mockReturnValue(Promise.resolve({ok: true}))
+        requester.DELETE = jest.fn().mockResolvedValue(new Response())
 
         expect.assertions(1)
         return recordings().delete().then(function (result) {
@@ -224,12 +214,7 @@ describe('recordings', function () {
         }
         var status = 444
         var statusText = 'Failure'
-        requester.DELETE = jest.fn().mockReturnValue(Promise.resolve({
-          ok: false,
-          status: status,
-          statusText: statusText,
-          json: jest.fn().mockReturnValue(Promise.resolve(body))
-        }))
+        requester.DELETE = jest.fn().mockResolvedValue(new Response(JSON.stringify(body), {status, statusText}))
 
         expect.assertions(1)
         return recordings().delete(recordingId).catch(function (error) {
