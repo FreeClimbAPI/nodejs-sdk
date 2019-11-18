@@ -4,6 +4,7 @@ var requester = require('../requester/index')
 var common = require('../common/index')
 var queues = require('./queues')
 var members = require('./members/index')
+var { Response } = require('node-fetch')
 
 describe('queues', function () {
   var accountId = 'accountId'
@@ -11,7 +12,7 @@ describe('queues', function () {
   var queueId = 'QU543253452934582304582340958234096823495'
   describe('queues#get', function () {
     it('should call requester#get with the path', function () {
-      var getMock = jest.fn().mockReturnValue(Promise.resolve({ok: true, json: jest.fn().mockReturnValue(Promise.resolve({}))}))
+      var getMock = jest.fn().mockResolvedValue(new Response('{}'))
       requester.GET = getMock
 
       expect.assertions(1)
@@ -22,7 +23,7 @@ describe('queues', function () {
     describe('on success', function () {
       it('should return the response payload', function () {
         var expectedPayload = {mock: 'queue'}
-        requester.GET = jest.fn().mockReturnValue(Promise.resolve({ok: true, json: jest.fn().mockReturnValue(Promise.resolve(expectedPayload))}))
+        requester.GET = jest.fn().mockResolvedValue(new Response(JSON.stringify(expectedPayload)))
 
         expect.assertions(1)
         return queues().get().then(function (result) {
@@ -53,7 +54,7 @@ describe('queues', function () {
   })
   describe('queues#update', function () {
     it('should call requester#post with the path and body', function () {
-      var postMock = jest.fn().mockReturnValue(Promise.resolve({ok: true, json: jest.fn().mockReturnValue(Promise.resolve({}))}))
+      var postMock = jest.fn().mockResolvedValue(new Response('{}'))
       requester.POST = postMock
 
       var options = {alias: 'queue alias', maxSize: 444}
@@ -65,7 +66,7 @@ describe('queues', function () {
     describe('on success', function () {
       it('should return the response payload', function () {
         var expectedPayload = {mock: 'queue'}
-        requester.POST = jest.fn().mockReturnValue(Promise.resolve({ok: true, json: jest.fn().mockReturnValue(Promise.resolve(expectedPayload))}))
+        requester.POST = jest.fn().mockResolvedValue(new Response(JSON.stringify(expectedPayload)))
 
         expect.assertions(1)
         return queues().update().then(function (result) {
@@ -96,7 +97,7 @@ describe('queues', function () {
   })
   describe('queues#getList', function () {
     it('should call requester#get with the path and query parameters', function () {
-      var getMock = jest.fn().mockReturnValue(Promise.resolve({ok: true, json: jest.fn().mockReturnValue(Promise.resolve({}))}))
+      var getMock = jest.fn().mockResolvedValue(new Response('{}'))
       requester.GET = getMock
 
       var filters = {alias: 'Alias'}
@@ -108,7 +109,7 @@ describe('queues', function () {
     describe('on success', function () {
       it('should return the response payload', function () {
         var expectedPayload = {mock: 'queue list'}
-        requester.GET = jest.fn().mockReturnValue(Promise.resolve({ok: true, json: jest.fn().mockReturnValue(Promise.resolve(expectedPayload))}))
+        requester.GET = jest.fn().mockResolvedValue(new Response(JSON.stringify(expectedPayload)))
 
         expect.assertions(1)
         return queues().getList().then(function (result) {
@@ -154,7 +155,7 @@ describe('queues', function () {
   })
   describe('queues#create', function () {
     it('should call requester#post with the path and body parameters', function () {
-      var postMock = jest.fn().mockReturnValue(Promise.resolve({ok: true, json: jest.fn().mockReturnValue(Promise.resolve({}))}))
+      var postMock = jest.fn().mockResolvedValue(new Response('{}'))
       requester.POST = postMock
 
       var options = {alias: 'New Queue', maxSize: 10}
@@ -166,7 +167,7 @@ describe('queues', function () {
     describe('on success', function () {
       it('should return the response payload', function () {
         var expectedPayload = {mock: 'created queue'}
-        requester.POST = jest.fn().mockReturnValue(Promise.resolve({ok: true, json: jest.fn().mockReturnValue(Promise.resolve(expectedPayload))}))
+        requester.POST = jest.fn().mockResolvedValue(new Response(JSON.stringify(expectedPayload)))
 
         expect.assertions(1)
         return queues().create().then(function (result) {

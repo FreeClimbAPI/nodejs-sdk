@@ -1,13 +1,14 @@
 jest.mock('../requester')
 var accounts = require('./accounts')
 var requester = require('../requester/index')
+var { Response } = require('node-fetch')
 
 describe('accounts', function () {
   var accountId = 'mock_account_id'
   var authToken = 'mock_account_token'
   describe('accounts#get', function () {
     it('should call requester#get with the authentication, path, and no query', function () {
-      var getMock = jest.fn().mockReturnValue(Promise.resolve({ok: true, json: jest.fn().mockReturnValue(Promise.resolve({}))}))
+      var getMock = jest.fn().mockResolvedValue(new Response('{}'))
       requester.GET = getMock
 
       expect.assertions(1)
@@ -76,7 +77,7 @@ describe('accounts', function () {
   })
   describe('accounts#update', function () {
     it('should call requester#post with the authentication, path, and body', function () {
-      var postMock = jest.fn().mockReturnValue(Promise.resolve({ok: true, json: jest.fn().mockReturnValue(Promise.resolve({}))}))
+      var postMock = jest.fn().mockResolvedValue(new Response('{}'))
       requester.POST = postMock
       var body = 'mock_payload'
 

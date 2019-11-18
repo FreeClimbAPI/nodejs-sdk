@@ -1,6 +1,7 @@
 var requester = require('../requester/index')
 var common = require('../common/index')
 var callingNumbers = require('./callingNumbers')
+var { Response } = require('node-fetch')
 
 describe('callingNumbers', function () {
   var accountId = 'AccountId'
@@ -8,7 +9,7 @@ describe('callingNumbers', function () {
   var callingNumberId = 'PN1412351235'
   describe('callingNumbers#get', function () {
     it('should call requester#get with the path', function () {
-      var getMock = jest.fn().mockReturnValue(Promise.resolve({ok: true, json: jest.fn().mockReturnValue(Promise.resolve({}))}))
+      var getMock = jest.fn().mockResolvedValue(new Response('{}'))
       requester.GET = getMock
 
       expect.assertions(1)
@@ -19,7 +20,7 @@ describe('callingNumbers', function () {
     describe('on success', function () {
       it('should return the payload', function () {
         var expectedPayload = {mock: 'payload'}
-        requester.GET = jest.fn().mockReturnValue(Promise.resolve({ok: true, json: jest.fn().mockReturnValue(Promise.resolve(expectedPayload))}))
+        requester.GET = jest.fn().mockResolvedValue(new Response(JSON.stringify(expectedPayload)))
 
         expect.assertions(1)
         return callingNumbers().get().then(function (resp) {
@@ -51,7 +52,7 @@ describe('callingNumbers', function () {
   describe('callingNumbers#update', function () {
     it('should call requester#post with the path to the calling number and the body', function () {
       var options = {alias: 'new calling number alias'}
-      var postMock = jest.fn().mockReturnValue(Promise.resolve({ok: true, json: jest.fn().mockReturnValue(Promise.resolve({}))}))
+      var postMock = jest.fn().mockResolvedValue(new Response('{}'))
       requester.POST = postMock
 
       expect.assertions(1)
@@ -62,7 +63,7 @@ describe('callingNumbers', function () {
     describe('on success', function () {
       it('returns the payload', function () {
         var expectedPayload = {mock: 'payload'}
-        requester.POST = jest.fn().mockReturnValue(Promise.resolve({ok: true, json: jest.fn().mockReturnValue(Promise.resolve(expectedPayload))}))
+        requester.POST = jest.fn().mockResolvedValue(new Response(JSON.stringify(expectedPayload)))
 
         expect.assertions(1)
         return callingNumbers().update().then(function (result) {
@@ -93,7 +94,7 @@ describe('callingNumbers', function () {
   })
   describe('callingNumbers#getList', function () {
     it('should call requester#get with the path and query parameters', function () {
-      var getMock = jest.fn().mockReturnValue(Promise.resolve({ok: true, json: jest.fn().mockReturnValue(Promise.resolve({}))}))
+      var getMock = jest.fn().mockResolvedValue(new Response('{}'))
       requester.GET = getMock
 
       var options = {phoneNumber: '+13242342345', alias: '(434) 245-5466'}
@@ -105,7 +106,7 @@ describe('callingNumbers', function () {
     describe('on success', function () {
       it('should return the json payload', function () {
         var expectedPayload = {mock: 'payload'}
-        requester.GET = jest.fn().mockReturnValue(Promise.resolve({ok: true, json: jest.fn().mockReturnValue(Promise.resolve(expectedPayload))}))
+        requester.GET = jest.fn().mockResolvedValue(new Response(JSON.stringify(expectedPayload)))
 
         expect.assertions(1)
         return callingNumbers().getList().then(function (result) {
@@ -151,7 +152,7 @@ describe('callingNumbers', function () {
   })
   describe('callingNumbers#create', function () {
     it('should call requester#post with the path and body', function () {
-      var postMock = jest.fn().mockReturnValue(Promise.resolve({ok: true, json: jest.fn().mockReturnValue(Promise.resolve({}))}))
+      var postMock = jest.fn().mockResolvedValue(new Response('{}'))
       requester.POST = postMock
 
       var phoneNumber = '+12341234423'
@@ -165,7 +166,7 @@ describe('callingNumbers', function () {
     describe('on success', function () {
       it('should return the payload', function () {
         var expectedPayload = {mock: 'payload'}
-        requester.POST = jest.fn().mockReturnValue(Promise.resolve({ok: true, json: jest.fn().mockReturnValue(Promise.resolve(expectedPayload))}))
+        requester.POST = jest.fn().mockResolvedValue(new Response(JSON.stringify(expectedPayload)))
 
         expect.assertions(1)
         return callingNumbers().create().then(function (response) {

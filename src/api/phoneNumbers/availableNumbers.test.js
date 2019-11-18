@@ -3,6 +3,7 @@ jest.mock('../requester')
 var availableNumbers = require('./availableNumbers')
 var requester = require('../requester/index')
 var common = require('../common/index')
+var { Response } = require('node-fetch')
 
 describe('availableNumbers', function () {
   var accountId = 'mock_account_id'
@@ -10,7 +11,7 @@ describe('availableNumbers', function () {
   describe('availableNumbers#getList', function () {
     it('should call fetch get with the availablePhoneNumbers endpoint and the query options', function () {
       var queryOptions = {alias: '(234) 234-2432', phoneNumber: '^\\+1847[0-9]{7}$'}
-      var getMock = jest.fn().mockReturnValue(Promise.resolve({ok: true, json: jest.fn().mockReturnValue(Promise.resolve({}))}))
+      var getMock = jest.fn().mockResolvedValue(new Response('{}'))
       requester.GET = getMock
 
       expect.assertions(1)

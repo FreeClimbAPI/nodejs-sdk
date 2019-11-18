@@ -1,6 +1,7 @@
 var requester = require('../../requester/index')
 var common = require('../../common/index')
 var members = require('./members')
+var { Response } = require('node-fetch')
 
 describe('members', function () {
   var accountId = 'accountId'
@@ -9,7 +10,7 @@ describe('members', function () {
   var memberId = 'CA234123597123495832745352345'
   describe('members#get', function () {
     it('should call requester#get with the path', function () {
-      var getMock = jest.fn().mockReturnValue(Promise.resolve({ok: true, json: jest.fn().mockReturnValue(Promise.resolve({}))}))
+      var getMock = jest.fn().mockResolvedValue(new Response('{}'))
       requester.GET = getMock
 
       expect.assertions(1)
@@ -20,7 +21,7 @@ describe('members', function () {
     describe('on success', function () {
       it('should return the response payload', function () {
         var expectedPayload = {mock: 'payload'}
-        requester.GET = jest.fn().mockReturnValue(Promise.resolve({ok: true, json: jest.fn().mockReturnValue(Promise.resolve(expectedPayload))}))
+        requester.GET = jest.fn().mockResolvedValue(new Response(JSON.stringify(expectedPayload)))
 
         expect.assertions(1)
         return members().get().then(function (result) {
@@ -51,7 +52,7 @@ describe('members', function () {
   })
   describe('members#getFront', function () {
     it('should call requester#get with the path', function () {
-      var getMock = jest.fn().mockReturnValue(Promise.resolve({ok: true, json: jest.fn().mockReturnValue(Promise.resolve({}))}))
+      var getMock = jest.fn().mockResolvedValue(new Response('{}'))
       requester.GET = getMock
 
       expect.assertions(1)
@@ -62,7 +63,7 @@ describe('members', function () {
     describe('on success', function () {
       it('should return the response payload', function () {
         var expectedPayload = {mock: 'queue member'}
-        requester.GET = jest.fn().mockReturnValue(Promise.resolve({ok: true, json: jest.fn().mockReturnValue(Promise.resolve(expectedPayload))}))
+        requester.GET = jest.fn().mockResolvedValue(new Response(JSON.stringify(expectedPayload)))
 
         expect.assertions(1)
         return members().getFront().then(function (result) {
@@ -93,7 +94,7 @@ describe('members', function () {
   })
   describe('members#getList', function () {
     it('should call requester#get with the path', function () {
-      var getMock = jest.fn().mockReturnValue(Promise.resolve({ok: true, json: jest.fn().mockReturnValue(Promise.resolve({}))}))
+      var getMock = jest.fn().mockResolvedValue(new Response('{}'))
       requester.GET = getMock
 
       expect.assertions(1)
@@ -104,7 +105,7 @@ describe('members', function () {
     describe('on success', function () {
       it('should return the response payload', function () {
         var expectedPayload = {mock: 'member list'}
-        requester.GET = jest.fn().mockReturnValue(Promise.resolve({ok: true, json: jest.fn().mockReturnValue(Promise.resolve(expectedPayload))}))
+        requester.GET = jest.fn().mockResolvedValue(new Response(JSON.stringify(expectedPayload)))
 
         expect.assertions(1)
         return members().getList().then(function (result) {
@@ -150,7 +151,7 @@ describe('members', function () {
   })
   describe('members#dequeue', function () {
     it('should call requester#post with the path', function () {
-      var postMock = jest.fn().mockReturnValue(Promise.resolve({ok: true, json: jest.fn().mockReturnValue(Promise.resolve({}))}))
+      var postMock = jest.fn().mockResolvedValue(new Response('{}'))
       requester.POST = postMock
 
       expect.assertions(1)
@@ -161,7 +162,7 @@ describe('members', function () {
     describe('on success', function () {
       it('should return the response payload', function () {
         var expectedPayload = {mock: 'member'}
-        requester.POST = jest.fn().mockReturnValue(Promise.resolve({ok: true, json: jest.fn().mockReturnValue(Promise.resolve(expectedPayload))}))
+        requester.POST = jest.fn().mockResolvedValue(new Response(JSON.stringify(expectedPayload)))
 
         expect.assertions(1)
         return members().dequeue().then(function (result) {
@@ -192,7 +193,7 @@ describe('members', function () {
   })
   describe('members#dequeueFront', function () {
     it('should call requester#post with the path', function () {
-      var postMock = jest.fn().mockReturnValue(Promise.resolve({ok: true, json: jest.fn().mockReturnValue(Promise.resolve({}))}))
+      var postMock = jest.fn().mockResolvedValue(new Response('{}'))
       requester.POST = postMock
 
       expect.assertions(1)
@@ -203,7 +204,7 @@ describe('members', function () {
     describe('on success', function () {
       it('should return the response payload', function () {
         var expectedPayload = {mock: 'dequeued member'}
-        requester.POST = jest.fn().mockReturnValue(Promise.resolve({ok: true, json: jest.fn().mockReturnValue(Promise.resolve(expectedPayload))}))
+        requester.POST = jest.fn().mockResolvedValue(new Response(JSON.stringify(expectedPayload)))
 
         expect.assertions(1)
         return members().dequeueFront().then(function (result) {

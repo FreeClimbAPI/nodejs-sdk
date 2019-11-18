@@ -3,6 +3,7 @@ var requester = require('../requester/index')
 var common = require('../common/index')
 var conferences = require('./conferences')
 var participants = require('./participants/index')
+var { Response } = require('node-fetch')
 
 describe('conferences', function () {
   var accountId = 'accountId'
@@ -10,7 +11,7 @@ describe('conferences', function () {
   var conferenceId = 'CF1313513513512351234123523463456345634573476435734745367'
   describe('conferences#get', function () {
     it('should call requester#get with the path', function () {
-      var getMock = jest.fn().mockReturnValue(Promise.resolve({ok: true, json: jest.fn().mockReturnValue(Promise.resolve({}))}))
+      var getMock = jest.fn().mockResolvedValue(new Response('{}'))
       requester.GET = getMock
 
       expect.assertions(1)
@@ -21,8 +22,8 @@ describe('conferences', function () {
     describe('on success', function () {
       it('should return the response payload', function () {
         var expectedPayload = {mock: 'conference'}
-        requester.GET = jest.fn().mockReturnValue(Promise.resolve({ok: true, json: jest.fn().mockReturnValue(Promise.resolve(expectedPayload))}))
-
+        requester.GET = jest.fn().mockResolvedValue(new Response(JSON.stringify(expectedPayload)))
+        // mockResolvedValue(new Response(JSON.stringify(expectedPayload)))
         expect.assertions(1)
         return conferences().get().then(function (response) {
           expect(response).toEqual(expectedPayload)
@@ -52,7 +53,7 @@ describe('conferences', function () {
   })
   describe('conferences#update', function () {
     it('should call requester#post with the path and body', function () {
-      var postMock = jest.fn().mockReturnValue(Promise.resolve({ok: true, json: jest.fn().mockReturnValue(Promise.resolve({}))}))
+      var postMock = jest.fn().mockResolvedValue(new Response('{}'))
       requester.POST = postMock
 
       var options = {alias: 'Conference Alias', playBeep: 'always', status: 'empty'}
@@ -64,7 +65,7 @@ describe('conferences', function () {
     describe('on success', function () {
       it('should return the payload', function () {
         var expectedPayload = {mock: 'conference'}
-        requester.POST = jest.fn().mockReturnValue(Promise.resolve({ok: true, json: jest.fn().mockReturnValue(Promise.resolve(expectedPayload))}))
+        requester.POST = jest.fn().mockResolvedValue(new Response(JSON.stringify(expectedPayload)))
 
         expect.assertions(1)
         return conferences().update().then(function (result) {
@@ -95,7 +96,7 @@ describe('conferences', function () {
   })
   describe('conferences#getList', function () {
     it('should call requester#get with the path and query parameters', function () {
-      var getMock = jest.fn().mockReturnValue(Promise.resolve({ok: true, json: jest.fn().mockReturnValue(Promise.resolve({}))}))
+      var getMock = jest.fn().mockResolvedValue(new Response('{}'))
       requester.GET = getMock
 
       var filters = {status: 'inProgress', alias: 'These aliases', dateCreated: '2017-12-25', dateUpdated: '2017-12-25'}
@@ -107,7 +108,7 @@ describe('conferences', function () {
     describe('on success', function () {
       it('should return the payload', function () {
         var expectedPayload = {mock: 'conferenceList'}
-        requester.GET = jest.fn().mockReturnValue(Promise.resolve({ok: true, json: jest.fn().mockReturnValue(Promise.resolve(expectedPayload))}))
+        requester.GET = jest.fn().mockResolvedValue(new Response(JSON.stringify(expectedPayload)))
 
         expect.assertions(1)
         return conferences().getList().then(function (result) {
@@ -153,7 +154,7 @@ describe('conferences', function () {
   })
   describe('conferences#create', function () {
     it('should call requester#post with the path and body', function () {
-      var postMock = jest.fn().mockReturnValue(Promise.resolve({ok: true, json: jest.fn().mockReturnValue(Promise.resolve({}))}))
+      var postMock = jest.fn().mockResolvedValue(new Response('{}'))
       requester.POST = postMock
 
       var options = {alias: 'Alias', playBeep: 'exitOnly', record: true, waitUrl: 'http://waitmusic.com', statusCallbackUrl: 'http://status.callback'}
@@ -165,7 +166,7 @@ describe('conferences', function () {
     describe('on success', function () {
       it('should return the payload', function () {
         var expectedPayload = {mock: 'conference'}
-        requester.POST = jest.fn().mockReturnValue(Promise.resolve({ok: true, json: jest.fn().mockReturnValue(Promise.resolve(expectedPayload))}))
+        requester.POST = jest.fn().mockResolvedValue(new Response(JSON.stringify(expectedPayload)))
 
         expect.assertions(1)
         return conferences().create().then(function (result) {

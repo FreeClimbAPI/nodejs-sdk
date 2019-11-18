@@ -1,6 +1,7 @@
 var requester = require('../requester/index')
 var common = require('../common/index')
 var logs = require('./logs')
+var { Response } = require('node-fetch')
 
 describe('logs', function () {
   var accountId = 'accountID'
@@ -9,7 +10,7 @@ describe('logs', function () {
   describe('logs#get', function () {
     describe('When the user does not provide pql', function () {
       it('should call requester#get to the path', function () {
-        var getMock = jest.fn().mockReturnValue(Promise.resolve({ok: true, json: jest.fn().mockReturnValue(Promise.resolve({}))}))
+        var getMock = jest.fn().mockResolvedValue(new Response('{}'))
         requester.GET = getMock
 
         expect.assertions(1)
@@ -20,7 +21,7 @@ describe('logs', function () {
       describe('on success', function () {
         it('should return the response payload', function () {
           var expectedPayload = {mock: 'log list'}
-          requester.GET = jest.fn().mockReturnValue(Promise.resolve({ok: true, json: jest.fn().mockReturnValue(Promise.resolve(expectedPayload))}))
+          requester.GET = jest.fn().mockResolvedValue(new Response(JSON.stringify(expectedPayload)))
 
           expect.assertions(1)
           return logs().get().then(function (result) {
@@ -51,7 +52,7 @@ describe('logs', function () {
     })
     describe('When the user provides a pql query', function () {
       it('should call requester#post with the path and body', function () {
-        var postMock = jest.fn().mockReturnValue(Promise.resolve({ok: true, json: jest.fn().mockReturnValue(Promise.resolve({}))}))
+        var postMock = jest.fn().mockResolvedValue(new Response('{}'))
         requester.POST = postMock
 
         expect.assertions(1)
@@ -62,7 +63,7 @@ describe('logs', function () {
       describe('on success', function () {
         it('should return the response payload', function () {
           var expectedPayload = {mock: 'filtered log list'}
-          requester.POST = jest.fn().mockReturnValue(Promise.resolve({ok: true, json: jest.fn().mockReturnValue(Promise.resolve(expectedPayload))}))
+          requester.POST = jest.fn().mockResolvedValue(new Response(JSON.stringify(expectedPayload)))
 
           expect.assertions(1)
           return logs().get(filters).then(function (result) {
