@@ -36,12 +36,7 @@ describe('members', function () {
         }
         var status = 455
         var statusText = 'some error'
-        requester.GET = jest.fn().mockReturnValue(Promise.resolve({
-          ok: false,
-          status: status,
-          statusText: statusText,
-          json: jest.fn().mockReturnValue(Promise.resolve(body))
-        }))
+        requester.GET = jest.fn().mockResolvedValue(new Response(JSON.stringify(body), {status, statusText}))
 
         expect.assertions(1)
         return members().get(memberId).catch(function (error) {
@@ -78,12 +73,7 @@ describe('members', function () {
         }
         var status = 888
         var statusText = 'Failure'
-        requester.GET = jest.fn().mockReturnValue(Promise.resolve({
-          ok: false,
-          status: status,
-          statusText: statusText,
-          json: jest.fn().mockReturnValue(Promise.resolve(body))
-        }))
+        requester.GET = jest.fn().mockResolvedValue(new Response(JSON.stringify(body), {status, statusText}))
 
         expect.assertions(1)
         return members().getFront().catch(function (error) {
@@ -120,12 +110,7 @@ describe('members', function () {
         }
         var status = 444
         var statusText = 'Bad Request'
-        requester.GET = jest.fn().mockReturnValue(Promise.resolve({
-          ok: false,
-          status: status,
-          statusText: statusText,
-          json: jest.fn().mockReturnValue(Promise.resolve(body))
-        }))
+        requester.GET = jest.fn().mockResolvedValue(new Response(JSON.stringify(body), {status, statusText}))
 
         expect.assertions(1)
         return members().getList().catch(function (error) {
@@ -177,12 +162,7 @@ describe('members', function () {
         }
         var status = 424
         var statusText = 'Error Happened'
-        requester.POST = jest.fn().mockReturnValue(Promise.resolve({
-          ok: false,
-          status: status,
-          statusText: statusText,
-          json: jest.fn().mockReturnValue(Promise.resolve(body))
-        }))
+        requester.POST = jest.fn().mockResolvedValue(new Response(JSON.stringify(body), {status, statusText}))
 
         expect.assertions(1)
         return members().dequeue(memberId).catch(function (error) {
@@ -219,12 +199,7 @@ describe('members', function () {
         }
         var status = 444
         var statusText = 'Failure'
-        requester.POST = jest.fn().mockReturnValue(Promise.resolve({
-          ok: false,
-          status: status,
-          statusText: statusText,
-          json: jest.fn().mockReturnValue(Promise.resolve(body))
-        }))
+        requester.POST = jest.fn().mockResolvedValue(new Response(JSON.stringify(body), {status, statusText}))
 
         expect.assertions(1)
         return members().dequeueFront().catch(function (error) {

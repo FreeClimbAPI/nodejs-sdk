@@ -23,7 +23,6 @@ describe('conferences', function () {
       it('should return the response payload', function () {
         var expectedPayload = {mock: 'conference'}
         requester.GET = jest.fn().mockResolvedValue(new Response(JSON.stringify(expectedPayload)))
-        // mockResolvedValue(new Response(JSON.stringify(expectedPayload)))
         expect.assertions(1)
         return conferences().get().then(function (response) {
           expect(response).toEqual(expectedPayload)
@@ -37,13 +36,8 @@ describe('conferences', function () {
         }
         var status = 888
         var statusText = 'Failure Cause'
-        requester.GET = jest.fn().mockReturnValue(Promise.resolve({
-          ok: false,
-          status: status,
-          statusText: statusText,
-          json: jest.fn().mockReturnValue(Promise.resolve(body))
-        }))
-
+        requester.GET = jest.fn().mockResolvedValue(new Response(JSON.stringify(body), {status, statusText}))
+         
         expect.assertions(1)
         return conferences().get(conferenceId).catch(function (error) {
           expect(error).toEqual(Error('Could not retrieve conference ' + conferenceId + ' (' + status + ' ' + statusText + ') ' + JSON.stringify(body)))
@@ -80,12 +74,7 @@ describe('conferences', function () {
         }
         var status = 999
         var statusText = 'Failure Reason'
-        requester.POST = jest.fn().mockReturnValue(Promise.resolve({
-          ok: false,
-          status: status,
-          statusText: statusText,
-          json: jest.fn().mockReturnValue(Promise.resolve(body))
-        }))
+        requester.POST = jest.fn().mockResolvedValue(new Response(JSON.stringify(body), {status, statusText}))
 
         expect.assertions(1)
         return conferences().update(conferenceId).catch(function (error) {
@@ -123,13 +112,8 @@ describe('conferences', function () {
         }
         var status = 988
         var statusText = 'Failure Reason'
-        requester.GET = jest.fn().mockReturnValue(Promise.resolve({
-          ok: false,
-          status: status,
-          statusText: statusText,
-          json: jest.fn().mockReturnValue(Promise.resolve(body))
-        }))
-
+        requester.GET = jest.fn().mockResolvedValue(new Response(JSON.stringify(body), {status, statusText}))
+        
         expect.assertions(1)
         return conferences().getList().catch(function (error) {
           expect(error).toEqual(Error('Could not retrieve conference list (' + status + ' ' + statusText + ') ' + JSON.stringify(body)))
@@ -181,13 +165,8 @@ describe('conferences', function () {
         }
         var status = 999
         var statusText = 'failure reason'
-        requester.POST = jest.fn().mockReturnValue(Promise.resolve({
-          ok: false,
-          status: status,
-          statusText: statusText,
-          json: jest.fn().mockReturnValue(Promise.resolve(body))
-        }))
-
+        requester.POST = jest.fn().mockResolvedValue(new Response(JSON.stringify(body), {status, statusText}))
+        
         expect.assertions(1)
         return conferences().create().catch(function (error) {
           expect(error).toEqual(Error('Could not create conference (' + status + ' ' + statusText + ') ' + JSON.stringify(body)))

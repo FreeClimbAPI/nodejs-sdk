@@ -38,12 +38,7 @@ describe('queues', function () {
         }
         var status = 999
         var statusText = 'Failure Reason'
-        requester.GET = jest.fn().mockReturnValue(Promise.resolve({
-          ok: false,
-          status: status,
-          statusText: statusText,
-          json: jest.fn().mockReturnValue(Promise.resolve(body))
-        }))
+        requester.GET = jest.fn().mockResolvedValue(new Response(JSON.stringify(body), {status, statusText}))
 
         expect.assertions(1)
         return queues().get(queueId).catch(function (error) {
@@ -81,12 +76,7 @@ describe('queues', function () {
         }
         var status = 444
         var statusText = 'Failure Reason'
-        requester.POST = jest.fn().mockReturnValue(Promise.resolve({
-          ok: false,
-          status: status,
-          statusText: statusText,
-          json: jest.fn().mockReturnValue(Promise.resolve(body))
-        }))
+        requester.POST = jest.fn().mockResolvedValue(new Response(JSON.stringify(body), {status, statusText}))
 
         expect.assertions(1)
         return queues().update(queueId).catch(function (error) {
@@ -124,12 +114,7 @@ describe('queues', function () {
         }
         var status = 888
         var statusText = 'Failure Reason'
-        requester.GET = jest.fn().mockReturnValue(Promise.resolve({
-          ok: false,
-          status: status,
-          statusText: statusText,
-          json: jest.fn().mockReturnValue(Promise.resolve(body))
-        }))
+        requester.GET = jest.fn().mockResolvedValue(new Response(JSON.stringify(body), {status, statusText}))
 
         expect.assertions(1)
         return queues().getList().catch(function (error) {
@@ -182,12 +167,7 @@ describe('queues', function () {
         }
         var status = 488
         var statusText = 'Failure Reason'
-        requester.POST = jest.fn().mockReturnValue(Promise.resolve({
-          ok: false,
-          status: status,
-          statusText: statusText,
-          json: jest.fn().mockReturnValue(Promise.resolve(body))
-        }))
+        requester.POST = jest.fn().mockResolvedValue(new Response(JSON.stringify(body), {status, statusText}))
 
         expect.assertions(1)
         return queues().create().catch(function (error) {

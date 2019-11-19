@@ -36,12 +36,7 @@ describe('participants', function () {
         }
         var status = 444
         var statusText = 'Failure Reason'
-        requester.GET = jest.fn().mockReturnValue(Promise.resolve({
-          ok: false,
-          status: status,
-          statusText: statusText,
-          json: jest.fn().mockReturnValue(Promise.resolve(body))
-        }))
+        requester.GET = jest.fn().mockResolvedValue(new Response(JSON.stringify(body), {status, statusText}))
 
         expect.assertions(1)
         return participants().get(participantId).catch(function (error) {
@@ -79,12 +74,7 @@ describe('participants', function () {
         }
         var status = 444
         var statusText = 'Failure Reason'
-        requester.POST = jest.fn().mockReturnValue(Promise.resolve({
-          ok: false,
-          status: status,
-          statusText: statusText,
-          json: jest.fn().mockReturnValue(Promise.resolve(body))
-        }))
+        requester.POST = jest.fn().mockResolvedValue(new Response(JSON.stringify(body), {status, statusText}))
 
         expect.assertions(1)
         return participants().update(participantId).catch(function (error) {
@@ -122,12 +112,7 @@ describe('participants', function () {
         }
         var status = 444
         var statusText = 'Failure Reason'
-        requester.GET = jest.fn().mockReturnValue(Promise.resolve({
-          ok: false,
-          status: status,
-          statusText: statusText,
-          json: jest.fn().mockReturnValue(Promise.resolve(body))
-        }))
+        requester.GET = jest.fn().mockResolvedValue(new Response(JSON.stringify(body), {status, statusText}))
 
         expect.assertions(1)
         return participants().getList().catch(function (error) {
@@ -163,7 +148,7 @@ describe('participants', function () {
     })
     describe('on success', function () {
       it('should return null', function () {
-        requester.DELETE = jest.fn().mockReturnValue(Promise.resolve({ok: true}))
+        requester.DELETE = jest.fn().mockResolvedValue(new Response())
 
         expect.assertions(1)
         return participants().delete().then(function (result) {
@@ -178,12 +163,7 @@ describe('participants', function () {
         }
         var status = 433
         var statusText = 'Failure Reason'
-        requester.DELETE = jest.fn().mockReturnValue(Promise.resolve({
-          ok: false,
-          status: status,
-          statusText: statusText,
-          json: jest.fn().mockReturnValue(Promise.resolve(body))
-        }))
+        requester.DELETE = jest.fn().mockResolvedValue(new Response(JSON.stringify(body), {status, statusText}))
 
         expect.assertions(1)
         return participants().delete(participantId).catch(function (error) {

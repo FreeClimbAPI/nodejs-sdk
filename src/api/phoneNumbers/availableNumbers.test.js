@@ -22,7 +22,7 @@ describe('availableNumbers', function () {
     describe('on success', function () {
       it('should return the json payload of the Response', function () {
         var expectedResponse = {mock: 'list_of_numbers'}
-        requester.GET = jest.fn().mockReturnValue(Promise.resolve({ok: true, json: jest.fn().mockReturnValue(Promise.resolve(expectedResponse))}))
+        requester.GET = jest.fn().mockResolvedValue(new Response(JSON.stringify(expectedResponse)))
 
         expect.assertions(1)
         return availableNumbers().getList().then(function (response) {
@@ -38,12 +38,7 @@ describe('availableNumbers', function () {
         }
         var status = 303
         var statusText = 'Error'
-        requester.GET = jest.fn().mockReturnValue(Promise.resolve({
-          ok: false,
-          status: status,
-          statusText: statusText,
-          json: jest.fn().mockReturnValue(Promise.resolve(message))
-        }))
+        requester.GET = jest.fn().mockResolvedValue(new Response(JSON.stringify(message), {status, statusText}))
 
         expect.assertions(1)
         return availableNumbers().getList().catch(function (resp) {

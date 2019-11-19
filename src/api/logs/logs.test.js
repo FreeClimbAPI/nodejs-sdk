@@ -36,12 +36,7 @@ describe('logs', function () {
           }
           var status = 444
           var statusText = 'Failure Reason'
-          requester.GET = jest.fn().mockReturnValue(Promise.resolve({
-            ok: false,
-            status: status,
-            statusText: statusText,
-            json: jest.fn().mockReturnValue(Promise.resolve(body))
-          }))
+          requester.GET = jest.fn().mockResolvedValue(new Response(JSON.stringify(body), {status, statusText}))
 
           expect.assertions(1)
           return logs().get().catch(function (error) {
@@ -78,13 +73,8 @@ describe('logs', function () {
           }
           var status = 888
           var statusText = 'Status Text'
-          requester.POST = jest.fn().mockReturnValue(Promise.resolve({
-            ok: false,
-            status: status,
-            statusText: statusText,
-            json: jest.fn().mockReturnValue(Promise.resolve(body))
-          }))
-
+          requester.POST = jest.fn().mockResolvedValue(new Response(JSON.stringify(body), {status, statusText}))
+        
           expect.assertions(1)
           return logs().get(filters).catch(function (error) {
             expect(error).toEqual(Error('Could not retrieve log list (' + status + ' ' + statusText + ') ' + JSON.stringify(body)))

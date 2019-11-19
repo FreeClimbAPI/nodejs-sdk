@@ -10,7 +10,6 @@ describe('calls', function () {
   describe('calls#get', function () {
     it('should call requester#get with the path to a specific call', function () {
       var getMock = jest.fn().mockResolvedValue(new Response('{}'))
-      //mockResolvedValue(new Response('{}'))
       requester.GET = getMock
 
       expect.assertions(1)
@@ -36,12 +35,7 @@ describe('calls', function () {
         }
         var status = 400
         var statusText = 'Bad Request'
-        requester.GET = jest.fn().mockReturnValue(Promise.resolve({
-          ok: false,
-          status: status,
-          statusText: statusText,
-          json: jest.fn().mockReturnValue(Promise.resolve(body))
-        }))
+        requester.GET = jest.fn().mockResolvedValue(new Response(JSON.stringify(body), {status, statusText}))
 
         expect.assertions(1)
         return calls().get(callId).catch(function (error) {
@@ -63,7 +57,7 @@ describe('calls', function () {
     })
     describe('on success', function () {
       it('should return null', function () {
-        requester.POST = jest.fn().mockReturnValue(Promise.resolve({ok: true}))
+        requester.POST = jest.fn().mockResolvedValue(new Response())
 
         expect.assertions(1)
         return calls().update().then(function (result) {
@@ -78,12 +72,7 @@ describe('calls', function () {
         }
         var status = 495
         var statusText = 'Bad Something'
-        requester.POST = jest.fn().mockReturnValue(Promise.resolve({
-          ok: false,
-          status: status,
-          statusText: statusText,
-          json: jest.fn().mockReturnValue(Promise.resolve(body))
-        }))
+        requester.POST = jest.fn().mockResolvedValue(new Response(JSON.stringify(body), {status, statusText}))
 
         expect.assertions(1)
         return calls().update(callId).catch(function (error) {
@@ -121,12 +110,7 @@ describe('calls', function () {
         }
         var status = 499
         var statusText = 'Something'
-        requester.GET = jest.fn().mockReturnValue(Promise.resolve({
-          ok: false,
-          status: status,
-          statusText: statusText,
-          json: jest.fn().mockReturnValue(Promise.resolve(body))
-        }))
+        requester.GET = jest.fn().mockResolvedValue(new Response(JSON.stringify(body), {status, statusText}))
 
         expect.assertions(1)
         return calls().getList().catch(function (error) {
@@ -184,12 +168,7 @@ describe('calls', function () {
         }
         var status = 493
         var statusText = 'Failure Cause'
-        requester.POST = jest.fn().mockReturnValue(Promise.resolve({
-          ok: false,
-          status: status,
-          statusText: statusText,
-          json: jest.fn().mockReturnValue(Promise.resolve(body))
-        }))
+        requester.POST = jest.fn().mockResolvedValue(new Response(JSON.stringify(body), {status, statusText}))
 
         expect.assertions(1)
         return calls().create().catch(function (error) {

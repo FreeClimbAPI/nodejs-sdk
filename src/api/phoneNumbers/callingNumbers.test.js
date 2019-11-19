@@ -35,12 +35,7 @@ describe('callingNumbers', function () {
         }
         var status = 313
         var statusText = 'Message'
-        requester.GET = jest.fn().mockReturnValue(Promise.resolve({
-          ok: false,
-          status: status,
-          statusText: statusText,
-          json: jest.fn().mockReturnValue(Promise.resolve(body))
-        }))
+        requester.GET = jest.fn().mockResolvedValue(new Response(JSON.stringify(body), {status, statusText}))
 
         expect.assertions(1)
         return callingNumbers().get(callingNumberId).catch(function (error) {
@@ -78,13 +73,8 @@ describe('callingNumbers', function () {
         }
         var status = 423
         var statusText = 'mock status'
-        requester.POST = jest.fn().mockReturnValue(Promise.resolve({
-          ok: false,
-          status: status,
-          statusText: statusText,
-          json: jest.fn().mockReturnValue(Promise.resolve(body))
-        }))
-
+        requester.POST = jest.fn().mockResolvedValue(new Response(JSON.stringify(body), {status, statusText}))
+          
         expect.assertions(1)
         return callingNumbers().update(callingNumberId).catch(function (error) {
           expect(error).toEqual(Error('Could not update calling number ' + callingNumberId + ' (' + status + ' ' + statusText + ') ' + JSON.stringify(body)))
@@ -121,13 +111,8 @@ describe('callingNumbers', function () {
         }
         var status = 502
         var statusText = 'Bad Gateway'
-        requester.GET = jest.fn().mockReturnValue(Promise.resolve({
-          ok: false,
-          status: status,
-          statusText: statusText,
-          json: jest.fn().mockReturnValue(Promise.resolve(body))
-        }))
-
+        requester.GET = jest.fn().mockResolvedValue(new Response(JSON.stringify(body), {status, statusText}))
+        
         expect.assertions(1)
         return callingNumbers().getList().catch(function (error) {
           expect(error).toEqual(Error('Could not retrieve calling number list (' + status + ' ' + statusText + ') ' + JSON.stringify(body)))
@@ -181,12 +166,7 @@ describe('callingNumbers', function () {
         }
         var status = 424
         var statusText = 'Bad Request'
-        requester.POST = jest.fn().mockReturnValue(Promise.resolve({
-          ok: false,
-          status: status,
-          statusText: statusText,
-          json: jest.fn().mockReturnValue(Promise.resolve(body))
-        }))
+        requester.POST = jest.fn().mockResolvedValue(new Response(JSON.stringify(body), {status, statusText}))
 
         var phoneNumber = '+132345436'
         expect.assertions(1)
@@ -198,7 +178,7 @@ describe('callingNumbers', function () {
   })
   describe('callingNumbers#delete', function () {
     it('should call requester#delete with the path', function () {
-      var deleteMock = jest.fn().mockReturnValue(Promise.resolve({ok: true}))
+      var deleteMock = jest.fn().mockResolvedValue(new Response())
       requester.DELETE = deleteMock
 
       expect.assertions(1)
@@ -208,7 +188,7 @@ describe('callingNumbers', function () {
     })
     describe('on success', function () {
       it('should return null', function () {
-        requester.DELETE = jest.fn().mockReturnValue(Promise.resolve({ok: true}))
+        requester.DELETE = jest.fn().mockResolvedValue(new Response())
 
         expect.assertions(1)
         return callingNumbers().delete().then(function (result) {
@@ -223,12 +203,7 @@ describe('callingNumbers', function () {
         }
         var status = 433
         var statusText = 'Bad Request'
-        requester.DELETE = jest.fn().mockReturnValue(Promise.resolve({
-          ok: false,
-          status: status,
-          statusText: statusText,
-          json: jest.fn().mockReturnValue(Promise.resolve(body))
-        }))
+        requester.DELETE = jest.fn().mockResolvedValue(new Response(JSON.stringify(body), {status, statusText}))
 
         expect.assertions(1)
         return callingNumbers().delete(callingNumberId).catch(function (error) {
