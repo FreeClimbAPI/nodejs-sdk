@@ -18,7 +18,7 @@ var agent = new https.Agent({
  * @param {string} authToken - The authToken for the auth header
  * @returns {string} encodedHeader - The base64 encoded auth header
  */
-function base64Encode (accountId, authToken) {
+function base64Encode(accountId, authToken) {
   return Buffer.from(accountId + ':' + authToken, 'utf8').toString('base64')
 }
 
@@ -27,7 +27,7 @@ function base64Encode (accountId, authToken) {
  *
  * @param {string} newUrl - The URL to the apiserver of the FreeClimb instance to use.
  */
-function setPersyUrl (newUrl) {
+function setPersyUrl(newUrl) {
   fcURL = newUrl
 }
 
@@ -40,13 +40,13 @@ function setPersyUrl (newUrl) {
  * @param {object} [query] - Query parameters for the GET request.
  * @returns {Promise} response - The response to the request.
  */
-function GET (accountId, authToken, path, query) {
+function GET(accountId, authToken, path, query) {
   var url = fcURL + path
   if (query) {
     url += '?' + querystring.stringify(query)
   }
   return fetch(url, {
-    headers: {'Authorization': 'Basic ' + base64Encode(accountId, authToken)},
+    headers: { 'Authorization': 'Basic ' + base64Encode(accountId, authToken) },
     agent: agent
   })
 }
@@ -60,7 +60,7 @@ function GET (accountId, authToken, path, query) {
  * @param {object} [body] - The request payload.
  * @returns {Promise} response - The response to the request.
  */
-function POST (accountId, authToken, path, body) {
+function POST(accountId, authToken, path, body) {
   return fetch(fcURL + path, {
     headers: {
       'Authorization': 'Basic ' + base64Encode(accountId, authToken),
@@ -80,7 +80,7 @@ function POST (accountId, authToken, path, body) {
  * @param {string} path - The URL fragment to append to the {@code fcURL}.
  * @returns {Promise} response - The response to the request.
  */
-function DELETE (accountId, authToken, path) {
+function DELETE(accountId, authToken, path) {
   return fetch(fcURL + path, {
     headers: {
       'Authorization': 'Basic ' + base64Encode(accountId, authToken)
@@ -90,10 +90,30 @@ function DELETE (accountId, authToken, path) {
   })
 }
 
+/**
+ * Make an authenticated PATCH request to the FreeClimb API.
+ *
+ * @param {string} accountId - The accountId for authentication.
+ * @param {string} authToken - The authToken for authentication.
+ * @param {string} path - The URL fragment to append to the {@code fcURL}.
+ * @returns {Promise} response - The response to the request.
+ */
+function PATCH(accountId, authToken, path, body) {
+  return fetch(fcURL + path, {
+    headers: {
+      'Authorization': 'Basic ' + base64Encode(accountId, authToken)
+    },
+    agent: agent,
+    method: 'PATCH',
+    body: JSON.stringify(body)
+  })
+}
+
 module.exports = {
-  GET: GET,
-  POST: POST,
-  DELETE: DELETE,
-  fcURL: fcURL,
-  setPersyUrl: setPersyUrl
+  GET,
+  POST,
+  DELETE,
+  PATCH,
+  fcURL,
+  setPersyUrl
 }

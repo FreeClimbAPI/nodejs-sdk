@@ -12,7 +12,7 @@ var requester = require('../requester/index')
  * @throws will throw an error on a failed response
  * @return the json response
  */
-function commonGetBuilder (accountId, authToken) {
+function commonGetBuilder(accountId, authToken) {
   return function (path, query, errorMsg) {
     return requester.GET(accountId, authToken, path, query).then(function (resp) {
       return handleResponse(errorMsg, resp)
@@ -32,7 +32,7 @@ function commonGetBuilder (accountId, authToken) {
  * @throws will throw an error on a failed response
  * @return the json response
  */
-function commonPostBuilder (accountId, authToken) {
+function commonPostBuilder(accountId, authToken) {
   return function (path, body, errorMsg) {
     return requester.POST(accountId, authToken, path, body).then(function (resp) {
       return handleResponse(errorMsg, resp)
@@ -47,11 +47,11 @@ function commonPostBuilder (accountId, authToken) {
  * @param {string} authToken - The authToken for authentication
  * @returns {Function} innerDelete - The curried function to call to make a request
  * @property {string} innerDelete.path - The URL to DELETE
- * @property {string{ innerDelete.errorMsg - The message to prepend on the error thrown on failure
+ * @property {string} innerDelete.errorMsg - The message to prepend on the error thrown on failure
  * @throws will throw an error on a failed response
  * @return will return null on success
  */
-function commonDeleteBuilder (accountId, authToken) {
+function commonDeleteBuilder(accountId, authToken) {
   return function (path, errorMsg) {
     return requester.DELETE(accountId, authToken, path).then(function (resp) {
       if (!resp.ok) {
@@ -68,7 +68,26 @@ function commonDeleteBuilder (accountId, authToken) {
   }
 }
 
-function handleResponse (errorMsg, resp) {
+/**
+ * A wrapper function that returns a helper function for making PATCH requests
+ *
+ * @param {string} accountId - The accountId for authentication
+ * @param {string} authToken - The authToken for authentication
+ * @returns {Function} innerPatch - The curried function to call to make a request
+ * @property {string} innerPatch.path - The URL to PATCH
+ * @property {string} innerPatch.errorMsg - The message to prepend on the error thrown on failure
+  * @throws will throw an error on a failed response
+  * @return will return null on success
+  */
+function commonPatchBuilder(accountId, authToken) {
+  return function (path, body, errorMsg) {
+    return requester.PATCH(accountId, authToken, path, body).then(function (resp) {
+      return handleResponse(errorMsg, resp);
+    })
+  }
+}
+
+function handleResponse(errorMsg, resp) {
   return resp.json().then(function (json) {
     if (!resp.ok) {
       throw new Error(errorMsg + ' (' + resp.status + ' ' + resp.statusText + ') ' + JSON.stringify(json))
@@ -85,7 +104,8 @@ function handleResponse (errorMsg, resp) {
 }
 
 module.exports = {
-  commonGetBuilder: commonGetBuilder,
-  commonPostBuilder: commonPostBuilder,
-  commonDeleteBuilder: commonDeleteBuilder
+  commonGetBuilder,
+  commonPostBuilder,
+  commonDeleteBuilder,
+  commonPatchBuilder
 }

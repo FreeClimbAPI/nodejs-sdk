@@ -41,6 +41,7 @@ function api (accountId, authToken) {
     availableNumbers: phoneNumbers.availableNumbers(accountId, authToken),
     incomingNumbers: phoneNumbers.incomingNumbers(accountId, authToken),
     callingNumbers: phoneNumbers.callingNumbers(accountId, authToken),
+    destinationNumbers: phoneNumbers.destinationNumbers(accountId, authToken),
     calls: calls(accountId, authToken),
     conferences: conferences(accountId, authToken),
     queues: queues(accountId, authToken),
