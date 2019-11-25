@@ -246,6 +246,16 @@ function sms (from, to, text, options) {
 }
 
 /**
+ * Build an Reject PerCL command.
+ *
+ * @param {string} reason - Reason for rejecting the call
+ * @returns {{Reject}} - An object rereseting a Reject command.
+ */
+function reject (reason) {
+  return {Reject: {reason}}
+}
+
+/**
  * Convenience function to convert one or more PerCL commands into a PerCL script.
  *
  * @param {object} scripts - one or more PerCL commands
@@ -277,5 +287,6 @@ module.exports = {
   say: say,
   getDigits: getDigits,
   getSpeech: getSpeech,
-  sms: sms
+  sms: sms,
+  reject
 }
