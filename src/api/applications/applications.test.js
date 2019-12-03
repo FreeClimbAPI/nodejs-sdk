@@ -2,6 +2,7 @@ jest.mock('../requester')
 
 var applications = require('./applications')
 var requester = require('../requester/index')
+var { Response } = require('node-fetch')
 
 describe('applications', function () {
   var accountId = 'mock_account_id'
@@ -10,7 +11,7 @@ describe('applications', function () {
 
   describe('applications#get', function () {
     it('should call fetch get with the path to a specific application', function () {
-      var getMock = jest.fn().mockReturnValue(Promise.resolve({ok: true, json: jest.fn().mockReturnValue(Promise.resolve({}))}))
+      var getMock = jest.fn().mockResolvedValue(Promise.resolve(new Response('{}')))
       requester.GET = getMock
 
       expect.assertions(1)
@@ -21,7 +22,7 @@ describe('applications', function () {
     describe('on success', function () {
       it('should return the application with the matching application ID', function () {
         var expectedResponse = {mock: 'application_id'}
-        requester.GET = jest.fn().mockReturnValue(Promise.resolve({ok: true, json: jest.fn().mockReturnValue(Promise.resolve(expectedResponse))}))
+        requester.GET = jest.fn().mockResolvedValue(new Response(JSON.stringify(expectedResponse)))
 
         expect.assertions(1)
         return applications().get().then(function (application) {
@@ -37,12 +38,8 @@ describe('applications', function () {
         }
         var status = 400
         var statusText = 'Bad Request'
-        requester.GET = jest.fn().mockReturnValue(Promise.resolve({
-          ok: false,
-          status: status,
-          statusText: statusText,
-          json: jest.fn().mockReturnValue(Promise.resolve(message))
-        }))
+        requester.GET = jest.fn().mockResolvedValue(new Response(JSON.stringify(message), {status, statusText}))
+       
         expect.assertions(1)
         return applications().get(applicationId).catch(function (resp) {
           expect(resp).toEqual(Error('Could not retrieve application ' + applicationId + ' (' + status + ' ' + statusText + ') ' + JSON.stringify(message)))
@@ -52,7 +49,7 @@ describe('applications', function () {
   })
   describe('applications#update', function () {
     it('should call fetch post with the path to a specific application and the body', function () {
-      var postMock = jest.fn().mockReturnValue(Promise.resolve({ok: true, json: jest.fn().mockReturnValue(Promise.resolve({}))}))
+      var postMock = jest.fn().mockResolvedValue(new Response('{}'))
       requester.POST = postMock
       var body = {alias: 'application Alias', voiceUrl: 'http://something'}
 
@@ -64,7 +61,7 @@ describe('applications', function () {
     describe('on success', function () {
       it('should return the application with the updated fields', function () {
         var expectedResponse = {updateApplication: 'mockResponse'}
-        requester.POST = jest.fn().mockReturnValue(Promise.resolve({ok: true, json: jest.fn().mockReturnValue(Promise.resolve(expectedResponse))}))
+        requester.POST = jest.fn().mockResolvedValue(new Response(JSON.stringify(expectedResponse)))
 
         expect.assertions(1)
         return applications().update().then(function (response) {
@@ -80,13 +77,8 @@ describe('applications', function () {
         }
         var status = 305
         var statusText = 'Use Proxy'
-        requester.POST = jest.fn().mockReturnValue(Promise.resolve({
-          ok: false,
-          status: status,
-          statusText: statusText,
-          json: jest.fn().mockReturnValue(Promise.resolve(body))
-        }))
-
+        requester.POST = jest.fn().mockResolvedValue(new Response(JSON.stringify(body), {status, statusText}))
+         
         expect.assertions(1)
         return applications().update(applicationId).catch(function (error) {
           expect(error).toEqual(Error('Could not update application ' + applicationId + ' (' + status + ' ' + statusText + ') ' + JSON.stringify(body)))
@@ -96,7 +88,7 @@ describe('applications', function () {
   })
   describe('applications#getList', function () {
     it('should call requester#get with the path to the list of applications and the given options', function () {
-      var getMock = jest.fn().mockReturnValue(Promise.resolve({ok: true, json: jest.fn().mockReturnValue(Promise.resolve({}))}))
+      var getMock = jest.fn().mockResolvedValue(Promise.resolve(new Response('{}')))
       requester.GET = getMock
       var options = {alias: 'this alias'}
 
@@ -108,7 +100,7 @@ describe('applications', function () {
     describe('on success', function () {
       it('should return the result of calling .json() on the response', function () {
         var expectedResult = 'MOCK_APPLICATION_LIST'
-        requester.GET = jest.fn().mockReturnValue(Promise.resolve({ok: true, json: jest.fn().mockReturnValue(Promise.resolve(expectedResult))}))
+        requester.GET = jest.fn().mockResolvedValue(new Response(expectedResult))
 
         expect.assertions(1)
         return applications('', '').getList().then(function (result) {
@@ -124,12 +116,8 @@ describe('applications', function () {
         }
         var status = 312
         var statusText = 'Permanent Redirect'
-        requester.GET = jest.fn().mockReturnValue(Promise.resolve({
-          ok: false,
-          status: status,
-          statusText: statusText,
-          json: jest.fn().mockReturnValue(Promise.resolve(body))
-        }))
+        requester.GET = jest.fn().mockResolvedValue(new Response(JSON.stringify(body), {status, statusText}))
+         
         expect.assertions(1)
         return applications().getList().catch(function (error) {
           expect(error).toEqual(Error('Could not retrieve application list (' + status + ' ' + statusText + ') ' + JSON.stringify(body)))
@@ -140,7 +128,7 @@ describe('applications', function () {
   describe('applications#getNextPage', function () {
     var mockNextPageUri = '/Accounts/accountId/Applications?cursor=524532452352345235345'
     it('should call requester#get with the given url', function () {
-      var getMock = jest.fn().mockReturnValue(Promise.resolve({ok: true, json: jest.fn().mockReturnValue(Promise.resolve({}))}))
+      var getMock = jest.fn().mockResolvedValue(new Response('{}'))
       requester.GET = getMock
 
       expect.assertions(1)
@@ -151,7 +139,7 @@ describe('applications', function () {
     describe('on success', function () {
       it('should return the next page', function () {
         var expectedPage = {page: 1, numPages: 2}
-        requester.GET = jest.fn().mockReturnValue(Promise.resolve({ok: true, json: jest.fn().mockReturnValue(Promise.resolve(expectedPage))}))
+        requester.GET = jest.fn().mockResolvedValue(new Response(JSON.stringify(expectedPage)))
 
         expect.assertions(1)
         return applications().getNextPage().then(function (response) {
@@ -166,12 +154,7 @@ describe('applications', function () {
         }
         var status = 434
         var statusText = 'Bad Pagination'
-        requester.GET = jest.fn().mockReturnValue(Promise.resolve({
-          ok: false,
-          status: status,
-          statusText: statusText,
-          json: jest.fn().mockReturnValue(Promise.resolve(body))
-        }))
+        requester.GET = jest.fn().mockResolvedValue(new Response(JSON.stringify(body), {status, statusText}))
 
         expect.assertions(1)
         return applications().getNextPage().catch(function (error) {
@@ -182,7 +165,7 @@ describe('applications', function () {
   })
   describe('applications#create', function () {
     it('should call requester#post with the correct path and the given options', function () {
-      var postMock = jest.fn().mockReturnValue(Promise.resolve({ok: true, json: jest.fn().mockReturnValue(Promise.resolve({}))}))
+      var postMock = jest.fn().mockResolvedValue(new Response('{}'))
       requester.POST = postMock
       var options = {
         alias: 'Test Application',
@@ -200,7 +183,7 @@ describe('applications', function () {
     describe('on success', function () {
       it('should call .json() on the response', function () {
         var expectedPayload = {mock: 'Application'}
-        requester.POST = jest.fn().mockReturnValue(Promise.resolve({ok: true, json: jest.fn().mockReturnValue(Promise.resolve(expectedPayload))}))
+        requester.POST = jest.fn().mockResolvedValue(new Response(JSON.stringify(expectedPayload)))
 
         expect.assertions(1)
         return applications().create().then(function (response) {
@@ -216,12 +199,8 @@ describe('applications', function () {
         }
         var status = 300
         var statusText = 'Multiple Choices'
-        requester.POST = jest.fn().mockReturnValue(Promise.resolve({
-          ok: false,
-          status: status,
-          statusText: statusText,
-          json: jest.fn().mockReturnValue(Promise.resolve(body))
-        }))
+        requester.POST = jest.fn().mockResolvedValue(new Response(JSON.stringify(body), {status, statusText}))
+        
         expect.assertions(1)
         return applications().create().catch(function (error) {
           expect(error).toEqual(Error('Could not create application (' + status + ' ' + statusText + ') ' + JSON.stringify(body)))
@@ -231,7 +210,7 @@ describe('applications', function () {
   })
   describe('applications#delete', function () {
     it('should call requester#delete with the correct path', function () {
-      var deleteMock = jest.fn().mockReturnValue(Promise.resolve({ok: true, json: jest.fn()}))
+      var deleteMock = jest.fn().mockResolvedValue(new Response())
       requester.DELETE = deleteMock
 
       expect.assertions(1)
@@ -241,7 +220,7 @@ describe('applications', function () {
     })
     describe('on success', function () {
       it('should return null', function () {
-        requester.DELETE = jest.fn().mockReturnValue(Promise.resolve({ok: true}))
+        requester.DELETE = jest.fn().mockResolvedValue(new Response())
         expect.assertions(1)
         return applications().delete().then(function (response) {
           expect(response).toBe(null)
@@ -256,12 +235,8 @@ describe('applications', function () {
         }
         var status = 451
         var statusText = 'Unavailable For Legal Reasons'
-        requester.DELETE = jest.fn().mockReturnValue(Promise.resolve({
-          ok: false,
-          status: status,
-          statusText: statusText,
-          json: jest.fn().mockReturnValue(Promise.resolve(body))
-        }))
+        requester.DELETE = jest.fn().mockResolvedValue(new Response(JSON.stringify(body), {status, statusText}))
+
         expect.assertions(1)
         return applications().delete(applicationId).catch(function (error) {
           expect(error).toEqual(Error('Could not delete application ' + applicationId + ' (' + status + ' ' + statusText + ') ' + JSON.stringify(body)))
