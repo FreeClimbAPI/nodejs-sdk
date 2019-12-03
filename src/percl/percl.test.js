@@ -221,6 +221,15 @@ describe('percl', function () {
       expect(percl.sms(from, to, text, {notificationUrl: url})).toEqual({Sms: {from: from, to: to, text: text, notificationUrl: url}})
     })
   })
+  describe('reject', function() {
+    let reason = 'Not a bears fan'
+    it('should create a reject object with the given reason', function () {
+      expect(percl.reject(reason)).toEqual({Reject: {reason}})
+    })
+    it('should create a reject object with an undefined reason', function (){
+      expect(percl.reject()).toEqual({Reject:{}})
+    })
+  })
   describe('percl#build', function () {
     it('should build an array of the arguments', function () {
       var script1 = {Say: {text: 'Hello World'}}
