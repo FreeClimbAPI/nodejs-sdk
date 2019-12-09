@@ -5,7 +5,7 @@ The FreeClimb Javascript SDK will allow you to easily use the FreeClimb API in a
 [![npm version](https://badge.fury.io/js/%40persephony%2Fsdk.svg)](https://badge.fury.io/js/%40persephony%2Fsdk)
 [![Maintainability](https://api.codeclimate.com/v1/badges/ce6d2d1f879c3139c1ed/maintainability)](https://codeclimate.com/github/PersephonyAPI/javascript-sdk/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/ce6d2d1f879c3139c1ed/test_coverage)](https://codeclimate.com/github/PersephonyAPI/javascript-sdk/test_coverage)
-
+[![Documentation](https://img.shields.io/badge/documentation-1.0.0-green?url=https://freeclimbapi.github.io/jsdocs/index.html&link=https://freeclimbapi.github.io/jsdocs/index.html&label=documentation&message=test)](https://img.shields.io/badge/documentation-1.0.0-green?url=https://freeclimbapi.github.io/jsdocs/index.html&link=https://freeclimbapi.github.io/jsdocs/index.html&label=documentation&message=test)
 
 ## Installation
 
