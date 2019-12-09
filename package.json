@@ -4,14 +4,14 @@
   "description": "The SDK for the FreeClimp API",
   "homepage": "https://www.freeclimb.com",
   "bugs": {
-    "email": "support@persephony.com"
+    "email": "support@freeclimb.com"
   },
   "license": "MIT",
   "author": "",
   "main": "src/index.js",
   "repository": {
     "type": "git",
-    "url": "git@github.com:PersephonyAPI/javascript-sdk.git"
+    "url": "git@github.com:FreeClimbAPI/javascript-sdk.git"
   },
   "publishConfig": {
     "access": "public"
