@@ -19,7 +19,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = u'FreeClimb JavaScript SDK'
+project = u'FreeClimb Node.js SDK'
 copyright = u'2018, FreeClimb Team'
 author = u'FreeClimb Team'
 
@@ -107,7 +107,7 @@ html_static_path = ['.static']
 # -- Options for HTMLHelp output ---------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'FreeClimbJavaScriptSDKdoc'
+htmlhelp_basename = 'FreeClimbNodejsSDKdoc'
 
 
 # -- Options for LaTeX output ------------------------------------------------
@@ -134,7 +134,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'FreeClimbJavaScriptSDK.tex', u'FreeClimb JavaScript SDK Documentation',
+    (master_doc, 'FreeClimbNodejsSDK.tex', u'FreeClimb Node.js SDK Documentation',
      u'FreeClimb Team', 'manual'),
 ]
 
@@ -144,7 +144,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'FreeClimbjavascriptsdk', u'FreeClimb JavaScript SDK Documentation',
+    (master_doc, 'FreeClimbNodejssdk', u'FreeClimb Node.js SDK Documentation',
      [author], 1)
 ]
 
@@ -155,8 +155,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'FreeClimbJavaScriptSDK', u'FreeClimb JavaScript SDK Documentation',
-     author, 'FreeClimbJavaScriptSDK', 'One line description of project.',
+    (master_doc, 'FreeClimbNodejsSDK', u'FreeClimb Node.js SDK Documentation',
+     author, 'FreeClimbNodejsSDK', 'One line description of project.',
      'Miscellaneous'),
 ]
 
