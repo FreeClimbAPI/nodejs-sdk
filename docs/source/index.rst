@@ -1,4 +1,4 @@
-Welcome to FreeClimb JavaScript SDK's documentation!
+Welcome to FreeClimb Node.js SDK's documentation!
 =====================================================
 
 * :ref:`search`
@@ -15,12 +15,12 @@ Contents
 Introduction
 ============
 
-The FreeClimb Javascript SDK provides helpful functions to greatly simplify sending requests to the FreeClimb API and building PerCL scripts.
+The FreeClimb Node.js SDK provides helpful functions to greatly simplify sending requests to the FreeClimb API and building PerCL scripts.
 
 Setup
 =========
 
-To get started using the FreeClimb JavaScript SDK, add it as a dependency using your package manager.
+To get started using the FreeClimb Node.js SDK, add it as a dependency using your package manager.
 
     ``npm install --save @freeclimb/sdk``
 
