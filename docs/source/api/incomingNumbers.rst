@@ -58,7 +58,7 @@ delete(incomingNumberId)
 
 
     Remove the incoming phone number with a matching :code:`incomingPhoneNumberId` as an incoming number. FreeClimb will no longer answer calls to this number.
-coming phone number with a matching :code:`incomingPhoneNumberId`. Persephony will no longer answer calls to this number.
+coming phone number with a matching :code:`incomingPhoneNumberId`. FreeClimb will no longer answer calls to this number.
 
     :incomingNumberId: {string} The id of the incoming phone number to delete.
 
