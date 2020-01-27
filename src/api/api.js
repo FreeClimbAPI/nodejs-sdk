@@ -18,7 +18,7 @@ var requester = require('./requester/index')
  * @type {Object}
  * @property {module:freeclimb-sdk/api/accounts} accounts - The Accounts module
  * @property {module:freeclimb-sdk/api/applications} applications - The Applications module
- * @property {module:freeclimb-sdk/api/availableNumbers} availableNumbers - The Available Numbers module
+ * @property {module:freeclimb-sdk/api/availablePhoneNumbers} availableNumbers - The Available Numbers module
  * @property {module:freeclimb-sdk/api/incomingNumbers} incomingNumbers - the Incoming Numbers module
  * @property {module:freeclimb-sdk/api/callingNumbers} callingNumbers - the Calling Numbers module
  * @property {module:freeclimb-sdk/api/calls} calls - the Calls module

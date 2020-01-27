@@ -1,4 +1,8 @@
-var assign = require('lodash.assign')
+/**
+ * @module freeclimb-sdk/api/calls
+ */
+
+ var assign = require('lodash.assign')
 var requester = require('../requester/index')
 var common = require('../common/index')
 
