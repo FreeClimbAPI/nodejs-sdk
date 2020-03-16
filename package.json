@@ -1,13 +1,13 @@
 {
   "name": "@freeclimb/sdk",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "The SDK for the FreeClimp API",
   "homepage": "https://www.freeclimb.com",
   "bugs": {
     "email": "support@freeclimb.com"
   },
   "license": "MIT",
-  "author": "",
+  "author": "Vail Systems, Inc.",
   "main": "src/index.js",
   "repository": {
     "type": "git",
