@@ -54,14 +54,9 @@ function commonPostBuilder (accountId, authToken) {
 function commonDeleteBuilder (accountId, authToken) {
   return function (path, errorMsg) {
     return requester.DELETE(accountId, authToken, path).then(function (resp) {
-      const respCopy = resp.clone()
       if (!resp.ok) {
-        return resp.json().then(function (json) {
-          throw new Error(errorMsg + ' (' + resp.status + ' ' + resp.statusText + ') ' + JSON.stringify(json))
-        }, function () {
-          return respCopy.text().then(function (text) {
-            throw new Error(errorMsg + ' (' + respCopy.status + ' ' + respCopy.statusText + ') ' + text)
-          })
+        return resp.text().then(function (text) {
+          throw new Error(errorMsg + ' (' + resp.status + ' ' + resp.statusText + ') ' + text)
         })
       }
       return null
@@ -70,21 +65,15 @@ function commonDeleteBuilder (accountId, authToken) {
 }
 
 function handleResponse (errorMsg, resp) {
-
-  const respCopy = resp.clone()
-
-  return resp.json().then(function (json) {
-    if (!resp.ok) {
-      throw new Error(errorMsg + ' (' + resp.status + ' ' + resp.statusText + ') ' + JSON.stringify(json))
+  return resp.text().then(text => {
+    if(!resp.ok){
+      throw new Error(errorMsg + ' (' + resp.status + ' ' + resp.statusText + ') ' + text)
     }
-    return json
-  }, function () {
-    return respCopy.text().then(function (text) {
-      if (!respCopy.ok) {
-        throw new Error(errorMsg + ' (' + respCopy.status + ' ' + respCopy.statusText + ') ' + text)
-      }
+    try {
+      return JSON.parse(text)
+    } catch (_) {
       return text
-    })
+    }
   })
 }
 

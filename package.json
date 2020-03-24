@@ -1,6 +1,6 @@
 {
   "name": "@freeclimb/sdk",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "The SDK for the FreeClimp API",
   "homepage": "https://www.freeclimb.com",
   "bugs": {
