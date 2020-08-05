@@ -17,8 +17,9 @@ describe('percl', function () {
       var ifMachine = 'redirect'
       var ifMachineUrl = 'http://if.machine'
       var statusCallbackUrl = 'http://status.callback'
-      var expectedResult = {OutDial: {destination: to, callingNumber: from, actionUrl: actionUrl, callConnectUrl: callConnectUrl, sendDigits: sendDigits, timeout: timeout, ifMachine: ifMachine, ifMachineUrl: ifMachineUrl, statusCallbackUrl: statusCallbackUrl}}
-      expect(percl.outDial(to, from, actionUrl, callConnectUrl, {sendDigits: sendDigits, timeout: timeout, ifMachine: ifMachine, ifMachineUrl: ifMachineUrl, statusCallbackUrl: statusCallbackUrl})).toEqual(expectedResult)
+      var privacyMode = true
+      var expectedResult = {OutDial: {destination: to, callingNumber: from, actionUrl: actionUrl, callConnectUrl: callConnectUrl, sendDigits: sendDigits, timeout: timeout, ifMachine: ifMachine, ifMachineUrl: ifMachineUrl, statusCallbackUrl: statusCallbackUrl, privacyMode: privacyMode}}
+      expect(percl.outDial(to, from, actionUrl, callConnectUrl, {sendDigits: sendDigits, timeout: timeout, ifMachine: ifMachine, ifMachineUrl: ifMachineUrl, statusCallbackUrl: statusCallbackUrl, privacyMode: privacyMode})).toEqual(expectedResult)
     })
   })
   describe('hangup', function () {
@@ -50,7 +51,8 @@ describe('percl', function () {
     })
     it('should allow optional properties', function () {
       var pauseMs = 1000
-      expect(percl.sendDigits(digits, {pauseMs: pauseMs})).toEqual({SendDigits: {digits: digits, pauseMs: pauseMs}})
+      var privacyMode = true
+      expect(percl.sendDigits(digits, {pauseMs: pauseMs, privacyMode: privacyMode})).toEqual({SendDigits: {digits: digits, pauseMs: pauseMs, privacyMode: privacyMode}})
     })
   })
   describe('createConference', function () {
@@ -161,7 +163,8 @@ describe('percl', function () {
     it('should allow optional properties', function () {
       var loop = 2
       var conferenceId = 'CF3241235123512341235'
-      expect(percl.play(file, {loop: loop, conferenceId: conferenceId})).toEqual({Play: {file: file, loop: loop, conferenceId: conferenceId}})
+      var privacyMode = true
+      expect(percl.play(file, {loop: loop, conferenceId: conferenceId, privacyMode: privacyMode})).toEqual({Play: {file: file, loop: loop, conferenceId: conferenceId, privacyMode: privacyMode}})
     })
   })
   describe('playEarlyMedia', function () {
@@ -182,8 +185,9 @@ describe('percl', function () {
       var language = 'en-US'
       var loop = 3
       var conferenceId = 'CF79df825d6690cc51111673d64aed6ed121dd39e1'
-      var expectedResult = {Say: {text: text, language: language, loop: loop, conferenceId: conferenceId}}
-      expect(percl.say(text, {language: enums.language.ENGLISH_US, loop: 3, conferenceId: conferenceId})).toEqual(expectedResult)
+      var privacyMode = true
+      var expectedResult = {Say: {text: text, language: language, loop: loop, conferenceId: conferenceId, privacyMode: privacyMode}}
+      expect(percl.say(text, {language: enums.language.ENGLISH_US, loop: 3, conferenceId: conferenceId, privacyMode: privacyMode})).toEqual(expectedResult)
     })
   })
   describe('getDigits', function () {
@@ -193,8 +197,9 @@ describe('percl', function () {
     })
     it('should allow optional properties', function () {
       var initialTimeoutMs = 40
+      var privacyMode = true
       var prompts = [{Say: {text: 'press a button'}}, {Pause: {length: 3}}]
-      expect(percl.getDigits(actionUrl, {initialTimeoutMs: initialTimeoutMs, prompts: prompts})).toEqual({GetDigits: {actionUrl: actionUrl, initialTimeoutMs: initialTimeoutMs, prompts: prompts}})
+      expect(percl.getDigits(actionUrl, {initialTimeoutMs: initialTimeoutMs, prompts: prompts, privacyMode: privacyMode})).toEqual({GetDigits: {actionUrl: actionUrl, initialTimeoutMs: initialTimeoutMs, prompts: prompts, privacyMode: privacyMode}})
     })
   })
   describe('getSpeech', function () {
@@ -206,7 +211,8 @@ describe('percl', function () {
     it('should allow optional properties', function () {
       var grammarType = 'BUILTIN'
       var playBeep = true
-      expect(percl.getSpeech(actionUrl, grammarFile, {grammarType: grammarType, playBeep: playBeep})).toEqual({GetSpeech: {actionUrl: actionUrl, grammarFile: grammarFile, grammarType: grammarType, playBeep: playBeep}})
+      var privacyMode = true
+      expect(percl.getSpeech(actionUrl, grammarFile, {grammarType: grammarType, playBeep: playBeep, privacyMode: privacyMode})).toEqual({GetSpeech: {actionUrl: actionUrl, grammarFile: grammarFile, grammarType: grammarType, playBeep: playBeep, privacyMode: privacyMode}})
     })
   })
   describe('sms', function () {
