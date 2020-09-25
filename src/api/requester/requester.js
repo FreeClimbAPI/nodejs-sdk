@@ -5,7 +5,7 @@ var querystring = require('querystring')
 /**
  * The URL of the FreeClimb API
  */
-var fcURL = 'https://www.freeclimb.com/apiserver'
+var apiUrl = 'https://www.freeclimb.com/apiserver'
 // TODO - delete this, very insecure
 var agent = new https.Agent({
   rejectUnauthorized: false
@@ -27,8 +27,8 @@ function base64Encode (accountId, authToken) {
  *
  * @param {string} newUrl - The URL to the apiserver of the FreeClimb instance to use.
  */
-function setPersyUrl (newUrl) {
-  fcURL = newUrl
+function setApiUrl (newUrl) {
+  apiUrl = newUrl
 }
 
 /**
@@ -36,12 +36,12 @@ function setPersyUrl (newUrl) {
  *
  * @param {string} accountId - The accountId for authentication.
  * @param {string} authToken - The authToken for authentication.
- * @param {string} path - The URL fragment to append to the {@code fcURL}.
+ * @param {string} path - The URL fragment to append to the {@code apiUrl}.
  * @param {object} [query] - Query parameters for the GET request.
  * @returns {Promise} response - The response to the request.
  */
 function GET (accountId, authToken, path, query) {
-  var url = fcURL + path
+  var url = apiUrl + path
   if (query) {
     url += '?' + querystring.stringify(query)
   }
@@ -56,12 +56,12 @@ function GET (accountId, authToken, path, query) {
  *
  * @param {string} accountId - The accountId for authentication.
  * @param {string} authToken - The authToken for authentication.
- * @param {string} path - the URL fragment to append to the {@code fcURL}.
+ * @param {string} path - the URL fragment to append to the {@code apiUrl}.
  * @param {object} [body] - The request payload.
  * @returns {Promise} response - The response to the request.
  */
 function POST (accountId, authToken, path, body) {
-  return fetch(fcURL + path, {
+  return fetch(apiUrl + path, {
     headers: {
       'Authorization': 'Basic ' + base64Encode(accountId, authToken),
       'Content-Type': 'application/json'
@@ -77,11 +77,11 @@ function POST (accountId, authToken, path, body) {
  *
  * @param {string} accountId - The accountId for authentication.
  * @param {string} authToken - The authToken for authentication.
- * @param {string} path - The URL fragment to append to the {@code fcURL}.
+ * @param {string} path - The URL fragment to append to the {@code apiUrl}.
  * @returns {Promise} response - The response to the request.
  */
 function DELETE (accountId, authToken, path) {
-  return fetch(fcURL + path, {
+  return fetch(apiUrl + path, {
     headers: {
       'Authorization': 'Basic ' + base64Encode(accountId, authToken)
     },
@@ -94,6 +94,6 @@ module.exports = {
   GET: GET,
   POST: POST,
   DELETE: DELETE,
-  fcURL: fcURL,
-  setPersyUrl: setPersyUrl
+  apiUrl: apiUrl,
+  setApiUrl: setApiUrl
 }
