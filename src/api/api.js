@@ -47,7 +47,7 @@ function api (accountId, authToken) {
     logs: logs(accountId, authToken),
     recordings: recordings(accountId, authToken),
     messages: messages(accountId, authToken),
-    setPersyUrl: requester.setPersyUrl
+    setApiUrl: requester.setApiUrl
   }
 }
 
