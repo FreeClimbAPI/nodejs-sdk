@@ -15,7 +15,7 @@ API
    recordings
    messages
 
-setPersyUrl(newUrl)
+setApiUrl(newUrl)
 ^^^^^^^^^^^^^^^^^^^^^
 
 
