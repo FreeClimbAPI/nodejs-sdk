@@ -39,4 +39,4 @@ To generate the documentation, activate the virtual environment and run `make ht
 
 ## Getting Help
 
-If you are experiencing difficulties, contact our support team at [support@freeclimb.com](mailto:support@freeclimb.com)
+If you are experiencing difficulties,[contact support](https://freeclimb.com/support).
