@@ -1,5 +1,5 @@
 ## Introduction
-The FreeClimb Node.js SDK will allow you to easily use the FreeClimb API in a Node.js application.
+The FreeClimb Node.js SDK will allow you to easily use the FreeClimb API in a Node.js application. This SDK contains some FreeClimb features that are only available to Vail/Versay developers.  For documenation on those features see the [internal reference documentation](https://wiki.vailsys.com/display/FCDOCS/Reference).
 
 ## Installation
 
