@@ -13,6 +13,8 @@ var common = require('../common/index')
  * @property {function} update - Update a live call
  * @property {function} getList - retrieve a list of calls from FreeClimb
  * @property {function} create - Create a new call through the FreeClimb API
+ * @property {function} sendAppOutcome -  Write an outcome on the existing call
+ * @property {function} sendAppNav - Write an app nav on existing call
  */
 
 /**
@@ -63,6 +65,46 @@ function calls (accountId, authToken) {
   }
 
   /**
+   * Write an outcome on the existing call associated with the {@code callId}.
+   *
+   * @param {string} callId - The {@code callId} of the desired call.
+   * @param {string} outcome - The outcome to be applied to the call. (max length 16)
+   * @returns {Promise<object>} requestId - Will resolve to the request ID on a success.
+   * @throws will throw an error on a failed response
+   */
+  function sendAppOutcome (callId, outcome) {
+    return requester.POST(accountId, authToken, rootUrl + '/' + callId + '/AppOutcome', {outcome: outcome}).then(function (resp) {
+      if (!resp.ok) {
+        return resp.json().then(function (json) {
+          throw new Error('Could not send an app outcome to call ' + callId + ' (' + resp.status + ' ' + resp.statusText + ') ' + JSON.stringify(json))
+        })
+      }
+      return resp
+    })
+  }
+
+  /**
+   * Write an app nav on the existing call associated with the {@code callId}.
+   *
+   * @param {string} callId - The {@code callId} of the desired call.
+   * @param {string} key - The key to be applied to the call. (max length 64)
+   * @param {string} value - The value to be applied to the call. (max length 2048)
+   * @param {string} outcome - The outcome to be applied to the call. (max length 16)
+   * @returns {Promise<object>} response - Will resolve to the response on a success.
+   * @throws will throw an error on a failed response
+   */
+  function sendAppNav (callId, key, value, outcome) {
+    return requester.POST(accountId, authToken, rootUrl + '/' + callId + '/AppNav', {key: key, value: value, outcome: outcome}).then(function (resp) {
+      if (!resp.ok) {
+        return resp.json().then(function (json) {
+          throw new Error('Could not send an app nav to call ' + callId + ' (' + resp.status + ' ' + resp.statusText + ') ' + JSON.stringify(json))
+        })
+      }
+      return resp
+    })
+  }
+
+  /**
    * Retrieve a list of calls associated with the {@code accountId}
    *
    * @param {object} [filters] - Optional filters containing a number of possible ways to filter the calls returned by FreeClimb.
@@ -104,7 +146,9 @@ function calls (accountId, authToken) {
     update: update,
     getList: getList,
     getNextPage: getNextPage,
-    create: create
+    create: create,
+    sendAppOutcome: sendAppOutcome,
+    sendAppNav: sendAppNav
   }
 }
 

@@ -212,6 +212,48 @@ sms(from, to, text, options)
 
     :returns: {{Sms}} An object representing an Sms command.
 
+reject(reason)
+---------------
+
+    Build a Reject PerCL command
+
+    :reason: {string} Reason for rejecting the call
+
+    :returns: {{Reject}} An object representing a Reject command.
+
+captureUtterance(actionUrl, options)
+-------------------------------------
+
+    Build an CaptureUtterance PerCL command.
+
+    :actionUrl: {string} The URL to which information on the completed recording is submitted. The PerCL received in response is then used to continue with Call processing.
+
+    :[options]: {object} Additional properties to include in the command.
+
+    :returns: {{CaptureUtterance}} An object representing an CaptureUtterance command.
+
+sendAppNav(key, value, options)
+--------------------------------
+
+    Build an SendAppNav PerCL command.
+
+    :key: {string} Text to populate the key. Max length 64
+    :value: {string} Text to populate the value.  Max length 2048
+
+    :[options]: {object} Additional properties to include in the command.
+
+    :returns: {{SendAppNav}} An object representing an SendAppNav command.
+
+
+sendAppOutcome(outcome)
+------------------------
+
+    Build an SendAppOutcome PerCL command.
+
+    :outcome: {string} Text to populate the outcome.  Max length 16
+
+    :returns: {{SendAppNav}} An object representing an SendAppNav command.
+
 Helpers
 ^^^^^^^
 

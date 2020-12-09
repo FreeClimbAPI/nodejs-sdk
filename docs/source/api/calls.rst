@@ -56,3 +56,27 @@ create(to, from, applicationId, options)
 
     :returns: {Promise<object>} A promise that resolves to the newly placed call.
     :throws: Will throw an error on a failed response.
+
+sendAppOutcome(callId, outcome)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+    Write an outcome on the existing call associated with the callId.
+
+    :callId: {string} The callId of the desired call.
+    :outcome: {string} The outcome to be applied to the call. (max length 16)
+
+    :returns: {Promise<object>} A promise that resolves to the response of the updated call.
+    :throws: Will throw an error on a failed response.
+
+sendAppNav(callId, key, value, outcome)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+    Retrieve a list of calls associated with the {@code accountId}
+
+    :callId: {string} The callId of the desired call.
+    :key: {string} The key to be applied to the call. (max length 64)
+    :value: {string} The value to be applied to the call. (max length 2048)
+    :outcome: {string} The outcome to be applied to the call. (max length 16)
+
+    :returns: {Promise<object>} A promise that resolves to the response of the updated call.
+    :throws: Will throw an error on a failed response.

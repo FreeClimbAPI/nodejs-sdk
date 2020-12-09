@@ -51,7 +51,11 @@ describe('applications', function () {
     it('should call fetch post with the path to a specific application and the body', function () {
       var postMock = jest.fn().mockResolvedValue(new Response('{}'))
       requester.POST = postMock
-      var body = {alias: 'application Alias', voiceUrl: 'http://something'}
+      var body = {
+        alias: 'application Alias',
+        voiceUrl: 'http://something',
+        xHeaderFilters: ['X-Header-One-.*', 'X-Header-Two']
+      }
 
       expect.assertions(1)
       return applications(accountId, authToken).update(applicationId, body).then(function (application) {
@@ -90,7 +94,10 @@ describe('applications', function () {
     it('should call requester#get with the path to the list of applications and the given options', function () {
       var getMock = jest.fn().mockResolvedValue(Promise.resolve(new Response('{}')))
       requester.GET = getMock
-      var options = {alias: 'this alias'}
+      var options = {
+        alias: 'this alias',
+        xHeaderFilters: ['X-Header-One-.*', 'X-Header-Two']
+      }
 
       expect.assertions(1)
       return applications(accountId, authToken).getList(options).then(function (response) {
@@ -172,7 +179,8 @@ describe('applications', function () {
         voiceUrl: 'http://www.test.url',
         voiceFallbackUrl: 'http://www.fallback.url',
         callConnectUrl: 'http://www.call.connect',
-        statusCallbackUrl: 'http://www.status.url'
+        statusCallbackUrl: 'http://www.status.url',
+        xHeaderFilters: ['X-Header-One-.*', 'X-Header-Two']
       }
 
       expect.assertions(1)

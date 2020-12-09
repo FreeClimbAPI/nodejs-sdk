@@ -236,6 +236,95 @@ describe('percl', function () {
       expect(percl.reject()).toEqual({Reject:{}})
     })
   })
+  describe('captureUtterance', function () {
+    var actionUrl = 'http://action.url'
+    it('should return an CaptureUtterance command with the actionUrl set to the input values', function () {
+      var expectedResult = {CaptureUtterance: {actionUrl: actionUrl}}
+      expect(percl.captureUtterance(actionUrl)).toEqual(expectedResult)
+    })
+    it('should allow setting the optional fields', function () {
+      var silenceTimeoutMs = 4001
+      var noInputTimeoutMs = 4002
+      var sensitivityLevel = 0.8
+      var maxLengthSec = 55
+      var playBeep = true
+      var autoStart = true
+      var prompts = [{Say: {text: 'press a button'}}, {Pause: {length: 3}}]
+      var privacyMode = true
+      var expectedResult = {
+        CaptureUtterance: {
+          actionUrl: actionUrl,
+          silenceTimeoutMs: silenceTimeoutMs,
+          noInputTimeoutMs: noInputTimeoutMs,
+          sensitivityLevel: sensitivityLevel,
+          maxLengthSec: maxLengthSec,
+          playBeep: playBeep,
+          autoStart: autoStart,
+          prompts: prompts,
+          privacyMode: privacyMode
+        }
+      }
+      expect(percl.captureUtterance(actionUrl, {
+        silenceTimeoutMs: silenceTimeoutMs,
+        noInputTimeoutMs: noInputTimeoutMs,
+        sensitivityLevel: sensitivityLevel,
+        maxLengthSec: maxLengthSec,
+        playBeep: playBeep,
+        autoStart: autoStart,
+        prompts: prompts,
+        privacyMode: privacyMode
+      })).toEqual(expectedResult)
+    })
+  })
+  describe('sendAppNav', function () {
+    var key = 'test_key'
+    var value = 'test_value'
+    it('should return an SendAppNav command with the key and value set to the input values', function () {
+      var expectedResult = {SendAppNav: {key: key, value: value}}
+      expect(percl.sendAppNav(key, value)).toEqual(expectedResult)
+    })
+    it('should allow setting the optional fields', function () {
+      var outcome = 'test_outcome'
+      var expectedResult = {
+        SendAppNav: {
+          key: key,
+          value: value,
+          outcome: outcome
+        }
+      }
+      expect(percl.sendAppNav(key, value, {
+        outcome: outcome
+      })).toEqual(expectedResult)
+    })
+  })
+  describe('sendAppOutcome', function () {
+    var outcome = 'we-have-outcome'
+    it('should return an SendAppOutcome command with the outcome set to the input values', function () {
+      var expectedResult = {SendAppOutcome: {outcome: outcome}}
+      expect(percl.sendAppOutcome(outcome)).toEqual(expectedResult)
+    })
+  })
+  describe('sendSipInfo', function () {
+    var type = 'test_type'
+    var body = 'test_body'
+    it('should return an SendSipInfo command with the type and body set to the input values', function () {
+      var expectedResult = {SendSipInfo: {type: type, body: body}}
+      expect(percl.sendSipInfo(type, body)).toEqual(expectedResult)
+    })
+    it('should allow setting the optional fields', function () {
+      var privacyMode = true
+      var expectedResult = {
+        SendSipInfo: {
+          type: type,
+          body: body,
+          privacyMode: privacyMode
+        }
+      }
+      expect(percl.sendSipInfo(type, body, {
+        privacyMode: privacyMode
+      })).toEqual(expectedResult)
+    })
+  })
   describe('percl#build', function () {
     it('should build an array of the arguments', function () {
       var script1 = {Say: {text: 'Hello World'}}

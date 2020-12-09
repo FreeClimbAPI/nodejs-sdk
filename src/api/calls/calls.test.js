@@ -177,4 +177,82 @@ describe('calls', function () {
       })
     })
   })
+  describe('calls#sendAppOutcome', function () {
+    it('should call requester#post with the path and the outcome', function () {
+      var postMock = jest.fn().mockResolvedValue(new Response('{}'))
+      requester.POST = postMock
+
+      var outcome = 'mock_outcome'
+      expect.assertions(1)
+      return calls(accountId, authToken).sendAppOutcome(callId, outcome).then(function () {
+        expect(postMock).toHaveBeenCalledWith(accountId, authToken, '/Accounts/' + accountId + '/Calls/' + callId + '/AppOutcome', {outcome: outcome})
+      })
+    })
+    describe('on success', function () {
+      it('should return the response', function () {
+        var expectedPayload = {mock: 'call'}
+        var expectedResponse = new Response(JSON.stringify(expectedPayload));
+        requester.POST = jest.fn().mockResolvedValue(expectedResponse)
+        expect.assertions(1)
+        return calls().sendAppOutcome().then(function (response) {
+          expect(response).toEqual(expectedResponse)
+        })
+      })
+    })
+    describe('on failure', function () {
+      it('should throw an error', function () {
+        var body = {
+          message: 'message'
+        }
+        var status = 495
+        var statusText = 'Bad Something'
+        requester.POST = jest.fn().mockResolvedValue(new Response(JSON.stringify(body), {status, statusText}))
+
+        expect.assertions(1)
+        return calls().sendAppOutcome(callId).catch(function (error) {
+          expect(error).toEqual(Error('Could not send an app outcome to call ' + callId + ' (' + status + ' ' + statusText + ') ' + JSON.stringify(body)))
+        })
+      })
+    })
+  })
+  describe('calls#sendAppNav', function () {
+    it('should call requester#post with the path and the status', function () {
+      var postMock = jest.fn().mockResolvedValue(new Response('{}'))
+      requester.POST = postMock
+
+      var key = 'mock_key'
+      var value = 'mock_value'
+      var outcome = 'mock_outcome'
+      expect.assertions(1)
+      return calls(accountId, authToken).sendAppNav(callId, key, value, outcome).then(function () {
+        expect(postMock).toHaveBeenCalledWith(accountId, authToken, '/Accounts/' + accountId + '/Calls/' + callId + '/AppNav', {key: key, value: value, outcome: outcome})
+      })
+    })
+    describe('on success', function () {
+      it('should return the response', function () {
+        var expectedPayload = {mock: 'call'}
+        var expectedResponse = new Response(JSON.stringify(expectedPayload));
+        requester.POST = jest.fn().mockResolvedValue(expectedResponse)
+        expect.assertions(1)
+        return calls().sendAppNav().then(function (response) {
+          expect(response).toEqual(expectedResponse)
+        })
+      })
+    })
+    describe('on failure', function () {
+      it('should throw an error', function () {
+        var body = {
+          message: 'message'
+        }
+        var status = 495
+        var statusText = 'Bad Something'
+        requester.POST = jest.fn().mockResolvedValue(new Response(JSON.stringify(body), {status, statusText}))
+
+        expect.assertions(1)
+        return calls().sendAppNav(callId).catch(function (error) {
+          expect(error).toEqual(Error('Could not send an app nav to call ' + callId + ' (' + status + ' ' + statusText + ') ' + JSON.stringify(body)))
+        })
+      })
+    })
+  })
 })

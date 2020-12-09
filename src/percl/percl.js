@@ -246,10 +246,10 @@ function sms (from, to, text, options) {
 }
 
 /**
- * Build an Reject PerCL command.
+ * Build a Reject PerCL command.
  *
  * @param {string} reason - Reason for rejecting the call
- * @returns {{Reject}} - An object rereseting a Reject command.
+ * @returns {{Reject}} - An object representing a Reject command.
  */
 function reject (reason) {
   return {Reject: {reason}}
@@ -263,6 +263,51 @@ function reject (reason) {
  */
 function build (scripts) {
   return Array.prototype.slice.call(arguments)
+}
+
+/**
+ * Build an CaptureUtterance PerCL command.
+ *
+ * @param {string} actionUrl - The URL to which information on the completed recording is submitted. The PerCL received in response is then used to continue with Call processing.
+ * @param {object} [options] - Additional properties to include in the command.
+ * @returns {{CaptureUtterance}} - An object representing an CaptureUtterance command.
+ */
+function captureUtterance (actionUrl, options) {
+  return {CaptureUtterance: assign({actionUrl}, options)}
+}
+
+/**
+ * Build an SendAppNav PerCL command.
+ *
+ * @param {string} key - Text to populate the key. Max length 64
+ * @param {string} value - Text to populate the value.  Max length 2048
+ * @param {object} [options] - Additional properties to include in the command.
+ * @returns {{SendAppNav}} - An object representing an SendAppNav command.
+ */
+function sendAppNav (key, value, options) {
+  return {SendAppNav: assign({key, value}, options)}
+}
+
+/**
+ * Build an SendAppOutcome PerCL command.
+ *
+ * @param {string} outcome - Text to populate the outcome.  Max length 16
+ * @returns {{SendAppOutcome}} - An object representing an SendAppOutcome command.
+ */
+function sendAppOutcome (outcome) {
+  return {SendAppOutcome: assign({outcome})}
+}
+
+/**
+ * Build an SendSipInfo PerCL command.
+ *
+ * @param {string} type - Text string to populate the Content-Type header.  For RACC, it is the format “application/racc-action-specific”
+ * @param {string} body - Text to populate the message body. If needed, newlines should be encoded as \n.
+ * @param {object} [options] - Additional properties to include in the command.
+ * @returns {{SendSipInfo}} - An object representing an SendSipInfo command.
+ */
+function sendSipInfo (type, body, options) {
+  return {SendSipInfo: assign({type, body}, options)}
 }
 
 module.exports = {
@@ -288,5 +333,9 @@ module.exports = {
   getDigits: getDigits,
   getSpeech: getSpeech,
   sms: sms,
-  reject
+  reject,
+  captureUtterance,
+  sendAppNav,
+  sendAppOutcome,
+  sendSipInfo
 }
