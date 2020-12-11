@@ -8,11 +8,17 @@
  * @enum {string}
  */
 var messageStatus = {
-  SENT: 'sent',
-  FAILED: 'failed',
+  NEW: 'new',
   QUEUED: 'queued',
   REJECTED: 'rejected',
-  RECEIVED: 'received'
+  SENDING: 'sending',
+  SENT: 'sent',
+  FAILED: 'failed',
+  RECEIVED: 'received',
+  UNDELIVERED: "undelivered",
+  EXPIRED: "expired",
+  DELETED: "deleted",
+  UNKNOWN: "unknown"
 }
 
 module.exports = messageStatus
