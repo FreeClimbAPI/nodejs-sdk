@@ -7,6 +7,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ## [Unreleased]
 None
 
+<a name="1.1.1"></a>
 ## [1.1.1] - 2020-12-16
 ### Added
 - Additional message statuses for TFN functionality
