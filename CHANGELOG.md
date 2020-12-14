@@ -7,12 +7,12 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ## [Unreleased]
 None
 
-<a name="1.2.1"></a>
-## [1.2.1] - 2020-10-14
+## [1.1.1] - 2020-12-16
 ### Added
-- Add `Reject` PerCL command
-- Add `privacyMode` option
+- Additional message statuses for TFN functionality
 
+<a name="1.1.0"></a>
+## [1.1.0] - 2020-10-14
 ### Changed
 - Rename `setPersyUrl` to `setUrl`
 
@@ -20,8 +20,13 @@ None
 - Properly handle empty response bodies
 - Other Minor bug fixes
 
-<a name="1.2"></a>
-## [1.2] - 2019-10-16
+<a name="1.0.4"></a>
+## [1.0.4] - 2020-08-13
+### Added
+- Add `privacyMode` option
+
+<a name="1.0.2"></a>
+## [1.0.2] - 2019-12-09
 ### Changed
 - Persephony is now FreeClimb
 - Code cleanup
@@ -29,7 +34,12 @@ None
 - Test Update
 
 ### Fixed
-- Update common response handler to not use bodu twice
+- Update common response handler to not use body twice
+
+<a name="1.0.1"></a>
+## [1.0.1] - 2019-11-25
+### Added
+- Add `Reject` PerCL command
 
 <a name="1.1.1"></a>
 ## [1.1.1] - 2019-06-27
