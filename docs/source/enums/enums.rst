@@ -205,11 +205,17 @@ messageStatus
 
 Enum for Message.status values.
 
-- SENT
-- FAILED
+- NEW
 - QUEUED
 - REJECTED
+- SENDING
+- SENT
+- FAILED
 - RECEIVED
+- UNDELIVERED
+- EXPIRED
+- DELETED
+- UNKNOWN
 
 .. _Enums-playBeep-label:
 
