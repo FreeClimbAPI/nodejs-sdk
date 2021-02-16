@@ -147,7 +147,8 @@ describe('percl', function () {
       var maxLengthSec = 300
       var playBeep = false
       var autoStart = true
-      expect(percl.recordUtterance(actionUrl, {silenceTimeoutMs: silenceTimeoutMs, finishOnKey: finishOnKey, maxLengthSec: maxLengthSec, playBeep: playBeep, autoStart: autoStart})).toEqual({RecordUtterance: {actionUrl: actionUrl, silenceTimeoutMs: silenceTimeoutMs, finishOnKey: finishOnKey, maxLengthSec: maxLengthSec, playBeep: playBeep, autoStart: autoStart}})
+      var privacyMode = true
+      expect(percl.recordUtterance(actionUrl, {silenceTimeoutMs: silenceTimeoutMs, finishOnKey: finishOnKey, maxLengthSec: maxLengthSec, playBeep: playBeep, autoStart: autoStart, privacyMode: privacyMode})).toEqual({RecordUtterance: {actionUrl: actionUrl, silenceTimeoutMs: silenceTimeoutMs, finishOnKey: finishOnKey, maxLengthSec: maxLengthSec, playBeep: playBeep, autoStart: autoStart, privacyMode: privacyMode}})
     })
   })
   describe('startRecordCall', function () {
