@@ -6,7 +6,7 @@ var { Response } = require('node-fetch')
 
 describe('applications', function () {
   var accountId = 'mock_account_id'
-  var authToken = 'mock_auth_token'
+  var apiKey = 'mock_auth_token'
   var applicationId = 'mock_application_id'
 
   describe('applications#get', function () {
@@ -15,8 +15,8 @@ describe('applications', function () {
       requester.GET = getMock
 
       expect.assertions(1)
-      return applications(accountId, authToken).get(applicationId).then(function (application) {
-        expect(getMock).toBeCalledWith(accountId, authToken, '/Accounts/' + accountId + '/Applications/' + applicationId, {})
+      return applications(accountId, apiKey).get(applicationId).then(function (application) {
+        expect(getMock).toBeCalledWith(accountId, apiKey, '/Accounts/' + accountId + '/Applications/' + applicationId, {})
       })
     })
     describe('on success', function () {
@@ -54,8 +54,8 @@ describe('applications', function () {
       var body = {alias: 'application Alias', voiceUrl: 'http://something'}
 
       expect.assertions(1)
-      return applications(accountId, authToken).update(applicationId, body).then(function (application) {
-        expect(postMock).toBeCalledWith(accountId, authToken, '/Accounts/' + accountId + '/Applications/' + applicationId, body)
+      return applications(accountId, apiKey).update(applicationId, body).then(function (application) {
+        expect(postMock).toBeCalledWith(accountId, apiKey, '/Accounts/' + accountId + '/Applications/' + applicationId, body)
       })
     })
     describe('on success', function () {
@@ -93,8 +93,8 @@ describe('applications', function () {
       var options = {alias: 'this alias'}
 
       expect.assertions(1)
-      return applications(accountId, authToken).getList(options).then(function (response) {
-        expect(getMock).toBeCalledWith(accountId, authToken, '/Accounts/' + accountId + '/Applications', options)
+      return applications(accountId, apiKey).getList(options).then(function (response) {
+        expect(getMock).toBeCalledWith(accountId, apiKey, '/Accounts/' + accountId + '/Applications', options)
       })
     })
     describe('on success', function () {
@@ -132,8 +132,8 @@ describe('applications', function () {
       requester.GET = getMock
 
       expect.assertions(1)
-      return applications(accountId, authToken).getNextPage(mockNextPageUri).then(function () {
-        expect(getMock).toHaveBeenCalledWith(accountId, authToken, mockNextPageUri, null)
+      return applications(accountId, apiKey).getNextPage(mockNextPageUri).then(function () {
+        expect(getMock).toHaveBeenCalledWith(accountId, apiKey, mockNextPageUri, null)
       })
     })
     describe('on success', function () {
@@ -176,8 +176,8 @@ describe('applications', function () {
       }
 
       expect.assertions(1)
-      return applications(accountId, authToken).create(options).then(function (application) {
-        expect(postMock).toBeCalledWith(accountId, authToken, '/Accounts/' + accountId + '/Applications', options)
+      return applications(accountId, apiKey).create(options).then(function (application) {
+        expect(postMock).toBeCalledWith(accountId, apiKey, '/Accounts/' + accountId + '/Applications', options)
       })
     })
     describe('on success', function () {
@@ -214,8 +214,8 @@ describe('applications', function () {
       requester.DELETE = deleteMock
 
       expect.assertions(1)
-      return applications(accountId, authToken).delete(applicationId).then(function (response) {
-        expect(deleteMock).toBeCalledWith(accountId, authToken, '/Accounts/' + accountId + '/Applications/' + applicationId)
+      return applications(accountId, apiKey).delete(applicationId).then(function (response) {
+        expect(deleteMock).toBeCalledWith(accountId, apiKey, '/Accounts/' + accountId + '/Applications/' + applicationId)
       })
     })
     describe('on success', function () {

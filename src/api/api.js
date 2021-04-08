@@ -31,22 +31,22 @@ var requester = require('./requester/index')
 /**
  * The API module exposes all the FreeClimb API endpoints
  * @param {string} accountId - the accountId for authentication
- * @param {string} authToken - the authToken for authentication
+ * @param {string} apiKey - the apiKey for authentication
  * @returns {API} API - the modules for each individual set of endpoints
  */
-function api (accountId, authToken) {
+function api (accountId, apiKey) {
   return {
-    accounts: accounts(accountId, authToken),
-    applications: applications(accountId, authToken),
-    availableNumbers: phoneNumbers.availableNumbers(accountId, authToken),
-    incomingNumbers: phoneNumbers.incomingNumbers(accountId, authToken),
-    callingNumbers: phoneNumbers.callingNumbers(accountId, authToken),
-    calls: calls(accountId, authToken),
-    conferences: conferences(accountId, authToken),
-    queues: queues(accountId, authToken),
-    logs: logs(accountId, authToken),
-    recordings: recordings(accountId, authToken),
-    messages: messages(accountId, authToken),
+    accounts: accounts(accountId, apiKey),
+    applications: applications(accountId, apiKey),
+    availableNumbers: phoneNumbers.availableNumbers(accountId, apiKey),
+    incomingNumbers: phoneNumbers.incomingNumbers(accountId, apiKey),
+    callingNumbers: phoneNumbers.callingNumbers(accountId, apiKey),
+    calls: calls(accountId, apiKey),
+    conferences: conferences(accountId, apiKey),
+    queues: queues(accountId, apiKey),
+    logs: logs(accountId, apiKey),
+    recordings: recordings(accountId, apiKey),
+    messages: messages(accountId, apiKey),
     setApiUrl: requester.setApiUrl
   }
 }

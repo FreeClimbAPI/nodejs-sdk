@@ -7,7 +7,7 @@ var { Response } = require('node-fetch')
 
 describe('conferences', function () {
   var accountId = 'accountId'
-  var authToken = 'authToken'
+  var apiKey = 'apiKey'
   var conferenceId = 'CF1313513513512351234123523463456345634573476435734745367'
   describe('conferences#get', function () {
     it('should call requester#get with the path', function () {
@@ -15,8 +15,8 @@ describe('conferences', function () {
       requester.GET = getMock
 
       expect.assertions(1)
-      return conferences(accountId, authToken).get(conferenceId).then(function () {
-        expect(getMock).toHaveBeenCalledWith(accountId, authToken, '/Accounts/' + accountId + '/Conferences/' + conferenceId, {})
+      return conferences(accountId, apiKey).get(conferenceId).then(function () {
+        expect(getMock).toHaveBeenCalledWith(accountId, apiKey, '/Accounts/' + accountId + '/Conferences/' + conferenceId, {})
       })
     })
     describe('on success', function () {
@@ -52,8 +52,8 @@ describe('conferences', function () {
 
       var options = {alias: 'Conference Alias', playBeep: 'always', status: 'empty'}
       expect.assertions(1)
-      return conferences(accountId, authToken).update(conferenceId, options).then(function () {
-        expect(postMock).toHaveBeenCalledWith(accountId, authToken, '/Accounts/' + accountId + '/Conferences/' + conferenceId, options)
+      return conferences(accountId, apiKey).update(conferenceId, options).then(function () {
+        expect(postMock).toHaveBeenCalledWith(accountId, apiKey, '/Accounts/' + accountId + '/Conferences/' + conferenceId, options)
       })
     })
     describe('on success', function () {
@@ -90,8 +90,8 @@ describe('conferences', function () {
 
       var filters = {status: 'inProgress', alias: 'These aliases', dateCreated: '2017-12-25', dateUpdated: '2017-12-25'}
       expect.assertions(1)
-      return conferences(accountId, authToken).getList(filters).then(function () {
-        expect(getMock).toHaveBeenCalledWith(accountId, authToken, '/Accounts/' + accountId + '/Conferences', filters)
+      return conferences(accountId, apiKey).getList(filters).then(function () {
+        expect(getMock).toHaveBeenCalledWith(accountId, apiKey, '/Accounts/' + accountId + '/Conferences', filters)
       })
     })
     describe('on success', function () {
@@ -130,8 +130,8 @@ describe('conferences', function () {
       common.commonGetBuilder = getMock
 
       expect.assertions(2)
-      return conferences(accountId, authToken).getNextPage(nextPageUri).then(function () {
-        expect(getMock).toHaveBeenCalledWith(accountId, authToken)
+      return conferences(accountId, apiKey).getNextPage(nextPageUri).then(function () {
+        expect(getMock).toHaveBeenCalledWith(accountId, apiKey)
         expect(innerMock).toHaveBeenCalledWith(nextPageUri, null, errorMsg)
       })
     })
@@ -143,8 +143,8 @@ describe('conferences', function () {
 
       var options = {alias: 'Alias', playBeep: 'exitOnly', record: true, waitUrl: 'http://waitmusic.com', statusCallbackUrl: 'http://status.callback'}
       expect.assertions(1)
-      return conferences(accountId, authToken).create(options).then(function () {
-        expect(postMock).toHaveBeenCalledWith(accountId, authToken, '/Accounts/' + accountId + '/Conferences', options)
+      return conferences(accountId, apiKey).create(options).then(function () {
+        expect(postMock).toHaveBeenCalledWith(accountId, apiKey, '/Accounts/' + accountId + '/Conferences', options)
       })
     })
     describe('on success', function () {
@@ -175,9 +175,9 @@ describe('conferences', function () {
     })
   })
   describe('conferences#participants', function () {
-    it('should call participants with the accountId, authToken, and conferenceId', function () {
-      conferences(accountId, authToken).participants(conferenceId)
-      expect(participants).toHaveBeenCalledWith(accountId, authToken, conferenceId)
+    it('should call participants with the accountId, apiKey, and conferenceId', function () {
+      conferences(accountId, apiKey).participants(conferenceId)
+      expect(participants).toHaveBeenCalledWith(accountId, apiKey, conferenceId)
     })
   })
 })

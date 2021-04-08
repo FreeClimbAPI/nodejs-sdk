@@ -16,8 +16,8 @@ Test the SDK is working by sending yourself a text message.
 ```javascript
 var freeClimbSDK = require('@freeclimb/sdk')
 var accountID = 'your_account_id'
-var authToken = 'your_auth_token'
-var fc = freeClimbSDK(accountID, authToken)
+var apiKey = 'your_api_key'
+var fc = freeClimbSDK(accountID, apiKey)
 var to = 'your_phone_number'
 var from = 'a_free_climb_phone_number_in_your_account'
 

@@ -18,14 +18,14 @@ var common = require('../../common/index')
  * It provides methods to handle all the operations supported by the FreeClimb Participants API.
  *
  * @param {string} accountId - The accountId for authentication.
- * @param {string} authToken - The authToken for authentication.
+ * @param {string} apiKey - The apiKey for authentication.
  * @param {string} conferenceId - The conferenceId to operate against.
  * @returns {ParticipantsRequester} requester - A ParticipantsRequester
  */
-function participants (accountId, authToken, conferenceId) {
-  var getter = common.commonGetBuilder(accountId, authToken)
-  var poster = common.commonPostBuilder(accountId, authToken)
-  var deleter = common.commonDeleteBuilder(accountId, authToken)
+function participants (accountId, apiKey, conferenceId) {
+  var getter = common.commonGetBuilder(accountId, apiKey)
+  var poster = common.commonPostBuilder(accountId, apiKey)
+  var deleter = common.commonDeleteBuilder(accountId, apiKey)
 
   /**
    * base url for participants for this conference

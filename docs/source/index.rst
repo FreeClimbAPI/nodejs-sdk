@@ -31,27 +31,27 @@ Once you have imported the project, require it and provide the initial configura
     import FreeClimbSDK from '@freeclimb/sdk'
     // see the Dashboard API Keys page for these values
     const accountId = 'MOCK_ACCOUNT_ID'
-    const authToken = 'MOCK_AUTH_TOKEN'
-    const fc = FreeClimbSDK(accountId, authToken)
+    const apiKey = 'MOCK_AUTH_TOKEN'
+    const fc = FreeClimbSDK(accountId, apiKey)
 
 Module
 ======
 
 The SDK exports one function that accepts a FreeClimb users' API credentials.
 
-FreeClimbSDK(accountId, authToken)
+FreeClimbSDK(accountId, apiKey)
 
     The top level function of the FreeClimb SDK
 
     :accountId: {string} accountId The ID of the account making API requests
-    :authToken: {string} authToken The auth token of the account making API requests
+    :apiKey: {string} apiKey The auth token of the account making API requests
 
     :returns: {object} SDK - API, PerCL, and Enum modules
 
 After calling the FreeClimbSDK function the returned object exposes three helper modules for interacting with FreeClimb.
 Make API requests using the api module. Example::
 
-    const fc = FreeClimbSDK(accountId, authToken)
+    const fc = FreeClimbSDK(accountId, apiKey)
     fc.api.accounts.get(accountId).then(account => console.log(account))
 
 Build PerCL responses using the percl module. Example::

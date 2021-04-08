@@ -5,7 +5,7 @@ var { Response } = require('node-fetch')
 
 describe('callingNumbers', function () {
   var accountId = 'AccountId'
-  var authToken = 'AuthToken'
+  var apiKey = 'AuthToken'
   var callingNumberId = 'PN1412351235'
   describe('callingNumbers#get', function () {
     it('should call requester#get with the path', function () {
@@ -13,8 +13,8 @@ describe('callingNumbers', function () {
       requester.GET = getMock
 
       expect.assertions(1)
-      return callingNumbers(accountId, authToken).get(callingNumberId).then(function () {
-        expect(getMock).toHaveBeenCalledWith(accountId, authToken, '/Accounts/' + accountId + '/CallingNumbers/' + callingNumberId, {})
+      return callingNumbers(accountId, apiKey).get(callingNumberId).then(function () {
+        expect(getMock).toHaveBeenCalledWith(accountId, apiKey, '/Accounts/' + accountId + '/CallingNumbers/' + callingNumberId, {})
       })
     })
     describe('on success', function () {
@@ -51,8 +51,8 @@ describe('callingNumbers', function () {
       requester.POST = postMock
 
       expect.assertions(1)
-      return callingNumbers(accountId, authToken).update(callingNumberId, options).then(function (result) {
-        expect(postMock).toHaveBeenCalledWith(accountId, authToken, '/Accounts/' + accountId + '/CallingNumbers/' + callingNumberId, options)
+      return callingNumbers(accountId, apiKey).update(callingNumberId, options).then(function (result) {
+        expect(postMock).toHaveBeenCalledWith(accountId, apiKey, '/Accounts/' + accountId + '/CallingNumbers/' + callingNumberId, options)
       })
     })
     describe('on success', function () {
@@ -89,8 +89,8 @@ describe('callingNumbers', function () {
 
       var options = {phoneNumber: '+13242342345', alias: '(434) 245-5466'}
       expect.assertions(1)
-      return callingNumbers(accountId, authToken).getList(options).then(function (list) {
-        expect(getMock).toHaveBeenCalledWith(accountId, authToken, '/Accounts/' + accountId + '/CallingNumbers', options)
+      return callingNumbers(accountId, apiKey).getList(options).then(function (list) {
+        expect(getMock).toHaveBeenCalledWith(accountId, apiKey, '/Accounts/' + accountId + '/CallingNumbers', options)
       })
     })
     describe('on success', function () {
@@ -129,8 +129,8 @@ describe('callingNumbers', function () {
       common.commonGetBuilder = getMock
 
       expect.assertions(2)
-      return callingNumbers(accountId, authToken).getNextPage(nextPageUri).then(function () {
-        expect(getMock).toHaveBeenCalledWith(accountId, authToken)
+      return callingNumbers(accountId, apiKey).getNextPage(nextPageUri).then(function () {
+        expect(getMock).toHaveBeenCalledWith(accountId, apiKey)
         expect(innerMock).toHaveBeenCalledWith(nextPageUri, null, errorMsg)
       })
     })
@@ -144,8 +144,8 @@ describe('callingNumbers', function () {
       var options = {alias: 'New alias'}
       var combinedBody = {phoneNumber: phoneNumber, alias: options.alias}
       expect.assertions(1)
-      return callingNumbers(accountId, authToken).create(phoneNumber, options).then(function (resp) {
-        expect(postMock).toHaveBeenCalledWith(accountId, authToken, '/Accounts/' + accountId + '/CallingNumbers', combinedBody)
+      return callingNumbers(accountId, apiKey).create(phoneNumber, options).then(function (resp) {
+        expect(postMock).toHaveBeenCalledWith(accountId, apiKey, '/Accounts/' + accountId + '/CallingNumbers', combinedBody)
       })
     })
     describe('on success', function () {
@@ -182,8 +182,8 @@ describe('callingNumbers', function () {
       requester.DELETE = deleteMock
 
       expect.assertions(1)
-      return callingNumbers(accountId, authToken).delete(callingNumberId).then(function () {
-        expect(deleteMock).toHaveBeenCalledWith(accountId, authToken, '/Accounts/' + accountId + '/CallingNumbers/' + callingNumberId)
+      return callingNumbers(accountId, apiKey).delete(callingNumberId).then(function () {
+        expect(deleteMock).toHaveBeenCalledWith(accountId, apiKey, '/Accounts/' + accountId + '/CallingNumbers/' + callingNumberId)
       })
     })
     describe('on success', function () {

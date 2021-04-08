@@ -21,12 +21,12 @@ var path = require('path')
  * It provides methods to handle all the operations supported by the FreeClimb Recordings API.
  *
  * @param {string} accountId - The accountId for authentication
- * @param {string} authToken - The authToken for authentication
+ * @param {string} apiKey - The apiKey for authentication
  * @returns {RecordingsRequester} requester - A RecordingsRequester
  */
-function recordings (accountId, authToken) {
-  var getter = common.commonGetBuilder(accountId, authToken)
-  var deleter = common.commonDeleteBuilder(accountId, authToken)
+function recordings (accountId, apiKey) {
+  var getter = common.commonGetBuilder(accountId, apiKey)
+  var deleter = common.commonDeleteBuilder(accountId, apiKey)
 
   /**
    * Base url for recordings
@@ -76,7 +76,7 @@ function recordings (accountId, authToken) {
    * @throws will throw an error on failed response
    */
   function download (recordingId, filePath) {
-    return requester.GET(accountId, authToken, rootUrl + '/' + recordingId + '/Download', {}).then(function (resp) {
+    return requester.GET(accountId, apiKey, rootUrl + '/' + recordingId + '/Download', {}).then(function (resp) {
       if (!resp.ok) {
         return resp.json().then(function (json) {
           throw new Error('Could not download recording ' + recordingId + ' (' + resp.status + ' ' + resp.statusText + ') ' + JSON.stringify(json))
@@ -97,7 +97,7 @@ function recordings (accountId, authToken) {
    * @throws will throw an error on failed response
    */
   function stream (recordingId) {
-    return requester.GET(accountId, authToken, rootUrl + '/' + recordingId + '/Stream', {}).then(function (resp) {
+    return requester.GET(accountId, apiKey, rootUrl + '/' + recordingId + '/Stream', {}).then(function (resp) {
       if (!resp.ok) {
         return resp.json().then(function (json) {
           throw new Error('Could not stream recording ' + recordingId + ' (' + resp.status + ' ' + resp.statusText + ') ' + JSON.stringify(json))
