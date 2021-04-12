@@ -8,7 +8,7 @@ var { Response } = require('node-fetch')
 
 describe('queues', function () {
   var accountId = 'accountId'
-  var authToken = 'authToken'
+  var apiKey = 'apiKey'
   var queueId = 'QU543253452934582304582340958234096823495'
   describe('queues#get', function () {
     it('should call requester#get with the path', function () {
@@ -16,8 +16,8 @@ describe('queues', function () {
       requester.GET = getMock
 
       expect.assertions(1)
-      return queues(accountId, authToken).get(queueId).then(function () {
-        expect(getMock).toHaveBeenCalledWith(accountId, authToken, '/Accounts/' + accountId + '/Queues/' + queueId, {})
+      return queues(accountId, apiKey).get(queueId).then(function () {
+        expect(getMock).toHaveBeenCalledWith(accountId, apiKey, '/Accounts/' + accountId + '/Queues/' + queueId, {})
       })
     })
     describe('on success', function () {
@@ -54,8 +54,8 @@ describe('queues', function () {
 
       var options = {alias: 'queue alias', maxSize: 444}
       expect.assertions(1)
-      return queues(accountId, authToken).update(queueId, options).then(function () {
-        expect(postMock).toHaveBeenCalledWith(accountId, authToken, '/Accounts/' + accountId + '/Queues/' + queueId, options)
+      return queues(accountId, apiKey).update(queueId, options).then(function () {
+        expect(postMock).toHaveBeenCalledWith(accountId, apiKey, '/Accounts/' + accountId + '/Queues/' + queueId, options)
       })
     })
     describe('on success', function () {
@@ -92,8 +92,8 @@ describe('queues', function () {
 
       var filters = {alias: 'Alias'}
       expect.assertions(1)
-      return queues(accountId, authToken).getList(filters).then(function () {
-        expect(getMock).toHaveBeenCalledWith(accountId, authToken, '/Accounts/' + accountId + '/Queues', filters)
+      return queues(accountId, apiKey).getList(filters).then(function () {
+        expect(getMock).toHaveBeenCalledWith(accountId, apiKey, '/Accounts/' + accountId + '/Queues', filters)
       })
     })
     describe('on success', function () {
@@ -132,8 +132,8 @@ describe('queues', function () {
       common.commonGetBuilder = getMock
 
       expect.assertions(2)
-      return queues(accountId, authToken).getNextPage(nextPageUri).then(function () {
-        expect(getMock).toHaveBeenCalledWith(accountId, authToken)
+      return queues(accountId, apiKey).getNextPage(nextPageUri).then(function () {
+        expect(getMock).toHaveBeenCalledWith(accountId, apiKey)
         expect(innerMock).toHaveBeenCalledWith(nextPageUri, null, errorMsg)
       })
     })
@@ -145,8 +145,8 @@ describe('queues', function () {
 
       var options = {alias: 'New Queue', maxSize: 10}
       expect.assertions(1)
-      return queues(accountId, authToken).create(options).then(function () {
-        expect(postMock).toHaveBeenCalledWith(accountId, authToken, '/Accounts/' + accountId + '/Queues', options)
+      return queues(accountId, apiKey).create(options).then(function () {
+        expect(postMock).toHaveBeenCalledWith(accountId, apiKey, '/Accounts/' + accountId + '/Queues', options)
       })
     })
     describe('on success', function () {
@@ -177,9 +177,9 @@ describe('queues', function () {
     })
   })
   describe('queues#members', function () {
-    it('should call the member factory with the accountId, authToken, and queueId', function () {
-      queues(accountId, authToken).members(queueId)
-      expect(members).toHaveBeenCalledWith(accountId, authToken, queueId)
+    it('should call the member factory with the accountId, apiKey, and queueId', function () {
+      queues(accountId, apiKey).members(queueId)
+      expect(members).toHaveBeenCalledWith(accountId, apiKey, queueId)
     })
   })
 })

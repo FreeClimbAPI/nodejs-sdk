@@ -4,7 +4,7 @@ var { Response } = require('node-fetch')
 
 describe('common', function () {
   var accountId = 'accountId'
-  var authToken = 'authToken'
+  var apiKey = 'apiKey'
   var errorMsg = 'Could not retrieve application'
   var path = '/Accounts/AC2134123512341235/Applications/AP12340123421342341235'
   describe('commonGetBuilder', function () {
@@ -14,8 +14,8 @@ describe('common', function () {
       requester.GET = getMock
 
       expect.assertions(1)
-      return common.commonGetBuilder(accountId, authToken)(path, query, errorMsg).then(function () {
-        expect(getMock).toHaveBeenCalledWith(accountId, authToken, path, query)
+      return common.commonGetBuilder(accountId, apiKey)(path, query, errorMsg).then(function () {
+        expect(getMock).toHaveBeenCalledWith(accountId, apiKey, path, query)
       })
     })
     describe('on success', function () {
@@ -76,8 +76,8 @@ describe('common', function () {
       requester.POST = postMock
 
       expect.assertions(1)
-      return common.commonPostBuilder(accountId, authToken)(path, body, errorMsg).then(function () {
-        expect(postMock).toHaveBeenCalledWith(accountId, authToken, path, body)
+      return common.commonPostBuilder(accountId, apiKey)(path, body, errorMsg).then(function () {
+        expect(postMock).toHaveBeenCalledWith(accountId, apiKey, path, body)
       })
     })
     describe('on success', function () {
@@ -112,7 +112,7 @@ describe('common', function () {
         requester.POST = jest.fn().mockResolvedValue(new Response(JSON.stringify(failBody), {status, statusText}))
 
         expect.assertions(1)
-        return common.commonPostBuilder(accountId, authToken)(path, body, errorMsg).catch(function (error) {
+        return common.commonPostBuilder(accountId, apiKey)(path, body, errorMsg).catch(function (error) {
           expect(error).toEqual(Error(errorMsg + ' (' + status + ' ' + statusText + ') ' + JSON.stringify(failBody)))
         })
       })
@@ -124,7 +124,7 @@ describe('common', function () {
           requester.POST = jest.fn().mockResolvedValue(new Response(body, {status, statusText}))
 
           expect.assertions(1)
-          return common.commonPostBuilder(accountId, authToken)(path, body, errorMsg).catch(function (error) {
+          return common.commonPostBuilder(accountId, apiKey)(path, body, errorMsg).catch(function (error) {
             expect(error).toEqual(Error(errorMsg + ' (' + status + ' ' + statusText + ') ' + body))
           })
         })
@@ -137,15 +137,15 @@ describe('common', function () {
       requester.DELETE = deleteMock
 
       expect.assertions(1)
-      return common.commonDeleteBuilder(accountId, authToken)(path, errorMsg).then(function () {
-        expect(deleteMock).toHaveBeenCalledWith(accountId, authToken, path)
+      return common.commonDeleteBuilder(accountId, apiKey)(path, errorMsg).then(function () {
+        expect(deleteMock).toHaveBeenCalledWith(accountId, apiKey, path)
       })
     })
     describe('on success', function () {
       it('should return null', function () {
         requester.DELETE = jest.fn().mockResolvedValue(new Response())
         expect.assertions(1)
-        return common.commonDeleteBuilder(accountId, authToken)(path, errorMsg).then(function (result) {
+        return common.commonDeleteBuilder(accountId, apiKey)(path, errorMsg).then(function (result) {
           expect(result).toBeNull()
         })
       })
@@ -160,7 +160,7 @@ describe('common', function () {
         requester.DELETE = jest.fn().mockResolvedValue(new Response(JSON.stringify(body), {status, statusText}))
 
         expect.assertions(1)
-        return common.commonDeleteBuilder(accountId, authToken)(path, errorMsg).catch(function (error) {
+        return common.commonDeleteBuilder(accountId, apiKey)(path, errorMsg).catch(function (error) {
           expect(error).toEqual(Error(errorMsg + ' (' + status + ' ' + statusText + ') ' + JSON.stringify(body)))
         })
       })
@@ -172,7 +172,7 @@ describe('common', function () {
           requester.DELETE = jest.fn().mockResolvedValue(new Response(body, {status, statusText}))
 
           expect.assertions(1)
-          return common.commonDeleteBuilder(accountId, authToken)(path, errorMsg).catch(function (error) {
+          return common.commonDeleteBuilder(accountId, apiKey)(path, errorMsg).catch(function (error) {
             expect(error).toEqual(Error(errorMsg + ' (' + status + ' ' + statusText + ') ' + body))
           })
         })

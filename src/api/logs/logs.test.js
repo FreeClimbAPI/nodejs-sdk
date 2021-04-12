@@ -5,7 +5,7 @@ var { Response } = require('node-fetch')
 
 describe('logs', function () {
   var accountId = 'accountID'
-  var authToken = 'authToken'
+  var apiKey = 'apiKey'
   var filters = {pql: 'level="error"'}
   describe('logs#get', function () {
     describe('When the user does not provide pql', function () {
@@ -14,8 +14,8 @@ describe('logs', function () {
         requester.GET = getMock
 
         expect.assertions(1)
-        return logs(accountId, authToken).get().then(function () {
-          expect(getMock).toHaveBeenCalledWith(accountId, authToken, '/Accounts/' + accountId + '/Logs', {})
+        return logs(accountId, apiKey).get().then(function () {
+          expect(getMock).toHaveBeenCalledWith(accountId, apiKey, '/Accounts/' + accountId + '/Logs', {})
         })
       })
       describe('on success', function () {
@@ -51,8 +51,8 @@ describe('logs', function () {
         requester.POST = postMock
 
         expect.assertions(1)
-        return logs(accountId, authToken).get(filters).then(function () {
-          expect(postMock).toHaveBeenCalledWith(accountId, authToken, '/Accounts/' + accountId + '/Logs', filters)
+        return logs(accountId, apiKey).get(filters).then(function () {
+          expect(postMock).toHaveBeenCalledWith(accountId, apiKey, '/Accounts/' + accountId + '/Logs', filters)
         })
       })
       describe('on success', function () {
@@ -92,8 +92,8 @@ describe('logs', function () {
       common.commonGetBuilder = getMock
 
       expect.assertions(2)
-      return logs(accountId, authToken).getNextPage(nextPageUri).then(function () {
-        expect(getMock).toHaveBeenCalledWith(accountId, authToken)
+      return logs(accountId, apiKey).getNextPage(nextPageUri).then(function () {
+        expect(getMock).toHaveBeenCalledWith(accountId, apiKey)
         expect(innerMock).toHaveBeenCalledWith(nextPageUri, null, errorMsg)
       })
     })

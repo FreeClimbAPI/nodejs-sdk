@@ -7,8 +7,8 @@ var requester = require('./requester')
 
 describe('requester', function () {
   var accountId = 'accountId'
-  var authToken = 'authToken'
-  var expectedAuthHeader = 'Basic ' + btoa(accountId + ':' + authToken)
+  var apiKey = 'apiKey'
+  var expectedAuthHeader = 'Basic ' + btoa(accountId + ':' + apiKey)
   var path = '/test/path'
   beforeEach(() => {
     fetch.mockResolvedValue({})
@@ -19,7 +19,7 @@ describe('requester', function () {
       var queryParams = {test: 'value', other: false}
       var queryString = '?test=value&other=false'
 
-      return requester.GET(accountId, authToken, path, queryParams).then(function (response) {
+      return requester.GET(accountId, apiKey, path, queryParams).then(function (response) {
         expect(fetch.mock.calls.length).toBe(1)
         expect(fetch.mock.calls[0][0]).toBe(requester.apiUrl + path + queryString)
         expect(fetch.mock.calls[0][1].headers).toEqual({Authorization: expectedAuthHeader})
@@ -39,7 +39,7 @@ describe('requester', function () {
       var body = {test: 'value'}
       expect.assertions(5)
 
-      return requester.POST(accountId, authToken, path, body).then(function (response) {
+      return requester.POST(accountId, apiKey, path, body).then(function (response) {
         expect(fetch.mock.calls.length).toBe(1)
         expect(fetch.mock.calls[0][0]).toBe(requester.apiUrl + path)
         expect(fetch.mock.calls[0][1].method).toEqual('POST')
@@ -50,7 +50,7 @@ describe('requester', function () {
     describe('when the body is null', function () {
       it('should call fetch with an empty object for the body', function () {
         expect.assertions(5)
-        return requester.POST(accountId, authToken, path, null).then(function (response) {
+        return requester.POST(accountId, apiKey, path, null).then(function (response) {
           expect(fetch.mock.calls.length).toBe(1)
           var args = fetch.mock.calls[0]
           expect(args[0]).toBe(requester.apiUrl + path)
@@ -64,7 +64,7 @@ describe('requester', function () {
   describe('requester#delete', function () {
     it('should call fetch with a url composed of the apiUrl and the path, using the DELETE method', function () {
       expect.assertions(4)
-      return requester.DELETE(accountId, authToken, path).then(function (response) {
+      return requester.DELETE(accountId, apiKey, path).then(function (response) {
         expect(fetch.mock.calls.length).toBe(1)
         expect(fetch.mock.calls[0][0]).toBe(requester.apiUrl + path)
         expect(fetch.mock.calls[0][1].method).toEqual('DELETE')
@@ -77,9 +77,9 @@ describe('requester', function () {
       const newApiUrl = 'MOCK_API_URL'
       requester.setApiUrl(newApiUrl)
 
-      await requester.GET(accountId, authToken, path)
-      await requester.POST(accountId, authToken, path, null)
-      await requester.DELETE(accountId, authToken, path)
+      await requester.GET(accountId, apiKey, path)
+      await requester.POST(accountId, apiKey, path, null)
+      await requester.DELETE(accountId, apiKey, path)
 
       expect(fetch.mock.calls.length).toBe(3)
       expect(fetch.mock.calls[0][0]).toBe(newApiUrl + path)

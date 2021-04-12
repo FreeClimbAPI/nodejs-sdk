@@ -5,7 +5,7 @@ var { Response } = require('node-fetch')
 
 describe('messages', function () {
   var accountId = 'accountId'
-  var authToken = 'authToken'
+  var apiKey = 'apiKey'
   var messageId = 'SM1313513513512351234123523463456345634573476435734745367'
   describe('messages#get', function () {
     it('should call requester#get with the path', function () {
@@ -13,8 +13,8 @@ describe('messages', function () {
       requester.GET = getMock
 
       expect.assertions(1)
-      return messages(accountId, authToken).get(messageId).then(function () {
-        expect(getMock).toHaveBeenCalledWith(accountId, authToken, '/Accounts/' + accountId + '/Messages/' + messageId, {})
+      return messages(accountId, apiKey).get(messageId).then(function () {
+        expect(getMock).toHaveBeenCalledWith(accountId, apiKey, '/Accounts/' + accountId + '/Messages/' + messageId, {})
       })
     })
     describe('on success', function () {
@@ -51,8 +51,8 @@ describe('messages', function () {
 
       var filters = {to: '+12228883943', from: '+28374958534', dateSent: '2018-01-03 09:34:13'}
       expect.assertions(1)
-      return messages(accountId, authToken).getList(filters).then(function () {
-        expect(getMock).toHaveBeenCalledWith(accountId, authToken, '/Accounts/' + accountId + '/Messages', filters)
+      return messages(accountId, apiKey).getList(filters).then(function () {
+        expect(getMock).toHaveBeenCalledWith(accountId, apiKey, '/Accounts/' + accountId + '/Messages', filters)
       })
     })
     describe('on success', function () {
@@ -91,8 +91,8 @@ describe('messages', function () {
       common.commonGetBuilder = getMock
 
       expect.assertions(2)
-      return messages(accountId, authToken).getNextPage(nextPageUri).then(function () {
-        expect(getMock).toHaveBeenCalledWith(accountId, authToken)
+      return messages(accountId, apiKey).getNextPage(nextPageUri).then(function () {
+        expect(getMock).toHaveBeenCalledWith(accountId, apiKey)
         expect(innerMock).toHaveBeenCalledWith(nextPageUri, null, errorMsg)
       })
     })
@@ -106,8 +106,8 @@ describe('messages', function () {
       var to = '+10009994856'
       var text = 'Test Text Message'
       expect.assertions(1)
-      return messages(accountId, authToken).create(from, to, text).then(function () {
-        expect(postMock).toHaveBeenCalledWith(accountId, authToken, '/Accounts/' + accountId + '/Messages', {from: from, to: to, text: text})
+      return messages(accountId, apiKey).create(from, to, text).then(function () {
+        expect(postMock).toHaveBeenCalledWith(accountId, apiKey, '/Accounts/' + accountId + '/Messages', {from: from, to: to, text: text})
       })
     })
     describe('on success', function () {

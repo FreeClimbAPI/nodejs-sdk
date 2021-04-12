@@ -20,12 +20,12 @@ var members = require('./members/index')
  * It provides methods to handle all the operations supported by the FreeClimb Queues API.
  *
  * @param {string} accountId - The accountId for authentication.
- * @param {string} authToken - The authToken for authentication.
+ * @param {string} apiKey - The apiKey for authentication.
  * @returns {QueuesRequester} requester - A QueuesRequester.
  */
-function queues (accountId, authToken) {
-  var getter = common.commonGetBuilder(accountId, authToken)
-  var poster = common.commonPostBuilder(accountId, authToken)
+function queues (accountId, apiKey) {
+  var getter = common.commonGetBuilder(accountId, apiKey)
+  var poster = common.commonPostBuilder(accountId, apiKey)
 
   /**
    * Base url for queues
@@ -96,7 +96,7 @@ function queues (accountId, authToken) {
    * @returns {MembersRequester} requester - The MembersRequester that was created.
    */
   function membersRequester (queueId) {
-    return members(accountId, authToken, queueId)
+    return members(accountId, apiKey, queueId)
   }
 
   return {

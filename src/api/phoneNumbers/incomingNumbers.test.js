@@ -6,7 +6,7 @@ var { Response } = require('node-fetch')
 
 describe('incomingNumbers', function () {
   var accountId = 'mock_account_id'
-  var authToken = 'mock_account_token'
+  var apiKey = 'mock_account_token'
   var incomingNumberId = 'mock_application_id'
   var phoneNumber = '+13234323534'
   describe('incomingNumbers#get', function () {
@@ -15,8 +15,8 @@ describe('incomingNumbers', function () {
       requester.GET = getMock
 
       expect.assertions(1)
-      return incomingNumbers(accountId, authToken).get(incomingNumberId).then(function () {
-        expect(getMock).toHaveBeenCalledWith(accountId, authToken, '/Accounts/' + accountId + '/IncomingPhoneNumbers/' + incomingNumberId, {})
+      return incomingNumbers(accountId, apiKey).get(incomingNumberId).then(function () {
+        expect(getMock).toHaveBeenCalledWith(accountId, apiKey, '/Accounts/' + accountId + '/IncomingPhoneNumbers/' + incomingNumberId, {})
       })
     })
     describe('on success', function () {
@@ -55,8 +55,8 @@ describe('incomingNumbers', function () {
       var options = {applicationId: 'AP12312323', alias: 'some alias'}
 
       expect.assertions(1)
-      return incomingNumbers(accountId, authToken).update(incomingNumberId, options).then(function (incomingNumber) {
-        expect(postMock).toHaveBeenCalledWith(accountId, authToken, '/Accounts/' + accountId + '/IncomingPhoneNumbers/' + incomingNumberId, options)
+      return incomingNumbers(accountId, apiKey).update(incomingNumberId, options).then(function (incomingNumber) {
+        expect(postMock).toHaveBeenCalledWith(accountId, apiKey, '/Accounts/' + accountId + '/IncomingPhoneNumbers/' + incomingNumberId, options)
       })
     })
     describe('on success', function () {
@@ -95,8 +95,8 @@ describe('incomingNumbers', function () {
       var filter = {phoneNumber: '^\\+1[0-9]{3}3243$', alias: '(123) 324-5843'}
 
       expect.assertions(1)
-      return incomingNumbers(accountId, authToken).getList(filter).then(function (list) {
-        expect(getMock).toHaveBeenCalledWith(accountId, authToken, '/Accounts/' + accountId + '/IncomingPhoneNumbers', filter)
+      return incomingNumbers(accountId, apiKey).getList(filter).then(function (list) {
+        expect(getMock).toHaveBeenCalledWith(accountId, apiKey, '/Accounts/' + accountId + '/IncomingPhoneNumbers', filter)
       })
     })
     describe('on success', function () {
@@ -136,8 +136,8 @@ describe('incomingNumbers', function () {
       common.commonGetBuilder = getMock
 
       expect.assertions(2)
-      return incomingNumbers(accountId, authToken).getNextPage(nextPageUri).then(function () {
-        expect(getMock).toHaveBeenCalledWith(accountId, authToken)
+      return incomingNumbers(accountId, apiKey).getNextPage(nextPageUri).then(function () {
+        expect(getMock).toHaveBeenCalledWith(accountId, apiKey)
         expect(innerMock).toHaveBeenCalledWith(nextPageUri, null, errorMsg)
       })
     })
@@ -150,8 +150,8 @@ describe('incomingNumbers', function () {
       var combinedBody = {phoneNumber: phoneNumber, alias: options.alias, applicationId: options.applicationId}
 
       expect.assertions(1)
-      return incomingNumbers(accountId, authToken).purchase(phoneNumber, options).then(function (incomingNumber) {
-        expect(postMock).toHaveBeenCalledWith(accountId, authToken, '/Accounts/' + accountId + '/IncomingPhoneNumbers', combinedBody)
+      return incomingNumbers(accountId, apiKey).purchase(phoneNumber, options).then(function (incomingNumber) {
+        expect(postMock).toHaveBeenCalledWith(accountId, apiKey, '/Accounts/' + accountId + '/IncomingPhoneNumbers', combinedBody)
       })
     })
     describe('on success', function () {
@@ -187,8 +187,8 @@ describe('incomingNumbers', function () {
       requester.DELETE = deleteMock
 
       expect.assertions(1)
-      return incomingNumbers(accountId, authToken).delete(incomingNumberId).then(function (res) {
-        expect(deleteMock).toHaveBeenCalledWith(accountId, authToken, '/Accounts/' + accountId + '/IncomingPhoneNumbers/' + incomingNumberId)
+      return incomingNumbers(accountId, apiKey).delete(incomingNumberId).then(function (res) {
+        expect(deleteMock).toHaveBeenCalledWith(accountId, apiKey, '/Accounts/' + accountId + '/IncomingPhoneNumbers/' + incomingNumberId)
       })
     })
     describe('on success', function () {

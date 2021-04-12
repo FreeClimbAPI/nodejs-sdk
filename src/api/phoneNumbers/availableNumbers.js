@@ -14,11 +14,11 @@ var common = require('../common/index')
  * It provides methods to handle all the operations supported by the Perspehony AvailableNumbers API.
  *
  * @param {string} accountId - The accountId for authentication.
- * @param {string} authToken - The authToken for authentication.
+ * @param {string} apiKey - The apiKey for authentication.
  * @returns {AvailableNumbersRequester} requester - returns an AvailableNumbersRequester.
  */
-function availableNumbers (accountId, authToken) {
-  var getter = common.commonGetBuilder(accountId, authToken)
+function availableNumbers (accountId, apiKey) {
+  var getter = common.commonGetBuilder(accountId, apiKey)
 
   /**
    * Base url for available phone numbers

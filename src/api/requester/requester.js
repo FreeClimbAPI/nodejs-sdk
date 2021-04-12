@@ -12,14 +12,14 @@ var agent = new https.Agent({
 })
 
 /**
- * Convert the accountId and authToken into a base64 encoded string
+ * Convert the accountId and apiKey into a base64 encoded string
  *
  * @param {string} accountId - The accountId for the auth header
- * @param {string} authToken - The authToken for the auth header
+ * @param {string} apiKey - The apiKey for the auth header
  * @returns {string} encodedHeader - The base64 encoded auth header
  */
-function base64Encode (accountId, authToken) {
-  return Buffer.from(accountId + ':' + authToken, 'utf8').toString('base64')
+function base64Encode (accountId, apiKey) {
+  return Buffer.from(accountId + ':' + apiKey, 'utf8').toString('base64')
 }
 
 /**
@@ -35,18 +35,18 @@ function setApiUrl (newUrl) {
  * Make an authenticated GET request to the FreeClimb API.
  *
  * @param {string} accountId - The accountId for authentication.
- * @param {string} authToken - The authToken for authentication.
+ * @param {string} apiKey - The apiKey for authentication.
  * @param {string} path - The URL fragment to append to the {@code apiUrl}.
  * @param {object} [query] - Query parameters for the GET request.
  * @returns {Promise} response - The response to the request.
  */
-function GET (accountId, authToken, path, query) {
+function GET (accountId, apiKey, path, query) {
   var url = apiUrl + path
   if (query) {
     url += '?' + querystring.stringify(query)
   }
   return fetch(url, {
-    headers: {'Authorization': 'Basic ' + base64Encode(accountId, authToken)},
+    headers: {'Authorization': 'Basic ' + base64Encode(accountId, apiKey)},
     agent: agent
   })
 }
@@ -55,15 +55,15 @@ function GET (accountId, authToken, path, query) {
  * Make an authenticated POST request to the FreeClimb API.
  *
  * @param {string} accountId - The accountId for authentication.
- * @param {string} authToken - The authToken for authentication.
+ * @param {string} apiKey - The apiKey for authentication.
  * @param {string} path - the URL fragment to append to the {@code apiUrl}.
  * @param {object} [body] - The request payload.
  * @returns {Promise} response - The response to the request.
  */
-function POST (accountId, authToken, path, body) {
+function POST (accountId, apiKey, path, body) {
   return fetch(apiUrl + path, {
     headers: {
-      'Authorization': 'Basic ' + base64Encode(accountId, authToken),
+      'Authorization': 'Basic ' + base64Encode(accountId, apiKey),
       'Content-Type': 'application/json'
     },
     agent: agent,
@@ -76,14 +76,14 @@ function POST (accountId, authToken, path, body) {
  * Make an authenticated DELETE request to the FreeClimb API.
  *
  * @param {string} accountId - The accountId for authentication.
- * @param {string} authToken - The authToken for authentication.
+ * @param {string} apiKey - The apiKey for authentication.
  * @param {string} path - The URL fragment to append to the {@code apiUrl}.
  * @returns {Promise} response - The response to the request.
  */
-function DELETE (accountId, authToken, path) {
+function DELETE (accountId, apiKey, path) {
   return fetch(apiUrl + path, {
     headers: {
-      'Authorization': 'Basic ' + base64Encode(accountId, authToken)
+      'Authorization': 'Basic ' + base64Encode(accountId, apiKey)
     },
     agent: agent,
     method: 'DELETE'

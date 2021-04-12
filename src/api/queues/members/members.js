@@ -18,13 +18,13 @@ var common = require('../../common/index')
  * It provides methods to handle all the operations supported by the FreeClimb Members API.
  *
  * @param {string} accountId - The accountId for authentication.
- * @param {string} authToken - The authToken for authentication.
+ * @param {string} apiKey - The apiKey for authentication.
  * @param {string} queueId - The queueId to operate against.
  * @returns {MembersRequester} requester - A MembersRequester
  */
-function members (accountId, authToken, queueId) {
-  var getter = common.commonGetBuilder(accountId, authToken)
-  var poster = common.commonPostBuilder(accountId, authToken)
+function members (accountId, apiKey, queueId) {
+  var getter = common.commonGetBuilder(accountId, apiKey)
+  var poster = common.commonPostBuilder(accountId, apiKey)
 
   /**
    * Base url for this queues' members
