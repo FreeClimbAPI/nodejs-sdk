@@ -16,12 +16,12 @@ var common = require('../common/index')
  * It provides methods to handle all the operations supported by the FreeClimb Accounts API.
  *
  * @param {string} accountId - The accountId for authentication.
- * @param {string} authToken - The authToken for authentication.
+ * @param {string} apiKey - The apiKey for authentication.
  * @returns {AccountRequester} requester - returns an AccountRequester.
  */
-function accounts (accountId, authToken) {
-  var getter = common.commonGetBuilder(accountId, authToken)
-  var poster = common.commonPostBuilder(accountId, authToken)
+function accounts (accountId, apiKey) {
+  var getter = common.commonGetBuilder(accountId, apiKey)
+  var poster = common.commonPostBuilder(accountId, apiKey)
   /**
    * Base path for accounts
    */

@@ -5,7 +5,7 @@ var { Response } = require('node-fetch')
 
 describe('members', function () {
   var accountId = 'accountId'
-  var authToken = 'authToken'
+  var apiKey = 'apiKey'
   var queueId = 'QU2345234523496023468230495845'
   var memberId = 'CA234123597123495832745352345'
   describe('members#get', function () {
@@ -14,8 +14,8 @@ describe('members', function () {
       requester.GET = getMock
 
       expect.assertions(1)
-      return members(accountId, authToken, queueId).get(memberId).then(function () {
-        expect(getMock).toHaveBeenCalledWith(accountId, authToken, '/Accounts/' + accountId + '/Queues/' + queueId + '/Members/' + memberId, {})
+      return members(accountId, apiKey, queueId).get(memberId).then(function () {
+        expect(getMock).toHaveBeenCalledWith(accountId, apiKey, '/Accounts/' + accountId + '/Queues/' + queueId + '/Members/' + memberId, {})
       })
     })
     describe('on success', function () {
@@ -51,8 +51,8 @@ describe('members', function () {
       requester.GET = getMock
 
       expect.assertions(1)
-      return members(accountId, authToken, queueId).getFront().then(function () {
-        expect(getMock).toHaveBeenCalledWith(accountId, authToken, '/Accounts/' + accountId + '/Queues/' + queueId + '/Members/Front', {})
+      return members(accountId, apiKey, queueId).getFront().then(function () {
+        expect(getMock).toHaveBeenCalledWith(accountId, apiKey, '/Accounts/' + accountId + '/Queues/' + queueId + '/Members/Front', {})
       })
     })
     describe('on success', function () {
@@ -88,8 +88,8 @@ describe('members', function () {
       requester.GET = getMock
 
       expect.assertions(1)
-      return members(accountId, authToken, queueId).getList().then(function () {
-        expect(getMock).toHaveBeenCalledWith(accountId, authToken, '/Accounts/' + accountId + '/Queues/' + queueId + '/Members', {})
+      return members(accountId, apiKey, queueId).getList().then(function () {
+        expect(getMock).toHaveBeenCalledWith(accountId, apiKey, '/Accounts/' + accountId + '/Queues/' + queueId + '/Members', {})
       })
     })
     describe('on success', function () {
@@ -128,8 +128,8 @@ describe('members', function () {
       common.commonGetBuilder = getMock
 
       expect.assertions(2)
-      return members(accountId, authToken, queueId).getNextPage(nextPageUri).then(function () {
-        expect(getMock).toHaveBeenCalledWith(accountId, authToken)
+      return members(accountId, apiKey, queueId).getNextPage(nextPageUri).then(function () {
+        expect(getMock).toHaveBeenCalledWith(accountId, apiKey)
         expect(innerMock).toHaveBeenCalledWith(nextPageUri, null, errorMsg)
       })
     })
@@ -140,8 +140,8 @@ describe('members', function () {
       requester.POST = postMock
 
       expect.assertions(1)
-      return members(accountId, authToken, queueId).dequeue(memberId).then(function () {
-        expect(postMock).toHaveBeenCalledWith(accountId, authToken, '/Accounts/' + accountId + '/Queues/' + queueId + '/Members/' + memberId, {})
+      return members(accountId, apiKey, queueId).dequeue(memberId).then(function () {
+        expect(postMock).toHaveBeenCalledWith(accountId, apiKey, '/Accounts/' + accountId + '/Queues/' + queueId + '/Members/' + memberId, {})
       })
     })
     describe('on success', function () {
@@ -177,8 +177,8 @@ describe('members', function () {
       requester.POST = postMock
 
       expect.assertions(1)
-      return members(accountId, authToken, queueId).dequeueFront().then(function () {
-        expect(postMock).toHaveBeenCalledWith(accountId, authToken, '/Accounts/' + accountId + '/Queues/' + queueId + '/Members/Front', {})
+      return members(accountId, apiKey, queueId).dequeueFront().then(function () {
+        expect(postMock).toHaveBeenCalledWith(accountId, apiKey, '/Accounts/' + accountId + '/Queues/' + queueId + '/Members/Front', {})
       })
     })
     describe('on success', function () {

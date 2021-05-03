@@ -20,12 +20,12 @@ var enums = require('./enums')
 /**
  * The top level module of the FreeClimb SDK
  * @param {string} accountId The ID of the account making API requests
- * @param {string} authToken The auth token of the account making API requests
+ * @param {string} apiKey The auth token of the account making API requests
  * @returns {FreeClimbSDK} SDK - API, PerCL, and Enum modules
  */
-function freeClimbSDK (accountId, authToken) {
+function freeClimbSDK (accountId, apiKey) {
   return {
-    api: api(accountId, authToken),
+    api: api(accountId, apiKey),
     percl: percl,
     enums: enums
   }

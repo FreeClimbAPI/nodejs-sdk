@@ -8,7 +8,7 @@ var Readable = require('stream').Readable
 
 describe('recordings', function () {
   var accountId = 'accountId'
-  var authToken = 'authToken'
+  var apiKey = 'apiKey'
   var recordingId = 'RE32532452304582346324524246'
   var filePath = '../test/fileName.wav'
   describe('recordings#get', function () {
@@ -17,8 +17,8 @@ describe('recordings', function () {
       requester.GET = getMock
 
       expect.assertions(1)
-      return recordings(accountId, authToken).get(recordingId).then(function () {
-        expect(getMock).toHaveBeenCalledWith(accountId, authToken, '/Accounts/' + accountId + '/Recordings/' + recordingId, {})
+      return recordings(accountId, apiKey).get(recordingId).then(function () {
+        expect(getMock).toHaveBeenCalledWith(accountId, apiKey, '/Accounts/' + accountId + '/Recordings/' + recordingId, {})
       })
     })
     describe('on success', function () {
@@ -55,8 +55,8 @@ describe('recordings', function () {
 
       var filters = {callId: 'CA4232346324632453245', dateCreated: '2017-12-25'}
       expect.assertions(1)
-      return recordings(accountId, authToken).getList(filters).then(function () {
-        expect(getMock).toHaveBeenCalledWith(accountId, authToken, '/Accounts/' + accountId + '/Recordings', filters)
+      return recordings(accountId, apiKey).getList(filters).then(function () {
+        expect(getMock).toHaveBeenCalledWith(accountId, apiKey, '/Accounts/' + accountId + '/Recordings', filters)
       })
     })
     describe('on success', function () {
@@ -95,8 +95,8 @@ describe('recordings', function () {
       common.commonGetBuilder = getMock
 
       expect.assertions(2)
-      return recordings(accountId, authToken).getNextPage(nextPageUri).then(function () {
-        expect(getMock).toHaveBeenCalledWith(accountId, authToken)
+      return recordings(accountId, apiKey).getNextPage(nextPageUri).then(function () {
+        expect(getMock).toHaveBeenCalledWith(accountId, apiKey)
         expect(innerMock).toHaveBeenCalledWith(nextPageUri, null, errorMsg)
       })
     })
@@ -109,8 +109,8 @@ describe('recordings', function () {
       requester.GET = getMock
 
       expect.assertions(1)
-      return recordings(accountId, authToken).download(recordingId, filePath).then(function () {
-        expect(getMock).toHaveBeenCalledWith(accountId, authToken, '/Accounts/' + accountId + '/Recordings/' + recordingId + '/Download', {})
+      return recordings(accountId, apiKey).download(recordingId, filePath).then(function () {
+        expect(getMock).toHaveBeenCalledWith(accountId, apiKey, '/Accounts/' + accountId + '/Recordings/' + recordingId + '/Download', {})
       })
     })
     describe('on success', function () {
@@ -156,8 +156,8 @@ describe('recordings', function () {
       requester.GET = getMock
 
       expect.assertions(1)
-      return recordings(accountId, authToken).stream(recordingId).then(function () {
-        expect(getMock).toHaveBeenCalledWith(accountId, authToken, '/Accounts/' + accountId + '/Recordings/' + recordingId + '/Stream', {})
+      return recordings(accountId, apiKey).stream(recordingId).then(function () {
+        expect(getMock).toHaveBeenCalledWith(accountId, apiKey, '/Accounts/' + accountId + '/Recordings/' + recordingId + '/Stream', {})
       })
     })
     describe('on success', function () {
@@ -193,8 +193,8 @@ describe('recordings', function () {
       requester.DELETE = deleteMock
 
       expect.assertions(1)
-      return recordings(accountId, authToken).delete(recordingId).then(function () {
-        expect(deleteMock).toHaveBeenCalledWith(accountId, authToken, '/Accounts/' + accountId + '/Recordings/' + recordingId)
+      return recordings(accountId, apiKey).delete(recordingId).then(function () {
+        expect(deleteMock).toHaveBeenCalledWith(accountId, apiKey, '/Accounts/' + accountId + '/Recordings/' + recordingId)
       })
     })
     describe('on success', function () {

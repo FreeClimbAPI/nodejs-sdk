@@ -5,7 +5,7 @@ var { Response } = require('node-fetch')
 
 describe('calls', function () {
   var accountId = 'accountId'
-  var authToken = 'authToken'
+  var apiKey = 'apiKey'
   var callId = 'CA34252345234623462346234623463253246234532453245324'
   describe('calls#get', function () {
     it('should call requester#get with the path to a specific call', function () {
@@ -13,8 +13,8 @@ describe('calls', function () {
       requester.GET = getMock
 
       expect.assertions(1)
-      return calls(accountId, authToken).get(callId).then(function () {
-        expect(getMock).toHaveBeenCalledWith(accountId, authToken, '/Accounts/' + accountId + '/Calls/' + callId, {})
+      return calls(accountId, apiKey).get(callId).then(function () {
+        expect(getMock).toHaveBeenCalledWith(accountId, apiKey, '/Accounts/' + accountId + '/Calls/' + callId, {})
       })
     })
     describe('on success', function () {
@@ -51,8 +51,8 @@ describe('calls', function () {
 
       var status = 'completed'
       expect.assertions(1)
-      return calls(accountId, authToken).update(callId, status).then(function () {
-        expect(postMock).toHaveBeenCalledWith(accountId, authToken, '/Accounts/' + accountId + '/Calls/' + callId, {status: status})
+      return calls(accountId, apiKey).update(callId, status).then(function () {
+        expect(postMock).toHaveBeenCalledWith(accountId, apiKey, '/Accounts/' + accountId + '/Calls/' + callId, {status: status})
       })
     })
     describe('on success', function () {
@@ -88,8 +88,8 @@ describe('calls', function () {
 
       var filters = {to: '+14344534645', status: 'noAnswer'}
       expect.assertions(1)
-      return calls(accountId, authToken).getList(filters).then(function () {
-        expect(getMock).toHaveBeenCalledWith(accountId, authToken, '/Accounts/' + accountId + '/Calls', filters)
+      return calls(accountId, apiKey).getList(filters).then(function () {
+        expect(getMock).toHaveBeenCalledWith(accountId, apiKey, '/Accounts/' + accountId + '/Calls', filters)
       })
     })
     describe('on success', function () {
@@ -128,8 +128,8 @@ describe('calls', function () {
       common.commonGetBuilder = getMock
 
       expect.assertions(2)
-      return calls(accountId, authToken).getNextPage(nextPageUri).then(function () {
-        expect(getMock).toHaveBeenCalledWith(accountId, authToken)
+      return calls(accountId, apiKey).getNextPage(nextPageUri).then(function () {
+        expect(getMock).toHaveBeenCalledWith(accountId, apiKey)
         expect(innerMock).toHaveBeenCalledWith(nextPageUri, null, errorMsg)
       })
     })
@@ -146,8 +146,8 @@ describe('calls', function () {
       var expectedBody = {to: to, from: from, applicationId: applicationId, sendDigits: options.sendDigits, ifMachine: options.ifMachine, ifMachineUrl: options.ifMachineUrl, timeout: options.timeout, privacyMode: options.privacyMode, callConnectUrl: options.callConnectUrl}
 
       expect.assertions(1)
-      return calls(accountId, authToken).create(to, from, applicationId, options).then(function () {
-        expect(postMock).toHaveBeenCalledWith(accountId, authToken, '/Accounts/' + accountId + '/Calls', expectedBody)
+      return calls(accountId, apiKey).create(to, from, applicationId, options).then(function () {
+        expect(postMock).toHaveBeenCalledWith(accountId, apiKey, '/Accounts/' + accountId + '/Calls', expectedBody)
       })
     })
     describe('on success', function () {

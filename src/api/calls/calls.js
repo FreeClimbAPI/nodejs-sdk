@@ -20,12 +20,12 @@ var common = require('../common/index')
  * It provides methods to handle all the operations supported by the FreeClimb Calls API.
  *
  * @param {string} accountId - The accountId for authentication.
- * @param {string} authToken - The authToken for authentication.
+ * @param {string} apiKey - The apiKey for authentication.
  * @returns {CallsRequester} requester - A CallsRequester
  */
-function calls (accountId, authToken) {
-  var getter = common.commonGetBuilder(accountId, authToken)
-  var commonPoster = common.commonPostBuilder(accountId, authToken)
+function calls (accountId, apiKey) {
+  var getter = common.commonGetBuilder(accountId, apiKey)
+  var commonPoster = common.commonPostBuilder(accountId, apiKey)
 
   /**
    * Base url for calls
@@ -52,7 +52,7 @@ function calls (accountId, authToken) {
    * @throws will throw an error on a failed response
    */
   function update (callId, status) {
-    return requester.POST(accountId, authToken, rootUrl + '/' + callId, {status: status}).then(function (resp) {
+    return requester.POST(accountId, apiKey, rootUrl + '/' + callId, {status: status}).then(function (resp) {
       if (!resp.ok) {
         return resp.json().then(function (json) {
           throw new Error('Could not update call ' + callId + ' (' + resp.status + ' ' + resp.statusText + ') ' + JSON.stringify(json))

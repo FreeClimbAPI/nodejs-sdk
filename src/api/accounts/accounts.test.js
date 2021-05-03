@@ -5,15 +5,15 @@ var { Response } = require('node-fetch')
 
 describe('accounts', function () {
   var accountId = 'mock_account_id'
-  var authToken = 'mock_account_token'
+  var apiKey = 'mock_account_token'
   describe('accounts#get', function () {
     it('should call requester#get with the authentication, path, and no query', function () {
       var getMock = jest.fn().mockResolvedValue(new Response('{}'))
       requester.GET = getMock
 
       expect.assertions(1)
-      return accounts(accountId, authToken).get(accountId).then(function () {
-        expect(getMock).toBeCalledWith(accountId, authToken, '/Accounts/' + accountId, {})
+      return accounts(accountId, apiKey).get(accountId).then(function () {
+        expect(getMock).toBeCalledWith(accountId, apiKey, '/Accounts/' + accountId, {})
       })
     })
     describe('on success', function () {
@@ -22,7 +22,7 @@ describe('accounts', function () {
         var expectedAccount = {
           accountId: 'AC79df825d6690cc51111673d64aed6ed121dd39e1',
           alias: '',
-          authToken: '865442d5b4188e373e9a4b0d852c1bfe96fbd9d9',
+          apiKey: '865442d5b4188e373e9a4b0d852c1bfe96fbd9d9',
           dateCreated: 'Mon, 23 Oct 2017 15:38:04 GMT',
           dateUpdated: 'Mon, 23 Oct 2017 15:38:04 GMT',
           label: null,
@@ -59,7 +59,7 @@ describe('accounts', function () {
         requester.GET = jest.fn().mockResolvedValue(new Response(JSON.stringify(mockErrorMessage), {status: 400, statusText: 'Bad Request'}))
 
         expect.assertions(1)
-        return accounts(accountId, authToken).get(accountId).catch(function (error) {
+        return accounts(accountId, apiKey).get(accountId).catch(function (error) {
           expect(error).toEqual(new Error('Could not retrieve account ' + accountId + ' (400 Bad Request) ' + JSON.stringify(mockErrorMessage)))
         })
       })
@@ -72,8 +72,8 @@ describe('accounts', function () {
       var body = 'mock_payload'
 
       expect.assertions(1)
-      return accounts(accountId, authToken).update(accountId, body).then(function (account) {
-        expect(postMock).toBeCalledWith(accountId, authToken, '/Accounts/' + accountId, body)
+      return accounts(accountId, apiKey).update(accountId, body).then(function (account) {
+        expect(postMock).toBeCalledWith(accountId, apiKey, '/Accounts/' + accountId, body)
       })
     })
     describe('on success', function () {
@@ -96,7 +96,7 @@ describe('accounts', function () {
         requester.POST = jest.fn().mockResolvedValue(new Response(JSON.stringify(expectedPayload), {status, statusText}))
 
         expect.assertions(1)
-        return accounts(accountId, authToken).update(accountId).catch(function (response) {
+        return accounts(accountId, apiKey).update(accountId).catch(function (response) {
           expect(response).toEqual(Error('Could not update account ' + accountId + ' (' + status + ' ' + statusText + ') ' + JSON.stringify(expectedPayload)))
         })
       })

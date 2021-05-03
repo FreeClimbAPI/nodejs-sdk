@@ -15,12 +15,12 @@ var common = require('../common/index')
  * It provides methods to handle all the operations supported by the FreeClimb Messages API.
  *
  * @param {string} accountId - The accountId for authentication.
- * @param {string} authToken - The authToken for authentication.
+ * @param {string} apiKey - The apiKey for authentication.
  * @returns {MessagesRequester} requester - A MessagesRequester
  */
-function messages (accountId, authToken) {
-  var getter = common.commonGetBuilder(accountId, authToken)
-  var poster = common.commonPostBuilder(accountId, authToken)
+function messages (accountId, apiKey) {
+  var getter = common.commonGetBuilder(accountId, apiKey)
+  var poster = common.commonPostBuilder(accountId, apiKey)
 
   /**
    * Base url for messages

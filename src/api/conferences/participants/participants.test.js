@@ -5,7 +5,7 @@ var { Response } = require('node-fetch')
 
 describe('participants', function () {
   var accountId = 'accountId'
-  var authToken = 'authToken'
+  var apiKey = 'apiKey'
   var conferenceId = 'CFq235342345234234623423462346'
   var participantId = 'CA1532423462346346345347457'
   describe('participants#get', function () {
@@ -14,8 +14,8 @@ describe('participants', function () {
       requester.GET = getMock
 
       expect.assertions(1)
-      return participants(accountId, authToken, conferenceId).get(participantId).then(function () {
-        expect(getMock).toHaveBeenCalledWith(accountId, authToken, '/Accounts/' + accountId + '/Conferences/' + conferenceId + '/Participants/' + participantId, {})
+      return participants(accountId, apiKey, conferenceId).get(participantId).then(function () {
+        expect(getMock).toHaveBeenCalledWith(accountId, apiKey, '/Accounts/' + accountId + '/Conferences/' + conferenceId + '/Participants/' + participantId, {})
       })
     })
     describe('on success', function () {
@@ -24,7 +24,7 @@ describe('participants', function () {
         requester.GET = jest.fn().mockResolvedValue(new Response(JSON.stringify(expectedPayload)))
 
         expect.assertions(1)
-        return participants(accountId, authToken, conferenceId).get(participantId).then(function (result) {
+        return participants(accountId, apiKey, conferenceId).get(participantId).then(function (result) {
           expect(result).toEqual(expectedPayload)
         })
       })
@@ -52,8 +52,8 @@ describe('participants', function () {
 
       var options = {talk: false, listen: false}
       expect.assertions(1)
-      return participants(accountId, authToken, conferenceId).update(participantId, options).then(function () {
-        expect(postMock).toHaveBeenCalledWith(accountId, authToken, '/Accounts/' + accountId + '/Conferences/' + conferenceId + '/Participants/' + participantId, options)
+      return participants(accountId, apiKey, conferenceId).update(participantId, options).then(function () {
+        expect(postMock).toHaveBeenCalledWith(accountId, apiKey, '/Accounts/' + accountId + '/Conferences/' + conferenceId + '/Participants/' + participantId, options)
       })
     })
     describe('on success', function () {
@@ -90,8 +90,8 @@ describe('participants', function () {
 
       var filters = {talk: false, listen: false}
       expect.assertions(1)
-      return participants(accountId, authToken, conferenceId).getList(filters).then(function () {
-        expect(getMock).toHaveBeenCalledWith(accountId, authToken, '/Accounts/' + accountId + '/Conferences/' + conferenceId + '/Participants', filters)
+      return participants(accountId, apiKey, conferenceId).getList(filters).then(function () {
+        expect(getMock).toHaveBeenCalledWith(accountId, apiKey, '/Accounts/' + accountId + '/Conferences/' + conferenceId + '/Participants', filters)
       })
     })
     describe('on success', function () {
@@ -130,8 +130,8 @@ describe('participants', function () {
       common.commonGetBuilder = getMock
 
       expect.assertions(2)
-      return participants(accountId, authToken, conferenceId).getNextPage(nextPageUri).then(function () {
-        expect(getMock).toHaveBeenCalledWith(accountId, authToken)
+      return participants(accountId, apiKey, conferenceId).getNextPage(nextPageUri).then(function () {
+        expect(getMock).toHaveBeenCalledWith(accountId, apiKey)
         expect(innerMock).toHaveBeenCalledWith(nextPageUri, null, errorMsg)
       })
     })
@@ -142,8 +142,8 @@ describe('participants', function () {
       requester.DELETE = deleteMock
 
       expect.assertions(1)
-      return participants(accountId, authToken, conferenceId).delete(participantId).then(function () {
-        expect(deleteMock).toHaveBeenCalledWith(accountId, authToken, '/Accounts/' + accountId + '/Conferences/' + conferenceId + '/Participants/' + participantId)
+      return participants(accountId, apiKey, conferenceId).delete(participantId).then(function () {
+        expect(deleteMock).toHaveBeenCalledWith(accountId, apiKey, '/Accounts/' + accountId + '/Conferences/' + conferenceId + '/Participants/' + participantId)
       })
     })
     describe('on success', function () {

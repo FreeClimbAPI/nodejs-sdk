@@ -7,7 +7,7 @@ var { Response } = require('node-fetch')
 
 describe('availableNumbers', function () {
   var accountId = 'mock_account_id'
-  var authToken = 'mock_auth_token'
+  var apiKey = 'mock_api_key'
   describe('availableNumbers#getList', function () {
     it('should call fetch get with the availablePhoneNumbers endpoint and the query options', function () {
       var queryOptions = {alias: '(234) 234-2432', phoneNumber: '^\\+1847[0-9]{7}$'}
@@ -15,8 +15,8 @@ describe('availableNumbers', function () {
       requester.GET = getMock
 
       expect.assertions(1)
-      return availableNumbers(accountId, authToken).getList(queryOptions).then(function (phoneNumberList) {
-        expect(getMock).toHaveBeenCalledWith(accountId, authToken, '/AvailablePhoneNumbers', queryOptions)
+      return availableNumbers(accountId, apiKey).getList(queryOptions).then(function (phoneNumberList) {
+        expect(getMock).toHaveBeenCalledWith(accountId, apiKey, '/AvailablePhoneNumbers', queryOptions)
       })
     })
     describe('on success', function () {
@@ -56,8 +56,8 @@ describe('availableNumbers', function () {
       common.commonGetBuilder = getMock
 
       expect.assertions(2)
-      return availableNumbers(accountId, authToken).getNextPage(nextPageUri).then(function () {
-        expect(getMock).toHaveBeenCalledWith(accountId, authToken)
+      return availableNumbers(accountId, apiKey).getNextPage(nextPageUri).then(function () {
+        expect(getMock).toHaveBeenCalledWith(accountId, apiKey)
         expect(innerMock).toHaveBeenCalledWith(nextPageUri, null, errorMsg)
       })
     })
