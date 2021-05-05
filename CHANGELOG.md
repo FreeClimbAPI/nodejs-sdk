@@ -7,8 +7,13 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ## [Unreleased]
 None
 
+a name="2.0.0"></a>
+## [2.0.0] - 2021-4-19
+### Added
+- Add `verifyRequest` utility function
+
 <a name="1.2.0"></a>
-## [2.2.0] - 2021-04-12
+## [1.2.0] - 2021-04-12
 ### Changed
 - Replace any language instance of `auth_token` or similar speech to `api_key`
 

@@ -1,6 +1,6 @@
 {
   "name": "@freeclimb/sdk",
-  "version": "1.2.0",
+  "version": "2.0.0",
   "description": "The SDK for the FreeClimb API",
   "homepage": "https://www.freeclimb.com",
   "bugs": {
@@ -29,6 +29,8 @@
   },
   "dependencies": {
     "lodash.assign": "^4.2.0",
-    "node-fetch": "^2.6.0"
+    "moment": "^2.29.1",
+    "node-fetch": "^2.6.0",
+    "qs": "^6.10.1"
   }
 }

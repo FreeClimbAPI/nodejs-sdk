@@ -3,9 +3,10 @@
  * @module freeclimb-sdk
  */
 
-var api = require('./api')
-var percl = require('./percl')
-var enums = require('./enums')
+const api = require('./api')
+const percl = require('./percl')
+const enums = require('./enums')
+const utils = require('./utils')
 
 /**
  * The publicly exposed modules of the FreeClimb SDK
@@ -21,13 +22,15 @@ var enums = require('./enums')
  * The top level module of the FreeClimb SDK
  * @param {string} accountId The ID of the account making API requests
  * @param {string} apiKey The auth token of the account making API requests
- * @returns {FreeClimbSDK} SDK - API, PerCL, and Enum modules
+ * @property {module:freeclimb-sdk/utils} utils - Utility functions to help interact with the API
+ * @returns {FreeClimbSDK} SDK - API, PerCL, Enum, and Utils modules
  */
 function freeClimbSDK (accountId, apiKey) {
   return {
     api: api(accountId, apiKey),
     percl: percl,
-    enums: enums
+    enums: enums,
+    utils: utils
   }
 }
 
