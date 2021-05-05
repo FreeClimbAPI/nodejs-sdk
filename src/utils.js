@@ -45,7 +45,7 @@ const Utils = {
       .update(data, 'sha256')
       .digest('hex');
     if (!signatureHeaderObj.v1.includes(hmac)) {
-        throw new Error('Request rejected - request signature failed');
+        throw new Error('Unverified Request Signature - FreeClimb was unable to verify that this request originated from FreeClimb. If this request was unexpected, it may be from a bad actor. Please proceed with caution. If this request was expected, to fix this issue try checking for any typos or misspelling of your signing secret.');
     }
   }
 };
