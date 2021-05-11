@@ -7,8 +7,13 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ## [Unreleased]
 None
 
+a name="2.0.1"></a>
+## [2.0.1] - 2021-05-11
+### Removed
+- Remove moment package
+
 a name="2.0.0"></a>
-## [2.0.0] - 2021-4-19
+## [2.0.0] - 2021-04-19
 ### Added
 - Add `verifyRequest` utility function
 
