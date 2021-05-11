@@ -2,7 +2,6 @@
  * @module freeclimb-sdk/utils
  */
 
-const moment = require('moment');
 const qs = require('qs');
 const crypto = require('crypto');
 
@@ -34,8 +33,8 @@ const Utils = {
         return {...obj, ...result};
       });
     // timestamp (t) on the `FreeClimb-Signature` header is represented by a unix timestamp (in seconds)
-    const currentTime = moment().unix();
-    const signatureAge = (currentTime - signatureHeaderObj.t) * 1000;
+    const currentTime = Date.now();
+    const signatureAge = currentTime - (signatureHeaderObj.t * 1000);
     if (tolerance < signatureAge) {
       throw new Error(`Request rejected - signature's timestamp failed against current tolerance of ${tolerance} milliseconds. Signature age: ${signatureAge} milliseconds`);
     }
