@@ -7,6 +7,14 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ## [Unreleased]
 None
 
+a name="2.0.3"></a>
+## [2.0.3] - 2021-05-17
+### Changed
+- Updated `handlebars` package to version 4.7.7 to prevent Remote Code Execution when compiling templates
+- Updated `lodash` package to version 4.17.21 to prevent Command Injection
+- Updated `ini` package to version 1.3.8 to prevent Prototype Pollution
+- Updated `acorn` package to version to prevent Regular Expression Denial of Service 5.7.4/6.4.2
+
 a name="2.0.2"></a>
 ## [2.0.2] - 2021-05-17
 ### Changed
