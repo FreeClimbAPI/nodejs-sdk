@@ -3,7 +3,7 @@ declare module '@freeclimb/sdk' {
   function freeClimbSDK(accountId: string, authToken: string): FreeClimbSDK
   namespace freeClimbSDK {
     export { FreeClimbSDK, PerCL, Api, Enums }
-}
+  }
 
 /**
  * The publicly exposed modules of the FreeClimb SDK
@@ -32,14 +32,16 @@ declare module '@freeclimb/sdk' {
     }
 
     // Accounts
+
+    type AccountStatus = "active" | "suspended" | "closed"
     interface Account extends Resource {
       accountId: string
       authToken: string
       alias: string
       label: string
       type: string
-      status: string
-      subresources: {
+      status: AccountStatus
+      subresourceUris: {
         applications: string
         calls: string
         conferences: string
@@ -187,6 +189,8 @@ declare module '@freeclimb/sdk' {
     }
 
     // Calls
+    type CallStatus = "queued" |  "ringing" | "inProgress" | "cancled" | "completed" | "busy" | "failed" | "noAnswer"
+
     interface Call extends Resource {
       callId: string
       parentCallId: string
@@ -194,7 +198,7 @@ declare module '@freeclimb/sdk' {
       to: string
       from: string
       phoneNumberId: string
-      status: string
+      status: CallStatus
       startTime: string
       connectTime: string
       endTime: string
@@ -230,9 +234,10 @@ declare module '@freeclimb/sdk' {
       privacyMode?: boolean
     }
 
+
     interface CallsClient {
       get(callId: string): Promise<Call>
-      update(callId: string, status: "canceled" | "completed"): Promise<null>
+      update(callId: string, status: Extract<CallStatus, "completed" | "cancled">): Promise<null>
       getList(filters: ListCallsFilters) : Promise<CallsPage>
       getNextPage(nextPageUri: string): Promise<CallsPage>
       create(to: string, from: string, applicationId: string, options: CreateCallOptions): Promise<Call>
@@ -240,13 +245,16 @@ declare module '@freeclimb/sdk' {
 
     // Conferences
 
+    type PlayBeep = "always" | "never" | "entryOnly" | "exitOnly"
+    type ConferenceStatus = "creating" | "empty" | "populated" | "terminated"
+
     interface Conference extends Resource {
       conferenceId: string
       accountId: string
       alias: string
-      playBeep: "always" | "never" | "entryOnly" | "exitOnly"
+      playBeep: PlayBeep
       record: boolean
-      status: "creating" | "empty" | "populated" | "terminated"
+      status: ConferenceStatus
       waitUrl: string
       actionUrl: string
       statusCallbackUrl: string
@@ -262,12 +270,12 @@ declare module '@freeclimb/sdk' {
 
     interface UpdateConferenceOptions {
       alias?: string
-      playBeep?: "always" | "never" | "entryOnly" | "exitOnly"
-      status?: "empty" | "terminated"
+      playBeep?: PlayBeep
+      status?: Extract<ConferenceStatus, "empty" | "terminated">
     }
 
     interface ListConferencesFilters {
-      status?: "creating" | "empty" | "populated" | "terminated"
+      status?: ConferenceStatus
       alias?: string
       dateCreated?: string
       dateUpdated?: string
@@ -276,7 +284,7 @@ declare module '@freeclimb/sdk' {
 
     interface CreateConferenceOptions {
       alias?: string
-      playBeep?: "always" | "never" | "entryOnly" | "exitOnly"
+      playBeep?: PlayBeep
       record?: boolean
       waitUrl?: string
       statusCallbackUrl?: string
@@ -329,7 +337,7 @@ declare module '@freeclimb/sdk' {
       subresourceUris: {
         members: string
       }
-    } 
+    }
 
     interface QueuesPage extends Page {
       queues: Queue[]
@@ -345,7 +353,6 @@ declare module '@freeclimb/sdk' {
       maxSize?: string
     }
 
-    // TODO
     interface ListQueuesFilters {}
 
     interface QueuesClient {
@@ -357,7 +364,7 @@ declare module '@freeclimb/sdk' {
       members(queueId: string): QueueMembersClient
     }
 
-    // Queue Members 
+    // Queue Members
 
     interface QueueMember {
       uri: string
@@ -395,7 +402,7 @@ declare module '@freeclimb/sdk' {
     interface LogMetadata {}
 
     interface LogsPage extends Page {
-    logs: Log[] 
+    logs: Log[]
     }
 
     interface GetLogsFilters {
@@ -436,18 +443,19 @@ declare module '@freeclimb/sdk' {
       delete(recordingId: string): Promise<null>
     }
 
+    type SmsDirection = "inbound" | "outbound"
     // Messages
     interface SmsMessage extends Resource {
       accountId: string
-      direction: "inbound" | "outbound"
+      direction:SmsDirection
       from: string
       messageId: string
       notificationUrl: string
       status: SmsMessageInboundStatus | SmsMessageOutBoundStatus
     }
 
-    type SmsMessageOutBoundStatus = 
-      "new" 
+    type SmsMessageOutBoundStatus =
+      "new"
       | "queued"
       | "rejected"
       | "sending"
@@ -455,9 +463,9 @@ declare module '@freeclimb/sdk' {
       | "failed"
       | "expired"
       | "deleted"
-      | "uknown"
-    
-    type SmsMessageInboundStatus = 
+      | "unknown"
+
+    type SmsMessageInboundStatus =
       "Received"
       | "Undelivered"
 
@@ -492,11 +500,12 @@ declare module '@freeclimb/sdk' {
       logs: LogsClient
       recordings: RecordingsClient
       messages: SmsMessagesClient
-      setApiUrl(newUrl: string): void 
+      setApiUrl(newUrl: string): void
     }
   }
+
   namespace PerCL {
-    // Commands 
+    // Commands
     interface AddToConferenceCommand {
       "AddToConference": {
         conferenceId: string
@@ -580,11 +589,12 @@ declare module '@freeclimb/sdk' {
       privacyMode?: boolean
     }
 
+    type GrammarType = "URL" | "BUILTIN"
     interface GetSpeechCommand {
       "GetSpeech": {
         actionUrl: string
         grammerFile: string
-        grammarType?: "URL" | "BUILTIN"
+        grammarType?: GrammarType
         grammarRule?: string
         playBeep?: boolean
         prompts?: NestableCommand[]
@@ -599,7 +609,7 @@ declare module '@freeclimb/sdk' {
     }
 
     interface GetSpeechOptions {
-      grammarType?: "URL" | "BUILTIN"
+      grammarType?: GrammarType
       grammarRule?: string
       playBeep?: boolean
       prompts?: NestableCommand[]
@@ -865,181 +875,181 @@ declare module '@freeclimb/sdk' {
       ENGLISH_UK: 'en-GB',
       ENGLISH_IN: 'en-IN',
       ENGLISH_US: 'en-US',
-      ENGLISH_ES : 'es-ES',
-      ENGLISH_MX : 'es-MX',
-      FINNISH : 'fi-FI',
-      FRENCH_CA : 'fr-CA',
-      FRENCH_FR : 'fr-FR',
-      ITALIAN : 'it-IT',
-      JAPANESE : 'ja-JP',
-      KOREAN : 'ko-KR',
+      ENGLISH_ES: 'es-ES',
+      ENGLISH_MX: 'es-MX',
+      FINNISH: 'fi-FI',
+      FRENCH_CA: 'fr-CA',
+      FRENCH_FR: 'fr-FR',
+      ITALIAN: 'it-IT',
+      JAPANESE: 'ja-JP',
+      KOREAN: 'ko-KR',
       NORWEGIAN : 'nb-NO',
-      DUTCH : 'nl-NL',
-      POLISH : 'pl-PL',
-      PORTUGESE_BR : 'pt-BR',
-      PORTUGESE_PT : 'pt-PT',
-      RUSSIAN : 'ru-RU',
-      SWEDISH : 'sv-SE',
-      CHINESE_CN : 'zh-CN',
-      CHINESE_HK : 'zh-HK',
-      CHINESE_TW : 'zh-TW'
+      DUTCH: 'nl-NL',
+      POLISH: 'pl-PL',
+      PORTUGESE_BR: 'pt-BR',
+      PORTUGESE_PT: 'pt-PT',
+      RUSSIAN: 'ru-RU',
+      SWEDISH: 'sv-SE',
+      CHINESE_CN: 'zh-CN',
+      CHINESE_HK: 'zh-HK',
+      CHINESE_TW: 'zh-TW'
     }
 
     interface CallStatus {
-      QUEUED : 'queued',
-      RINGING : 'ringing',
-      IN_PROGRESS : 'inProgress',
-      CANCELED : 'canceled',
-      COMPLETED : 'completed',
-      FAILED : 'failed',
-      BUSY : 'busy',
-      NO_ANSWER : 'noAnswer'
+      QUEUED: 'queued',
+      RINGING: 'ringing',
+      IN_PROGRESS: 'inProgress',
+      CANCELED: 'canceled',
+      COMPLETED: 'completed',
+      FAILED: 'failed',
+      BUSY: 'busy',
+      NO_ANSWER: 'noAnswer'
     }
 
     interface IfMachine {
-      REDIRECT : 'redirect',
-      HANGUP : 'hangup'
+      REDIRECT: 'redirect',
+      HANGUP: 'hangup'
     }
 
     interface PlayBeep {
-      ALWAYS : 'always',
-      NEVER : 'never',
-      ENTRY_ONLY : 'entryOnly',
-      EXIT_ONLY : 'exitOnly'
+      ALWAYS: 'always',
+      NEVER: 'never',
+      ENTRY_ONLY: 'entryOnly',
+      EXIT_ONLY: 'exitOnly'
     }
 
     interface ConferenceStatus {
-      EMPTY : 'empty',
-      POPULATED : 'populated',
-      IN_PROGRESS : 'inProgress',
-      TERMINATED : 'terminated'
+      EMPTY: 'empty',
+      POPULATED: 'populated',
+      IN_PROGRESS: 'inProgress',
+      TERMINATED: 'terminated'
     }
 
     interface GrammarType {
-      URL : 'URL',
-      BUILT_IN : 'BUILTIN'
+      URL: 'URL',
+      BUILT_IN: 'BUILTIN'
     }
 
     interface AccountStatus {
-      CLOSED : 'closed',
-      SUSPENDED : 'suspended',
-      ACTIVE : 'active'
+      CLOSED: 'closed',
+      SUSPENDED: 'suspended',
+      ACTIVE: 'active'
     }
 
     interface CallDirection {
-      INBOUND : 'inbound',
-      OUTBOUND_API : 'outboundAPI',
-      OUTBOUND_DIAL : 'outboundDial'
+      INBOUND: 'inbound',
+      OUTBOUND_API: 'outboundAPI',
+      OUTBOUND_DIAL: 'outboundDial'
     }
 
     interface AnsweredBy {
-      HUMAN : 'human',
-      MACHINE : 'machine'
+      HUMAN: 'human',
+      MACHINE: 'machine'
     }
 
     interface MachineType {
-      ANSWERING_MACHINE : 'answeringMachine',
-      FAX_MACHINE : 'faxMachine'
+      ANSWERING_MACHINE: 'answeringMachine',
+      FAX_MACHINE: 'faxMachine'
     }
 
     interface LogLevel {
-      INFO : 'info',
-      WARNING : 'warning',
-      ERROR : 'error'
+      INFO: 'ifo',
+      WARNING: 'warning',
+      ERROR: 'error'
     }
 
     interface QueueResult {
-      QUEUE_FULL : 'queueFull',
-      DEQUEUED : 'dequeued',
-      HANGUP : 'hangup',
-      SYSTEM_ERROR : 'systemError'
+      QUEUE_FULL: 'queueFull',
+      DEQUEUED: 'dequeued',
+      HANGUP: 'hangup',
+      SYSTEM_ERROR: 'systemError'
     }
 
     interface RecordUtteranceTermReason {
-      FINISH_KEY : 'finishKey',
-      TIMEOUT : 'timeout',
-      HANGUP : 'hangup',
-      MAX_LENGTH : 'maxLength'
+      FINISH_KEY: 'finishKey',
+      TIMEOUT: 'timeout',
+      HANGUP: 'hangup',
+      MAX_LENGTH: 'maxLength'
     }
 
     interface GetDigitsReason {
-      FINISH_KEY : 'finishKey',
-      TIMEOUT : 'timeout',
-      HANGUP : 'hangup',
-      MIN_DIGITS : 'minDigits',
-      MAX_DIGITS : 'maxDigits'
+      FINISH_KEY: 'finishKey',
+      TIMEOUT: 'timeout',
+      HANGUP: 'hangup',
+      MIN_DIGITS: 'minDigits',
+      MAX_DIGITS: 'maxDigits'
     }
 
     interface GetSpeechReason {
-      ERROR : 'error',
-      HANGUP : 'hangup',
-      DIGIT : 'digit',
-      NO_INPUT : 'noInput',
-      NO_MATCH : 'noMatch',
-      RECOGNITION : 'recognition'
+      ERROR: 'error',
+      HANGUP: 'hangup',
+      DIGIT: 'digit',
+      NO_INPUT: 'noInput',
+      NO_MATCH: 'noMatch',
+      RECOGNITION: 'recognition'
     }
 
     interface GrammarFileBuiltIn {
-      ALPHNUM6 : 'ALPHNUM6',
-      ANY_DIG : 'ANY_DIG',
-      DIG1 : 'DIG1',
-      DIG2 : 'DIG2',
-      DIG3 : 'DIG3',
-      DIG4 : 'DIG4',
-      DIG5 : 'DIG5',
-      DIG6 : 'DIG6',
-      DIG7 : 'DIG7',
-      DIG8 : 'DIG8',
-      DIG9 : 'DIG9',
-      DIG10 : 'DIG10',
-      DIG11 : 'DIG11',
-      UP_TO_20_DIGIT_SEQUENCE : 'UP_TO_20_DIGIT_SEQUENCE',
-      VERSAY_YESNO : 'VERSAY_YESNO'
+      ALPHNUM6: 'ALPHNUM6',
+      ANY_DIG: 'ANY_DIG',
+      DIG1: 'DIG1',
+      DIG2: 'DIG2',
+      DIG3: 'DIG3',
+      DIG4: 'DIG4',
+      DIG5: 'DIG5',
+      DIG6: 'DIG6',
+      DIG7: 'DIG7',
+      DIG8: 'DIG8',
+      DIG9: 'DIG9',
+      DIG10: 'DIG10',
+      DIG11: 'DIG11',
+      UP_TO_20_DIGIT_SEQUENCE: 'UP_TO_20_DIGIT_SEQUENCE',
+      VERSAY_YESNO: 'VERSAY_YESNO'
     }
 
     interface MessageDirection {
-      INBOUND : 'inbound',
-      OUTBOUND : 'outbound'
+      INBOUND: 'inbound',
+      OUTBOUND: 'outbound'
     }
 
     interface MessageStatus {
-      NEW : 'new',
-      QUEUED : 'queued',
-      REJECTED : 'rejected',
-      SENDING : 'sending',
-      SENT : 'sent',
-      FAILED : 'failed',
-      RECEIVED : 'received',
-      UNDELIVERED : "undelivered",
-      EXPIRED : "expired",
-      DELETED : "deleted",
-      UNKNOWN : "unknown"
+      NEW: 'new',
+      QUEUED: 'queued',
+      REJECTED: 'rejected',
+      SENDING: 'sending',
+      SENT: 'sent',
+      FAILED: 'failed',
+      RECEIVED: 'received',
+      UNDELIVERED: "undelivered",
+      EXPIRED: "expired",
+      DELETED: "deleted",
+      UNKNOWN: "unknown"
     }
 
     interface RequestType {
-      INBOUND_CALL : 'inboundCall',
-      RECORD : 'record',
-      GET_DIGITS : 'getDigits',
-      GET_SPEECH : 'getSpeech',
-      REDIRECT : 'redirect',
-      PAUSE : 'pause',
-      OUT_DIAL_START : 'outDialStart',
-      OUT_DIAL_CONNECT : 'outDialConnect',
-      OUT_DIAL_API_CONNECT : 'outDialApiConnect',
-      MACHINE_DETECTED : 'machineDetected',
-      DEQUEUE : 'dequeue',
-      QUEUE_WAIT : 'queueWait',
-      ADD_TO_QUEUE_NOTIFICATION : 'addToQueueNotification',
-      REMOVE_FROM_QUEUE_NOTIFICATION : 'removeFromQueueNotification',
-      CALL_STATUS : 'callStatus',
-      CREATE_CONFERENCE : 'createConference',
-      CONFERENCE_STATUS : 'conferenceStatus',
-      LEAVE_CONFERENCE : 'leaveConference',
-      ADD_TO_CONFERENCE_NOTIFICATION : 'addToConferenceNotification',
-      CONFERENCE_RECORDING_STATUS : 'conferenceRecordingStatus',
-      CONFERENCE_CALL_CONTROL : 'conferenceCallControl',
-      MESSAGE_DELIVERY : 'messageDelivery',
-      MESSAGE_STATUS : 'messageStatus'
+      INBOUND_CALL: 'inboundCall',
+      RECORD: 'record',
+      GET_DIGITS: 'getDigits',
+      GET_SPEECH: 'getSpeech',
+      REDIRECT: 'redirect',
+      PAUSE: 'pause',
+      OUT_DIAL_START: 'outDialStart',
+      OUT_DIAL_CONNECT: 'outDialConnect',
+      OUT_DIAL_API_CONNECT: 'outDialApiConnect',
+      MACHINE_DETECTED: 'machineDetected',
+      DEQUEUE: 'dequeue',
+      QUEUE_WAIT: 'queueWait',
+      ADD_TO_QUEUE_NOTIFICATION: 'addToQueueNotification',
+      REMOVE_FROM_QUEUE_NOTIFICATION: 'removeFromQueueNotification',
+      CALL_STATUS: 'callStatus',
+      CREATE_CONFERENCE: 'createConference',
+      CONFERENCE_STATUS: 'conferenceStatus',
+      LEAVE_CONFERENCE: 'leaveConference',
+      ADD_TO_CONFERENCE_NOTIFICATION: 'addToConferenceNotification',
+      CONFERENCE_RECORDING_STATUS: 'conferenceRecordingStatus',
+      CONFERENCE_CALL_CONTROL: 'conferenceCallControl',
+      MESSAGE_DELIVERY: 'messageDelivery',
+      MESSAGE_STATUS: 'messageStatus'
     }
 
     interface EnumCollection {
