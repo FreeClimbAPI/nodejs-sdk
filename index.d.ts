@@ -189,7 +189,7 @@ declare module '@freeclimb/sdk' {
     }
 
     // Calls
-    type CallStatus = "queued" |  "ringing" | "inProgress" | "cancled" | "completed" | "busy" | "failed" | "noAnswer"
+    type CallStatus = "queued" |  "ringing" | "inProgress" | "canceled" | "completed" | "busy" | "failed" | "noAnswer"
 
     interface Call extends Resource {
       callId: string
@@ -953,7 +953,7 @@ declare module '@freeclimb/sdk' {
     }
 
     interface LogLevel {
-      INFO: 'ifo',
+      INFO: 'info',
       WARNING: 'warning',
       ERROR: 'error'
     }
