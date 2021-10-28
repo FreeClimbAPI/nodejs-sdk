@@ -237,7 +237,7 @@ declare module '@freeclimb/sdk' {
 
     interface CallsClient {
       get(callId: string): Promise<Call>
-      update(callId: string, status: Extract<CallStatus, "completed" | "cancled">): Promise<null>
+      update(callId: string, status: Extract<CallStatus, "completed" | "canceled">): Promise<null>
       getList(filters: ListCallsFilters) : Promise<CallsPage>
       getNextPage(nextPageUri: string): Promise<CallsPage>
       create(to: string, from: string, applicationId: string, options: CreateCallOptions): Promise<Call>
