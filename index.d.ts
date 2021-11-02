@@ -223,6 +223,7 @@ declare module '@freeclimb/sdk' {
       startTime?: string
       endTime?: string
       parentCallId?: string
+      active?: boolean
     }
 
     interface CreateCallOptions {

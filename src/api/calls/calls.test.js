@@ -86,7 +86,7 @@ describe('calls', function () {
       var getMock = jest.fn().mockResolvedValue(new Response('{}'))
       requester.GET = getMock
 
-      var filters = {to: '+14344534645', status: 'noAnswer'}
+      var filters = {to: '+14344534645', status: 'noAnswer', active: true}
       expect.assertions(1)
       return calls(accountId, apiKey).getList(filters).then(function () {
         expect(getMock).toHaveBeenCalledWith(accountId, apiKey, '/Accounts/' + accountId + '/Calls', filters)
