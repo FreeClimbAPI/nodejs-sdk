@@ -7,7 +7,14 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ## [Unreleased]
 None
 
-a name="2.0.3"></a>
+<a name="2.1.0"></a>
+## [2.1.0] - 2021-11-02
+
+### Added
+- Added Typescript Support
+- Added `active` optional filter to get call list
+
+<a name="2.0.3"></a>
 ## [2.0.3] - 2021-05-17
 ### Changed
 - Updated `handlebars` package to version 4.7.7 to prevent Remote Code Execution when compiling templates
@@ -15,17 +22,17 @@ a name="2.0.3"></a>
 - Updated `ini` package to version 1.3.8 to prevent Prototype Pollution
 - Updated `acorn` package to version 5.7.4/6.4.2 to prevent Regular Expression Denial of Service
 
-a name="2.0.2"></a>
+<a name="2.0.2"></a>
 ## [2.0.2] - 2021-05-17
 ### Changed
 - Updated `y18n` package to version 4.0.3 to prevent prototype pollution
 
-a name="2.0.1"></a>
+<a name="2.0.1"></a>
 ## [2.0.1] - 2021-05-11
 ### Removed
 - Remove moment package
 
-a name="2.0.0"></a>
+<a name="2.0.0"></a>
 ## [2.0.0] - 2021-04-19
 ### Added
 - Add `verifyRequest` utility function
