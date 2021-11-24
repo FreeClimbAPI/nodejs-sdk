@@ -113,8 +113,11 @@ declare module '@freeclimb/sdk' {
     }
 
     interface ListAvailableNumbersFilters {
-      alias?: string
       phoneNumber?: string
+      country?: string
+      region?: string
+      smsEnabled?: boolean
+      voiceEnabled?: boolean
     }
 
     interface AvailableNumbersPage extends Page {
@@ -147,6 +150,12 @@ declare module '@freeclimb/sdk' {
     interface ListIncomingNumbersFilters {
       phoneNumber?: string
       alias?: string
+      applicationId?: string
+      country?: string
+      hasApplication?: boolean
+      region?: string
+      smsEnabled?: boolean
+      voiceEnabled?: boolean
     }
 
     interface IncomingNumbersPage extends Page {
