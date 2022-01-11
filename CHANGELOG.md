@@ -5,7 +5,16 @@ The format of this changelog is based on [Keep a Changelog](https://keepachangel
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
-None
+### Added
+- Add `capabilities`, `campaignId`, and `smsProvider` to `ListIncomingNumbersFilters` interface
+- Add `capabilities`, `campaignId`, and `smsProvider` to `ListAvailableNumbersFilters` interface
+- Add `capabilities`, `campaignId`, and `smsProvider` to `AvailableNumber` interface
+- Add `capabilities`, `campaignId`, and `smsProvider` to `IncomingNumber` interface
+### Removed
+- Remove `smsEnabled` and `voiceEnabled` from `ListAvailableNumbersFilters` interface
+- Remove `smsEnabled` and `voiceEnabled` from `ListIncomingNumbersFilters` interface
+- Remove `smsEnabled` and `voiceEnabled` from `AvailableNumber` interface
+- Remove `smsEnabled` and `voiceEnabled` from `IncomingNumber` interface
 
 <a name="2.1.1"></a>
 ## [2.1.1] - 2021-11-24
