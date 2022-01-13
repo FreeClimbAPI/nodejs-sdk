@@ -5,6 +5,11 @@ The format of this changelog is based on [Keep a Changelog](https://keepachangel
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+None
+
+<a name="2.1.2"></a>
+## [2.1.2] - 2022-01-13
+
 ### Added
 - Add `capabilities`, `campaignId`, and `smsProvider` to `ListIncomingNumbersFilters` interface
 - Add `capabilities`, `campaignId`, and `smsProvider` to `ListAvailableNumbersFilters` interface
