@@ -102,22 +102,32 @@ declare module '@freeclimb/sdk' {
       delete(applicationId: string): Promise<null>
     }
 
+    interface Capabilities {
+      voice: boolean
+      sms: boolean
+      tollFree: boolean
+      tenDLC: boolean
+      shortCode: boolean
+    }
+
     // Available Numbers
     interface AvailableNumber {
       phoneNumber: string
-      voiceEnabled: boolean
-      smsEnabled: boolean
       alias: string
       region: string
       country: string
+      capabilities: Partial<Capabilities>
+      campaignId?: string
+      smsProvider?: string
     }
 
     interface ListAvailableNumbersFilters {
       phoneNumber?: string
       country?: string
       region?: string
-      smsEnabled?: boolean
-      voiceEnabled?: boolean
+      capabilities?: Capabilities
+      campaignId?: string
+      smsProvider?: string
     }
 
     interface AvailableNumbersPage extends Page {
@@ -137,9 +147,10 @@ declare module '@freeclimb/sdk' {
       phoneNumber: string
       alias: string
       country: string
-      voiceEnabled: boolean
-      smsEnabled: boolean
       region: string
+      capabilities: Partial<Capabilities>
+      campaignId?: string
+      smsProvider?: string
     }
 
     interface UpdateIncomingNumberOptions {
@@ -154,8 +165,9 @@ declare module '@freeclimb/sdk' {
       country?: string
       hasApplication?: boolean
       region?: string
-      smsEnabled?: boolean
-      voiceEnabled?: boolean
+      capabilities?: Partial<Capabilities>
+      campaignId?: string
+      smsProvider?: string
     }
 
     interface IncomingNumbersPage extends Page {
