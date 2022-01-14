@@ -118,7 +118,7 @@ declare module '@freeclimb/sdk' {
       country: string
       capabilities: Partial<Capabilities>
       campaignId?: string
-      smsProvider?: string
+      provider?: string
     }
 
     interface ListAvailableNumbersFilters {
@@ -127,7 +127,7 @@ declare module '@freeclimb/sdk' {
       region?: string
       capabilities?: Capabilities
       campaignId?: string
-      smsProvider?: string
+      provider?: string
     }
 
     interface AvailableNumbersPage extends Page {
@@ -150,7 +150,7 @@ declare module '@freeclimb/sdk' {
       region: string
       capabilities: Partial<Capabilities>
       campaignId?: string
-      smsProvider?: string
+      provider?: string
     }
 
     interface UpdateIncomingNumberOptions {
@@ -167,7 +167,7 @@ declare module '@freeclimb/sdk' {
       region?: string
       capabilities?: Partial<Capabilities>
       campaignId?: string
-      smsProvider?: string
+      provider?: string
     }
 
     interface IncomingNumbersPage extends Page {
