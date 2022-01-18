@@ -7,6 +7,15 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ## [Unreleased]
 None
 
+<a name="2.1.3"></a>
+## [2.1.3] - 2022-01-14
+
+### Changed
+- Rename `smsProvider` to `provider` in `ListIncomingNumbersFilters` interface
+- Rename `smsProvider` to `provider` in `ListAvailableNumbersFilters` interface
+- Rename `smsProvider` to `provider` in `AvailableNumber` interface
+- Rename `smsProvider` to `provider` in `IncomingNumber` interface
+
 <a name="2.1.2"></a>
 ## [2.1.2] - 2022-01-13
 
