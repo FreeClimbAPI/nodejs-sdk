@@ -1101,7 +1101,7 @@ declare module '@freeclimb/sdk' {
 
   namespace Utils {
     interface UtilFunctions {
-      verifyRequest: (requestBody: string, signatureHeader: string, signingSecret: string, tolerance?: number) => void
+      verifyRequest: (requestBody: string | Buffer, signatureHeader: string, signingSecret: string, tolerance?: number) => void
     }
   }
 }
