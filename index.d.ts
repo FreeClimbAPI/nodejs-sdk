@@ -2,7 +2,7 @@ declare module '@freeclimb/sdk' {
   export = freeClimbSDK
   function freeClimbSDK(accountId: string, authToken: string): FreeClimbSDK
   namespace freeClimbSDK {
-    export { FreeClimbSDK, PerCL, Api, Enums }
+    export { FreeClimbSDK, PerCL, Api, Enums, Utils }
   }
 
 /**
@@ -12,7 +12,9 @@ declare module '@freeclimb/sdk' {
     api: Api.ApiClients
     percl: PerCL.Builders
     enums: Enums.EnumCollection
+    utils: Utils.UtilFunctions
   }
+
   namespace Api {
 
     interface Resource {
@@ -1094,6 +1096,12 @@ declare module '@freeclimb/sdk' {
       messageDirection: MessageDirection
       messageStatus: MessageStatus
       requestType: RequestType
+    }
+  }
+
+  namespace Utils {
+    interface UtilFunctions {
+      verifyRequest: (requestBody: string, signatureHeader: string, signingSecret: string, tolerance?: number) => void
     }
   }
 }
