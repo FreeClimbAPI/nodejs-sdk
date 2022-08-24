@@ -1,7 +1,1 @@
-node_modules
-.idea
-.DS_Store
-/out/
-/docs/build/
-/venv/
-/coverage/
+dist
