@@ -12,6 +12,21 @@
 
 import { HttpFile } from '../http/http';
 
+export enum ConferenceResultAllOfPlayBeepEnum {
+
+    ALWAYS = 'always',
+    NEVER = 'never',
+    ENTRY_ONLY = 'entryOnly',
+    EXIT_ONLY = 'exitOnly'
+}
+export enum ConferenceResultAllOfStatusEnum {
+
+    CREATING = 'creating',
+    EMPTY = 'empty',
+    POPULATED = 'populated',
+    IN_PROGRESS = 'inProgress',
+    TERMINATED = 'terminated'
+}
 export class ConferenceResultAllOf {
     /**
     * A string that uniquely identifies this Conference resource.
@@ -56,66 +71,98 @@ export class ConferenceResultAllOf {
 
     static readonly discriminator: string | undefined = undefined;
 
-    static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
+    static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string, defaultValue: any}> = [
         {
             "name": "conferenceId",
             "baseName": "conferenceId",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "accountId",
             "baseName": "accountId",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "alias",
             "baseName": "alias",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "playBeep",
             "baseName": "playBeep",
             "type": "ConferenceResultAllOfPlayBeepEnum",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
+
         },
         {
             "name": "record",
             "baseName": "record",
             "type": "boolean",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "status",
             "baseName": "status",
             "type": "ConferenceResultAllOfStatusEnum",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
+
         },
         {
             "name": "waitUrl",
             "baseName": "waitUrl",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "actionUrl",
             "baseName": "actionUrl",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "statusCallbackUrl",
             "baseName": "statusCallbackUrl",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "subresourceUris",
             "baseName": "subresourceUris",
             "type": "any",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         }    ];
 
     static getAttributeTypeMap() {
@@ -125,8 +172,4 @@ export class ConferenceResultAllOf {
     public constructor() {
     }
 }
-
-
-export type ConferenceResultAllOfPlayBeepEnum = "always" | "never" | "entryOnly" | "exitOnly" ;
-export type ConferenceResultAllOfStatusEnum = "creating" | "empty" | "populated" | "inProgress" | "terminated" ;
 

@@ -76,96 +76,141 @@ export class IncomingNumberResult {
 
     static readonly discriminator: string | undefined = undefined;
 
-    static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
+    static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string, defaultValue: any}> = [
         {
             "name": "uri",
             "baseName": "uri",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "dateCreated",
             "baseName": "dateCreated",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "dateUpdated",
             "baseName": "dateUpdated",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "revision",
             "baseName": "revision",
             "type": "number",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "capabilities",
             "baseName": "capabilities",
             "type": "Capabilities",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "campaignId",
             "baseName": "campaignId",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "phoneNumberId",
             "baseName": "phoneNumberId",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "accountId",
             "baseName": "accountId",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "applicationId",
             "baseName": "applicationId",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "phoneNumber",
             "baseName": "phoneNumber",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "alias",
             "baseName": "alias",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "region",
             "baseName": "region",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "country",
             "baseName": "country",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "voiceEnabled",
             "baseName": "voiceEnabled",
             "type": "boolean",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "smsEnabled",
             "baseName": "smsEnabled",
             "type": "boolean",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         }    ];
 
     static getAttributeTypeMap() {

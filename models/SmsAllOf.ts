@@ -32,30 +32,42 @@ export class SmsAllOf {
 
     static readonly discriminator: string | undefined = undefined;
 
-    static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
+    static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string, defaultValue: any}> = [
         {
             "name": "to",
             "baseName": "to",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "_from",
             "baseName": "from",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "text",
             "baseName": "text",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "notificationUrl",
             "baseName": "notificationUrl",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         }    ];
 
     static getAttributeTypeMap() {

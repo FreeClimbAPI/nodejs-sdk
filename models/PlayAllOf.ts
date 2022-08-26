@@ -32,30 +32,42 @@ export class PlayAllOf {
 
     static readonly discriminator: string | undefined = undefined;
 
-    static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
+    static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string, defaultValue: any}> = [
         {
             "name": "file",
             "baseName": "file",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "loop",
             "baseName": "loop",
             "type": "number",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "conferenceId",
             "baseName": "conferenceId",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "privacyMode",
             "baseName": "privacyMode",
             "type": "boolean",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         }    ];
 
     static getAttributeTypeMap() {

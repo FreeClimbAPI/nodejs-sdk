@@ -44,48 +44,69 @@ export class RecordUtteranceAllOf {
 
     static readonly discriminator: string | undefined = undefined;
 
-    static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
+    static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string, defaultValue: any}> = [
         {
             "name": "actionUrl",
             "baseName": "actionUrl",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "silenceTimeoutMs",
             "baseName": "silenceTimeoutMs",
             "type": "number",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "finishOnKey",
             "baseName": "finishOnKey",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "maxLengthSec",
             "baseName": "maxLengthSec",
             "type": "number",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "playBeep",
             "baseName": "playBeep",
             "type": "boolean",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "autoStart",
             "baseName": "autoStart",
             "type": "boolean",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "privacyMode",
             "baseName": "privacyMode",
             "type": "boolean",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         }    ];
 
     static getAttributeTypeMap() {

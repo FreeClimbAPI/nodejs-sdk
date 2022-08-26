@@ -78,60 +78,87 @@ export class GetDigits extends PerclCommand {
 
     static readonly discriminator: string | undefined = "command";
 
-    static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
+    static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string, defaultValue: any}> = [
         {
             "name": "actionUrl",
             "baseName": "actionUrl",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "digitTimeoutMs",
             "baseName": "digitTimeoutMs",
             "type": "number",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "finishOnKey",
             "baseName": "finishOnKey",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "flushBuffer",
             "baseName": "flushBuffer",
             "type": "boolean",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "initialTimeoutMs",
             "baseName": "initialTimeoutMs",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "maxDigits",
             "baseName": "maxDigits",
             "type": "number",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "minDigits",
             "baseName": "minDigits",
             "type": "number",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "prompts",
             "baseName": "prompts",
             "type": "Array<PerclCommand>",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "privacyMode",
             "baseName": "privacyMode",
             "type": "boolean",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         }    ];
 
     static getAttributeTypeMap() {
@@ -140,7 +167,6 @@ export class GetDigits extends PerclCommand {
 
     public constructor() {
         super();
-        this.command = "GetDigits";
         this.command = "GetDigits";
     }
 }

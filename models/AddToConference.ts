@@ -82,66 +82,96 @@ export class AddToConference extends PerclCommand {
 
     static readonly discriminator: string | undefined = "command";
 
-    static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
+    static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string, defaultValue: any}> = [
         {
             "name": "allowCallControl",
             "baseName": "allowCallControl",
             "type": "boolean",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "callControlSequence",
             "baseName": "callControlSequence",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "callControlUrl",
             "baseName": "callControlUrl",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "conferenceId",
             "baseName": "conferenceId",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "callId",
             "baseName": "callId",
             "type": "boolean",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "leaveConferenceUrl",
             "baseName": "leaveConferenceUrl",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "listen",
             "baseName": "listen",
             "type": "boolean",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "notificationUrl",
             "baseName": "notificationUrl",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "startConfOnEnter",
             "baseName": "startConfOnEnter",
             "type": "boolean",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "talk",
             "baseName": "talk",
             "type": "boolean",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         }    ];
 
     static getAttributeTypeMap() {
@@ -150,7 +180,6 @@ export class AddToConference extends PerclCommand {
 
     public constructor() {
         super();
-        this.command = "AddToConference";
         this.command = "AddToConference";
     }
 }

@@ -82,66 +82,96 @@ export class OutDial extends PerclCommand {
 
     static readonly discriminator: string | undefined = "command";
 
-    static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
+    static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string, defaultValue: any}> = [
         {
             "name": "actionUrl",
             "baseName": "actionUrl",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "callConnectUrl",
             "baseName": "callConnectUrl",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "callingNumber",
             "baseName": "callingNumber",
             "type": "number",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "destination",
             "baseName": "destination",
             "type": "number",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "ifMachine",
             "baseName": "ifMachine",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "ifMachineUrl",
             "baseName": "ifMachineUrl",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "sendDigits",
             "baseName": "sendDigits",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "statusCallbackUrl",
             "baseName": "statusCallbackUrl",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "timeout",
             "baseName": "timeout",
             "type": "number",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "privacyMode",
             "baseName": "privacyMode",
             "type": "boolean",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         }    ];
 
     static getAttributeTypeMap() {
@@ -150,7 +180,6 @@ export class OutDial extends PerclCommand {
 
     public constructor() {
         super();
-        this.command = "OutDial";
         this.command = "OutDial";
     }
 }

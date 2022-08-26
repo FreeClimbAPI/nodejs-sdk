@@ -12,6 +12,17 @@
 
 import { HttpFile } from '../http/http';
 
+export enum CallResultAllOfStatusEnum {
+
+    QUEUED = 'queued',
+    RINGING = 'ringing',
+    IN_PROGRESS = 'inProgress',
+    CANCELED = 'canceled',
+    COMPLETED = 'completed',
+    BUSY = 'busy',
+    FAILED = 'failed',
+    NO_ANSWER = 'noAnswer'
+}
 export class CallResultAllOf {
     /**
     * String that uniquely identifies this Call resource.
@@ -76,96 +87,142 @@ export class CallResultAllOf {
 
     static readonly discriminator: string | undefined = undefined;
 
-    static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
+    static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string, defaultValue: any}> = [
         {
             "name": "callId",
             "baseName": "callId",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "parentCallId",
             "baseName": "parentCallId",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "accountId",
             "baseName": "accountId",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "_from",
             "baseName": "from",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "to",
             "baseName": "to",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "phoneNumberId",
             "baseName": "phoneNumberId",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "status",
             "baseName": "status",
             "type": "CallResultAllOfStatusEnum",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
+
         },
         {
             "name": "startTime",
             "baseName": "startTime",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "connectTime",
             "baseName": "connectTime",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "endTime",
             "baseName": "endTime",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "duration",
             "baseName": "duration",
             "type": "number",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "connectDuration",
             "baseName": "connectDuration",
             "type": "number",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "direction",
             "baseName": "direction",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "answeredBy",
             "baseName": "answeredBy",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "subresourceUris",
             "baseName": "subresourceUris",
             "type": "any",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         }    ];
 
     static getAttributeTypeMap() {
@@ -175,7 +232,4 @@ export class CallResultAllOf {
     public constructor() {
     }
 }
-
-
-export type CallResultAllOfStatusEnum = "queued" | "ringing" | "inProgress" | "canceled" | "completed" | "busy" | "failed" | "noAnswer" ;
 

@@ -12,6 +12,17 @@
 
 import { HttpFile } from '../http/http';
 
+export enum AccountResultAllOfTypeEnum {
+
+    TRIAL = 'trial',
+    FULL = 'full'
+}
+export enum AccountResultAllOfStatusEnum {
+
+    ACTIVE = 'active',
+    SUSPENDED = 'suspended',
+    CLOSED = 'closed'
+}
 export class AccountResultAllOf {
     /**
     * String that uniquely identifies this account resource.
@@ -44,48 +55,71 @@ export class AccountResultAllOf {
 
     static readonly discriminator: string | undefined = undefined;
 
-    static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
+    static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string, defaultValue: any}> = [
         {
             "name": "accountId",
             "baseName": "accountId",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "apiKey",
             "baseName": "apiKey",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "alias",
             "baseName": "alias",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "label",
             "baseName": "label",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "type",
             "baseName": "type",
             "type": "AccountResultAllOfTypeEnum",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
+
         },
         {
             "name": "status",
             "baseName": "status",
             "type": "AccountResultAllOfStatusEnum",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
+
         },
         {
             "name": "subresourceUris",
             "baseName": "subresourceUris",
             "type": "any",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         }    ];
 
     static getAttributeTypeMap() {
@@ -95,8 +129,4 @@ export class AccountResultAllOf {
     public constructor() {
     }
 }
-
-
-export type AccountResultAllOfTypeEnum = "trial" | "full" ;
-export type AccountResultAllOfStatusEnum = "active" | "suspended" | "closed" ;
 

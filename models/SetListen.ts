@@ -50,18 +50,24 @@ export class SetListen extends PerclCommand {
 
     static readonly discriminator: string | undefined = "command";
 
-    static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
+    static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string, defaultValue: any}> = [
         {
             "name": "callId",
             "baseName": "callId",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "listen",
             "baseName": "listen",
             "type": "boolean",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         }    ];
 
     static getAttributeTypeMap() {
@@ -70,7 +76,6 @@ export class SetListen extends PerclCommand {
 
     public constructor() {
         super();
-        this.command = "SetListen";
         this.command = "SetListen";
     }
 }

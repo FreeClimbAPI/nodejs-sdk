@@ -14,6 +14,20 @@ import { MessageResultAllOf } from './MessageResultAllOf';
 import { MutableResourceModel } from './MutableResourceModel';
 import { HttpFile } from '../http/http';
 
+export enum MessageResultStatusEnum {
+
+    NEW = 'new',
+    QUEUED = 'queued',
+    REJECTED = 'rejected',
+    SENDING = 'sending',
+    SENT = 'sent',
+    FAILED = 'failed',
+    RECEIVED = 'received',
+    UNDELIVERED = 'undelivered',
+    EXPIRED = 'expired',
+    DELETED = 'deleted',
+    UNKNOWN = 'unknown'
+}
 export class MessageResult {
     /**
     * The URI for this resource, relative to /apiserver.
@@ -66,78 +80,115 @@ export class MessageResult {
 
     static readonly discriminator: string | undefined = undefined;
 
-    static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
+    static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string, defaultValue: any}> = [
         {
             "name": "uri",
             "baseName": "uri",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "dateCreated",
             "baseName": "dateCreated",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "dateUpdated",
             "baseName": "dateUpdated",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "revision",
             "baseName": "revision",
             "type": "number",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "accountId",
             "baseName": "accountId",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "messageId",
             "baseName": "messageId",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "status",
             "baseName": "status",
             "type": "MessageResultStatusEnum",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
+
         },
         {
             "name": "_from",
             "baseName": "from",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "to",
             "baseName": "to",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "text",
             "baseName": "text",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "direction",
             "baseName": "direction",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "notificationUrl",
             "baseName": "notificationUrl",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         }    ];
 
     static getAttributeTypeMap() {
@@ -147,7 +198,4 @@ export class MessageResult {
     public constructor() {
     }
 }
-
-
-export type MessageResultStatusEnum = "new" | "queued" | "rejected" | "sending" | "sent" | "failed" | "received" | "undelivered" | "expired" | "deleted" | "unknown" ;
 

@@ -12,6 +12,11 @@
 
 import { HttpFile } from '../http/http';
 
+export enum UpdateCallRequestStatusEnum {
+
+    CANCELED = 'canceled',
+    COMPLETED = 'completed'
+}
 export class UpdateCallRequest {
     /**
     * Either `canceled` or `completed`.  Specifying `canceled` attempts to hang up calls that are queued without affecting calls already in progress. Specifying `completed` attempts to hang up a call already in progress.
@@ -20,12 +25,16 @@ export class UpdateCallRequest {
 
     static readonly discriminator: string | undefined = undefined;
 
-    static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
+    static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string, defaultValue: any}> = [
         {
             "name": "status",
             "baseName": "status",
             "type": "UpdateCallRequestStatusEnum",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
+
         }    ];
 
     static getAttributeTypeMap() {
@@ -35,7 +44,4 @@ export class UpdateCallRequest {
     public constructor() {
     }
 }
-
-
-export type UpdateCallRequestStatusEnum = "canceled" | "completed" ;
 

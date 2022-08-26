@@ -14,6 +14,17 @@ import { CallResultAllOf } from './CallResultAllOf';
 import { MutableResourceModel } from './MutableResourceModel';
 import { HttpFile } from '../http/http';
 
+export enum CallResultStatusEnum {
+
+    QUEUED = 'queued',
+    RINGING = 'ringing',
+    IN_PROGRESS = 'inProgress',
+    CANCELED = 'canceled',
+    COMPLETED = 'completed',
+    BUSY = 'busy',
+    FAILED = 'failed',
+    NO_ANSWER = 'noAnswer'
+}
 export class CallResult {
     /**
     * The URI for this resource, relative to /apiserver.
@@ -94,120 +105,178 @@ export class CallResult {
 
     static readonly discriminator: string | undefined = undefined;
 
-    static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
+    static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string, defaultValue: any}> = [
         {
             "name": "uri",
             "baseName": "uri",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "dateCreated",
             "baseName": "dateCreated",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "dateUpdated",
             "baseName": "dateUpdated",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "revision",
             "baseName": "revision",
             "type": "number",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "callId",
             "baseName": "callId",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "parentCallId",
             "baseName": "parentCallId",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "accountId",
             "baseName": "accountId",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "_from",
             "baseName": "from",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "to",
             "baseName": "to",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "phoneNumberId",
             "baseName": "phoneNumberId",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "status",
             "baseName": "status",
             "type": "CallResultStatusEnum",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
+
         },
         {
             "name": "startTime",
             "baseName": "startTime",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "connectTime",
             "baseName": "connectTime",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "endTime",
             "baseName": "endTime",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "duration",
             "baseName": "duration",
             "type": "number",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "connectDuration",
             "baseName": "connectDuration",
             "type": "number",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "direction",
             "baseName": "direction",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "answeredBy",
             "baseName": "answeredBy",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "subresourceUris",
             "baseName": "subresourceUris",
             "type": "any",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         }    ];
 
     static getAttributeTypeMap() {
@@ -217,7 +286,4 @@ export class CallResult {
     public constructor() {
     }
 }
-
-
-export type CallResultStatusEnum = "queued" | "ringing" | "inProgress" | "canceled" | "completed" | "busy" | "failed" | "noAnswer" ;
 

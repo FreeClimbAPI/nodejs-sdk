@@ -12,6 +12,18 @@
 
 import { HttpFile } from '../http/http';
 
+export enum UpdateConferenceRequestPlayBeepEnum {
+
+    ALWAYS = 'always',
+    NEVER = 'never',
+    ENTRY_ONLY = 'entryOnly',
+    EXIT_ONLY = 'exitOnly'
+}
+export enum UpdateConferenceRequestStatusEnum {
+
+    EMPTY = 'empty',
+    TERMINATED = 'terminated'
+}
 export class UpdateConferenceRequest {
     /**
     * Description for this conference. Maximum 64 characters.
@@ -20,7 +32,7 @@ export class UpdateConferenceRequest {
     /**
     * Controls when a beep is played. Valid values: `always`, `never`, `entryOnly`, `exitOnly`.
     */
-    'playBeep'?: string;
+    'playBeep'?: UpdateConferenceRequestPlayBeepEnum;
     /**
     * New status of the conference. Valid values: `empty` or `terminated`. For more information, see **Status Parameter** below.**
     */
@@ -28,24 +40,35 @@ export class UpdateConferenceRequest {
 
     static readonly discriminator: string | undefined = undefined;
 
-    static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
+    static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string, defaultValue: any}> = [
         {
             "name": "alias",
             "baseName": "alias",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "playBeep",
             "baseName": "playBeep",
-            "type": "string",
-            "format": ""
+            "type": "UpdateConferenceRequestPlayBeepEnum",
+            "format": "",
+            
+            "defaultValue": UpdateConferenceRequestPlayBeepEnum.ALWAYS
+            
+
         },
         {
             "name": "status",
             "baseName": "status",
             "type": "UpdateConferenceRequestStatusEnum",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
+
         }    ];
 
     static getAttributeTypeMap() {
@@ -55,7 +78,4 @@ export class UpdateConferenceRequest {
     public constructor() {
     }
 }
-
-
-export type UpdateConferenceRequestStatusEnum = "empty" | "terminated" ;
 

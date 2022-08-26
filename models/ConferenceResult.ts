@@ -14,6 +14,21 @@ import { ConferenceResultAllOf } from './ConferenceResultAllOf';
 import { MutableResourceModel } from './MutableResourceModel';
 import { HttpFile } from '../http/http';
 
+export enum ConferenceResultPlayBeepEnum {
+
+    ALWAYS = 'always',
+    NEVER = 'never',
+    ENTRY_ONLY = 'entryOnly',
+    EXIT_ONLY = 'exitOnly'
+}
+export enum ConferenceResultStatusEnum {
+
+    CREATING = 'creating',
+    EMPTY = 'empty',
+    POPULATED = 'populated',
+    IN_PROGRESS = 'inProgress',
+    TERMINATED = 'terminated'
+}
 export class ConferenceResult {
     /**
     * The URI for this resource, relative to /apiserver.
@@ -74,90 +89,134 @@ export class ConferenceResult {
 
     static readonly discriminator: string | undefined = undefined;
 
-    static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
+    static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string, defaultValue: any}> = [
         {
             "name": "uri",
             "baseName": "uri",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "dateCreated",
             "baseName": "dateCreated",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "dateUpdated",
             "baseName": "dateUpdated",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "revision",
             "baseName": "revision",
             "type": "number",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "conferenceId",
             "baseName": "conferenceId",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "accountId",
             "baseName": "accountId",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "alias",
             "baseName": "alias",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "playBeep",
             "baseName": "playBeep",
             "type": "ConferenceResultPlayBeepEnum",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
+
         },
         {
             "name": "record",
             "baseName": "record",
             "type": "boolean",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "status",
             "baseName": "status",
             "type": "ConferenceResultStatusEnum",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
+
         },
         {
             "name": "waitUrl",
             "baseName": "waitUrl",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "actionUrl",
             "baseName": "actionUrl",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "statusCallbackUrl",
             "baseName": "statusCallbackUrl",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "subresourceUris",
             "baseName": "subresourceUris",
             "type": "any",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         }    ];
 
     static getAttributeTypeMap() {
@@ -167,8 +226,4 @@ export class ConferenceResult {
     public constructor() {
     }
 }
-
-
-export type ConferenceResultPlayBeepEnum = "always" | "never" | "entryOnly" | "exitOnly" ;
-export type ConferenceResultStatusEnum = "creating" | "empty" | "populated" | "inProgress" | "terminated" ;
 

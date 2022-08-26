@@ -46,12 +46,15 @@ export class Redirect extends PerclCommand {
 
     static readonly discriminator: string | undefined = "command";
 
-    static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
+    static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string, defaultValue: any}> = [
         {
             "name": "actionUrl",
             "baseName": "actionUrl",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         }    ];
 
     static getAttributeTypeMap() {
@@ -60,7 +63,6 @@ export class Redirect extends PerclCommand {
 
     public constructor() {
         super();
-        this.command = "Redirect";
         this.command = "Redirect";
     }
 }

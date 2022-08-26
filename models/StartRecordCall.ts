@@ -41,7 +41,7 @@ export class StartRecordCall extends PerclCommand {
 
     static readonly discriminator: string | undefined = "command";
 
-    static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
+    static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string, defaultValue: any}> = [
     ];
 
     static getAttributeTypeMap() {
@@ -50,7 +50,6 @@ export class StartRecordCall extends PerclCommand {
 
     public constructor() {
         super();
-        this.command = "StartRecordCall";
         this.command = "StartRecordCall";
     }
 }

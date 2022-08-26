@@ -204,7 +204,7 @@ import { TerminateConference } from './TerminateConference';
 import { TerminateConferenceAllOf } from './TerminateConferenceAllOf';
 import { UpdateCallRequest, UpdateCallRequestStatusEnum   } from './UpdateCallRequest';
 import { UpdateConferenceParticipantRequest } from './UpdateConferenceParticipantRequest';
-import { UpdateConferenceRequest  , UpdateConferenceRequestStatusEnum   } from './UpdateConferenceRequest';
+import { UpdateConferenceRequest , UpdateConferenceRequestPlayBeepEnum  , UpdateConferenceRequestStatusEnum   } from './UpdateConferenceRequest';
 
 /* tslint:disable:no-unused-variable */
 let primitives = [
@@ -241,6 +241,7 @@ let enumsMap: Set<string> = new Set<string>([
     "MessageResultStatusEnum",
     "MessageResultAllOfStatusEnum",
     "UpdateCallRequestStatusEnum",
+    "UpdateConferenceRequestPlayBeepEnum",
     "UpdateConferenceRequestStatusEnum",
 ]);
 

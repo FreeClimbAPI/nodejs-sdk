@@ -24,18 +24,24 @@ export class QueueRequest {
 
     static readonly discriminator: string | undefined = undefined;
 
-    static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
+    static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string, defaultValue: any}> = [
         {
             "name": "alias",
             "baseName": "alias",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "maxSize",
             "baseName": "maxSize",
             "type": "number",
-            "format": "int32"
+            "format": "int32",
+            
+            
+            "defaultValue": 100
         }    ];
 
     static getAttributeTypeMap() {

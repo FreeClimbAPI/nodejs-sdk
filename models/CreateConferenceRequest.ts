@@ -12,6 +12,13 @@
 
 import { HttpFile } from '../http/http';
 
+export enum CreateConferenceRequestPlayBeepEnum {
+
+    ALWAYS = 'always',
+    NEVER = 'never',
+    ENTRY_ONLY = 'entryOnly',
+    EXIT_ONLY = 'exitOnly'
+}
 export class CreateConferenceRequest {
     /**
     * A description for this Conference. Maximum 64 characters.
@@ -36,36 +43,52 @@ export class CreateConferenceRequest {
 
     static readonly discriminator: string | undefined = undefined;
 
-    static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
+    static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string, defaultValue: any}> = [
         {
             "name": "alias",
             "baseName": "alias",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "playBeep",
             "baseName": "playBeep",
             "type": "CreateConferenceRequestPlayBeepEnum",
-            "format": ""
+            "format": "",
+            
+            "defaultValue": CreateConferenceRequestPlayBeepEnum.ALWAYS
+            
+
         },
         {
             "name": "record",
             "baseName": "record",
             "type": "boolean",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "waitUrl",
             "baseName": "waitUrl",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "statusCallbackUrl",
             "baseName": "statusCallbackUrl",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         }    ];
 
     static getAttributeTypeMap() {
@@ -75,7 +98,4 @@ export class CreateConferenceRequest {
     public constructor() {
     }
 }
-
-
-export type CreateConferenceRequestPlayBeepEnum = "always" | "never" | "entryOnly" | "exitOnly" ;
 

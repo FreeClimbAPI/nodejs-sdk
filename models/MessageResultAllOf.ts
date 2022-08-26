@@ -12,6 +12,20 @@
 
 import { HttpFile } from '../http/http';
 
+export enum MessageResultAllOfStatusEnum {
+
+    NEW = 'new',
+    QUEUED = 'queued',
+    REJECTED = 'rejected',
+    SENDING = 'sending',
+    SENT = 'sent',
+    FAILED = 'failed',
+    RECEIVED = 'received',
+    UNDELIVERED = 'undelivered',
+    EXPIRED = 'expired',
+    DELETED = 'deleted',
+    UNKNOWN = 'unknown'
+}
 export class MessageResultAllOf {
     /**
     * String that uniquely identifies this account resource.
@@ -48,54 +62,79 @@ export class MessageResultAllOf {
 
     static readonly discriminator: string | undefined = undefined;
 
-    static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
+    static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string, defaultValue: any}> = [
         {
             "name": "accountId",
             "baseName": "accountId",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "messageId",
             "baseName": "messageId",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "status",
             "baseName": "status",
             "type": "MessageResultAllOfStatusEnum",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
+
         },
         {
             "name": "_from",
             "baseName": "from",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "to",
             "baseName": "to",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "text",
             "baseName": "text",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "direction",
             "baseName": "direction",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "notificationUrl",
             "baseName": "notificationUrl",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         }    ];
 
     static getAttributeTypeMap() {
@@ -105,7 +144,4 @@ export class MessageResultAllOf {
     public constructor() {
     }
 }
-
-
-export type MessageResultAllOfStatusEnum = "new" | "queued" | "rejected" | "sending" | "sent" | "failed" | "received" | "undelivered" | "expired" | "deleted" | "unknown" ;
 

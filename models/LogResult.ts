@@ -12,6 +12,12 @@
 
 import { HttpFile } from '../http/http';
 
+export enum LogResultLevelEnum {
+
+    INFO = 'info',
+    WARNING = 'warning',
+    ERROR = 'error'
+}
 export class LogResult {
     /**
     * Time that the log was generated. The time is represented as microseconds since the Unix Epoch.
@@ -44,48 +50,70 @@ export class LogResult {
 
     static readonly discriminator: string | undefined = undefined;
 
-    static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
+    static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string, defaultValue: any}> = [
         {
             "name": "timestamp",
             "baseName": "timestamp",
             "type": "number",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "level",
             "baseName": "level",
             "type": "LogResultLevelEnum",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
+
         },
         {
             "name": "requestId",
             "baseName": "requestId",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "accountId",
             "baseName": "accountId",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "callId",
             "baseName": "callId",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "message",
             "baseName": "message",
             "type": "string",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         },
         {
             "name": "metadata",
             "baseName": "metadata",
             "type": "any",
-            "format": ""
+            "format": "",
+            
+            
+            "defaultValue": undefined
         }    ];
 
     static getAttributeTypeMap() {
@@ -95,7 +123,4 @@ export class LogResult {
     public constructor() {
     }
 }
-
-
-export type LogResultLevelEnum = "info" | "warning" | "error" ;
 
