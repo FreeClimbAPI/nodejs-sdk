@@ -38,6 +38,25 @@ import { HttpFile } from '../http/http';
 /**
 * The `AddToConference` command adds a Participant to a Conference. If this Participant currently is in another Conference, the Participant is first removed from that Conference. Two Call legs can be bridged together by creating a Conference and adding both Call legs to it via `AddToConference`.
 */
+interface AttributeType {
+    name: string
+    baseName: string
+    type: string
+    format: string
+    defaultValue: any
+}
+interface ArgumentsType {
+    'allowCallControl'?: boolean;
+    'callControlSequence'?: string;
+    'callControlUrl'?: string;
+    'conferenceId': string;
+    'callId'?: boolean;
+    'leaveConferenceUrl'?: string;
+    'listen'?: boolean;
+    'notificationUrl'?: string;
+    'startConfOnEnter'?: boolean;
+    'talk'?: boolean;
+}
 export class AddToConference extends PerclCommand {
     /**
     * If `true`, Call control will be enabled for this Participant's Call leg.
@@ -82,7 +101,7 @@ export class AddToConference extends PerclCommand {
 
     static readonly discriminator: string | undefined = "command";
 
-    static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string, defaultValue: any}> = [
+    static readonly attributeTypeMap: AttributeType[] = [
         {
             "name": "allowCallControl",
             "baseName": "allowCallControl",
@@ -174,13 +193,20 @@ export class AddToConference extends PerclCommand {
             "defaultValue": undefined
         }    ];
 
-    static getAttributeTypeMap() {
+    static getAttributeTypeMap(): AttributeType[] {
         return super.getAttributeTypeMap().concat(AddToConference.attributeTypeMap);
     }
 
-    public constructor() {
-        super();
-        this.command = "AddToConference";
+    public constructor(args: ArgumentsType) {
+        super({ command: "AddToConference" });
+        const preparedArgs = AddToConference.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
+            const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
+            if (val !== undefined) {
+                acc[attr.name as keyof ArgumentsType] = val
+            }
+            return acc
+        }, {})
+        Object.assign(this, preparedArgs)
     }
 }
 

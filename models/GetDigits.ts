@@ -38,6 +38,24 @@ import { HttpFile } from '../http/http';
 /**
 * The `GetDigits` command collects DTMF inputs from the caller. It is only supported only when there is a single party on the Call. `GetDigits` is a Terminal Command — any actions following it are never executed. When the Caller is done entering the digits, FreeClimb submits that data to the provided `actionUrl` using an HTTP POST request. Your server will be required to respond to the FreeClimb Webhook with PerCL to continue handling the call.
 */
+interface AttributeType {
+    name: string
+    baseName: string
+    type: string
+    format: string
+    defaultValue: any
+}
+interface ArgumentsType {
+    'actionUrl': string;
+    'digitTimeoutMs'?: number;
+    'finishOnKey'?: string;
+    'flushBuffer'?: boolean;
+    'initialTimeoutMs'?: string;
+    'maxDigits'?: number;
+    'minDigits'?: number;
+    'prompts'?: Array<PerclCommand>;
+    'privacyMode'?: boolean;
+}
 export class GetDigits extends PerclCommand {
     /**
     * When the Caller has finished entering digits, FreeClimb will make an HTTP POST request to this URL. A PerCL response is expected to continue handling the Call. Make sure to keep “http://“ in the URL.
@@ -78,7 +96,7 @@ export class GetDigits extends PerclCommand {
 
     static readonly discriminator: string | undefined = "command";
 
-    static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string, defaultValue: any}> = [
+    static readonly attributeTypeMap: AttributeType[] = [
         {
             "name": "actionUrl",
             "baseName": "actionUrl",
@@ -161,13 +179,20 @@ export class GetDigits extends PerclCommand {
             "defaultValue": undefined
         }    ];
 
-    static getAttributeTypeMap() {
+    static getAttributeTypeMap(): AttributeType[] {
         return super.getAttributeTypeMap().concat(GetDigits.attributeTypeMap);
     }
 
-    public constructor() {
-        super();
-        this.command = "GetDigits";
+    public constructor(args: ArgumentsType) {
+        super({ command: "GetDigits" });
+        const preparedArgs = GetDigits.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
+            const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
+            if (val !== undefined) {
+                acc[attr.name as keyof ArgumentsType] = val
+            }
+            return acc
+        }, {})
+        Object.assign(this, preparedArgs)
     }
 }
 

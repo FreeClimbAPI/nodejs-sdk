@@ -38,6 +38,20 @@ import { HttpFile } from '../http/http';
 /**
 * The `Say` command provides Text-To-Speech (TTS) support. It converts text to speech and then renders it in a female voice back to the caller. `Say` is useful in cases where it's difficult to pre-record a prompt for any reason. `Say` does not allow barge-in unless nested within a `GetSpeech` command. The file will always be played to completion unless nested.
 */
+interface AttributeType {
+    name: string
+    baseName: string
+    type: string
+    format: string
+    defaultValue: any
+}
+interface ArgumentsType {
+    'text': string;
+    'language'?: string;
+    'loop'?: number;
+    'conferenceId'?: string;
+    'privacyMode'?: boolean;
+}
 export class Say extends PerclCommand {
     /**
     * The message to be played to the caller using TTS. The size of the string is limited to 4 KB (or 4,096 bytes). An empty string will cause the command to be skipped.
@@ -62,7 +76,7 @@ export class Say extends PerclCommand {
 
     static readonly discriminator: string | undefined = "command";
 
-    static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string, defaultValue: any}> = [
+    static readonly attributeTypeMap: AttributeType[] = [
         {
             "name": "text",
             "baseName": "text",
@@ -109,13 +123,20 @@ export class Say extends PerclCommand {
             "defaultValue": undefined
         }    ];
 
-    static getAttributeTypeMap() {
+    static getAttributeTypeMap(): AttributeType[] {
         return super.getAttributeTypeMap().concat(Say.attributeTypeMap);
     }
 
-    public constructor() {
-        super();
-        this.command = "Say";
+    public constructor(args: ArgumentsType) {
+        super({ command: "Say" });
+        const preparedArgs = Say.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
+            const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
+            if (val !== undefined) {
+                acc[attr.name as keyof ArgumentsType] = val
+            }
+            return acc
+        }, {})
+        Object.assign(this, preparedArgs)
     }
 }
 

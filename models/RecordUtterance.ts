@@ -38,6 +38,22 @@ import { HttpFile } from '../http/http';
 /**
 * The `RecordUtterance` command records the caller's voice and returns the URL of a file containing the audio recording. `RecordUtterance` is blocking and is a terminal command. As such, the `actionUrl` property is required, and control of the Call picks up using the PerCL returned in response to the `actionUrl`. Recording information is returned in the `actionUrl` request.
 */
+interface AttributeType {
+    name: string
+    baseName: string
+    type: string
+    format: string
+    defaultValue: any
+}
+interface ArgumentsType {
+    'actionUrl': string;
+    'silenceTimeoutMs'?: number;
+    'finishOnKey'?: string;
+    'maxLengthSec'?: number;
+    'playBeep'?: boolean;
+    'autoStart'?: boolean;
+    'privacyMode'?: boolean;
+}
 export class RecordUtterance extends PerclCommand {
     /**
     * URL to which information on the completed recording is submitted. The PerCL received in response is then used to continue with Call processing.
@@ -70,7 +86,7 @@ export class RecordUtterance extends PerclCommand {
 
     static readonly discriminator: string | undefined = "command";
 
-    static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string, defaultValue: any}> = [
+    static readonly attributeTypeMap: AttributeType[] = [
         {
             "name": "actionUrl",
             "baseName": "actionUrl",
@@ -135,13 +151,20 @@ export class RecordUtterance extends PerclCommand {
             "defaultValue": undefined
         }    ];
 
-    static getAttributeTypeMap() {
+    static getAttributeTypeMap(): AttributeType[] {
         return super.getAttributeTypeMap().concat(RecordUtterance.attributeTypeMap);
     }
 
-    public constructor() {
-        super();
-        this.command = "RecordUtterance";
+    public constructor(args: ArgumentsType) {
+        super({ command: "RecordUtterance" });
+        const preparedArgs = RecordUtterance.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
+            const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
+            if (val !== undefined) {
+                acc[attr.name as keyof ArgumentsType] = val
+            }
+            return acc
+        }, {})
+        Object.assign(this, preparedArgs)
     }
 }
 

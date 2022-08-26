@@ -14,6 +14,25 @@ import { ConferenceParticipantResultAllOf } from './ConferenceParticipantResultA
 import { MutableResourceModel } from './MutableResourceModel';
 import { HttpFile } from '../http/http';
 
+interface AttributeType {
+    name: string
+    baseName: string
+    type: string
+    format: string
+    defaultValue: any
+}
+interface ArgumentsType {
+    'uri'?: string;
+    'dateCreated'?: string;
+    'dateUpdated'?: string;
+    'revision'?: number;
+    'accountId'?: string;
+    'conferenceId'?: string;
+    'callId'?: string;
+    'talk'?: boolean;
+    'listen'?: boolean;
+    'startConfOnEnter'?: boolean;
+}
 export class ConferenceParticipantResult {
     /**
     * The URI for this resource, relative to /apiserver.
@@ -58,7 +77,7 @@ export class ConferenceParticipantResult {
 
     static readonly discriminator: string | undefined = undefined;
 
-    static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string, defaultValue: any}> = [
+    static readonly attributeTypeMap: AttributeType[] = [
         {
             "name": "uri",
             "baseName": "uri",
@@ -150,11 +169,19 @@ export class ConferenceParticipantResult {
             "defaultValue": undefined
         }    ];
 
-    static getAttributeTypeMap() {
+    static getAttributeTypeMap(): AttributeType[] {
         return ConferenceParticipantResult.attributeTypeMap;
     }
 
-    public constructor() {
+    public constructor(args: ArgumentsType) {
+        const preparedArgs = ConferenceParticipantResult.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
+            const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
+            if (val !== undefined) {
+                acc[attr.name as keyof ArgumentsType] = val
+            }
+            return acc
+        }, {})
+        Object.assign(this, preparedArgs)
     }
 }
 

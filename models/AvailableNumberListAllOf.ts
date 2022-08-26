@@ -13,12 +13,22 @@
 import { AvailableNumber } from './AvailableNumber';
 import { HttpFile } from '../http/http';
 
+interface AttributeType {
+    name: string
+    baseName: string
+    type: string
+    format: string
+    defaultValue: any
+}
+interface ArgumentsType {
+    'availablePhoneNumbers'?: Array<AvailableNumber>;
+}
 export class AvailableNumberListAllOf {
     'availablePhoneNumbers'?: Array<AvailableNumber>;
 
     static readonly discriminator: string | undefined = undefined;
 
-    static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string, defaultValue: any}> = [
+    static readonly attributeTypeMap: AttributeType[] = [
         {
             "name": "availablePhoneNumbers",
             "baseName": "availablePhoneNumbers",
@@ -29,11 +39,19 @@ export class AvailableNumberListAllOf {
             "defaultValue": undefined
         }    ];
 
-    static getAttributeTypeMap() {
+    static getAttributeTypeMap(): AttributeType[] {
         return AvailableNumberListAllOf.attributeTypeMap;
     }
 
-    public constructor() {
+    public constructor(args: ArgumentsType) {
+        const preparedArgs = AvailableNumberListAllOf.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
+            const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
+            if (val !== undefined) {
+                acc[attr.name as keyof ArgumentsType] = val
+            }
+            return acc
+        }, {})
+        Object.assign(this, preparedArgs)
     }
 }
 

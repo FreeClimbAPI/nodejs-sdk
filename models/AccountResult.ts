@@ -25,6 +25,26 @@ export enum AccountResultStatusEnum {
     SUSPENDED = 'suspended',
     CLOSED = 'closed'
 }
+interface AttributeType {
+    name: string
+    baseName: string
+    type: string
+    format: string
+    defaultValue: any
+}
+interface ArgumentsType {
+    'uri'?: string;
+    'dateCreated'?: string;
+    'dateUpdated'?: string;
+    'revision'?: number;
+    'accountId'?: string;
+    'apiKey'?: string;
+    'alias'?: string;
+    'label'?: string;
+    'type'?: AccountResultTypeEnum;
+    'status'?: AccountResultStatusEnum;
+    'subresourceUris'?: any;
+}
 export class AccountResult {
     /**
     * The URI for this resource, relative to /apiserver.
@@ -73,7 +93,7 @@ export class AccountResult {
 
     static readonly discriminator: string | undefined = undefined;
 
-    static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string, defaultValue: any}> = [
+    static readonly attributeTypeMap: AttributeType[] = [
         {
             "name": "uri",
             "baseName": "uri",
@@ -176,11 +196,19 @@ export class AccountResult {
             "defaultValue": undefined
         }    ];
 
-    static getAttributeTypeMap() {
+    static getAttributeTypeMap(): AttributeType[] {
         return AccountResult.attributeTypeMap;
     }
 
-    public constructor() {
+    public constructor(args: ArgumentsType) {
+        const preparedArgs = AccountResult.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
+            const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
+            if (val !== undefined) {
+                acc[attr.name as keyof ArgumentsType] = val
+            }
+            return acc
+        }, {})
+        Object.assign(this, preparedArgs)
     }
 }
 

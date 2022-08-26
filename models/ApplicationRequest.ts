@@ -12,6 +12,22 @@
 
 import { HttpFile } from '../http/http';
 
+interface AttributeType {
+    name: string
+    baseName: string
+    type: string
+    format: string
+    defaultValue: any
+}
+interface ArgumentsType {
+    'alias'?: string;
+    'voiceUrl'?: string;
+    'voiceFallbackUrl'?: string;
+    'callConnectUrl'?: string;
+    'statusCallbackUrl'?: string;
+    'smsUrl'?: string;
+    'smsFallbackUrl'?: string;
+}
 export class ApplicationRequest {
     /**
     * A human readable description of the application, with maximum length 64 characters.
@@ -44,7 +60,7 @@ export class ApplicationRequest {
 
     static readonly discriminator: string | undefined = undefined;
 
-    static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string, defaultValue: any}> = [
+    static readonly attributeTypeMap: AttributeType[] = [
         {
             "name": "alias",
             "baseName": "alias",
@@ -109,11 +125,19 @@ export class ApplicationRequest {
             "defaultValue": undefined
         }    ];
 
-    static getAttributeTypeMap() {
+    static getAttributeTypeMap(): AttributeType[] {
         return ApplicationRequest.attributeTypeMap;
     }
 
-    public constructor() {
+    public constructor(args: ArgumentsType) {
+        const preparedArgs = ApplicationRequest.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
+            const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
+            if (val !== undefined) {
+                acc[attr.name as keyof ArgumentsType] = val
+            }
+            return acc
+        }, {})
+        Object.assign(this, preparedArgs)
     }
 }
 

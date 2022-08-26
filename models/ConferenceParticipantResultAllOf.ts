@@ -12,6 +12,21 @@
 
 import { HttpFile } from '../http/http';
 
+interface AttributeType {
+    name: string
+    baseName: string
+    type: string
+    format: string
+    defaultValue: any
+}
+interface ArgumentsType {
+    'accountId'?: string;
+    'conferenceId'?: string;
+    'callId'?: string;
+    'talk'?: boolean;
+    'listen'?: boolean;
+    'startConfOnEnter'?: boolean;
+}
 export class ConferenceParticipantResultAllOf {
     /**
     * ID of the account that created this participant.
@@ -40,7 +55,7 @@ export class ConferenceParticipantResultAllOf {
 
     static readonly discriminator: string | undefined = undefined;
 
-    static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string, defaultValue: any}> = [
+    static readonly attributeTypeMap: AttributeType[] = [
         {
             "name": "accountId",
             "baseName": "accountId",
@@ -96,11 +111,19 @@ export class ConferenceParticipantResultAllOf {
             "defaultValue": undefined
         }    ];
 
-    static getAttributeTypeMap() {
+    static getAttributeTypeMap(): AttributeType[] {
         return ConferenceParticipantResultAllOf.attributeTypeMap;
     }
 
-    public constructor() {
+    public constructor(args: ArgumentsType) {
+        const preparedArgs = ConferenceParticipantResultAllOf.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
+            const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
+            if (val !== undefined) {
+                acc[attr.name as keyof ArgumentsType] = val
+            }
+            return acc
+        }, {})
+        Object.assign(this, preparedArgs)
     }
 }
 

@@ -24,6 +24,18 @@ export enum UpdateConferenceRequestStatusEnum {
     EMPTY = 'empty',
     TERMINATED = 'terminated'
 }
+interface AttributeType {
+    name: string
+    baseName: string
+    type: string
+    format: string
+    defaultValue: any
+}
+interface ArgumentsType {
+    'alias'?: string;
+    'playBeep'?: UpdateConferenceRequestPlayBeepEnum;
+    'status'?: UpdateConferenceRequestStatusEnum;
+}
 export class UpdateConferenceRequest {
     /**
     * Description for this conference. Maximum 64 characters.
@@ -40,7 +52,7 @@ export class UpdateConferenceRequest {
 
     static readonly discriminator: string | undefined = undefined;
 
-    static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string, defaultValue: any}> = [
+    static readonly attributeTypeMap: AttributeType[] = [
         {
             "name": "alias",
             "baseName": "alias",
@@ -71,11 +83,19 @@ export class UpdateConferenceRequest {
 
         }    ];
 
-    static getAttributeTypeMap() {
+    static getAttributeTypeMap(): AttributeType[] {
         return UpdateConferenceRequest.attributeTypeMap;
     }
 
-    public constructor() {
+    public constructor(args: ArgumentsType) {
+        const preparedArgs = UpdateConferenceRequest.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
+            const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
+            if (val !== undefined) {
+                acc[attr.name as keyof ArgumentsType] = val
+            }
+            return acc
+        }, {})
+        Object.assign(this, preparedArgs)
     }
 }
 

@@ -13,6 +13,26 @@
 import { Capabilities } from './Capabilities';
 import { HttpFile } from '../http/http';
 
+interface AttributeType {
+    name: string
+    baseName: string
+    type: string
+    format: string
+    defaultValue: any
+}
+interface ArgumentsType {
+    'capabilities'?: Capabilities;
+    'campaignId'?: string;
+    'phoneNumberId'?: string;
+    'accountId'?: string;
+    'applicationId'?: string;
+    'phoneNumber'?: string;
+    'alias'?: string;
+    'region'?: string;
+    'country'?: string;
+    'voiceEnabled'?: boolean;
+    'smsEnabled'?: boolean;
+}
 export class IncomingNumberResultAllOf {
     'capabilities'?: Capabilities;
     /**
@@ -58,7 +78,7 @@ export class IncomingNumberResultAllOf {
 
     static readonly discriminator: string | undefined = undefined;
 
-    static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string, defaultValue: any}> = [
+    static readonly attributeTypeMap: AttributeType[] = [
         {
             "name": "capabilities",
             "baseName": "capabilities",
@@ -159,11 +179,19 @@ export class IncomingNumberResultAllOf {
             "defaultValue": undefined
         }    ];
 
-    static getAttributeTypeMap() {
+    static getAttributeTypeMap(): AttributeType[] {
         return IncomingNumberResultAllOf.attributeTypeMap;
     }
 
-    public constructor() {
+    public constructor(args: ArgumentsType) {
+        const preparedArgs = IncomingNumberResultAllOf.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
+            const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
+            if (val !== undefined) {
+                acc[attr.name as keyof ArgumentsType] = val
+            }
+            return acc
+        }, {})
+        Object.assign(this, preparedArgs)
     }
 }
 

@@ -37,6 +37,16 @@ import { HttpFile } from '../http/http';
 /**
 * An individual command used in a PerCLScript.
 */
+interface AttributeType {
+    name: string
+    baseName: string
+    type: string
+    format: string
+    defaultValue: any
+}
+interface ArgumentsType {
+    'command'?: string;
+}
 export class PerclCommand {
     /**
     * Name of PerCL Command (this is automatically derived from mapping configuration and should not be manually supplied in any arguments)
@@ -45,7 +55,7 @@ export class PerclCommand {
 
     static readonly discriminator: string | undefined = "command";
 
-    static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string, defaultValue: any}> = [
+    static readonly attributeTypeMap: AttributeType[] = [
         {
             "name": "command",
             "baseName": "command",
@@ -56,12 +66,36 @@ export class PerclCommand {
             "defaultValue": undefined
         }    ];
 
-    static getAttributeTypeMap() {
+    static getAttributeTypeMap(): AttributeType[] {
         return PerclCommand.attributeTypeMap;
     }
 
-    public constructor() {
-        this.command = "PerclCommand";
+    public constructor(args: ArgumentsType) {
+        const preparedArgs = PerclCommand.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
+            const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
+            if (val !== undefined) {
+                acc[attr.name as keyof ArgumentsType] = val
+            }
+            return acc
+        }, {})
+        Object.assign(this, preparedArgs)
+    }
+    public toPerclObject() {
+        const reduce = (acc: any, attr: AttributeType) => {
+            let val = this[attr.name as keyof PerclCommand] ?? attr.defaultValue
+            if (val instanceof Array) {
+                val = val.map(v => v instanceof PerclCommand ? v.toPerclObject() : v)
+            } else if (val instanceof PerclCommand) {
+                val = val.toPerclObject()
+            }
+            if (val != undefined) {
+                acc[attr.name] = val
+            }
+            return acc
+        }
+        const attrs = (this.constructor as typeof PerclCommand).getAttributeTypeMap().reduce(reduce, {})
+        delete attrs['command']
+        return { [this.command as string]: attrs }
     }
 }
 

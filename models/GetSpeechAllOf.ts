@@ -13,6 +13,28 @@
 import { PerclCommand } from './PerclCommand';
 import { HttpFile } from '../http/http';
 
+interface AttributeType {
+    name: string
+    baseName: string
+    type: string
+    format: string
+    defaultValue: any
+}
+interface ArgumentsType {
+    'actionUrl': string;
+    'grammarType'?: number;
+    'grammarFile': string;
+    'grammarRule'?: boolean;
+    'playBeep'?: string;
+    'prompts'?: Array<PerclCommand>;
+    'noInputTimeoutMs'?: number;
+    'recognitionTimeoutMs'?: number;
+    'confidenceThreshold'?: number;
+    'sensitivityLevel'?: number;
+    'speechCompleteTimeoutMs'?: number;
+    'speechIncompleteTimeoutMs'?: number;
+    'privacyMode'?: boolean;
+}
 export class GetSpeechAllOf {
     /**
     * When the caller has finished speaking or the command has timed out, FreeClimb will make a POST request to this URL. A PerCL response is expected to continue handling the call.
@@ -69,7 +91,7 @@ export class GetSpeechAllOf {
 
     static readonly discriminator: string | undefined = undefined;
 
-    static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string, defaultValue: any}> = [
+    static readonly attributeTypeMap: AttributeType[] = [
         {
             "name": "actionUrl",
             "baseName": "actionUrl",
@@ -188,11 +210,19 @@ export class GetSpeechAllOf {
             "defaultValue": undefined
         }    ];
 
-    static getAttributeTypeMap() {
+    static getAttributeTypeMap(): AttributeType[] {
         return GetSpeechAllOf.attributeTypeMap;
     }
 
-    public constructor() {
+    public constructor(args: ArgumentsType) {
+        const preparedArgs = GetSpeechAllOf.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
+            const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
+            if (val !== undefined) {
+                acc[attr.name as keyof ArgumentsType] = val
+            }
+            return acc
+        }, {})
+        Object.assign(this, preparedArgs)
     }
 }
 

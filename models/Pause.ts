@@ -38,6 +38,16 @@ import { HttpFile } from '../http/http';
 /**
 * The `Pause` command halts execution of the current PerCL script for a specified number of milliseconds. If `Pause` is the first command in a PerCL document, FreeClimb will wait for the specified time to elapse before picking up the call.
 */
+interface AttributeType {
+    name: string
+    baseName: string
+    type: string
+    format: string
+    defaultValue: any
+}
+interface ArgumentsType {
+    'length': number;
+}
 export class Pause extends PerclCommand {
     /**
     * Length in milliseconds. FreeClimb will wait silently before continuing on.
@@ -46,7 +56,7 @@ export class Pause extends PerclCommand {
 
     static readonly discriminator: string | undefined = "command";
 
-    static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string, defaultValue: any}> = [
+    static readonly attributeTypeMap: AttributeType[] = [
         {
             "name": "length",
             "baseName": "length",
@@ -57,13 +67,20 @@ export class Pause extends PerclCommand {
             "defaultValue": undefined
         }    ];
 
-    static getAttributeTypeMap() {
+    static getAttributeTypeMap(): AttributeType[] {
         return super.getAttributeTypeMap().concat(Pause.attributeTypeMap);
     }
 
-    public constructor() {
-        super();
-        this.command = "Pause";
+    public constructor(args: ArgumentsType) {
+        super({ command: "Pause" });
+        const preparedArgs = Pause.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
+            const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
+            if (val !== undefined) {
+                acc[attr.name as keyof ArgumentsType] = val
+            }
+            return acc
+        }, {})
+        Object.assign(this, preparedArgs)
     }
 }
 

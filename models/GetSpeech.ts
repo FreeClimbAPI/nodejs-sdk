@@ -38,6 +38,28 @@ import { HttpFile } from '../http/http';
 /**
 * The `GetSpeech` command enables the Caller to respond to the application using a supported language. Unlike DTMF entry, which implicitly restricts the user to using the available buttons on the phone key pad, speech input allows for flexible audio inputs based on grammar. FreeClimb supports grammars written using GRXML compatible with the Microsoft Speech Platform. `GetSpeech` is only supported on a single call leg. It is not supported when there are two or more call legs connected (as in within a Conference).
 */
+interface AttributeType {
+    name: string
+    baseName: string
+    type: string
+    format: string
+    defaultValue: any
+}
+interface ArgumentsType {
+    'actionUrl': string;
+    'grammarType'?: number;
+    'grammarFile': string;
+    'grammarRule'?: boolean;
+    'playBeep'?: string;
+    'prompts'?: Array<PerclCommand>;
+    'noInputTimeoutMs'?: number;
+    'recognitionTimeoutMs'?: number;
+    'confidenceThreshold'?: number;
+    'sensitivityLevel'?: number;
+    'speechCompleteTimeoutMs'?: number;
+    'speechIncompleteTimeoutMs'?: number;
+    'privacyMode'?: boolean;
+}
 export class GetSpeech extends PerclCommand {
     /**
     * When the caller has finished speaking or the command has timed out, FreeClimb will make a POST request to this URL. A PerCL response is expected to continue handling the call.
@@ -94,7 +116,7 @@ export class GetSpeech extends PerclCommand {
 
     static readonly discriminator: string | undefined = "command";
 
-    static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string, defaultValue: any}> = [
+    static readonly attributeTypeMap: AttributeType[] = [
         {
             "name": "actionUrl",
             "baseName": "actionUrl",
@@ -213,13 +235,20 @@ export class GetSpeech extends PerclCommand {
             "defaultValue": undefined
         }    ];
 
-    static getAttributeTypeMap() {
+    static getAttributeTypeMap(): AttributeType[] {
         return super.getAttributeTypeMap().concat(GetSpeech.attributeTypeMap);
     }
 
-    public constructor() {
-        super();
-        this.command = "GetSpeech";
+    public constructor(args: ArgumentsType) {
+        super({ command: "GetSpeech" });
+        const preparedArgs = GetSpeech.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
+            const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
+            if (val !== undefined) {
+                acc[attr.name as keyof ArgumentsType] = val
+            }
+            return acc
+        }, {})
+        Object.assign(this, preparedArgs)
     }
 }
 

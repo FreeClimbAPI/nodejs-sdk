@@ -38,6 +38,19 @@ import { HttpFile } from '../http/http';
 /**
 * The `Sms` command can be used to send an SMS message to a phone number during a phone call. International SMS is disabled by default.
 */
+interface AttributeType {
+    name: string
+    baseName: string
+    type: string
+    format: string
+    defaultValue: any
+}
+interface ArgumentsType {
+    'to': string;
+    '_from': string;
+    'text': string;
+    'notificationUrl'?: string;
+}
 export class Sms extends PerclCommand {
     /**
     * E.164 representation of the phone number to which the message will be sent. Must be within FreeClimb's service area and E.164 formatting (e.g., +18003608245).
@@ -58,7 +71,7 @@ export class Sms extends PerclCommand {
 
     static readonly discriminator: string | undefined = "command";
 
-    static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string, defaultValue: any}> = [
+    static readonly attributeTypeMap: AttributeType[] = [
         {
             "name": "to",
             "baseName": "to",
@@ -96,13 +109,20 @@ export class Sms extends PerclCommand {
             "defaultValue": undefined
         }    ];
 
-    static getAttributeTypeMap() {
+    static getAttributeTypeMap(): AttributeType[] {
         return super.getAttributeTypeMap().concat(Sms.attributeTypeMap);
     }
 
-    public constructor() {
-        super();
-        this.command = "Sms";
+    public constructor(args: ArgumentsType) {
+        super({ command: "Sms" });
+        const preparedArgs = Sms.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
+            const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
+            if (val !== undefined) {
+                acc[attr.name as keyof ArgumentsType] = val
+            }
+            return acc
+        }, {})
+        Object.assign(this, preparedArgs)
     }
 }
 

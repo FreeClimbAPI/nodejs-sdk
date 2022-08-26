@@ -12,6 +12,18 @@
 
 import { HttpFile } from '../http/http';
 
+interface AttributeType {
+    name: string
+    baseName: string
+    type: string
+    format: string
+    defaultValue: any
+}
+interface ArgumentsType {
+    'phoneNumber': string;
+    'alias'?: string;
+    'applicationId'?: string;
+}
 export class BuyIncomingNumberRequest {
     /**
     * Phone number to purchase in E.164 format (as returned in the list of Available Phone Numbers).
@@ -28,7 +40,7 @@ export class BuyIncomingNumberRequest {
 
     static readonly discriminator: string | undefined = undefined;
 
-    static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string, defaultValue: any}> = [
+    static readonly attributeTypeMap: AttributeType[] = [
         {
             "name": "phoneNumber",
             "baseName": "phoneNumber",
@@ -57,11 +69,19 @@ export class BuyIncomingNumberRequest {
             "defaultValue": undefined
         }    ];
 
-    static getAttributeTypeMap() {
+    static getAttributeTypeMap(): AttributeType[] {
         return BuyIncomingNumberRequest.attributeTypeMap;
     }
 
-    public constructor() {
+    public constructor(args: ArgumentsType) {
+        const preparedArgs = BuyIncomingNumberRequest.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
+            const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
+            if (val !== undefined) {
+                acc[attr.name as keyof ArgumentsType] = val
+            }
+            return acc
+        }, {})
+        Object.assign(this, preparedArgs)
     }
 }
 

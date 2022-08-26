@@ -12,6 +12,24 @@
 
 import { HttpFile } from '../http/http';
 
+interface AttributeType {
+    name: string
+    baseName: string
+    type: string
+    format: string
+    defaultValue: any
+}
+interface ArgumentsType {
+    'accountId'?: string;
+    'applicationId'?: string;
+    'alias'?: string;
+    'voiceUrl'?: string;
+    'voiceFallbackUrl'?: string;
+    'callConnectUrl'?: string;
+    'statusCallbackUrl'?: string;
+    'smsUrl'?: string;
+    'smsFallbackUrl'?: string;
+}
 export class ApplicationResultAllOf {
     /**
     * ID of the account that owns this phone number.
@@ -52,7 +70,7 @@ export class ApplicationResultAllOf {
 
     static readonly discriminator: string | undefined = undefined;
 
-    static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string, defaultValue: any}> = [
+    static readonly attributeTypeMap: AttributeType[] = [
         {
             "name": "accountId",
             "baseName": "accountId",
@@ -135,11 +153,19 @@ export class ApplicationResultAllOf {
             "defaultValue": undefined
         }    ];
 
-    static getAttributeTypeMap() {
+    static getAttributeTypeMap(): AttributeType[] {
         return ApplicationResultAllOf.attributeTypeMap;
     }
 
-    public constructor() {
+    public constructor(args: ArgumentsType) {
+        const preparedArgs = ApplicationResultAllOf.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
+            const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
+            if (val !== undefined) {
+                acc[attr.name as keyof ArgumentsType] = val
+            }
+            return acc
+        }, {})
+        Object.assign(this, preparedArgs)
     }
 }
 

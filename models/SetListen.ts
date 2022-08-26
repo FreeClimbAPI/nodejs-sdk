@@ -38,6 +38,17 @@ import { HttpFile } from '../http/http';
 /**
 * The `SetListen` command enables or disables the listen privilege for a Conference Participant provided both calls are in the same conference. The Participant can hear what the other participants are saying only if this privilege is enabled.
 */
+interface AttributeType {
+    name: string
+    baseName: string
+    type: string
+    format: string
+    defaultValue: any
+}
+interface ArgumentsType {
+    'callId': string;
+    'listen'?: boolean;
+}
 export class SetListen extends PerclCommand {
     /**
     * ID of the call leg that is to be assigned the listen privilege. The Call must be in a Conference or an error will be triggered.
@@ -50,7 +61,7 @@ export class SetListen extends PerclCommand {
 
     static readonly discriminator: string | undefined = "command";
 
-    static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string, defaultValue: any}> = [
+    static readonly attributeTypeMap: AttributeType[] = [
         {
             "name": "callId",
             "baseName": "callId",
@@ -70,13 +81,20 @@ export class SetListen extends PerclCommand {
             "defaultValue": undefined
         }    ];
 
-    static getAttributeTypeMap() {
+    static getAttributeTypeMap(): AttributeType[] {
         return super.getAttributeTypeMap().concat(SetListen.attributeTypeMap);
     }
 
-    public constructor() {
-        super();
-        this.command = "SetListen";
+    public constructor(args: ArgumentsType) {
+        super({ command: "SetListen" });
+        const preparedArgs = SetListen.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
+            const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
+            if (val !== undefined) {
+                acc[attr.name as keyof ArgumentsType] = val
+            }
+            return acc
+        }, {})
+        Object.assign(this, preparedArgs)
     }
 }
 

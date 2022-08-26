@@ -23,6 +23,30 @@ export enum CallResultAllOfStatusEnum {
     FAILED = 'failed',
     NO_ANSWER = 'noAnswer'
 }
+interface AttributeType {
+    name: string
+    baseName: string
+    type: string
+    format: string
+    defaultValue: any
+}
+interface ArgumentsType {
+    'callId'?: string;
+    'parentCallId'?: string;
+    'accountId'?: string;
+    '_from'?: string;
+    'to'?: string;
+    'phoneNumberId'?: string;
+    'status'?: CallResultAllOfStatusEnum;
+    'startTime'?: string;
+    'connectTime'?: string;
+    'endTime'?: string;
+    'duration'?: number;
+    'connectDuration'?: number;
+    'direction'?: string;
+    'answeredBy'?: string;
+    'subresourceUris'?: any;
+}
 export class CallResultAllOf {
     /**
     * String that uniquely identifies this Call resource.
@@ -87,7 +111,7 @@ export class CallResultAllOf {
 
     static readonly discriminator: string | undefined = undefined;
 
-    static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string, defaultValue: any}> = [
+    static readonly attributeTypeMap: AttributeType[] = [
         {
             "name": "callId",
             "baseName": "callId",
@@ -225,11 +249,19 @@ export class CallResultAllOf {
             "defaultValue": undefined
         }    ];
 
-    static getAttributeTypeMap() {
+    static getAttributeTypeMap(): AttributeType[] {
         return CallResultAllOf.attributeTypeMap;
     }
 
-    public constructor() {
+    public constructor(args: ArgumentsType) {
+        const preparedArgs = CallResultAllOf.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
+            const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
+            if (val !== undefined) {
+                acc[attr.name as keyof ArgumentsType] = val
+            }
+            return acc
+        }, {})
+        Object.assign(this, preparedArgs)
     }
 }
 

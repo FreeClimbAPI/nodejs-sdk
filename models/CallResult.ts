@@ -25,6 +25,34 @@ export enum CallResultStatusEnum {
     FAILED = 'failed',
     NO_ANSWER = 'noAnswer'
 }
+interface AttributeType {
+    name: string
+    baseName: string
+    type: string
+    format: string
+    defaultValue: any
+}
+interface ArgumentsType {
+    'uri'?: string;
+    'dateCreated'?: string;
+    'dateUpdated'?: string;
+    'revision'?: number;
+    'callId'?: string;
+    'parentCallId'?: string;
+    'accountId'?: string;
+    '_from'?: string;
+    'to'?: string;
+    'phoneNumberId'?: string;
+    'status'?: CallResultStatusEnum;
+    'startTime'?: string;
+    'connectTime'?: string;
+    'endTime'?: string;
+    'duration'?: number;
+    'connectDuration'?: number;
+    'direction'?: string;
+    'answeredBy'?: string;
+    'subresourceUris'?: any;
+}
 export class CallResult {
     /**
     * The URI for this resource, relative to /apiserver.
@@ -105,7 +133,7 @@ export class CallResult {
 
     static readonly discriminator: string | undefined = undefined;
 
-    static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string, defaultValue: any}> = [
+    static readonly attributeTypeMap: AttributeType[] = [
         {
             "name": "uri",
             "baseName": "uri",
@@ -279,11 +307,19 @@ export class CallResult {
             "defaultValue": undefined
         }    ];
 
-    static getAttributeTypeMap() {
+    static getAttributeTypeMap(): AttributeType[] {
         return CallResult.attributeTypeMap;
     }
 
-    public constructor() {
+    public constructor(args: ArgumentsType) {
+        const preparedArgs = CallResult.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
+            const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
+            if (val !== undefined) {
+                acc[attr.name as keyof ArgumentsType] = val
+            }
+            return acc
+        }, {})
+        Object.assign(this, preparedArgs)
     }
 }
 

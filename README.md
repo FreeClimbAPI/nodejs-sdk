@@ -35,3 +35,19 @@ apiInstance.listApplications().then(applications => console.log('got application
 
 ## Detailed SDK documentation
 For more details on how to use the individual methods on the sdk - go [here](DefaultApi.md)
+
+## Using PerCL
+
+The Performance Command Language (PerCL) defines a set of instructions, written in JSON format, that express telephony actions to be performed in response to an event on the FreeClimb platform. FreeClimb communicates with the application server when events associated with the application occur, so the webserver can instruct FreeClimb how to handle such events using PerCL scripts.
+PerCL commands are a part of the model schema and can be serialized into JSON like so:
+
+```typescript
+import { Say, Play, GetDigits, PerclScript } from '@freeclimb/sdk'
+
+const say = new Say({ text: 'Hello, World' })
+const play = new Play({ file: "Example File" })
+const getDigits = new GetDigits({ actionUrl: "Example Action URL", prompts: [say, play] })
+const perclScript = new PerclScript({ commands: [getDigits] })
+
+console.log(perclScript.toJSON())
+```

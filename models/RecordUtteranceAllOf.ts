@@ -12,6 +12,22 @@
 
 import { HttpFile } from '../http/http';
 
+interface AttributeType {
+    name: string
+    baseName: string
+    type: string
+    format: string
+    defaultValue: any
+}
+interface ArgumentsType {
+    'actionUrl': string;
+    'silenceTimeoutMs'?: number;
+    'finishOnKey'?: string;
+    'maxLengthSec'?: number;
+    'playBeep'?: boolean;
+    'autoStart'?: boolean;
+    'privacyMode'?: boolean;
+}
 export class RecordUtteranceAllOf {
     /**
     * URL to which information on the completed recording is submitted. The PerCL received in response is then used to continue with Call processing.
@@ -44,7 +60,7 @@ export class RecordUtteranceAllOf {
 
     static readonly discriminator: string | undefined = undefined;
 
-    static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string, defaultValue: any}> = [
+    static readonly attributeTypeMap: AttributeType[] = [
         {
             "name": "actionUrl",
             "baseName": "actionUrl",
@@ -109,11 +125,19 @@ export class RecordUtteranceAllOf {
             "defaultValue": undefined
         }    ];
 
-    static getAttributeTypeMap() {
+    static getAttributeTypeMap(): AttributeType[] {
         return RecordUtteranceAllOf.attributeTypeMap;
     }
 
-    public constructor() {
+    public constructor(args: ArgumentsType) {
+        const preparedArgs = RecordUtteranceAllOf.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
+            const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
+            if (val !== undefined) {
+                acc[attr.name as keyof ArgumentsType] = val
+            }
+            return acc
+        }, {})
+        Object.assign(this, preparedArgs)
     }
 }
 

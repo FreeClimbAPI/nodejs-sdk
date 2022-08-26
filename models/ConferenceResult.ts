@@ -29,6 +29,29 @@ export enum ConferenceResultStatusEnum {
     IN_PROGRESS = 'inProgress',
     TERMINATED = 'terminated'
 }
+interface AttributeType {
+    name: string
+    baseName: string
+    type: string
+    format: string
+    defaultValue: any
+}
+interface ArgumentsType {
+    'uri'?: string;
+    'dateCreated'?: string;
+    'dateUpdated'?: string;
+    'revision'?: number;
+    'conferenceId'?: string;
+    'accountId'?: string;
+    'alias'?: string;
+    'playBeep'?: ConferenceResultPlayBeepEnum;
+    'record'?: boolean;
+    'status'?: ConferenceResultStatusEnum;
+    'waitUrl'?: string;
+    'actionUrl'?: string;
+    'statusCallbackUrl'?: string;
+    'subresourceUris'?: any;
+}
 export class ConferenceResult {
     /**
     * The URI for this resource, relative to /apiserver.
@@ -89,7 +112,7 @@ export class ConferenceResult {
 
     static readonly discriminator: string | undefined = undefined;
 
-    static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string, defaultValue: any}> = [
+    static readonly attributeTypeMap: AttributeType[] = [
         {
             "name": "uri",
             "baseName": "uri",
@@ -219,11 +242,19 @@ export class ConferenceResult {
             "defaultValue": undefined
         }    ];
 
-    static getAttributeTypeMap() {
+    static getAttributeTypeMap(): AttributeType[] {
         return ConferenceResult.attributeTypeMap;
     }
 
-    public constructor() {
+    public constructor(args: ArgumentsType) {
+        const preparedArgs = ConferenceResult.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
+            const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
+            if (val !== undefined) {
+                acc[attr.name as keyof ArgumentsType] = val
+            }
+            return acc
+        }, {})
+        Object.assign(this, preparedArgs)
     }
 }
 

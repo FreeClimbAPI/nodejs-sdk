@@ -38,6 +38,21 @@ import { HttpFile } from '../http/http';
 /**
 * The `CreateConference` command does exactly what its name implies — it creates an unpopulated Conference (one without any Participants). Once created, a Conference remains in FreeClimb until explicitly terminated by a customer. Once a Conference has been terminated, it can no longer be used.
 */
+interface AttributeType {
+    name: string
+    baseName: string
+    type: string
+    format: string
+    defaultValue: any
+}
+interface ArgumentsType {
+    'actionUrl': string;
+    'alias'?: boolean;
+    'playBeep'?: string;
+    'record'?: boolean;
+    'statusCallbackUrl'?: boolean;
+    'waitUrl'?: string;
+}
 export class CreateConference extends PerclCommand {
     /**
     *  This URL is invoked once the Conference is successfully created. Actions on the Conference, such as adding Participants, can be performed via the PerCL script returned in the response. 
@@ -66,7 +81,7 @@ export class CreateConference extends PerclCommand {
 
     static readonly discriminator: string | undefined = "command";
 
-    static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string, defaultValue: any}> = [
+    static readonly attributeTypeMap: AttributeType[] = [
         {
             "name": "actionUrl",
             "baseName": "actionUrl",
@@ -122,13 +137,20 @@ export class CreateConference extends PerclCommand {
             "defaultValue": undefined
         }    ];
 
-    static getAttributeTypeMap() {
+    static getAttributeTypeMap(): AttributeType[] {
         return super.getAttributeTypeMap().concat(CreateConference.attributeTypeMap);
     }
 
-    public constructor() {
-        super();
-        this.command = "CreateConference";
+    public constructor(args: ArgumentsType) {
+        super({ command: "CreateConference" });
+        const preparedArgs = CreateConference.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
+            const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
+            if (val !== undefined) {
+                acc[attr.name as keyof ArgumentsType] = val
+            }
+            return acc
+        }, {})
+        Object.assign(this, preparedArgs)
     }
 }
 

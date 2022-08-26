@@ -16,6 +16,16 @@ import { HttpFile } from '../http/http';
 /**
 * A PerCL script to be returned to the FreeClimb servers in FreeClimb applications
 */
+interface AttributeType {
+    name: string
+    baseName: string
+    type: string
+    format: string
+    defaultValue: any
+}
+interface ArgumentsType {
+    'commands'?: Array<PerclCommand>;
+}
 export class PerclScript {
     /**
     * A JSON array of PerCL commands
@@ -24,7 +34,7 @@ export class PerclScript {
 
     static readonly discriminator: string | undefined = undefined;
 
-    static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string, defaultValue: any}> = [
+    static readonly attributeTypeMap: AttributeType[] = [
         {
             "name": "commands",
             "baseName": "commands",
@@ -35,11 +45,25 @@ export class PerclScript {
             "defaultValue": undefined
         }    ];
 
-    static getAttributeTypeMap() {
+    static getAttributeTypeMap(): AttributeType[] {
         return PerclScript.attributeTypeMap;
     }
 
-    public constructor() {
+    public constructor(args: ArgumentsType) {
+        const preparedArgs = PerclScript.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
+            const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
+            if (val !== undefined) {
+                acc[attr.name as keyof ArgumentsType] = val
+            }
+            return acc
+        }, {})
+        Object.assign(this, preparedArgs)
+    }
+    public build() {
+        return this.commands?.map(command => command.toPerclObject()) ?? []
+    }
+    public toJSON() {
+        return JSON.stringify(this.build())
     }
 }
 

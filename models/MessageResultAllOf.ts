@@ -26,6 +26,23 @@ export enum MessageResultAllOfStatusEnum {
     DELETED = 'deleted',
     UNKNOWN = 'unknown'
 }
+interface AttributeType {
+    name: string
+    baseName: string
+    type: string
+    format: string
+    defaultValue: any
+}
+interface ArgumentsType {
+    'accountId'?: string;
+    'messageId'?: string;
+    'status'?: MessageResultAllOfStatusEnum;
+    '_from'?: string;
+    'to'?: string;
+    'text'?: string;
+    'direction'?: string;
+    'notificationUrl'?: string;
+}
 export class MessageResultAllOf {
     /**
     * String that uniquely identifies this account resource.
@@ -62,7 +79,7 @@ export class MessageResultAllOf {
 
     static readonly discriminator: string | undefined = undefined;
 
-    static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string, defaultValue: any}> = [
+    static readonly attributeTypeMap: AttributeType[] = [
         {
             "name": "accountId",
             "baseName": "accountId",
@@ -137,11 +154,19 @@ export class MessageResultAllOf {
             "defaultValue": undefined
         }    ];
 
-    static getAttributeTypeMap() {
+    static getAttributeTypeMap(): AttributeType[] {
         return MessageResultAllOf.attributeTypeMap;
     }
 
-    public constructor() {
+    public constructor(args: ArgumentsType) {
+        const preparedArgs = MessageResultAllOf.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
+            const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
+            if (val !== undefined) {
+                acc[attr.name as keyof ArgumentsType] = val
+            }
+            return acc
+        }, {})
+        Object.assign(this, preparedArgs)
     }
 }
 

@@ -18,6 +18,22 @@ export enum LogResultLevelEnum {
     WARNING = 'warning',
     ERROR = 'error'
 }
+interface AttributeType {
+    name: string
+    baseName: string
+    type: string
+    format: string
+    defaultValue: any
+}
+interface ArgumentsType {
+    'timestamp'?: number;
+    'level'?: LogResultLevelEnum;
+    'requestId'?: string;
+    'accountId'?: string;
+    'callId'?: string;
+    'message'?: string;
+    'metadata'?: any;
+}
 export class LogResult {
     /**
     * Time that the log was generated. The time is represented as microseconds since the Unix Epoch.
@@ -50,7 +66,7 @@ export class LogResult {
 
     static readonly discriminator: string | undefined = undefined;
 
-    static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string, defaultValue: any}> = [
+    static readonly attributeTypeMap: AttributeType[] = [
         {
             "name": "timestamp",
             "baseName": "timestamp",
@@ -116,11 +132,19 @@ export class LogResult {
             "defaultValue": undefined
         }    ];
 
-    static getAttributeTypeMap() {
+    static getAttributeTypeMap(): AttributeType[] {
         return LogResult.attributeTypeMap;
     }
 
-    public constructor() {
+    public constructor(args: ArgumentsType) {
+        const preparedArgs = LogResult.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
+            const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
+            if (val !== undefined) {
+                acc[attr.name as keyof ArgumentsType] = val
+            }
+            return acc
+        }, {})
+        Object.assign(this, preparedArgs)
     }
 }
 

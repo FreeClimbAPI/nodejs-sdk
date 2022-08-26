@@ -15,6 +15,20 @@ import { HttpFile } from '../http/http';
 /**
 * Details for which features this number may be used.
 */
+interface AttributeType {
+    name: string
+    baseName: string
+    type: string
+    format: string
+    defaultValue: any
+}
+interface ArgumentsType {
+    'voice': boolean;
+    'sms': boolean;
+    'tollFree': boolean;
+    'tenDLC': boolean;
+    'shortCode': boolean;
+}
 export class Capabilities {
     /**
     * Indicates whether a number can be used for voice calls. Replaces voiceEnabled.
@@ -39,7 +53,7 @@ export class Capabilities {
 
     static readonly discriminator: string | undefined = undefined;
 
-    static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string, defaultValue: any}> = [
+    static readonly attributeTypeMap: AttributeType[] = [
         {
             "name": "voice",
             "baseName": "voice",
@@ -86,11 +100,19 @@ export class Capabilities {
             "defaultValue": undefined
         }    ];
 
-    static getAttributeTypeMap() {
+    static getAttributeTypeMap(): AttributeType[] {
         return Capabilities.attributeTypeMap;
     }
 
-    public constructor() {
+    public constructor(args: ArgumentsType) {
+        const preparedArgs = Capabilities.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
+            const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
+            if (val !== undefined) {
+                acc[attr.name as keyof ArgumentsType] = val
+            }
+            return acc
+        }, {})
+        Object.assign(this, preparedArgs)
     }
 }
 

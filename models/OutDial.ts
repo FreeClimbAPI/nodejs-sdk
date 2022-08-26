@@ -38,6 +38,25 @@ import { HttpFile } from '../http/http';
 /**
 * The OutDial command is used to call a phone number
 */
+interface AttributeType {
+    name: string
+    baseName: string
+    type: string
+    format: string
+    defaultValue: any
+}
+interface ArgumentsType {
+    'actionUrl': string;
+    'callConnectUrl': string;
+    'callingNumber': number;
+    'destination': number;
+    'ifMachine'?: string;
+    'ifMachineUrl'?: string;
+    'sendDigits'?: string;
+    'statusCallbackUrl'?: string;
+    'timeout'?: number;
+    'privacyMode'?: boolean;
+}
 export class OutDial extends PerclCommand {
     /**
     * URL to which FreeClimb sends an HTTP POST request. 
@@ -82,7 +101,7 @@ export class OutDial extends PerclCommand {
 
     static readonly discriminator: string | undefined = "command";
 
-    static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string, defaultValue: any}> = [
+    static readonly attributeTypeMap: AttributeType[] = [
         {
             "name": "actionUrl",
             "baseName": "actionUrl",
@@ -174,13 +193,20 @@ export class OutDial extends PerclCommand {
             "defaultValue": undefined
         }    ];
 
-    static getAttributeTypeMap() {
+    static getAttributeTypeMap(): AttributeType[] {
         return super.getAttributeTypeMap().concat(OutDial.attributeTypeMap);
     }
 
-    public constructor() {
-        super();
-        this.command = "OutDial";
+    public constructor(args: ArgumentsType) {
+        super({ command: "OutDial" });
+        const preparedArgs = OutDial.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
+            const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
+            if (val !== undefined) {
+                acc[attr.name as keyof ArgumentsType] = val
+            }
+            return acc
+        }, {})
+        Object.assign(this, preparedArgs)
     }
 }
 

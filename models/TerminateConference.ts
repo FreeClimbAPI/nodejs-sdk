@@ -38,6 +38,16 @@ import { HttpFile } from '../http/http';
 /**
 * The `TerminateConference` command terminates an existing Conference. Any active participants are hung up on by FreeClimb. If this is not the desired behavior, use the `RemoveFromConference` command to unbridge Calls that should not be hung up. Note: The Call requesting TerminateConference must be on the same Conference for this command to execute.
 */
+interface AttributeType {
+    name: string
+    baseName: string
+    type: string
+    format: string
+    defaultValue: any
+}
+interface ArgumentsType {
+    'conferenceId': string;
+}
 export class TerminateConference extends PerclCommand {
     /**
     * ID of the conference to terminate.
@@ -46,7 +56,7 @@ export class TerminateConference extends PerclCommand {
 
     static readonly discriminator: string | undefined = "command";
 
-    static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string, defaultValue: any}> = [
+    static readonly attributeTypeMap: AttributeType[] = [
         {
             "name": "conferenceId",
             "baseName": "conferenceId",
@@ -57,13 +67,20 @@ export class TerminateConference extends PerclCommand {
             "defaultValue": undefined
         }    ];
 
-    static getAttributeTypeMap() {
+    static getAttributeTypeMap(): AttributeType[] {
         return super.getAttributeTypeMap().concat(TerminateConference.attributeTypeMap);
     }
 
-    public constructor() {
-        super();
-        this.command = "TerminateConference";
+    public constructor(args: ArgumentsType) {
+        super({ command: "TerminateConference" });
+        const preparedArgs = TerminateConference.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
+            const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
+            if (val !== undefined) {
+                acc[attr.name as keyof ArgumentsType] = val
+            }
+            return acc
+        }, {})
+        Object.assign(this, preparedArgs)
     }
 }
 

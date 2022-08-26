@@ -12,6 +12,17 @@
 
 import { HttpFile } from '../http/http';
 
+interface AttributeType {
+    name: string
+    baseName: string
+    type: string
+    format: string
+    defaultValue: any
+}
+interface ArgumentsType {
+    'talk'?: boolean;
+    'listen'?: boolean;
+}
 export class UpdateConferenceParticipantRequest {
     /**
     * (Optional) Default is `true`. Setting to `false` mutes the Participant. FreeClimb returns an error and ignores any other value.
@@ -24,7 +35,7 @@ export class UpdateConferenceParticipantRequest {
 
     static readonly discriminator: string | undefined = undefined;
 
-    static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string, defaultValue: any}> = [
+    static readonly attributeTypeMap: AttributeType[] = [
         {
             "name": "talk",
             "baseName": "talk",
@@ -44,11 +55,19 @@ export class UpdateConferenceParticipantRequest {
             "defaultValue": undefined
         }    ];
 
-    static getAttributeTypeMap() {
+    static getAttributeTypeMap(): AttributeType[] {
         return UpdateConferenceParticipantRequest.attributeTypeMap;
     }
 
-    public constructor() {
+    public constructor(args: ArgumentsType) {
+        const preparedArgs = UpdateConferenceParticipantRequest.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
+            const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
+            if (val !== undefined) {
+                acc[attr.name as keyof ArgumentsType] = val
+            }
+            return acc
+        }, {})
+        Object.assign(this, preparedArgs)
     }
 }
 

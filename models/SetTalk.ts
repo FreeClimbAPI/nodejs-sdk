@@ -38,6 +38,17 @@ import { HttpFile } from '../http/http';
 /**
 * The `SetTalk` command enables or disables the talk privilege for a Participant in a Conference provided both calls are in the same conference. If 'true', no audio from that Participant is shared with the other Participants of the Conference.
 */
+interface AttributeType {
+    name: string
+    baseName: string
+    type: string
+    format: string
+    defaultValue: any
+}
+interface ArgumentsType {
+    'callId': string;
+    'talk'?: boolean;
+}
 export class SetTalk extends PerclCommand {
     /**
     * ID of the call leg that is to be muted or unmuted. The Call must be in a Conference or an error will be triggered.
@@ -50,7 +61,7 @@ export class SetTalk extends PerclCommand {
 
     static readonly discriminator: string | undefined = "command";
 
-    static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string, defaultValue: any}> = [
+    static readonly attributeTypeMap: AttributeType[] = [
         {
             "name": "callId",
             "baseName": "callId",
@@ -70,13 +81,20 @@ export class SetTalk extends PerclCommand {
             "defaultValue": undefined
         }    ];
 
-    static getAttributeTypeMap() {
+    static getAttributeTypeMap(): AttributeType[] {
         return super.getAttributeTypeMap().concat(SetTalk.attributeTypeMap);
     }
 
-    public constructor() {
-        super();
-        this.command = "SetTalk";
+    public constructor(args: ArgumentsType) {
+        super({ command: "SetTalk" });
+        const preparedArgs = SetTalk.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
+            const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
+            if (val !== undefined) {
+                acc[attr.name as keyof ArgumentsType] = val
+            }
+            return acc
+        }, {})
+        Object.assign(this, preparedArgs)
     }
 }
 

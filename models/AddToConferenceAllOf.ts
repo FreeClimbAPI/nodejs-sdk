@@ -12,6 +12,25 @@
 
 import { HttpFile } from '../http/http';
 
+interface AttributeType {
+    name: string
+    baseName: string
+    type: string
+    format: string
+    defaultValue: any
+}
+interface ArgumentsType {
+    'allowCallControl'?: boolean;
+    'callControlSequence'?: string;
+    'callControlUrl'?: string;
+    'conferenceId': string;
+    'callId'?: boolean;
+    'leaveConferenceUrl'?: string;
+    'listen'?: boolean;
+    'notificationUrl'?: string;
+    'startConfOnEnter'?: boolean;
+    'talk'?: boolean;
+}
 export class AddToConferenceAllOf {
     /**
     * If `true`, Call control will be enabled for this Participant's Call leg.
@@ -56,7 +75,7 @@ export class AddToConferenceAllOf {
 
     static readonly discriminator: string | undefined = undefined;
 
-    static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string, defaultValue: any}> = [
+    static readonly attributeTypeMap: AttributeType[] = [
         {
             "name": "allowCallControl",
             "baseName": "allowCallControl",
@@ -148,11 +167,19 @@ export class AddToConferenceAllOf {
             "defaultValue": undefined
         }    ];
 
-    static getAttributeTypeMap() {
+    static getAttributeTypeMap(): AttributeType[] {
         return AddToConferenceAllOf.attributeTypeMap;
     }
 
-    public constructor() {
+    public constructor(args: ArgumentsType) {
+        const preparedArgs = AddToConferenceAllOf.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
+            const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
+            if (val !== undefined) {
+                acc[attr.name as keyof ArgumentsType] = val
+            }
+            return acc
+        }, {})
+        Object.assign(this, preparedArgs)
     }
 }
 

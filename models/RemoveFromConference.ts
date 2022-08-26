@@ -38,6 +38,16 @@ import { HttpFile } from '../http/http';
 /**
 * The `RemoveFromConference` command removes a Participant from a Conference but does not hang up. Instead, the Call is simply unbridged and what happens next with the Call is determined by the PerCL returned in response to the `leaveConferenceUrl` attribute.
 */
+interface AttributeType {
+    name: string
+    baseName: string
+    type: string
+    format: string
+    defaultValue: any
+}
+interface ArgumentsType {
+    'callId': string;
+}
 export class RemoveFromConference extends PerclCommand {
     /**
     * ID of the Call leg to be removed from the Conference. The Call must be in a Conference or an error will be triggered.
@@ -46,7 +56,7 @@ export class RemoveFromConference extends PerclCommand {
 
     static readonly discriminator: string | undefined = "command";
 
-    static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string, defaultValue: any}> = [
+    static readonly attributeTypeMap: AttributeType[] = [
         {
             "name": "callId",
             "baseName": "callId",
@@ -57,13 +67,20 @@ export class RemoveFromConference extends PerclCommand {
             "defaultValue": undefined
         }    ];
 
-    static getAttributeTypeMap() {
+    static getAttributeTypeMap(): AttributeType[] {
         return super.getAttributeTypeMap().concat(RemoveFromConference.attributeTypeMap);
     }
 
-    public constructor() {
-        super();
-        this.command = "RemoveFromConference";
+    public constructor(args: ArgumentsType) {
+        super({ command: "RemoveFromConference" });
+        const preparedArgs = RemoveFromConference.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
+            const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
+            if (val !== undefined) {
+                acc[attr.name as keyof ArgumentsType] = val
+            }
+            return acc
+        }, {})
+        Object.assign(this, preparedArgs)
     }
 }
 

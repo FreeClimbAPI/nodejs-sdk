@@ -15,6 +15,23 @@ import { AvailableNumberListAllOf } from './AvailableNumberListAllOf';
 import { PaginationModel } from './PaginationModel';
 import { HttpFile } from '../http/http';
 
+interface AttributeType {
+    name: string
+    baseName: string
+    type: string
+    format: string
+    defaultValue: any
+}
+interface ArgumentsType {
+    'total'?: number;
+    'start'?: number;
+    'end'?: number;
+    'page'?: number;
+    'numPages'?: number;
+    'pageSize'?: number;
+    'nextPageUri'?: string;
+    'availablePhoneNumbers'?: Array<AvailableNumber>;
+}
 export class AvailableNumberList {
     /**
     * Total amount of requested resource.
@@ -48,7 +65,7 @@ export class AvailableNumberList {
 
     static readonly discriminator: string | undefined = undefined;
 
-    static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string, defaultValue: any}> = [
+    static readonly attributeTypeMap: AttributeType[] = [
         {
             "name": "total",
             "baseName": "total",
@@ -122,11 +139,19 @@ export class AvailableNumberList {
             "defaultValue": undefined
         }    ];
 
-    static getAttributeTypeMap() {
+    static getAttributeTypeMap(): AttributeType[] {
         return AvailableNumberList.attributeTypeMap;
     }
 
-    public constructor() {
+    public constructor(args: ArgumentsType) {
+        const preparedArgs = AvailableNumberList.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
+            const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
+            if (val !== undefined) {
+                acc[attr.name as keyof ArgumentsType] = val
+            }
+            return acc
+        }, {})
+        Object.assign(this, preparedArgs)
     }
 }
 
