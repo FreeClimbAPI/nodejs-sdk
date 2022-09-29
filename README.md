@@ -22,7 +22,7 @@ yarn add @freeclimb/sdk@3.0.0
 ## Getting Started 
 
 ```typescript
-import { freeclimb } from '@freeclimb/sdk';
+import freeclimb from '@freeclimb/sdk';
 
 const configuration = freeclimb.createConfiguration({
   accountId: 'YOUR_ACCOUND_ID',
