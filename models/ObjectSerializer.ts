@@ -57,6 +57,8 @@ export * from './MutableResourceModel';
 export * from './OutDial';
 export * from './OutDialAllOf';
 export * from './PaginationModel';
+export * from './Park';
+export * from './ParkAllOf';
 export * from './Pause';
 export * from './PauseAllOf';
 export * from './PerclCommand';
@@ -98,6 +100,7 @@ export * from './SmsAllOf';
 export * from './StartRecordCall';
 export * from './TerminateConference';
 export * from './TerminateConferenceAllOf';
+export * from './Unpark';
 export * from './UpdateCallRequest';
 export * from './UpdateConferenceParticipantRequest';
 export * from './UpdateConferenceRequest';
@@ -161,6 +164,8 @@ import { MutableResourceModel } from './MutableResourceModel';
 import { OutDial } from './OutDial';
 import { OutDialAllOf } from './OutDialAllOf';
 import { PaginationModel } from './PaginationModel';
+import { Park } from './Park';
+import { ParkAllOf } from './ParkAllOf';
 import { Pause } from './Pause';
 import { PauseAllOf } from './PauseAllOf';
 import { PerclCommand } from './PerclCommand';
@@ -202,6 +207,7 @@ import { SmsAllOf } from './SmsAllOf';
 import { StartRecordCall } from './StartRecordCall';
 import { TerminateConference } from './TerminateConference';
 import { TerminateConferenceAllOf } from './TerminateConferenceAllOf';
+import { Unpark } from './Unpark';
 import { UpdateCallRequest, UpdateCallRequestStatusEnum   } from './UpdateCallRequest';
 import { UpdateConferenceParticipantRequest } from './UpdateConferenceParticipantRequest';
 import { UpdateConferenceRequest , UpdateConferenceRequestPlayBeepEnum  , UpdateConferenceRequestStatusEnum   } from './UpdateConferenceRequest';
@@ -305,6 +311,8 @@ let typeMap: {[index: string]: any} = {
     "OutDial": OutDial,
     "OutDialAllOf": OutDialAllOf,
     "PaginationModel": PaginationModel,
+    "Park": Park,
+    "ParkAllOf": ParkAllOf,
     "Pause": Pause,
     "PauseAllOf": PauseAllOf,
     "PerclCommand": PerclCommand,
@@ -346,6 +354,7 @@ let typeMap: {[index: string]: any} = {
     "StartRecordCall": StartRecordCall,
     "TerminateConference": TerminateConference,
     "TerminateConferenceAllOf": TerminateConferenceAllOf,
+    "Unpark": Unpark,
     "UpdateCallRequest": UpdateCallRequest,
     "UpdateConferenceParticipantRequest": UpdateConferenceParticipantRequest,
     "UpdateConferenceRequest": UpdateConferenceRequest,

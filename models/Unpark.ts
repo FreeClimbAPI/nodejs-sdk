@@ -33,12 +33,11 @@ import { SetListen } from './SetListen';
 import { SetTalk } from './SetTalk';
 import { Sms } from './Sms';
 import { StartRecordCall } from './StartRecordCall';
-import { TerminateConferenceAllOf } from './TerminateConferenceAllOf';
-import { Unpark } from './Unpark';
+import { TerminateConference } from './TerminateConference';
 import { HttpFile } from '../http/http';
 
 /**
-* The `TerminateConference` command terminates an existing Conference. Any active participants are hung up on by FreeClimb. If this is not the desired behavior, use the `RemoveFromConference` command to unbridge Calls that should not be hung up. Note: The Call requesting TerminateConference must be on the same Conference for this command to execute.
+* The `Unpark` command resumes a parked call.  Execution continues with the first command in the PerCL scripted returned by the actionUrl specified in the Park command as long as the call is still in progress.  If the call is no longer in progress, any returned PerCL will not be executed. Unpark is a terminal command -- any commands following it in the same script are not executed.
 */
 interface AttributeType {
     name: string
@@ -48,34 +47,21 @@ interface AttributeType {
     defaultValue: any
 }
 interface ArgumentsType {
-    'conferenceId': string;
 }
-export class TerminateConference extends PerclCommand {
-    /**
-    * ID of the conference to terminate.
-    */
-    'conferenceId': string;
+export class Unpark extends PerclCommand {
 
     static readonly discriminator: string | undefined = "command";
 
     static readonly attributeTypeMap: AttributeType[] = [
-        {
-            "name": "conferenceId",
-            "baseName": "conferenceId",
-            "type": "string",
-            "format": "",
-            
-            
-            "defaultValue": undefined
-        }    ];
+    ];
 
     static getAttributeTypeMap(): AttributeType[] {
-        return super.getAttributeTypeMap().concat(TerminateConference.attributeTypeMap);
+        return super.getAttributeTypeMap().concat(Unpark.attributeTypeMap);
     }
 
     public constructor(args: ArgumentsType) {
-        super({ command: "TerminateConference" });
-        const preparedArgs = TerminateConference.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
+        super({ command: "Unpark" });
+        const preparedArgs = Unpark.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
             const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
             if (val !== undefined) {
                 acc[attr.name as keyof ArgumentsType] = val

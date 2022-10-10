@@ -18,7 +18,7 @@ import { GetDigits } from './GetDigits';
 import { GetSpeech } from './GetSpeech';
 import { Hangup } from './Hangup';
 import { OutDial } from './OutDial';
-import { Park } from './Park';
+import { ParkAllOf } from './ParkAllOf';
 import { Pause } from './Pause';
 import { PerclCommand } from './PerclCommand';
 import { Play } from './Play';
@@ -33,12 +33,12 @@ import { SetListen } from './SetListen';
 import { SetTalk } from './SetTalk';
 import { Sms } from './Sms';
 import { StartRecordCall } from './StartRecordCall';
-import { TerminateConferenceAllOf } from './TerminateConferenceAllOf';
+import { TerminateConference } from './TerminateConference';
 import { Unpark } from './Unpark';
 import { HttpFile } from '../http/http';
 
 /**
-* The `TerminateConference` command terminates an existing Conference. Any active participants are hung up on by FreeClimb. If this is not the desired behavior, use the `RemoveFromConference` command to unbridge Calls that should not be hung up. Note: The Call requesting TerminateConference must be on the same Conference for this command to execute.
+* The `Park` command allows a caller to be put on hold.  You can provide hold music,messages,etc until ready to resume the call. Park is a terminal command.  Actions performed on the Call while on hold are provided in a PerCL script in response to the waitUrl property. Actions performed on the Call after it has been unparked (resumed) will be provided in a PerCL script in response to the actionUrl provided. A Call can be resumed in two ways -- REST API invocation or the Unpark percl command. No actions can be nested within Park and Park cannot be nested in any other actions. 
 */
 interface AttributeType {
     name: string
@@ -48,20 +48,48 @@ interface AttributeType {
     defaultValue: any
 }
 interface ArgumentsType {
-    'conferenceId': string;
+    'waitUrl': string;
+    'actionUrl': string;
+    'notificationUrl'?: string;
 }
-export class TerminateConference extends PerclCommand {
+export class Park extends PerclCommand {
     /**
-    * ID of the conference to terminate.
+    * Specifies a URL pointing to a PerCL script containing actions to be executed while the caller is Parked. Once the script returned by the waitUrl runs out of commands to execute, FreeClimb will re-request the waitUrl and start over, essentially looping the script requests indefinitely.
     */
-    'conferenceId': string;
+    'waitUrl': string;
+    /**
+    * A request is made to this URL when the Call is resumed, which can occur if the Call is resumed via the Unpark command, the REST API (POST to Call resource), or the caller hangs up. The PerCL script returned in response to the actionUrl will be executed on the resumed call.
+    */
+    'actionUrl': string;
+    /**
+    * URL to be invoked when the Call is parked. The request to the URL contains the standard request parameters.
+    */
+    'notificationUrl'?: string;
 
     static readonly discriminator: string | undefined = "command";
 
     static readonly attributeTypeMap: AttributeType[] = [
         {
-            "name": "conferenceId",
-            "baseName": "conferenceId",
+            "name": "waitUrl",
+            "baseName": "waitUrl",
+            "type": "string",
+            "format": "",
+            
+            
+            "defaultValue": undefined
+        },
+        {
+            "name": "actionUrl",
+            "baseName": "actionUrl",
+            "type": "string",
+            "format": "",
+            
+            
+            "defaultValue": undefined
+        },
+        {
+            "name": "notificationUrl",
+            "baseName": "notificationUrl",
             "type": "string",
             "format": "",
             
@@ -70,12 +98,12 @@ export class TerminateConference extends PerclCommand {
         }    ];
 
     static getAttributeTypeMap(): AttributeType[] {
-        return super.getAttributeTypeMap().concat(TerminateConference.attributeTypeMap);
+        return super.getAttributeTypeMap().concat(Park.attributeTypeMap);
     }
 
     public constructor(args: ArgumentsType) {
-        super({ command: "TerminateConference" });
-        const preparedArgs = TerminateConference.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
+        super({ command: "Park" });
+        const preparedArgs = Park.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
             const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
             if (val !== undefined) {
                 acc[attr.name as keyof ArgumentsType] = val
