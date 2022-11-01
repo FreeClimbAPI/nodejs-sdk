@@ -32,6 +32,7 @@ interface ArgumentsType {
     'country'?: string;
     'voiceEnabled'?: boolean;
     'smsEnabled'?: boolean;
+    'offnet'?: boolean;
 }
 export class IncomingNumberResultAllOf {
     'capabilities'?: Capabilities;
@@ -75,6 +76,10 @@ export class IncomingNumberResultAllOf {
     * Indication of whether the phone number can handle sending and receiving SMS messages. Typically set to true for all numbers.
     */
     'smsEnabled'?: boolean;
+    /**
+    * The offnet field is a boolean representing whether the number is offnet registered or not. This field will be rendered only for requests to the IncomingPhone number resource.
+    */
+    'offnet'?: boolean;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -172,6 +177,15 @@ export class IncomingNumberResultAllOf {
         {
             "name": "smsEnabled",
             "baseName": "smsEnabled",
+            "type": "boolean",
+            "format": "",
+            
+            
+            "defaultValue": undefined
+        },
+        {
+            "name": "offnet",
+            "baseName": "offnet",
             "type": "boolean",
             "format": "",
             

@@ -71,6 +71,8 @@ models/ObjectSerializer.ts
 models/OutDial.ts
 models/OutDialAllOf.ts
 models/PaginationModel.ts
+models/Park.ts
+models/ParkAllOf.ts
 models/Pause.ts
 models/PauseAllOf.ts
 models/PerclCommand.ts
@@ -112,6 +114,7 @@ models/SmsAllOf.ts
 models/StartRecordCall.ts
 models/TerminateConference.ts
 models/TerminateConferenceAllOf.ts
+models/Unpark.ts
 models/UpdateCallRequest.ts
 models/UpdateConferenceParticipantRequest.ts
 models/UpdateConferenceRequest.ts
