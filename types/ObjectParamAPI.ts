@@ -675,6 +675,13 @@ export interface DefaultApiListIncomingNumbersRequest {
      */
     capabilitiesShortCode?: boolean
     
+    /**
+     * Indication of whether the phone number was registered as an offnet number. This field will be rendered only for requests to the IncomingPhone number resource.
+     * @type boolean
+     * @memberof DefaultApilistIncomingNumbers
+     */
+    offnet?: boolean
+    
 }
 
 export interface DefaultApiListMembersRequest {
@@ -1206,7 +1213,7 @@ export class ObjectDefaultApi {
      * @param param the request object
      */
     public listIncomingNumbers(param: DefaultApiListIncomingNumbersRequest, options?: Configuration): Promise<IncomingNumberList> {
-        return this.api.listIncomingNumbers(param.phoneNumber, param.alias, param.region, param.country, param.applicationId, param.hasApplication, param.voiceEnabled, param.smsEnabled, param.capabilitiesVoice, param.capabilitiesSms, param.capabilitiesTollFree, param.capabilitiesTenDLC, param.capabilitiesShortCode,  options).toPromise();
+        return this.api.listIncomingNumbers(param.phoneNumber, param.alias, param.region, param.country, param.applicationId, param.hasApplication, param.voiceEnabled, param.smsEnabled, param.capabilitiesVoice, param.capabilitiesSms, param.capabilitiesTollFree, param.capabilitiesTenDLC, param.capabilitiesShortCode, param.offnet,  options).toPromise();
     }
 
     /**

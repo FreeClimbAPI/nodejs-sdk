@@ -53,7 +53,6 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
      * Buy a Phone Number
      
      * @param buyIncomingNumberRequest Incoming Number transaction details
-     
      */
     public async buyAPhoneNumber(buyIncomingNumberRequest: BuyIncomingNumberRequest, _options?: Configuration): Promise<RequestContext> {
         const _config = _options || this.configuration;
@@ -63,8 +62,6 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         if (buyIncomingNumberRequest === null || buyIncomingNumberRequest === undefined) {
             throw new RequiredError("DefaultApi", "buyAPhoneNumber", "buyIncomingNumberRequest");
         }
-        
-
         // Path Params
         const localVarPath = '/Accounts/{accountId}/IncomingPhoneNumbers'
             .replace('{' + 'accountId' + '}', encodeURIComponent(String(accountId)));
@@ -72,7 +69,7 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.POST);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-
+        
 
         // Body Params
         const contentType = ObjectSerializer.getPreferredMediaType([
@@ -84,19 +81,16 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
             contentType
         );
         requestContext.setBody(serializedBody);
-
         let authMethod: SecurityAuthentication | undefined;
         // Apply auth methods
         authMethod = _config.authMethods["fc"]
         if (authMethod?.applySecurityAuthentication) {
             await authMethod?.applySecurityAuthentication(requestContext);
         }
-        
         const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
             await defaultAuth?.applySecurityAuthentication(requestContext);
         }
-
         return requestContext;
     }
 
@@ -104,14 +98,11 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
      * Create a Conference
      
      * @param createConferenceRequest Conference to create
-     
      */
     public async createAConference(createConferenceRequest?: CreateConferenceRequest, _options?: Configuration): Promise<RequestContext> {
         const _config = _options || this.configuration;
         const { accountId } = this.configuration
         
-        
-
         // Path Params
         const localVarPath = '/Accounts/{accountId}/Conferences'
             .replace('{' + 'accountId' + '}', encodeURIComponent(String(accountId)));
@@ -119,7 +110,7 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.POST);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-
+        
 
         // Body Params
         const contentType = ObjectSerializer.getPreferredMediaType([
@@ -131,19 +122,16 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
             contentType
         );
         requestContext.setBody(serializedBody);
-
         let authMethod: SecurityAuthentication | undefined;
         // Apply auth methods
         authMethod = _config.authMethods["fc"]
         if (authMethod?.applySecurityAuthentication) {
             await authMethod?.applySecurityAuthentication(requestContext);
         }
-        
         const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
             await defaultAuth?.applySecurityAuthentication(requestContext);
         }
-
         return requestContext;
     }
 
@@ -151,14 +139,11 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
      * Create a Queue
      
      * @param queueRequest Queue details used to create a queue
-     
      */
     public async createAQueue(queueRequest?: QueueRequest, _options?: Configuration): Promise<RequestContext> {
         const _config = _options || this.configuration;
         const { accountId } = this.configuration
         
-        
-
         // Path Params
         const localVarPath = '/Accounts/{accountId}/Queues'
             .replace('{' + 'accountId' + '}', encodeURIComponent(String(accountId)));
@@ -166,7 +151,7 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.POST);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-
+        
 
         // Body Params
         const contentType = ObjectSerializer.getPreferredMediaType([
@@ -178,19 +163,16 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
             contentType
         );
         requestContext.setBody(serializedBody);
-
         let authMethod: SecurityAuthentication | undefined;
         // Apply auth methods
         authMethod = _config.authMethods["fc"]
         if (authMethod?.applySecurityAuthentication) {
             await authMethod?.applySecurityAuthentication(requestContext);
         }
-        
         const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
             await defaultAuth?.applySecurityAuthentication(requestContext);
         }
-
         return requestContext;
     }
 
@@ -198,14 +180,11 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
      * Create an application
      
      * @param applicationRequest Application Details
-     
      */
     public async createAnApplication(applicationRequest?: ApplicationRequest, _options?: Configuration): Promise<RequestContext> {
         const _config = _options || this.configuration;
         const { accountId } = this.configuration
         
-        
-
         // Path Params
         const localVarPath = '/Accounts/{accountId}/Applications'
             .replace('{' + 'accountId' + '}', encodeURIComponent(String(accountId)));
@@ -213,7 +192,7 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.POST);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-
+        
 
         // Body Params
         const contentType = ObjectSerializer.getPreferredMediaType([
@@ -225,19 +204,16 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
             contentType
         );
         requestContext.setBody(serializedBody);
-
         let authMethod: SecurityAuthentication | undefined;
         // Apply auth methods
         authMethod = _config.authMethods["fc"]
         if (authMethod?.applySecurityAuthentication) {
             await authMethod?.applySecurityAuthentication(requestContext);
         }
-        
         const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
             await defaultAuth?.applySecurityAuthentication(requestContext);
         }
-
         return requestContext;
     }
 
@@ -245,7 +221,6 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
      * Delete a Recording
      
      * @param recordingId String that uniquely identifies this recording resource.
-     
      */
     public async deleteARecording(recordingId: string, _options?: Configuration): Promise<RequestContext> {
         const _config = _options || this.configuration;
@@ -255,8 +230,6 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         if (recordingId === null || recordingId === undefined) {
             throw new RequiredError("DefaultApi", "deleteARecording", "recordingId");
         }
-        
-
         // Path Params
         const localVarPath = '/Accounts/{accountId}/Recordings/{recordingId}'
             .replace('{' + 'accountId' + '}', encodeURIComponent(String(accountId)))
@@ -265,6 +238,7 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.DELETE);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+        
 
 
         let authMethod: SecurityAuthentication | undefined;
@@ -273,12 +247,10 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         if (authMethod?.applySecurityAuthentication) {
             await authMethod?.applySecurityAuthentication(requestContext);
         }
-        
         const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
             await defaultAuth?.applySecurityAuthentication(requestContext);
         }
-
         return requestContext;
     }
 
@@ -286,7 +258,6 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
      * Delete an application
      
      * @param applicationId String that uniquely identifies this application resource.
-     
      */
     public async deleteAnApplication(applicationId: string, _options?: Configuration): Promise<RequestContext> {
         const _config = _options || this.configuration;
@@ -296,8 +267,6 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         if (applicationId === null || applicationId === undefined) {
             throw new RequiredError("DefaultApi", "deleteAnApplication", "applicationId");
         }
-        
-
         // Path Params
         const localVarPath = '/Accounts/{accountId}/Applications/{applicationId}'
             .replace('{' + 'accountId' + '}', encodeURIComponent(String(accountId)))
@@ -306,6 +275,7 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.DELETE);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+        
 
 
         let authMethod: SecurityAuthentication | undefined;
@@ -314,12 +284,10 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         if (authMethod?.applySecurityAuthentication) {
             await authMethod?.applySecurityAuthentication(requestContext);
         }
-        
         const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
             await defaultAuth?.applySecurityAuthentication(requestContext);
         }
-
         return requestContext;
     }
 
@@ -327,7 +295,6 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
      * Delete an Incoming Number
      
      * @param phoneNumberId String that uniquely identifies this phone number resource.
-     
      */
     public async deleteAnIncomingNumber(phoneNumberId: string, _options?: Configuration): Promise<RequestContext> {
         const _config = _options || this.configuration;
@@ -337,8 +304,6 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         if (phoneNumberId === null || phoneNumberId === undefined) {
             throw new RequiredError("DefaultApi", "deleteAnIncomingNumber", "phoneNumberId");
         }
-        
-
         // Path Params
         const localVarPath = '/Accounts/{accountId}/IncomingPhoneNumbers/{phoneNumberId}'
             .replace('{' + 'accountId' + '}', encodeURIComponent(String(accountId)))
@@ -347,6 +312,7 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.DELETE);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+        
 
 
         let authMethod: SecurityAuthentication | undefined;
@@ -355,12 +321,10 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         if (authMethod?.applySecurityAuthentication) {
             await authMethod?.applySecurityAuthentication(requestContext);
         }
-        
         const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
             await defaultAuth?.applySecurityAuthentication(requestContext);
         }
-
         return requestContext;
     }
 
@@ -368,9 +332,7 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
      * Dequeue a Member
      
      * @param queueId String that uniquely identifies the Queue that the Member belongs to.
-     
      * @param callId ID if the Call that the Member belongs to
-     
      */
     public async dequeueAMember(queueId: string, callId: string, _options?: Configuration): Promise<RequestContext> {
         const _config = _options || this.configuration;
@@ -380,13 +342,10 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         if (queueId === null || queueId === undefined) {
             throw new RequiredError("DefaultApi", "dequeueAMember", "queueId");
         }
-        
         // verify required parameter 'callId' is not null or undefined
         if (callId === null || callId === undefined) {
             throw new RequiredError("DefaultApi", "dequeueAMember", "callId");
         }
-        
-
         // Path Params
         const localVarPath = '/Accounts/{accountId}/Queues/{queueId}/Members/{callId}'
             .replace('{' + 'accountId' + '}', encodeURIComponent(String(accountId)))
@@ -396,6 +355,7 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.POST);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+        
 
 
         let authMethod: SecurityAuthentication | undefined;
@@ -404,12 +364,10 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         if (authMethod?.applySecurityAuthentication) {
             await authMethod?.applySecurityAuthentication(requestContext);
         }
-        
         const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
             await defaultAuth?.applySecurityAuthentication(requestContext);
         }
-
         return requestContext;
     }
 
@@ -417,7 +375,6 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
      * Dequeue Head Member
      
      * @param queueId String that uniquely identifies this queue resource.
-     
      */
     public async dequeueHeadMember(queueId: string, _options?: Configuration): Promise<RequestContext> {
         const _config = _options || this.configuration;
@@ -427,8 +384,6 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         if (queueId === null || queueId === undefined) {
             throw new RequiredError("DefaultApi", "dequeueHeadMember", "queueId");
         }
-        
-
         // Path Params
         const localVarPath = '/Accounts/{accountId}/Queues/{queueId}/Members/Front'
             .replace('{' + 'accountId' + '}', encodeURIComponent(String(accountId)))
@@ -437,6 +392,7 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.POST);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+        
 
 
         let authMethod: SecurityAuthentication | undefined;
@@ -445,12 +401,10 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         if (authMethod?.applySecurityAuthentication) {
             await authMethod?.applySecurityAuthentication(requestContext);
         }
-        
         const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
             await defaultAuth?.applySecurityAuthentication(requestContext);
         }
-
         return requestContext;
     }
 
@@ -458,7 +412,6 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
      * Download a Recording File
      
      * @param recordingId String that uniquely identifies this recording resource.
-     
      */
     public async downloadARecordingFile(recordingId: string, _options?: Configuration): Promise<RequestContext> {
         const _config = _options || this.configuration;
@@ -468,8 +421,6 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         if (recordingId === null || recordingId === undefined) {
             throw new RequiredError("DefaultApi", "downloadARecordingFile", "recordingId");
         }
-        
-
         // Path Params
         const localVarPath = '/Accounts/{accountId}/Recordings/{recordingId}/Download'
             .replace('{' + 'accountId' + '}', encodeURIComponent(String(accountId)))
@@ -478,6 +429,7 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+        
 
 
         let authMethod: SecurityAuthentication | undefined;
@@ -486,12 +438,10 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         if (authMethod?.applySecurityAuthentication) {
             await authMethod?.applySecurityAuthentication(requestContext);
         }
-        
         const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
             await defaultAuth?.applySecurityAuthentication(requestContext);
         }
-
         return requestContext;
     }
 
@@ -499,7 +449,6 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
      * Filter Logs
      
      * @param filterLogsRequest Filter logs request paramters
-     
      */
     public async filterLogs(filterLogsRequest: FilterLogsRequest, _options?: Configuration): Promise<RequestContext> {
         const _config = _options || this.configuration;
@@ -509,8 +458,6 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         if (filterLogsRequest === null || filterLogsRequest === undefined) {
             throw new RequiredError("DefaultApi", "filterLogs", "filterLogsRequest");
         }
-        
-
         // Path Params
         const localVarPath = '/Accounts/{accountId}/Logs'
             .replace('{' + 'accountId' + '}', encodeURIComponent(String(accountId)));
@@ -518,7 +465,7 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.POST);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-
+        
 
         // Body Params
         const contentType = ObjectSerializer.getPreferredMediaType([
@@ -530,19 +477,16 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
             contentType
         );
         requestContext.setBody(serializedBody);
-
         let authMethod: SecurityAuthentication | undefined;
         // Apply auth methods
         authMethod = _config.authMethods["fc"]
         if (authMethod?.applySecurityAuthentication) {
             await authMethod?.applySecurityAuthentication(requestContext);
         }
-        
         const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
             await defaultAuth?.applySecurityAuthentication(requestContext);
         }
-
         return requestContext;
     }
 
@@ -550,7 +494,6 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
      * Get a Call
      
      * @param callId String that uniquely identifies this call resource.
-     
      */
     public async getACall(callId: string, _options?: Configuration): Promise<RequestContext> {
         const _config = _options || this.configuration;
@@ -560,8 +503,6 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         if (callId === null || callId === undefined) {
             throw new RequiredError("DefaultApi", "getACall", "callId");
         }
-        
-
         // Path Params
         const localVarPath = '/Accounts/{accountId}/Calls/{callId}'
             .replace('{' + 'accountId' + '}', encodeURIComponent(String(accountId)))
@@ -570,6 +511,7 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+        
 
 
         let authMethod: SecurityAuthentication | undefined;
@@ -578,12 +520,10 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         if (authMethod?.applySecurityAuthentication) {
             await authMethod?.applySecurityAuthentication(requestContext);
         }
-        
         const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
             await defaultAuth?.applySecurityAuthentication(requestContext);
         }
-
         return requestContext;
     }
 
@@ -591,7 +531,6 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
      * Get a Conference
      
      * @param conferenceId A string that uniquely identifies this conference resource.
-     
      */
     public async getAConference(conferenceId: string, _options?: Configuration): Promise<RequestContext> {
         const _config = _options || this.configuration;
@@ -601,8 +540,6 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         if (conferenceId === null || conferenceId === undefined) {
             throw new RequiredError("DefaultApi", "getAConference", "conferenceId");
         }
-        
-
         // Path Params
         const localVarPath = '/Accounts/{accountId}/Conferences/{conferenceId}'
             .replace('{' + 'accountId' + '}', encodeURIComponent(String(accountId)))
@@ -611,6 +548,7 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+        
 
 
         let authMethod: SecurityAuthentication | undefined;
@@ -619,12 +557,10 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         if (authMethod?.applySecurityAuthentication) {
             await authMethod?.applySecurityAuthentication(requestContext);
         }
-        
         const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
             await defaultAuth?.applySecurityAuthentication(requestContext);
         }
-
         return requestContext;
     }
 
@@ -632,9 +568,7 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
      * Get a Member
      
      * @param queueId String that uniquely identifies the Queue that the Member belongs to.
-     
      * @param callId ID of the Call that the Member belongs to
-     
      */
     public async getAMember(queueId: string, callId: string, _options?: Configuration): Promise<RequestContext> {
         const _config = _options || this.configuration;
@@ -644,13 +578,10 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         if (queueId === null || queueId === undefined) {
             throw new RequiredError("DefaultApi", "getAMember", "queueId");
         }
-        
         // verify required parameter 'callId' is not null or undefined
         if (callId === null || callId === undefined) {
             throw new RequiredError("DefaultApi", "getAMember", "callId");
         }
-        
-
         // Path Params
         const localVarPath = '/Accounts/{accountId}/Queues/{queueId}/Members/{callId}'
             .replace('{' + 'accountId' + '}', encodeURIComponent(String(accountId)))
@@ -660,6 +591,7 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+        
 
 
         let authMethod: SecurityAuthentication | undefined;
@@ -668,12 +600,10 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         if (authMethod?.applySecurityAuthentication) {
             await authMethod?.applySecurityAuthentication(requestContext);
         }
-        
         const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
             await defaultAuth?.applySecurityAuthentication(requestContext);
         }
-
         return requestContext;
     }
 
@@ -681,9 +611,7 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
      * Get a Participant
      
      * @param conferenceId ID of the conference this participant is in.
-     
      * @param callId ID of the Call associated with this participant.
-     
      */
     public async getAParticipant(conferenceId: string, callId: string, _options?: Configuration): Promise<RequestContext> {
         const _config = _options || this.configuration;
@@ -693,13 +621,10 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         if (conferenceId === null || conferenceId === undefined) {
             throw new RequiredError("DefaultApi", "getAParticipant", "conferenceId");
         }
-        
         // verify required parameter 'callId' is not null or undefined
         if (callId === null || callId === undefined) {
             throw new RequiredError("DefaultApi", "getAParticipant", "callId");
         }
-        
-
         // Path Params
         const localVarPath = '/Accounts/{accountId}/Conferences/{conferenceId}/Participants/{callId}'
             .replace('{' + 'accountId' + '}', encodeURIComponent(String(accountId)))
@@ -709,6 +634,7 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+        
 
 
         let authMethod: SecurityAuthentication | undefined;
@@ -717,12 +643,10 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         if (authMethod?.applySecurityAuthentication) {
             await authMethod?.applySecurityAuthentication(requestContext);
         }
-        
         const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
             await defaultAuth?.applySecurityAuthentication(requestContext);
         }
-
         return requestContext;
     }
 
@@ -730,7 +654,6 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
      * Get a Queue
      
      * @param queueId A string that uniquely identifies this queue resource.
-     
      */
     public async getAQueue(queueId: string, _options?: Configuration): Promise<RequestContext> {
         const _config = _options || this.configuration;
@@ -740,8 +663,6 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         if (queueId === null || queueId === undefined) {
             throw new RequiredError("DefaultApi", "getAQueue", "queueId");
         }
-        
-
         // Path Params
         const localVarPath = '/Accounts/{accountId}/Queues/{queueId}'
             .replace('{' + 'accountId' + '}', encodeURIComponent(String(accountId)))
@@ -750,6 +671,7 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+        
 
 
         let authMethod: SecurityAuthentication | undefined;
@@ -758,12 +680,10 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         if (authMethod?.applySecurityAuthentication) {
             await authMethod?.applySecurityAuthentication(requestContext);
         }
-        
         const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
             await defaultAuth?.applySecurityAuthentication(requestContext);
         }
-
         return requestContext;
     }
 
@@ -771,7 +691,6 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
      * Get a Recording
      
      * @param recordingId String that uniquely identifies this recording resource.
-     
      */
     public async getARecording(recordingId: string, _options?: Configuration): Promise<RequestContext> {
         const _config = _options || this.configuration;
@@ -781,8 +700,6 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         if (recordingId === null || recordingId === undefined) {
             throw new RequiredError("DefaultApi", "getARecording", "recordingId");
         }
-        
-
         // Path Params
         const localVarPath = '/Accounts/{accountId}/Recordings/{recordingId}'
             .replace('{' + 'accountId' + '}', encodeURIComponent(String(accountId)))
@@ -791,6 +708,7 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+        
 
 
         let authMethod: SecurityAuthentication | undefined;
@@ -799,12 +717,10 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         if (authMethod?.applySecurityAuthentication) {
             await authMethod?.applySecurityAuthentication(requestContext);
         }
-        
         const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
             await defaultAuth?.applySecurityAuthentication(requestContext);
         }
-
         return requestContext;
     }
 
@@ -816,7 +732,6 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         const _config = _options || this.configuration;
         const { accountId } = this.configuration
         
-
         // Path Params
         const localVarPath = '/Accounts/{accountId}'
             .replace('{' + 'accountId' + '}', encodeURIComponent(String(accountId)));
@@ -824,6 +739,7 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+        
 
 
         let authMethod: SecurityAuthentication | undefined;
@@ -832,12 +748,10 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         if (authMethod?.applySecurityAuthentication) {
             await authMethod?.applySecurityAuthentication(requestContext);
         }
-        
         const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
             await defaultAuth?.applySecurityAuthentication(requestContext);
         }
-
         return requestContext;
     }
 
@@ -845,7 +759,6 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
      * Get an Application
      
      * @param applicationId A string that uniquely identifies this application resource.
-     
      */
     public async getAnApplication(applicationId: string, _options?: Configuration): Promise<RequestContext> {
         const _config = _options || this.configuration;
@@ -855,8 +768,6 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         if (applicationId === null || applicationId === undefined) {
             throw new RequiredError("DefaultApi", "getAnApplication", "applicationId");
         }
-        
-
         // Path Params
         const localVarPath = '/Accounts/{accountId}/Applications/{applicationId}'
             .replace('{' + 'accountId' + '}', encodeURIComponent(String(accountId)))
@@ -865,6 +776,7 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+        
 
 
         let authMethod: SecurityAuthentication | undefined;
@@ -873,12 +785,10 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         if (authMethod?.applySecurityAuthentication) {
             await authMethod?.applySecurityAuthentication(requestContext);
         }
-        
         const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
             await defaultAuth?.applySecurityAuthentication(requestContext);
         }
-
         return requestContext;
     }
 
@@ -886,7 +796,6 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
      * Get an Incoming Number
      
      * @param phoneNumberId String that uniquely identifies this phone number resource.
-     
      */
     public async getAnIncomingNumber(phoneNumberId: string, _options?: Configuration): Promise<RequestContext> {
         const _config = _options || this.configuration;
@@ -896,8 +805,6 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         if (phoneNumberId === null || phoneNumberId === undefined) {
             throw new RequiredError("DefaultApi", "getAnIncomingNumber", "phoneNumberId");
         }
-        
-
         // Path Params
         const localVarPath = '/Accounts/{accountId}/IncomingPhoneNumbers/{phoneNumberId}'
             .replace('{' + 'accountId' + '}', encodeURIComponent(String(accountId)))
@@ -906,6 +813,7 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+        
 
 
         let authMethod: SecurityAuthentication | undefined;
@@ -914,12 +822,10 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         if (authMethod?.applySecurityAuthentication) {
             await authMethod?.applySecurityAuthentication(requestContext);
         }
-        
         const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
             await defaultAuth?.applySecurityAuthentication(requestContext);
         }
-
         return requestContext;
     }
 
@@ -927,7 +833,6 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
      * Get an SMS Message
      
      * @param messageId String that uniquely identifies this Message resource.
-     
      */
     public async getAnSmsMessage(messageId: string, _options?: Configuration): Promise<RequestContext> {
         const _config = _options || this.configuration;
@@ -937,8 +842,6 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         if (messageId === null || messageId === undefined) {
             throw new RequiredError("DefaultApi", "getAnSmsMessage", "messageId");
         }
-        
-
         // Path Params
         const localVarPath = '/Accounts/{accountId}/Messages/{messageId}'
             .replace('{' + 'accountId' + '}', encodeURIComponent(String(accountId)))
@@ -947,6 +850,7 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+        
 
 
         let authMethod: SecurityAuthentication | undefined;
@@ -955,12 +859,10 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         if (authMethod?.applySecurityAuthentication) {
             await authMethod?.applySecurityAuthentication(requestContext);
         }
-        
         const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
             await defaultAuth?.applySecurityAuthentication(requestContext);
         }
-
         return requestContext;
     }
 
@@ -968,7 +870,6 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
      * Get Head Member
      
      * @param queueId String that uniquely identifies the Queue that the Member belongs to.
-     
      */
     public async getHeadMember(queueId: string, _options?: Configuration): Promise<RequestContext> {
         const _config = _options || this.configuration;
@@ -978,8 +879,6 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         if (queueId === null || queueId === undefined) {
             throw new RequiredError("DefaultApi", "getHeadMember", "queueId");
         }
-        
-
         // Path Params
         const localVarPath = '/Accounts/{accountId}/Queues/{queueId}/Members/Front'
             .replace('{' + 'accountId' + '}', encodeURIComponent(String(accountId)))
@@ -988,6 +887,7 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+        
 
 
         let authMethod: SecurityAuthentication | undefined;
@@ -996,12 +896,10 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         if (authMethod?.applySecurityAuthentication) {
             await authMethod?.applySecurityAuthentication(requestContext);
         }
-        
         const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
             await defaultAuth?.applySecurityAuthentication(requestContext);
         }
-
         return requestContext;
     }
 
@@ -1009,14 +907,11 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
      * List Active Queues
      
      * @param alias Return only the Queue resources with aliases that exactly match this name.
-     
      */
     public async listActiveQueues(alias?: string, _options?: Configuration): Promise<RequestContext> {
         const _config = _options || this.configuration;
         const { accountId } = this.configuration
         
-        
-
         // Path Params
         const localVarPath = '/Accounts/{accountId}/Queues'
             .replace('{' + 'accountId' + '}', encodeURIComponent(String(accountId)));
@@ -1024,11 +919,11 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-
         // Query Params
         if (alias !== undefined) {
             requestContext.setQueryParam("alias", ObjectSerializer.serialize(alias, "string", ""));
         }
+        
 
 
         let authMethod: SecurityAuthentication | undefined;
@@ -1037,12 +932,10 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         if (authMethod?.applySecurityAuthentication) {
             await authMethod?.applySecurityAuthentication(requestContext);
         }
-        
         const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
             await defaultAuth?.applySecurityAuthentication(requestContext);
         }
-
         return requestContext;
     }
 
@@ -1054,7 +947,6 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         const _config = _options || this.configuration;
         const { accountId } = this.configuration
         
-
         // Path Params
         const localVarPath = '/Accounts/{accountId}/Logs'
             .replace('{' + 'accountId' + '}', encodeURIComponent(String(accountId)));
@@ -1062,6 +954,7 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+        
 
 
         let authMethod: SecurityAuthentication | undefined;
@@ -1070,12 +963,10 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         if (authMethod?.applySecurityAuthentication) {
             await authMethod?.applySecurityAuthentication(requestContext);
         }
-        
         const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
             await defaultAuth?.applySecurityAuthentication(requestContext);
         }
-
         return requestContext;
     }
 
@@ -1083,14 +974,11 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
      * List applications
      
      * @param alias Return only applications with aliases that exactly match this value.
-     
      */
     public async listApplications(alias?: string, _options?: Configuration): Promise<RequestContext> {
         const _config = _options || this.configuration;
         const { accountId } = this.configuration
         
-        
-
         // Path Params
         const localVarPath = '/Accounts/{accountId}/Applications'
             .replace('{' + 'accountId' + '}', encodeURIComponent(String(accountId)));
@@ -1098,11 +986,11 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-
         // Query Params
         if (alias !== undefined) {
             requestContext.setQueryParam("alias", ObjectSerializer.serialize(alias, "string", ""));
         }
+        
 
 
         let authMethod: SecurityAuthentication | undefined;
@@ -1111,12 +999,10 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         if (authMethod?.applySecurityAuthentication) {
             await authMethod?.applySecurityAuthentication(requestContext);
         }
-        
         const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
             await defaultAuth?.applySecurityAuthentication(requestContext);
         }
-
         return requestContext;
     }
 
@@ -1124,97 +1010,67 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
      * List available numbers
      
      * @param phoneNumber PCRE-compatible regular expression to filter against &#x60;phoneNumber&#x60; field, which is in E.164 format.
-     
      * @param region State or province of this phone number.
-     
      * @param country Country of this phone number.
-     
      * @param voiceEnabled Indicates whether the phone number can handle Calls. Typically set to true for all numbers.
-     
      * @param smsEnabled Indication of whether the phone number can handle sending and receiving SMS messages. Typically set to true for all numbers.
-     
      * @param capabilitiesVoice 
-     
      * @param capabilitiesSms 
-     
      * @param capabilitiesTollFree 
-     
      * @param capabilitiesTenDLC 
-     
      * @param capabilitiesShortCode 
-     
      */
     public async listAvailableNumbers(phoneNumber?: string, region?: string, country?: string, voiceEnabled?: boolean, smsEnabled?: boolean, capabilitiesVoice?: boolean, capabilitiesSms?: boolean, capabilitiesTollFree?: boolean, capabilitiesTenDLC?: boolean, capabilitiesShortCode?: boolean, _options?: Configuration): Promise<RequestContext> {
         const _config = _options || this.configuration;
         const { accountId } = this.configuration
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-
         // Path Params
         const localVarPath = '/AvailablePhoneNumbers';
 
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-
         // Query Params
         if (phoneNumber !== undefined) {
             requestContext.setQueryParam("phoneNumber", ObjectSerializer.serialize(phoneNumber, "string", ""));
         }
-
         // Query Params
         if (region !== undefined) {
             requestContext.setQueryParam("region", ObjectSerializer.serialize(region, "string", ""));
         }
-
         // Query Params
         if (country !== undefined) {
             requestContext.setQueryParam("country", ObjectSerializer.serialize(country, "string", ""));
         }
-
         // Query Params
         if (voiceEnabled !== undefined) {
             requestContext.setQueryParam("voiceEnabled", ObjectSerializer.serialize(voiceEnabled, "boolean", ""));
         }
-
         // Query Params
         if (smsEnabled !== undefined) {
             requestContext.setQueryParam("smsEnabled", ObjectSerializer.serialize(smsEnabled, "boolean", ""));
         }
-
         // Query Params
         if (capabilitiesVoice !== undefined) {
             requestContext.setQueryParam("capabilities.voice", ObjectSerializer.serialize(capabilitiesVoice, "boolean", ""));
         }
-
         // Query Params
         if (capabilitiesSms !== undefined) {
             requestContext.setQueryParam("capabilities.sms", ObjectSerializer.serialize(capabilitiesSms, "boolean", ""));
         }
-
         // Query Params
         if (capabilitiesTollFree !== undefined) {
             requestContext.setQueryParam("capabilities.tollFree", ObjectSerializer.serialize(capabilitiesTollFree, "boolean", ""));
         }
-
         // Query Params
         if (capabilitiesTenDLC !== undefined) {
             requestContext.setQueryParam("capabilities.tenDLC", ObjectSerializer.serialize(capabilitiesTenDLC, "boolean", ""));
         }
-
         // Query Params
         if (capabilitiesShortCode !== undefined) {
             requestContext.setQueryParam("capabilities.shortCode", ObjectSerializer.serialize(capabilitiesShortCode, "boolean", ""));
         }
+        
 
 
         let authMethod: SecurityAuthentication | undefined;
@@ -1223,12 +1079,10 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         if (authMethod?.applySecurityAuthentication) {
             await authMethod?.applySecurityAuthentication(requestContext);
         }
-        
         const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
             await defaultAuth?.applySecurityAuthentication(requestContext);
         }
-
         return requestContext;
     }
 
@@ -1236,7 +1090,6 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
      * List Call Logs
      
      * @param callId String that uniquely identifies this call resource.
-     
      */
     public async listCallLogs(callId: string, _options?: Configuration): Promise<RequestContext> {
         const _config = _options || this.configuration;
@@ -1246,8 +1099,6 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         if (callId === null || callId === undefined) {
             throw new RequiredError("DefaultApi", "listCallLogs", "callId");
         }
-        
-
         // Path Params
         const localVarPath = '/Accounts/{accountId}/Calls/{callId}/Logs'
             .replace('{' + 'accountId' + '}', encodeURIComponent(String(accountId)))
@@ -1256,6 +1107,7 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+        
 
 
         let authMethod: SecurityAuthentication | undefined;
@@ -1264,12 +1116,10 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         if (authMethod?.applySecurityAuthentication) {
             await authMethod?.applySecurityAuthentication(requestContext);
         }
-        
         const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
             await defaultAuth?.applySecurityAuthentication(requestContext);
         }
-
         return requestContext;
     }
 
@@ -1277,9 +1127,7 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
      * List Call Recordings
      
      * @param callId String that uniquely identifies this call resource.
-     
      * @param dateCreated Only show recordings created on the specified date, in the form *YYYY-MM-DD*.
-     
      */
     public async listCallRecordings(callId: string, dateCreated?: string, _options?: Configuration): Promise<RequestContext> {
         const _config = _options || this.configuration;
@@ -1289,9 +1137,6 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         if (callId === null || callId === undefined) {
             throw new RequiredError("DefaultApi", "listCallRecordings", "callId");
         }
-        
-        
-
         // Path Params
         const localVarPath = '/Accounts/{accountId}/Calls/{callId}/Recordings'
             .replace('{' + 'accountId' + '}', encodeURIComponent(String(accountId)))
@@ -1300,11 +1145,11 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-
         // Query Params
         if (dateCreated !== undefined) {
             requestContext.setQueryParam("dateCreated", ObjectSerializer.serialize(dateCreated, "string", ""));
         }
+        
 
 
         let authMethod: SecurityAuthentication | undefined;
@@ -1313,12 +1158,10 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         if (authMethod?.applySecurityAuthentication) {
             await authMethod?.applySecurityAuthentication(requestContext);
         }
-        
         const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
             await defaultAuth?.applySecurityAuthentication(requestContext);
         }
-
         return requestContext;
     }
 
@@ -1326,32 +1169,17 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
      * List Calls
      
      * @param active If active is set to true then all calls of the nature queued, ringing, inProgress are returned in the query.
-     
      * @param to Only show Calls to this phone number.
-     
      * @param _from Only show Calls from this phone number.
-     
      * @param status Only show Calls currently in this status. May be &#x60;queued&#x60;, &#x60;ringing&#x60;, &#x60;inProgress&#x60;, &#x60;canceled&#x60;, &#x60;completed&#x60;, &#x60;failed&#x60;, &#x60;busy&#x60;, or &#x60;noAnswer&#x60;.
-     
      * @param startTime Only show Calls that started at or after this time, given as YYYY-MM-DD hh:mm:ss.
-     
      * @param endTime Only show Calls that ended at or before this time, given as YYYY-MM- DD hh:mm:ss.
-     
      * @param parentCallId Only show Calls spawned by the call with this ID.
-     
      */
     public async listCalls(active?: boolean, to?: string, _from?: string, status?: string, startTime?: string, endTime?: string, parentCallId?: string, _options?: Configuration): Promise<RequestContext> {
         const _config = _options || this.configuration;
         const { accountId } = this.configuration
         
-        
-        
-        
-        
-        
-        
-        
-
         // Path Params
         const localVarPath = '/Accounts/{accountId}/Calls'
             .replace('{' + 'accountId' + '}', encodeURIComponent(String(accountId)));
@@ -1359,41 +1187,35 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-
         // Query Params
         if (active !== undefined) {
             requestContext.setQueryParam("active", ObjectSerializer.serialize(active, "boolean", ""));
         }
-
         // Query Params
         if (to !== undefined) {
             requestContext.setQueryParam("to", ObjectSerializer.serialize(to, "string", ""));
         }
-
         // Query Params
         if (_from !== undefined) {
             requestContext.setQueryParam("from", ObjectSerializer.serialize(_from, "string", ""));
         }
-
         // Query Params
         if (status !== undefined) {
             requestContext.setQueryParam("status", ObjectSerializer.serialize(status, "string", ""));
         }
-
         // Query Params
         if (startTime !== undefined) {
             requestContext.setQueryParam("startTime", ObjectSerializer.serialize(startTime, "string", ""));
         }
-
         // Query Params
         if (endTime !== undefined) {
             requestContext.setQueryParam("endTime", ObjectSerializer.serialize(endTime, "string", ""));
         }
-
         // Query Params
         if (parentCallId !== undefined) {
             requestContext.setQueryParam("parentCallId", ObjectSerializer.serialize(parentCallId, "string", ""));
         }
+        
 
 
         let authMethod: SecurityAuthentication | undefined;
@@ -1402,12 +1224,10 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         if (authMethod?.applySecurityAuthentication) {
             await authMethod?.applySecurityAuthentication(requestContext);
         }
-        
         const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
             await defaultAuth?.applySecurityAuthentication(requestContext);
         }
-
         return requestContext;
     }
 
@@ -1415,23 +1235,14 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
      * List Conferences
      
      * @param status Only show conferences that currently have the specified status. Valid values: &#x60;empty&#x60;, &#x60;populated&#x60;, &#x60;inProgress&#x60;, or &#x60;terminated&#x60;.
-     
      * @param alias List Conferences whose alias exactly matches this string.
-     
      * @param dateCreated Only show Conferences that were created on the specified date, in the form *YYYY-MM-DD*.
-     
      * @param dateUpdated Only show Conferences that were last updated on the specified date, in the form *YYYY-MM-DD*.
-     
      */
     public async listConferences(status?: string, alias?: string, dateCreated?: string, dateUpdated?: string, _options?: Configuration): Promise<RequestContext> {
         const _config = _options || this.configuration;
         const { accountId } = this.configuration
         
-        
-        
-        
-        
-
         // Path Params
         const localVarPath = '/Accounts/{accountId}/Conferences'
             .replace('{' + 'accountId' + '}', encodeURIComponent(String(accountId)));
@@ -1439,26 +1250,23 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-
         // Query Params
         if (status !== undefined) {
             requestContext.setQueryParam("status", ObjectSerializer.serialize(status, "string", ""));
         }
-
         // Query Params
         if (alias !== undefined) {
             requestContext.setQueryParam("alias", ObjectSerializer.serialize(alias, "string", ""));
         }
-
         // Query Params
         if (dateCreated !== undefined) {
             requestContext.setQueryParam("dateCreated", ObjectSerializer.serialize(dateCreated, "string", ""));
         }
-
         // Query Params
         if (dateUpdated !== undefined) {
             requestContext.setQueryParam("dateUpdated", ObjectSerializer.serialize(dateUpdated, "string", ""));
         }
+        
 
 
         let authMethod: SecurityAuthentication | undefined;
@@ -1467,12 +1275,10 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         if (authMethod?.applySecurityAuthentication) {
             await authMethod?.applySecurityAuthentication(requestContext);
         }
-        
         const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
             await defaultAuth?.applySecurityAuthentication(requestContext);
         }
-
         return requestContext;
     }
 
@@ -1480,50 +1286,24 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
      * List Incoming Numbers
      
      * @param phoneNumber Only show incoming phone number resources that match this PCRE-compatible regular expression.
-     
      * @param alias Only show incoming phone numbers with aliases that exactly match this value.
-     
      * @param region State or province of this phone number.
-     
      * @param country Country of this phone number.
-     
      * @param applicationId ID of the Application that FreeClimb should contact if a Call or SMS arrives for this phone number or a Call from this number is placed. An incoming phone number is not useful until associated with an applicationId.
-     
      * @param hasApplication Indication of whether the phone number has an application linked to it.
-     
      * @param voiceEnabled Indicates whether the phone number can handle Calls. Typically set to true for all numbers.
-     
      * @param smsEnabled Indication of whether the phone number can handle sending and receiving SMS messages. Typically set to true for all numbers.
-     
      * @param capabilitiesVoice 
-     
      * @param capabilitiesSms 
-     
      * @param capabilitiesTollFree 
-     
      * @param capabilitiesTenDLC 
-     
      * @param capabilitiesShortCode 
-     
+     * @param offnet Indication of whether the phone number was registered as an offnet number. This field will be rendered only for requests to the IncomingPhone number resource.
      */
-    public async listIncomingNumbers(phoneNumber?: string, alias?: string, region?: string, country?: string, applicationId?: string, hasApplication?: boolean, voiceEnabled?: boolean, smsEnabled?: boolean, capabilitiesVoice?: boolean, capabilitiesSms?: boolean, capabilitiesTollFree?: boolean, capabilitiesTenDLC?: boolean, capabilitiesShortCode?: boolean, _options?: Configuration): Promise<RequestContext> {
+    public async listIncomingNumbers(phoneNumber?: string, alias?: string, region?: string, country?: string, applicationId?: string, hasApplication?: boolean, voiceEnabled?: boolean, smsEnabled?: boolean, capabilitiesVoice?: boolean, capabilitiesSms?: boolean, capabilitiesTollFree?: boolean, capabilitiesTenDLC?: boolean, capabilitiesShortCode?: boolean, offnet?: boolean, _options?: Configuration): Promise<RequestContext> {
         const _config = _options || this.configuration;
         const { accountId } = this.configuration
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-
         // Path Params
         const localVarPath = '/Accounts/{accountId}/IncomingPhoneNumbers'
             .replace('{' + 'accountId' + '}', encodeURIComponent(String(accountId)));
@@ -1531,71 +1311,63 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-
         // Query Params
         if (phoneNumber !== undefined) {
             requestContext.setQueryParam("phoneNumber", ObjectSerializer.serialize(phoneNumber, "string", ""));
         }
-
         // Query Params
         if (alias !== undefined) {
             requestContext.setQueryParam("alias", ObjectSerializer.serialize(alias, "string", ""));
         }
-
         // Query Params
         if (region !== undefined) {
             requestContext.setQueryParam("region", ObjectSerializer.serialize(region, "string", ""));
         }
-
         // Query Params
         if (country !== undefined) {
             requestContext.setQueryParam("country", ObjectSerializer.serialize(country, "string", ""));
         }
-
         // Query Params
         if (applicationId !== undefined) {
             requestContext.setQueryParam("applicationId", ObjectSerializer.serialize(applicationId, "string", ""));
         }
-
         // Query Params
         if (hasApplication !== undefined) {
             requestContext.setQueryParam("hasApplication", ObjectSerializer.serialize(hasApplication, "boolean", ""));
         }
-
         // Query Params
         if (voiceEnabled !== undefined) {
             requestContext.setQueryParam("voiceEnabled", ObjectSerializer.serialize(voiceEnabled, "boolean", ""));
         }
-
         // Query Params
         if (smsEnabled !== undefined) {
             requestContext.setQueryParam("smsEnabled", ObjectSerializer.serialize(smsEnabled, "boolean", ""));
         }
-
         // Query Params
         if (capabilitiesVoice !== undefined) {
             requestContext.setQueryParam("capabilities.voice", ObjectSerializer.serialize(capabilitiesVoice, "boolean", ""));
         }
-
         // Query Params
         if (capabilitiesSms !== undefined) {
             requestContext.setQueryParam("capabilities.sms", ObjectSerializer.serialize(capabilitiesSms, "boolean", ""));
         }
-
         // Query Params
         if (capabilitiesTollFree !== undefined) {
             requestContext.setQueryParam("capabilities.tollFree", ObjectSerializer.serialize(capabilitiesTollFree, "boolean", ""));
         }
-
         // Query Params
         if (capabilitiesTenDLC !== undefined) {
             requestContext.setQueryParam("capabilities.tenDLC", ObjectSerializer.serialize(capabilitiesTenDLC, "boolean", ""));
         }
-
         // Query Params
         if (capabilitiesShortCode !== undefined) {
             requestContext.setQueryParam("capabilities.shortCode", ObjectSerializer.serialize(capabilitiesShortCode, "boolean", ""));
         }
+        // Query Params
+        if (offnet !== undefined) {
+            requestContext.setQueryParam("offnet", ObjectSerializer.serialize(offnet, "boolean", ""));
+        }
+        
 
 
         let authMethod: SecurityAuthentication | undefined;
@@ -1604,12 +1376,10 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         if (authMethod?.applySecurityAuthentication) {
             await authMethod?.applySecurityAuthentication(requestContext);
         }
-        
         const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
             await defaultAuth?.applySecurityAuthentication(requestContext);
         }
-
         return requestContext;
     }
 
@@ -1617,7 +1387,6 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
      * List Members
      
      * @param queueId String that uniquely identifies the Queue that the Member belongs to.
-     
      */
     public async listMembers(queueId: string, _options?: Configuration): Promise<RequestContext> {
         const _config = _options || this.configuration;
@@ -1627,8 +1396,6 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         if (queueId === null || queueId === undefined) {
             throw new RequiredError("DefaultApi", "listMembers", "queueId");
         }
-        
-
         // Path Params
         const localVarPath = '/Accounts/{accountId}/Queues/{queueId}/Members'
             .replace('{' + 'accountId' + '}', encodeURIComponent(String(accountId)))
@@ -1637,6 +1404,7 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+        
 
 
         let authMethod: SecurityAuthentication | undefined;
@@ -1645,12 +1413,10 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         if (authMethod?.applySecurityAuthentication) {
             await authMethod?.applySecurityAuthentication(requestContext);
         }
-        
         const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
             await defaultAuth?.applySecurityAuthentication(requestContext);
         }
-
         return requestContext;
     }
 
@@ -1658,11 +1424,8 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
      * List Participants
      
      * @param conferenceId ID of the conference this participant is in.
-     
      * @param talk Only show Participants with the talk privilege.
-     
      * @param listen Only show Participants with the listen privilege.
-     
      */
     public async listParticipants(conferenceId: string, talk?: boolean, listen?: boolean, _options?: Configuration): Promise<RequestContext> {
         const _config = _options || this.configuration;
@@ -1672,10 +1435,6 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         if (conferenceId === null || conferenceId === undefined) {
             throw new RequiredError("DefaultApi", "listParticipants", "conferenceId");
         }
-        
-        
-        
-
         // Path Params
         const localVarPath = '/Accounts/{accountId}/Conferences/{conferenceId}/Participants'
             .replace('{' + 'accountId' + '}', encodeURIComponent(String(accountId)))
@@ -1684,16 +1443,15 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-
         // Query Params
         if (talk !== undefined) {
             requestContext.setQueryParam("talk", ObjectSerializer.serialize(talk, "boolean", ""));
         }
-
         // Query Params
         if (listen !== undefined) {
             requestContext.setQueryParam("listen", ObjectSerializer.serialize(listen, "boolean", ""));
         }
+        
 
 
         let authMethod: SecurityAuthentication | undefined;
@@ -1702,12 +1460,10 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         if (authMethod?.applySecurityAuthentication) {
             await authMethod?.applySecurityAuthentication(requestContext);
         }
-        
         const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
             await defaultAuth?.applySecurityAuthentication(requestContext);
         }
-
         return requestContext;
     }
 
@@ -1715,20 +1471,13 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
      * List Recordings
      
      * @param callId Show only Recordings made during the Call with this ID.
-     
      * @param conferenceId Show only Recordings made during the conference with this ID.
-     
      * @param dateCreated Only show Recordings created on this date, formatted as *YYYY-MM-DD*.
-     
      */
     public async listRecordings(callId?: string, conferenceId?: string, dateCreated?: string, _options?: Configuration): Promise<RequestContext> {
         const _config = _options || this.configuration;
         const { accountId } = this.configuration
         
-        
-        
-        
-
         // Path Params
         const localVarPath = '/Accounts/{accountId}/Recordings'
             .replace('{' + 'accountId' + '}', encodeURIComponent(String(accountId)));
@@ -1736,21 +1485,19 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-
         // Query Params
         if (callId !== undefined) {
             requestContext.setQueryParam("callId", ObjectSerializer.serialize(callId, "string", ""));
         }
-
         // Query Params
         if (conferenceId !== undefined) {
             requestContext.setQueryParam("conferenceId", ObjectSerializer.serialize(conferenceId, "string", ""));
         }
-
         // Query Params
         if (dateCreated !== undefined) {
             requestContext.setQueryParam("dateCreated", ObjectSerializer.serialize(dateCreated, "string", ""));
         }
+        
 
 
         let authMethod: SecurityAuthentication | undefined;
@@ -1759,12 +1506,10 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         if (authMethod?.applySecurityAuthentication) {
             await authMethod?.applySecurityAuthentication(requestContext);
         }
-        
         const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
             await defaultAuth?.applySecurityAuthentication(requestContext);
         }
-
         return requestContext;
     }
 
@@ -1772,26 +1517,15 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
      * List SMS Messages
      
      * @param to Only show Messages to this phone number.
-     
      * @param _from Only show Messages from this phone number.
-     
      * @param beginTime Only show Messages sent at or after this time (GMT), given as *YYYY-MM-DD hh:mm:ss*.
-     
      * @param endTime Only show messages sent at or before this time (GMT), given as *YYYY-MM-DD hh:mm*..
-     
      * @param direction Either &#x60;inbound&#x60; or &#x60;outbound&#x60;. Only show Messages that were either *sent from* or *received by* FreeClimb.
-     
      */
     public async listSmsMessages(to?: string, _from?: string, beginTime?: string, endTime?: string, direction?: 'inbound' | 'outbound', _options?: Configuration): Promise<RequestContext> {
         const _config = _options || this.configuration;
         const { accountId } = this.configuration
         
-        
-        
-        
-        
-        
-
         // Path Params
         const localVarPath = '/Accounts/{accountId}/Messages'
             .replace('{' + 'accountId' + '}', encodeURIComponent(String(accountId)));
@@ -1799,31 +1533,27 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-
         // Query Params
         if (to !== undefined) {
             requestContext.setQueryParam("to", ObjectSerializer.serialize(to, "string", ""));
         }
-
         // Query Params
         if (_from !== undefined) {
             requestContext.setQueryParam("from", ObjectSerializer.serialize(_from, "string", ""));
         }
-
         // Query Params
         if (beginTime !== undefined) {
             requestContext.setQueryParam("beginTime", ObjectSerializer.serialize(beginTime, "string", ""));
         }
-
         // Query Params
         if (endTime !== undefined) {
             requestContext.setQueryParam("endTime", ObjectSerializer.serialize(endTime, "string", ""));
         }
-
         // Query Params
         if (direction !== undefined) {
             requestContext.setQueryParam("direction", ObjectSerializer.serialize(direction, "'inbound' | 'outbound'", ""));
         }
+        
 
 
         let authMethod: SecurityAuthentication | undefined;
@@ -1832,12 +1562,10 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         if (authMethod?.applySecurityAuthentication) {
             await authMethod?.applySecurityAuthentication(requestContext);
         }
-        
         const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
             await defaultAuth?.applySecurityAuthentication(requestContext);
         }
-
         return requestContext;
     }
 
@@ -1845,14 +1573,11 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
      * Make a Call
      
      * @param makeCallRequest Call details for making a call
-     
      */
     public async makeACall(makeCallRequest?: MakeCallRequest, _options?: Configuration): Promise<RequestContext> {
         const _config = _options || this.configuration;
         const { accountId } = this.configuration
         
-        
-
         // Path Params
         const localVarPath = '/Accounts/{accountId}/Calls'
             .replace('{' + 'accountId' + '}', encodeURIComponent(String(accountId)));
@@ -1860,7 +1585,7 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.POST);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-
+        
 
         // Body Params
         const contentType = ObjectSerializer.getPreferredMediaType([
@@ -1872,19 +1597,16 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
             contentType
         );
         requestContext.setBody(serializedBody);
-
         let authMethod: SecurityAuthentication | undefined;
         // Apply auth methods
         authMethod = _config.authMethods["fc"]
         if (authMethod?.applySecurityAuthentication) {
             await authMethod?.applySecurityAuthentication(requestContext);
         }
-        
         const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
             await defaultAuth?.applySecurityAuthentication(requestContext);
         }
-
         return requestContext;
     }
 
@@ -1892,9 +1614,7 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
      * Remove a Participant
      
      * @param conferenceId ID of the conference this participant is in.
-     
      * @param callId ID of the Call associated with this participant.
-     
      */
     public async removeAParticipant(conferenceId: string, callId: string, _options?: Configuration): Promise<RequestContext> {
         const _config = _options || this.configuration;
@@ -1904,13 +1624,10 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         if (conferenceId === null || conferenceId === undefined) {
             throw new RequiredError("DefaultApi", "removeAParticipant", "conferenceId");
         }
-        
         // verify required parameter 'callId' is not null or undefined
         if (callId === null || callId === undefined) {
             throw new RequiredError("DefaultApi", "removeAParticipant", "callId");
         }
-        
-
         // Path Params
         const localVarPath = '/Accounts/{accountId}/Conferences/{conferenceId}/Participants/{callId}'
             .replace('{' + 'accountId' + '}', encodeURIComponent(String(accountId)))
@@ -1920,6 +1637,7 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.DELETE);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+        
 
 
         let authMethod: SecurityAuthentication | undefined;
@@ -1928,12 +1646,10 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         if (authMethod?.applySecurityAuthentication) {
             await authMethod?.applySecurityAuthentication(requestContext);
         }
-        
         const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
             await defaultAuth?.applySecurityAuthentication(requestContext);
         }
-
         return requestContext;
     }
 
@@ -1941,7 +1657,6 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
      * Send an SMS Message
      
      * @param messageRequest Details to create a message
-     
      */
     public async sendAnSmsMessage(messageRequest: MessageRequest, _options?: Configuration): Promise<RequestContext> {
         const _config = _options || this.configuration;
@@ -1951,8 +1666,6 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         if (messageRequest === null || messageRequest === undefined) {
             throw new RequiredError("DefaultApi", "sendAnSmsMessage", "messageRequest");
         }
-        
-
         // Path Params
         const localVarPath = '/Accounts/{accountId}/Messages'
             .replace('{' + 'accountId' + '}', encodeURIComponent(String(accountId)));
@@ -1960,7 +1673,7 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.POST);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-
+        
 
         // Body Params
         const contentType = ObjectSerializer.getPreferredMediaType([
@@ -1972,19 +1685,16 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
             contentType
         );
         requestContext.setBody(serializedBody);
-
         let authMethod: SecurityAuthentication | undefined;
         // Apply auth methods
         authMethod = _config.authMethods["fc"]
         if (authMethod?.applySecurityAuthentication) {
             await authMethod?.applySecurityAuthentication(requestContext);
         }
-        
         const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
             await defaultAuth?.applySecurityAuthentication(requestContext);
         }
-
         return requestContext;
     }
 
@@ -1992,7 +1702,6 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
      * Stream a Recording File
      
      * @param recordingId String that uniquely identifies this recording resource.
-     
      */
     public async streamARecordingFile(recordingId: string, _options?: Configuration): Promise<RequestContext> {
         const _config = _options || this.configuration;
@@ -2002,8 +1711,6 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         if (recordingId === null || recordingId === undefined) {
             throw new RequiredError("DefaultApi", "streamARecordingFile", "recordingId");
         }
-        
-
         // Path Params
         const localVarPath = '/Accounts/{accountId}/Recordings/{recordingId}/Stream'
             .replace('{' + 'accountId' + '}', encodeURIComponent(String(accountId)))
@@ -2012,6 +1719,7 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+        
 
 
         let authMethod: SecurityAuthentication | undefined;
@@ -2020,12 +1728,10 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         if (authMethod?.applySecurityAuthentication) {
             await authMethod?.applySecurityAuthentication(requestContext);
         }
-        
         const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
             await defaultAuth?.applySecurityAuthentication(requestContext);
         }
-
         return requestContext;
     }
 
@@ -2033,9 +1739,7 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
      * Update a Conference
      
      * @param conferenceId String that uniquely identifies this conference resource.
-     
      * @param updateConferenceRequest Conference Details to update
-     
      */
     public async updateAConference(conferenceId: string, updateConferenceRequest?: UpdateConferenceRequest, _options?: Configuration): Promise<RequestContext> {
         const _config = _options || this.configuration;
@@ -2045,9 +1749,6 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         if (conferenceId === null || conferenceId === undefined) {
             throw new RequiredError("DefaultApi", "updateAConference", "conferenceId");
         }
-        
-        
-
         // Path Params
         const localVarPath = '/Accounts/{accountId}/Conferences/{conferenceId}'
             .replace('{' + 'accountId' + '}', encodeURIComponent(String(accountId)))
@@ -2056,7 +1757,7 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.POST);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-
+        
 
         // Body Params
         const contentType = ObjectSerializer.getPreferredMediaType([
@@ -2068,19 +1769,16 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
             contentType
         );
         requestContext.setBody(serializedBody);
-
         let authMethod: SecurityAuthentication | undefined;
         // Apply auth methods
         authMethod = _config.authMethods["fc"]
         if (authMethod?.applySecurityAuthentication) {
             await authMethod?.applySecurityAuthentication(requestContext);
         }
-        
         const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
             await defaultAuth?.applySecurityAuthentication(requestContext);
         }
-
         return requestContext;
     }
 
@@ -2088,9 +1786,7 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
      * Update a Live Call
      
      * @param callId String that uniquely identifies this call resource.
-     
      * @param updateCallRequest Call details to update
-     
      */
     public async updateALiveCall(callId: string, updateCallRequest: UpdateCallRequest, _options?: Configuration): Promise<RequestContext> {
         const _config = _options || this.configuration;
@@ -2100,13 +1796,10 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         if (callId === null || callId === undefined) {
             throw new RequiredError("DefaultApi", "updateALiveCall", "callId");
         }
-        
         // verify required parameter 'updateCallRequest' is not null or undefined
         if (updateCallRequest === null || updateCallRequest === undefined) {
             throw new RequiredError("DefaultApi", "updateALiveCall", "updateCallRequest");
         }
-        
-
         // Path Params
         const localVarPath = '/Accounts/{accountId}/Calls/{callId}'
             .replace('{' + 'accountId' + '}', encodeURIComponent(String(accountId)))
@@ -2115,7 +1808,7 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.POST);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-
+        
 
         // Body Params
         const contentType = ObjectSerializer.getPreferredMediaType([
@@ -2127,19 +1820,16 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
             contentType
         );
         requestContext.setBody(serializedBody);
-
         let authMethod: SecurityAuthentication | undefined;
         // Apply auth methods
         authMethod = _config.authMethods["fc"]
         if (authMethod?.applySecurityAuthentication) {
             await authMethod?.applySecurityAuthentication(requestContext);
         }
-        
         const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
             await defaultAuth?.applySecurityAuthentication(requestContext);
         }
-
         return requestContext;
     }
 
@@ -2147,11 +1837,8 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
      * Update a Participant
      
      * @param conferenceId ID of the conference this participant is in.
-     
      * @param callId ID of the Call associated with this participant.
-     
      * @param updateConferenceParticipantRequest Conference participant details to update
-     
      */
     public async updateAParticipant(conferenceId: string, callId: string, updateConferenceParticipantRequest?: UpdateConferenceParticipantRequest, _options?: Configuration): Promise<RequestContext> {
         const _config = _options || this.configuration;
@@ -2161,14 +1848,10 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         if (conferenceId === null || conferenceId === undefined) {
             throw new RequiredError("DefaultApi", "updateAParticipant", "conferenceId");
         }
-        
         // verify required parameter 'callId' is not null or undefined
         if (callId === null || callId === undefined) {
             throw new RequiredError("DefaultApi", "updateAParticipant", "callId");
         }
-        
-        
-
         // Path Params
         const localVarPath = '/Accounts/{accountId}/Conferences/{conferenceId}/Participants/{callId}'
             .replace('{' + 'accountId' + '}', encodeURIComponent(String(accountId)))
@@ -2178,7 +1861,7 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.POST);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-
+        
 
         // Body Params
         const contentType = ObjectSerializer.getPreferredMediaType([
@@ -2190,19 +1873,16 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
             contentType
         );
         requestContext.setBody(serializedBody);
-
         let authMethod: SecurityAuthentication | undefined;
         // Apply auth methods
         authMethod = _config.authMethods["fc"]
         if (authMethod?.applySecurityAuthentication) {
             await authMethod?.applySecurityAuthentication(requestContext);
         }
-        
         const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
             await defaultAuth?.applySecurityAuthentication(requestContext);
         }
-
         return requestContext;
     }
 
@@ -2210,9 +1890,7 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
      * Update a Queue
      
      * @param queueId A string that uniquely identifies this Queue resource.
-     
      * @param queueRequest Queue Details to update
-     
      */
     public async updateAQueue(queueId: string, queueRequest?: QueueRequest, _options?: Configuration): Promise<RequestContext> {
         const _config = _options || this.configuration;
@@ -2222,9 +1900,6 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         if (queueId === null || queueId === undefined) {
             throw new RequiredError("DefaultApi", "updateAQueue", "queueId");
         }
-        
-        
-
         // Path Params
         const localVarPath = '/Accounts/{accountId}/Queues/{queueId}'
             .replace('{' + 'accountId' + '}', encodeURIComponent(String(accountId)))
@@ -2233,7 +1908,7 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.POST);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-
+        
 
         // Body Params
         const contentType = ObjectSerializer.getPreferredMediaType([
@@ -2245,19 +1920,16 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
             contentType
         );
         requestContext.setBody(serializedBody);
-
         let authMethod: SecurityAuthentication | undefined;
         // Apply auth methods
         authMethod = _config.authMethods["fc"]
         if (authMethod?.applySecurityAuthentication) {
             await authMethod?.applySecurityAuthentication(requestContext);
         }
-        
         const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
             await defaultAuth?.applySecurityAuthentication(requestContext);
         }
-
         return requestContext;
     }
 
@@ -2265,14 +1937,11 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
      * Manage an account
      
      * @param accountRequest Account details to update
-     
      */
     public async updateAnAccount(accountRequest?: AccountRequest, _options?: Configuration): Promise<RequestContext> {
         const _config = _options || this.configuration;
         const { accountId } = this.configuration
         
-        
-
         // Path Params
         const localVarPath = '/Accounts/{accountId}'
             .replace('{' + 'accountId' + '}', encodeURIComponent(String(accountId)));
@@ -2280,7 +1949,7 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.POST);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-
+        
 
         // Body Params
         const contentType = ObjectSerializer.getPreferredMediaType([
@@ -2292,19 +1961,16 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
             contentType
         );
         requestContext.setBody(serializedBody);
-
         let authMethod: SecurityAuthentication | undefined;
         // Apply auth methods
         authMethod = _config.authMethods["fc"]
         if (authMethod?.applySecurityAuthentication) {
             await authMethod?.applySecurityAuthentication(requestContext);
         }
-        
         const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
             await defaultAuth?.applySecurityAuthentication(requestContext);
         }
-
         return requestContext;
     }
 
@@ -2312,9 +1978,7 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
      * Update an application
      
      * @param applicationId A string that uniquely identifies this application resource.
-     
      * @param applicationRequest Application details to update.
-     
      */
     public async updateAnApplication(applicationId: string, applicationRequest?: ApplicationRequest, _options?: Configuration): Promise<RequestContext> {
         const _config = _options || this.configuration;
@@ -2324,9 +1988,6 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         if (applicationId === null || applicationId === undefined) {
             throw new RequiredError("DefaultApi", "updateAnApplication", "applicationId");
         }
-        
-        
-
         // Path Params
         const localVarPath = '/Accounts/{accountId}/Applications/{applicationId}'
             .replace('{' + 'accountId' + '}', encodeURIComponent(String(accountId)))
@@ -2335,7 +1996,7 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.POST);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-
+        
 
         // Body Params
         const contentType = ObjectSerializer.getPreferredMediaType([
@@ -2347,19 +2008,16 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
             contentType
         );
         requestContext.setBody(serializedBody);
-
         let authMethod: SecurityAuthentication | undefined;
         // Apply auth methods
         authMethod = _config.authMethods["fc"]
         if (authMethod?.applySecurityAuthentication) {
             await authMethod?.applySecurityAuthentication(requestContext);
         }
-        
         const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
             await defaultAuth?.applySecurityAuthentication(requestContext);
         }
-
         return requestContext;
     }
 
@@ -2367,9 +2025,7 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
      * Update an Incoming Number
      
      * @param phoneNumberId String that uniquely identifies this phone number resource.
-     
      * @param incomingNumberRequest Incoming Number details to update
-     
      */
     public async updateAnIncomingNumber(phoneNumberId: string, incomingNumberRequest?: IncomingNumberRequest, _options?: Configuration): Promise<RequestContext> {
         const _config = _options || this.configuration;
@@ -2379,9 +2035,6 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         if (phoneNumberId === null || phoneNumberId === undefined) {
             throw new RequiredError("DefaultApi", "updateAnIncomingNumber", "phoneNumberId");
         }
-        
-        
-
         // Path Params
         const localVarPath = '/Accounts/{accountId}/IncomingPhoneNumbers/{phoneNumberId}'
             .replace('{' + 'accountId' + '}', encodeURIComponent(String(accountId)))
@@ -2390,7 +2043,7 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.POST);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-
+        
 
         // Body Params
         const contentType = ObjectSerializer.getPreferredMediaType([
@@ -2402,19 +2055,16 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
             contentType
         );
         requestContext.setBody(serializedBody);
-
         let authMethod: SecurityAuthentication | undefined;
         // Apply auth methods
         authMethod = _config.authMethods["fc"]
         if (authMethod?.applySecurityAuthentication) {
             await authMethod?.applySecurityAuthentication(requestContext);
         }
-        
         const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
             await defaultAuth?.applySecurityAuthentication(requestContext);
         }
-
         return requestContext;
     }
 

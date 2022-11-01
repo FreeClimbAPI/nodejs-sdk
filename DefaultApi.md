@@ -1949,6 +1949,9 @@ let body:freeclimb.DefaultApiListIncomingNumbersRequest = {
   // boolean (optional)
   capabilitiesShortCode: true,
 
+  // boolean | Indication of whether the phone number was registered as an offnet number. This field will be rendered only for requests to the IncomingPhone number resource. (optional)
+  offnet: true,
+
 };
 
 apiInstance.listIncomingNumbers(body).then((data:any) => {
@@ -1974,6 +1977,7 @@ Name | Type | Description  | Notes
  **capabilitiesTollFree** | [**boolean**] |  | (optional) defaults to undefined
  **capabilitiesTenDLC** | [**boolean**] |  | (optional) defaults to undefined
  **capabilitiesShortCode** | [**boolean**] |  | (optional) defaults to undefined
+ **offnet** | [**boolean**] | Indication of whether the phone number was registered as an offnet number. This field will be rendered only for requests to the IncomingPhone number resource. | (optional) defaults to undefined
 
 
 ### Return type
