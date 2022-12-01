@@ -24,8 +24,8 @@ interface ArgumentsType {
     'queueId'?: string;
     'alias'?: string;
     'maxSize'?: number;
-    'currentSize'?: string;
-    'averageWaitTime'?: string;
+    'currentSize'?: number;
+    'averageQueueRemovalTime'?: number;
     'subresourceUris'?: any;
 }
 export class QueueResultAllOf {
@@ -48,11 +48,11 @@ export class QueueResultAllOf {
     /**
     * Count of Calls currently in the Queue.
     */
-    'currentSize'?: string;
+    'currentSize'?: number;
     /**
-    * Average wait time (in seconds) of all Calls in the Queue.
+    * The average amount of time (in seconds) for a call to be removed from the queue.
     */
-    'averageWaitTime'?: string;
+    'averageQueueRemovalTime'?: number;
     /**
     * List of subresources for this Queue (which includes Queue members).
     */
@@ -100,16 +100,16 @@ export class QueueResultAllOf {
         {
             "name": "currentSize",
             "baseName": "currentSize",
-            "type": "string",
+            "type": "number",
             "format": "",
             
             
             "defaultValue": undefined
         },
         {
-            "name": "averageWaitTime",
-            "baseName": "averageWaitTime",
-            "type": "string",
+            "name": "averageQueueRemovalTime",
+            "baseName": "averageQueueRemovalTime",
+            "type": "number",
             "format": "",
             
             
