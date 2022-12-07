@@ -19,6 +19,7 @@ import { AvailableNumberList } from '../models/AvailableNumberList';
 import { BuyIncomingNumberRequest } from '../models/BuyIncomingNumberRequest';
 import { CallList } from '../models/CallList';
 import { CallResult } from '../models/CallResult';
+import { CallStatus } from '../models/CallStatus';
 import { ConferenceList } from '../models/ConferenceList';
 import { ConferenceParticipantList } from '../models/ConferenceParticipantList';
 import { ConferenceParticipantResult } from '../models/ConferenceParticipantResult';
@@ -30,6 +31,7 @@ import { IncomingNumberRequest } from '../models/IncomingNumberRequest';
 import { IncomingNumberResult } from '../models/IncomingNumberResult';
 import { LogList } from '../models/LogList';
 import { MakeCallRequest } from '../models/MakeCallRequest';
+import { MessageDirection } from '../models/MessageDirection';
 import { MessageRequest } from '../models/MessageRequest';
 import { MessageResult } from '../models/MessageResult';
 import { MessagesList } from '../models/MessagesList';
@@ -1176,7 +1178,7 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
      * @param endTime Only show Calls that ended at or before this time, given as YYYY-MM- DD hh:mm:ss.
      * @param parentCallId Only show Calls spawned by the call with this ID.
      */
-    public async listCalls(active?: boolean, to?: string, _from?: string, status?: string, startTime?: string, endTime?: string, parentCallId?: string, _options?: Configuration): Promise<RequestContext> {
+    public async listCalls(active?: boolean, to?: string, _from?: string, status?: CallStatus, startTime?: string, endTime?: string, parentCallId?: string, _options?: Configuration): Promise<RequestContext> {
         const _config = _options || this.configuration;
         const { accountId } = this.configuration
         
@@ -1201,7 +1203,7 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         }
         // Query Params
         if (status !== undefined) {
-            requestContext.setQueryParam("status", ObjectSerializer.serialize(status, "string", ""));
+            requestContext.setQueryParam("status", ObjectSerializer.serialize(status, "CallStatus", ""));
         }
         // Query Params
         if (startTime !== undefined) {
@@ -1522,7 +1524,7 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
      * @param endTime Only show messages sent at or before this time (GMT), given as *YYYY-MM-DD hh:mm*..
      * @param direction Either &#x60;inbound&#x60; or &#x60;outbound&#x60;. Only show Messages that were either *sent from* or *received by* FreeClimb.
      */
-    public async listSmsMessages(to?: string, _from?: string, beginTime?: string, endTime?: string, direction?: 'inbound' | 'outbound', _options?: Configuration): Promise<RequestContext> {
+    public async listSmsMessages(to?: string, _from?: string, beginTime?: string, endTime?: string, direction?: MessageDirection, _options?: Configuration): Promise<RequestContext> {
         const _config = _options || this.configuration;
         const { accountId } = this.configuration
         
@@ -1551,7 +1553,7 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         }
         // Query Params
         if (direction !== undefined) {
-            requestContext.setQueryParam("direction", ObjectSerializer.serialize(direction, "'inbound' | 'outbound'", ""));
+            requestContext.setQueryParam("direction", ObjectSerializer.serialize(direction, "MessageDirection", ""));
         }
         
 

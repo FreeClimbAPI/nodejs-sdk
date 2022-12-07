@@ -10,7 +10,9 @@
  * Do not edit the class manually.
  */
 
+import { IfMachine } from './IfMachine';
 import { HttpFile } from '../http/http';
+
 
 interface AttributeType {
     name: string
@@ -24,7 +26,7 @@ interface ArgumentsType {
     'callConnectUrl': string;
     'callingNumber': number;
     'destination': number;
-    'ifMachine'?: string;
+    'ifMachine'?: IfMachine;
     'ifMachineUrl'?: string;
     'sendDigits'?: string;
     'statusCallbackUrl'?: string;
@@ -48,10 +50,7 @@ export class OutDialAllOf {
     * E.164 representation of the phone number to Call. 
     */
     'destination': number;
-    /**
-    * Specifies how FreeClimb should handle this OutDial if an answering machine answers the Call. Valid values: `redirect` invokes the ifMachineUrl for instructions. `hangup` hangs up the Call. The ifMachineUrl will not be invoked.
-    */
-    'ifMachine'?: string;
+    'ifMachine'?: IfMachine;
     /**
     * When the `ifMachine` flag is set to `redirect`, this attribute specifies a URL to which FreeClimb makes a POST request when an answering machine or a fax machine is detected. This URL is required if the `ifMachine` flag is set to `redirect`. Otherwise, it should not be included.
     */
@@ -115,7 +114,7 @@ export class OutDialAllOf {
         {
             "name": "ifMachine",
             "baseName": "ifMachine",
-            "type": "string",
+            "type": "IfMachine",
             "format": "",
             
             

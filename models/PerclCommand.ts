@@ -39,6 +39,7 @@ import { HttpFile } from '../http/http';
 /**
 * An individual command used in a PerCLScript.
 */
+
 interface AttributeType {
     name: string
     baseName: string

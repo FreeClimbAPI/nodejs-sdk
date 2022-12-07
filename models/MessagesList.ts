@@ -15,6 +15,7 @@ import { MessagesListAllOf } from './MessagesListAllOf';
 import { PaginationModel } from './PaginationModel';
 import { HttpFile } from '../http/http';
 
+
 interface AttributeType {
     name: string
     baseName: string

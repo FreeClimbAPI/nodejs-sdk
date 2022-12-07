@@ -13,6 +13,7 @@
 import { ApplicationResult } from './ApplicationResult';
 import { HttpFile } from '../http/http';
 
+
 interface AttributeType {
     name: string
     baseName: string

@@ -14,6 +14,7 @@ import { ApplicationResultAllOf } from './ApplicationResultAllOf';
 import { MutableResourceModel } from './MutableResourceModel';
 import { HttpFile } from '../http/http';
 
+
 interface AttributeType {
     name: string
     baseName: string

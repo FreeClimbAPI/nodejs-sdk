@@ -10,7 +10,9 @@
  * Do not edit the class manually.
  */
 
+import { PlayBeep } from './PlayBeep';
 import { HttpFile } from '../http/http';
+
 
 interface AttributeType {
     name: string
@@ -22,9 +24,9 @@ interface AttributeType {
 interface ArgumentsType {
     'actionUrl': string;
     'alias'?: boolean;
-    'playBeep'?: string;
+    'playBeep'?: PlayBeep;
     'record'?: boolean;
-    'statusCallbackUrl'?: boolean;
+    'statusCallbackUrl'?: string;
     'waitUrl'?: string;
 }
 export class CreateConferenceAllOf {
@@ -36,10 +38,7 @@ export class CreateConferenceAllOf {
     * Descriptive name for the Conference. 
     */
     'alias'?: boolean;
-    /**
-    * Indicates whether to play a beep when a Participant enters or leaves the Conference. either `always`, `never`, `entryOnly`, or `exitOnly`. Leaving this unset will make conference default to `always` 
-    */
-    'playBeep'?: string;
+    'playBeep'?: PlayBeep;
     /**
     * When set to `true`, the entire Conference is recorded. The `statusCallbackUrl` of the Conference will receive a `conferenceRecordingEnded` Webhook when the Conference transitions from the `inProgress` to empty state.
     */
@@ -47,7 +46,7 @@ export class CreateConferenceAllOf {
     /**
     * This URL is invoked when the status of the Conference changes or when a recording of the Conference has become available.
     */
-    'statusCallbackUrl'?: boolean;
+    'statusCallbackUrl'?: string;
     /**
     * If specified, this URL provides the custom hold music for the Conference when it is in the populated state. This attribute is always fetched using HTTP GET and is fetched just once – when the Conference is created. The URL must be an audio file that is reachable and readable by FreeClimb.
     */
@@ -77,7 +76,7 @@ export class CreateConferenceAllOf {
         {
             "name": "playBeep",
             "baseName": "playBeep",
-            "type": "string",
+            "type": "PlayBeep",
             "format": "",
             
             
@@ -95,7 +94,7 @@ export class CreateConferenceAllOf {
         {
             "name": "statusCallbackUrl",
             "baseName": "statusCallbackUrl",
-            "type": "boolean",
+            "type": "string",
             "format": "",
             
             

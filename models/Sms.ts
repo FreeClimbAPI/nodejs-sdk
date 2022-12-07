@@ -40,6 +40,7 @@ import { HttpFile } from '../http/http';
 /**
 * The `Sms` command can be used to send an SMS message to a phone number during a phone call. International SMS is disabled by default.
 */
+
 interface AttributeType {
     name: string
     baseName: string

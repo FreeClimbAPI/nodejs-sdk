@@ -15,6 +15,7 @@ import { QueueMember } from './QueueMember';
 import { QueueMemberListAllOf } from './QueueMemberListAllOf';
 import { HttpFile } from '../http/http';
 
+
 interface AttributeType {
     name: string
     baseName: string

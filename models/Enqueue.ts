@@ -40,6 +40,7 @@ import { HttpFile } from '../http/http';
 /**
 * The `Enqueue` command adds the current Call to a call Queue. If the specified Queue does not exist, it is created and then the Call is added to it. The default maximum length of the queue is 100. This can be modified using the REST API.
 */
+
 interface AttributeType {
     name: string
     baseName: string

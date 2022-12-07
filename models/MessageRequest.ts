@@ -14,6 +14,7 @@ import { MessageRequestAllOf } from './MessageRequestAllOf';
 import { MutableResourceModel } from './MutableResourceModel';
 import { HttpFile } from '../http/http';
 
+
 interface AttributeType {
     name: string
     baseName: string

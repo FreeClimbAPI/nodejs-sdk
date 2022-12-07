@@ -15,6 +15,7 @@ import { HttpFile } from '../http/http';
 /**
 * Details for which features this number may be used.
 */
+
 interface AttributeType {
     name: string
     baseName: string

@@ -13,6 +13,7 @@
 import { ConferenceResult } from './ConferenceResult';
 import { HttpFile } from '../http/http';
 
+
 interface AttributeType {
     name: string
     baseName: string

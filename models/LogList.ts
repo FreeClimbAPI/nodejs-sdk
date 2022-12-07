@@ -15,6 +15,7 @@ import { LogResult } from './LogResult';
 import { PaginationModel } from './PaginationModel';
 import { HttpFile } from '../http/http';
 
+
 interface AttributeType {
     name: string
     baseName: string

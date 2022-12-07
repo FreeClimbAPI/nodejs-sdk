@@ -14,6 +14,7 @@ import { MutableResourceModel } from './MutableResourceModel';
 import { QueueResultAllOf } from './QueueResultAllOf';
 import { HttpFile } from '../http/http';
 
+
 interface AttributeType {
     name: string
     baseName: string

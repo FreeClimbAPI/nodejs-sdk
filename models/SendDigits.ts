@@ -40,6 +40,7 @@ import { HttpFile } from '../http/http';
 /**
 * The `SendDigits` command plays DTMF tones on a live Call. This is useful for navigating through IVR menus or dialing extensions.
 */
+
 interface AttributeType {
     name: string
     baseName: string

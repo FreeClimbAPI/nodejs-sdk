@@ -1767,8 +1767,8 @@ let body:freeclimb.DefaultApiListCallsRequest = {
   // string | Only show Calls from this phone number. (optional)
   _from: "from_example",
 
-  // string | Only show Calls currently in this status. May be `queued`, `ringing`, `inProgress`, `canceled`, `completed`, `failed`, `busy`, or `noAnswer`. (optional)
-  status: "status_example",
+  // CallStatus | Only show Calls currently in this status. May be `queued`, `ringing`, `inProgress`, `canceled`, `completed`, `failed`, `busy`, or `noAnswer`. (optional)
+  status: "queued",
 
   // string | Only show Calls that started at or after this time, given as YYYY-MM-DD hh:mm:ss. (optional)
   startTime: "startTime_example",
@@ -1794,7 +1794,7 @@ Name | Type | Description  | Notes
  **active** | [**boolean**] | If active is set to true then all calls of the nature queued, ringing, inProgress are returned in the query. | (optional) defaults to undefined
  **to** | [**string**] | Only show Calls to this phone number. | (optional) defaults to undefined
  **_from** | [**string**] | Only show Calls from this phone number. | (optional) defaults to undefined
- **status** | [**string**] | Only show Calls currently in this status. May be &#x60;queued&#x60;, &#x60;ringing&#x60;, &#x60;inProgress&#x60;, &#x60;canceled&#x60;, &#x60;completed&#x60;, &#x60;failed&#x60;, &#x60;busy&#x60;, or &#x60;noAnswer&#x60;. | (optional) defaults to undefined
+ **status** | **CallStatus** | Only show Calls currently in this status. May be &#x60;queued&#x60;, &#x60;ringing&#x60;, &#x60;inProgress&#x60;, &#x60;canceled&#x60;, &#x60;completed&#x60;, &#x60;failed&#x60;, &#x60;busy&#x60;, or &#x60;noAnswer&#x60;. | (optional) defaults to undefined
  **startTime** | [**string**] | Only show Calls that started at or after this time, given as YYYY-MM-DD hh:mm:ss. | (optional) defaults to undefined
  **endTime** | [**string**] | Only show Calls that ended at or before this time, given as YYYY-MM- DD hh:mm:ss. | (optional) defaults to undefined
  **parentCallId** | [**string**] | Only show Calls spawned by the call with this ID. | (optional) defaults to undefined
@@ -2222,7 +2222,7 @@ let body:freeclimb.DefaultApiListSmsMessagesRequest = {
   // string | Only show messages sent at or before this time (GMT), given as *YYYY-MM-DD hh:mm*.. (optional)
   endTime: "endTime_example",
 
-  // 'inbound' | 'outbound' | Either `inbound` or `outbound`. Only show Messages that were either *sent from* or *received by* FreeClimb. (optional)
+  // MessageDirection | Either `inbound` or `outbound`. Only show Messages that were either *sent from* or *received by* FreeClimb. (optional)
   direction: "inbound",
 
 };
@@ -2241,7 +2241,7 @@ Name | Type | Description  | Notes
  **_from** | [**string**] | Only show Messages from this phone number. | (optional) defaults to undefined
  **beginTime** | [**string**] | Only show Messages sent at or after this time (GMT), given as *YYYY-MM-DD hh:mm:ss*. | (optional) defaults to undefined
  **endTime** | [**string**] | Only show messages sent at or before this time (GMT), given as *YYYY-MM-DD hh:mm*.. | (optional) defaults to undefined
- **direction** | [**&#39;inbound&#39; | &#39;outbound&#39;**]**Array<&#39;inbound&#39; &#124; &#39;outbound&#39;>** | Either &#x60;inbound&#x60; or &#x60;outbound&#x60;. Only show Messages that were either *sent from* or *received by* FreeClimb. | (optional) defaults to undefined
+ **direction** | **MessageDirection** | Either &#x60;inbound&#x60; or &#x60;outbound&#x60;. Only show Messages that were either *sent from* or *received by* FreeClimb. | (optional) defaults to undefined
 
 
 ### Return type

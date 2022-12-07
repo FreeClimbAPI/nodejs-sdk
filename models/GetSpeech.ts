@@ -16,6 +16,7 @@ import { Dequeue } from './Dequeue';
 import { Enqueue } from './Enqueue';
 import { GetDigits } from './GetDigits';
 import { GetSpeechAllOf } from './GetSpeechAllOf';
+import { GrammarType } from './GrammarType';
 import { Hangup } from './Hangup';
 import { OutDial } from './OutDial';
 import { Park } from './Park';
@@ -34,12 +35,14 @@ import { SetTalk } from './SetTalk';
 import { Sms } from './Sms';
 import { StartRecordCall } from './StartRecordCall';
 import { TerminateConference } from './TerminateConference';
+import { URI } from './URI';
 import { Unpark } from './Unpark';
 import { HttpFile } from '../http/http';
 
 /**
 * The `GetSpeech` command enables the Caller to respond to the application using a supported language. Unlike DTMF entry, which implicitly restricts the user to using the available buttons on the phone key pad, speech input allows for flexible audio inputs based on grammar. FreeClimb supports grammars written using GRXML compatible with the Microsoft Speech Platform. `GetSpeech` is only supported on a single call leg. It is not supported when there are two or more call legs connected (as in within a Conference).
 */
+
 interface AttributeType {
     name: string
     baseName: string
@@ -48,11 +51,11 @@ interface AttributeType {
     defaultValue: any
 }
 interface ArgumentsType {
-    'actionUrl': string;
-    'grammarType'?: number;
+    'actionUrl': URI;
+    'grammarType'?: GrammarType;
     'grammarFile': string;
-    'grammarRule'?: boolean;
-    'playBeep'?: string;
+    'grammarRule'?: string;
+    'playBeep'?: boolean;
     'prompts'?: Array<PerclCommand>;
     'noInputTimeoutMs'?: number;
     'recognitionTimeoutMs'?: number;
@@ -66,11 +69,8 @@ export class GetSpeech extends PerclCommand {
     /**
     * When the caller has finished speaking or the command has timed out, FreeClimb will make a POST request to this URL. A PerCL response is expected to continue handling the call.
     */
-    'actionUrl': string;
-    /**
-    * The grammar file type to use for speech recognition. A value of 'URL' indicates the grammarFile attribute specifies a URL that points to the grammar file. A value of `BUILTIN` indicates the grammarFile attribute specifies the name of one of the platform built-in grammar files.
-    */
-    'grammarType'?: number;
+    'actionUrl': URI;
+    'grammarType'?: GrammarType;
     /**
     * The grammar file to use for speech recognition. If grammarType is set to URL, this attribute is specified as a download URL.
     */
@@ -78,11 +78,11 @@ export class GetSpeech extends PerclCommand {
     /**
     * The grammar rule within the specified grammar file to use for speech recognition. This attribute is optional if `grammarType` is `URL` and ignored if `grammarType` is `BUILTIN`.
     */
-    'grammarRule'?: boolean;
+    'grammarRule'?: string;
     /**
     * Indicates whether a beep should be played just before speech recognition is initiated so that the speaker can start to speak.
     */
-    'playBeep'?: string;
+    'playBeep'?: boolean;
     /**
     * The JSON array of PerCL commands to nest within the `GetSpeech` command. The `Say`, `Play`, and `Pause` commands can be used. The nested actions are executed while FreeClimb is waiting for input from the caller. This allows for playing menu options to the caller and to prompt for the expected input. These commands stop executing when the caller begins to input speech.
     */
@@ -122,8 +122,8 @@ export class GetSpeech extends PerclCommand {
         {
             "name": "actionUrl",
             "baseName": "actionUrl",
-            "type": "string",
-            "format": "",
+            "type": "URI",
+            "format": "uri",
             
             
             "defaultValue": undefined
@@ -131,7 +131,7 @@ export class GetSpeech extends PerclCommand {
         {
             "name": "grammarType",
             "baseName": "grammarType",
-            "type": "number",
+            "type": "GrammarType",
             "format": "",
             
             
@@ -149,7 +149,7 @@ export class GetSpeech extends PerclCommand {
         {
             "name": "grammarRule",
             "baseName": "grammarRule",
-            "type": "boolean",
+            "type": "string",
             "format": "",
             
             
@@ -158,7 +158,7 @@ export class GetSpeech extends PerclCommand {
         {
             "name": "playBeep",
             "baseName": "playBeep",
-            "type": "string",
+            "type": "boolean",
             "format": "",
             
             

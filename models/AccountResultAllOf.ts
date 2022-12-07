@@ -10,19 +10,11 @@
  * Do not edit the class manually.
  */
 
+import { AccountStatus } from './AccountStatus';
+import { AccountType } from './AccountType';
 import { HttpFile } from '../http/http';
 
-export enum AccountResultAllOfTypeEnum {
 
-    TRIAL = 'trial',
-    FULL = 'full'
-}
-export enum AccountResultAllOfStatusEnum {
-
-    ACTIVE = 'active',
-    SUSPENDED = 'suspended',
-    CLOSED = 'closed'
-}
 interface AttributeType {
     name: string
     baseName: string
@@ -35,8 +27,8 @@ interface ArgumentsType {
     'apiKey'?: string;
     'alias'?: string;
     'label'?: string;
-    'type'?: AccountResultAllOfTypeEnum;
-    'status'?: AccountResultAllOfStatusEnum;
+    'type'?: AccountType;
+    'status'?: AccountStatus;
     'subresourceUris'?: any;
 }
 export class AccountResultAllOf {
@@ -56,14 +48,8 @@ export class AccountResultAllOf {
     * A string that identifies a category or group to which the account belongs.
     */
     'label'?: string;
-    /**
-    * The type of this account. It is one of: trial or full.
-    */
-    'type'?: AccountResultAllOfTypeEnum;
-    /**
-    * The status of this account. It is one of: active, suspended, or closed.
-    */
-    'status'?: AccountResultAllOfStatusEnum;
+    'type'?: AccountType;
+    'status'?: AccountStatus;
     /**
     * The list of subresources for this account.
     */
@@ -111,22 +97,20 @@ export class AccountResultAllOf {
         {
             "name": "type",
             "baseName": "type",
-            "type": "AccountResultAllOfTypeEnum",
+            "type": "AccountType",
             "format": "",
             
             
             "defaultValue": undefined
-
         },
         {
             "name": "status",
             "baseName": "status",
-            "type": "AccountResultAllOfStatusEnum",
+            "type": "AccountStatus",
             "format": "",
             
             
             "defaultValue": undefined
-
         },
         {
             "name": "subresourceUris",

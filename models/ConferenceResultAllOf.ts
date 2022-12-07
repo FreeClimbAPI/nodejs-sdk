@@ -10,23 +10,11 @@
  * Do not edit the class manually.
  */
 
+import { ConferenceStatus } from './ConferenceStatus';
+import { PlayBeep } from './PlayBeep';
 import { HttpFile } from '../http/http';
 
-export enum ConferenceResultAllOfPlayBeepEnum {
 
-    ALWAYS = 'always',
-    NEVER = 'never',
-    ENTRY_ONLY = 'entryOnly',
-    EXIT_ONLY = 'exitOnly'
-}
-export enum ConferenceResultAllOfStatusEnum {
-
-    CREATING = 'creating',
-    EMPTY = 'empty',
-    POPULATED = 'populated',
-    IN_PROGRESS = 'inProgress',
-    TERMINATED = 'terminated'
-}
 interface AttributeType {
     name: string
     baseName: string
@@ -38,9 +26,9 @@ interface ArgumentsType {
     'conferenceId'?: string;
     'accountId'?: string;
     'alias'?: string;
-    'playBeep'?: ConferenceResultAllOfPlayBeepEnum;
+    'playBeep'?: PlayBeep;
     'record'?: boolean;
-    'status'?: ConferenceResultAllOfStatusEnum;
+    'status'?: ConferenceStatus;
     'waitUrl'?: string;
     'actionUrl'?: string;
     'statusCallbackUrl'?: string;
@@ -59,18 +47,12 @@ export class ConferenceResultAllOf {
     * A description for this Conference.
     */
     'alias'?: string;
-    /**
-    * Setting that controls when a beep is played. One of: always, never, entryOnly, exitOnly. Defaults to always.
-    */
-    'playBeep'?: ConferenceResultAllOfPlayBeepEnum;
+    'playBeep'?: PlayBeep;
     /**
     * Flag indicating whether recording is enabled for this Conference.
     */
     'record'?: boolean;
-    /**
-    * The status of the Conference. One of: creating, empty, populated, inProgress, or terminated.
-    */
-    'status'?: ConferenceResultAllOfStatusEnum;
+    'status'?: ConferenceStatus;
     /**
     * URL referencing the audio file to be used as default wait music for the Conference when it is in the populated state.
     */
@@ -121,12 +103,11 @@ export class ConferenceResultAllOf {
         {
             "name": "playBeep",
             "baseName": "playBeep",
-            "type": "ConferenceResultAllOfPlayBeepEnum",
+            "type": "PlayBeep",
             "format": "",
             
             
             "defaultValue": undefined
-
         },
         {
             "name": "record",
@@ -140,12 +121,11 @@ export class ConferenceResultAllOf {
         {
             "name": "status",
             "baseName": "status",
-            "type": "ConferenceResultAllOfStatusEnum",
+            "type": "ConferenceStatus",
             "format": "",
             
             
             "defaultValue": undefined
-
         },
         {
             "name": "waitUrl",

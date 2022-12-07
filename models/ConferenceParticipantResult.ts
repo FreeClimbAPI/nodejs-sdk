@@ -14,6 +14,7 @@ import { ConferenceParticipantResultAllOf } from './ConferenceParticipantResultA
 import { MutableResourceModel } from './MutableResourceModel';
 import { HttpFile } from '../http/http';
 
+
 interface AttributeType {
     name: string
     baseName: string

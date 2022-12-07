@@ -17,6 +17,7 @@ import { Enqueue } from './Enqueue';
 import { GetDigits } from './GetDigits';
 import { GetSpeech } from './GetSpeech';
 import { Hangup } from './Hangup';
+import { IfMachine } from './IfMachine';
 import { OutDialAllOf } from './OutDialAllOf';
 import { Park } from './Park';
 import { Pause } from './Pause';
@@ -40,6 +41,7 @@ import { HttpFile } from '../http/http';
 /**
 * The OutDial command is used to call a phone number
 */
+
 interface AttributeType {
     name: string
     baseName: string
@@ -52,7 +54,7 @@ interface ArgumentsType {
     'callConnectUrl': string;
     'callingNumber': number;
     'destination': number;
-    'ifMachine'?: string;
+    'ifMachine'?: IfMachine;
     'ifMachineUrl'?: string;
     'sendDigits'?: string;
     'statusCallbackUrl'?: string;
@@ -76,10 +78,7 @@ export class OutDial extends PerclCommand {
     * E.164 representation of the phone number to Call. 
     */
     'destination': number;
-    /**
-    * Specifies how FreeClimb should handle this OutDial if an answering machine answers the Call. Valid values: `redirect` invokes the ifMachineUrl for instructions. `hangup` hangs up the Call. The ifMachineUrl will not be invoked.
-    */
-    'ifMachine'?: string;
+    'ifMachine'?: IfMachine;
     /**
     * When the `ifMachine` flag is set to `redirect`, this attribute specifies a URL to which FreeClimb makes a POST request when an answering machine or a fax machine is detected. This URL is required if the `ifMachine` flag is set to `redirect`. Otherwise, it should not be included.
     */
@@ -143,7 +142,7 @@ export class OutDial extends PerclCommand {
         {
             "name": "ifMachine",
             "baseName": "ifMachine",
-            "type": "string",
+            "type": "IfMachine",
             "format": "",
             
             

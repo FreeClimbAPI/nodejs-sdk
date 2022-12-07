@@ -10,19 +10,12 @@
  * Do not edit the class manually.
  */
 
+import { AnsweredBy } from './AnsweredBy';
+import { CallDirection } from './CallDirection';
+import { CallStatus } from './CallStatus';
 import { HttpFile } from '../http/http';
 
-export enum CallResultAllOfStatusEnum {
 
-    QUEUED = 'queued',
-    RINGING = 'ringing',
-    IN_PROGRESS = 'inProgress',
-    CANCELED = 'canceled',
-    COMPLETED = 'completed',
-    BUSY = 'busy',
-    FAILED = 'failed',
-    NO_ANSWER = 'noAnswer'
-}
 interface AttributeType {
     name: string
     baseName: string
@@ -37,14 +30,14 @@ interface ArgumentsType {
     '_from'?: string;
     'to'?: string;
     'phoneNumberId'?: string;
-    'status'?: CallResultAllOfStatusEnum;
+    'status'?: CallStatus;
     'startTime'?: string;
     'connectTime'?: string;
     'endTime'?: string;
     'duration'?: number;
     'connectDuration'?: number;
-    'direction'?: string;
-    'answeredBy'?: string;
+    'direction'?: CallDirection;
+    'answeredBy'?: AnsweredBy;
     'subresourceUris'?: any;
 }
 export class CallResultAllOf {
@@ -72,10 +65,7 @@ export class CallResultAllOf {
     * If the Call was inbound, this is the ID of the IncomingPhoneNumber that received the Call (DNIS). If the Call was outbound, this is the ID of the phone number from which the Call was placed (ANI).
     */
     'phoneNumberId'?: string;
-    /**
-    * * `queued` &ndash; Call is ready and waiting in line before going out. * `ringing` &ndash; Call is currently ringing. * `inProgress` &ndash; Call was answered and is currently in progress. * `canceled` &ndash; Call was hung up while it was queued or ringing. * `completed` &ndash; Call was answered and has ended normally. * `busy` &ndash; Caller received a busy signal. * `failed` &ndash; Call could not be completed as dialed, most likely because the phone number was non-existent. * `noAnswer` &ndash; Call ended without being answered.
-    */
-    'status'?: CallResultAllOfStatusEnum;
+    'status'?: CallStatus;
     /**
     * Start time of the Call (GMT) in RFC 1123 format (e.g., Mon, 15 Jun 2009 20:45:30 GMT). Empty if the Call has not yet been dialed.
     */
@@ -96,14 +86,8 @@ export class CallResultAllOf {
     * Length of time that the Call was connected in seconds. Measures time between connectTime and endTime. This value is empty for busy, failed, unanswered or ongoing Calls.
     */
     'connectDuration'?: number;
-    /**
-    * Direction of the Call. `inbound` for Calls into FreeClimb, `outboundAPI` for Calls initiated via the REST API,  `outboundDial` for Calls initiated by the `OutDial` PerCL command.
-    */
-    'direction'?: string;
-    /**
-    * If this Call was initiated with answering machine detection, either `human` or `machine`. Empty otherwise.
-    */
-    'answeredBy'?: string;
+    'direction'?: CallDirection;
+    'answeredBy'?: AnsweredBy;
     /**
     * The list of subresources for this Call. These include things like logs and recordings associated with the Call.
     */
@@ -169,12 +153,11 @@ export class CallResultAllOf {
         {
             "name": "status",
             "baseName": "status",
-            "type": "CallResultAllOfStatusEnum",
+            "type": "CallStatus",
             "format": "",
             
             
             "defaultValue": undefined
-
         },
         {
             "name": "startTime",
@@ -224,7 +207,7 @@ export class CallResultAllOf {
         {
             "name": "direction",
             "baseName": "direction",
-            "type": "string",
+            "type": "CallDirection",
             "format": "",
             
             
@@ -233,7 +216,7 @@ export class CallResultAllOf {
         {
             "name": "answeredBy",
             "baseName": "answeredBy",
-            "type": "string",
+            "type": "AnsweredBy",
             "format": "",
             
             
