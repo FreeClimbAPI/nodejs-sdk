@@ -14,11 +14,12 @@ describe('Default API tests', () => {
         apiInstance = new freeclimb.DefaultApi(configuration);
     });
 
-    test('works with async/await', async () => {
+    test('getAnAccount request/response', async () => {
         expect.assertions(1);
         //From https://jestjs.io/docs/tutorial-async
         //return user.getUserName(4).then(data => expect(data).toBe('Mark'));
         return apiInstance.getAnAccount().then((data:AccountResult) => expect(data).toBeInstanceOf(AccountResult))
     });
+
 })
 
