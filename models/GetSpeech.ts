@@ -39,9 +39,6 @@ import { URI } from './URI';
 import { Unpark } from './Unpark';
 import { HttpFile } from '../http/http';
 
-/**
-* The `GetSpeech` command enables the Caller to respond to the application using a supported language. Unlike DTMF entry, which implicitly restricts the user to using the available buttons on the phone key pad, speech input allows for flexible audio inputs based on grammar. FreeClimb supports grammars written using GRXML compatible with the Microsoft Speech Platform. `GetSpeech` is only supported on a single call leg. It is not supported when there are two or more call legs connected (as in within a Conference).
-*/
 
 interface AttributeType {
     name: string
@@ -66,9 +63,6 @@ interface ArgumentsType {
     'privacyMode'?: boolean;
 }
 export class GetSpeech extends PerclCommand {
-    /**
-    * When the caller has finished speaking or the command has timed out, FreeClimb will make a POST request to this URL. A PerCL response is expected to continue handling the call.
-    */
     'actionUrl': URI;
     'grammarType'?: GrammarType;
     /**
@@ -242,7 +236,6 @@ export class GetSpeech extends PerclCommand {
     }
 
     public constructor(args: ArgumentsType) {
-        super({ command: "GetSpeech" });
         const preparedArgs = GetSpeech.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
             const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
             if (val !== undefined) {

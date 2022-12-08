@@ -39,9 +39,6 @@ interface ArgumentsType {
     'privacyMode'?: boolean;
 }
 export class GetSpeechAllOf {
-    /**
-    * When the caller has finished speaking or the command has timed out, FreeClimb will make a POST request to this URL. A PerCL response is expected to continue handling the call.
-    */
     'actionUrl': URI;
     'grammarType'?: GrammarType;
     /**
