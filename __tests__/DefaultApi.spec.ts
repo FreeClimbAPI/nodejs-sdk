@@ -8,6 +8,7 @@ import { MessageDirection } from "../models/MessageDirection";
 import { PlayBeep } from "../models/PlayBeep";
 import { UpdateCallRequestStatus } from "../models/UpdateCallRequestStatus";
 import { UpdateConferenceRequestStatus } from "../models/UpdateConferenceRequestStatus";
+import { HttpFile } from "../index";
 import { DefaultApiDeleteARecordingRequest, DefaultApiListAvailableNumbersRequest, DefaultApiMakeACallRequest, DefaultApiUpdateALiveCallRequest } from "../types/ObjectParamAPI";
 
 describe('DefaultAPI', () => {
@@ -24,7 +25,7 @@ describe('DefaultAPI', () => {
 
     test('#buyAPhoneNumber', async () => {
         expect.assertions(1);
-        var request:BuyIncomingNumberRequest = {
+        const request:BuyIncomingNumberRequest = {
             phoneNumber: "phoneNumber_example",
         }
         return apiInstance.buyAPhoneNumber(request).then((data) => expect(data).toBeInstanceOf(IncomingNumberResult))
@@ -32,7 +33,7 @@ describe('DefaultAPI', () => {
 
     test('#createAConference', async () => {
         expect.assertions(1);
-        var request:CreateConferenceRequest = {
+        const request:CreateConferenceRequest = {
             alias: "alias_example",
             playBeep: PlayBeep.ALWAYS,
             record: true,
@@ -53,7 +54,7 @@ describe('DefaultAPI', () => {
 
     test('#createAnApplication', async () => {
         expect.assertions(1);
-        var request: ApplicationRequest = {
+        const request: ApplicationRequest = {
             alias: "alias_example",
             voiceUrl: "voiceUrl_example",
             voiceFallbackUrl: "voiceFallbackUrl_example",
@@ -67,7 +68,7 @@ describe('DefaultAPI', () => {
 
     test('#createAnApplication', async () => {
         expect.assertions(1);
-        var request: ApplicationRequest = {
+        const request: ApplicationRequest = {
             alias: "alias_example",
             voiceUrl: "voiceUrl_example",
             voiceFallbackUrl: "voiceFallbackUrl_example",
@@ -80,75 +81,78 @@ describe('DefaultAPI', () => {
     });
 
     test('#deleteARecording', async () => {
-        var request: string = "recordingId_example"
+        const request: string = "recordingId_example"
         return apiInstance.deleteARecording(request)
     });
 
     test('#deleteAnApplication', async () => {
-        var applicationID =  "applicationId_example"
+        const applicationID =  "applicationId_example"
         return apiInstance.deleteAnApplication(applicationID)
     });
 
 
     test('#deleteAnIncomingNumber', async () => {
-        var phoneNumberId =  "applicationId_example"
+        const phoneNumberId =  "applicationId_example"
         return apiInstance.deleteAnIncomingNumber(phoneNumberId)
     });
 
     test('#dequeueAMember', async () => {
-        var queueId = "queueId_example"
-        var callId = "callId_example"
+        const queueId = "queueId_example"
+        const callId = "callId_example"
         return apiInstance.dequeueAMember(queueId, callId).then((data) => expect(data).toBeInstanceOf(QueueMember))
     });
 
     test('#dequeueHeadMember', async () => {
-        var queueId = "queueId_example"
+        const queueId = "queueId_example"
         return apiInstance.dequeueHeadMember(queueId).then((data) => expect(data).toBeInstanceOf(QueueMember))
     });
 
     //Error on this test due to not being able to find an assertion for httpFile being returned
     test('#downloadARecordingFile', async () => {
-        var recordingId = "recordingId_example"
-        return apiInstance.downloadARecordingFile(recordingId).then((data) => expect(data).toBeInstanceOf(QueueMember))
+        const recordingId = "recordingId_example"
+        return apiInstance.downloadARecordingFile(recordingId).then((httpFile) => {
+            expect(httpFile.data).toBeInstanceOf(Buffer)
+            expect(typeof httpFile.name).toBe("string")
+        })
     });
 
     test('#filterLogs', async () => {
-        var request: FilterLogsRequest = {
+        const request: FilterLogsRequest = {
             pql: "pql_example",
         }
         return apiInstance.filterLogs(request).then((data) => expect(data).toBeInstanceOf(LogList))
     });
 
     test('#getACall', async () => {
-        var callId = "callId_example"
+        const callId = "callId_example"
         return apiInstance.getACall(callId).then((data) => expect(data).toBeInstanceOf(CallResult))
     });
 
     test('#getAConference', async () => {
-        var conferenceId = "conferenceId_example"
+        const conferenceId = "conferenceId_example"
         return apiInstance.getAConference(conferenceId).then((data) => expect(data).toBeInstanceOf(ConferenceResult))
     });
 
     test('#getAMember', async () => {
-        var queueId = "queueId_example"
-        var callId = "callId_example"
+        const queueId = "queueId_example"
+        const callId = "callId_example"
         return apiInstance.getAMember(queueId, callId).then((data) => expect(data).toBeInstanceOf(QueueMember))
     });
 
     test('#getAParticipant', async () => {
-        var conferenceId = "conferenceId_example"
-        var callId = "callId_example"
+        const conferenceId = "conferenceId_example"
+        const callId = "callId_example"
         return apiInstance.getAParticipant(conferenceId, callId).then((data) => expect(data).toBeInstanceOf(ConferenceParticipantResult))
     });
 
     test('#getAQueue', async () => {
-        var queueId = "queueId_example"
+        const queueId = "queueId_example"
         return apiInstance.getAQueue(queueId).then((data) => expect(data).toBeInstanceOf(QueueResult))
     });
 
 
     test('#getARecording', async () => {
-        var recordingId = "recordingId_example"
+        const recordingId = "recordingId_example"
         return apiInstance.getARecording(recordingId).then((data) => expect(data).toBeInstanceOf(RecordingResult))
     });
 
@@ -161,32 +165,32 @@ describe('DefaultAPI', () => {
     });
 
     test('#getAnApplication', async () => {
-        var applicationId = "applicationId_example"
+        const applicationId = "applicationId_example"
         return apiInstance.getAnApplication(applicationId).then((data) => expect(data).toBeInstanceOf(ApplicationResult))
     });
 
     test('#getAnIncomingNumber', async () => {
-        var phoneNumberId = "phoneNumberId_example"
+        const phoneNumberId = "phoneNumberId_example"
         return apiInstance.getAnIncomingNumber(phoneNumberId).then((data) => expect(data).toBeInstanceOf(IncomingNumberResult))
     });
 
     test('#getAnIncomingNumber', async () => {
-        var phoneNumberId = "phoneNumberId_example"
+        const phoneNumberId = "phoneNumberId_example"
         return apiInstance.getAnIncomingNumber(phoneNumberId).then((data) => expect(data).toBeInstanceOf(IncomingNumberResult))
     });
 
     test('#getAnSmsMessage', async () => {
-        var messageId = "messageId_example"
+        const messageId = "messageId_example"
         return apiInstance.getAnSmsMessage(messageId).then((data) => expect(data).toBeInstanceOf(MessageResult))
     });
 
     test('#getHeadMember', async () => {
-        var queueId = "queueId_example"
+        const queueId = "queueId_example"
         return apiInstance.getHeadMember(queueId).then((data) => expect(data).toBeInstanceOf(QueueMember))
     });
 
     test('#listActiveQueues', async () => {
-        var alias = "alias_example"
+        const alias = "alias_example"
         return apiInstance.listActiveQueues(alias).then((data) => expect(data).toBeInstanceOf(QueueList))
     });
 
@@ -195,118 +199,118 @@ describe('DefaultAPI', () => {
     });
 
     test('#listApplications', async () => {
-        var alias = "alias_example"
+        const alias = "alias_example"
         return apiInstance.listApplications(alias).then((data) => expect(data).toBeInstanceOf(ApplicationList))
     });
 
     test('#listAvailableNumbers', async () => {
-        var phoneNumber = "phoneNumber_example"
-        var region = "region_example"
-        var country = "country_example"
-        var voiceEnabled = true
-        var smsEnabled = true
-        var capabilitiesVoice = true
-        var capabilitiesSms = true
-        var capabilitiesTollFree = true
-        var capabilitiesTenDLC = true
-        var capabilitiesShortCode = true
+        const phoneNumber = "phoneNumber_example"
+        const region = "region_example"
+        const country = "country_example"
+        const voiceEnabled = true
+        const smsEnabled = true
+        const capabilitiesVoice = true
+        const capabilitiesSms = true
+        const capabilitiesTollFree = true
+        const capabilitiesTenDLC = true
+        const capabilitiesShortCode = true
         return apiInstance.listAvailableNumbers(phoneNumber,region, country,voiceEnabled, smsEnabled, capabilitiesVoice, capabilitiesSms, capabilitiesTollFree, capabilitiesTenDLC, capabilitiesShortCode  ).then((data) => expect(data).toBeInstanceOf(AvailableNumberList))
     });
 
     test('#listCallLogs', async () => {
-        var callId = "callId_example"
+        const callId = "callId_example"
         return apiInstance.listCallLogs(callId).then((data) => expect(data).toBeInstanceOf(LogList))
     });
 
     test('#listCallRecordings', async () => {
-        var callId = "callId_example"
-        var dateCreated = "dateCreated_example"
+        const callId = "callId_example"
+        const dateCreated = "dateCreated_example"
         return apiInstance.listCallRecordings(callId, dateCreated).then((data) => expect(data).toBeInstanceOf(RecordingList))
     });
 
     test('#listCalls', async () => {
-        var active = false
-        var to = "to_example"
-        var from = "from_example"
-        var status = CallStatus.QUEUED
-        var startTime = "startTime_example"
-        var endTime = "endTime_example"
-        var parentCallId = "parentCallId_example"
+        const active = false
+        const to = "to_example"
+        const from = "from_example"
+        const status = CallStatus.QUEUED
+        const startTime = "startTime_example"
+        const endTime = "endTime_example"
+        const parentCallId = "parentCallId_example"
         return apiInstance.listCalls(active, to, from, status, startTime, endTime, parentCallId).then((data) => expect(data).toBeInstanceOf(CallList))
     });
 
     test('#listConferences', async () => {
-        var status = "status_example"
-        var alias = "to_example"
-        var dateCreated = "from_example"
-        var dateUpdated = CallStatus.QUEUED
+        const status = "status_example"
+        const alias = "to_example"
+        const dateCreated = "from_example"
+        const dateUpdated = CallStatus.QUEUED
         return apiInstance.listConferences(status, alias, dateCreated, dateUpdated).then((data) => expect(data).toBeInstanceOf(ConferenceList))
     });
 
     test('#listIncomingNumbers', async () => {
-        var phoneNumber = "phoneNumber_example"
-        var alias = "alias_example"
-        var region = "region_example"
-        var country = "country_example"
-        var applicationId = "applicationId_example"
-        var hasApplication = false
-        var voiceEnabled = true
-        var smsEnabled = true
-        var capabilitiesVoice = true
-        var capabilitiesSms = true
-        var capabilitiesTollFree = true
-        var capabilitiesTenDLC = true
-        var capabilitiesShortCode = true
+        const phoneNumber = "phoneNumber_example"
+        const alias = "alias_example"
+        const region = "region_example"
+        const country = "country_example"
+        const applicationId = "applicationId_example"
+        const hasApplication = false
+        const voiceEnabled = true
+        const smsEnabled = true
+        const capabilitiesVoice = true
+        const capabilitiesSms = true
+        const capabilitiesTollFree = true
+        const capabilitiesTenDLC = true
+        const capabilitiesShortCode = true
         return apiInstance.listIncomingNumbers(phoneNumber, alias, region, country, applicationId, hasApplication, voiceEnabled, smsEnabled, capabilitiesVoice, capabilitiesSms, capabilitiesTollFree, capabilitiesTenDLC, capabilitiesShortCode).then((data) => expect(data).toBeInstanceOf(IncomingNumberList))
     });
 
     test('#listIncomingNumbers', async () => {
-        var phoneNumber = "phoneNumber_example"
-        var alias = "alias_example"
-        var region = "region_example"
-        var country = "country_example"
-        var applicationId = "applicationId_example"
-        var hasApplication = false
-        var voiceEnabled = true
-        var smsEnabled = true
-        var capabilitiesVoice = true
-        var capabilitiesSms = true
-        var capabilitiesTollFree = true
-        var capabilitiesTenDLC = true
-        var capabilitiesShortCode = true
+        const phoneNumber = "phoneNumber_example"
+        const alias = "alias_example"
+        const region = "region_example"
+        const country = "country_example"
+        const applicationId = "applicationId_example"
+        const hasApplication = false
+        const voiceEnabled = true
+        const smsEnabled = true
+        const capabilitiesVoice = true
+        const capabilitiesSms = true
+        const capabilitiesTollFree = true
+        const capabilitiesTenDLC = true
+        const capabilitiesShortCode = true
         return apiInstance.listIncomingNumbers(phoneNumber, alias, region, country, applicationId, hasApplication, voiceEnabled, smsEnabled, capabilitiesVoice, capabilitiesSms, capabilitiesTollFree, capabilitiesTenDLC, capabilitiesShortCode).then((data) => expect(data).toBeInstanceOf(IncomingNumberList))
     });
 
     test('#listMembers', async () => {
-        var queueId = "queueId_example"
+        const queueId = "queueId_example"
         return apiInstance.listMembers(queueId).then((data) => expect(data).toBeInstanceOf(QueueMemberList))
     });
 
     test('#listParticipants', async () => {
-        var conferenceId = "conferenceId_example"
-        var talk = true
-        var listen = true
+        const conferenceId = "conferenceId_example"
+        const talk = true
+        const listen = true
         return apiInstance.listParticipants(conferenceId, talk, listen ).then((data) => expect(data).toBeInstanceOf(ConferenceParticipantList))
     });
 
     test('#listRecordings', async () => {
-        var callId = "conferenceId_example"
-        var conferenceId = "conferenceId_example"
-        var dateCreated = "conferenceId_example"
+        const callId = "conferenceId_example"
+        const conferenceId = "conferenceId_example"
+        const dateCreated = "conferenceId_example"
         return apiInstance.listRecordings(callId, conferenceId, dateCreated ).then((data) => expect(data).toBeInstanceOf(RecordingList))
     });
 
     test('#listSmsMessages', async () => {
-        var to = "to_example"
-        var _from = "from_example"
-        var beginTime = "beginTime_example"
-        var endTime = "endTime_example"
-        var direction = MessageDirection.INBOUND
+        const to = "to_example"
+        const _from = "from_example"
+        const beginTime = "beginTime_example"
+        const endTime = "endTime_example"
+        const direction = MessageDirection.INBOUND
         return apiInstance.listSmsMessages(to, _from, beginTime, endTime, direction).then((data) => expect(data).toBeInstanceOf(MessagesList))
     }); 
 
     test('#makeACall', async () => {
-        var request =  {
+        const request =  {
             _from: "_from_example",
             to: "to_example",
             applicationId: "applicationId_example",
@@ -322,14 +326,14 @@ describe('DefaultAPI', () => {
     }); 
 
     test('#removeAParticipant', async () => {
-        var callId = "conferenceId_example"
-        var conferenceId = "conferenceId_example"
+        const callId = "conferenceId_example"
+        const conferenceId = "conferenceId_example"
         return apiInstance.removeAParticipant(conferenceId, callId)
     });
 
 
     test('#sendAnSmsMessage', async () => {
-        var request = {
+        const request = {
             _from: "_from_example",
             to: "to_example",
             text: "Example Text"
@@ -339,13 +343,16 @@ describe('DefaultAPI', () => {
 
     //Error on this test due to not being able to find an assertion for httpFile being returned
     test('#streamARecordingFile', async () => {
-        var recordingId = "recordingId_example"
-        return apiInstance.streamARecordingFile(recordingId).then((data) => expect(data).toBeInstanceOf(MessageResult))
+        const recordingId = "recordingId_example"
+        return apiInstance.streamARecordingFile(recordingId).then((httpFile) => {
+            expect(httpFile.data).toBeInstanceOf(Buffer)
+            expect(typeof httpFile.name).toBe("string")
+        })
     });
 
     test('#updateAConference', async () => {
-        var conferenceId = "conferenceId_example"
-        var request: UpdateConferenceRequest = {
+        const conferenceId = "conferenceId_example"
+        const request: UpdateConferenceRequest = {
               alias: "alias_example",
               playBeep: PlayBeep.ALWAYS,
               status: UpdateConferenceRequestStatus.EMPTY,
@@ -354,22 +361,22 @@ describe('DefaultAPI', () => {
     });
 
     test('#updateALiveCall', async () => {
-        var callId = "callId_example"
-        var request: UpdateCallRequest = {
+        const callId = "callId_example"
+        const request: UpdateCallRequest = {
               status: UpdateCallRequestStatus.CANCELED,
         }
         return apiInstance.updateALiveCall(callId, request)
     });
 
     test('#updateAParticipant', async () => {
-        var callId = "callId_example"
-        var conferenceId = "conferenceId_example"
+        const callId = "callId_example"
+        const conferenceId = "conferenceId_example"
         return apiInstance.updateAParticipant(callId, conferenceId).then((data) => expect(data).toBeInstanceOf(ConferenceParticipantResult))
     });
 
     test('#updateAQueue', async () => {
-        var queueId = "queueId_example"
-        var queueRequest: QueueRequest  =  {
+        const queueId = "queueId_example"
+        const queueRequest: QueueRequest  =  {
             alias: "alias_example",
             maxSize: 100,
         }
@@ -377,7 +384,7 @@ describe('DefaultAPI', () => {
     });
 
     test('#updateAnAccount', async () => {
-        var accountRequest: AccountRequest  =  {
+        const accountRequest: AccountRequest  =  {
             alias: "alias_example",
             label: "label_example",
         }
@@ -385,7 +392,7 @@ describe('DefaultAPI', () => {
     });
 
     test('#updateAnApplication', async () => {
-        var accountRequest: AccountRequest  =  {
+        const accountRequest: AccountRequest  =  {
             alias: "alias_example",
             label: "label_example",
         }
@@ -393,8 +400,8 @@ describe('DefaultAPI', () => {
     });
 
     test('#updateAnIncomingNumber', async () => {
-        var phoneNumberId = "phoneNumberId_example";
-        var incomingNumberRequest: IncomingNumberRequest  =  {
+        const phoneNumberId = "phoneNumberId_example";
+        const incomingNumberRequest: IncomingNumberRequest  =  {
             applicationId: "applicationId_example",
             alias: "alias_example",
         }
