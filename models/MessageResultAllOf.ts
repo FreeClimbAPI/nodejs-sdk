@@ -70,7 +70,7 @@ export class MessageResultAllOf {
             "baseName": "accountId",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -79,7 +79,7 @@ export class MessageResultAllOf {
             "baseName": "messageId",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -88,7 +88,7 @@ export class MessageResultAllOf {
             "baseName": "status",
             "type": "MessageStatus",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -97,7 +97,7 @@ export class MessageResultAllOf {
             "baseName": "from",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -106,7 +106,7 @@ export class MessageResultAllOf {
             "baseName": "to",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -115,7 +115,7 @@ export class MessageResultAllOf {
             "baseName": "text",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -124,7 +124,7 @@ export class MessageResultAllOf {
             "baseName": "direction",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -133,7 +133,7 @@ export class MessageResultAllOf {
             "baseName": "notificationUrl",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

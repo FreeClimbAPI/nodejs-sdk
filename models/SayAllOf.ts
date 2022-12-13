@@ -57,7 +57,7 @@ export class SayAllOf {
             "baseName": "text",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -66,7 +66,7 @@ export class SayAllOf {
             "baseName": "language",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -75,7 +75,7 @@ export class SayAllOf {
             "baseName": "loop",
             "type": "number",
             "format": "",
-            
+
             
             "defaultValue": 1
         },
@@ -84,7 +84,7 @@ export class SayAllOf {
             "baseName": "conferenceId",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -93,7 +93,7 @@ export class SayAllOf {
             "baseName": "privacyMode",
             "type": "boolean",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

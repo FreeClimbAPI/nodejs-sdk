@@ -64,7 +64,7 @@ export class PerclCommand {
             "baseName": "command",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

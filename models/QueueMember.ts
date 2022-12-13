@@ -57,7 +57,7 @@ export class QueueMember {
             "baseName": "uri",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -66,7 +66,7 @@ export class QueueMember {
             "baseName": "callId",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -75,7 +75,7 @@ export class QueueMember {
             "baseName": "waitTime",
             "type": "number",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -84,7 +84,7 @@ export class QueueMember {
             "baseName": "position",
             "type": "number",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -93,7 +93,7 @@ export class QueueMember {
             "baseName": "dateEnqueued",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

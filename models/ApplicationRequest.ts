@@ -67,7 +67,7 @@ export class ApplicationRequest {
             "baseName": "alias",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -76,7 +76,7 @@ export class ApplicationRequest {
             "baseName": "voiceUrl",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -85,7 +85,7 @@ export class ApplicationRequest {
             "baseName": "voiceFallbackUrl",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -94,7 +94,7 @@ export class ApplicationRequest {
             "baseName": "callConnectUrl",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -103,7 +103,7 @@ export class ApplicationRequest {
             "baseName": "statusCallbackUrl",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -112,7 +112,7 @@ export class ApplicationRequest {
             "baseName": "smsUrl",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -121,7 +121,7 @@ export class ApplicationRequest {
             "baseName": "smsFallbackUrl",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

@@ -41,7 +41,7 @@ export class PerclScript {
             "baseName": "commands",
             "type": "Array<PerclCommand>",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

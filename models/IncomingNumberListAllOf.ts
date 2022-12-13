@@ -35,7 +35,7 @@ export class IncomingNumberListAllOf {
             "baseName": "incomingPhoneNumbers",
             "type": "Array<IncomingNumberResult>",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

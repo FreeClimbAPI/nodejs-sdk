@@ -72,7 +72,7 @@ export class AvailableNumberList {
             "baseName": "total",
             "type": "number",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -81,7 +81,7 @@ export class AvailableNumberList {
             "baseName": "start",
             "type": "number",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -90,7 +90,7 @@ export class AvailableNumberList {
             "baseName": "end",
             "type": "number",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -99,7 +99,7 @@ export class AvailableNumberList {
             "baseName": "page",
             "type": "number",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -108,7 +108,7 @@ export class AvailableNumberList {
             "baseName": "numPages",
             "type": "number",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -117,7 +117,7 @@ export class AvailableNumberList {
             "baseName": "pageSize",
             "type": "number",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -126,7 +126,7 @@ export class AvailableNumberList {
             "baseName": "nextPageUri",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -135,7 +135,7 @@ export class AvailableNumberList {
             "baseName": "availablePhoneNumbers",
             "type": "Array<AvailableNumber>",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

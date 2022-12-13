@@ -52,7 +52,7 @@ export class PlayAllOf {
             "baseName": "file",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -61,7 +61,7 @@ export class PlayAllOf {
             "baseName": "loop",
             "type": "number",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -70,7 +70,7 @@ export class PlayAllOf {
             "baseName": "conferenceId",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -79,7 +79,7 @@ export class PlayAllOf {
             "baseName": "privacyMode",
             "type": "boolean",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

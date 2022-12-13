@@ -1,15 +1,7 @@
 import { describe, expect, test } from "@jest/globals";
-import * as freeclimb from '../index'
+import * as freeclimb  from '../index'
 import { AccountRequest, AccountResult, ApplicationList, ApplicationRequest, ApplicationResult, AvailableNumberList, BuyIncomingNumberRequest, CallList, CallResult, ConferenceList, ConferenceParticipantList, ConferenceParticipantResult, ConferenceResult, CreateConferenceRequest, FilterLogsRequest, IncomingNumberList, IncomingNumberRequest, IncomingNumberResult, LogList, MessageResult, MessagesList, QueueList, QueueMember, QueueMemberList, QueueRequest, QueueResult, RecordingList, RecordingResult, ServerConfiguration, UpdateCallRequest, UpdateConferenceRequest } from "../index";
-import { AccountStatus } from "../models/AccountStatus";
-import { AccountType } from "../models/AccountType";
-import { CallStatus } from "../models/CallStatus";
-import { MessageDirection } from "../models/MessageDirection";
-import { PlayBeep } from "../models/PlayBeep";
-import { UpdateCallRequestStatus } from "../models/UpdateCallRequestStatus";
-import { UpdateConferenceRequestStatus } from "../models/UpdateConferenceRequestStatus";
-import { HttpFile } from "../index";
-import { DefaultApiDeleteARecordingRequest, DefaultApiListAvailableNumbersRequest, DefaultApiMakeACallRequest, DefaultApiUpdateALiveCallRequest } from "../types/ObjectParamAPI";
+import {AccountStatus, AccountType, CallStatus, MessageDirection, PlayBeep, UpdateCallRequestStatus, UpdateConferenceRequestStatus   } from "../models/all";
 
 describe('DefaultAPI', () => {
     
@@ -107,7 +99,6 @@ describe('DefaultAPI', () => {
         return apiInstance.dequeueHeadMember(queueId).then((data) => expect(data).toBeInstanceOf(QueueMember))
     });
 
-    //Error on this test due to not being able to find an assertion for httpFile being returned
     test('#downloadARecordingFile', async () => {
         const recordingId = "recordingId_example"
         return apiInstance.downloadARecordingFile(recordingId).then((httpFile) => {
@@ -341,7 +332,6 @@ describe('DefaultAPI', () => {
         return apiInstance.sendAnSmsMessage(request).then((data) => expect(data).toBeInstanceOf(MessageResult))
     });
 
-    //Error on this test due to not being able to find an assertion for httpFile being returned
     test('#streamARecordingFile', async () => {
         const recordingId = "recordingId_example"
         return apiInstance.streamARecordingFile(recordingId).then((httpFile) => {

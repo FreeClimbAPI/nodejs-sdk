@@ -42,7 +42,7 @@ export class SetListenAllOf {
             "baseName": "callId",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -51,7 +51,7 @@ export class SetListenAllOf {
             "baseName": "listen",
             "type": "boolean",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

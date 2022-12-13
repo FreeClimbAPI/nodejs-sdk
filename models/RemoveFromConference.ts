@@ -65,7 +65,7 @@ export class RemoveFromConference extends PerclCommand {
             "baseName": "callId",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

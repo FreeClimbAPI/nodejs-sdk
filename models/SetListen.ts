@@ -70,7 +70,7 @@ export class SetListen extends PerclCommand {
             "baseName": "callId",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -79,7 +79,7 @@ export class SetListen extends PerclCommand {
             "baseName": "listen",
             "type": "boolean",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

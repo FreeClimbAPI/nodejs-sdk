@@ -57,7 +57,7 @@ export class MessageRequestAllOf {
             "baseName": "from",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -66,7 +66,7 @@ export class MessageRequestAllOf {
             "baseName": "to",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -75,7 +75,7 @@ export class MessageRequestAllOf {
             "baseName": "text",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -84,7 +84,7 @@ export class MessageRequestAllOf {
             "baseName": "notificationUrl",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -93,7 +93,7 @@ export class MessageRequestAllOf {
             "baseName": "accountId",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

@@ -60,7 +60,7 @@ export class CreateConferenceAllOf {
             "baseName": "actionUrl",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -69,7 +69,7 @@ export class CreateConferenceAllOf {
             "baseName": "alias",
             "type": "boolean",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -78,16 +78,16 @@ export class CreateConferenceAllOf {
             "baseName": "playBeep",
             "type": "PlayBeep",
             "format": "",
+
             
-            
-            "defaultValue": undefined
+            "defaultValue": PlayBeep.ALWAYS
         },
         {
             "name": "record",
             "baseName": "record",
             "type": "boolean",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -96,7 +96,7 @@ export class CreateConferenceAllOf {
             "baseName": "statusCallbackUrl",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -105,7 +105,7 @@ export class CreateConferenceAllOf {
             "baseName": "waitUrl",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

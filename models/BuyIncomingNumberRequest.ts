@@ -47,7 +47,7 @@ export class BuyIncomingNumberRequest {
             "baseName": "phoneNumber",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -56,7 +56,7 @@ export class BuyIncomingNumberRequest {
             "baseName": "alias",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -65,7 +65,7 @@ export class BuyIncomingNumberRequest {
             "baseName": "applicationId",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

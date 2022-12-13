@@ -65,7 +65,7 @@ export class Pause extends PerclCommand {
             "baseName": "length",
             "type": "number",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

@@ -65,7 +65,7 @@ export class Redirect extends PerclCommand {
             "baseName": "actionUrl",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

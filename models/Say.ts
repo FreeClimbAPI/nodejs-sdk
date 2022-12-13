@@ -85,7 +85,7 @@ export class Say extends PerclCommand {
             "baseName": "text",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -94,7 +94,7 @@ export class Say extends PerclCommand {
             "baseName": "language",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -103,7 +103,7 @@ export class Say extends PerclCommand {
             "baseName": "loop",
             "type": "number",
             "format": "",
-            
+
             
             "defaultValue": 1
         },
@@ -112,7 +112,7 @@ export class Say extends PerclCommand {
             "baseName": "conferenceId",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -121,7 +121,7 @@ export class Say extends PerclCommand {
             "baseName": "privacyMode",
             "type": "boolean",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

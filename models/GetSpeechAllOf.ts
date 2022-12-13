@@ -97,7 +97,7 @@ export class GetSpeechAllOf {
             "baseName": "actionUrl",
             "type": "URI",
             "format": "uri",
-            
+
             
             "defaultValue": undefined
         },
@@ -106,7 +106,7 @@ export class GetSpeechAllOf {
             "baseName": "grammarType",
             "type": "GrammarType",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -115,7 +115,7 @@ export class GetSpeechAllOf {
             "baseName": "grammarFile",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -124,7 +124,7 @@ export class GetSpeechAllOf {
             "baseName": "grammarRule",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -133,7 +133,7 @@ export class GetSpeechAllOf {
             "baseName": "playBeep",
             "type": "boolean",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -142,7 +142,7 @@ export class GetSpeechAllOf {
             "baseName": "prompts",
             "type": "Array<PerclCommand>",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -151,7 +151,7 @@ export class GetSpeechAllOf {
             "baseName": "noInputTimeoutMs",
             "type": "number",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -160,7 +160,7 @@ export class GetSpeechAllOf {
             "baseName": "recognitionTimeoutMs",
             "type": "number",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -169,7 +169,7 @@ export class GetSpeechAllOf {
             "baseName": "confidenceThreshold",
             "type": "number",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -178,7 +178,7 @@ export class GetSpeechAllOf {
             "baseName": "sensitivityLevel",
             "type": "number",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -187,7 +187,7 @@ export class GetSpeechAllOf {
             "baseName": "speechCompleteTimeoutMs",
             "type": "number",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -196,7 +196,7 @@ export class GetSpeechAllOf {
             "baseName": "speechIncompleteTimeoutMs",
             "type": "number",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -205,7 +205,7 @@ export class GetSpeechAllOf {
             "baseName": "privacyMode",
             "type": "boolean",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

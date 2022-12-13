@@ -80,7 +80,7 @@ export class Play extends PerclCommand {
             "baseName": "file",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -89,7 +89,7 @@ export class Play extends PerclCommand {
             "baseName": "loop",
             "type": "number",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -98,7 +98,7 @@ export class Play extends PerclCommand {
             "baseName": "conferenceId",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -107,7 +107,7 @@ export class Play extends PerclCommand {
             "baseName": "privacyMode",
             "type": "boolean",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

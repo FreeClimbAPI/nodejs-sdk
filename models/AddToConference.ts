@@ -110,7 +110,7 @@ export class AddToConference extends PerclCommand {
             "baseName": "allowCallControl",
             "type": "boolean",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -119,7 +119,7 @@ export class AddToConference extends PerclCommand {
             "baseName": "callControlSequence",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -128,7 +128,7 @@ export class AddToConference extends PerclCommand {
             "baseName": "callControlUrl",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -137,7 +137,7 @@ export class AddToConference extends PerclCommand {
             "baseName": "conferenceId",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -146,7 +146,7 @@ export class AddToConference extends PerclCommand {
             "baseName": "callId",
             "type": "boolean",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -155,7 +155,7 @@ export class AddToConference extends PerclCommand {
             "baseName": "leaveConferenceUrl",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -164,7 +164,7 @@ export class AddToConference extends PerclCommand {
             "baseName": "listen",
             "type": "boolean",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -173,7 +173,7 @@ export class AddToConference extends PerclCommand {
             "baseName": "notificationUrl",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -182,7 +182,7 @@ export class AddToConference extends PerclCommand {
             "baseName": "startConfOnEnter",
             "type": "boolean",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -191,7 +191,7 @@ export class AddToConference extends PerclCommand {
             "baseName": "talk",
             "type": "boolean",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

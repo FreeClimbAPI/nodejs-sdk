@@ -43,7 +43,7 @@ export class UpdateConferenceRequest {
             "baseName": "alias",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -52,16 +52,16 @@ export class UpdateConferenceRequest {
             "baseName": "playBeep",
             "type": "PlayBeep",
             "format": "",
+
             
-            
-            "defaultValue": undefined
+            "defaultValue": PlayBeep.ALWAYS
         },
         {
             "name": "status",
             "baseName": "status",
             "type": "UpdateConferenceRequestStatus",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

@@ -123,7 +123,7 @@ export class CallResult {
             "baseName": "uri",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -132,7 +132,7 @@ export class CallResult {
             "baseName": "dateCreated",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -141,7 +141,7 @@ export class CallResult {
             "baseName": "dateUpdated",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -150,7 +150,7 @@ export class CallResult {
             "baseName": "revision",
             "type": "number",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -159,7 +159,7 @@ export class CallResult {
             "baseName": "callId",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -168,7 +168,7 @@ export class CallResult {
             "baseName": "parentCallId",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -177,7 +177,7 @@ export class CallResult {
             "baseName": "accountId",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -186,7 +186,7 @@ export class CallResult {
             "baseName": "from",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -195,7 +195,7 @@ export class CallResult {
             "baseName": "to",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -204,7 +204,7 @@ export class CallResult {
             "baseName": "phoneNumberId",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -213,7 +213,7 @@ export class CallResult {
             "baseName": "status",
             "type": "CallStatus",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -222,7 +222,7 @@ export class CallResult {
             "baseName": "startTime",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -231,7 +231,7 @@ export class CallResult {
             "baseName": "connectTime",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -240,7 +240,7 @@ export class CallResult {
             "baseName": "endTime",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -249,7 +249,7 @@ export class CallResult {
             "baseName": "duration",
             "type": "number",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -258,7 +258,7 @@ export class CallResult {
             "baseName": "connectDuration",
             "type": "number",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -267,7 +267,7 @@ export class CallResult {
             "baseName": "direction",
             "type": "CallDirection",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -276,7 +276,7 @@ export class CallResult {
             "baseName": "answeredBy",
             "type": "AnsweredBy",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -285,7 +285,7 @@ export class CallResult {
             "baseName": "subresourceUris",
             "type": "any",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

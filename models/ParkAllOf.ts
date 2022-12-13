@@ -47,7 +47,7 @@ export class ParkAllOf {
             "baseName": "waitUrl",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -56,7 +56,7 @@ export class ParkAllOf {
             "baseName": "actionUrl",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -65,7 +65,7 @@ export class ParkAllOf {
             "baseName": "notificationUrl",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

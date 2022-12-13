@@ -42,7 +42,7 @@ export class AccountRequest {
             "baseName": "alias",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -51,7 +51,7 @@ export class AccountRequest {
             "baseName": "label",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

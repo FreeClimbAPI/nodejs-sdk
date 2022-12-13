@@ -37,7 +37,7 @@ export class RejectAllOf {
             "baseName": "reason",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

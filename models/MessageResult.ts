@@ -92,7 +92,7 @@ export class MessageResult {
             "baseName": "uri",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -101,7 +101,7 @@ export class MessageResult {
             "baseName": "dateCreated",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -110,7 +110,7 @@ export class MessageResult {
             "baseName": "dateUpdated",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -119,7 +119,7 @@ export class MessageResult {
             "baseName": "revision",
             "type": "number",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -128,7 +128,7 @@ export class MessageResult {
             "baseName": "accountId",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -137,7 +137,7 @@ export class MessageResult {
             "baseName": "messageId",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -146,7 +146,7 @@ export class MessageResult {
             "baseName": "status",
             "type": "MessageStatus",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -155,7 +155,7 @@ export class MessageResult {
             "baseName": "from",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -164,7 +164,7 @@ export class MessageResult {
             "baseName": "to",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -173,7 +173,7 @@ export class MessageResult {
             "baseName": "text",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -182,7 +182,7 @@ export class MessageResult {
             "baseName": "direction",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -191,7 +191,7 @@ export class MessageResult {
             "baseName": "notificationUrl",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

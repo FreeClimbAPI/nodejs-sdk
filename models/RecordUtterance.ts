@@ -95,7 +95,7 @@ export class RecordUtterance extends PerclCommand {
             "baseName": "actionUrl",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -104,7 +104,7 @@ export class RecordUtterance extends PerclCommand {
             "baseName": "silenceTimeoutMs",
             "type": "number",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -113,7 +113,7 @@ export class RecordUtterance extends PerclCommand {
             "baseName": "finishOnKey",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -122,7 +122,7 @@ export class RecordUtterance extends PerclCommand {
             "baseName": "maxLengthSec",
             "type": "number",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -131,7 +131,7 @@ export class RecordUtterance extends PerclCommand {
             "baseName": "playBeep",
             "type": "boolean",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -140,7 +140,7 @@ export class RecordUtterance extends PerclCommand {
             "baseName": "autoStart",
             "type": "boolean",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -149,7 +149,7 @@ export class RecordUtterance extends PerclCommand {
             "baseName": "privacyMode",
             "type": "boolean",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

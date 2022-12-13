@@ -70,7 +70,7 @@ export class SetTalk extends PerclCommand {
             "baseName": "callId",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -79,7 +79,7 @@ export class SetTalk extends PerclCommand {
             "baseName": "talk",
             "type": "boolean",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

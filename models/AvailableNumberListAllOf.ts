@@ -35,7 +35,7 @@ export class AvailableNumberListAllOf {
             "baseName": "availablePhoneNumbers",
             "type": "Array<AvailableNumber>",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

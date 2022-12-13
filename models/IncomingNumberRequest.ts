@@ -42,7 +42,7 @@ export class IncomingNumberRequest {
             "baseName": "applicationId",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -51,7 +51,7 @@ export class IncomingNumberRequest {
             "baseName": "alias",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

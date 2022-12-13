@@ -100,7 +100,7 @@ export class ConferenceResult {
             "baseName": "uri",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -109,7 +109,7 @@ export class ConferenceResult {
             "baseName": "dateCreated",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -118,7 +118,7 @@ export class ConferenceResult {
             "baseName": "dateUpdated",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -127,7 +127,7 @@ export class ConferenceResult {
             "baseName": "revision",
             "type": "number",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -136,7 +136,7 @@ export class ConferenceResult {
             "baseName": "conferenceId",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -145,7 +145,7 @@ export class ConferenceResult {
             "baseName": "accountId",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -154,7 +154,7 @@ export class ConferenceResult {
             "baseName": "alias",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -163,16 +163,16 @@ export class ConferenceResult {
             "baseName": "playBeep",
             "type": "PlayBeep",
             "format": "",
+
             
-            
-            "defaultValue": undefined
+            "defaultValue": PlayBeep.ALWAYS
         },
         {
             "name": "record",
             "baseName": "record",
             "type": "boolean",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -181,7 +181,7 @@ export class ConferenceResult {
             "baseName": "status",
             "type": "ConferenceStatus",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -190,7 +190,7 @@ export class ConferenceResult {
             "baseName": "waitUrl",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -199,7 +199,7 @@ export class ConferenceResult {
             "baseName": "actionUrl",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -208,7 +208,7 @@ export class ConferenceResult {
             "baseName": "statusCallbackUrl",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -217,7 +217,7 @@ export class ConferenceResult {
             "baseName": "subresourceUris",
             "type": "any",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

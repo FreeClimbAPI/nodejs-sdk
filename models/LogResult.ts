@@ -65,7 +65,7 @@ export class LogResult {
             "baseName": "timestamp",
             "type": "number",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -74,7 +74,7 @@ export class LogResult {
             "baseName": "level",
             "type": "LogLevel",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -83,7 +83,7 @@ export class LogResult {
             "baseName": "requestId",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -92,7 +92,7 @@ export class LogResult {
             "baseName": "accountId",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -101,7 +101,7 @@ export class LogResult {
             "baseName": "callId",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -110,7 +110,7 @@ export class LogResult {
             "baseName": "message",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -119,7 +119,7 @@ export class LogResult {
             "baseName": "metadata",
             "type": "any",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

@@ -52,7 +52,7 @@ export class EnqueueAllOf {
             "baseName": "actionUrl",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -61,7 +61,7 @@ export class EnqueueAllOf {
             "baseName": "notificationUrl",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -70,7 +70,7 @@ export class EnqueueAllOf {
             "baseName": "queueId",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -79,7 +79,7 @@ export class EnqueueAllOf {
             "baseName": "waitUrl",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

@@ -75,7 +75,7 @@ export class SendDigits extends PerclCommand {
             "baseName": "digits",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -84,7 +84,7 @@ export class SendDigits extends PerclCommand {
             "baseName": "pauseMs",
             "type": "number",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -93,7 +93,7 @@ export class SendDigits extends PerclCommand {
             "baseName": "privacyMode",
             "type": "boolean",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

@@ -37,7 +37,7 @@ export class RedirectAllOf {
             "baseName": "actionUrl",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

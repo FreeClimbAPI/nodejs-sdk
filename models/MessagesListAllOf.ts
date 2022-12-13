@@ -38,7 +38,7 @@ export class MessagesListAllOf {
             "baseName": "messages",
             "type": "Array<MessageResult>",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

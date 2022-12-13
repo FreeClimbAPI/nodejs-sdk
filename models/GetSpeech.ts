@@ -124,7 +124,7 @@ export class GetSpeech extends PerclCommand {
             "baseName": "actionUrl",
             "type": "URI",
             "format": "uri",
-            
+
             
             "defaultValue": undefined
         },
@@ -133,7 +133,7 @@ export class GetSpeech extends PerclCommand {
             "baseName": "grammarType",
             "type": "GrammarType",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -142,7 +142,7 @@ export class GetSpeech extends PerclCommand {
             "baseName": "grammarFile",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -151,7 +151,7 @@ export class GetSpeech extends PerclCommand {
             "baseName": "grammarRule",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -160,7 +160,7 @@ export class GetSpeech extends PerclCommand {
             "baseName": "playBeep",
             "type": "boolean",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -169,7 +169,7 @@ export class GetSpeech extends PerclCommand {
             "baseName": "prompts",
             "type": "Array<PerclCommand>",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -178,7 +178,7 @@ export class GetSpeech extends PerclCommand {
             "baseName": "noInputTimeoutMs",
             "type": "number",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -187,7 +187,7 @@ export class GetSpeech extends PerclCommand {
             "baseName": "recognitionTimeoutMs",
             "type": "number",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -196,7 +196,7 @@ export class GetSpeech extends PerclCommand {
             "baseName": "confidenceThreshold",
             "type": "number",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -205,7 +205,7 @@ export class GetSpeech extends PerclCommand {
             "baseName": "sensitivityLevel",
             "type": "number",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -214,7 +214,7 @@ export class GetSpeech extends PerclCommand {
             "baseName": "speechCompleteTimeoutMs",
             "type": "number",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -223,7 +223,7 @@ export class GetSpeech extends PerclCommand {
             "baseName": "speechIncompleteTimeoutMs",
             "type": "number",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -232,7 +232,7 @@ export class GetSpeech extends PerclCommand {
             "baseName": "privacyMode",
             "type": "boolean",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

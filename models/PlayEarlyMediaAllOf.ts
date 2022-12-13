@@ -37,7 +37,7 @@ export class PlayEarlyMediaAllOf {
             "baseName": "file",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

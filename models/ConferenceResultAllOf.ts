@@ -78,7 +78,7 @@ export class ConferenceResultAllOf {
             "baseName": "conferenceId",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -87,7 +87,7 @@ export class ConferenceResultAllOf {
             "baseName": "accountId",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -96,7 +96,7 @@ export class ConferenceResultAllOf {
             "baseName": "alias",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -105,16 +105,16 @@ export class ConferenceResultAllOf {
             "baseName": "playBeep",
             "type": "PlayBeep",
             "format": "",
+
             
-            
-            "defaultValue": undefined
+            "defaultValue": PlayBeep.ALWAYS
         },
         {
             "name": "record",
             "baseName": "record",
             "type": "boolean",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -123,7 +123,7 @@ export class ConferenceResultAllOf {
             "baseName": "status",
             "type": "ConferenceStatus",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -132,7 +132,7 @@ export class ConferenceResultAllOf {
             "baseName": "waitUrl",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -141,7 +141,7 @@ export class ConferenceResultAllOf {
             "baseName": "actionUrl",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -150,7 +150,7 @@ export class ConferenceResultAllOf {
             "baseName": "statusCallbackUrl",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -159,7 +159,7 @@ export class ConferenceResultAllOf {
             "baseName": "subresourceUris",
             "type": "any",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

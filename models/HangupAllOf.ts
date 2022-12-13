@@ -37,7 +37,7 @@ export class HangupAllOf {
             "baseName": "reason",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

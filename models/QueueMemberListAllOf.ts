@@ -35,7 +35,7 @@ export class QueueMemberListAllOf {
             "baseName": "queueMembers",
             "type": "Array<QueueMember>",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

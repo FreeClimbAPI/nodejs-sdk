@@ -35,7 +35,7 @@ export class CallListAllOf {
             "baseName": "calls",
             "type": "Array<CallResult>",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

@@ -89,7 +89,7 @@ export class QueueResult {
             "baseName": "uri",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -98,7 +98,7 @@ export class QueueResult {
             "baseName": "dateCreated",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -107,7 +107,7 @@ export class QueueResult {
             "baseName": "dateUpdated",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -116,7 +116,7 @@ export class QueueResult {
             "baseName": "revision",
             "type": "number",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -125,7 +125,7 @@ export class QueueResult {
             "baseName": "accountId",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -134,7 +134,7 @@ export class QueueResult {
             "baseName": "queueId",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -143,7 +143,7 @@ export class QueueResult {
             "baseName": "alias",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -152,7 +152,7 @@ export class QueueResult {
             "baseName": "maxSize",
             "type": "number",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -161,7 +161,7 @@ export class QueueResult {
             "baseName": "currentSize",
             "type": "number",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -170,7 +170,7 @@ export class QueueResult {
             "baseName": "averageQueueRemovalTime",
             "type": "number",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -179,7 +179,7 @@ export class QueueResult {
             "baseName": "subresourceUris",
             "type": "any",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

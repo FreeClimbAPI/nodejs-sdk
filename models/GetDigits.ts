@@ -105,7 +105,7 @@ export class GetDigits extends PerclCommand {
             "baseName": "actionUrl",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -114,7 +114,7 @@ export class GetDigits extends PerclCommand {
             "baseName": "digitTimeoutMs",
             "type": "number",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -123,7 +123,7 @@ export class GetDigits extends PerclCommand {
             "baseName": "finishOnKey",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -132,7 +132,7 @@ export class GetDigits extends PerclCommand {
             "baseName": "flushBuffer",
             "type": "boolean",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -141,7 +141,7 @@ export class GetDigits extends PerclCommand {
             "baseName": "initialTimeoutMs",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -150,7 +150,7 @@ export class GetDigits extends PerclCommand {
             "baseName": "maxDigits",
             "type": "number",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -159,7 +159,7 @@ export class GetDigits extends PerclCommand {
             "baseName": "minDigits",
             "type": "number",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -168,7 +168,7 @@ export class GetDigits extends PerclCommand {
             "baseName": "prompts",
             "type": "Array<PerclCommand>",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -177,7 +177,7 @@ export class GetDigits extends PerclCommand {
             "baseName": "privacyMode",
             "type": "boolean",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

@@ -65,7 +65,7 @@ export class TerminateConference extends PerclCommand {
             "baseName": "conferenceId",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

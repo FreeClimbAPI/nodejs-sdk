@@ -60,7 +60,7 @@ export class Capabilities {
             "baseName": "voice",
             "type": "boolean",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -69,7 +69,7 @@ export class Capabilities {
             "baseName": "sms",
             "type": "boolean",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -78,7 +78,7 @@ export class Capabilities {
             "baseName": "tollFree",
             "type": "boolean",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -87,7 +87,7 @@ export class Capabilities {
             "baseName": "tenDLC",
             "type": "boolean",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -96,7 +96,7 @@ export class Capabilities {
             "baseName": "shortCode",
             "type": "boolean",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

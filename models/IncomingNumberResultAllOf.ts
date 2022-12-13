@@ -90,7 +90,7 @@ export class IncomingNumberResultAllOf {
             "baseName": "capabilities",
             "type": "Capabilities",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -99,7 +99,7 @@ export class IncomingNumberResultAllOf {
             "baseName": "campaignId",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -108,7 +108,7 @@ export class IncomingNumberResultAllOf {
             "baseName": "phoneNumberId",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -117,7 +117,7 @@ export class IncomingNumberResultAllOf {
             "baseName": "accountId",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -126,7 +126,7 @@ export class IncomingNumberResultAllOf {
             "baseName": "applicationId",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -135,7 +135,7 @@ export class IncomingNumberResultAllOf {
             "baseName": "phoneNumber",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -144,7 +144,7 @@ export class IncomingNumberResultAllOf {
             "baseName": "alias",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -153,7 +153,7 @@ export class IncomingNumberResultAllOf {
             "baseName": "region",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -162,7 +162,7 @@ export class IncomingNumberResultAllOf {
             "baseName": "country",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -171,7 +171,7 @@ export class IncomingNumberResultAllOf {
             "baseName": "voiceEnabled",
             "type": "boolean",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -180,7 +180,7 @@ export class IncomingNumberResultAllOf {
             "baseName": "smsEnabled",
             "type": "boolean",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -189,7 +189,7 @@ export class IncomingNumberResultAllOf {
             "baseName": "offnet",
             "type": "boolean",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

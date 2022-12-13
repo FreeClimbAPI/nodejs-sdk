@@ -37,7 +37,7 @@ export class FilterLogsRequest {
             "baseName": "pql",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

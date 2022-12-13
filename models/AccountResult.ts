@@ -85,7 +85,7 @@ export class AccountResult {
             "baseName": "uri",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -94,7 +94,7 @@ export class AccountResult {
             "baseName": "dateCreated",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -103,7 +103,7 @@ export class AccountResult {
             "baseName": "dateUpdated",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -112,7 +112,7 @@ export class AccountResult {
             "baseName": "revision",
             "type": "number",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -121,7 +121,7 @@ export class AccountResult {
             "baseName": "accountId",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -130,7 +130,7 @@ export class AccountResult {
             "baseName": "apiKey",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -139,7 +139,7 @@ export class AccountResult {
             "baseName": "alias",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -148,7 +148,7 @@ export class AccountResult {
             "baseName": "label",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -157,7 +157,7 @@ export class AccountResult {
             "baseName": "type",
             "type": "AccountType",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -166,7 +166,7 @@ export class AccountResult {
             "baseName": "status",
             "type": "AccountStatus",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -175,7 +175,7 @@ export class AccountResult {
             "baseName": "subresourceUris",
             "type": "any",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

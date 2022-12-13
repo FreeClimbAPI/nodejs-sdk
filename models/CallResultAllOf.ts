@@ -101,7 +101,7 @@ export class CallResultAllOf {
             "baseName": "callId",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -110,7 +110,7 @@ export class CallResultAllOf {
             "baseName": "parentCallId",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -119,7 +119,7 @@ export class CallResultAllOf {
             "baseName": "accountId",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -128,7 +128,7 @@ export class CallResultAllOf {
             "baseName": "from",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -137,7 +137,7 @@ export class CallResultAllOf {
             "baseName": "to",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -146,7 +146,7 @@ export class CallResultAllOf {
             "baseName": "phoneNumberId",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -155,7 +155,7 @@ export class CallResultAllOf {
             "baseName": "status",
             "type": "CallStatus",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -164,7 +164,7 @@ export class CallResultAllOf {
             "baseName": "startTime",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -173,7 +173,7 @@ export class CallResultAllOf {
             "baseName": "connectTime",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -182,7 +182,7 @@ export class CallResultAllOf {
             "baseName": "endTime",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -191,7 +191,7 @@ export class CallResultAllOf {
             "baseName": "duration",
             "type": "number",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -200,7 +200,7 @@ export class CallResultAllOf {
             "baseName": "connectDuration",
             "type": "number",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -209,7 +209,7 @@ export class CallResultAllOf {
             "baseName": "direction",
             "type": "CallDirection",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -218,7 +218,7 @@ export class CallResultAllOf {
             "baseName": "answeredBy",
             "type": "AnsweredBy",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -227,7 +227,7 @@ export class CallResultAllOf {
             "baseName": "subresourceUris",
             "type": "any",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

@@ -35,7 +35,7 @@ export class RecordingListAllOf {
             "baseName": "recordings",
             "type": "Array<RecordingResult>",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

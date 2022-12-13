@@ -35,7 +35,7 @@ export class ApplicationListAllOf {
             "baseName": "applications",
             "type": "Array<ApplicationResult>",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

@@ -37,7 +37,7 @@ export class PauseAllOf {
             "baseName": "length",
             "type": "number",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

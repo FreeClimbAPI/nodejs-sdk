@@ -84,7 +84,7 @@ export class ConferenceParticipantResult {
             "baseName": "uri",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -93,7 +93,7 @@ export class ConferenceParticipantResult {
             "baseName": "dateCreated",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -102,7 +102,7 @@ export class ConferenceParticipantResult {
             "baseName": "dateUpdated",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -111,7 +111,7 @@ export class ConferenceParticipantResult {
             "baseName": "revision",
             "type": "number",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -120,7 +120,7 @@ export class ConferenceParticipantResult {
             "baseName": "accountId",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -129,7 +129,7 @@ export class ConferenceParticipantResult {
             "baseName": "conferenceId",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -138,7 +138,7 @@ export class ConferenceParticipantResult {
             "baseName": "callId",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -147,7 +147,7 @@ export class ConferenceParticipantResult {
             "baseName": "talk",
             "type": "boolean",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -156,7 +156,7 @@ export class ConferenceParticipantResult {
             "baseName": "listen",
             "type": "boolean",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -165,7 +165,7 @@ export class ConferenceParticipantResult {
             "baseName": "startConfOnEnter",
             "type": "boolean",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

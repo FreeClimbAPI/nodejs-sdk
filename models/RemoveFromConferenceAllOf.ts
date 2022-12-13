@@ -37,7 +37,7 @@ export class RemoveFromConferenceAllOf {
             "baseName": "callId",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

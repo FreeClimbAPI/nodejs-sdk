@@ -63,7 +63,7 @@ export class AccountResultAllOf {
             "baseName": "accountId",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -72,7 +72,7 @@ export class AccountResultAllOf {
             "baseName": "apiKey",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -81,7 +81,7 @@ export class AccountResultAllOf {
             "baseName": "alias",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -90,7 +90,7 @@ export class AccountResultAllOf {
             "baseName": "label",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -99,7 +99,7 @@ export class AccountResultAllOf {
             "baseName": "type",
             "type": "AccountType",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -108,7 +108,7 @@ export class AccountResultAllOf {
             "baseName": "status",
             "type": "AccountStatus",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -117,7 +117,7 @@ export class AccountResultAllOf {
             "baseName": "subresourceUris",
             "type": "any",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

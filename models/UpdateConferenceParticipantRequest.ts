@@ -42,7 +42,7 @@ export class UpdateConferenceParticipantRequest {
             "baseName": "talk",
             "type": "boolean",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -51,7 +51,7 @@ export class UpdateConferenceParticipantRequest {
             "baseName": "listen",
             "type": "boolean",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

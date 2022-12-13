@@ -37,7 +37,7 @@ export class TerminateConferenceAllOf {
             "baseName": "conferenceId",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

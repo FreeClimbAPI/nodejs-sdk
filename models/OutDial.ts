@@ -108,7 +108,7 @@ export class OutDial extends PerclCommand {
             "baseName": "actionUrl",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -117,7 +117,7 @@ export class OutDial extends PerclCommand {
             "baseName": "callConnectUrl",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -126,7 +126,7 @@ export class OutDial extends PerclCommand {
             "baseName": "callingNumber",
             "type": "number",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -135,7 +135,7 @@ export class OutDial extends PerclCommand {
             "baseName": "destination",
             "type": "number",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -144,7 +144,7 @@ export class OutDial extends PerclCommand {
             "baseName": "ifMachine",
             "type": "IfMachine",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -153,7 +153,7 @@ export class OutDial extends PerclCommand {
             "baseName": "ifMachineUrl",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -162,7 +162,7 @@ export class OutDial extends PerclCommand {
             "baseName": "sendDigits",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -171,7 +171,7 @@ export class OutDial extends PerclCommand {
             "baseName": "statusCallbackUrl",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -180,7 +180,7 @@ export class OutDial extends PerclCommand {
             "baseName": "timeout",
             "type": "number",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -189,7 +189,7 @@ export class OutDial extends PerclCommand {
             "baseName": "privacyMode",
             "type": "boolean",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

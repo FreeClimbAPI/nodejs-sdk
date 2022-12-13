@@ -112,7 +112,7 @@ export class IncomingNumberResult {
             "baseName": "uri",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -121,7 +121,7 @@ export class IncomingNumberResult {
             "baseName": "dateCreated",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -130,7 +130,7 @@ export class IncomingNumberResult {
             "baseName": "dateUpdated",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -139,7 +139,7 @@ export class IncomingNumberResult {
             "baseName": "revision",
             "type": "number",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -148,7 +148,7 @@ export class IncomingNumberResult {
             "baseName": "capabilities",
             "type": "Capabilities",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -157,7 +157,7 @@ export class IncomingNumberResult {
             "baseName": "campaignId",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -166,7 +166,7 @@ export class IncomingNumberResult {
             "baseName": "phoneNumberId",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -175,7 +175,7 @@ export class IncomingNumberResult {
             "baseName": "accountId",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -184,7 +184,7 @@ export class IncomingNumberResult {
             "baseName": "applicationId",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -193,7 +193,7 @@ export class IncomingNumberResult {
             "baseName": "phoneNumber",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -202,7 +202,7 @@ export class IncomingNumberResult {
             "baseName": "alias",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -211,7 +211,7 @@ export class IncomingNumberResult {
             "baseName": "region",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -220,7 +220,7 @@ export class IncomingNumberResult {
             "baseName": "country",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -229,7 +229,7 @@ export class IncomingNumberResult {
             "baseName": "voiceEnabled",
             "type": "boolean",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -238,7 +238,7 @@ export class IncomingNumberResult {
             "baseName": "smsEnabled",
             "type": "boolean",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -247,7 +247,7 @@ export class IncomingNumberResult {
             "baseName": "offnet",
             "type": "boolean",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

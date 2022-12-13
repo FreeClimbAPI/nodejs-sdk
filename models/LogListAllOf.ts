@@ -35,7 +35,7 @@ export class LogListAllOf {
             "baseName": "logs",
             "type": "Array<LogResult>",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

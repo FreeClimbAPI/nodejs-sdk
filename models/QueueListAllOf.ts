@@ -35,7 +35,7 @@ export class QueueListAllOf {
             "baseName": "queues",
             "type": "Array<QueueResult>",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

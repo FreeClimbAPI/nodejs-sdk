@@ -65,7 +65,7 @@ export class Reject extends PerclCommand {
             "baseName": "reason",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

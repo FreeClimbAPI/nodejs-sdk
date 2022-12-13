@@ -42,7 +42,7 @@ export class QueueRequest {
             "baseName": "alias",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -51,7 +51,7 @@ export class QueueRequest {
             "baseName": "maxSize",
             "type": "number",
             "format": "int32",
-            
+
             
             "defaultValue": 100
         }    ];

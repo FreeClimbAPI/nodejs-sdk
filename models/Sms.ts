@@ -80,7 +80,7 @@ export class Sms extends PerclCommand {
             "baseName": "to",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -89,7 +89,7 @@ export class Sms extends PerclCommand {
             "baseName": "from",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -98,7 +98,7 @@ export class Sms extends PerclCommand {
             "baseName": "text",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -107,7 +107,7 @@ export class Sms extends PerclCommand {
             "baseName": "notificationUrl",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

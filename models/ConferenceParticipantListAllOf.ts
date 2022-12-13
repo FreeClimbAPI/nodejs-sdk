@@ -35,7 +35,7 @@ export class ConferenceParticipantListAllOf {
             "baseName": "participants",
             "type": "Array<ConferenceParticipantResult>",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

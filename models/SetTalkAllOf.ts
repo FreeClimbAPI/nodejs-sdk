@@ -42,7 +42,7 @@ export class SetTalkAllOf {
             "baseName": "callId",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -51,7 +51,7 @@ export class SetTalkAllOf {
             "baseName": "talk",
             "type": "boolean",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

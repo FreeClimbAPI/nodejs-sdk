@@ -82,7 +82,7 @@ export class MakeCallRequest {
             "baseName": "from",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -91,7 +91,7 @@ export class MakeCallRequest {
             "baseName": "to",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -100,7 +100,7 @@ export class MakeCallRequest {
             "baseName": "applicationId",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -109,7 +109,7 @@ export class MakeCallRequest {
             "baseName": "sendDigits",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -118,7 +118,7 @@ export class MakeCallRequest {
             "baseName": "ifMachine",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -127,7 +127,7 @@ export class MakeCallRequest {
             "baseName": "ifMachineUrl",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -136,7 +136,7 @@ export class MakeCallRequest {
             "baseName": "timeout",
             "type": "number",
             "format": "int32",
-            
+
             
             "defaultValue": 30
         },
@@ -145,7 +145,7 @@ export class MakeCallRequest {
             "baseName": "parentCallId",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -154,7 +154,7 @@ export class MakeCallRequest {
             "baseName": "privacyMode",
             "type": "boolean",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -163,7 +163,7 @@ export class MakeCallRequest {
             "baseName": "callConnectUrl",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

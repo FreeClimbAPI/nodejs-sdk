@@ -80,7 +80,7 @@ export class OutDialAllOf {
             "baseName": "actionUrl",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -89,7 +89,7 @@ export class OutDialAllOf {
             "baseName": "callConnectUrl",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -98,7 +98,7 @@ export class OutDialAllOf {
             "baseName": "callingNumber",
             "type": "number",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -107,7 +107,7 @@ export class OutDialAllOf {
             "baseName": "destination",
             "type": "number",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -116,7 +116,7 @@ export class OutDialAllOf {
             "baseName": "ifMachine",
             "type": "IfMachine",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -125,7 +125,7 @@ export class OutDialAllOf {
             "baseName": "ifMachineUrl",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -134,7 +134,7 @@ export class OutDialAllOf {
             "baseName": "sendDigits",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -143,7 +143,7 @@ export class OutDialAllOf {
             "baseName": "statusCallbackUrl",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -152,7 +152,7 @@ export class OutDialAllOf {
             "baseName": "timeout",
             "type": "number",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -161,7 +161,7 @@ export class OutDialAllOf {
             "baseName": "privacyMode",
             "type": "boolean",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

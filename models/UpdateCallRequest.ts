@@ -35,7 +35,7 @@ export class UpdateCallRequest {
             "baseName": "status",
             "type": "UpdateCallRequestStatus",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];
