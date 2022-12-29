@@ -2,9 +2,9 @@ name: Node.js Build & Test
 
 on:
   push:
-    branches: [ "*" ]
+    branches: ["*"]
   pull_request:
-    branches: [ "*" ]
+    branches: ["*"]
 
 jobs:
   build:
@@ -14,5 +14,9 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
+      - name: Install Prism
+        run: (yarn global add @stoplight/prism-cli)
+      - name: Start Prism Server
+        run: (prism mock -h 127.0.0.1 openapi.json &)
       - run: yarn install
       - run: yarn test
