@@ -5,8 +5,11 @@ import { Configuration} from '../configuration'
 import { AccountRequest } from '../models/AccountRequest';
 import { AccountResult } from '../models/AccountResult';
 import { AccountResultAllOf } from '../models/AccountResultAllOf';
+import { AccountStatus } from '../models/AccountStatus';
+import { AccountType } from '../models/AccountType';
 import { AddToConference } from '../models/AddToConference';
 import { AddToConferenceAllOf } from '../models/AddToConferenceAllOf';
+import { AnsweredBy } from '../models/AnsweredBy';
 import { ApplicationList } from '../models/ApplicationList';
 import { ApplicationListAllOf } from '../models/ApplicationListAllOf';
 import { ApplicationRequest } from '../models/ApplicationRequest';
@@ -16,10 +19,12 @@ import { AvailableNumber } from '../models/AvailableNumber';
 import { AvailableNumberList } from '../models/AvailableNumberList';
 import { AvailableNumberListAllOf } from '../models/AvailableNumberListAllOf';
 import { BuyIncomingNumberRequest } from '../models/BuyIncomingNumberRequest';
+import { CallDirection } from '../models/CallDirection';
 import { CallList } from '../models/CallList';
 import { CallListAllOf } from '../models/CallListAllOf';
 import { CallResult } from '../models/CallResult';
 import { CallResultAllOf } from '../models/CallResultAllOf';
+import { CallStatus } from '../models/CallStatus';
 import { Capabilities } from '../models/Capabilities';
 import { ConferenceList } from '../models/ConferenceList';
 import { ConferenceListAllOf } from '../models/ConferenceListAllOf';
@@ -29,6 +34,7 @@ import { ConferenceParticipantResult } from '../models/ConferenceParticipantResu
 import { ConferenceParticipantResultAllOf } from '../models/ConferenceParticipantResultAllOf';
 import { ConferenceResult } from '../models/ConferenceResult';
 import { ConferenceResultAllOf } from '../models/ConferenceResultAllOf';
+import { ConferenceStatus } from '../models/ConferenceStatus';
 import { CreateConference } from '../models/CreateConference';
 import { CreateConferenceAllOf } from '../models/CreateConferenceAllOf';
 import { CreateConferenceRequest } from '../models/CreateConferenceRequest';
@@ -40,21 +46,30 @@ import { GetDigits } from '../models/GetDigits';
 import { GetDigitsAllOf } from '../models/GetDigitsAllOf';
 import { GetSpeech } from '../models/GetSpeech';
 import { GetSpeechAllOf } from '../models/GetSpeechAllOf';
+import { GetSpeechReason } from '../models/GetSpeechReason';
+import { GrammarFileBuiltIn } from '../models/GrammarFileBuiltIn';
+import { GrammarType } from '../models/GrammarType';
 import { Hangup } from '../models/Hangup';
 import { HangupAllOf } from '../models/HangupAllOf';
+import { IfMachine } from '../models/IfMachine';
 import { IncomingNumberList } from '../models/IncomingNumberList';
 import { IncomingNumberListAllOf } from '../models/IncomingNumberListAllOf';
 import { IncomingNumberRequest } from '../models/IncomingNumberRequest';
 import { IncomingNumberResult } from '../models/IncomingNumberResult';
 import { IncomingNumberResultAllOf } from '../models/IncomingNumberResultAllOf';
+import { Language } from '../models/Language';
+import { LogLevel } from '../models/LogLevel';
 import { LogList } from '../models/LogList';
 import { LogListAllOf } from '../models/LogListAllOf';
 import { LogResult } from '../models/LogResult';
+import { MachineType } from '../models/MachineType';
 import { MakeCallRequest } from '../models/MakeCallRequest';
+import { MessageDirection } from '../models/MessageDirection';
 import { MessageRequest } from '../models/MessageRequest';
 import { MessageRequestAllOf } from '../models/MessageRequestAllOf';
 import { MessageResult } from '../models/MessageResult';
 import { MessageResultAllOf } from '../models/MessageResultAllOf';
+import { MessageStatus } from '../models/MessageStatus';
 import { MessagesList } from '../models/MessagesList';
 import { MessagesListAllOf } from '../models/MessagesListAllOf';
 import { MutableResourceModel } from '../models/MutableResourceModel';
@@ -69,6 +84,7 @@ import { PerclCommand } from '../models/PerclCommand';
 import { PerclScript } from '../models/PerclScript';
 import { Play } from '../models/Play';
 import { PlayAllOf } from '../models/PlayAllOf';
+import { PlayBeep } from '../models/PlayBeep';
 import { PlayEarlyMedia } from '../models/PlayEarlyMedia';
 import { PlayEarlyMediaAllOf } from '../models/PlayEarlyMediaAllOf';
 import { QueueList } from '../models/QueueList';
@@ -79,8 +95,10 @@ import { QueueMemberListAllOf } from '../models/QueueMemberListAllOf';
 import { QueueRequest } from '../models/QueueRequest';
 import { QueueResult } from '../models/QueueResult';
 import { QueueResultAllOf } from '../models/QueueResultAllOf';
+import { QueueResultStatus } from '../models/QueueResultStatus';
 import { RecordUtterance } from '../models/RecordUtterance';
 import { RecordUtteranceAllOf } from '../models/RecordUtteranceAllOf';
+import { RecordUtteranceTermReason } from '../models/RecordUtteranceTermReason';
 import { RecordingList } from '../models/RecordingList';
 import { RecordingListAllOf } from '../models/RecordingListAllOf';
 import { RecordingResult } from '../models/RecordingResult';
@@ -91,6 +109,7 @@ import { Reject } from '../models/Reject';
 import { RejectAllOf } from '../models/RejectAllOf';
 import { RemoveFromConference } from '../models/RemoveFromConference';
 import { RemoveFromConferenceAllOf } from '../models/RemoveFromConferenceAllOf';
+import { RequestType } from '../models/RequestType';
 import { Say } from '../models/Say';
 import { SayAllOf } from '../models/SayAllOf';
 import { SendDigits } from '../models/SendDigits';
@@ -106,8 +125,10 @@ import { TerminateConference } from '../models/TerminateConference';
 import { TerminateConferenceAllOf } from '../models/TerminateConferenceAllOf';
 import { Unpark } from '../models/Unpark';
 import { UpdateCallRequest } from '../models/UpdateCallRequest';
+import { UpdateCallRequestStatus } from '../models/UpdateCallRequestStatus';
 import { UpdateConferenceParticipantRequest } from '../models/UpdateConferenceParticipantRequest';
 import { UpdateConferenceRequest } from '../models/UpdateConferenceRequest';
+import { UpdateConferenceRequestStatus } from '../models/UpdateConferenceRequestStatus';
 import { ObservableDefaultApi } from './ObservableAPI';
 
 import { DefaultApiRequestFactory, DefaultApiResponseProcessor} from "../apis/DefaultApi";
@@ -470,7 +491,7 @@ export class PromiseDefaultApi {
      * @param parentCallId Only show Calls spawned by the call with this ID.
      
      */
-    public listCalls(active?: boolean, to?: string, _from?: string, status?: string, startTime?: string, endTime?: string, parentCallId?: string, _options?: Configuration): Promise<CallList> {
+    public listCalls(active?: boolean, to?: string, _from?: string, status?: CallStatus, startTime?: string, endTime?: string, parentCallId?: string, _options?: Configuration): Promise<CallList> {
         const result = this.api.listCalls(active, to, _from, status, startTime, endTime, parentCallId, _options);
         return result.toPromise();
     }
@@ -584,7 +605,7 @@ export class PromiseDefaultApi {
      * @param direction Either &#x60;inbound&#x60; or &#x60;outbound&#x60;. Only show Messages that were either *sent from* or *received by* FreeClimb.
      
      */
-    public listSmsMessages(to?: string, _from?: string, beginTime?: string, endTime?: string, direction?: 'inbound' | 'outbound', _options?: Configuration): Promise<MessagesList> {
+    public listSmsMessages(to?: string, _from?: string, beginTime?: string, endTime?: string, direction?: MessageDirection, _options?: Configuration): Promise<MessagesList> {
         const result = this.api.listSmsMessages(to, _from, beginTime, endTime, direction, _options);
         return result.toPromise();
     }

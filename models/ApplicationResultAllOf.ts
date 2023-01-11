@@ -12,6 +12,7 @@
 
 import { HttpFile } from '../http/http';
 
+
 interface AttributeType {
     name: string
     baseName: string
@@ -76,7 +77,7 @@ export class ApplicationResultAllOf {
             "baseName": "accountId",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -85,7 +86,7 @@ export class ApplicationResultAllOf {
             "baseName": "applicationId",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -94,7 +95,7 @@ export class ApplicationResultAllOf {
             "baseName": "alias",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -103,7 +104,7 @@ export class ApplicationResultAllOf {
             "baseName": "voiceUrl",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -112,7 +113,7 @@ export class ApplicationResultAllOf {
             "baseName": "voiceFallbackUrl",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -121,7 +122,7 @@ export class ApplicationResultAllOf {
             "baseName": "callConnectUrl",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -130,7 +131,7 @@ export class ApplicationResultAllOf {
             "baseName": "statusCallbackUrl",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -139,7 +140,7 @@ export class ApplicationResultAllOf {
             "baseName": "smsUrl",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -148,7 +149,7 @@ export class ApplicationResultAllOf {
             "baseName": "smsFallbackUrl",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

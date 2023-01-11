@@ -40,6 +40,7 @@ import { HttpFile } from '../http/http';
 /**
 * The `SendDigits` command plays DTMF tones on a live Call. This is useful for navigating through IVR menus or dialing extensions.
 */
+
 interface AttributeType {
     name: string
     baseName: string
@@ -74,7 +75,7 @@ export class SendDigits extends PerclCommand {
             "baseName": "digits",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -83,7 +84,7 @@ export class SendDigits extends PerclCommand {
             "baseName": "pauseMs",
             "type": "number",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -92,7 +93,7 @@ export class SendDigits extends PerclCommand {
             "baseName": "privacyMode",
             "type": "boolean",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

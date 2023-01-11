@@ -12,6 +12,7 @@
 
 import { HttpFile } from '../http/http';
 
+
 interface AttributeType {
     name: string
     baseName: string
@@ -46,7 +47,7 @@ export class SendDigitsAllOf {
             "baseName": "digits",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -55,7 +56,7 @@ export class SendDigitsAllOf {
             "baseName": "pauseMs",
             "type": "number",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -64,7 +65,7 @@ export class SendDigitsAllOf {
             "baseName": "privacyMode",
             "type": "boolean",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

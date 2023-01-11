@@ -10,13 +10,10 @@
  * Do not edit the class manually.
  */
 
+import { UpdateCallRequestStatus } from './UpdateCallRequestStatus';
 import { HttpFile } from '../http/http';
 
-export enum UpdateCallRequestStatusEnum {
 
-    CANCELED = 'canceled',
-    COMPLETED = 'completed'
-}
 interface AttributeType {
     name: string
     baseName: string
@@ -25,13 +22,10 @@ interface AttributeType {
     defaultValue: any
 }
 interface ArgumentsType {
-    'status': UpdateCallRequestStatusEnum;
+    'status': UpdateCallRequestStatus;
 }
 export class UpdateCallRequest {
-    /**
-    * Either `canceled` or `completed`.  Specifying `canceled` attempts to hang up calls that are queued without affecting calls already in progress. Specifying `completed` attempts to hang up a call already in progress.
-    */
-    'status': UpdateCallRequestStatusEnum;
+    'status': UpdateCallRequestStatus;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -39,12 +33,11 @@ export class UpdateCallRequest {
         {
             "name": "status",
             "baseName": "status",
-            "type": "UpdateCallRequestStatusEnum",
+            "type": "UpdateCallRequestStatus",
             "format": "",
-            
+
             
             "defaultValue": undefined
-
         }    ];
 
     static getAttributeTypeMap(): AttributeType[] {

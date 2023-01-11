@@ -12,6 +12,7 @@
 
 import { HttpFile } from '../http/http';
 
+
 interface AttributeType {
     name: string
     baseName: string
@@ -36,7 +37,7 @@ export class TerminateConferenceAllOf {
             "baseName": "conferenceId",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

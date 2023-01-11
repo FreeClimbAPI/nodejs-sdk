@@ -12,6 +12,7 @@
 
 import { HttpFile } from '../http/http';
 
+
 interface AttributeType {
     name: string
     baseName: string
@@ -36,7 +37,7 @@ export class RejectAllOf {
             "baseName": "reason",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

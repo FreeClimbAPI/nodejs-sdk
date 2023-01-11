@@ -14,6 +14,7 @@ import { MutableResourceModel } from './MutableResourceModel';
 import { RecordingResultAllOf } from './RecordingResultAllOf';
 import { HttpFile } from '../http/http';
 
+
 interface AttributeType {
     name: string
     baseName: string
@@ -78,7 +79,7 @@ export class RecordingResult {
             "baseName": "uri",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -87,7 +88,7 @@ export class RecordingResult {
             "baseName": "dateCreated",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -96,7 +97,7 @@ export class RecordingResult {
             "baseName": "dateUpdated",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -105,7 +106,7 @@ export class RecordingResult {
             "baseName": "revision",
             "type": "number",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -114,7 +115,7 @@ export class RecordingResult {
             "baseName": "recordingId",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -123,7 +124,7 @@ export class RecordingResult {
             "baseName": "accountId",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -132,7 +133,7 @@ export class RecordingResult {
             "baseName": "callId",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -141,7 +142,7 @@ export class RecordingResult {
             "baseName": "durationSec",
             "type": "number",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -150,7 +151,7 @@ export class RecordingResult {
             "baseName": "conferenceId",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

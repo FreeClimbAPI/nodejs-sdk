@@ -10,15 +10,10 @@
  * Do not edit the class manually.
  */
 
+import { PlayBeep } from './PlayBeep';
 import { HttpFile } from '../http/http';
 
-export enum CreateConferenceRequestPlayBeepEnum {
 
-    ALWAYS = 'always',
-    NEVER = 'never',
-    ENTRY_ONLY = 'entryOnly',
-    EXIT_ONLY = 'exitOnly'
-}
 interface AttributeType {
     name: string
     baseName: string
@@ -28,7 +23,7 @@ interface AttributeType {
 }
 interface ArgumentsType {
     'alias'?: string;
-    'playBeep'?: CreateConferenceRequestPlayBeepEnum;
+    'playBeep'?: PlayBeep;
     'record'?: boolean;
     'waitUrl'?: string;
     'statusCallbackUrl'?: string;
@@ -38,10 +33,7 @@ export class CreateConferenceRequest {
     * A description for this Conference. Maximum 64 characters.
     */
     'alias'?: string;
-    /**
-    * Controls when a beep is played. Valid values: `always`, `never`, `entryOnly`, `exitOnly`.
-    */
-    'playBeep'?: CreateConferenceRequestPlayBeepEnum;
+    'playBeep'?: PlayBeep;
     /**
     * Setting to `true` records the entire Conference.
     */
@@ -63,26 +55,25 @@ export class CreateConferenceRequest {
             "baseName": "alias",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
         {
             "name": "playBeep",
             "baseName": "playBeep",
-            "type": "CreateConferenceRequestPlayBeepEnum",
+            "type": "PlayBeep",
             "format": "",
-            
-            "defaultValue": CreateConferenceRequestPlayBeepEnum.ALWAYS
-            
 
+            
+            "defaultValue": PlayBeep.ALWAYS
         },
         {
             "name": "record",
             "baseName": "record",
             "type": "boolean",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -91,7 +82,7 @@ export class CreateConferenceRequest {
             "baseName": "waitUrl",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -100,7 +91,7 @@ export class CreateConferenceRequest {
             "baseName": "statusCallbackUrl",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

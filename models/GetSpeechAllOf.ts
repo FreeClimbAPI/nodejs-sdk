@@ -10,8 +10,11 @@
  * Do not edit the class manually.
  */
 
+import { GrammarType } from './GrammarType';
 import { PerclCommand } from './PerclCommand';
+import { URI } from './URI';
 import { HttpFile } from '../http/http';
+
 
 interface AttributeType {
     name: string
@@ -21,11 +24,11 @@ interface AttributeType {
     defaultValue: any
 }
 interface ArgumentsType {
-    'actionUrl': string;
-    'grammarType'?: number;
+    'actionUrl': URI;
+    'grammarType'?: GrammarType;
     'grammarFile': string;
-    'grammarRule'?: boolean;
-    'playBeep'?: string;
+    'grammarRule'?: string;
+    'playBeep'?: boolean;
     'prompts'?: Array<PerclCommand>;
     'noInputTimeoutMs'?: number;
     'recognitionTimeoutMs'?: number;
@@ -39,11 +42,8 @@ export class GetSpeechAllOf {
     /**
     * When the caller has finished speaking or the command has timed out, FreeClimb will make a POST request to this URL. A PerCL response is expected to continue handling the call.
     */
-    'actionUrl': string;
-    /**
-    * The grammar file type to use for speech recognition. A value of 'URL' indicates the grammarFile attribute specifies a URL that points to the grammar file. A value of `BUILTIN` indicates the grammarFile attribute specifies the name of one of the platform built-in grammar files.
-    */
-    'grammarType'?: number;
+    'actionUrl': URI;
+    'grammarType'?: GrammarType;
     /**
     * The grammar file to use for speech recognition. If grammarType is set to URL, this attribute is specified as a download URL.
     */
@@ -51,11 +51,11 @@ export class GetSpeechAllOf {
     /**
     * The grammar rule within the specified grammar file to use for speech recognition. This attribute is optional if `grammarType` is `URL` and ignored if `grammarType` is `BUILTIN`.
     */
-    'grammarRule'?: boolean;
+    'grammarRule'?: string;
     /**
     * Indicates whether a beep should be played just before speech recognition is initiated so that the speaker can start to speak.
     */
-    'playBeep'?: string;
+    'playBeep'?: boolean;
     /**
     * The JSON array of PerCL commands to nest within the `GetSpeech` command. The `Say`, `Play`, and `Pause` commands can be used. The nested actions are executed while FreeClimb is waiting for input from the caller. This allows for playing menu options to the caller and to prompt for the expected input. These commands stop executing when the caller begins to input speech.
     */
@@ -95,18 +95,18 @@ export class GetSpeechAllOf {
         {
             "name": "actionUrl",
             "baseName": "actionUrl",
-            "type": "string",
-            "format": "",
-            
+            "type": "URI",
+            "format": "uri",
+
             
             "defaultValue": undefined
         },
         {
             "name": "grammarType",
             "baseName": "grammarType",
-            "type": "number",
+            "type": "GrammarType",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -115,25 +115,25 @@ export class GetSpeechAllOf {
             "baseName": "grammarFile",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
         {
             "name": "grammarRule",
             "baseName": "grammarRule",
-            "type": "boolean",
+            "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
         {
             "name": "playBeep",
             "baseName": "playBeep",
-            "type": "string",
+            "type": "boolean",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -142,7 +142,7 @@ export class GetSpeechAllOf {
             "baseName": "prompts",
             "type": "Array<PerclCommand>",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -151,7 +151,7 @@ export class GetSpeechAllOf {
             "baseName": "noInputTimeoutMs",
             "type": "number",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -160,7 +160,7 @@ export class GetSpeechAllOf {
             "baseName": "recognitionTimeoutMs",
             "type": "number",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -169,7 +169,7 @@ export class GetSpeechAllOf {
             "baseName": "confidenceThreshold",
             "type": "number",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -178,7 +178,7 @@ export class GetSpeechAllOf {
             "baseName": "sensitivityLevel",
             "type": "number",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -187,7 +187,7 @@ export class GetSpeechAllOf {
             "baseName": "speechCompleteTimeoutMs",
             "type": "number",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -196,7 +196,7 @@ export class GetSpeechAllOf {
             "baseName": "speechIncompleteTimeoutMs",
             "type": "number",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -205,7 +205,7 @@ export class GetSpeechAllOf {
             "baseName": "privacyMode",
             "type": "boolean",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

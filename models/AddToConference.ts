@@ -40,6 +40,7 @@ import { HttpFile } from '../http/http';
 /**
 * The `AddToConference` command adds a Participant to a Conference. If this Participant currently is in another Conference, the Participant is first removed from that Conference. Two Call legs can be bridged together by creating a Conference and adding both Call legs to it via `AddToConference`.
 */
+
 interface AttributeType {
     name: string
     baseName: string
@@ -109,7 +110,7 @@ export class AddToConference extends PerclCommand {
             "baseName": "allowCallControl",
             "type": "boolean",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -118,7 +119,7 @@ export class AddToConference extends PerclCommand {
             "baseName": "callControlSequence",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -127,7 +128,7 @@ export class AddToConference extends PerclCommand {
             "baseName": "callControlUrl",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -136,7 +137,7 @@ export class AddToConference extends PerclCommand {
             "baseName": "conferenceId",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -145,7 +146,7 @@ export class AddToConference extends PerclCommand {
             "baseName": "callId",
             "type": "boolean",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -154,7 +155,7 @@ export class AddToConference extends PerclCommand {
             "baseName": "leaveConferenceUrl",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -163,7 +164,7 @@ export class AddToConference extends PerclCommand {
             "baseName": "listen",
             "type": "boolean",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -172,7 +173,7 @@ export class AddToConference extends PerclCommand {
             "baseName": "notificationUrl",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -181,7 +182,7 @@ export class AddToConference extends PerclCommand {
             "baseName": "startConfOnEnter",
             "type": "boolean",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -190,7 +191,7 @@ export class AddToConference extends PerclCommand {
             "baseName": "talk",
             "type": "boolean",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

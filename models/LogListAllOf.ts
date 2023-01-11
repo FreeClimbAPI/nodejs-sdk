@@ -13,6 +13,7 @@
 import { LogResult } from './LogResult';
 import { HttpFile } from '../http/http';
 
+
 interface AttributeType {
     name: string
     baseName: string
@@ -34,7 +35,7 @@ export class LogListAllOf {
             "baseName": "logs",
             "type": "Array<LogResult>",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

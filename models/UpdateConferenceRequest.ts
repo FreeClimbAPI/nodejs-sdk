@@ -10,20 +10,11 @@
  * Do not edit the class manually.
  */
 
+import { PlayBeep } from './PlayBeep';
+import { UpdateConferenceRequestStatus } from './UpdateConferenceRequestStatus';
 import { HttpFile } from '../http/http';
 
-export enum UpdateConferenceRequestPlayBeepEnum {
 
-    ALWAYS = 'always',
-    NEVER = 'never',
-    ENTRY_ONLY = 'entryOnly',
-    EXIT_ONLY = 'exitOnly'
-}
-export enum UpdateConferenceRequestStatusEnum {
-
-    EMPTY = 'empty',
-    TERMINATED = 'terminated'
-}
 interface AttributeType {
     name: string
     baseName: string
@@ -33,22 +24,16 @@ interface AttributeType {
 }
 interface ArgumentsType {
     'alias'?: string;
-    'playBeep'?: UpdateConferenceRequestPlayBeepEnum;
-    'status'?: UpdateConferenceRequestStatusEnum;
+    'playBeep'?: PlayBeep;
+    'status'?: UpdateConferenceRequestStatus;
 }
 export class UpdateConferenceRequest {
     /**
     * Description for this conference. Maximum 64 characters.
     */
     'alias'?: string;
-    /**
-    * Controls when a beep is played. Valid values: `always`, `never`, `entryOnly`, `exitOnly`.
-    */
-    'playBeep'?: UpdateConferenceRequestPlayBeepEnum;
-    /**
-    * New status of the conference. Valid values: `empty` or `terminated`. For more information, see **Status Parameter** below.**
-    */
-    'status'?: UpdateConferenceRequestStatusEnum;
+    'playBeep'?: PlayBeep;
+    'status'?: UpdateConferenceRequestStatus;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -58,29 +43,27 @@ export class UpdateConferenceRequest {
             "baseName": "alias",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
         {
             "name": "playBeep",
             "baseName": "playBeep",
-            "type": "UpdateConferenceRequestPlayBeepEnum",
+            "type": "PlayBeep",
             "format": "",
-            
-            "defaultValue": UpdateConferenceRequestPlayBeepEnum.ALWAYS
-            
 
+            
+            "defaultValue": PlayBeep.ALWAYS
         },
         {
             "name": "status",
             "baseName": "status",
-            "type": "UpdateConferenceRequestStatusEnum",
+            "type": "UpdateConferenceRequestStatus",
             "format": "",
-            
+
             
             "defaultValue": undefined
-
         }    ];
 
     static getAttributeTypeMap(): AttributeType[] {

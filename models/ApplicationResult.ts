@@ -14,6 +14,7 @@ import { ApplicationResultAllOf } from './ApplicationResultAllOf';
 import { MutableResourceModel } from './MutableResourceModel';
 import { HttpFile } from '../http/http';
 
+
 interface AttributeType {
     name: string
     baseName: string
@@ -98,7 +99,7 @@ export class ApplicationResult {
             "baseName": "uri",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -107,7 +108,7 @@ export class ApplicationResult {
             "baseName": "dateCreated",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -116,7 +117,7 @@ export class ApplicationResult {
             "baseName": "dateUpdated",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -125,7 +126,7 @@ export class ApplicationResult {
             "baseName": "revision",
             "type": "number",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -134,7 +135,7 @@ export class ApplicationResult {
             "baseName": "accountId",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -143,7 +144,7 @@ export class ApplicationResult {
             "baseName": "applicationId",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -152,7 +153,7 @@ export class ApplicationResult {
             "baseName": "alias",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -161,7 +162,7 @@ export class ApplicationResult {
             "baseName": "voiceUrl",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -170,7 +171,7 @@ export class ApplicationResult {
             "baseName": "voiceFallbackUrl",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -179,7 +180,7 @@ export class ApplicationResult {
             "baseName": "callConnectUrl",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -188,7 +189,7 @@ export class ApplicationResult {
             "baseName": "statusCallbackUrl",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -197,7 +198,7 @@ export class ApplicationResult {
             "baseName": "smsUrl",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -206,7 +207,7 @@ export class ApplicationResult {
             "baseName": "smsFallbackUrl",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

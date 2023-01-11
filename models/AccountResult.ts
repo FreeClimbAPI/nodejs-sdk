@@ -11,20 +11,12 @@
  */
 
 import { AccountResultAllOf } from './AccountResultAllOf';
+import { AccountStatus } from './AccountStatus';
+import { AccountType } from './AccountType';
 import { MutableResourceModel } from './MutableResourceModel';
 import { HttpFile } from '../http/http';
 
-export enum AccountResultTypeEnum {
 
-    TRIAL = 'trial',
-    FULL = 'full'
-}
-export enum AccountResultStatusEnum {
-
-    ACTIVE = 'active',
-    SUSPENDED = 'suspended',
-    CLOSED = 'closed'
-}
 interface AttributeType {
     name: string
     baseName: string
@@ -41,8 +33,8 @@ interface ArgumentsType {
     'apiKey'?: string;
     'alias'?: string;
     'label'?: string;
-    'type'?: AccountResultTypeEnum;
-    'status'?: AccountResultStatusEnum;
+    'type'?: AccountType;
+    'status'?: AccountStatus;
     'subresourceUris'?: any;
 }
 export class AccountResult {
@@ -78,14 +70,8 @@ export class AccountResult {
     * A string that identifies a category or group to which the account belongs.
     */
     'label'?: string;
-    /**
-    * The type of this account. It is one of: trial or full.
-    */
-    'type'?: AccountResultTypeEnum;
-    /**
-    * The status of this account. It is one of: active, suspended, or closed.
-    */
-    'status'?: AccountResultStatusEnum;
+    'type'?: AccountType;
+    'status'?: AccountStatus;
     /**
     * The list of subresources for this account.
     */
@@ -99,7 +85,7 @@ export class AccountResult {
             "baseName": "uri",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -108,7 +94,7 @@ export class AccountResult {
             "baseName": "dateCreated",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -117,7 +103,7 @@ export class AccountResult {
             "baseName": "dateUpdated",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -126,7 +112,7 @@ export class AccountResult {
             "baseName": "revision",
             "type": "number",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -135,7 +121,7 @@ export class AccountResult {
             "baseName": "accountId",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -144,7 +130,7 @@ export class AccountResult {
             "baseName": "apiKey",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -153,7 +139,7 @@ export class AccountResult {
             "baseName": "alias",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -162,36 +148,34 @@ export class AccountResult {
             "baseName": "label",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
         {
             "name": "type",
             "baseName": "type",
-            "type": "AccountResultTypeEnum",
+            "type": "AccountType",
             "format": "",
-            
+
             
             "defaultValue": undefined
-
         },
         {
             "name": "status",
             "baseName": "status",
-            "type": "AccountResultStatusEnum",
+            "type": "AccountStatus",
             "format": "",
-            
+
             
             "defaultValue": undefined
-
         },
         {
             "name": "subresourceUris",
             "baseName": "subresourceUris",
             "type": "any",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

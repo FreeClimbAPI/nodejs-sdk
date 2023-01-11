@@ -13,6 +13,7 @@
 import { CallResult } from './CallResult';
 import { HttpFile } from '../http/http';
 
+
 interface AttributeType {
     name: string
     baseName: string
@@ -34,7 +35,7 @@ export class CallListAllOf {
             "baseName": "calls",
             "type": "Array<CallResult>",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

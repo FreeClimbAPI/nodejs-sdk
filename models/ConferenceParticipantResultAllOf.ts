@@ -12,6 +12,7 @@
 
 import { HttpFile } from '../http/http';
 
+
 interface AttributeType {
     name: string
     baseName: string
@@ -61,7 +62,7 @@ export class ConferenceParticipantResultAllOf {
             "baseName": "accountId",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -70,7 +71,7 @@ export class ConferenceParticipantResultAllOf {
             "baseName": "conferenceId",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -79,7 +80,7 @@ export class ConferenceParticipantResultAllOf {
             "baseName": "callId",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -88,7 +89,7 @@ export class ConferenceParticipantResultAllOf {
             "baseName": "talk",
             "type": "boolean",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -97,7 +98,7 @@ export class ConferenceParticipantResultAllOf {
             "baseName": "listen",
             "type": "boolean",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -106,7 +107,7 @@ export class ConferenceParticipantResultAllOf {
             "baseName": "startConfOnEnter",
             "type": "boolean",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

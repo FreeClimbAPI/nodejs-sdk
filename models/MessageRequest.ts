@@ -14,6 +14,7 @@ import { MessageRequestAllOf } from './MessageRequestAllOf';
 import { MutableResourceModel } from './MutableResourceModel';
 import { HttpFile } from '../http/http';
 
+
 interface AttributeType {
     name: string
     baseName: string
@@ -78,7 +79,7 @@ export class MessageRequest {
             "baseName": "uri",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -87,7 +88,7 @@ export class MessageRequest {
             "baseName": "dateCreated",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -96,7 +97,7 @@ export class MessageRequest {
             "baseName": "dateUpdated",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -105,7 +106,7 @@ export class MessageRequest {
             "baseName": "revision",
             "type": "number",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -114,7 +115,7 @@ export class MessageRequest {
             "baseName": "from",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -123,7 +124,7 @@ export class MessageRequest {
             "baseName": "to",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -132,7 +133,7 @@ export class MessageRequest {
             "baseName": "text",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -141,7 +142,7 @@ export class MessageRequest {
             "baseName": "notificationUrl",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -150,7 +151,7 @@ export class MessageRequest {
             "baseName": "accountId",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

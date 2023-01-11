@@ -12,6 +12,7 @@
 
 import { HttpFile } from '../http/http';
 
+
 interface AttributeType {
     name: string
     baseName: string
@@ -81,7 +82,7 @@ export class AddToConferenceAllOf {
             "baseName": "allowCallControl",
             "type": "boolean",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -90,7 +91,7 @@ export class AddToConferenceAllOf {
             "baseName": "callControlSequence",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -99,7 +100,7 @@ export class AddToConferenceAllOf {
             "baseName": "callControlUrl",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -108,7 +109,7 @@ export class AddToConferenceAllOf {
             "baseName": "conferenceId",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -117,7 +118,7 @@ export class AddToConferenceAllOf {
             "baseName": "callId",
             "type": "boolean",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -126,7 +127,7 @@ export class AddToConferenceAllOf {
             "baseName": "leaveConferenceUrl",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -135,7 +136,7 @@ export class AddToConferenceAllOf {
             "baseName": "listen",
             "type": "boolean",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -144,7 +145,7 @@ export class AddToConferenceAllOf {
             "baseName": "notificationUrl",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -153,7 +154,7 @@ export class AddToConferenceAllOf {
             "baseName": "startConfOnEnter",
             "type": "boolean",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -162,7 +163,7 @@ export class AddToConferenceAllOf {
             "baseName": "talk",
             "type": "boolean",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

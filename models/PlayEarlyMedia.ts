@@ -40,6 +40,7 @@ import { HttpFile } from '../http/http';
 /**
 * `PlayEarlyMedia` is relevant only when present as the very first command in the PerCL script returned for an incoming Call. In such cases, the command is executed before FreeClimb attempts to connect the call. The audio file it uses can be stored in any location that is accessible via URL.
 */
+
 interface AttributeType {
     name: string
     baseName: string
@@ -64,7 +65,7 @@ export class PlayEarlyMedia extends PerclCommand {
             "baseName": "file",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

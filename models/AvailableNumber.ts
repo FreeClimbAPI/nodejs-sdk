@@ -13,6 +13,7 @@
 import { Capabilities } from './Capabilities';
 import { HttpFile } from '../http/http';
 
+
 interface AttributeType {
     name: string
     baseName: string
@@ -64,7 +65,7 @@ export class AvailableNumber {
             "baseName": "capabilities",
             "type": "Capabilities",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -73,7 +74,7 @@ export class AvailableNumber {
             "baseName": "campaignId",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -82,7 +83,7 @@ export class AvailableNumber {
             "baseName": "phoneNumber",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -91,7 +92,7 @@ export class AvailableNumber {
             "baseName": "voiceEnabled",
             "type": "boolean",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -100,7 +101,7 @@ export class AvailableNumber {
             "baseName": "smsEnabled",
             "type": "boolean",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -109,7 +110,7 @@ export class AvailableNumber {
             "baseName": "region",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -118,7 +119,7 @@ export class AvailableNumber {
             "baseName": "country",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

@@ -15,6 +15,7 @@ import { LogResult } from './LogResult';
 import { PaginationModel } from './PaginationModel';
 import { HttpFile } from '../http/http';
 
+
 interface AttributeType {
     name: string
     baseName: string
@@ -71,7 +72,7 @@ export class LogList {
             "baseName": "total",
             "type": "number",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -80,7 +81,7 @@ export class LogList {
             "baseName": "start",
             "type": "number",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -89,7 +90,7 @@ export class LogList {
             "baseName": "end",
             "type": "number",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -98,7 +99,7 @@ export class LogList {
             "baseName": "page",
             "type": "number",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -107,7 +108,7 @@ export class LogList {
             "baseName": "numPages",
             "type": "number",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -116,7 +117,7 @@ export class LogList {
             "baseName": "pageSize",
             "type": "number",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -125,7 +126,7 @@ export class LogList {
             "baseName": "nextPageUri",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -134,7 +135,7 @@ export class LogList {
             "baseName": "logs",
             "type": "Array<LogResult>",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

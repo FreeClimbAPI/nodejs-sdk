@@ -11,24 +11,12 @@
  */
 
 import { ConferenceResultAllOf } from './ConferenceResultAllOf';
+import { ConferenceStatus } from './ConferenceStatus';
 import { MutableResourceModel } from './MutableResourceModel';
+import { PlayBeep } from './PlayBeep';
 import { HttpFile } from '../http/http';
 
-export enum ConferenceResultPlayBeepEnum {
 
-    ALWAYS = 'always',
-    NEVER = 'never',
-    ENTRY_ONLY = 'entryOnly',
-    EXIT_ONLY = 'exitOnly'
-}
-export enum ConferenceResultStatusEnum {
-
-    CREATING = 'creating',
-    EMPTY = 'empty',
-    POPULATED = 'populated',
-    IN_PROGRESS = 'inProgress',
-    TERMINATED = 'terminated'
-}
 interface AttributeType {
     name: string
     baseName: string
@@ -44,9 +32,9 @@ interface ArgumentsType {
     'conferenceId'?: string;
     'accountId'?: string;
     'alias'?: string;
-    'playBeep'?: ConferenceResultPlayBeepEnum;
+    'playBeep'?: PlayBeep;
     'record'?: boolean;
-    'status'?: ConferenceResultStatusEnum;
+    'status'?: ConferenceStatus;
     'waitUrl'?: string;
     'actionUrl'?: string;
     'statusCallbackUrl'?: string;
@@ -81,18 +69,12 @@ export class ConferenceResult {
     * A description for this Conference.
     */
     'alias'?: string;
-    /**
-    * Setting that controls when a beep is played. One of: always, never, entryOnly, exitOnly. Defaults to always.
-    */
-    'playBeep'?: ConferenceResultPlayBeepEnum;
+    'playBeep'?: PlayBeep;
     /**
     * Flag indicating whether recording is enabled for this Conference.
     */
     'record'?: boolean;
-    /**
-    * The status of the Conference. One of: creating, empty, populated, inProgress, or terminated.
-    */
-    'status'?: ConferenceResultStatusEnum;
+    'status'?: ConferenceStatus;
     /**
     * URL referencing the audio file to be used as default wait music for the Conference when it is in the populated state.
     */
@@ -118,7 +100,7 @@ export class ConferenceResult {
             "baseName": "uri",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -127,7 +109,7 @@ export class ConferenceResult {
             "baseName": "dateCreated",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -136,7 +118,7 @@ export class ConferenceResult {
             "baseName": "dateUpdated",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -145,7 +127,7 @@ export class ConferenceResult {
             "baseName": "revision",
             "type": "number",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -154,7 +136,7 @@ export class ConferenceResult {
             "baseName": "conferenceId",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -163,7 +145,7 @@ export class ConferenceResult {
             "baseName": "accountId",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -172,45 +154,43 @@ export class ConferenceResult {
             "baseName": "alias",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
         {
             "name": "playBeep",
             "baseName": "playBeep",
-            "type": "ConferenceResultPlayBeepEnum",
+            "type": "PlayBeep",
             "format": "",
-            
-            
-            "defaultValue": undefined
 
+            
+            "defaultValue": PlayBeep.ALWAYS
         },
         {
             "name": "record",
             "baseName": "record",
             "type": "boolean",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
         {
             "name": "status",
             "baseName": "status",
-            "type": "ConferenceResultStatusEnum",
+            "type": "ConferenceStatus",
             "format": "",
-            
+
             
             "defaultValue": undefined
-
         },
         {
             "name": "waitUrl",
             "baseName": "waitUrl",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -219,7 +199,7 @@ export class ConferenceResult {
             "baseName": "actionUrl",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -228,7 +208,7 @@ export class ConferenceResult {
             "baseName": "statusCallbackUrl",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -237,7 +217,7 @@ export class ConferenceResult {
             "baseName": "subresourceUris",
             "type": "any",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

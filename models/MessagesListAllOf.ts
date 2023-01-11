@@ -13,6 +13,7 @@
 import { MessageResult } from './MessageResult';
 import { HttpFile } from '../http/http';
 
+
 interface AttributeType {
     name: string
     baseName: string
@@ -37,7 +38,7 @@ export class MessagesListAllOf {
             "baseName": "messages",
             "type": "Array<MessageResult>",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

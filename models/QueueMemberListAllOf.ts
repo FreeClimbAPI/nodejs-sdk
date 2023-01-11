@@ -13,6 +13,7 @@
 import { QueueMember } from './QueueMember';
 import { HttpFile } from '../http/http';
 
+
 interface AttributeType {
     name: string
     baseName: string
@@ -34,7 +35,7 @@ export class QueueMemberListAllOf {
             "baseName": "queueMembers",
             "type": "Array<QueueMember>",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

@@ -15,6 +15,7 @@ import { MessagesListAllOf } from './MessagesListAllOf';
 import { PaginationModel } from './PaginationModel';
 import { HttpFile } from '../http/http';
 
+
 interface AttributeType {
     name: string
     baseName: string
@@ -74,7 +75,7 @@ export class MessagesList {
             "baseName": "total",
             "type": "number",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -83,7 +84,7 @@ export class MessagesList {
             "baseName": "start",
             "type": "number",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -92,7 +93,7 @@ export class MessagesList {
             "baseName": "end",
             "type": "number",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -101,7 +102,7 @@ export class MessagesList {
             "baseName": "page",
             "type": "number",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -110,7 +111,7 @@ export class MessagesList {
             "baseName": "numPages",
             "type": "number",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -119,7 +120,7 @@ export class MessagesList {
             "baseName": "pageSize",
             "type": "number",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -128,7 +129,7 @@ export class MessagesList {
             "baseName": "nextPageUri",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -137,7 +138,7 @@ export class MessagesList {
             "baseName": "messages",
             "type": "Array<MessageResult>",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

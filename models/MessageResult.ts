@@ -11,23 +11,11 @@
  */
 
 import { MessageResultAllOf } from './MessageResultAllOf';
+import { MessageStatus } from './MessageStatus';
 import { MutableResourceModel } from './MutableResourceModel';
 import { HttpFile } from '../http/http';
 
-export enum MessageResultStatusEnum {
 
-    NEW = 'new',
-    QUEUED = 'queued',
-    REJECTED = 'rejected',
-    SENDING = 'sending',
-    SENT = 'sent',
-    FAILED = 'failed',
-    RECEIVED = 'received',
-    UNDELIVERED = 'undelivered',
-    EXPIRED = 'expired',
-    DELETED = 'deleted',
-    UNKNOWN = 'unknown'
-}
 interface AttributeType {
     name: string
     baseName: string
@@ -42,7 +30,7 @@ interface ArgumentsType {
     'revision'?: number;
     'accountId'?: string;
     'messageId'?: string;
-    'status'?: MessageResultStatusEnum;
+    'status'?: MessageStatus;
     '_from'?: string;
     'to'?: string;
     'text'?: string;
@@ -74,10 +62,7 @@ export class MessageResult {
     * String that uniquely identifies this message resource
     */
     'messageId'?: string;
-    /**
-    * Indicates the state of the message through the message lifecycle including: new, queued, rejected, sending, sent, failed, received, undelivered, expired, deleted, and unknown
-    */
-    'status'?: MessageResultStatusEnum;
+    'status'?: MessageStatus;
     /**
     * Phone number in E.164 format that sent the message.
     */
@@ -107,7 +92,7 @@ export class MessageResult {
             "baseName": "uri",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -116,7 +101,7 @@ export class MessageResult {
             "baseName": "dateCreated",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -125,7 +110,7 @@ export class MessageResult {
             "baseName": "dateUpdated",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -134,7 +119,7 @@ export class MessageResult {
             "baseName": "revision",
             "type": "number",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -143,7 +128,7 @@ export class MessageResult {
             "baseName": "accountId",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -152,26 +137,25 @@ export class MessageResult {
             "baseName": "messageId",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
         {
             "name": "status",
             "baseName": "status",
-            "type": "MessageResultStatusEnum",
+            "type": "MessageStatus",
             "format": "",
-            
+
             
             "defaultValue": undefined
-
         },
         {
             "name": "_from",
             "baseName": "from",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -180,7 +164,7 @@ export class MessageResult {
             "baseName": "to",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -189,7 +173,7 @@ export class MessageResult {
             "baseName": "text",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -198,7 +182,7 @@ export class MessageResult {
             "baseName": "direction",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -207,7 +191,7 @@ export class MessageResult {
             "baseName": "notificationUrl",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

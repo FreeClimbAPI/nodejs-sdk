@@ -13,6 +13,7 @@
 import { ConferenceParticipantResult } from './ConferenceParticipantResult';
 import { HttpFile } from '../http/http';
 
+
 interface AttributeType {
     name: string
     baseName: string
@@ -34,7 +35,7 @@ export class ConferenceParticipantListAllOf {
             "baseName": "participants",
             "type": "Array<ConferenceParticipantResult>",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

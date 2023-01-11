@@ -13,6 +13,7 @@
 import { AvailableNumber } from './AvailableNumber';
 import { HttpFile } from '../http/http';
 
+
 interface AttributeType {
     name: string
     baseName: string
@@ -34,7 +35,7 @@ export class AvailableNumberListAllOf {
             "baseName": "availablePhoneNumbers",
             "type": "Array<AvailableNumber>",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

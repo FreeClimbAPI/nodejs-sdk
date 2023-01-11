@@ -40,6 +40,7 @@ import { HttpFile } from '../http/http';
 /**
 * The `SetTalk` command enables or disables the talk privilege for a Participant in a Conference provided both calls are in the same conference. If 'true', no audio from that Participant is shared with the other Participants of the Conference.
 */
+
 interface AttributeType {
     name: string
     baseName: string
@@ -69,7 +70,7 @@ export class SetTalk extends PerclCommand {
             "baseName": "callId",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -78,7 +79,7 @@ export class SetTalk extends PerclCommand {
             "baseName": "talk",
             "type": "boolean",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

@@ -13,6 +13,7 @@
 import { QueueResult } from './QueueResult';
 import { HttpFile } from '../http/http';
 
+
 interface AttributeType {
     name: string
     baseName: string
@@ -34,7 +35,7 @@ export class QueueListAllOf {
             "baseName": "queues",
             "type": "Array<QueueResult>",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

@@ -1,8 +1,11 @@
 export * from './AccountRequest';
 export * from './AccountResult';
 export * from './AccountResultAllOf';
+export * from './AccountStatus';
+export * from './AccountType';
 export * from './AddToConference';
 export * from './AddToConferenceAllOf';
+export * from './AnsweredBy';
 export * from './ApplicationList';
 export * from './ApplicationListAllOf';
 export * from './ApplicationRequest';
@@ -12,10 +15,12 @@ export * from './AvailableNumber';
 export * from './AvailableNumberList';
 export * from './AvailableNumberListAllOf';
 export * from './BuyIncomingNumberRequest';
+export * from './CallDirection';
 export * from './CallList';
 export * from './CallListAllOf';
 export * from './CallResult';
 export * from './CallResultAllOf';
+export * from './CallStatus';
 export * from './Capabilities';
 export * from './ConferenceList';
 export * from './ConferenceListAllOf';
@@ -25,6 +30,7 @@ export * from './ConferenceParticipantResult';
 export * from './ConferenceParticipantResultAllOf';
 export * from './ConferenceResult';
 export * from './ConferenceResultAllOf';
+export * from './ConferenceStatus';
 export * from './CreateConference';
 export * from './CreateConferenceAllOf';
 export * from './CreateConferenceRequest';
@@ -36,21 +42,30 @@ export * from './GetDigits';
 export * from './GetDigitsAllOf';
 export * from './GetSpeech';
 export * from './GetSpeechAllOf';
+export * from './GetSpeechReason';
+export * from './GrammarFileBuiltIn';
+export * from './GrammarType';
 export * from './Hangup';
 export * from './HangupAllOf';
+export * from './IfMachine';
 export * from './IncomingNumberList';
 export * from './IncomingNumberListAllOf';
 export * from './IncomingNumberRequest';
 export * from './IncomingNumberResult';
 export * from './IncomingNumberResultAllOf';
+export * from './Language';
+export * from './LogLevel';
 export * from './LogList';
 export * from './LogListAllOf';
 export * from './LogResult';
+export * from './MachineType';
 export * from './MakeCallRequest';
+export * from './MessageDirection';
 export * from './MessageRequest';
 export * from './MessageRequestAllOf';
 export * from './MessageResult';
 export * from './MessageResultAllOf';
+export * from './MessageStatus';
 export * from './MessagesList';
 export * from './MessagesListAllOf';
 export * from './MutableResourceModel';
@@ -65,6 +80,7 @@ export * from './PerclCommand';
 export * from './PerclScript';
 export * from './Play';
 export * from './PlayAllOf';
+export * from './PlayBeep';
 export * from './PlayEarlyMedia';
 export * from './PlayEarlyMediaAllOf';
 export * from './QueueList';
@@ -75,8 +91,10 @@ export * from './QueueMemberListAllOf';
 export * from './QueueRequest';
 export * from './QueueResult';
 export * from './QueueResultAllOf';
+export * from './QueueResultStatus';
 export * from './RecordUtterance';
 export * from './RecordUtteranceAllOf';
+export * from './RecordUtteranceTermReason';
 export * from './RecordingList';
 export * from './RecordingListAllOf';
 export * from './RecordingResult';
@@ -87,6 +105,7 @@ export * from './Reject';
 export * from './RejectAllOf';
 export * from './RemoveFromConference';
 export * from './RemoveFromConferenceAllOf';
+export * from './RequestType';
 export * from './Say';
 export * from './SayAllOf';
 export * from './SendDigits';
@@ -102,14 +121,19 @@ export * from './TerminateConference';
 export * from './TerminateConferenceAllOf';
 export * from './Unpark';
 export * from './UpdateCallRequest';
+export * from './UpdateCallRequestStatus';
 export * from './UpdateConferenceParticipantRequest';
 export * from './UpdateConferenceRequest';
+export * from './UpdateConferenceRequestStatus';
 
 import { AccountRequest } from './AccountRequest';
-import { AccountResult        , AccountResultTypeEnum  , AccountResultStatusEnum    } from './AccountResult';
-import { AccountResultAllOf    , AccountResultAllOfTypeEnum  , AccountResultAllOfStatusEnum    } from './AccountResultAllOf';
+import { AccountResult } from './AccountResult';
+import { AccountResultAllOf } from './AccountResultAllOf';
+import { AccountStatus } from './AccountStatus';
+import { AccountType } from './AccountType';
 import { AddToConference } from './AddToConference';
 import { AddToConferenceAllOf } from './AddToConferenceAllOf';
+import { AnsweredBy } from './AnsweredBy';
 import { ApplicationList } from './ApplicationList';
 import { ApplicationListAllOf } from './ApplicationListAllOf';
 import { ApplicationRequest } from './ApplicationRequest';
@@ -119,10 +143,12 @@ import { AvailableNumber } from './AvailableNumber';
 import { AvailableNumberList } from './AvailableNumberList';
 import { AvailableNumberListAllOf } from './AvailableNumberListAllOf';
 import { BuyIncomingNumberRequest } from './BuyIncomingNumberRequest';
+import { CallDirection } from './CallDirection';
 import { CallList } from './CallList';
 import { CallListAllOf } from './CallListAllOf';
-import { CallResult          , CallResultStatusEnum           } from './CallResult';
-import { CallResultAllOf      , CallResultAllOfStatusEnum           } from './CallResultAllOf';
+import { CallResult } from './CallResult';
+import { CallResultAllOf } from './CallResultAllOf';
+import { CallStatus } from './CallStatus';
 import { Capabilities } from './Capabilities';
 import { ConferenceList } from './ConferenceList';
 import { ConferenceListAllOf } from './ConferenceListAllOf';
@@ -130,11 +156,12 @@ import { ConferenceParticipantList } from './ConferenceParticipantList';
 import { ConferenceParticipantListAllOf } from './ConferenceParticipantListAllOf';
 import { ConferenceParticipantResult } from './ConferenceParticipantResult';
 import { ConferenceParticipantResultAllOf } from './ConferenceParticipantResultAllOf';
-import { ConferenceResult       , ConferenceResultPlayBeepEnum   , ConferenceResultStatusEnum       } from './ConferenceResult';
-import { ConferenceResultAllOf   , ConferenceResultAllOfPlayBeepEnum   , ConferenceResultAllOfStatusEnum       } from './ConferenceResultAllOf';
+import { ConferenceResult } from './ConferenceResult';
+import { ConferenceResultAllOf } from './ConferenceResultAllOf';
+import { ConferenceStatus } from './ConferenceStatus';
 import { CreateConference } from './CreateConference';
 import { CreateConferenceAllOf } from './CreateConferenceAllOf';
-import { CreateConferenceRequest , CreateConferenceRequestPlayBeepEnum      } from './CreateConferenceRequest';
+import { CreateConferenceRequest } from './CreateConferenceRequest';
 import { Dequeue } from './Dequeue';
 import { Enqueue } from './Enqueue';
 import { EnqueueAllOf } from './EnqueueAllOf';
@@ -143,21 +170,30 @@ import { GetDigits } from './GetDigits';
 import { GetDigitsAllOf } from './GetDigitsAllOf';
 import { GetSpeech } from './GetSpeech';
 import { GetSpeechAllOf } from './GetSpeechAllOf';
+import { GetSpeechReason } from './GetSpeechReason';
+import { GrammarFileBuiltIn } from './GrammarFileBuiltIn';
+import { GrammarType } from './GrammarType';
 import { Hangup } from './Hangup';
 import { HangupAllOf } from './HangupAllOf';
+import { IfMachine } from './IfMachine';
 import { IncomingNumberList } from './IncomingNumberList';
 import { IncomingNumberListAllOf } from './IncomingNumberListAllOf';
 import { IncomingNumberRequest } from './IncomingNumberRequest';
 import { IncomingNumberResult } from './IncomingNumberResult';
 import { IncomingNumberResultAllOf } from './IncomingNumberResultAllOf';
+import { Language } from './Language';
+import { LogLevel } from './LogLevel';
 import { LogList } from './LogList';
 import { LogListAllOf } from './LogListAllOf';
-import { LogResult , LogResultLevelEnum        } from './LogResult';
+import { LogResult } from './LogResult';
+import { MachineType } from './MachineType';
 import { MakeCallRequest } from './MakeCallRequest';
+import { MessageDirection } from './MessageDirection';
 import { MessageRequest } from './MessageRequest';
 import { MessageRequestAllOf } from './MessageRequestAllOf';
-import { MessageResult      , MessageResultStatusEnum        } from './MessageResult';
-import { MessageResultAllOf  , MessageResultAllOfStatusEnum        } from './MessageResultAllOf';
+import { MessageResult } from './MessageResult';
+import { MessageResultAllOf } from './MessageResultAllOf';
+import { MessageStatus } from './MessageStatus';
 import { MessagesList } from './MessagesList';
 import { MessagesListAllOf } from './MessagesListAllOf';
 import { MutableResourceModel } from './MutableResourceModel';
@@ -172,6 +208,7 @@ import { PerclCommand } from './PerclCommand';
 import { PerclScript } from './PerclScript';
 import { Play } from './Play';
 import { PlayAllOf } from './PlayAllOf';
+import { PlayBeep } from './PlayBeep';
 import { PlayEarlyMedia } from './PlayEarlyMedia';
 import { PlayEarlyMediaAllOf } from './PlayEarlyMediaAllOf';
 import { QueueList } from './QueueList';
@@ -182,8 +219,10 @@ import { QueueMemberListAllOf } from './QueueMemberListAllOf';
 import { QueueRequest } from './QueueRequest';
 import { QueueResult } from './QueueResult';
 import { QueueResultAllOf } from './QueueResultAllOf';
+import { QueueResultStatus } from './QueueResultStatus';
 import { RecordUtterance } from './RecordUtterance';
 import { RecordUtteranceAllOf } from './RecordUtteranceAllOf';
+import { RecordUtteranceTermReason } from './RecordUtteranceTermReason';
 import { RecordingList } from './RecordingList';
 import { RecordingListAllOf } from './RecordingListAllOf';
 import { RecordingResult } from './RecordingResult';
@@ -194,6 +233,7 @@ import { Reject } from './Reject';
 import { RejectAllOf } from './RejectAllOf';
 import { RemoveFromConference } from './RemoveFromConference';
 import { RemoveFromConferenceAllOf } from './RemoveFromConferenceAllOf';
+import { RequestType } from './RequestType';
 import { Say } from './Say';
 import { SayAllOf } from './SayAllOf';
 import { SendDigits } from './SendDigits';
@@ -208,9 +248,11 @@ import { StartRecordCall } from './StartRecordCall';
 import { TerminateConference } from './TerminateConference';
 import { TerminateConferenceAllOf } from './TerminateConferenceAllOf';
 import { Unpark } from './Unpark';
-import { UpdateCallRequest, UpdateCallRequestStatusEnum   } from './UpdateCallRequest';
+import { UpdateCallRequest } from './UpdateCallRequest';
+import { UpdateCallRequestStatus } from './UpdateCallRequestStatus';
 import { UpdateConferenceParticipantRequest } from './UpdateConferenceParticipantRequest';
-import { UpdateConferenceRequest , UpdateConferenceRequestPlayBeepEnum  , UpdateConferenceRequestStatusEnum   } from './UpdateConferenceRequest';
+import { UpdateConferenceRequest } from './UpdateConferenceRequest';
+import { UpdateConferenceRequestStatus } from './UpdateConferenceRequestStatus';
 
 /* tslint:disable:no-unused-variable */
 let primitives = [
@@ -232,23 +274,27 @@ const supportedMediaTypes: { [mediaType: string]: number } = {
 
 
 let enumsMap: Set<string> = new Set<string>([
-    "AccountResultTypeEnum",
-    "AccountResultStatusEnum",
-    "AccountResultAllOfTypeEnum",
-    "AccountResultAllOfStatusEnum",
-    "CallResultStatusEnum",
-    "CallResultAllOfStatusEnum",
-    "ConferenceResultPlayBeepEnum",
-    "ConferenceResultStatusEnum",
-    "ConferenceResultAllOfPlayBeepEnum",
-    "ConferenceResultAllOfStatusEnum",
-    "CreateConferenceRequestPlayBeepEnum",
-    "LogResultLevelEnum",
-    "MessageResultStatusEnum",
-    "MessageResultAllOfStatusEnum",
-    "UpdateCallRequestStatusEnum",
-    "UpdateConferenceRequestPlayBeepEnum",
-    "UpdateConferenceRequestStatusEnum",
+    "AccountStatus",
+    "AccountType",
+    "AnsweredBy",
+    "CallDirection",
+    "CallStatus",
+    "ConferenceStatus",
+    "GetSpeechReason",
+    "GrammarFileBuiltIn",
+    "GrammarType",
+    "IfMachine",
+    "Language",
+    "LogLevel",
+    "MachineType",
+    "MessageDirection",
+    "MessageStatus",
+    "PlayBeep",
+    "QueueResultStatus",
+    "RecordUtteranceTermReason",
+    "RequestType",
+    "UpdateCallRequestStatus",
+    "UpdateConferenceRequestStatus",
 ]);
 
 let typeMap: {[index: string]: any} = {

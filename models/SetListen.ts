@@ -40,6 +40,7 @@ import { HttpFile } from '../http/http';
 /**
 * The `SetListen` command enables or disables the listen privilege for a Conference Participant provided both calls are in the same conference. The Participant can hear what the other participants are saying only if this privilege is enabled.
 */
+
 interface AttributeType {
     name: string
     baseName: string
@@ -69,7 +70,7 @@ export class SetListen extends PerclCommand {
             "baseName": "callId",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -78,7 +79,7 @@ export class SetListen extends PerclCommand {
             "baseName": "listen",
             "type": "boolean",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

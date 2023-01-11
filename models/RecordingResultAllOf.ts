@@ -12,6 +12,7 @@
 
 import { HttpFile } from '../http/http';
 
+
 interface AttributeType {
     name: string
     baseName: string
@@ -56,7 +57,7 @@ export class RecordingResultAllOf {
             "baseName": "recordingId",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -65,7 +66,7 @@ export class RecordingResultAllOf {
             "baseName": "accountId",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -74,7 +75,7 @@ export class RecordingResultAllOf {
             "baseName": "callId",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -83,7 +84,7 @@ export class RecordingResultAllOf {
             "baseName": "durationSec",
             "type": "number",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -92,7 +93,7 @@ export class RecordingResultAllOf {
             "baseName": "conferenceId",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

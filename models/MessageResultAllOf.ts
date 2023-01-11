@@ -10,22 +10,10 @@
  * Do not edit the class manually.
  */
 
+import { MessageStatus } from './MessageStatus';
 import { HttpFile } from '../http/http';
 
-export enum MessageResultAllOfStatusEnum {
 
-    NEW = 'new',
-    QUEUED = 'queued',
-    REJECTED = 'rejected',
-    SENDING = 'sending',
-    SENT = 'sent',
-    FAILED = 'failed',
-    RECEIVED = 'received',
-    UNDELIVERED = 'undelivered',
-    EXPIRED = 'expired',
-    DELETED = 'deleted',
-    UNKNOWN = 'unknown'
-}
 interface AttributeType {
     name: string
     baseName: string
@@ -36,7 +24,7 @@ interface AttributeType {
 interface ArgumentsType {
     'accountId'?: string;
     'messageId'?: string;
-    'status'?: MessageResultAllOfStatusEnum;
+    'status'?: MessageStatus;
     '_from'?: string;
     'to'?: string;
     'text'?: string;
@@ -52,10 +40,7 @@ export class MessageResultAllOf {
     * String that uniquely identifies this message resource
     */
     'messageId'?: string;
-    /**
-    * Indicates the state of the message through the message lifecycle including: new, queued, rejected, sending, sent, failed, received, undelivered, expired, deleted, and unknown
-    */
-    'status'?: MessageResultAllOfStatusEnum;
+    'status'?: MessageStatus;
     /**
     * Phone number in E.164 format that sent the message.
     */
@@ -85,7 +70,7 @@ export class MessageResultAllOf {
             "baseName": "accountId",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -94,26 +79,25 @@ export class MessageResultAllOf {
             "baseName": "messageId",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
         {
             "name": "status",
             "baseName": "status",
-            "type": "MessageResultAllOfStatusEnum",
+            "type": "MessageStatus",
             "format": "",
-            
+
             
             "defaultValue": undefined
-
         },
         {
             "name": "_from",
             "baseName": "from",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -122,7 +106,7 @@ export class MessageResultAllOf {
             "baseName": "to",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -131,7 +115,7 @@ export class MessageResultAllOf {
             "baseName": "text",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -140,7 +124,7 @@ export class MessageResultAllOf {
             "baseName": "direction",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -149,7 +133,7 @@ export class MessageResultAllOf {
             "baseName": "notificationUrl",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

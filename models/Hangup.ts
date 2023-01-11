@@ -40,6 +40,7 @@ import { HttpFile } from '../http/http';
 /**
 * The `Hangup` command terminates a Call. If `Hangup` is used as the first action in a PerCL response, it does not prevent FreeClimb from answering the Call and billing your account. See the `Reject` command to hang up at no charge.
 */
+
 interface AttributeType {
     name: string
     baseName: string
@@ -64,7 +65,7 @@ export class Hangup extends PerclCommand {
             "baseName": "reason",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

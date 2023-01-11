@@ -16,6 +16,7 @@ import { HttpFile } from '../http/http';
 /**
 * A PerCL script to be returned to the FreeClimb servers in FreeClimb applications
 */
+
 interface AttributeType {
     name: string
     baseName: string
@@ -40,7 +41,7 @@ export class PerclScript {
             "baseName": "commands",
             "type": "Array<PerclCommand>",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

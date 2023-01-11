@@ -13,6 +13,7 @@
 import { IncomingNumberResult } from './IncomingNumberResult';
 import { HttpFile } from '../http/http';
 
+
 interface AttributeType {
     name: string
     baseName: string
@@ -34,7 +35,7 @@ export class IncomingNumberListAllOf {
             "baseName": "incomingPhoneNumbers",
             "type": "Array<IncomingNumberResult>",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

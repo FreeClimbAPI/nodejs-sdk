@@ -15,6 +15,7 @@ import { HttpFile } from '../http/http';
 /**
 * Details for which features this number may be used.
 */
+
 interface AttributeType {
     name: string
     baseName: string
@@ -59,7 +60,7 @@ export class Capabilities {
             "baseName": "voice",
             "type": "boolean",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -68,7 +69,7 @@ export class Capabilities {
             "baseName": "sms",
             "type": "boolean",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -77,7 +78,7 @@ export class Capabilities {
             "baseName": "tollFree",
             "type": "boolean",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -86,7 +87,7 @@ export class Capabilities {
             "baseName": "tenDLC",
             "type": "boolean",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -95,7 +96,7 @@ export class Capabilities {
             "baseName": "shortCode",
             "type": "boolean",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

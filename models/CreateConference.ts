@@ -22,6 +22,7 @@ import { Park } from './Park';
 import { Pause } from './Pause';
 import { PerclCommand } from './PerclCommand';
 import { Play } from './Play';
+import { PlayBeep } from './PlayBeep';
 import { PlayEarlyMedia } from './PlayEarlyMedia';
 import { RecordUtterance } from './RecordUtterance';
 import { Redirect } from './Redirect';
@@ -40,6 +41,7 @@ import { HttpFile } from '../http/http';
 /**
 * The `CreateConference` command does exactly what its name implies — it creates an unpopulated Conference (one without any Participants). Once created, a Conference remains in FreeClimb until explicitly terminated by a customer. Once a Conference has been terminated, it can no longer be used.
 */
+
 interface AttributeType {
     name: string
     baseName: string
@@ -50,9 +52,9 @@ interface AttributeType {
 interface ArgumentsType {
     'actionUrl': string;
     'alias'?: boolean;
-    'playBeep'?: string;
+    'playBeep'?: PlayBeep;
     'record'?: boolean;
-    'statusCallbackUrl'?: boolean;
+    'statusCallbackUrl'?: string;
     'waitUrl'?: string;
 }
 export class CreateConference extends PerclCommand {
@@ -64,10 +66,7 @@ export class CreateConference extends PerclCommand {
     * Descriptive name for the Conference. 
     */
     'alias'?: boolean;
-    /**
-    * Indicates whether to play a beep when a Participant enters or leaves the Conference. either `always`, `never`, `entryOnly`, or `exitOnly`. Leaving this unset will make conference default to `always` 
-    */
-    'playBeep'?: string;
+    'playBeep'?: PlayBeep;
     /**
     * When set to `true`, the entire Conference is recorded. The `statusCallbackUrl` of the Conference will receive a `conferenceRecordingEnded` Webhook when the Conference transitions from the `inProgress` to empty state.
     */
@@ -75,7 +74,7 @@ export class CreateConference extends PerclCommand {
     /**
     * This URL is invoked when the status of the Conference changes or when a recording of the Conference has become available.
     */
-    'statusCallbackUrl'?: boolean;
+    'statusCallbackUrl'?: string;
     /**
     * If specified, this URL provides the custom hold music for the Conference when it is in the populated state. This attribute is always fetched using HTTP GET and is fetched just once – when the Conference is created. The URL must be an audio file that is reachable and readable by FreeClimb.
     */
@@ -89,7 +88,7 @@ export class CreateConference extends PerclCommand {
             "baseName": "actionUrl",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -98,34 +97,34 @@ export class CreateConference extends PerclCommand {
             "baseName": "alias",
             "type": "boolean",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
         {
             "name": "playBeep",
             "baseName": "playBeep",
-            "type": "string",
+            "type": "PlayBeep",
             "format": "",
+
             
-            
-            "defaultValue": undefined
+            "defaultValue": PlayBeep.ALWAYS
         },
         {
             "name": "record",
             "baseName": "record",
             "type": "boolean",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
         {
             "name": "statusCallbackUrl",
             "baseName": "statusCallbackUrl",
-            "type": "boolean",
+            "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -134,7 +133,7 @@ export class CreateConference extends PerclCommand {
             "baseName": "waitUrl",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

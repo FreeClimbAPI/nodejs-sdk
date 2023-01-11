@@ -40,6 +40,7 @@ import { HttpFile } from '../http/http';
 /**
 * The `Say` command provides Text-To-Speech (TTS) support. It converts text to speech and then renders it in a female voice back to the caller. `Say` is useful in cases where it's difficult to pre-record a prompt for any reason. `Say` does not allow barge-in unless nested within a `GetSpeech` command. The file will always be played to completion unless nested.
 */
+
 interface AttributeType {
     name: string
     baseName: string
@@ -84,7 +85,7 @@ export class Say extends PerclCommand {
             "baseName": "text",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -93,7 +94,7 @@ export class Say extends PerclCommand {
             "baseName": "language",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -102,7 +103,7 @@ export class Say extends PerclCommand {
             "baseName": "loop",
             "type": "number",
             "format": "",
-            
+
             
             "defaultValue": 1
         },
@@ -111,7 +112,7 @@ export class Say extends PerclCommand {
             "baseName": "conferenceId",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -120,7 +121,7 @@ export class Say extends PerclCommand {
             "baseName": "privacyMode",
             "type": "boolean",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

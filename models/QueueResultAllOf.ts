@@ -12,6 +12,7 @@
 
 import { HttpFile } from '../http/http';
 
+
 interface AttributeType {
     name: string
     baseName: string
@@ -66,7 +67,7 @@ export class QueueResultAllOf {
             "baseName": "accountId",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -75,7 +76,7 @@ export class QueueResultAllOf {
             "baseName": "queueId",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -84,7 +85,7 @@ export class QueueResultAllOf {
             "baseName": "alias",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -93,7 +94,7 @@ export class QueueResultAllOf {
             "baseName": "maxSize",
             "type": "number",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -102,7 +103,7 @@ export class QueueResultAllOf {
             "baseName": "currentSize",
             "type": "number",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -111,7 +112,7 @@ export class QueueResultAllOf {
             "baseName": "averageQueueRemovalTime",
             "type": "number",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -120,7 +121,7 @@ export class QueueResultAllOf {
             "baseName": "subresourceUris",
             "type": "any",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

@@ -13,6 +13,7 @@
 import { RecordingResult } from './RecordingResult';
 import { HttpFile } from '../http/http';
 
+
 interface AttributeType {
     name: string
     baseName: string
@@ -34,7 +35,7 @@ export class RecordingListAllOf {
             "baseName": "recordings",
             "type": "Array<RecordingResult>",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

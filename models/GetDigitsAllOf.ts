@@ -13,6 +13,7 @@
 import { PerclCommand } from './PerclCommand';
 import { HttpFile } from '../http/http';
 
+
 interface AttributeType {
     name: string
     baseName: string
@@ -77,7 +78,7 @@ export class GetDigitsAllOf {
             "baseName": "actionUrl",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -86,7 +87,7 @@ export class GetDigitsAllOf {
             "baseName": "digitTimeoutMs",
             "type": "number",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -95,7 +96,7 @@ export class GetDigitsAllOf {
             "baseName": "finishOnKey",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -104,7 +105,7 @@ export class GetDigitsAllOf {
             "baseName": "flushBuffer",
             "type": "boolean",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -113,7 +114,7 @@ export class GetDigitsAllOf {
             "baseName": "initialTimeoutMs",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -122,7 +123,7 @@ export class GetDigitsAllOf {
             "baseName": "maxDigits",
             "type": "number",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -131,7 +132,7 @@ export class GetDigitsAllOf {
             "baseName": "minDigits",
             "type": "number",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -140,7 +141,7 @@ export class GetDigitsAllOf {
             "baseName": "prompts",
             "type": "Array<PerclCommand>",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -149,7 +150,7 @@ export class GetDigitsAllOf {
             "baseName": "privacyMode",
             "type": "boolean",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

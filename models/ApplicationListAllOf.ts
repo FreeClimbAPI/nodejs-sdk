@@ -13,6 +13,7 @@
 import { ApplicationResult } from './ApplicationResult';
 import { HttpFile } from '../http/http';
 
+
 interface AttributeType {
     name: string
     baseName: string
@@ -34,7 +35,7 @@ export class ApplicationListAllOf {
             "baseName": "applications",
             "type": "Array<ApplicationResult>",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];

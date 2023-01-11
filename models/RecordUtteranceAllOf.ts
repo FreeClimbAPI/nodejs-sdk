@@ -12,6 +12,7 @@
 
 import { HttpFile } from '../http/http';
 
+
 interface AttributeType {
     name: string
     baseName: string
@@ -66,7 +67,7 @@ export class RecordUtteranceAllOf {
             "baseName": "actionUrl",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -75,7 +76,7 @@ export class RecordUtteranceAllOf {
             "baseName": "silenceTimeoutMs",
             "type": "number",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -84,7 +85,7 @@ export class RecordUtteranceAllOf {
             "baseName": "finishOnKey",
             "type": "string",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -93,7 +94,7 @@ export class RecordUtteranceAllOf {
             "baseName": "maxLengthSec",
             "type": "number",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -102,7 +103,7 @@ export class RecordUtteranceAllOf {
             "baseName": "playBeep",
             "type": "boolean",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -111,7 +112,7 @@ export class RecordUtteranceAllOf {
             "baseName": "autoStart",
             "type": "boolean",
             "format": "",
-            
+
             
             "defaultValue": undefined
         },
@@ -120,7 +121,7 @@ export class RecordUtteranceAllOf {
             "baseName": "privacyMode",
             "type": "boolean",
             "format": "",
-            
+
             
             "defaultValue": undefined
         }    ];
