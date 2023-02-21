@@ -52,8 +52,8 @@ interface AttributeType {
 interface ArgumentsType {
     'actionUrl': string;
     'callConnectUrl': string;
-    'callingNumber': number;
-    'destination': number;
+    'callingNumber': string;
+    'destination': string;
     'ifMachine'?: IfMachine;
     'ifMachineUrl'?: string;
     'sendDigits'?: string;
@@ -73,11 +73,11 @@ export class OutDial extends PerclCommand {
     /**
     * he caller ID to show to the called party when FreeClimb calls. This can be one of the following: The To or From number provided in the first Webhook to your webserver. Any phone number you have purchased from FreeClimb.
     */
-    'callingNumber': number;
+    'callingNumber': string;
     /**
     * E.164 representation of the phone number to Call. 
     */
-    'destination': number;
+    'destination': string;
     'ifMachine'?: IfMachine;
     /**
     * When the `ifMachine` flag is set to `redirect`, this attribute specifies a URL to which FreeClimb makes a POST request when an answering machine or a fax machine is detected. This URL is required if the `ifMachine` flag is set to `redirect`. Otherwise, it should not be included.
@@ -124,7 +124,7 @@ export class OutDial extends PerclCommand {
         {
             "name": "callingNumber",
             "baseName": "callingNumber",
-            "type": "number",
+            "type": "string",
             "format": "",
 
             
@@ -133,7 +133,7 @@ export class OutDial extends PerclCommand {
         {
             "name": "destination",
             "baseName": "destination",
-            "type": "number",
+            "type": "string",
             "format": "",
 
             
