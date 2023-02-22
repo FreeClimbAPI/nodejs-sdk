@@ -9,6 +9,14 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 None
 
+<a name="3.1.2"></a>
+
+## [3.1.2] - 2023-02-21
+
+### Changed
+
+- OutDial PerCL command callingNumber and destination types fixed
+
 <a name="3.1.1"></a>
 
 ## [3.1.1] - 2023-02-14
