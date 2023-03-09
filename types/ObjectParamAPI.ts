@@ -546,7 +546,7 @@ export interface DefaultApiListCallsRequest {
      * @type CallStatus
      * @memberof DefaultApilistCalls
      */
-    status?: CallStatus
+    callStatus?: CallStatus
     
     /**
      * Only show Calls that started at or after this time, given as YYYY-MM-DD hh:mm:ss.
@@ -1218,7 +1218,7 @@ export class ObjectDefaultApi {
      * @param param the request object
      */
     public listCalls(param: DefaultApiListCallsRequest, options?: Configuration): Promise<CallList> {
-        return this.api.listCalls(param.active, param.to, param._from, param.status, param.startTime, param.endTime, param.parentCallId,  options).toPromise();
+        return this.api.listCalls(param.active, param.to, param._from, param.callStatus, param.startTime, param.endTime, param.parentCallId,  options).toPromise();
     }
 
     /**

@@ -1173,12 +1173,12 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
      * @param active If active is set to true then all calls of the nature queued, ringing, inProgress are returned in the query.
      * @param to Only show Calls to this phone number.
      * @param _from Only show Calls from this phone number.
-     * @param status Only show Calls currently in this status. May be &#x60;queued&#x60;, &#x60;ringing&#x60;, &#x60;inProgress&#x60;, &#x60;canceled&#x60;, &#x60;completed&#x60;, &#x60;failed&#x60;, &#x60;busy&#x60;, or &#x60;noAnswer&#x60;.
+     * @param callStatus Only show Calls currently in this status. May be &#x60;queued&#x60;, &#x60;ringing&#x60;, &#x60;inProgress&#x60;, &#x60;canceled&#x60;, &#x60;completed&#x60;, &#x60;failed&#x60;, &#x60;busy&#x60;, or &#x60;noAnswer&#x60;.
      * @param startTime Only show Calls that started at or after this time, given as YYYY-MM-DD hh:mm:ss.
      * @param endTime Only show Calls that ended at or before this time, given as YYYY-MM- DD hh:mm:ss.
      * @param parentCallId Only show Calls spawned by the call with this ID.
      */
-    public async listCalls(active?: boolean, to?: string, _from?: string, status?: CallStatus, startTime?: string, endTime?: string, parentCallId?: string, _options?: Configuration): Promise<RequestContext> {
+    public async listCalls(active?: boolean, to?: string, _from?: string, callStatus?: CallStatus, startTime?: string, endTime?: string, parentCallId?: string, _options?: Configuration): Promise<RequestContext> {
         const _config = _options || this.configuration;
         const { accountId } = this.configuration
         
@@ -1202,8 +1202,8 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
             requestContext.setQueryParam("from", ObjectSerializer.serialize(_from, "string", ""));
         }
         // Query Params
-        if (status !== undefined) {
-            requestContext.setQueryParam("status", ObjectSerializer.serialize(status, "CallStatus", ""));
+        if (callStatus !== undefined) {
+            requestContext.setQueryParam("callStatus", ObjectSerializer.serialize(callStatus, "CallStatus", ""));
         }
         // Query Params
         if (startTime !== undefined) {

@@ -30,7 +30,7 @@ interface ArgumentsType {
     '_from'?: string;
     'to'?: string;
     'phoneNumberId'?: string;
-    'status'?: CallStatus;
+    'callStatus'?: CallStatus;
     'startTime'?: string;
     'connectTime'?: string;
     'endTime'?: string;
@@ -65,7 +65,7 @@ export class CallResultAllOf {
     * If the Call was inbound, this is the ID of the IncomingPhoneNumber that received the Call (DNIS). If the Call was outbound, this is the ID of the phone number from which the Call was placed (ANI).
     */
     'phoneNumberId'?: string;
-    'status'?: CallStatus;
+    'callStatus'?: CallStatus;
     /**
     * Start time of the Call (GMT) in RFC 1123 format (e.g., Mon, 15 Jun 2009 20:45:30 GMT). Empty if the Call has not yet been dialed.
     */
@@ -151,8 +151,8 @@ export class CallResultAllOf {
             "defaultValue": undefined
         },
         {
-            "name": "status",
-            "baseName": "status",
+            "name": "callStatus",
+            "baseName": "callStatus",
             "type": "CallStatus",
             "format": "",
 
