@@ -229,11 +229,11 @@ describe('DefaultAPI', () => {
         const active = false
         const to = "to_example"
         const from = "from_example"
-        const callStatus = CallStatus.QUEUED
+        const status = CallStatus.QUEUED
         const startTime = "startTime_example"
         const endTime = "endTime_example"
         const parentCallId = "parentCallId_example"
-        let data = await apiInstance.listCalls(active, to, from, callStatus, startTime, endTime, parentCallId)    
+        let data = await apiInstance.listCalls(active, to, from, status, startTime, endTime, parentCallId)    
         expect(data).toBeInstanceOf(CallList)
     });
 

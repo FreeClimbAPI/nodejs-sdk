@@ -878,7 +878,7 @@ export class ObservableDefaultApi {
      
      * @param _from Only show Calls from this phone number.
      
-     * @param callStatus Only show Calls currently in this status. May be &#x60;queued&#x60;, &#x60;ringing&#x60;, &#x60;inProgress&#x60;, &#x60;canceled&#x60;, &#x60;completed&#x60;, &#x60;failed&#x60;, &#x60;busy&#x60;, or &#x60;noAnswer&#x60;.
+     * @param status Only show Calls currently in this status. May be &#x60;queued&#x60;, &#x60;ringing&#x60;, &#x60;inProgress&#x60;, &#x60;canceled&#x60;, &#x60;completed&#x60;, &#x60;failed&#x60;, &#x60;busy&#x60;, or &#x60;noAnswer&#x60;.
      
      * @param startTime Only show Calls that started at or after this time, given as YYYY-MM-DD hh:mm:ss.
      
@@ -887,8 +887,8 @@ export class ObservableDefaultApi {
      * @param parentCallId Only show Calls spawned by the call with this ID.
      
      */
-    public listCalls(active?: boolean, to?: string, _from?: string, callStatus?: CallStatus, startTime?: string, endTime?: string, parentCallId?: string, _options?: Configuration): Observable<CallList> {
-        const requestContextPromise = this.requestFactory.listCalls(active, to, _from, callStatus, startTime, endTime, parentCallId, _options);
+    public listCalls(active?: boolean, to?: string, _from?: string, status?: CallStatus, startTime?: string, endTime?: string, parentCallId?: string, _options?: Configuration): Observable<CallList> {
+        const requestContextPromise = this.requestFactory.listCalls(active, to, _from, status, startTime, endTime, parentCallId, _options);
 
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
