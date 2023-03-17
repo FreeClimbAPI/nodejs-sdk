@@ -1,13 +1,11 @@
 // Sync object
 const config = {
-  preset: 'ts-jest',
+  preset: "ts-jest",
   verbose: true,
   transform: {
-    "^.+\\.tsx?$": "ts-jest",
+    "^.+\\.(ts|tsx)?$": "ts-jest",
+    "^.+\\.(js|jsx)$": "babel-jest",
   },
-  testPathIgnorePatterns: [
-    "/node_modules/",
-    "dist"
-  ]
+  testPathIgnorePatterns: ["/node_modules/", "dist"],
 };
-module.exports = config
+module.exports = config;

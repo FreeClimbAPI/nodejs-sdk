@@ -7,6 +7,7 @@ import * as https from 'https';
 // @ts-ignore
 import * as URLParse from "url-parse";
 import { Observable, from } from '../rxjsStub';
+import * as queryString from "query-string";
 
 export * from './isomorphic-fetch';
 
@@ -69,23 +70,9 @@ export class RequestContext {
      *
      */
     public getUrl(): string {
-        const data = this.url.query
-        let querystring: string = ''
-        const objString = '?' + Object.keys(data).map(key => {
-            if (Array.isArray(data[key])) {
-                data[key].forEach((element: any, index: number) => {
-                    if (index < data[key].length - 1) {
-                      querystring = `${key}=${encodeURIComponent(element)}` + '&'
-                    }
-                    else if (index === data[key].length - 1) {
-                        querystring += `${key}=${encodeURIComponent(element)}`
-                    }
-                })
-                return querystring
-            }
-            return `${key}=${encodeURIComponent(data[key])}`;
-          }).join('&');
-        return this.url.origin + this.url.pathname + objString;
+        const queryParams = "?" + queryString.default.stringify(this.url.query)
+        console.log(queryParams)
+        return this.url.origin + this.url.pathname + queryParams
     }
 
     /**
