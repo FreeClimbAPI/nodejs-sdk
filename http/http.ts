@@ -69,7 +69,23 @@ export class RequestContext {
      *
      */
     public getUrl(): string {
-        return this.url.toString();
+        const data = this.url.query
+        let querystring: string = ''
+        const objString = '?' + Object.keys(data).map(key => {
+            if (Array.isArray(data[key])) {
+                data[key].forEach((element: any, index: number) => {
+                    if (index < data[key].length - 1) {
+                      querystring = `${key}=${encodeURIComponent(element)}` + '&'
+                    }
+                    else if (index === data[key].length - 1) {
+                        querystring += `${key}=${encodeURIComponent(element)}`
+                    }
+                })
+                return querystring
+            }
+            return `${key}=${encodeURIComponent(data[key])}`;
+          }).join('&');
+        return this.url.origin + this.url.pathname + objString;
     }
 
     /**

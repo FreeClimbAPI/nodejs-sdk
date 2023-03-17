@@ -14,9 +14,9 @@ For more information, please visit [https://www.freeclimb.com/support/](https://
 ## Installing
 
 ```sh
-npm install @freeclimb/sdk@3.1.3
+npm install @freeclimb/sdk@3.2.0
 or 
-yarn add @freeclimb/sdk@3.1.3
+yarn add @freeclimb/sdk@3.2.0
 ```
 
 ## Getting Started 

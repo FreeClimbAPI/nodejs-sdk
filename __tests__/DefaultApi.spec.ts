@@ -233,7 +233,9 @@ describe('DefaultAPI', () => {
         const startTime = "startTime_example"
         const endTime = "endTime_example"
         const parentCallId = "parentCallId_example"
-        let data = await apiInstance.listCalls(active, to, from, status, startTime, endTime, parentCallId)    
+        const applicationId: Array<string> = ["AP0123456789ABCDEFabcedf000000000000000001", "AP0123456789ABCDEFabcedf000000000000000002", "AP0123456789ABCDEFabcedf000000000000000003"]
+        const hasApplication = true
+        let data = await apiInstance.listCalls(active, to, from, status, startTime, endTime, parentCallId, applicationId, hasApplication)    
         expect(data).toBeInstanceOf(CallList)
     });
 
