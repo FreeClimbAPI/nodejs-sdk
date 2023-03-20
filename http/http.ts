@@ -71,8 +71,7 @@ export class RequestContext {
      *
      */
     public getUrl(): string {
-        const queryParams = "?" + stringify(this.url.query)
-        return this.url.origin + this.url.pathname + queryParams
+        return this.url.toString(stringify)
     }
 
     /**
