@@ -71,6 +71,7 @@ export class RequestContext {
      *
      */
     public getUrl(): string {
+        console.log(this.url.toString(stringify))
         return this.url.toString(stringify)
     }
 
