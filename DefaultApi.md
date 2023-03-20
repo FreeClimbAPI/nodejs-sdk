@@ -1781,7 +1781,7 @@ let body:freeclimb.DefaultApiListCallsRequest = {
 
   // Array<string> | Only show calls belonging to the given applicationId. This parameter can be repeated to return calls from multiple Applications. (optional)
   applicationId: [
-    "AP62ECB020842930cc01FFCCfeEe150AC32DcAEc8a",
+    "AP0000000000000000000000000000000000000001",
   ],
 
   // boolean | Only show calls which are associated with an Application (applicationId != null) (optional)

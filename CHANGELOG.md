@@ -15,7 +15,7 @@ None
 
 ### Changed
 
-- ListCalls allows for applicationId and has_application query parameters
+- ListCalls allows for applicationId and hasApplication query parameters
 
 <a name="3.1.3"></a>
 

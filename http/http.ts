@@ -7,7 +7,8 @@ import * as https from 'https';
 // @ts-ignore
 import * as URLParse from "url-parse";
 import { Observable, from } from '../rxjsStub';
-import * as queryString from "query-string";
+//import { stringify } from "query-string";
+import { stringify } from 'qs'
 
 export * from './isomorphic-fetch';
 
@@ -70,7 +71,7 @@ export class RequestContext {
      *
      */
     public getUrl(): string {
-        const queryParams = "?" + queryString.default.stringify(this.url.query)
+        const queryParams = "?" + stringify(this.url.query)
         return this.url.origin + this.url.pathname + queryParams
     }
 
