@@ -9,7 +9,7 @@ describe("RequestVerifier", () => {
     });
     describe("#checkRequestBody", () => {
         describe("Request Body is empty or null", () => {
-            test("Error message is correct", () => {
+            test("throws 'Request Body cannot be empty or null'", () => {
                 const tolerance: number = 5 * 60
                 const requestBody: string = "";
                 const signingSecret: string = "sigsec_ead6d3b6904196c60835d039e91b3341c77a7793";
@@ -21,7 +21,7 @@ describe("RequestVerifier", () => {
 
     describe("#checkRequestHeader", () => {
         describe("signatures are not present", () => {
-            test("Error message is correct", () => {
+            test("throws 'Error with request header, signatures are not present'", () => {
                 const tolerance: number = 5 * 60
                 const requestBody: string = "{\"accountId\":\"AC1334ffb694cd8d969f51cddf5f7c9b478546d50c\",\"callId\":\"CAccb0b00506553cda09b51c5477f672a49e0b2213\",\"callStatus\":\"ringing\",\"conferenceId\":null,\"direction\":\"inbound\",\"from\":\"+13121000109\",\"parentCallId\":null,\"queueId\":null,\"requestType\":\"inboundCall\",\"to\":\"+13121000096\"}"
                 const signingSecret: string = "sigsec_ead6d3b6904196c60835d039e91b3341c77a7793";
@@ -30,7 +30,7 @@ describe("RequestVerifier", () => {
             }) 
         })
         describe("timestamp is not present", () => {
-            test("Error message is correct", () => {
+            test("throws 'Error with request header, timestamp is not present'", () => {
                 const tolerance: number = 5 * 60
                 const requestBody: string = "{\"accountId\":\"AC1334ffb694cd8d969f51cddf5f7c9b478546d50c\",\"callId\":\"CAccb0b00506553cda09b51c5477f672a49e0b2213\",\"callStatus\":\"ringing\",\"conferenceId\":null,\"direction\":\"inbound\",\"from\":\"+13121000109\",\"parentCallId\":null,\"queueId\":null,\"requestType\":\"inboundCall\",\"to\":\"+13121000096\"}"
                 const signingSecret: string = "sigsec_ead6d3b6904196c60835d039e91b3341c77a7793";
@@ -39,7 +39,7 @@ describe("RequestVerifier", () => {
             }) 
         })
         describe("Request header is empty or null", () => {
-            test("Error message is correct", () => {
+            test("throws 'Error with request header, Request header is empty'", () => {
                 const tolerance: number = 5 * 60
                 const requestBody: string = "{\"accountId\":\"AC1334ffb694cd8d969f51cddf5f7c9b478546d50c\",\"callId\":\"CAccb0b00506553cda09b51c5477f672a49e0b2213\",\"callStatus\":\"ringing\",\"conferenceId\":null,\"direction\":\"inbound\",\"from\":\"+13121000109\",\"parentCallId\":null,\"queueId\":null,\"requestType\":\"inboundCall\",\"to\":\"+13121000096\"}"
                 const signingSecret: string = "sigsec_ead6d3b6904196c60835d039e91b3341c77a7793";
@@ -50,7 +50,7 @@ describe("RequestVerifier", () => {
     })
     describe("#checkSigningSecret", () => {
         describe("Signing secret is empty or null", () => {
-            test("Error message is correct", () => {
+            test("throws 'Signing secret cannot be empty or null'", () => {
                 const tolerance: number = 5 * 60
                 const requestBody: string = "{\"accountId\":\"AC1334ffb694cd8d969f51cddf5f7c9b478546d50c\",\"callId\":\"CAccb0b00506553cda09b51c5477f672a49e0b2213\",\"callStatus\":\"ringing\",\"conferenceId\":null,\"direction\":\"inbound\",\"from\":\"+13121000109\",\"parentCallId\":null,\"queueId\":null,\"requestType\":\"inboundCall\",\"to\":\"+13121000096\"}"
                 const signingSecret: string = "";
@@ -62,7 +62,7 @@ describe("RequestVerifier", () => {
 
     describe("#checkTolerance", () => {
         describe("Tolerance value is NaN", () => {
-            test("Error message is correct", () => {
+            test("throws 'Tolerance value must be a positive integer'", () => {
                 const tolerance: number = NaN
                 const requestBody: string = "{\"accountId\":\"AC1334ffb694cd8d969f51cddf5f7c9b478546d50c\",\"callId\":\"CAccb0b00506553cda09b51c5477f672a49e0b2213\",\"callStatus\":\"ringing\",\"conferenceId\":null,\"direction\":\"inbound\",\"from\":\"+13121000109\",\"parentCallId\":null,\"queueId\":null,\"requestType\":\"inboundCall\",\"to\":\"+13121000096\"}"
                 const signingSecret: string = "sigsec_ead6d3b6904196c60835d039e91b3341c77a7793";
@@ -71,7 +71,7 @@ describe("RequestVerifier", () => {
             })
         })
         describe("Tolerance value is a negative value", () => {
-            test("Error message is correct", () => {
+            test("throws 'Tolerance value must be a positive integer'", () => {
                 const tolerance: number = -5
                 const requestBody: string = "{\"accountId\":\"AC1334ffb694cd8d969f51cddf5f7c9b478546d50c\",\"callId\":\"CAccb0b00506553cda09b51c5477f672a49e0b2213\",\"callStatus\":\"ringing\",\"conferenceId\":null,\"direction\":\"inbound\",\"from\":\"+13121000109\",\"parentCallId\":null,\"queueId\":null,\"requestType\":\"inboundCall\",\"to\":\"+13121000096\"}"
                 const signingSecret: string = "sigsec_ead6d3b6904196c60835d039e91b3341c77a7793";
@@ -80,7 +80,7 @@ describe("RequestVerifier", () => {
             })
         })
         describe("Tolerance value is 0", () => {
-            test("Error message is correct", () => {
+            test("throws 'Tolerance value must be a positive integer'", () => {
                 const tolerance: number = 0
                 const requestBody: string = "{\"accountId\":\"AC1334ffb694cd8d969f51cddf5f7c9b478546d50c\",\"callId\":\"CAccb0b00506553cda09b51c5477f672a49e0b2213\",\"callStatus\":\"ringing\",\"conferenceId\":null,\"direction\":\"inbound\",\"from\":\"+13121000109\",\"parentCallId\":null,\"queueId\":null,\"requestType\":\"inboundCall\",\"to\":\"+13121000096\"}"
                 const signingSecret: string = "sigsec_ead6d3b6904196c60835d039e91b3341c77a7793";
@@ -89,7 +89,7 @@ describe("RequestVerifier", () => {
             })
         })
         describe("Tolerance value is greater than allowed limit", () => {
-            test("Error message is correct", () => {
+            test("throws 'Tolerance value must be a positive integer'", () => {
                 const tolerance: number = Number.MAX_SAFE_INTEGER
                 const requestBody: string = "{\"accountId\":\"AC1334ffb694cd8d969f51cddf5f7c9b478546d50c\",\"callId\":\"CAccb0b00506553cda09b51c5477f672a49e0b2213\",\"callStatus\":\"ringing\",\"conferenceId\":null,\"direction\":\"inbound\",\"from\":\"+13121000109\",\"parentCallId\":null,\"queueId\":null,\"requestType\":\"inboundCall\",\"to\":\"+13121000096\"}"
                 const signingSecret: string = "sigsec_ead6d3b6904196c60835d039e91b3341c77a7793";
@@ -100,8 +100,8 @@ describe("RequestVerifier", () => {
     })
 
     describe("#verifyTolerance", () => {
-        describe("Request and tolerance does not meet conditions", () => {
-            test("Error message is correct", () => {
+        describe("Request plus tolerance is not less than the current datetime", () => {
+            test("throws 'Request time exceeded tolerance threshold. Request: 1900871395, CurrentTime: currentTimeValue, tolerance, toleranceValue'", () => {
                 const currentTime = moment().unix();
                 const tolerance: number = 5 * 60
                 const requestBody: string = "{\"accountId\":\"AC1334ffb694cd8d969f51cddf5f7c9b478546d50c\",\"callId\":\"CAccb0b00506553cda09b51c5477f672a49e0b2213\",\"callStatus\":\"ringing\",\"conferenceId\":null,\"direction\":\"inbound\",\"from\":\"+13121000109\",\"parentCallId\":null,\"queueId\":null,\"requestType\":\"inboundCall\",\"to\":\"+13121000096\"}"
@@ -114,8 +114,8 @@ describe("RequestVerifier", () => {
     })
 
     describe("#verifySignature", () => {
-        describe("Signature request is unverified", () => {
-            test("Error message is correct", () => {
+        describe("Signature request is unverified, signing secret does not exist in signatures, potential typo", () => {
+            test("throws 'Unverified signature request, If this request was unexpected, it may be from a bad actor. Please proceed with caution. If the request was exepected, please check any typos or issues with the signingSecret'", () => {
                 const tolerance: number = 5 * 60
                 const requestBody: string = "{\"accountId\":\"AC1334ffb694cd8d969f51cddf5f7c9b478546d50c\",\"callId\":\"CAccb0b00506553cda09b51c5477f672a49e0b2213\",\"callStatus\":\"ringing\",\"conferenceId\":null,\"direction\":\"inbound\",\"from\":\"+13121000109\",\"parentCallId\":null,\"queueId\":null,\"requestType\":\"inboundCall\",\"to\":\"+13121000096\"}"
                 const signingSecret: string = "sigsec_ead6d3b6904196c60835d039e91b3341c77a7794";
@@ -126,8 +126,8 @@ describe("RequestVerifier", () => {
     })
 
     describe("#verifyRequestSignature", () => {
-        describe("All inputs are correct and no errors are thrown", () => {
-            test("Error message is correct", () => {
+        describe("Request is valid", () => {
+            test("No errors are thrown", () => {
                 const tolerance: number = 5 * 60
                 const requestBody: string = "{\"accountId\":\"AC1334ffb694cd8d969f51cddf5f7c9b478546d50c\",\"callId\":\"CAccb0b00506553cda09b51c5477f672a49e0b2213\",\"callStatus\":\"ringing\",\"conferenceId\":null,\"direction\":\"inbound\",\"from\":\"+13121000109\",\"parentCallId\":null,\"queueId\":null,\"requestType\":\"inboundCall\",\"to\":\"+13121000096\"}"
                 const signingSecret: string = "sigsec_ead6d3b6904196c60835d039e91b3341c77a7793";
