@@ -8,7 +8,7 @@ describe("RequestVerifier", () => {
         instance = new RequestVerifier();
     });
     describe("#checkRequestBody", () => {
-        describe("Request Body is empty or null", () => {
+        describe("Request Body is empty", () => {
             test("throws 'Request Body cannot be empty or null'", () => {
                 const tolerance: number = 5 * 60
                 const requestBody: string = "";
@@ -49,7 +49,7 @@ describe("RequestVerifier", () => {
         })  
     })
     describe("#checkSigningSecret", () => {
-        describe("Signing secret is empty or null", () => {
+        describe("Signing secret is empty", () => {
             test("throws 'Signing secret cannot be empty or null'", () => {
                 const tolerance: number = 5 * 60
                 const requestBody: string = "{\"accountId\":\"AC1334ffb694cd8d969f51cddf5f7c9b478546d50c\",\"callId\":\"CAccb0b00506553cda09b51c5477f672a49e0b2213\",\"callStatus\":\"ringing\",\"conferenceId\":null,\"direction\":\"inbound\",\"from\":\"+13121000109\",\"parentCallId\":null,\"queueId\":null,\"requestType\":\"inboundCall\",\"to\":\"+13121000096\"}"
