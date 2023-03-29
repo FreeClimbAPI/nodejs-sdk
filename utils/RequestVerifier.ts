@@ -38,7 +38,7 @@ export class RequestVerifier {
     }
 
     checkTolerance(tolerance: number) {
-        if (tolerance <= 0 || Number.isNaN(tolerance) || tolerance >= NaN) {
+        if (tolerance <= 0 || Number.isNaN(tolerance) || tolerance >= Number.MAX_SAFE_INTEGER) {
             throw new Error("Tolerance value must be a positive integer");
         }
     }
