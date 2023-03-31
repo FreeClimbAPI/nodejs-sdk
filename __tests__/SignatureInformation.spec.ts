@@ -15,7 +15,7 @@ describe("SignatureInformation", () => {
                 expect(isRequestTimeValid).toBe(true)
             })
             test("returns false", () => {
-                const tolerance: number = 5 * 60 * 1000;
+                const tolerance: number = 5 * 60 * 10000;
                 const isRequestTimeValid: boolean = instance.isRequestTimeValid(tolerance);
                 expect(isRequestTimeValid).toBe(false)
             })
