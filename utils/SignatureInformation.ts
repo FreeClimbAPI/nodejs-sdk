@@ -8,8 +8,7 @@ export class SignatureInformation {
     constructor(requestHeader: string) {
         const signatureHeaders: Array<string> = requestHeader.split(",")
         signatureHeaders.forEach((signature) => {
-            const header = signature.split("=")[0]
-            const value = signature.split("=")[1]
+            const [header, value] = signature.split("=")
             if (header === "t") {
                 this.requestTimestamp = parseInt(value)
             }
