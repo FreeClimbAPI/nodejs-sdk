@@ -3,14 +3,15 @@ import { SignatureInformation } from "./SignatureInformation";
 export class RequestVerifier {
     public static readonly DEFAULT_TOLERANCE: number = 5 * 60 * 1000;
 
-    verifyRequestSignature(requestBody: string, requestHeader: string, signingSecret: string, tolerance: number = RequestVerifier.DEFAULT_TOLERANCE) {
-        this.checkRequestBody(requestBody);
-        this.checkRequestHeader(requestHeader);
-        this.checkSigningSecret(signingSecret);
-        this.checkTolerance(tolerance);
+    static verifyRequestSignature(requestBody: string, requestHeader: string, signingSecret: string, tolerance: number = RequestVerifier.DEFAULT_TOLERANCE) {
+        const verifier: RequestVerifier = new RequestVerifier();
+        verifier.checkRequestBody(requestBody);
+        verifier.checkRequestHeader(requestHeader);
+        verifier.checkSigningSecret(signingSecret);
+        verifier.checkTolerance(tolerance);
         const info: SignatureInformation = new SignatureInformation(requestHeader);
-        this.verifyTolerance(info, tolerance);
-        this.verifySignature(info, requestBody, signingSecret);
+        verifier.verifyTolerance(info, tolerance);
+        verifier.verifySignature(info, requestBody, signingSecret);
     }
 
     checkRequestBody(requestBody: string) {
