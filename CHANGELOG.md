@@ -15,8 +15,7 @@ None
 
 ### Added
 
-- Introduce signing secret verification class (RequestVerifier)
-- Link to FreeClimb docs regarding signing secret verification: https://docs.freeclimb.com/docs/validating-requests-from-freeclimb#how-to-verify-requests-manually
+- Introduce signing secret verification class (RequestVerifier) - https://docs.freeclimb.com/docs/validating-requests-from-freeclimb#how-to-verify-requests-manually
 
 <a name="3.1.3"></a>
 
