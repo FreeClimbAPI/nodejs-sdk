@@ -14,13 +14,13 @@ export class RequestVerifier {
         verifier.verifySignature(info, requestBody, signingSecret);
     }
 
-    checkRequestBody(requestBody: string) {
+    private checkRequestBody(requestBody: string) {
         if (requestBody === "" || requestBody === null) {
             throw new Error("Request Body cannot be empty or null");
         }
     }
 
-    checkRequestHeader(requestHeader: string) {
+    private checkRequestHeader(requestHeader: string) {
         if (requestHeader === "" || requestHeader === null) {
             throw new Error("Error with request header, Request header is empty");
         }
@@ -32,19 +32,19 @@ export class RequestVerifier {
         }
     }
 
-    checkSigningSecret(signingSecret: string) {
+    private checkSigningSecret(signingSecret: string) {
         if (signingSecret === "" || signingSecret === null) {
             throw new Error("Signing secret cannot be empty or null");
         }
     }
 
-    checkTolerance(tolerance: number) {
+    private checkTolerance(tolerance: number) {
         if (tolerance <= 0 || Number.isNaN(tolerance) || tolerance >= Number.MAX_SAFE_INTEGER) {
             throw new Error("Tolerance value must be a positive integer");
         }
     }
 
-    verifyTolerance(info: SignatureInformation, tolerance: number) {
+    private verifyTolerance(info: SignatureInformation, tolerance: number) {
         const currentTime: number = info.getCurrentUnixTime()
         if (!info.isRequestTimeValid(tolerance)) {
             throw new Error("Request time exceeded tolerance threshold. Request: " + info.requestTimestamp

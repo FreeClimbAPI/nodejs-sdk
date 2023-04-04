@@ -28,7 +28,7 @@ export class SignatureInformation {
         return this.signatures.includes(hashValue);
     }
 
-    computeHash(requestBody: string, signingSecret: string): string {
+    private computeHash(requestBody: string, signingSecret: string): string {
         const data: string = this.requestTimestamp + '.' + requestBody;
         return crypto.createHmac('sha256', signingSecret).update(data).digest('hex');
     }
