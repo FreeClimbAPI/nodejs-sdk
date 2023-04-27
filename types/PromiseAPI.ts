@@ -490,9 +490,13 @@ export class PromiseDefaultApi {
      
      * @param parentCallId Only show Calls spawned by the call with this ID.
      
+     * @param applicationId Only show calls belonging to the given applicationId. This parameter can be repeated to return calls from multiple Applications.
+     
+     * @param hasApplication Only show calls which are associated with an Application (applicationId !&#x3D; null)
+     
      */
-    public listCalls(active?: boolean, to?: string, _from?: string, status?: CallStatus, startTime?: string, endTime?: string, parentCallId?: string, _options?: Configuration): Promise<CallList> {
-        const result = this.api.listCalls(active, to, _from, status, startTime, endTime, parentCallId, _options);
+    public listCalls(active?: boolean, to?: string, _from?: string, status?: CallStatus, startTime?: string, endTime?: string, parentCallId?: string, applicationId?: Array<string>, hasApplication?: boolean, _options?: Configuration): Promise<CallList> {
+        const result = this.api.listCalls(active, to, _from, status, startTime, endTime, parentCallId, applicationId, hasApplication, _options);
         return result.toPromise();
     }
 

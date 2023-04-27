@@ -7,6 +7,7 @@ import * as https from 'https';
 // @ts-ignore
 import * as URLParse from "url-parse";
 import { Observable, from } from '../rxjsStub';
+import { stringify } from 'qs'
 
 export * from './isomorphic-fetch';
 
@@ -69,7 +70,10 @@ export class RequestContext {
      *
      */
     public getUrl(): string {
-        return this.url.toString();
+        const stringifyWithArrayFormat = (object: any) => {
+            return stringify(object, {arrayFormat: 'repeat'})
+        }
+        return this.url.toString(stringifyWithArrayFormat)
     }
 
     /**
