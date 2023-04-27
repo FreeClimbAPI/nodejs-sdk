@@ -1178,9 +1178,8 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
      * @param endTime Only show Calls that ended at or before this time, given as YYYY-MM- DD hh:mm:ss.
      * @param parentCallId Only show Calls spawned by the call with this ID.
      * @param applicationId Only show calls belonging to the given applicationId. This parameter can be repeated to return calls from multiple Applications.
-     * @param hasApplication Only show calls which are associated with an Application (applicationId !&#x3D; null)
      */
-    public async listCalls(active?: boolean, to?: string, _from?: string, status?: CallStatus, startTime?: string, endTime?: string, parentCallId?: string, applicationId?: Array<string>, hasApplication?: boolean, _options?: Configuration): Promise<RequestContext> {
+    public async listCalls(active?: boolean, to?: string, _from?: string, status?: CallStatus, startTime?: string, endTime?: string, parentCallId?: string, applicationId?: Array<string>, _options?: Configuration): Promise<RequestContext> {
         const _config = _options || this.configuration;
         const { accountId } = this.configuration
         
@@ -1222,10 +1221,6 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         // Query Params
         if (applicationId !== undefined) {
             requestContext.setQueryParam("applicationId", ObjectSerializer.serialize(applicationId, "Array<string>", ""));
-        }
-        // Query Params
-        if (hasApplication !== undefined) {
-            requestContext.setQueryParam("hasApplication", ObjectSerializer.serialize(hasApplication, "boolean", ""));
         }
         
 

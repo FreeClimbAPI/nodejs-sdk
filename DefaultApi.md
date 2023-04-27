@@ -1784,9 +1784,6 @@ let body:freeclimb.DefaultApiListCallsRequest = {
     "AP62ECB020842930cc01FFCCfeEe150AC32DcAEc8a",
   ],
 
-  // boolean | Only show calls which are associated with an Application (applicationId != null) (optional)
-  hasApplication: true,
-
 };
 
 apiInstance.listCalls(body).then((data:any) => {
@@ -1807,7 +1804,6 @@ Name | Type | Description  | Notes
  **endTime** | [**string**] | Only show Calls that ended at or before this time, given as YYYY-MM- DD hh:mm:ss. | (optional) defaults to undefined
  **parentCallId** | [**string**] | Only show Calls spawned by the call with this ID. | (optional) defaults to undefined
  **applicationId** | **Array&lt;string&gt;** | Only show calls belonging to the given applicationId. This parameter can be repeated to return calls from multiple Applications. | (optional) defaults to undefined
- **hasApplication** | [**boolean**] | Only show calls which are associated with an Application (applicationId !&#x3D; null) | (optional) defaults to undefined
 
 
 ### Return type

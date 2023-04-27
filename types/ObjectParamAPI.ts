@@ -576,13 +576,6 @@ export interface DefaultApiListCallsRequest {
      */
     applicationId?: Array<string>
     
-    /**
-     * Only show calls which are associated with an Application (applicationId !&#x3D; null)
-     * @type boolean
-     * @memberof DefaultApilistCalls
-     */
-    hasApplication?: boolean
-    
 }
 
 export interface DefaultApiListConferencesRequest {
@@ -1232,7 +1225,7 @@ export class ObjectDefaultApi {
      * @param param the request object
      */
     public listCalls(param: DefaultApiListCallsRequest, options?: Configuration): Promise<CallList> {
-        return this.api.listCalls(param.active, param.to, param._from, param.status, param.startTime, param.endTime, param.parentCallId, param.applicationId, param.hasApplication,  options).toPromise();
+        return this.api.listCalls(param.active, param.to, param._from, param.status, param.startTime, param.endTime, param.parentCallId, param.applicationId,  options).toPromise();
     }
 
     /**
