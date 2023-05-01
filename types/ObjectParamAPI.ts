@@ -569,6 +569,13 @@ export interface DefaultApiListCallsRequest {
      */
     parentCallId?: string
     
+    /**
+     * Only show calls belonging to the given applicationId. This parameter can be repeated to return calls from multiple Applications.
+     * @type Array&lt;string&gt;
+     * @memberof DefaultApilistCalls
+     */
+    applicationId?: Array<string>
+    
 }
 
 export interface DefaultApiListConferencesRequest {
@@ -1218,7 +1225,7 @@ export class ObjectDefaultApi {
      * @param param the request object
      */
     public listCalls(param: DefaultApiListCallsRequest, options?: Configuration): Promise<CallList> {
-        return this.api.listCalls(param.active, param.to, param._from, param.status, param.startTime, param.endTime, param.parentCallId,  options).toPromise();
+        return this.api.listCalls(param.active, param.to, param._from, param.status, param.startTime, param.endTime, param.parentCallId, param.applicationId,  options).toPromise();
     }
 
     /**

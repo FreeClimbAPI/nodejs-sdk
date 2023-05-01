@@ -886,9 +886,11 @@ export class ObservableDefaultApi {
      
      * @param parentCallId Only show Calls spawned by the call with this ID.
      
+     * @param applicationId Only show calls belonging to the given applicationId. This parameter can be repeated to return calls from multiple Applications.
+     
      */
-    public listCalls(active?: boolean, to?: string, _from?: string, status?: CallStatus, startTime?: string, endTime?: string, parentCallId?: string, _options?: Configuration): Observable<CallList> {
-        const requestContextPromise = this.requestFactory.listCalls(active, to, _from, status, startTime, endTime, parentCallId, _options);
+    public listCalls(active?: boolean, to?: string, _from?: string, status?: CallStatus, startTime?: string, endTime?: string, parentCallId?: string, applicationId?: Array<string>, _options?: Configuration): Observable<CallList> {
+        const requestContextPromise = this.requestFactory.listCalls(active, to, _from, status, startTime, endTime, parentCallId, applicationId, _options);
 
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
