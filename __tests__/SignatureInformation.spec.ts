@@ -2,9 +2,10 @@ import { describe, expect, test, beforeAll } from "@jest/globals";
 import { SignatureInformation } from '../utils/SignatureInformation'
 
 describe("SignatureInformation", () => {
+    const timestamp: number = 1679944186
     let instance: SignatureInformation
     beforeAll(() => {
-        const requestHeader: string = "t=1679944186,v1=c3957749baf61df4b1506802579cc69a74c77a1ae21447b930e5a704f9ec4120,v1=1ba18712726898fbbe48cd862dd096a709f7ad761a5bab14bda9ac24d963a6a8";
+        const requestHeader: string = "t=" + timestamp.toString() + ",v1=c3957749baf61df4b1506802579cc69a74c77a1ae21447b930e5a704f9ec4120,v1=1ba18712726898fbbe48cd862dd096a709f7ad761a5bab14bda9ac24d963a6a8";
         instance = new SignatureInformation(requestHeader);
     });
     describe("#isRequestTimeValid", () => {
@@ -15,7 +16,7 @@ describe("SignatureInformation", () => {
                 expect(isRequestTimeValid).toBe(true)
             })
             test("returns false", () => {
-                const tolerance: number = 5 * 60 * 10000;
+                const tolerance: number = Number.MAX_SAFE_INTEGER - timestamp;
                 const isRequestTimeValid: boolean = instance.isRequestTimeValid(tolerance);
                 expect(isRequestTimeValid).toBe(false)
             })
