@@ -19,7 +19,7 @@ export class SignatureInformation {
     }
 
     isRequestTimeValid(tolerance: number):boolean {
-        var currentUnixTimestamp = this.getCurrentUnixTime();
+        const currentUnixTimestamp = this.getCurrentUnixTime();
         return (this.requestTimestamp + tolerance) < currentUnixTimestamp;
     }
 
