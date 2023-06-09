@@ -9,6 +9,14 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 None
 
+<a name="3.4.0"></a>
+
+## [3.4.0] - 2023-06-09
+
+### Changed
+
+- Number management feature for nodejs sdk including methods, properties, and testing
+
 <a name="3.3.0"></a>
 
 ## [3.3.0] - 2023-04-27
