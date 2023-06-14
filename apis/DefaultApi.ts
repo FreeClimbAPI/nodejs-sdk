@@ -875,109 +875,6 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
-     * Get list of SMS 10DLC Brnads
-     
-     */
-    public async getAnSmsTenDLCBrands(_options?: Configuration): Promise<RequestContext> {
-        const _config = _options || this.configuration;
-        const { accountId } = this.configuration
-        
-        // Path Params
-        const localVarPath = '/Accounts/{accountId}/Messages/10DLC/Brands'
-            .replace('{' + 'accountId' + '}', encodeURIComponent(String(accountId)));
-
-        // Make Request Context
-        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
-        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-        
-
-
-        let authMethod: SecurityAuthentication | undefined;
-        // Apply auth methods
-        authMethod = _config.authMethods["fc"]
-        if (authMethod?.applySecurityAuthentication) {
-            await authMethod?.applySecurityAuthentication(requestContext);
-        }
-        const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
-        if (defaultAuth?.applySecurityAuthentication) {
-            await defaultAuth?.applySecurityAuthentication(requestContext);
-        }
-        return requestContext;
-    }
-
-    /**
-     * Get list of SMS 10DLC Campaigns
-     
-     * @param brandId The unique identifier for a brand
-     */
-    public async getAnSmsTenDLCCampaigns(brandId?: string, _options?: Configuration): Promise<RequestContext> {
-        const _config = _options || this.configuration;
-        const { accountId } = this.configuration
-        
-        // Path Params
-        const localVarPath = '/Accounts/{accountId}/Messages/10DLC/Campaigns'
-            .replace('{' + 'accountId' + '}', encodeURIComponent(String(accountId)));
-
-        // Make Request Context
-        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
-        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-        // Query Params
-        if (brandId !== undefined) {
-            requestContext.setQueryParam("brandId", ObjectSerializer.serialize(brandId, "string", ""));
-        }
-        
-
-
-        let authMethod: SecurityAuthentication | undefined;
-        // Apply auth methods
-        authMethod = _config.authMethods["fc"]
-        if (authMethod?.applySecurityAuthentication) {
-            await authMethod?.applySecurityAuthentication(requestContext);
-        }
-        const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
-        if (defaultAuth?.applySecurityAuthentication) {
-            await defaultAuth?.applySecurityAuthentication(requestContext);
-        }
-        return requestContext;
-    }
-
-    /**
-     * Get list of SMS 10DLC Partner Campaigns
-     
-     * @param brandId The unique identifier for a brand
-     */
-    public async getAnSmsTenDLCPartnerCampaigns(brandId?: string, _options?: Configuration): Promise<RequestContext> {
-        const _config = _options || this.configuration;
-        const { accountId } = this.configuration
-        
-        // Path Params
-        const localVarPath = '/Accounts/{accountId}/Messages/10DLC/PartnerCampaigns'
-            .replace('{' + 'accountId' + '}', encodeURIComponent(String(accountId)));
-
-        // Make Request Context
-        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
-        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-        // Query Params
-        if (brandId !== undefined) {
-            requestContext.setQueryParam("brandId", ObjectSerializer.serialize(brandId, "string", ""));
-        }
-        
-
-
-        let authMethod: SecurityAuthentication | undefined;
-        // Apply auth methods
-        authMethod = _config.authMethods["fc"]
-        if (authMethod?.applySecurityAuthentication) {
-            await authMethod?.applySecurityAuthentication(requestContext);
-        }
-        const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
-        if (defaultAuth?.applySecurityAuthentication) {
-            await defaultAuth?.applySecurityAuthentication(requestContext);
-        }
-        return requestContext;
-    }
-
-    /**
      * Get Head Member
      
      * @param queueId String that uniquely identifies the Queue that the Member belongs to.
@@ -1052,6 +949,37 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
+     * Get list of SMS 10DLC Brands
+     
+     */
+    public async getTenDLCSmsBrands(_options?: Configuration): Promise<RequestContext> {
+        const _config = _options || this.configuration;
+        const { accountId } = this.configuration
+        
+        // Path Params
+        const localVarPath = '/Accounts/{accountId}/Messages/10DLC/Brands'
+            .replace('{' + 'accountId' + '}', encodeURIComponent(String(accountId)));
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+        
+
+
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["fc"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+        return requestContext;
+    }
+
+    /**
      * Get a 10DLC SMS Campaign
      
      * @param campaignId String that uniquely identifies this campaign resource.
@@ -1089,6 +1017,42 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
+     * Get list of SMS 10DLC Campaigns
+     
+     * @param brandId The unique identifier for a brand
+     */
+    public async getTenDLCSmsCampaigns(brandId?: string, _options?: Configuration): Promise<RequestContext> {
+        const _config = _options || this.configuration;
+        const { accountId } = this.configuration
+        
+        // Path Params
+        const localVarPath = '/Accounts/{accountId}/Messages/10DLC/Campaigns'
+            .replace('{' + 'accountId' + '}', encodeURIComponent(String(accountId)));
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+        // Query Params
+        if (brandId !== undefined) {
+            requestContext.setQueryParam("brandId", ObjectSerializer.serialize(brandId, "string", ""));
+        }
+        
+
+
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["fc"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+        return requestContext;
+    }
+
+    /**
      * Get a 10DLC SMS Partner Campaign
      
      * @param campaignId String that uniquely identifies this campaign resource.
@@ -1109,6 +1073,42 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+        
+
+
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["fc"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+        return requestContext;
+    }
+
+    /**
+     * Get list of SMS 10DLC Partner Campaigns
+     
+     * @param brandId The unique identifier for a brand
+     */
+    public async getTenDLCSmsPartnerCampaigns(brandId?: string, _options?: Configuration): Promise<RequestContext> {
+        const _config = _options || this.configuration;
+        const { accountId } = this.configuration
+        
+        // Path Params
+        const localVarPath = '/Accounts/{accountId}/Messages/10DLC/PartnerCampaigns'
+            .replace('{' + 'accountId' + '}', encodeURIComponent(String(accountId)));
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+        // Query Params
+        if (brandId !== undefined) {
+            requestContext.setQueryParam("brandId", ObjectSerializer.serialize(brandId, "string", ""));
+        }
         
 
 
@@ -1520,7 +1520,7 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
      * @param hasApplication Indication of whether the phone number has an application linked to it.
      * @param voiceEnabled Indicates whether the phone number can handle Calls. Typically set to true for all numbers.
      * @param smsEnabled Indication of whether the phone number can handle sending and receiving SMS messages. Typically set to true for all numbers.
-     * @param hasCampaign Indication of whether the phone number has a campaign accociatied with it
+     * @param hasCampaign Indication of whether the phone number has a campaign associated with it
      * @param capabilitiesVoice 
      * @param capabilitiesSms 
      * @param capabilitiesTollFree 
@@ -2902,93 +2902,6 @@ export class DefaultApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to getAnSmsTenDLCBrands
-     * @throws ApiException if the response code was not in [200, 299]
-     */
-     public async getAnSmsTenDLCBrands(response: ResponseContext): Promise<SMSTenDLCBrandsListResult > {
-        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
-        if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: SMSTenDLCBrandsListResult = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "SMSTenDLCBrandsListResult", ""
-            ) as SMSTenDLCBrandsListResult;
-            return body;
-        }
-
-        // Work around for missing responses in specification, e.g. for petstore.yaml
-        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: SMSTenDLCBrandsListResult = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "SMSTenDLCBrandsListResult", ""
-            ) as SMSTenDLCBrandsListResult;
-            return body;
-        }
-
-        throw new ApiException<string | Buffer | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
-    }
-
-    /**
-     * Unwraps the actual response sent by the server from the response context and deserializes the response content
-     * to the expected objects
-     *
-     * @params response Response returned by the server for a request to getAnSmsTenDLCCampaigns
-     * @throws ApiException if the response code was not in [200, 299]
-     */
-     public async getAnSmsTenDLCCampaigns(response: ResponseContext): Promise<SMSTenDLCCampaignsListResult > {
-        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
-        if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: SMSTenDLCCampaignsListResult = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "SMSTenDLCCampaignsListResult", ""
-            ) as SMSTenDLCCampaignsListResult;
-            return body;
-        }
-
-        // Work around for missing responses in specification, e.g. for petstore.yaml
-        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: SMSTenDLCCampaignsListResult = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "SMSTenDLCCampaignsListResult", ""
-            ) as SMSTenDLCCampaignsListResult;
-            return body;
-        }
-
-        throw new ApiException<string | Buffer | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
-    }
-
-    /**
-     * Unwraps the actual response sent by the server from the response context and deserializes the response content
-     * to the expected objects
-     *
-     * @params response Response returned by the server for a request to getAnSmsTenDLCPartnerCampaigns
-     * @throws ApiException if the response code was not in [200, 299]
-     */
-     public async getAnSmsTenDLCPartnerCampaigns(response: ResponseContext): Promise<SMSTenDLCPartnerCampaignsListResult > {
-        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
-        if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: SMSTenDLCPartnerCampaignsListResult = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "SMSTenDLCPartnerCampaignsListResult", ""
-            ) as SMSTenDLCPartnerCampaignsListResult;
-            return body;
-        }
-
-        // Work around for missing responses in specification, e.g. for petstore.yaml
-        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: SMSTenDLCPartnerCampaignsListResult = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "SMSTenDLCPartnerCampaignsListResult", ""
-            ) as SMSTenDLCPartnerCampaignsListResult;
-            return body;
-        }
-
-        throw new ApiException<string | Buffer | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
-    }
-
-    /**
-     * Unwraps the actual response sent by the server from the response context and deserializes the response content
-     * to the expected objects
-     *
      * @params response Response returned by the server for a request to getHeadMember
      * @throws ApiException if the response code was not in [200, 299]
      */
@@ -3047,6 +2960,35 @@ export class DefaultApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
+     * @params response Response returned by the server for a request to getTenDLCSmsBrands
+     * @throws ApiException if the response code was not in [200, 299]
+     */
+     public async getTenDLCSmsBrands(response: ResponseContext): Promise<SMSTenDLCBrandsListResult > {
+        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("200", response.httpStatusCode)) {
+            const body: SMSTenDLCBrandsListResult = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "SMSTenDLCBrandsListResult", ""
+            ) as SMSTenDLCBrandsListResult;
+            return body;
+        }
+
+        // Work around for missing responses in specification, e.g. for petstore.yaml
+        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+            const body: SMSTenDLCBrandsListResult = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "SMSTenDLCBrandsListResult", ""
+            ) as SMSTenDLCBrandsListResult;
+            return body;
+        }
+
+        throw new ApiException<string | Buffer | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
+    }
+
+    /**
+     * Unwraps the actual response sent by the server from the response context and deserializes the response content
+     * to the expected objects
+     *
      * @params response Response returned by the server for a request to getTenDLCSmsCampaign
      * @throws ApiException if the response code was not in [200, 299]
      */
@@ -3076,6 +3018,35 @@ export class DefaultApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
+     * @params response Response returned by the server for a request to getTenDLCSmsCampaigns
+     * @throws ApiException if the response code was not in [200, 299]
+     */
+     public async getTenDLCSmsCampaigns(response: ResponseContext): Promise<SMSTenDLCCampaignsListResult > {
+        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("200", response.httpStatusCode)) {
+            const body: SMSTenDLCCampaignsListResult = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "SMSTenDLCCampaignsListResult", ""
+            ) as SMSTenDLCCampaignsListResult;
+            return body;
+        }
+
+        // Work around for missing responses in specification, e.g. for petstore.yaml
+        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+            const body: SMSTenDLCCampaignsListResult = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "SMSTenDLCCampaignsListResult", ""
+            ) as SMSTenDLCCampaignsListResult;
+            return body;
+        }
+
+        throw new ApiException<string | Buffer | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
+    }
+
+    /**
+     * Unwraps the actual response sent by the server from the response context and deserializes the response content
+     * to the expected objects
+     *
      * @params response Response returned by the server for a request to getTenDLCSmsPartnerCampaign
      * @throws ApiException if the response code was not in [200, 299]
      */
@@ -3095,6 +3066,35 @@ export class DefaultApiResponseProcessor {
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "SMSTenDLCPartnerCampaign", ""
             ) as SMSTenDLCPartnerCampaign;
+            return body;
+        }
+
+        throw new ApiException<string | Buffer | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
+    }
+
+    /**
+     * Unwraps the actual response sent by the server from the response context and deserializes the response content
+     * to the expected objects
+     *
+     * @params response Response returned by the server for a request to getTenDLCSmsPartnerCampaigns
+     * @throws ApiException if the response code was not in [200, 299]
+     */
+     public async getTenDLCSmsPartnerCampaigns(response: ResponseContext): Promise<SMSTenDLCPartnerCampaignsListResult > {
+        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("200", response.httpStatusCode)) {
+            const body: SMSTenDLCPartnerCampaignsListResult = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "SMSTenDLCPartnerCampaignsListResult", ""
+            ) as SMSTenDLCPartnerCampaignsListResult;
+            return body;
+        }
+
+        // Work around for missing responses in specification, e.g. for petstore.yaml
+        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+            const body: SMSTenDLCPartnerCampaignsListResult = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "SMSTenDLCPartnerCampaignsListResult", ""
+            ) as SMSTenDLCPartnerCampaignsListResult;
             return body;
         }
 

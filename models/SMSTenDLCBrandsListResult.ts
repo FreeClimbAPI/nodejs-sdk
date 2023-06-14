@@ -31,7 +31,7 @@ interface ArgumentsType {
     'numPages'?: number;
     'pageSize'?: number;
     'nextPageUri'?: string;
-    'queueMembers'?: Array<SMSTenDLCBrand>;
+    'brands'?: Array<SMSTenDLCBrand>;
 }
 export class SMSTenDLCBrandsListResult {
     /**
@@ -62,7 +62,7 @@ export class SMSTenDLCBrandsListResult {
     * Uri to retrieve the next page of items
     */
     'nextPageUri'?: string;
-    'queueMembers'?: Array<SMSTenDLCBrand>;
+    'brands'?: Array<SMSTenDLCBrand>;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -131,8 +131,8 @@ export class SMSTenDLCBrandsListResult {
             "defaultValue": undefined
         },
         {
-            "name": "queueMembers",
-            "baseName": "queueMembers",
+            "name": "brands",
+            "baseName": "brands",
             "type": "Array<SMSTenDLCBrand>",
             "format": "",
 

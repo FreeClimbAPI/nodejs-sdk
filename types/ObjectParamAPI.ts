@@ -388,32 +388,6 @@ export interface DefaultApiGetAnSmsMessageRequest {
     
 }
 
-export interface DefaultApiGetAnSmsTenDLCBrandsRequest {
-    
-}
-
-export interface DefaultApiGetAnSmsTenDLCCampaignsRequest {
-    
-    /**
-     * The unique identifier for a brand
-     * @type string
-     * @memberof DefaultApigetAnSmsTenDLCCampaigns
-     */
-    brandId?: string
-    
-}
-
-export interface DefaultApiGetAnSmsTenDLCPartnerCampaignsRequest {
-    
-    /**
-     * The unique identifier for a brand
-     * @type string
-     * @memberof DefaultApigetAnSmsTenDLCPartnerCampaigns
-     */
-    brandId?: string
-    
-}
-
 export interface DefaultApiGetHeadMemberRequest {
     
     /**
@@ -436,6 +410,10 @@ export interface DefaultApiGetTenDLCSmsBrandRequest {
     
 }
 
+export interface DefaultApiGetTenDLCSmsBrandsRequest {
+    
+}
+
 export interface DefaultApiGetTenDLCSmsCampaignRequest {
     
     /**
@@ -447,6 +425,17 @@ export interface DefaultApiGetTenDLCSmsCampaignRequest {
     
 }
 
+export interface DefaultApiGetTenDLCSmsCampaignsRequest {
+    
+    /**
+     * The unique identifier for a brand
+     * @type string
+     * @memberof DefaultApigetTenDLCSmsCampaigns
+     */
+    brandId?: string
+    
+}
+
 export interface DefaultApiGetTenDLCSmsPartnerCampaignRequest {
     
     /**
@@ -455,6 +444,17 @@ export interface DefaultApiGetTenDLCSmsPartnerCampaignRequest {
      * @memberof DefaultApigetTenDLCSmsPartnerCampaign
      */
     campaignId: string
+    
+}
+
+export interface DefaultApiGetTenDLCSmsPartnerCampaignsRequest {
+    
+    /**
+     * The unique identifier for a brand
+     * @type string
+     * @memberof DefaultApigetTenDLCSmsPartnerCampaigns
+     */
+    brandId?: string
     
 }
 
@@ -738,7 +738,7 @@ export interface DefaultApiListIncomingNumbersRequest {
     smsEnabled?: boolean
     
     /**
-     * Indication of whether the phone number has a campaign accociatied with it
+     * Indication of whether the phone number has a campaign associated with it
      * @type boolean
      * @memberof DefaultApilistIncomingNumbers
      */
@@ -1241,30 +1241,6 @@ export class ObjectDefaultApi {
     }
 
     /**
-     * Get list of SMS 10DLC Brnads
-     * @param param the request object
-     */
-    public getAnSmsTenDLCBrands(param: DefaultApiGetAnSmsTenDLCBrandsRequest, options?: Configuration): Promise<SMSTenDLCBrandsListResult> {
-        return this.api.getAnSmsTenDLCBrands( options).toPromise();
-    }
-
-    /**
-     * Get list of SMS 10DLC Campaigns
-     * @param param the request object
-     */
-    public getAnSmsTenDLCCampaigns(param: DefaultApiGetAnSmsTenDLCCampaignsRequest, options?: Configuration): Promise<SMSTenDLCCampaignsListResult> {
-        return this.api.getAnSmsTenDLCCampaigns(param.brandId,  options).toPromise();
-    }
-
-    /**
-     * Get list of SMS 10DLC Partner Campaigns
-     * @param param the request object
-     */
-    public getAnSmsTenDLCPartnerCampaigns(param: DefaultApiGetAnSmsTenDLCPartnerCampaignsRequest, options?: Configuration): Promise<SMSTenDLCPartnerCampaignsListResult> {
-        return this.api.getAnSmsTenDLCPartnerCampaigns(param.brandId,  options).toPromise();
-    }
-
-    /**
      * Get Head Member
      * @param param the request object
      */
@@ -1281,6 +1257,14 @@ export class ObjectDefaultApi {
     }
 
     /**
+     * Get list of SMS 10DLC Brands
+     * @param param the request object
+     */
+    public getTenDLCSmsBrands(param: DefaultApiGetTenDLCSmsBrandsRequest, options?: Configuration): Promise<SMSTenDLCBrandsListResult> {
+        return this.api.getTenDLCSmsBrands( options).toPromise();
+    }
+
+    /**
      * Get a 10DLC SMS Campaign
      * @param param the request object
      */
@@ -1289,11 +1273,27 @@ export class ObjectDefaultApi {
     }
 
     /**
+     * Get list of SMS 10DLC Campaigns
+     * @param param the request object
+     */
+    public getTenDLCSmsCampaigns(param: DefaultApiGetTenDLCSmsCampaignsRequest, options?: Configuration): Promise<SMSTenDLCCampaignsListResult> {
+        return this.api.getTenDLCSmsCampaigns(param.brandId,  options).toPromise();
+    }
+
+    /**
      * Get a 10DLC SMS Partner Campaign
      * @param param the request object
      */
     public getTenDLCSmsPartnerCampaign(param: DefaultApiGetTenDLCSmsPartnerCampaignRequest, options?: Configuration): Promise<SMSTenDLCPartnerCampaign> {
         return this.api.getTenDLCSmsPartnerCampaign(param.campaignId,  options).toPromise();
+    }
+
+    /**
+     * Get list of SMS 10DLC Partner Campaigns
+     * @param param the request object
+     */
+    public getTenDLCSmsPartnerCampaigns(param: DefaultApiGetTenDLCSmsPartnerCampaignsRequest, options?: Configuration): Promise<SMSTenDLCPartnerCampaignsListResult> {
+        return this.api.getTenDLCSmsPartnerCampaigns(param.brandId,  options).toPromise();
     }
 
     /**

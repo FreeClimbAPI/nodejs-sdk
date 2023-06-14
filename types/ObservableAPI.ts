@@ -687,79 +687,6 @@ export class ObservableDefaultApi {
     }
 
     /**
-     * Get list of SMS 10DLC Brnads
-     
-     */
-    public getAnSmsTenDLCBrands(_options?: Configuration): Observable<SMSTenDLCBrandsListResult> {
-        const requestContextPromise = this.requestFactory.getAnSmsTenDLCBrands(_options);
-
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (let middleware of this.configuration.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (let middleware of this.configuration.middleware) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getAnSmsTenDLCBrands(rsp)));
-            }));
-    }
-
-    /**
-     * Get list of SMS 10DLC Campaigns
-     
-     * @param brandId The unique identifier for a brand
-     
-     */
-    public getAnSmsTenDLCCampaigns(brandId?: string, _options?: Configuration): Observable<SMSTenDLCCampaignsListResult> {
-        const requestContextPromise = this.requestFactory.getAnSmsTenDLCCampaigns(brandId, _options);
-
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (let middleware of this.configuration.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (let middleware of this.configuration.middleware) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getAnSmsTenDLCCampaigns(rsp)));
-            }));
-    }
-
-    /**
-     * Get list of SMS 10DLC Partner Campaigns
-     
-     * @param brandId The unique identifier for a brand
-     
-     */
-    public getAnSmsTenDLCPartnerCampaigns(brandId?: string, _options?: Configuration): Observable<SMSTenDLCPartnerCampaignsListResult> {
-        const requestContextPromise = this.requestFactory.getAnSmsTenDLCPartnerCampaigns(brandId, _options);
-
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (let middleware of this.configuration.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (let middleware of this.configuration.middleware) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getAnSmsTenDLCPartnerCampaigns(rsp)));
-            }));
-    }
-
-    /**
      * Get Head Member
      
      * @param queueId String that uniquely identifies the Queue that the Member belongs to.
@@ -810,6 +737,29 @@ export class ObservableDefaultApi {
     }
 
     /**
+     * Get list of SMS 10DLC Brands
+     
+     */
+    public getTenDLCSmsBrands(_options?: Configuration): Observable<SMSTenDLCBrandsListResult> {
+        const requestContextPromise = this.requestFactory.getTenDLCSmsBrands(_options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (let middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (let middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getTenDLCSmsBrands(rsp)));
+            }));
+    }
+
+    /**
      * Get a 10DLC SMS Campaign
      
      * @param campaignId String that uniquely identifies this campaign resource.
@@ -835,6 +785,31 @@ export class ObservableDefaultApi {
     }
 
     /**
+     * Get list of SMS 10DLC Campaigns
+     
+     * @param brandId The unique identifier for a brand
+     
+     */
+    public getTenDLCSmsCampaigns(brandId?: string, _options?: Configuration): Observable<SMSTenDLCCampaignsListResult> {
+        const requestContextPromise = this.requestFactory.getTenDLCSmsCampaigns(brandId, _options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (let middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (let middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getTenDLCSmsCampaigns(rsp)));
+            }));
+    }
+
+    /**
      * Get a 10DLC SMS Partner Campaign
      
      * @param campaignId String that uniquely identifies this campaign resource.
@@ -856,6 +831,31 @@ export class ObservableDefaultApi {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getTenDLCSmsPartnerCampaign(rsp)));
+            }));
+    }
+
+    /**
+     * Get list of SMS 10DLC Partner Campaigns
+     
+     * @param brandId The unique identifier for a brand
+     
+     */
+    public getTenDLCSmsPartnerCampaigns(brandId?: string, _options?: Configuration): Observable<SMSTenDLCPartnerCampaignsListResult> {
+        const requestContextPromise = this.requestFactory.getTenDLCSmsPartnerCampaigns(brandId, _options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (let middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (let middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getTenDLCSmsPartnerCampaigns(rsp)));
             }));
     }
 
@@ -1116,7 +1116,7 @@ export class ObservableDefaultApi {
      
      * @param smsEnabled Indication of whether the phone number can handle sending and receiving SMS messages. Typically set to true for all numbers.
      
-     * @param hasCampaign Indication of whether the phone number has a campaign accociatied with it
+     * @param hasCampaign Indication of whether the phone number has a campaign associated with it
      
      * @param capabilitiesVoice 
      

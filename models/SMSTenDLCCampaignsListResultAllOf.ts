@@ -22,17 +22,17 @@ interface AttributeType {
     defaultValue: any
 }
 interface ArgumentsType {
-    'queueMembers'?: Array<SMSTenDLCCampaign>;
+    'campaigns'?: Array<SMSTenDLCCampaign>;
 }
 export class SMSTenDLCCampaignsListResultAllOf {
-    'queueMembers'?: Array<SMSTenDLCCampaign>;
+    'campaigns'?: Array<SMSTenDLCCampaign>;
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly attributeTypeMap: AttributeType[] = [
         {
-            "name": "queueMembers",
-            "baseName": "queueMembers",
+            "name": "campaigns",
+            "baseName": "campaigns",
             "type": "Array<SMSTenDLCCampaign>",
             "format": "",
 

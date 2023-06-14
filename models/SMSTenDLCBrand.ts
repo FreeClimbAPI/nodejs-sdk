@@ -213,6 +213,9 @@ export class SMSTenDLCBrand {
     * Alternate business identifier such as DUNS, LEI, or GIIN
     */
     'altBusinessId'?: string;
+    /**
+    * The type of the Alternative business identifier
+    */
     'altBusinessIdType'?: SMSTenDLCBrandAltBusinessIdTypeEnum;
     /**
     * Universal EIN of Brand, Read Only.

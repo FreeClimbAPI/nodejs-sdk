@@ -22,17 +22,17 @@ interface AttributeType {
     defaultValue: any
 }
 interface ArgumentsType {
-    'queueMembers'?: Array<SMSTenDLCBrand>;
+    'brands'?: Array<SMSTenDLCBrand>;
 }
 export class SMSTenDLCBrandsListResultAllOf {
-    'queueMembers'?: Array<SMSTenDLCBrand>;
+    'brands'?: Array<SMSTenDLCBrand>;
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly attributeTypeMap: AttributeType[] = [
         {
-            "name": "queueMembers",
-            "baseName": "queueMembers",
+            "name": "brands",
+            "baseName": "brands",
             "type": "Array<SMSTenDLCBrand>",
             "format": "",
 

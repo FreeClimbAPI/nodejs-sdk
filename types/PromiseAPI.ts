@@ -389,37 +389,6 @@ export class PromiseDefaultApi {
     }
 
     /**
-     * Get list of SMS 10DLC Brnads
-     
-     */
-    public getAnSmsTenDLCBrands(_options?: Configuration): Promise<SMSTenDLCBrandsListResult> {
-        const result = this.api.getAnSmsTenDLCBrands(_options);
-        return result.toPromise();
-    }
-
-    /**
-     * Get list of SMS 10DLC Campaigns
-     
-     * @param brandId The unique identifier for a brand
-     
-     */
-    public getAnSmsTenDLCCampaigns(brandId?: string, _options?: Configuration): Promise<SMSTenDLCCampaignsListResult> {
-        const result = this.api.getAnSmsTenDLCCampaigns(brandId, _options);
-        return result.toPromise();
-    }
-
-    /**
-     * Get list of SMS 10DLC Partner Campaigns
-     
-     * @param brandId The unique identifier for a brand
-     
-     */
-    public getAnSmsTenDLCPartnerCampaigns(brandId?: string, _options?: Configuration): Promise<SMSTenDLCPartnerCampaignsListResult> {
-        const result = this.api.getAnSmsTenDLCPartnerCampaigns(brandId, _options);
-        return result.toPromise();
-    }
-
-    /**
      * Get Head Member
      
      * @param queueId String that uniquely identifies the Queue that the Member belongs to.
@@ -442,6 +411,15 @@ export class PromiseDefaultApi {
     }
 
     /**
+     * Get list of SMS 10DLC Brands
+     
+     */
+    public getTenDLCSmsBrands(_options?: Configuration): Promise<SMSTenDLCBrandsListResult> {
+        const result = this.api.getTenDLCSmsBrands(_options);
+        return result.toPromise();
+    }
+
+    /**
      * Get a 10DLC SMS Campaign
      
      * @param campaignId String that uniquely identifies this campaign resource.
@@ -453,6 +431,17 @@ export class PromiseDefaultApi {
     }
 
     /**
+     * Get list of SMS 10DLC Campaigns
+     
+     * @param brandId The unique identifier for a brand
+     
+     */
+    public getTenDLCSmsCampaigns(brandId?: string, _options?: Configuration): Promise<SMSTenDLCCampaignsListResult> {
+        const result = this.api.getTenDLCSmsCampaigns(brandId, _options);
+        return result.toPromise();
+    }
+
+    /**
      * Get a 10DLC SMS Partner Campaign
      
      * @param campaignId String that uniquely identifies this campaign resource.
@@ -460,6 +449,17 @@ export class PromiseDefaultApi {
      */
     public getTenDLCSmsPartnerCampaign(campaignId: string, _options?: Configuration): Promise<SMSTenDLCPartnerCampaign> {
         const result = this.api.getTenDLCSmsPartnerCampaign(campaignId, _options);
+        return result.toPromise();
+    }
+
+    /**
+     * Get list of SMS 10DLC Partner Campaigns
+     
+     * @param brandId The unique identifier for a brand
+     
+     */
+    public getTenDLCSmsPartnerCampaigns(brandId?: string, _options?: Configuration): Promise<SMSTenDLCPartnerCampaignsListResult> {
+        const result = this.api.getTenDLCSmsPartnerCampaigns(brandId, _options);
         return result.toPromise();
     }
 
@@ -608,7 +608,7 @@ export class PromiseDefaultApi {
      
      * @param smsEnabled Indication of whether the phone number can handle sending and receiving SMS messages. Typically set to true for all numbers.
      
-     * @param hasCampaign Indication of whether the phone number has a campaign accociatied with it
+     * @param hasCampaign Indication of whether the phone number has a campaign associated with it
      
      * @param capabilitiesVoice 
      

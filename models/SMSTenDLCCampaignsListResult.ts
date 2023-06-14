@@ -31,7 +31,7 @@ interface ArgumentsType {
     'numPages'?: number;
     'pageSize'?: number;
     'nextPageUri'?: string;
-    'queueMembers'?: Array<SMSTenDLCCampaign>;
+    'campaigns'?: Array<SMSTenDLCCampaign>;
 }
 export class SMSTenDLCCampaignsListResult {
     /**
@@ -62,7 +62,7 @@ export class SMSTenDLCCampaignsListResult {
     * Uri to retrieve the next page of items
     */
     'nextPageUri'?: string;
-    'queueMembers'?: Array<SMSTenDLCCampaign>;
+    'campaigns'?: Array<SMSTenDLCCampaign>;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -131,8 +131,8 @@ export class SMSTenDLCCampaignsListResult {
             "defaultValue": undefined
         },
         {
-            "name": "queueMembers",
-            "baseName": "queueMembers",
+            "name": "campaigns",
+            "baseName": "campaigns",
             "type": "Array<SMSTenDLCCampaign>",
             "format": "",
 

@@ -406,19 +406,19 @@ describe('DefaultAPI', () => {
     });
 
     test('#getAnSmsTenDLCBrands', async () => {
-        let data = await apiInstance.getAnSmsTenDLCBrands()
+        let data = await apiInstance.getTenDLCSmsBrands()
         expect(data).toBeInstanceOf(SMSTenDLCBrandsListResult)
     });
 
     test('#getAnSmsTenDLCCampaigns', async () => {
         const brandId = "BX56XX4"
-        let data = await apiInstance.getAnSmsTenDLCCampaigns(brandId)
+        let data = await apiInstance.getTenDLCSmsCampaigns(brandId)
         expect(data).toBeInstanceOf(SMSTenDLCCampaignsListResult)
     });
 
     test('#getAnSmsTenDLCPartnerCampaigns', async () => {
         const brandId = "BX56XX4"
-        let data = await apiInstance.getAnSmsTenDLCPartnerCampaigns(brandId)
+        let data = await apiInstance.getTenDLCSmsPartnerCampaigns(brandId)
         expect(data).toBeInstanceOf(SMSTenDLCPartnerCampaignsListResult)
     });
 
