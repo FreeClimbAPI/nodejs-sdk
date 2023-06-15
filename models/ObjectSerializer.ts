@@ -106,6 +106,16 @@ export * from './RejectAllOf';
 export * from './RemoveFromConference';
 export * from './RemoveFromConferenceAllOf';
 export * from './RequestType';
+export * from './SMSTenDLCBrand';
+export * from './SMSTenDLCBrandsListResult';
+export * from './SMSTenDLCBrandsListResultAllOf';
+export * from './SMSTenDLCCampaign';
+export * from './SMSTenDLCCampaignsListResult';
+export * from './SMSTenDLCCampaignsListResultAllOf';
+export * from './SMSTenDLCPartnerCampaign';
+export * from './SMSTenDLCPartnerCampaignBrand';
+export * from './SMSTenDLCPartnerCampaignsListResult';
+export * from './SMSTenDLCPartnerCampaignsListResultAllOf';
 export * from './Say';
 export * from './SayAllOf';
 export * from './SendDigits';
@@ -234,6 +244,16 @@ import { RejectAllOf } from './RejectAllOf';
 import { RemoveFromConference } from './RemoveFromConference';
 import { RemoveFromConferenceAllOf } from './RemoveFromConferenceAllOf';
 import { RequestType } from './RequestType';
+import { SMSTenDLCBrand , SMSTenDLCBrandEntityTypeEnum                  , SMSTenDLCBrandStockExchangeEnum    , SMSTenDLCBrandBrandRelationshipEnum    , SMSTenDLCBrandAltBusinessIdTypeEnum      , SMSTenDLCBrandIdentityStatusEnum    } from './SMSTenDLCBrand';
+import { SMSTenDLCBrandsListResult } from './SMSTenDLCBrandsListResult';
+import { SMSTenDLCBrandsListResultAllOf } from './SMSTenDLCBrandsListResultAllOf';
+import { SMSTenDLCCampaign    , SMSTenDLCCampaignStatusEnum                             } from './SMSTenDLCCampaign';
+import { SMSTenDLCCampaignsListResult } from './SMSTenDLCCampaignsListResult';
+import { SMSTenDLCCampaignsListResultAllOf } from './SMSTenDLCCampaignsListResultAllOf';
+import { SMSTenDLCPartnerCampaign  , SMSTenDLCPartnerCampaignStatusEnum                             } from './SMSTenDLCPartnerCampaign';
+import { SMSTenDLCPartnerCampaignBrand } from './SMSTenDLCPartnerCampaignBrand';
+import { SMSTenDLCPartnerCampaignsListResult } from './SMSTenDLCPartnerCampaignsListResult';
+import { SMSTenDLCPartnerCampaignsListResultAllOf } from './SMSTenDLCPartnerCampaignsListResultAllOf';
 import { Say } from './Say';
 import { SayAllOf } from './SayAllOf';
 import { SendDigits } from './SendDigits';
@@ -293,6 +313,13 @@ let enumsMap: Set<string> = new Set<string>([
     "QueueResultStatus",
     "RecordUtteranceTermReason",
     "RequestType",
+    "SMSTenDLCBrandEntityTypeEnum",
+    "SMSTenDLCBrandStockExchangeEnum",
+    "SMSTenDLCBrandBrandRelationshipEnum",
+    "SMSTenDLCBrandAltBusinessIdTypeEnum",
+    "SMSTenDLCBrandIdentityStatusEnum",
+    "SMSTenDLCCampaignStatusEnum",
+    "SMSTenDLCPartnerCampaignStatusEnum",
     "UpdateCallRequestStatus",
     "UpdateConferenceRequestStatus",
 ]);
@@ -387,6 +414,16 @@ let typeMap: {[index: string]: any} = {
     "RejectAllOf": RejectAllOf,
     "RemoveFromConference": RemoveFromConference,
     "RemoveFromConferenceAllOf": RemoveFromConferenceAllOf,
+    "SMSTenDLCBrand": SMSTenDLCBrand,
+    "SMSTenDLCBrandsListResult": SMSTenDLCBrandsListResult,
+    "SMSTenDLCBrandsListResultAllOf": SMSTenDLCBrandsListResultAllOf,
+    "SMSTenDLCCampaign": SMSTenDLCCampaign,
+    "SMSTenDLCCampaignsListResult": SMSTenDLCCampaignsListResult,
+    "SMSTenDLCCampaignsListResultAllOf": SMSTenDLCCampaignsListResultAllOf,
+    "SMSTenDLCPartnerCampaign": SMSTenDLCPartnerCampaign,
+    "SMSTenDLCPartnerCampaignBrand": SMSTenDLCPartnerCampaignBrand,
+    "SMSTenDLCPartnerCampaignsListResult": SMSTenDLCPartnerCampaignsListResult,
+    "SMSTenDLCPartnerCampaignsListResultAllOf": SMSTenDLCPartnerCampaignsListResultAllOf,
     "Say": Say,
     "SayAllOf": SayAllOf,
     "SendDigits": SendDigits,

@@ -26,6 +26,12 @@ Method | HTTP request | Description
 [**getAnIncomingNumber**](DefaultApi.md#getAnIncomingNumber) | **GET** /Accounts/{accountId}/IncomingPhoneNumbers/{phoneNumberId} | Get an Incoming Number
 [**getAnSmsMessage**](DefaultApi.md#getAnSmsMessage) | **GET** /Accounts/{accountId}/Messages/{messageId} | Get an SMS Message
 [**getHeadMember**](DefaultApi.md#getHeadMember) | **GET** /Accounts/{accountId}/Queues/{queueId}/Members/Front | Get Head Member
+[**getTenDLCSmsBrand**](DefaultApi.md#getTenDLCSmsBrand) | **GET** /Accounts/{accountId}/Messages/10DLC/Brands/{brandId} | Get a 10DLC SMS Brand
+[**getTenDLCSmsBrands**](DefaultApi.md#getTenDLCSmsBrands) | **GET** /Accounts/{accountId}/Messages/10DLC/Brands | Get list of SMS 10DLC Brands
+[**getTenDLCSmsCampaign**](DefaultApi.md#getTenDLCSmsCampaign) | **GET** /Accounts/{accountId}/Messages/10DLC/Campaigns/{campaignId} | Get a 10DLC SMS Campaign
+[**getTenDLCSmsCampaigns**](DefaultApi.md#getTenDLCSmsCampaigns) | **GET** /Accounts/{accountId}/Messages/10DLC/Campaigns | Get list of SMS 10DLC Campaigns
+[**getTenDLCSmsPartnerCampaign**](DefaultApi.md#getTenDLCSmsPartnerCampaign) | **GET** /Accounts/{accountId}/Messages/10DLC/PartnerCampaigns/{campaignId} | Get a 10DLC SMS Partner Campaign
+[**getTenDLCSmsPartnerCampaigns**](DefaultApi.md#getTenDLCSmsPartnerCampaigns) | **GET** /Accounts/{accountId}/Messages/10DLC/PartnerCampaigns | Get list of SMS 10DLC Partner Campaigns
 [**listActiveQueues**](DefaultApi.md#listActiveQueues) | **GET** /Accounts/{accountId}/Queues | List Active Queues
 [**listAllAccountLogs**](DefaultApi.md#listAllAccountLogs) | **GET** /Accounts/{accountId}/Logs | List All Account Logs
 [**listApplications**](DefaultApi.md#listApplications) | **GET** /Accounts/{accountId}/Applications | List applications
@@ -1357,6 +1363,348 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
+# **getTenDLCSmsBrand**
+> SMSTenDLCBrand getTenDLCSmsBrand()
+
+
+### Example
+
+
+```typescript
+import { freeclimb } from '@freeclimb/sdk';
+import * as fs from 'fs';
+
+const configuration = freeclimb.createConfiguration({
+  accountId: 'YOUR_ACCOUND_ID',
+  apiKey: 'YOUR_API_KEY'
+});
+const apiInstance = new freeclimb.DefaultApi(configuration);
+
+let body:freeclimb.DefaultApiGetTenDLCSmsBrandRequest = {
+
+  // string | String that uniquely identifies this brand resource.
+  brandId: "brandId_example",
+
+};
+
+apiInstance.getTenDLCSmsBrand(body).then((data:any) => {
+  console.log('API called successfully. Returned data: ' + data);
+}).catch((error:any) => console.error(error));
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **brandId** | [**string**] | String that uniquely identifies this brand resource. | defaults to undefined
+
+
+### Return type
+
+**SMSTenDLCBrand**
+
+### Authorization
+
+[fc](README.md#fc)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The specific SMS 10DLC Brand that’s been processed by FreeClimb |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **getTenDLCSmsBrands**
+> SMSTenDLCBrandsListResult getTenDLCSmsBrands()
+
+
+### Example
+
+
+```typescript
+import { freeclimb } from '@freeclimb/sdk';
+import * as fs from 'fs';
+
+const configuration = freeclimb.createConfiguration({
+  accountId: 'YOUR_ACCOUND_ID',
+  apiKey: 'YOUR_API_KEY'
+});
+const apiInstance = new freeclimb.DefaultApi(configuration);
+
+let body:freeclimb.DefaultApiGetTenDLCSmsBrandsRequest = {
+
+};
+
+apiInstance.getTenDLCSmsBrands(body).then((data:any) => {
+  console.log('API called successfully. Returned data: ' + data);
+}).catch((error:any) => console.error(error));
+```
+
+
+### Parameters
+
+
+
+### Return type
+
+**SMSTenDLCBrandsListResult**
+
+### Authorization
+
+[fc](README.md#fc)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The list SMS 10DLC brands |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **getTenDLCSmsCampaign**
+> SMSTenDLCCampaign getTenDLCSmsCampaign()
+
+
+### Example
+
+
+```typescript
+import { freeclimb } from '@freeclimb/sdk';
+import * as fs from 'fs';
+
+const configuration = freeclimb.createConfiguration({
+  accountId: 'YOUR_ACCOUND_ID',
+  apiKey: 'YOUR_API_KEY'
+});
+const apiInstance = new freeclimb.DefaultApi(configuration);
+
+let body:freeclimb.DefaultApiGetTenDLCSmsCampaignRequest = {
+
+  // string | String that uniquely identifies this campaign resource.
+  campaignId: "campaignId_example",
+
+};
+
+apiInstance.getTenDLCSmsCampaign(body).then((data:any) => {
+  console.log('API called successfully. Returned data: ' + data);
+}).catch((error:any) => console.error(error));
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **campaignId** | [**string**] | String that uniquely identifies this campaign resource. | defaults to undefined
+
+
+### Return type
+
+**SMSTenDLCCampaign**
+
+### Authorization
+
+[fc](README.md#fc)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The specific SMS 10DLC Campaign that’s been processed by FreeClimb |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **getTenDLCSmsCampaigns**
+> SMSTenDLCCampaignsListResult getTenDLCSmsCampaigns()
+
+
+### Example
+
+
+```typescript
+import { freeclimb } from '@freeclimb/sdk';
+import * as fs from 'fs';
+
+const configuration = freeclimb.createConfiguration({
+  accountId: 'YOUR_ACCOUND_ID',
+  apiKey: 'YOUR_API_KEY'
+});
+const apiInstance = new freeclimb.DefaultApi(configuration);
+
+let body:freeclimb.DefaultApiGetTenDLCSmsCampaignsRequest = {
+
+  // string | The unique identifier for a brand (optional)
+  brandId: "brandId_example",
+
+};
+
+apiInstance.getTenDLCSmsCampaigns(body).then((data:any) => {
+  console.log('API called successfully. Returned data: ' + data);
+}).catch((error:any) => console.error(error));
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **brandId** | [**string**] | The unique identifier for a brand | (optional) defaults to undefined
+
+
+### Return type
+
+**SMSTenDLCCampaignsListResult**
+
+### Authorization
+
+[fc](README.md#fc)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The list SMS 10DLC campaigns |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **getTenDLCSmsPartnerCampaign**
+> SMSTenDLCPartnerCampaign getTenDLCSmsPartnerCampaign()
+
+
+### Example
+
+
+```typescript
+import { freeclimb } from '@freeclimb/sdk';
+import * as fs from 'fs';
+
+const configuration = freeclimb.createConfiguration({
+  accountId: 'YOUR_ACCOUND_ID',
+  apiKey: 'YOUR_API_KEY'
+});
+const apiInstance = new freeclimb.DefaultApi(configuration);
+
+let body:freeclimb.DefaultApiGetTenDLCSmsPartnerCampaignRequest = {
+
+  // string | String that uniquely identifies this campaign resource.
+  campaignId: "campaignId_example",
+
+};
+
+apiInstance.getTenDLCSmsPartnerCampaign(body).then((data:any) => {
+  console.log('API called successfully. Returned data: ' + data);
+}).catch((error:any) => console.error(error));
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **campaignId** | [**string**] | String that uniquely identifies this campaign resource. | defaults to undefined
+
+
+### Return type
+
+**SMSTenDLCPartnerCampaign**
+
+### Authorization
+
+[fc](README.md#fc)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The specific SMS 10DLC Partner Campaign that’s been processed by FreeClimb |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **getTenDLCSmsPartnerCampaigns**
+> SMSTenDLCPartnerCampaignsListResult getTenDLCSmsPartnerCampaigns()
+
+
+### Example
+
+
+```typescript
+import { freeclimb } from '@freeclimb/sdk';
+import * as fs from 'fs';
+
+const configuration = freeclimb.createConfiguration({
+  accountId: 'YOUR_ACCOUND_ID',
+  apiKey: 'YOUR_API_KEY'
+});
+const apiInstance = new freeclimb.DefaultApi(configuration);
+
+let body:freeclimb.DefaultApiGetTenDLCSmsPartnerCampaignsRequest = {
+
+  // string | The unique identifier for a brand (optional)
+  brandId: "brandId_example",
+
+};
+
+apiInstance.getTenDLCSmsPartnerCampaigns(body).then((data:any) => {
+  console.log('API called successfully. Returned data: ' + data);
+}).catch((error:any) => console.error(error));
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **brandId** | [**string**] | The unique identifier for a brand | (optional) defaults to undefined
+
+
+### Return type
+
+**SMSTenDLCPartnerCampaignsListResult**
+
+### Authorization
+
+[fc](README.md#fc)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The list SMS 10DLC partner campaigns |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
 # **listActiveQueues**
 > QueueList listActiveQueues()
 
@@ -1940,6 +2288,9 @@ let body:freeclimb.DefaultApiListIncomingNumbersRequest = {
   // boolean | Indication of whether the phone number can handle sending and receiving SMS messages. Typically set to true for all numbers. (optional)
   smsEnabled: true,
 
+  // boolean | Indication of whether the phone number has a campaign associated with it (optional)
+  hasCampaign: true,
+
   // boolean (optional)
   capabilitiesVoice: true,
 
@@ -1978,6 +2329,7 @@ Name | Type | Description  | Notes
  **hasApplication** | [**boolean**] | Indication of whether the phone number has an application linked to it. | (optional) defaults to undefined
  **voiceEnabled** | [**boolean**] | Indicates whether the phone number can handle Calls. Typically set to true for all numbers. | (optional) defaults to undefined
  **smsEnabled** | [**boolean**] | Indication of whether the phone number can handle sending and receiving SMS messages. Typically set to true for all numbers. | (optional) defaults to undefined
+ **hasCampaign** | [**boolean**] | Indication of whether the phone number has a campaign associated with it | (optional) defaults to undefined
  **capabilitiesVoice** | [**boolean**] |  | (optional) defaults to undefined
  **capabilitiesSms** | [**boolean**] |  | (optional) defaults to undefined
  **capabilitiesTollFree** | [**boolean**] |  | (optional) defaults to undefined
@@ -2939,6 +3291,7 @@ let body:freeclimb.DefaultApiUpdateAnIncomingNumberRequest = {
   incomingNumberRequest: {
     applicationId: "applicationId_example",
     alias: "alias_example",
+    campaignId: "campaignId_example",
   },
 
 };

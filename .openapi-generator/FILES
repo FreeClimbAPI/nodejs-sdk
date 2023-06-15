@@ -120,6 +120,16 @@ models/RejectAllOf.ts
 models/RemoveFromConference.ts
 models/RemoveFromConferenceAllOf.ts
 models/RequestType.ts
+models/SMSTenDLCBrand.ts
+models/SMSTenDLCBrandsListResult.ts
+models/SMSTenDLCBrandsListResultAllOf.ts
+models/SMSTenDLCCampaign.ts
+models/SMSTenDLCCampaignsListResult.ts
+models/SMSTenDLCCampaignsListResultAllOf.ts
+models/SMSTenDLCPartnerCampaign.ts
+models/SMSTenDLCPartnerCampaignBrand.ts
+models/SMSTenDLCPartnerCampaignsListResult.ts
+models/SMSTenDLCPartnerCampaignsListResultAllOf.ts
 models/Say.ts
 models/SayAllOf.ts
 models/SendDigits.ts

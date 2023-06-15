@@ -2,7 +2,7 @@ import { describe, expect, test } from "@jest/globals";
 import * as freeclimb  from '../index'
 import * as DefaultApi from '../apis/DefaultApi'
 import { AccountRequest, AccountResult, ApplicationList, ApplicationRequest, ApplicationResult, AvailableNumberList, BuyIncomingNumberRequest, CallList, CallResult, ConferenceList, ConferenceParticipantList, ConferenceParticipantResult, ConferenceResult, CreateConferenceRequest, FilterLogsRequest, IncomingNumberList, IncomingNumberRequest, IncomingNumberResult, LogList, MessageResult, MessagesList, QueueList, QueueMember, QueueMemberList, QueueRequest, QueueResult, RecordingList, RecordingResult, ServerConfiguration, UpdateCallRequest, UpdateConferenceRequest } from "../index";
-import {AccountStatus, AccountType, CallStatus, MessageDirection, PlayBeep, UpdateCallRequestStatus, UpdateConferenceRequestStatus   } from "../models/all";
+import {AccountStatus, AccountType, CallStatus, MessageDirection, PlayBeep, SMSTenDLCBrandsListResult, UpdateCallRequestStatus, UpdateConferenceRequestStatus, SMSTenDLCCampaignsListResult, SMSTenDLCPartnerCampaignsListResult, SMSTenDLCBrand, SMSTenDLCCampaign} from "../models/all";
 
 describe('DefaultAPI', () => {
     
@@ -256,12 +256,13 @@ describe('DefaultAPI', () => {
         const hasApplication = false
         const voiceEnabled = true
         const smsEnabled = true
+        const hasCampaign = true
         const capabilitiesVoice = true
         const capabilitiesSms = true
         const capabilitiesTollFree = true
         const capabilitiesTenDLC = true
         const capabilitiesShortCode = true
-        let data = await apiInstance.listIncomingNumbers(phoneNumber, alias, region, country, applicationId, hasApplication, voiceEnabled, smsEnabled, capabilitiesVoice, capabilitiesSms, capabilitiesTollFree, capabilitiesTenDLC, capabilitiesShortCode)  
+        let data = await apiInstance.listIncomingNumbers(phoneNumber, alias, region, country, applicationId, hasApplication, voiceEnabled, smsEnabled, hasCampaign, capabilitiesVoice, capabilitiesSms, capabilitiesTollFree, capabilitiesTenDLC, capabilitiesShortCode)  
         expect(data).toBeInstanceOf(IncomingNumberList)
     });
 
@@ -404,5 +405,33 @@ describe('DefaultAPI', () => {
         expect(data).toBeInstanceOf(IncomingNumberResult)
     });
 
+    test('#getAnSmsTenDLCBrands', async () => {
+        let data = await apiInstance.getTenDLCSmsBrands()
+        expect(data).toBeInstanceOf(SMSTenDLCBrandsListResult)
+    });
+
+    test('#getAnSmsTenDLCCampaigns', async () => {
+        const brandId = "BX56XX4"
+        let data = await apiInstance.getTenDLCSmsCampaigns(brandId)
+        expect(data).toBeInstanceOf(SMSTenDLCCampaignsListResult)
+    });
+
+    test('#getAnSmsTenDLCPartnerCampaigns', async () => {
+        const brandId = "BX56XX4"
+        let data = await apiInstance.getTenDLCSmsPartnerCampaigns(brandId)
+        expect(data).toBeInstanceOf(SMSTenDLCPartnerCampaignsListResult)
+    });
+
+    test('#getTenDLCSmsBrand', async () => {
+        const brandId = "BX56XX4"
+        let data = await apiInstance.getTenDLCSmsBrand(brandId)
+        expect(data).toBeInstanceOf(SMSTenDLCBrand)
+    });
+
+    test('#getTenDLCSmsCampaign', async () => {
+        const campaignId = "CX56XX4"
+        let data = await apiInstance.getTenDLCSmsCampaign(campaignId)
+        expect(data).toBeInstanceOf(SMSTenDLCCampaign)
+    });
 })
 
