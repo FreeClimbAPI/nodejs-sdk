@@ -13,7 +13,7 @@ None
 
 ## [3.4.0] - 2023-06-09
 
-### Changed
+### Added
 
 - Number management feature for nodejs sdk including methods, properties, and testing
 
