@@ -25,7 +25,7 @@ interface ArgumentsType {
     'callControlSequence'?: string;
     'callControlUrl'?: string;
     'conferenceId': string;
-    'callId'?: boolean;
+    'callId'?: string;
     'leaveConferenceUrl'?: string;
     'listen'?: boolean;
     'notificationUrl'?: string;
@@ -52,7 +52,7 @@ export class AddToConferenceAllOf {
     /**
     * ID of the Call that will be added to the specified Conference. The Call must be in progress or an error will result. If the Call is part of an existing Conference, it is first removed from that Conference and is then moved to the new one.
     */
-    'callId'?: boolean;
+    'callId'?: string;
     /**
     * URL to be invoked when the Participant leaves the Conference. 
     */
@@ -116,7 +116,7 @@ export class AddToConferenceAllOf {
         {
             "name": "callId",
             "baseName": "callId",
-            "type": "boolean",
+            "type": "string",
             "format": "",
 
             
