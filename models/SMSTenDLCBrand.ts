@@ -17,11 +17,11 @@ import { HttpFile } from '../http/http';
 */
 export enum SMSTenDLCBrandEntityTypeEnum {
 
-    PRIVATE_PROFIT = 'PRIVATE_PROFIT',
-    PUBLIC_PROFIT = 'PUBLIC_PROFIT',
-    NON_PROFIT = 'NON_PROFIT',
+    PRIVATEPROFIT = 'PRIVATE_PROFIT',
+    PUBLICPROFIT = 'PUBLIC_PROFIT',
+    NONPROFIT = 'NON_PROFIT',
     GOVERNMENT = 'GOVERNMENT',
-    SOLE_PROPRIETOR = 'SOLE_PROPRIETOR'
+    SOLEPROPRIETOR = 'SOLE_PROPRIETOR'
 }
 export enum SMSTenDLCBrandStockExchangeEnum {
 
@@ -55,11 +55,11 @@ export enum SMSTenDLCBrandStockExchangeEnum {
 }
 export enum SMSTenDLCBrandBrandRelationshipEnum {
 
-    BASIC_ACCOUNT = 'BASIC_ACCOUNT',
-    SMALL_ACCOUNT = 'SMALL_ACCOUNT',
-    MEDIUM_ACCOUNT = 'MEDIUM_ACCOUNT',
-    LARGE_ACCOUNT = 'LARGE_ACCOUNT',
-    KEY_ACCOUNT = 'KEY_ACCOUNT'
+    BASICACCOUNT = 'BASIC_ACCOUNT',
+    SMALLACCOUNT = 'SMALL_ACCOUNT',
+    MEDIUMACCOUNT = 'MEDIUM_ACCOUNT',
+    LARGEACCOUNT = 'LARGE_ACCOUNT',
+    KEYACCOUNT = 'KEY_ACCOUNT'
 }
 export enum SMSTenDLCBrandAltBusinessIdTypeEnum {
 
@@ -70,10 +70,10 @@ export enum SMSTenDLCBrandAltBusinessIdTypeEnum {
 }
 export enum SMSTenDLCBrandIdentityStatusEnum {
 
-    SELF_DECLARED = 'SELF_DECLARED',
+    SELFDECLARED = 'SELF_DECLARED',
     UNVERIFIED = 'UNVERIFIED',
     VERIFIED = 'VERIFIED',
-    VETTED_VERIFIED = 'VETTED_VERIFIED'
+    VETTEDVERIFIED = 'VETTED_VERIFIED'
 }
 
 interface AttributeType {
@@ -540,4 +540,3 @@ export class SMSTenDLCBrand {
         Object.assign(this, preparedArgs)
     }
 }
-
