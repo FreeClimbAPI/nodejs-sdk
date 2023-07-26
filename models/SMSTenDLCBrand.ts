@@ -540,4 +540,3 @@ export class SMSTenDLCBrand {
         Object.assign(this, preparedArgs)
     }
 }
-
