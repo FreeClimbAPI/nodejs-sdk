@@ -1753,8 +1753,11 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
      * @param beginTime Only show Messages sent at or after this time (GMT), given as *YYYY-MM-DD hh:mm:ss*.
      * @param endTime Only show messages sent at or before this time (GMT), given as *YYYY-MM-DD hh:mm*..
      * @param direction Either &#x60;inbound&#x60; or &#x60;outbound&#x60;. Only show Messages that were either *sent from* or *received by* FreeClimb.
+     * @param campaignId Only show messages associated with this campaign ID.
+     * @param brandId Only show messages associated with this brand ID
+     * @param is10DLC Only show messages that were sent as part of a 10DLC campaign.
      */
-    public async listSmsMessages(to?: string, _from?: string, beginTime?: string, endTime?: string, direction?: MessageDirection, _options?: Configuration): Promise<RequestContext> {
+    public async listSmsMessages(to?: string, _from?: string, beginTime?: string, endTime?: string, direction?: MessageDirection, campaignId?: string, brandId?: string, is10DLC?: boolean, _options?: Configuration): Promise<RequestContext> {
         const _config = _options || this.configuration;
         const { accountId } = this.configuration
         
@@ -1784,6 +1787,18 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         // Query Params
         if (direction !== undefined) {
             requestContext.setQueryParam("direction", ObjectSerializer.serialize(direction, "MessageDirection", ""));
+        }
+        // Query Params
+        if (campaignId !== undefined) {
+            requestContext.setQueryParam("campaignId", ObjectSerializer.serialize(campaignId, "string", ""));
+        }
+        // Query Params
+        if (brandId !== undefined) {
+            requestContext.setQueryParam("brandId", ObjectSerializer.serialize(brandId, "string", ""));
+        }
+        // Query Params
+        if (is10DLC !== undefined) {
+            requestContext.setQueryParam("is10DLC", ObjectSerializer.serialize(is10DLC, "boolean", ""));
         }
         
 

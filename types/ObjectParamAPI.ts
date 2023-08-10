@@ -133,6 +133,8 @@ import { SmsAllOf } from '../models/SmsAllOf';
 import { StartRecordCall } from '../models/StartRecordCall';
 import { TerminateConference } from '../models/TerminateConference';
 import { TerminateConferenceAllOf } from '../models/TerminateConferenceAllOf';
+import { TranscribeUtterance } from '../models/TranscribeUtterance';
+import { TranscribeUtteranceRecord } from '../models/TranscribeUtteranceRecord';
 import { Unpark } from '../models/Unpark';
 import { UpdateCallRequest } from '../models/UpdateCallRequest';
 import { UpdateCallRequestStatus } from '../models/UpdateCallRequestStatus';
@@ -886,6 +888,27 @@ export interface DefaultApiListSmsMessagesRequest {
      */
     direction?: MessageDirection
     
+    /**
+     * Only show messages associated with this campaign ID.
+     * @type string
+     * @memberof DefaultApilistSmsMessages
+     */
+    campaignId?: string
+    
+    /**
+     * Only show messages associated with this brand ID
+     * @type string
+     * @memberof DefaultApilistSmsMessages
+     */
+    brandId?: string
+    
+    /**
+     * Only show messages that were sent as part of a 10DLC campaign.
+     * @type boolean
+     * @memberof DefaultApilistSmsMessages
+     */
+    is10DLC?: boolean
+    
 }
 
 export interface DefaultApiMakeACallRequest {
@@ -1397,7 +1420,7 @@ export class ObjectDefaultApi {
      * @param param the request object
      */
     public listSmsMessages(param: DefaultApiListSmsMessagesRequest, options?: Configuration): Promise<MessagesList> {
-        return this.api.listSmsMessages(param.to, param._from, param.beginTime, param.endTime, param.direction,  options).toPromise();
+        return this.api.listSmsMessages(param.to, param._from, param.beginTime, param.endTime, param.direction, param.campaignId, param.brandId, param.is10DLC,  options).toPromise();
     }
 
     /**
