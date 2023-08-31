@@ -30,6 +30,9 @@ interface ArgumentsType {
     'text'?: string;
     'direction'?: string;
     'notificationUrl'?: string;
+    'brandId'?: string;
+    'campaignId'?: string;
+    'segmentCount'?: number;
 }
 export class MessageResultAllOf {
     /**
@@ -61,6 +64,18 @@ export class MessageResultAllOf {
     * URL invoked when message sent
     */
     'notificationUrl'?: string;
+    /**
+    * The unique identifier for the brand associated with the message
+    */
+    'brandId'?: string;
+    /**
+    * The unique identifier for the campaign associated with the message
+    */
+    'campaignId'?: string;
+    /**
+    * The number of segments into which the message was split
+    */
+    'segmentCount'?: number;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -132,6 +147,33 @@ export class MessageResultAllOf {
             "name": "notificationUrl",
             "baseName": "notificationUrl",
             "type": "string",
+            "format": "",
+
+            
+            "defaultValue": undefined
+        },
+        {
+            "name": "brandId",
+            "baseName": "brandId",
+            "type": "string",
+            "format": "",
+
+            
+            "defaultValue": undefined
+        },
+        {
+            "name": "campaignId",
+            "baseName": "campaignId",
+            "type": "string",
+            "format": "",
+
+            
+            "defaultValue": undefined
+        },
+        {
+            "name": "segmentCount",
+            "baseName": "segmentCount",
+            "type": "number",
             "format": "",
 
             

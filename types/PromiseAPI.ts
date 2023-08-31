@@ -133,6 +133,8 @@ import { SmsAllOf } from '../models/SmsAllOf';
 import { StartRecordCall } from '../models/StartRecordCall';
 import { TerminateConference } from '../models/TerminateConference';
 import { TerminateConferenceAllOf } from '../models/TerminateConferenceAllOf';
+import { TranscribeUtterance } from '../models/TranscribeUtterance';
+import { TranscribeUtteranceRecord } from '../models/TranscribeUtteranceRecord';
 import { Unpark } from '../models/Unpark';
 import { UpdateCallRequest } from '../models/UpdateCallRequest';
 import { UpdateCallRequestStatus } from '../models/UpdateCallRequestStatus';
@@ -682,9 +684,15 @@ export class PromiseDefaultApi {
      
      * @param direction Either &#x60;inbound&#x60; or &#x60;outbound&#x60;. Only show Messages that were either *sent from* or *received by* FreeClimb.
      
+     * @param campaignId Only show messages associated with this campaign ID.
+     
+     * @param brandId Only show messages associated with this brand ID
+     
+     * @param is10DLC Only show messages that were sent as part of a 10DLC campaign.
+     
      */
-    public listSmsMessages(to?: string, _from?: string, beginTime?: string, endTime?: string, direction?: MessageDirection, _options?: Configuration): Promise<MessagesList> {
-        const result = this.api.listSmsMessages(to, _from, beginTime, endTime, direction, _options);
+    public listSmsMessages(to?: string, _from?: string, beginTime?: string, endTime?: string, direction?: MessageDirection, campaignId?: string, brandId?: string, is10DLC?: boolean, _options?: Configuration): Promise<MessagesList> {
+        const result = this.api.listSmsMessages(to, _from, beginTime, endTime, direction, campaignId, brandId, is10DLC, _options);
         return result.toPromise();
     }
 

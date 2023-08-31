@@ -2583,6 +2583,15 @@ let body:freeclimb.DefaultApiListSmsMessagesRequest = {
   // MessageDirection | Either `inbound` or `outbound`. Only show Messages that were either *sent from* or *received by* FreeClimb. (optional)
   direction: "inbound",
 
+  // string | Only show messages associated with this campaign ID. (optional)
+  campaignId: "campaignId_example",
+
+  // string | Only show messages associated with this brand ID (optional)
+  brandId: "brandId_example",
+
+  // boolean | Only show messages that were sent as part of a 10DLC campaign. (optional)
+  is10DLC: true,
+
 };
 
 apiInstance.listSmsMessages(body).then((data:any) => {
@@ -2600,6 +2609,9 @@ Name | Type | Description  | Notes
  **beginTime** | [**string**] | Only show Messages sent at or after this time (GMT), given as *YYYY-MM-DD hh:mm:ss*. | (optional) defaults to undefined
  **endTime** | [**string**] | Only show messages sent at or before this time (GMT), given as *YYYY-MM-DD hh:mm*.. | (optional) defaults to undefined
  **direction** | **MessageDirection** | Either &#x60;inbound&#x60; or &#x60;outbound&#x60;. Only show Messages that were either *sent from* or *received by* FreeClimb. | (optional) defaults to undefined
+ **campaignId** | [**string**] | Only show messages associated with this campaign ID. | (optional) defaults to undefined
+ **brandId** | [**string**] | Only show messages associated with this brand ID | (optional) defaults to undefined
+ **is10DLC** | [**boolean**] | Only show messages that were sent as part of a 10DLC campaign. | (optional) defaults to undefined
 
 
 ### Return type

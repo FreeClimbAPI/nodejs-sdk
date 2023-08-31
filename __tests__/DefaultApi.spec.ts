@@ -294,6 +294,9 @@ describe('DefaultAPI', () => {
         const beginTime = "beginTime_example"
         const endTime = "endTime_example"
         const direction = MessageDirection.INBOUND
+        const campaignId = "CX56XX4"
+        const brandId = "BX56XX4"
+        const is10DLC = true
         let data = await apiInstance.listSmsMessages(to, _from, beginTime, endTime, direction)      
         expect(data).toBeInstanceOf(MessagesList)
     }); 

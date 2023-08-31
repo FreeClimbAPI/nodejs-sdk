@@ -143,6 +143,8 @@ models/SmsAllOf.ts
 models/StartRecordCall.ts
 models/TerminateConference.ts
 models/TerminateConferenceAllOf.ts
+models/TranscribeUtterance.ts
+models/TranscribeUtteranceRecord.ts
 models/Unpark.ts
 models/UpdateCallRequest.ts
 models/UpdateCallRequestStatus.ts

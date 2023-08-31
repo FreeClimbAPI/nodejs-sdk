@@ -129,6 +129,8 @@ export * from './SmsAllOf';
 export * from './StartRecordCall';
 export * from './TerminateConference';
 export * from './TerminateConferenceAllOf';
+export * from './TranscribeUtterance';
+export * from './TranscribeUtteranceRecord';
 export * from './Unpark';
 export * from './UpdateCallRequest';
 export * from './UpdateCallRequestStatus';
@@ -267,6 +269,8 @@ import { SmsAllOf } from './SmsAllOf';
 import { StartRecordCall } from './StartRecordCall';
 import { TerminateConference } from './TerminateConference';
 import { TerminateConferenceAllOf } from './TerminateConferenceAllOf';
+import { TranscribeUtterance } from './TranscribeUtterance';
+import { TranscribeUtteranceRecord } from './TranscribeUtteranceRecord';
 import { Unpark } from './Unpark';
 import { UpdateCallRequest } from './UpdateCallRequest';
 import { UpdateCallRequestStatus } from './UpdateCallRequestStatus';
@@ -437,6 +441,8 @@ let typeMap: {[index: string]: any} = {
     "StartRecordCall": StartRecordCall,
     "TerminateConference": TerminateConference,
     "TerminateConferenceAllOf": TerminateConferenceAllOf,
+    "TranscribeUtterance": TranscribeUtterance,
+    "TranscribeUtteranceRecord": TranscribeUtteranceRecord,
     "Unpark": Unpark,
     "UpdateCallRequest": UpdateCallRequest,
     "UpdateConferenceParticipantRequest": UpdateConferenceParticipantRequest,
