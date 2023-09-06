@@ -9,7 +9,7 @@
     "openapi-client",
     "openapi-generator"
   ],
-  "license": "Unlicense",
+  "license": "MIT",
   "files": [
     "./dist",
     "./apis",
