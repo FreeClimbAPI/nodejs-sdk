@@ -3269,9 +3269,9 @@
         "x-stoplight": {
           "id": "u509r3zqc38ze"
         },
+        "x-percl-command": true,
         "type": "object",
         "description": "The `TranscribeUtterance` command transcribes the caller’s voice and returns transcription of the audio and optionally returns the recording of the audio transcribed.\n\n`TranscribeUtterance` is blocking and is a terminal command. As such, the actionUrl property is required, and control of the Call picks up using the `PerCL` returned in response of the `actionUrl`. Recording and Transcription information is returned in the actionUrl request. If the reason this command ended was due to the call hanging up, any PerCL returned will not execute.",
-        "x-percl-command": true,
         "properties": {
           "actionUrl": {
             "type": "string"
@@ -3328,7 +3328,7 @@
               "prompts": [
                 {
                   "Play": {
-                    "file": "http://dplutil01.vail/~user/prompts/please-record-greeting.wav"
+                    "file": "https://yoursite.com/path/to/please-record-greeting.wav"
                   }
                 }
               ]
