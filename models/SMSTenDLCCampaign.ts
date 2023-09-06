@@ -480,4 +480,3 @@ export class SMSTenDLCCampaign {
         Object.assign(this, preparedArgs)
     }
 }
-

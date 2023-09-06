@@ -9,6 +9,14 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 None
 
+<a name="3.5.1"></a>
+
+## [3.5.1] - 2023-09-01
+
+### Added
+
+- MIT License
+
 <a name="3.5.0"></a>
 
 ## [3.5.0] - 2023-08-15
