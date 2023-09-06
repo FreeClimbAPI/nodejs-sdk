@@ -1,6 +1,6 @@
 {
   "name": "@freeclimb/sdk",
-  "version": "3.5.1",
+  "version": "3.5.2",
   "description": "OpenAPI client for @freeclimb/sdk",
   "author": "OpenAPI-Generator Contributors",
   "keywords": [
@@ -9,7 +9,7 @@
     "openapi-client",
     "openapi-generator"
   ],
-  "license": "Unlicense",
+  "license": "MIT",
   "files": [
     "./dist",
     "./apis",
