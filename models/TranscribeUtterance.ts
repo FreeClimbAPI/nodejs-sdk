@@ -12,6 +12,7 @@
 
 import { TranscribeUtteranceRecord } from './TranscribeUtteranceRecord';
 import { HttpFile } from '../http/http';
+import { PerclCommand } from './PerclCommand';
 
 /**
 * The `TranscribeUtterance` command transcribes the caller’s voice and returns transcription of the audio and optionally returns the recording of the audio transcribed.  `TranscribeUtterance` is blocking and is a terminal command. As such, the actionUrl property is required, and control of the Call picks up using the `PerCL` returned in response of the `actionUrl`. Recording and Transcription information is returned in the actionUrl request. If the reason this command ended was due to the call hanging up, any PerCL returned will not execute.
@@ -32,7 +33,7 @@ interface ArgumentsType {
     'privacyForRecording'?: boolean;
     'prompts'?: Array<any>;
 }
-export class TranscribeUtterance {
+export class TranscribeUtterance extends PerclCommand{
     'actionUrl': string;
     'playBeep'?: boolean;
     'record'?: TranscribeUtteranceRecord;
@@ -40,7 +41,7 @@ export class TranscribeUtterance {
     'privacyForRecording'?: boolean;
     'prompts'?: Array<any>;
 
-    static readonly discriminator: string | undefined = undefined;
+    static readonly discriminator: string | undefined = "command";
 
     static readonly attributeTypeMap: AttributeType[] = [
         {
@@ -99,10 +100,11 @@ export class TranscribeUtterance {
         }    ];
 
     static getAttributeTypeMap(): AttributeType[] {
-        return TranscribeUtterance.attributeTypeMap;
+        return super.getAttributeTypeMap().concat(TranscribeUtterance.attributeTypeMap);
     }
 
     public constructor(args: ArgumentsType) {
+        super({ command: "TranscribeUtterance" });
         const preparedArgs = TranscribeUtterance.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
             const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
             if (val !== undefined) {

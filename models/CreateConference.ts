@@ -35,6 +35,7 @@ import { SetTalk } from './SetTalk';
 import { Sms } from './Sms';
 import { StartRecordCall } from './StartRecordCall';
 import { TerminateConference } from './TerminateConference';
+import { TranscribeUtterance } from './TranscribeUtterance';
 import { Unpark } from './Unpark';
 import { HttpFile } from '../http/http';
 

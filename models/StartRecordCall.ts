@@ -33,6 +33,7 @@ import { SetListen } from './SetListen';
 import { SetTalk } from './SetTalk';
 import { Sms } from './Sms';
 import { TerminateConference } from './TerminateConference';
+import { TranscribeUtterance } from './TranscribeUtterance';
 import { Unpark } from './Unpark';
 import { HttpFile } from '../http/http';
 
