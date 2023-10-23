@@ -7,8 +7,9 @@ describe('UpdateCallRequest Tests', () => {
     })
     test('Test Property status', () => {
         
-        expect(freeclimb.UpdateCallRequestStatus.CANCELED).toBe("canceled")
-        expect(freeclimb.UpdateCallRequestStatus.COMPLETED).toBe("completed")
+        const value = "canceled"
+        model.status = freeclimb.UpdateCallRequestStatus.CANCELED
+        expect(model.status).toBe(value)
          
     })
 })

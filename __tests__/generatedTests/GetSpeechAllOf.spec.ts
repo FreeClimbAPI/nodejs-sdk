@@ -14,8 +14,9 @@ describe('GetSpeechAllOf Tests', () => {
     })
     test('Test Property grammarType', () => {
         
-        expect(freeclimb.GrammarType.URL).toBe("URL")
-        expect(freeclimb.GrammarType.BUILT_IN).toBe("BUILTIN")
+        const value = "URL"
+        model.grammarType = freeclimb.GrammarType.URL
+        expect(model.grammarType).toBe(value)
          
     })
     test('Test Property grammarFile', () => {

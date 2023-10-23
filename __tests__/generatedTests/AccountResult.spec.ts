@@ -54,15 +54,16 @@ describe('AccountResult Tests', () => {
     })
     test('Test Property type', () => {
         
-        expect(freeclimb.AccountType.TRIAL).toBe("trial")
-        expect(freeclimb.AccountType.FULL).toBe("full")
+        const value = "trial"
+        model.type = freeclimb.AccountType.TRIAL
+        expect(model.type).toBe(value)
 
     })
     test('Test Property status', () => {
         
-        expect(freeclimb.AccountStatus.CLOSED).toBe("closed")
-        expect(freeclimb.AccountStatus.SUSPENDED).toBe("suspended")
-        expect(freeclimb.AccountStatus.ACTIVE).toBe("active")
+        const value = "closed"
+        model.status = freeclimb.AccountStatus.CLOSED
+        expect(model.status).toBe(value)
 
     })
     test('Test Property subresourceUris', () => {

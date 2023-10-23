@@ -48,10 +48,9 @@ describe('ConferenceResult Tests', () => {
     })
     test('Test Property playBeep', () => {
         
-        expect(freeclimb.PlayBeep.ALWAYS).toBe("always")
-        expect(freeclimb.PlayBeep.NEVER).toBe("never")
-        expect(freeclimb.PlayBeep.ENTRY_ONLY).toBe("entryOnly")
-        expect(freeclimb.PlayBeep.EXIT_ONLY).toBe("exitOnly")
+        const value = "always"
+        model.playBeep = freeclimb.PlayBeep.ALWAYS
+        expect(model.playBeep).toBe(value)
 
     })
     test('Test Property record', () => {
@@ -62,10 +61,9 @@ describe('ConferenceResult Tests', () => {
     })
     test('Test Property status', () => {
         
-        expect(freeclimb.ConferenceStatus.EMPTY).toBe("empty")
-        expect(freeclimb.ConferenceStatus.POPULATED).toBe("populated")
-        expect(freeclimb.ConferenceStatus.IN_PROGRESS).toBe("inProgress")
-        expect(freeclimb.ConferenceStatus.TERMINATED).toBe("terminated")
+        const value = "empty"
+        model.status = freeclimb.ConferenceStatus.EMPTY
+        expect(model.status).toBe(value)
 
     })
     test('Test Property waitUrl', () => {

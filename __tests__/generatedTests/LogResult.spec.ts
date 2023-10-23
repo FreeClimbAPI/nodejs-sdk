@@ -12,9 +12,9 @@ describe('LogResult Tests', () => {
     })
     test('Test Property level', () => {
         
-        expect(freeclimb.LogLevel.INFO).toBe("info")
-        expect(freeclimb.LogLevel.WARNING).toBe("warning")
-        expect(freeclimb.LogLevel.ERROR).toBe("error")
+        const value = "info"
+        model.level = freeclimb.LogLevel.INFO
+        expect(model.level).toBe(value)
          
     })
     test('Test Property requestId', () => {

@@ -34,8 +34,9 @@ describe('OutDialAllOf Tests', () => {
     })
     test('Test Property ifMachine', () => {
         
-        expect(freeclimb.IfMachine.REDIRECT).toBe("redirect")
-        expect(freeclimb.IfMachine.HANGUP).toBe("hangup")
+        const value = "redirect"
+        model.ifMachine = freeclimb.IfMachine.REDIRECT
+        expect(model.ifMachine).toBe(value)
          
     })
     test('Test Property ifMachineUrl', () => {

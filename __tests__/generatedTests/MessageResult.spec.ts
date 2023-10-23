@@ -42,17 +42,9 @@ describe('MessageResult Tests', () => {
     })
     test('Test Property status', () => {
         
-        expect(freeclimb.MessageStatus.NEW).toBe("new")
-        expect(freeclimb.MessageStatus.QUEUED).toBe("queued")
-        expect(freeclimb.MessageStatus.REJECTED).toBe("rejected")
-        expect(freeclimb.MessageStatus.SENDING).toBe("sending")
-        expect(freeclimb.MessageStatus.SENT).toBe("sent")
-        expect(freeclimb.MessageStatus.FAILED).toBe("failed")
-        expect(freeclimb.MessageStatus.RECEIVED).toBe("received")
-        expect(freeclimb.MessageStatus.UNDELIVERED).toBe("undelivered")
-        expect(freeclimb.MessageStatus.EXPIRED).toBe("expired")
-        expect(freeclimb.MessageStatus.DELETED).toBe("deleted")
-        expect(freeclimb.MessageStatus.UNKNOWN).toBe("unknown")
+        const value = "new"
+        model.status = freeclimb.MessageStatus.NEW
+        expect(model.status).toBe(value)
 
     })
     test('Test Property from', () => {

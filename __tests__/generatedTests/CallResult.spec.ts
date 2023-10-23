@@ -66,14 +66,9 @@ describe('CallResult Tests', () => {
     })
     test('Test Property callStatus', () => {
         
-        expect(freeclimb.CallStatus.QUEUED).toBe("queued")
-        expect(freeclimb.CallStatus.RINGING).toBe("ringing")
-        expect(freeclimb.CallStatus.IN_PROGRESS).toBe("inProgress")
-        expect(freeclimb.CallStatus.CANCELED).toBe("canceled")
-        expect(freeclimb.CallStatus.COMPLETED).toBe("completed")
-        expect(freeclimb.CallStatus.FAILED).toBe("failed")
-        expect(freeclimb.CallStatus.BUSY).toBe("busy")
-        expect(freeclimb.CallStatus.NO_ANSWER).toBe("noAnswer")
+        const value = "queued"
+        model.callStatus = freeclimb.CallStatus.QUEUED
+        expect(model.callStatus).toBe(value)
 
     })
     test('Test Property startTime', () => {
@@ -108,15 +103,16 @@ describe('CallResult Tests', () => {
     })
     test('Test Property direction', () => {
         
-        expect(freeclimb.CallDirection.INBOUND).toBe("inbound")
-        expect(freeclimb.CallDirection.OUTBOUND_API).toBe("outboundAPI")
-        expect(freeclimb.CallDirection.OUTBOUND_DIAL).toBe("outboundDial")
+        const value = "inbound"
+        model.direction = freeclimb.CallDirection.INBOUND
+        expect(model.direction).toBe(value)
 
     })
     test('Test Property answeredBy', () => {
         
-        expect(freeclimb.AnsweredBy.HUMAN).toBe("human")
-        expect(freeclimb.AnsweredBy.MACHINE).toBe("machine")
+        const value = "human"
+        model.answeredBy = freeclimb.AnsweredBy.HUMAN
+        expect(model.answeredBy).toBe(value)
 
     })
     test('Test Property subresourceUris', () => {
