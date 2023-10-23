@@ -15,5 +15,6 @@ describe('TerminateConference Tests', () => {
         const value = "string"
         model.conferenceId = "string"
         expect(model.conferenceId).toBe(value)
-            })
+        
+    })
 })

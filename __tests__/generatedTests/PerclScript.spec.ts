@@ -9,5 +9,6 @@ describe('PerclScript Tests', () => {
         const value:freeclimb.PerclCommand[] = []
         model.commands = value
         expect(model.commands).toStrictEqual(value)
+         
     })
 })

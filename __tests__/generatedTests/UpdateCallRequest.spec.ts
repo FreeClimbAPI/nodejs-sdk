@@ -9,5 +9,6 @@ describe('UpdateCallRequest Tests', () => {
         
         expect(freeclimb.UpdateCallRequestStatus.CANCELED).toBe("canceled")
         expect(freeclimb.UpdateCallRequestStatus.COMPLETED).toBe("completed")
+         
     })
 })

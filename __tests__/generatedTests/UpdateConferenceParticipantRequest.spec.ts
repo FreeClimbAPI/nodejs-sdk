@@ -8,10 +8,12 @@ describe('UpdateConferenceParticipantRequest Tests', () => {
         const value = true
         model.talk = true
         expect(model.talk).toBe(value)
+         
     })
     test('Test Property listen', () => {
         const value = true
         model.listen = true
         expect(model.listen).toBe(value)
+         
     })
 })

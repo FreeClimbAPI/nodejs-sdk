@@ -51,5 +51,6 @@ describe('CallList Tests', () => {
         const value:freeclimb.CallResult[] = []
         model.calls = value
         expect(model.calls).toStrictEqual(value)
+
     })
 })

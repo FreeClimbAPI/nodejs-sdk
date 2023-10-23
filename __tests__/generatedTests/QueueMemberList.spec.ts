@@ -51,5 +51,6 @@ describe('QueueMemberList Tests', () => {
         const value:freeclimb.QueueMember[] = []
         model.queueMembers = value
         expect(model.queueMembers).toStrictEqual(value)
+
     })
 })

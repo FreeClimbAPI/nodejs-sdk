@@ -9,5 +9,6 @@ describe('AvailableNumberListAllOf Tests', () => {
         const value:freeclimb.AvailableNumber[] = []
         model.availablePhoneNumbers = value
         expect(model.availablePhoneNumbers).toStrictEqual(value)
+         
     })
 })

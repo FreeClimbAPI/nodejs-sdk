@@ -9,5 +9,6 @@ describe('SMSTenDLCPartnerCampaignsListResultAllOf Tests', () => {
         const value:freeclimb.SMSTenDLCPartnerCampaign[] = []
         model.partnerCampaigns = value
         expect(model.partnerCampaigns).toStrictEqual(value)
+         
     })
 })

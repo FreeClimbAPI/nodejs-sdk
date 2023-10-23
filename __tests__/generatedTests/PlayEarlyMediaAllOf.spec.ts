@@ -9,5 +9,6 @@ describe('PlayEarlyMediaAllOf Tests', () => {
         const value = "string"
         model.file = "string"
         expect(model.file).toBe(value)
-            })
+                 
+    })
 })

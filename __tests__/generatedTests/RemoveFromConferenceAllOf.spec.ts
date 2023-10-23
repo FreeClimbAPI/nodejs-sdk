@@ -9,5 +9,6 @@ describe('RemoveFromConferenceAllOf Tests', () => {
         const value = "string"
         model.callId = "string"
         expect(model.callId).toBe(value)
-            })
+                 
+    })
 })

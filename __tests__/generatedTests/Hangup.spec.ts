@@ -14,5 +14,6 @@ describe('Hangup Tests', () => {
         const value = "string"
         model.reason = "string"
         expect(model.reason).toBe(value)
-            })
+        
+    })
 })

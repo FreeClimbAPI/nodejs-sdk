@@ -9,5 +9,6 @@ describe('SMSTenDLCBrandsListResultAllOf Tests', () => {
         const value:freeclimb.SMSTenDLCBrand[] = []
         model.brands = value
         expect(model.brands).toStrictEqual(value)
+         
     })
 })

@@ -51,5 +51,6 @@ describe('MessagesList Tests', () => {
         const value:freeclimb.MessageResult[] = []
         model.messages = value
         expect(model.messages).toStrictEqual(value)
+
     })
 })

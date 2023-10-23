@@ -8,27 +8,32 @@ describe('CreateConferenceRequest Tests', () => {
         const value = "string"
         model.alias = "string"
         expect(model.alias).toBe(value)
-            })
+                 
+    })
     test('Test Property playBeep', () => {
         
         expect(freeclimb.PlayBeep.ALWAYS).toBe("always")
         expect(freeclimb.PlayBeep.NEVER).toBe("never")
         expect(freeclimb.PlayBeep.ENTRY_ONLY).toBe("entryOnly")
         expect(freeclimb.PlayBeep.EXIT_ONLY).toBe("exitOnly")
+         
     })
     test('Test Property record', () => {
         const value = true
         model.record = true
         expect(model.record).toBe(value)
+         
     })
     test('Test Property waitUrl', () => {
         const value = "string"
         model.waitUrl = "string"
         expect(model.waitUrl).toBe(value)
-            })
+                 
+    })
     test('Test Property statusCallbackUrl', () => {
         const value = "string"
         model.statusCallbackUrl = "string"
         expect(model.statusCallbackUrl).toBe(value)
-            })
+                 
+    })
 })

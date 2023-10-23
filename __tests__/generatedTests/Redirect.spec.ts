@@ -15,5 +15,6 @@ describe('Redirect Tests', () => {
         const value = "https://123.abc"
         model.actionUrl = value
         expect(model.actionUrl).toBe(value)
+
     })
 })

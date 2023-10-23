@@ -51,5 +51,6 @@ describe('ConferenceList Tests', () => {
         const value:freeclimb.ConferenceResult[] = []
         model.conferences = value
         expect(model.conferences).toStrictEqual(value)
+
     })
 })

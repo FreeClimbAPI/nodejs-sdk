@@ -9,5 +9,6 @@ describe('ConferenceParticipantListAllOf Tests', () => {
         const value:freeclimb.ConferenceParticipantResult[] = []
         model.participants = value
         expect(model.participants).toStrictEqual(value)
+         
     })
 })

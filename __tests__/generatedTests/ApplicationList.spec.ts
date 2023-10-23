@@ -51,5 +51,6 @@ describe('ApplicationList Tests', () => {
         const value:freeclimb.ApplicationResult[] = []
         model.applications = value
         expect(model.applications).toStrictEqual(value)
+
     })
 })

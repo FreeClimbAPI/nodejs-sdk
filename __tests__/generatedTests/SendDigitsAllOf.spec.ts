@@ -9,15 +9,18 @@ describe('SendDigitsAllOf Tests', () => {
         const value = "string"
         model.digits = "string"
         expect(model.digits).toBe(value)
-            })
+                 
+    })
     test('Test Property pauseMs', () => {
         const value = 1
         model.pauseMs = 1
         expect(model.pauseMs).toBe(value)
+         
     })
     test('Test Property privacyMode', () => {
         const value = true
         model.privacyMode = true
         expect(model.privacyMode).toBe(value)
+         
     })
 })

@@ -8,10 +8,12 @@ describe('QueueRequest Tests', () => {
         const value = "string"
         model.alias = "string"
         expect(model.alias).toBe(value)
-            })
+                 
+    })
     test('Test Property maxSize', () => {
         const value = 1
         model.maxSize = 1
         expect(model.maxSize).toBe(value)
+         
     })
 })

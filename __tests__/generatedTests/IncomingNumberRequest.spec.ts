@@ -8,15 +8,18 @@ describe('IncomingNumberRequest Tests', () => {
         const value = "string"
         model.applicationId = "string"
         expect(model.applicationId).toBe(value)
-            })
+                 
+    })
     test('Test Property alias', () => {
         const value = "string"
         model.alias = "string"
         expect(model.alias).toBe(value)
-            })
+                 
+    })
     test('Test Property campaignId', () => {
         const value = "string"
         model.campaignId = "string"
         expect(model.campaignId).toBe(value)
-            })
+                 
+    })
 })

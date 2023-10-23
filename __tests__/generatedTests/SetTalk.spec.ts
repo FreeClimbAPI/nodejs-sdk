@@ -15,10 +15,12 @@ describe('SetTalk Tests', () => {
         const value = "string"
         model.callId = "string"
         expect(model.callId).toBe(value)
-            })
+        
+    })
     test('Test Property talk', () => {
         const value = true
         model.talk = true
         expect(model.talk).toBe(value)
+
     })
 })

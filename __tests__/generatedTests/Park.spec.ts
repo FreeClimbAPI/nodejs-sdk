@@ -16,15 +16,18 @@ describe('Park Tests', () => {
         const value = "https://123.abc"
         model.waitUrl = value
         expect(model.waitUrl).toBe(value)
+
     })
     test('Test Property actionUrl', () => {
         const value = "https://123.abc"
         model.actionUrl = value
         expect(model.actionUrl).toBe(value)
+
     })
     test('Test Property notificationUrl', () => {
         const value = "string"
         model.notificationUrl = "string"
         expect(model.notificationUrl).toBe(value)
-            })
+        
+    })
 })

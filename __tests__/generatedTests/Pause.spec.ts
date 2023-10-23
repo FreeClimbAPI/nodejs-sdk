@@ -15,5 +15,6 @@ describe('Pause Tests', () => {
         const value = 1
         model.length = 1
         expect(model.length).toBe(value)
+
     })
 })

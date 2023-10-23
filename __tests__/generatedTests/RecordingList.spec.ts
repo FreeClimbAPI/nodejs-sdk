@@ -51,5 +51,6 @@ describe('RecordingList Tests', () => {
         const value:freeclimb.RecordingResult[] = []
         model.recordings = value
         expect(model.recordings).toStrictEqual(value)
+
     })
 })

@@ -13,25 +13,30 @@ describe('Capabilities Tests', () => {
         const value = true
         model.voice = true
         expect(model.voice).toBe(value)
+         
     })
     test('Test Property sms', () => {
         const value = true
         model.sms = true
         expect(model.sms).toBe(value)
+         
     })
     test('Test Property tollFree', () => {
         const value = true
         model.tollFree = true
         expect(model.tollFree).toBe(value)
+         
     })
     test('Test Property tenDLC', () => {
         const value = true
         model.tenDLC = true
         expect(model.tenDLC).toBe(value)
+         
     })
     test('Test Property shortCode', () => {
         const value = true
         model.shortCode = true
         expect(model.shortCode).toBe(value)
+         
     })
 })

@@ -9,5 +9,6 @@ describe('FilterLogsRequest Tests', () => {
         const value = "string"
         model.pql = "string"
         expect(model.pql).toBe(value)
-            })
+                 
+    })
 })

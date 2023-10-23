@@ -8,10 +8,12 @@ describe('AccountRequest Tests', () => {
         const value = "string"
         model.alias = "string"
         expect(model.alias).toBe(value)
-            })
+                 
+    })
     test('Test Property label', () => {
         const value = "string"
         model.label = "string"
         expect(model.label).toBe(value)
-            })
+                 
+    })
 })

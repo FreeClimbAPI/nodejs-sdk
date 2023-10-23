@@ -8,5 +8,6 @@ describe('PerclCommand Tests', () => {
         const value = "string"
         model.command = "string"
         expect(model.command).toBe(value)
-            })
+                 
+    })
 })

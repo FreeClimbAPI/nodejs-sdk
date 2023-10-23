@@ -15,10 +15,12 @@ describe('SetListen Tests', () => {
         const value = "string"
         model.callId = "string"
         expect(model.callId).toBe(value)
-            })
+        
+    })
     test('Test Property listen', () => {
         const value = true
         model.listen = true
         expect(model.listen).toBe(value)
+
     })
 })

@@ -51,5 +51,6 @@ describe('LogList Tests', () => {
         const value:freeclimb.LogResult[] = []
         model.logs = value
         expect(model.logs).toStrictEqual(value)
+
     })
 })
