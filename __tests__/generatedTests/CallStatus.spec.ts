@@ -2,28 +2,28 @@ import * as freeclimb  from '../../index'
 import { describe, expect, test, it } from "@jest/globals";
     
 describe('CallStatus Tests', () => {
-    test('QUEUED_Enum_Test', () => {    
+    test('QUEUED_ENUM_TEST', () => {    
         expect(freeclimb.CallStatus.QUEUED).toBe("queued")
     })
-    test('RINGING_Enum_Test', () => {    
+    test('RINGING_ENUM_TEST', () => {    
         expect(freeclimb.CallStatus.RINGING).toBe("ringing")
     })
-    test('IN_PROGRESS_Enum_Test', () => {    
+    test('IN_PROGRESS_ENUM_TEST', () => {    
         expect(freeclimb.CallStatus.IN_PROGRESS).toBe("inProgress")
     })
-    test('CANCELED_Enum_Test', () => {    
+    test('CANCELED_ENUM_TEST', () => {    
         expect(freeclimb.CallStatus.CANCELED).toBe("canceled")
     })
-    test('COMPLETED_Enum_Test', () => {    
+    test('COMPLETED_ENUM_TEST', () => {    
         expect(freeclimb.CallStatus.COMPLETED).toBe("completed")
     })
-    test('FAILED_Enum_Test', () => {    
+    test('FAILED_ENUM_TEST', () => {    
         expect(freeclimb.CallStatus.FAILED).toBe("failed")
     })
-    test('BUSY_Enum_Test', () => {    
+    test('BUSY_ENUM_TEST', () => {    
         expect(freeclimb.CallStatus.BUSY).toBe("busy")
     })
-    test('NO_ANSWER_Enum_Test', () => {    
+    test('NO_ANSWER_ENUM_TEST', () => {    
         expect(freeclimb.CallStatus.NO_ANSWER).toBe("noAnswer")
     })
 })
