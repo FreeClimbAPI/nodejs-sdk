@@ -1,3 +1,3 @@
 export type Protocol = "http" | "https"
 
-export type URI = `${Protocol}`
+export type URI = `${Protocol}${string}`
