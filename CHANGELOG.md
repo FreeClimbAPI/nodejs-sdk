@@ -11,6 +11,14 @@ None
 
 <a name="3.5.2"></a>
 
+## [3.5.2] - 2023-12-13
+
+### Changed
+
+- Improved Unit Tests for NodeJS SDK
+
+<a name="3.5.2"></a>
+
 ## [3.5.2] - 2023-10-20
 
 ### Added
