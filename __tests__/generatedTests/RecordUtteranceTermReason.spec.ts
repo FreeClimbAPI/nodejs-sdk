@@ -1,17 +1,25 @@
 import * as freeclimb  from '../../index'
-import { describe, expect, test, it } from "@jest/globals";
+import { describe, expect, it } from "@jest/globals";
     
-describe('RecordUtteranceTermReason Tests', () => {
-    test('FINISH_KEY_ENUM_TEST', () => {    
-        expect(freeclimb.RecordUtteranceTermReason.FINISH_KEY).toBe("finishKey")
+describe('RecordUtteranceTermReason', () => {
+    describe('.FINISH_KEY', () => {
+        it('resolves to correct value for FINISH_KEY enum property', () => {
+           expect(freeclimb.RecordUtteranceTermReason.FINISH_KEY).toBe("finishKey")
+        })
     })
-    test('TIMEOUT_ENUM_TEST', () => {    
-        expect(freeclimb.RecordUtteranceTermReason.TIMEOUT).toBe("timeout")
+    describe('.TIMEOUT', () => {
+        it('resolves to correct value for TIMEOUT enum property', () => {
+           expect(freeclimb.RecordUtteranceTermReason.TIMEOUT).toBe("timeout")
+        })
     })
-    test('HANGUP_ENUM_TEST', () => {    
-        expect(freeclimb.RecordUtteranceTermReason.HANGUP).toBe("hangup")
+    describe('.HANGUP', () => {
+        it('resolves to correct value for HANGUP enum property', () => {
+           expect(freeclimb.RecordUtteranceTermReason.HANGUP).toBe("hangup")
+        })
     })
-    test('MAX_LENGTH_ENUM_TEST', () => {    
-        expect(freeclimb.RecordUtteranceTermReason.MAX_LENGTH).toBe("maxLength")
+    describe('.MAX_LENGTH', () => {
+        it('resolves to correct value for MAX_LENGTH enum property', () => {
+           expect(freeclimb.RecordUtteranceTermReason.MAX_LENGTH).toBe("maxLength")
+        })
     })
 })

@@ -1,17 +1,25 @@
 import * as freeclimb  from '../../index'
-import { describe, expect, test, it } from "@jest/globals";
+import { describe, expect, it } from "@jest/globals";
     
-describe('PlayBeep Tests', () => {
-    test('ALWAYS_ENUM_TEST', () => {    
-        expect(freeclimb.PlayBeep.ALWAYS).toBe("always")
+describe('PlayBeep', () => {
+    describe('.ALWAYS', () => {
+        it('resolves to correct value for ALWAYS enum property', () => {
+           expect(freeclimb.PlayBeep.ALWAYS).toBe("always")
+        })
     })
-    test('NEVER_ENUM_TEST', () => {    
-        expect(freeclimb.PlayBeep.NEVER).toBe("never")
+    describe('.NEVER', () => {
+        it('resolves to correct value for NEVER enum property', () => {
+           expect(freeclimb.PlayBeep.NEVER).toBe("never")
+        })
     })
-    test('ENTRY_ONLY_ENUM_TEST', () => {    
-        expect(freeclimb.PlayBeep.ENTRY_ONLY).toBe("entryOnly")
+    describe('.ENTRY_ONLY', () => {
+        it('resolves to correct value for ENTRY_ONLY enum property', () => {
+           expect(freeclimb.PlayBeep.ENTRY_ONLY).toBe("entryOnly")
+        })
     })
-    test('EXIT_ONLY_ENUM_TEST', () => {    
-        expect(freeclimb.PlayBeep.EXIT_ONLY).toBe("exitOnly")
+    describe('.EXIT_ONLY', () => {
+        it('resolves to correct value for EXIT_ONLY enum property', () => {
+           expect(freeclimb.PlayBeep.EXIT_ONLY).toBe("exitOnly")
+        })
     })
 })

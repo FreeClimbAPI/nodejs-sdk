@@ -1,23 +1,35 @@
 import * as freeclimb  from '../../index'
-import { describe, expect, test, it } from "@jest/globals";
+import { describe, expect, it } from "@jest/globals";
     
-describe('GetSpeechReason Tests', () => {
-    test('ERROR_ENUM_TEST', () => {    
-        expect(freeclimb.GetSpeechReason.ERROR).toBe("error")
+describe('GetSpeechReason', () => {
+    describe('.ERROR', () => {
+        it('resolves to correct value for ERROR enum property', () => {
+           expect(freeclimb.GetSpeechReason.ERROR).toBe("error")
+        })
     })
-    test('HANGUP_ENUM_TEST', () => {    
-        expect(freeclimb.GetSpeechReason.HANGUP).toBe("hangup")
+    describe('.HANGUP', () => {
+        it('resolves to correct value for HANGUP enum property', () => {
+           expect(freeclimb.GetSpeechReason.HANGUP).toBe("hangup")
+        })
     })
-    test('DIGIT_ENUM_TEST', () => {    
-        expect(freeclimb.GetSpeechReason.DIGIT).toBe("digit")
+    describe('.DIGIT', () => {
+        it('resolves to correct value for DIGIT enum property', () => {
+           expect(freeclimb.GetSpeechReason.DIGIT).toBe("digit")
+        })
     })
-    test('NO_INPUT_ENUM_TEST', () => {    
-        expect(freeclimb.GetSpeechReason.NO_INPUT).toBe("noInput")
+    describe('.NO_INPUT', () => {
+        it('resolves to correct value for NO_INPUT enum property', () => {
+           expect(freeclimb.GetSpeechReason.NO_INPUT).toBe("noInput")
+        })
     })
-    test('NO_MATCH_ENUM_TEST', () => {    
-        expect(freeclimb.GetSpeechReason.NO_MATCH).toBe("noMatch")
+    describe('.NO_MATCH', () => {
+        it('resolves to correct value for NO_MATCH enum property', () => {
+           expect(freeclimb.GetSpeechReason.NO_MATCH).toBe("noMatch")
+        })
     })
-    test('RECOGNITION_ENUM_TEST', () => {    
-        expect(freeclimb.GetSpeechReason.RECOGNITION).toBe("recognition")
+    describe('.RECOGNITION', () => {
+        it('resolves to correct value for RECOGNITION enum property', () => {
+           expect(freeclimb.GetSpeechReason.RECOGNITION).toBe("recognition")
+        })
     })
 })

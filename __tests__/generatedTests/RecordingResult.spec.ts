@@ -1,61 +1,70 @@
 import * as freeclimb  from '../../index'
-import { describe, expect, test, it } from "@jest/globals";
+import { describe, expect, it } from "@jest/globals";
     
-describe('RecordingResult Tests', () => {
+describe('RecordingResult', () => {
     let model: freeclimb.RecordingResult = new freeclimb.RecordingResult({
+        uri: "test_uri",
+        dateCreated: "test_dateCreated",
+        dateUpdated: "test_dateUpdated",
+        revision: 1,
+        recordingId: "test_recordingId",
+        accountId: "test_accountId",
+        callId: "test_callId",
+        durationSec: 1,
+        conferenceId: "test_conferenceId",
     })
-    test('Test Property uri', () => {
-        const value = "string"
-        model.uri = "string"
-        expect(model.uri).toBe(value)
-                
+    describe(".uri", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_uri"
+            expect(model.uri).toBe(value)
+        })
     })
-    test('Test Property dateCreated', () => {
-        const value = "string"
-        model.dateCreated = "string"
-        expect(model.dateCreated).toBe(value)
-                
+    describe(".dateCreated", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_dateCreated"
+            expect(model.dateCreated).toBe(value)
+        })
     })
-    test('Test Property dateUpdated', () => {
-        const value = "string"
-        model.dateUpdated = "string"
-        expect(model.dateUpdated).toBe(value)
-                
+    describe(".dateUpdated", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_dateUpdated"
+            expect(model.dateUpdated).toBe(value)
+        })
     })
-    test('Test Property revision', () => {
-        const value = 1
-        model.revision = 1
-        expect(model.revision).toBe(value)
-        
+    describe(".revision", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = 1
+            expect(model.revision).toBe(value)
+        })
     })
-    test('Test Property recordingId', () => {
-        const value = "string"
-        model.recordingId = "string"
-        expect(model.recordingId).toBe(value)
-        
+    describe(".recordingId", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_recordingId"
+            expect(model.recordingId).toBe(value)
+        })
     })
-    test('Test Property accountId', () => {
-        const value = "string"
-        model.accountId = "string"
-        expect(model.accountId).toBe(value)
-        
+    describe(".accountId", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_accountId"
+            expect(model.accountId).toBe(value)
+        })
     })
-    test('Test Property callId', () => {
-        const value = "string"
-        model.callId = "string"
-        expect(model.callId).toBe(value)
-        
+    describe(".callId", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_callId"
+            expect(model.callId).toBe(value)
+        })
     })
-    test('Test Property durationSec', () => {
-        const value = 1
-        model.durationSec = 1
-        expect(model.durationSec).toBe(value)
-
+    describe(".durationSec", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = 1
+            expect(model.durationSec).toBe(value)
+        })
     })
-    test('Test Property conferenceId', () => {
-        const value = "string"
-        model.conferenceId = "string"
-        expect(model.conferenceId).toBe(value)
-        
+    describe(".conferenceId", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_conferenceId"
+            expect(model.conferenceId).toBe(value)
+        })
     })
 })

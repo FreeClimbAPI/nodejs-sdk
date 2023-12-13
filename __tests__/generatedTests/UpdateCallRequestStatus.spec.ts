@@ -1,11 +1,15 @@
 import * as freeclimb  from '../../index'
-import { describe, expect, test, it } from "@jest/globals";
+import { describe, expect, it } from "@jest/globals";
     
-describe('UpdateCallRequestStatus Tests', () => {
-    test('CANCELED_ENUM_TEST', () => {    
-        expect(freeclimb.UpdateCallRequestStatus.CANCELED).toBe("canceled")
+describe('UpdateCallRequestStatus', () => {
+    describe('.CANCELED', () => {
+        it('resolves to correct value for CANCELED enum property', () => {
+           expect(freeclimb.UpdateCallRequestStatus.CANCELED).toBe("canceled")
+        })
     })
-    test('COMPLETED_ENUM_TEST', () => {    
-        expect(freeclimb.UpdateCallRequestStatus.COMPLETED).toBe("completed")
+    describe('.COMPLETED', () => {
+        it('resolves to correct value for COMPLETED enum property', () => {
+           expect(freeclimb.UpdateCallRequestStatus.COMPLETED).toBe("completed")
+        })
     })
 })

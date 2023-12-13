@@ -1,37 +1,42 @@
 import * as freeclimb  from '../../index'
-import { describe, expect, test, it } from "@jest/globals";
+import { describe, expect, it } from "@jest/globals";
     
-describe('RecordingResultAllOf Tests', () => {
+describe('RecordingResultAllOf', () => {
     let model: freeclimb.RecordingResultAllOf = new freeclimb.RecordingResultAllOf({
+        recordingId: "test_recordingId",
+        accountId: "test_accountId",
+        callId: "test_callId",
+        durationSec: 1,
+        conferenceId: "test_conferenceId",
     })
-    test('Test Property recordingId', () => {
-        const value = "string"
-        model.recordingId = "string"
-        expect(model.recordingId).toBe(value)
-                 
+    describe(".recordingId", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_recordingId"
+            expect(model.recordingId).toBe(value)
+        })
     })
-    test('Test Property accountId', () => {
-        const value = "string"
-        model.accountId = "string"
-        expect(model.accountId).toBe(value)
-                 
+    describe(".accountId", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_accountId"
+            expect(model.accountId).toBe(value)
+        })
     })
-    test('Test Property callId', () => {
-        const value = "string"
-        model.callId = "string"
-        expect(model.callId).toBe(value)
-                 
+    describe(".callId", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_callId"
+            expect(model.callId).toBe(value)
+        })
     })
-    test('Test Property durationSec', () => {
-        const value = 1
-        model.durationSec = 1
-        expect(model.durationSec).toBe(value)
-         
+    describe(".durationSec", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = 1
+            expect(model.durationSec).toBe(value)
+        })
     })
-    test('Test Property conferenceId', () => {
-        const value = "string"
-        model.conferenceId = "string"
-        expect(model.conferenceId).toBe(value)
-                 
+    describe(".conferenceId", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_conferenceId"
+            expect(model.conferenceId).toBe(value)
+        })
     })
 })

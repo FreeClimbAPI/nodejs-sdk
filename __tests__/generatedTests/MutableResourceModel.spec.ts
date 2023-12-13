@@ -1,31 +1,35 @@
 import * as freeclimb  from '../../index'
-import { describe, expect, test, it } from "@jest/globals";
+import { describe, expect, it } from "@jest/globals";
     
-describe('MutableResourceModel Tests', () => {
+describe('MutableResourceModel', () => {
     let model: freeclimb.MutableResourceModel = new freeclimb.MutableResourceModel({
+        uri: "test_uri",
+        dateCreated: "test_dateCreated",
+        dateUpdated: "test_dateUpdated",
+        revision: 1,
     })
-    test('Test Property uri', () => {
-        const value = "string"
-        model.uri = "string"
-        expect(model.uri).toBe(value)
-                 
+    describe(".uri", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_uri"
+            expect(model.uri).toBe(value)
+        })
     })
-    test('Test Property dateCreated', () => {
-        const value = "string"
-        model.dateCreated = "string"
-        expect(model.dateCreated).toBe(value)
-                 
+    describe(".dateCreated", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_dateCreated"
+            expect(model.dateCreated).toBe(value)
+        })
     })
-    test('Test Property dateUpdated', () => {
-        const value = "string"
-        model.dateUpdated = "string"
-        expect(model.dateUpdated).toBe(value)
-                 
+    describe(".dateUpdated", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_dateUpdated"
+            expect(model.dateUpdated).toBe(value)
+        })
     })
-    test('Test Property revision', () => {
-        const value = 1
-        model.revision = 1
-        expect(model.revision).toBe(value)
-         
+    describe(".revision", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = 1
+            expect(model.revision).toBe(value)
+        })
     })
 })

@@ -1,17 +1,25 @@
 import * as freeclimb  from '../../index'
-import { describe, expect, test, it } from "@jest/globals";
+import { describe, expect, it } from "@jest/globals";
     
-describe('QueueResultStatus Tests', () => {
-    test('QUEUE_FULL_ENUM_TEST', () => {    
-        expect(freeclimb.QueueResultStatus.QUEUE_FULL).toBe("queueFull")
+describe('QueueResultStatus', () => {
+    describe('.QUEUE_FULL', () => {
+        it('resolves to correct value for QUEUE_FULL enum property', () => {
+           expect(freeclimb.QueueResultStatus.QUEUE_FULL).toBe("queueFull")
+        })
     })
-    test('DEQUEUED_ENUM_TEST', () => {    
-        expect(freeclimb.QueueResultStatus.DEQUEUED).toBe("dequeued")
+    describe('.DEQUEUED', () => {
+        it('resolves to correct value for DEQUEUED enum property', () => {
+           expect(freeclimb.QueueResultStatus.DEQUEUED).toBe("dequeued")
+        })
     })
-    test('HANGUP_ENUM_TEST', () => {    
-        expect(freeclimb.QueueResultStatus.HANGUP).toBe("hangup")
+    describe('.HANGUP', () => {
+        it('resolves to correct value for HANGUP enum property', () => {
+           expect(freeclimb.QueueResultStatus.HANGUP).toBe("hangup")
+        })
     })
-    test('SYSTEM_ERROR_ENUM_TEST', () => {    
-        expect(freeclimb.QueueResultStatus.SYSTEM_ERROR).toBe("systemError")
+    describe('.SYSTEM_ERROR', () => {
+        it('resolves to correct value for SYSTEM_ERROR enum property', () => {
+           expect(freeclimb.QueueResultStatus.SYSTEM_ERROR).toBe("systemError")
+        })
     })
 })

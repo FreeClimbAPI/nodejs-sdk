@@ -1,38 +1,42 @@
 import * as freeclimb  from '../../index'
-import { describe, expect, test, it } from "@jest/globals";
+import { describe, expect, it } from "@jest/globals";
     
-describe('SayAllOf Tests', () => {
+describe('SayAllOf', () => {
     let model: freeclimb.SayAllOf = new freeclimb.SayAllOf({
-        text: null as any,
+        text: "test_text",
+        language: "test_language",
+        loop: 1,
+        conferenceId: "test_conferenceId",
+        privacyMode: true,
     })
-    test('Test Property text', () => {
-        const value = "string"
-        model.text = "string"
-        expect(model.text).toBe(value)
-                 
+    describe(".text", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_text"
+            expect(model.text).toBe(value)
+        })
     })
-    test('Test Property language', () => {
-        const value = "string"
-        model.language = "string"
-        expect(model.language).toBe(value)
-                 
+    describe(".language", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_language"
+            expect(model.language).toBe(value)
+        })
     })
-    test('Test Property loop', () => {
-        const value = 1
-        model.loop = 1
-        expect(model.loop).toBe(value)
-         
+    describe(".loop", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = 1
+            expect(model.loop).toBe(value)
+        })
     })
-    test('Test Property conferenceId', () => {
-        const value = "string"
-        model.conferenceId = "string"
-        expect(model.conferenceId).toBe(value)
-                 
+    describe(".conferenceId", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_conferenceId"
+            expect(model.conferenceId).toBe(value)
+        })
     })
-    test('Test Property privacyMode', () => {
-        const value = true
-        model.privacyMode = true
-        expect(model.privacyMode).toBe(value)
-         
+    describe(".privacyMode", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = true
+            expect(model.privacyMode).toBe(value)
+        })
     })
 })

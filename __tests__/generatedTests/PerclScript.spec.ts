@@ -1,14 +1,15 @@
 import * as freeclimb  from '../../index'
-import { describe, expect, test, it } from "@jest/globals";
+import { describe, expect, it } from "@jest/globals";
     
-describe('PerclScript Tests', () => {
+describe('PerclScript', () => {
     let model: freeclimb.PerclScript = new freeclimb.PerclScript({
+        commands: [],
     })
-    test('Test Property commands', () => {
-        
-        const value:freeclimb.PerclCommand[] = []
-        model.commands = value
-        expect(model.commands).toStrictEqual(value)
-         
+    describe(".commands", () => {
+        it('resolves to particular value on initialization', () => {
+
+            const value:freeclimb.PerclCommand[] = []
+            expect(model.commands).toStrictEqual(value)
+        })
     })
 })

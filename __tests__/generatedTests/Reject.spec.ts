@@ -1,19 +1,21 @@
 import * as freeclimb  from '../../index'
-import { describe, expect, test, it } from "@jest/globals";
+import { describe, expect, it } from "@jest/globals";
     
-describe('Reject Tests', () => {
+describe('Reject', () => {
     let model: freeclimb.Reject = new freeclimb.Reject({
+        reason: "test_reason",
     })
-    test('Test Property command', () => {
-        const value = "string"
-        model.command = "string"
-        expect(model.command).toBe(value)
-                
+    describe(".command", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_command"
+            model.command = value
+            expect(model.command).toBe(value)
+        })
     })
-    test('Test Property reason', () => {
-        const value = "string"
-        model.reason = "string"
-        expect(model.reason).toBe(value)
-        
+    describe(".reason", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_reason"
+            expect(model.reason).toBe(value)
+        })
     })
 })

@@ -1,13 +1,14 @@
 import * as freeclimb  from '../../index'
-import { describe, expect, test, it } from "@jest/globals";
+import { describe, expect, it } from "@jest/globals";
     
-describe('HangupAllOf Tests', () => {
+describe('HangupAllOf', () => {
     let model: freeclimb.HangupAllOf = new freeclimb.HangupAllOf({
+        reason: "test_reason",
     })
-    test('Test Property reason', () => {
-        const value = "string"
-        model.reason = "string"
-        expect(model.reason).toBe(value)
-                 
+    describe(".reason", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_reason"
+            expect(model.reason).toBe(value)
+        })
     })
 })

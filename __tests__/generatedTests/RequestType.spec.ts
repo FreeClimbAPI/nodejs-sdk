@@ -1,74 +1,120 @@
 import * as freeclimb  from '../../index'
-import { describe, expect, test, it } from "@jest/globals";
+import { describe, expect, it } from "@jest/globals";
     
-describe('RequestType Tests', () => {
-    test('INBOUND_CALL_ENUM_TEST', () => {    
-        expect(freeclimb.RequestType.INBOUND_CALL).toBe("inboundCall")
+describe('RequestType', () => {
+    describe('.INBOUND_CALL', () => {
+        it('resolves to correct value for INBOUND_CALL enum property', () => {
+           expect(freeclimb.RequestType.INBOUND_CALL).toBe("inboundCall")
+        })
     })
-    test('RECORD_ENUM_TEST', () => {    
-        expect(freeclimb.RequestType.RECORD).toBe("record")
+    describe('.RECORD', () => {
+        it('resolves to correct value for RECORD enum property', () => {
+           expect(freeclimb.RequestType.RECORD).toBe("record")
+        })
     })
-    test('GET_DIGITS_ENUM_TEST', () => {    
-        expect(freeclimb.RequestType.GET_DIGITS).toBe("getDigits")
+    describe('.GET_DIGITS', () => {
+        it('resolves to correct value for GET_DIGITS enum property', () => {
+           expect(freeclimb.RequestType.GET_DIGITS).toBe("getDigits")
+        })
     })
-    test('GET_SPEECH_ENUM_TEST', () => {    
-        expect(freeclimb.RequestType.GET_SPEECH).toBe("getSpeech")
+    describe('.GET_SPEECH', () => {
+        it('resolves to correct value for GET_SPEECH enum property', () => {
+           expect(freeclimb.RequestType.GET_SPEECH).toBe("getSpeech")
+        })
     })
-    test('REDIRECT_ENUM_TEST', () => {    
-        expect(freeclimb.RequestType.REDIRECT).toBe("redirect")
+    describe('.REDIRECT', () => {
+        it('resolves to correct value for REDIRECT enum property', () => {
+           expect(freeclimb.RequestType.REDIRECT).toBe("redirect")
+        })
     })
-    test('PAUSE_ENUM_TEST', () => {    
-        expect(freeclimb.RequestType.PAUSE).toBe("pause")
+    describe('.PAUSE', () => {
+        it('resolves to correct value for PAUSE enum property', () => {
+           expect(freeclimb.RequestType.PAUSE).toBe("pause")
+        })
     })
-    test('OUT_DIAL_START_ENUM_TEST', () => {    
-        expect(freeclimb.RequestType.OUT_DIAL_START).toBe("outDialStart")
+    describe('.OUT_DIAL_START', () => {
+        it('resolves to correct value for OUT_DIAL_START enum property', () => {
+           expect(freeclimb.RequestType.OUT_DIAL_START).toBe("outDialStart")
+        })
     })
-    test('OUT_DIAL_CONNECT_ENUM_TEST', () => {    
-        expect(freeclimb.RequestType.OUT_DIAL_CONNECT).toBe("outDialConnect")
+    describe('.OUT_DIAL_CONNECT', () => {
+        it('resolves to correct value for OUT_DIAL_CONNECT enum property', () => {
+           expect(freeclimb.RequestType.OUT_DIAL_CONNECT).toBe("outDialConnect")
+        })
     })
-    test('OUT_DIAL_API_CONNECT_ENUM_TEST', () => {    
-        expect(freeclimb.RequestType.OUT_DIAL_API_CONNECT).toBe("outDialApiConnect")
+    describe('.OUT_DIAL_API_CONNECT', () => {
+        it('resolves to correct value for OUT_DIAL_API_CONNECT enum property', () => {
+           expect(freeclimb.RequestType.OUT_DIAL_API_CONNECT).toBe("outDialApiConnect")
+        })
     })
-    test('MACHINE_DETECTED_ENUM_TEST', () => {    
-        expect(freeclimb.RequestType.MACHINE_DETECTED).toBe("machineDetected")
+    describe('.MACHINE_DETECTED', () => {
+        it('resolves to correct value for MACHINE_DETECTED enum property', () => {
+           expect(freeclimb.RequestType.MACHINE_DETECTED).toBe("machineDetected")
+        })
     })
-    test('DEQUEUE_ENUM_TEST', () => {    
-        expect(freeclimb.RequestType.DEQUEUE).toBe("dequeue")
+    describe('.DEQUEUE', () => {
+        it('resolves to correct value for DEQUEUE enum property', () => {
+           expect(freeclimb.RequestType.DEQUEUE).toBe("dequeue")
+        })
     })
-    test('QUEUE_WAIT_ENUM_TEST', () => {    
-        expect(freeclimb.RequestType.QUEUE_WAIT).toBe("queueWait")
+    describe('.QUEUE_WAIT', () => {
+        it('resolves to correct value for QUEUE_WAIT enum property', () => {
+           expect(freeclimb.RequestType.QUEUE_WAIT).toBe("queueWait")
+        })
     })
-    test('ADD_TO_QUEUE_NOTIFICATION_ENUM_TEST', () => {    
-        expect(freeclimb.RequestType.ADD_TO_QUEUE_NOTIFICATION).toBe("addToQueueNotification")
+    describe('.ADD_TO_QUEUE_NOTIFICATION', () => {
+        it('resolves to correct value for ADD_TO_QUEUE_NOTIFICATION enum property', () => {
+           expect(freeclimb.RequestType.ADD_TO_QUEUE_NOTIFICATION).toBe("addToQueueNotification")
+        })
     })
-    test('REMOVE_FROM_QUEUE_NOTIFICATION_ENUM_TEST', () => {    
-        expect(freeclimb.RequestType.REMOVE_FROM_QUEUE_NOTIFICATION).toBe("removeFromQueueNotification")
+    describe('.REMOVE_FROM_QUEUE_NOTIFICATION', () => {
+        it('resolves to correct value for REMOVE_FROM_QUEUE_NOTIFICATION enum property', () => {
+           expect(freeclimb.RequestType.REMOVE_FROM_QUEUE_NOTIFICATION).toBe("removeFromQueueNotification")
+        })
     })
-    test('CALL_STATUS_ENUM_TEST', () => {    
-        expect(freeclimb.RequestType.CALL_STATUS).toBe("callStatus")
+    describe('.CALL_STATUS', () => {
+        it('resolves to correct value for CALL_STATUS enum property', () => {
+           expect(freeclimb.RequestType.CALL_STATUS).toBe("callStatus")
+        })
     })
-    test('CREATE_CONFERENCE_ENUM_TEST', () => {    
-        expect(freeclimb.RequestType.CREATE_CONFERENCE).toBe("createConference")
+    describe('.CREATE_CONFERENCE', () => {
+        it('resolves to correct value for CREATE_CONFERENCE enum property', () => {
+           expect(freeclimb.RequestType.CREATE_CONFERENCE).toBe("createConference")
+        })
     })
-    test('CONFERENCE_STATUS_ENUM_TEST', () => {    
-        expect(freeclimb.RequestType.CONFERENCE_STATUS).toBe("conferenceStatus")
+    describe('.CONFERENCE_STATUS', () => {
+        it('resolves to correct value for CONFERENCE_STATUS enum property', () => {
+           expect(freeclimb.RequestType.CONFERENCE_STATUS).toBe("conferenceStatus")
+        })
     })
-    test('LEAVE_CONFERENCE_ENUM_TEST', () => {    
-        expect(freeclimb.RequestType.LEAVE_CONFERENCE).toBe("leaveConference")
+    describe('.LEAVE_CONFERENCE', () => {
+        it('resolves to correct value for LEAVE_CONFERENCE enum property', () => {
+           expect(freeclimb.RequestType.LEAVE_CONFERENCE).toBe("leaveConference")
+        })
     })
-    test('ADD_TO_CONFERENCE_NOTIFICATION_ENUM_TEST', () => {    
-        expect(freeclimb.RequestType.ADD_TO_CONFERENCE_NOTIFICATION).toBe("addToConferenceNotification")
+    describe('.ADD_TO_CONFERENCE_NOTIFICATION', () => {
+        it('resolves to correct value for ADD_TO_CONFERENCE_NOTIFICATION enum property', () => {
+           expect(freeclimb.RequestType.ADD_TO_CONFERENCE_NOTIFICATION).toBe("addToConferenceNotification")
+        })
     })
-    test('CONFERENCE_RECORDING_STATUS_ENUM_TEST', () => {    
-        expect(freeclimb.RequestType.CONFERENCE_RECORDING_STATUS).toBe("conferenceRecordingStatus")
+    describe('.CONFERENCE_RECORDING_STATUS', () => {
+        it('resolves to correct value for CONFERENCE_RECORDING_STATUS enum property', () => {
+           expect(freeclimb.RequestType.CONFERENCE_RECORDING_STATUS).toBe("conferenceRecordingStatus")
+        })
     })
-    test('CONFERENCE_CALL_CONTROL_ENUM_TEST', () => {    
-        expect(freeclimb.RequestType.CONFERENCE_CALL_CONTROL).toBe("conferenceCallControl")
+    describe('.CONFERENCE_CALL_CONTROL', () => {
+        it('resolves to correct value for CONFERENCE_CALL_CONTROL enum property', () => {
+           expect(freeclimb.RequestType.CONFERENCE_CALL_CONTROL).toBe("conferenceCallControl")
+        })
     })
-    test('MESSAGE_DELIVERY_ENUM_TEST', () => {    
-        expect(freeclimb.RequestType.MESSAGE_DELIVERY).toBe("messageDelivery")
+    describe('.MESSAGE_DELIVERY', () => {
+        it('resolves to correct value for MESSAGE_DELIVERY enum property', () => {
+           expect(freeclimb.RequestType.MESSAGE_DELIVERY).toBe("messageDelivery")
+        })
     })
-    test('MESSAGE_STATUS_ENUM_TEST', () => {    
-        expect(freeclimb.RequestType.MESSAGE_STATUS).toBe("messageStatus")
+    describe('.MESSAGE_STATUS', () => {
+        it('resolves to correct value for MESSAGE_STATUS enum property', () => {
+           expect(freeclimb.RequestType.MESSAGE_STATUS).toBe("messageStatus")
+        })
     })
 })

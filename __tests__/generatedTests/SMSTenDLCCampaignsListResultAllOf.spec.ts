@@ -1,14 +1,15 @@
 import * as freeclimb  from '../../index'
-import { describe, expect, test, it } from "@jest/globals";
+import { describe, expect, it } from "@jest/globals";
     
-describe('SMSTenDLCCampaignsListResultAllOf Tests', () => {
+describe('SMSTenDLCCampaignsListResultAllOf', () => {
     let model: freeclimb.SMSTenDLCCampaignsListResultAllOf = new freeclimb.SMSTenDLCCampaignsListResultAllOf({
+        campaigns: [],
     })
-    test('Test Property campaigns', () => {
-        
-        const value:freeclimb.SMSTenDLCCampaign[] = []
-        model.campaigns = value
-        expect(model.campaigns).toStrictEqual(value)
-         
+    describe(".campaigns", () => {
+        it('resolves to particular value on initialization', () => {
+
+            const value:freeclimb.SMSTenDLCCampaign[] = []
+            expect(model.campaigns).toStrictEqual(value)
+        })
     })
 })

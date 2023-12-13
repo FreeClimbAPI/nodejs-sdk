@@ -1,20 +1,21 @@
 import * as freeclimb  from '../../index'
-import { describe, expect, test, it } from "@jest/globals";
+import { describe, expect, it } from "@jest/globals";
     
-describe('SetTalkAllOf Tests', () => {
+describe('SetTalkAllOf', () => {
     let model: freeclimb.SetTalkAllOf = new freeclimb.SetTalkAllOf({
-        callId: null as any,
+        callId: "test_callId",
+        talk: true,
     })
-    test('Test Property callId', () => {
-        const value = "string"
-        model.callId = "string"
-        expect(model.callId).toBe(value)
-                 
+    describe(".callId", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_callId"
+            expect(model.callId).toBe(value)
+        })
     })
-    test('Test Property talk', () => {
-        const value = true
-        model.talk = true
-        expect(model.talk).toBe(value)
-         
+    describe(".talk", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = true
+            expect(model.talk).toBe(value)
+        })
     })
 })

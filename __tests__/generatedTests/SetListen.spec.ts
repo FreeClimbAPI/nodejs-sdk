@@ -1,26 +1,28 @@
 import * as freeclimb  from '../../index'
-import { describe, expect, test, it } from "@jest/globals";
+import { describe, expect, it } from "@jest/globals";
     
-describe('SetListen Tests', () => {
+describe('SetListen', () => {
     let model: freeclimb.SetListen = new freeclimb.SetListen({
-        callId: null as any,
+        callId: "test_callId",
+        listen: true,
     })
-    test('Test Property command', () => {
-        const value = "string"
-        model.command = "string"
-        expect(model.command).toBe(value)
-                
+    describe(".command", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_command"
+            model.command = value
+            expect(model.command).toBe(value)
+        })
     })
-    test('Test Property callId', () => {
-        const value = "string"
-        model.callId = "string"
-        expect(model.callId).toBe(value)
-        
+    describe(".callId", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_callId"
+            expect(model.callId).toBe(value)
+        })
     })
-    test('Test Property listen', () => {
-        const value = true
-        model.listen = true
-        expect(model.listen).toBe(value)
-
+    describe(".listen", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = true
+            expect(model.listen).toBe(value)
+        })
     })
 })

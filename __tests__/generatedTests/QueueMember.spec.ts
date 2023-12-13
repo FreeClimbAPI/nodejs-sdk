@@ -1,37 +1,42 @@
 import * as freeclimb  from '../../index'
-import { describe, expect, test, it } from "@jest/globals";
+import { describe, expect, it } from "@jest/globals";
     
-describe('QueueMember Tests', () => {
+describe('QueueMember', () => {
     let model: freeclimb.QueueMember = new freeclimb.QueueMember({
+        uri: "test_uri",
+        callId: "test_callId",
+        waitTime: 1,
+        position: 1,
+        dateEnqueued: "test_dateEnqueued",
     })
-    test('Test Property uri', () => {
-        const value = "string"
-        model.uri = "string"
-        expect(model.uri).toBe(value)
-                 
+    describe(".uri", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_uri"
+            expect(model.uri).toBe(value)
+        })
     })
-    test('Test Property callId', () => {
-        const value = "string"
-        model.callId = "string"
-        expect(model.callId).toBe(value)
-                 
+    describe(".callId", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_callId"
+            expect(model.callId).toBe(value)
+        })
     })
-    test('Test Property waitTime', () => {
-        const value = 1
-        model.waitTime = 1
-        expect(model.waitTime).toBe(value)
-         
+    describe(".waitTime", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = 1
+            expect(model.waitTime).toBe(value)
+        })
     })
-    test('Test Property position', () => {
-        const value = 1
-        model.position = 1
-        expect(model.position).toBe(value)
-         
+    describe(".position", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = 1
+            expect(model.position).toBe(value)
+        })
     })
-    test('Test Property dateEnqueued', () => {
-        const value = "string"
-        model.dateEnqueued = "string"
-        expect(model.dateEnqueued).toBe(value)
-                 
+    describe(".dateEnqueued", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_dateEnqueued"
+            expect(model.dateEnqueued).toBe(value)
+        })
     })
 })

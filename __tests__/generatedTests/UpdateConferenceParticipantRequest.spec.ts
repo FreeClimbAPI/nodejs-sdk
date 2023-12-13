@@ -1,19 +1,21 @@
 import * as freeclimb  from '../../index'
-import { describe, expect, test, it } from "@jest/globals";
+import { describe, expect, it } from "@jest/globals";
     
-describe('UpdateConferenceParticipantRequest Tests', () => {
+describe('UpdateConferenceParticipantRequest', () => {
     let model: freeclimb.UpdateConferenceParticipantRequest = new freeclimb.UpdateConferenceParticipantRequest({
+        talk: true,
+        listen: true,
     })
-    test('Test Property talk', () => {
-        const value = true
-        model.talk = true
-        expect(model.talk).toBe(value)
-         
+    describe(".talk", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = true
+            expect(model.talk).toBe(value)
+        })
     })
-    test('Test Property listen', () => {
-        const value = true
-        model.listen = true
-        expect(model.listen).toBe(value)
-         
+    describe(".listen", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = true
+            expect(model.listen).toBe(value)
+        })
     })
 })

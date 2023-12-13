@@ -1,11 +1,15 @@
 import * as freeclimb  from '../../index'
-import { describe, expect, test, it } from "@jest/globals";
+import { describe, expect, it } from "@jest/globals";
     
-describe('AccountType Tests', () => {
-    test('TRIAL_ENUM_TEST', () => {    
-        expect(freeclimb.AccountType.TRIAL).toBe("trial")
+describe('AccountType', () => {
+    describe('.TRIAL', () => {
+        it('resolves to correct value for TRIAL enum property', () => {
+           expect(freeclimb.AccountType.TRIAL).toBe("trial")
+        })
     })
-    test('FULL_ENUM_TEST', () => {    
-        expect(freeclimb.AccountType.FULL).toBe("full")
+    describe('.FULL', () => {
+        it('resolves to correct value for FULL enum property', () => {
+           expect(freeclimb.AccountType.FULL).toBe("full")
+        })
     })
 })

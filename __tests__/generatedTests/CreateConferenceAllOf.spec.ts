@@ -1,45 +1,51 @@
 import * as freeclimb  from '../../index'
-import { describe, expect, test, it } from "@jest/globals";
+import { describe, expect, it } from "@jest/globals";
     
-describe('CreateConferenceAllOf Tests', () => {
+describe('CreateConferenceAllOf', () => {
     let model: freeclimb.CreateConferenceAllOf = new freeclimb.CreateConferenceAllOf({
-        actionUrl: null as any,
+        actionUrl: "https://123.abc",
+        alias: true,
+
+        playBeep: freeclimb.PlayBeep.ALWAYS,
+        record: true,
+        statusCallbackUrl: "test_statusCallbackUrl",
+        waitUrl: "test_waitUrl",
     })
-    test('Test Property actionUrl', () => {
-        const value = "https://123.abc"
-        model.actionUrl = value
-        expect(model.actionUrl).toBe(value)
-         
+    describe(".actionUrl", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "https://123.abc"
+            expect(model.actionUrl).toBe(value)
+        })
     })
-    test('Test Property alias', () => {
-        const value = true
-        model.alias = true
-        expect(model.alias).toBe(value)
-         
+    describe(".alias", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = true
+            expect(model.alias).toBe(value)
+        })
     })
-    test('Test Property playBeep', () => {
-        
-        const value = "always"
-        model.playBeep = freeclimb.PlayBeep.ALWAYS
-        expect(model.playBeep).toBe(value)
-         
+    describe(".playBeep", () => {
+        it('resolves to particular value on initialization', () => {
+
+            const value = "always"
+            expect(model.playBeep).toBe(value)
+        })
     })
-    test('Test Property record', () => {
-        const value = true
-        model.record = true
-        expect(model.record).toBe(value)
-         
+    describe(".record", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = true
+            expect(model.record).toBe(value)
+        })
     })
-    test('Test Property statusCallbackUrl', () => {
-        const value = "string"
-        model.statusCallbackUrl = "string"
-        expect(model.statusCallbackUrl).toBe(value)
-                 
+    describe(".statusCallbackUrl", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_statusCallbackUrl"
+            expect(model.statusCallbackUrl).toBe(value)
+        })
     })
-    test('Test Property waitUrl', () => {
-        const value = "string"
-        model.waitUrl = "string"
-        expect(model.waitUrl).toBe(value)
-                 
+    describe(".waitUrl", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_waitUrl"
+            expect(model.waitUrl).toBe(value)
+        })
     })
 })

@@ -1,11 +1,15 @@
 import * as freeclimb  from '../../index'
-import { describe, expect, test, it } from "@jest/globals";
+import { describe, expect, it } from "@jest/globals";
     
-describe('MachineType Tests', () => {
-    test('ANSWERING_MACHINE_ENUM_TEST', () => {    
-        expect(freeclimb.MachineType.ANSWERING_MACHINE).toBe("answeringMachine")
+describe('MachineType', () => {
+    describe('.ANSWERING_MACHINE', () => {
+        it('resolves to correct value for ANSWERING_MACHINE enum property', () => {
+           expect(freeclimb.MachineType.ANSWERING_MACHINE).toBe("answeringMachine")
+        })
     })
-    test('FAX_MACHINE_ENUM_TEST', () => {    
-        expect(freeclimb.MachineType.FAX_MACHINE).toBe("faxMachine")
+    describe('.FAX_MACHINE', () => {
+        it('resolves to correct value for FAX_MACHINE enum property', () => {
+           expect(freeclimb.MachineType.FAX_MACHINE).toBe("faxMachine")
+        })
     })
 })

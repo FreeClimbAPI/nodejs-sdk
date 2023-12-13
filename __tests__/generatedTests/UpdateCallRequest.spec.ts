@@ -1,15 +1,16 @@
 import * as freeclimb  from '../../index'
-import { describe, expect, test, it } from "@jest/globals";
+import { describe, expect, it } from "@jest/globals";
     
-describe('UpdateCallRequest Tests', () => {
+describe('UpdateCallRequest', () => {
     let model: freeclimb.UpdateCallRequest = new freeclimb.UpdateCallRequest({
-        status: null as any,
+
+        status: freeclimb.UpdateCallRequestStatus.CANCELED,
     })
-    test('Test Property status', () => {
-        
-        const value = "canceled"
-        model.status = freeclimb.UpdateCallRequestStatus.CANCELED
-        expect(model.status).toBe(value)
-         
+    describe(".status", () => {
+        it('resolves to particular value on initialization', () => {
+
+            const value = "canceled"
+            expect(model.status).toBe(value)
+        })
     })
 })

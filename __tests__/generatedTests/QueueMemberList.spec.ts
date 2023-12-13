@@ -1,56 +1,64 @@
 import * as freeclimb  from '../../index'
-import { describe, expect, test, it } from "@jest/globals";
+import { describe, expect, it } from "@jest/globals";
     
-describe('QueueMemberList Tests', () => {
+describe('QueueMemberList', () => {
     let model: freeclimb.QueueMemberList = new freeclimb.QueueMemberList({
+        total: 1,
+        start: 1,
+        end: 1,
+        page: 1,
+        numPages: 1,
+        pageSize: 1,
+        nextPageUri: "test_nextPageUri",
+        queueMembers: [],
     })
-    test('Test Property total', () => {
-        const value = 1
-        model.total = 1
-        expect(model.total).toBe(value)
-        
+    describe(".total", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = 1
+            expect(model.total).toBe(value)
+        })
     })
-    test('Test Property start', () => {
-        const value = 1
-        model.start = 1
-        expect(model.start).toBe(value)
-        
+    describe(".start", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = 1
+            expect(model.start).toBe(value)
+        })
     })
-    test('Test Property end', () => {
-        const value = 1
-        model.end = 1
-        expect(model.end).toBe(value)
-        
+    describe(".end", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = 1
+            expect(model.end).toBe(value)
+        })
     })
-    test('Test Property page', () => {
-        const value = 1
-        model.page = 1
-        expect(model.page).toBe(value)
-        
+    describe(".page", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = 1
+            expect(model.page).toBe(value)
+        })
     })
-    test('Test Property numPages', () => {
-        const value = 1
-        model.numPages = 1
-        expect(model.numPages).toBe(value)
-        
+    describe(".numPages", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = 1
+            expect(model.numPages).toBe(value)
+        })
     })
-    test('Test Property pageSize', () => {
-        const value = 1
-        model.pageSize = 1
-        expect(model.pageSize).toBe(value)
-        
+    describe(".pageSize", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = 1
+            expect(model.pageSize).toBe(value)
+        })
     })
-    test('Test Property nextPageUri', () => {
-        const value = "string"
-        model.nextPageUri = "string"
-        expect(model.nextPageUri).toBe(value)
-                
+    describe(".nextPageUri", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_nextPageUri"
+            expect(model.nextPageUri).toBe(value)
+        })
     })
-    test('Test Property queueMembers', () => {
-        
-        const value:freeclimb.QueueMember[] = []
-        model.queueMembers = value
-        expect(model.queueMembers).toStrictEqual(value)
+    describe(".queueMembers", () => {
+        it('resolves to particular value on initialization', () => {
 
+            const value:freeclimb.QueueMember[] = []
+            expect(model.queueMembers).toStrictEqual(value)
+        })
     })
 })

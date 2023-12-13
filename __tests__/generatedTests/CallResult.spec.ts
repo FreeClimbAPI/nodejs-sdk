@@ -1,124 +1,146 @@
 import * as freeclimb  from '../../index'
-import { describe, expect, test, it } from "@jest/globals";
+import { describe, expect, it } from "@jest/globals";
     
-describe('CallResult Tests', () => {
+describe('CallResult', () => {
     let model: freeclimb.CallResult = new freeclimb.CallResult({
-    })
-    test('Test Property uri', () => {
-        const value = "string"
-        model.uri = "string"
-        expect(model.uri).toBe(value)
-                
-    })
-    test('Test Property dateCreated', () => {
-        const value = "string"
-        model.dateCreated = "string"
-        expect(model.dateCreated).toBe(value)
-                
-    })
-    test('Test Property dateUpdated', () => {
-        const value = "string"
-        model.dateUpdated = "string"
-        expect(model.dateUpdated).toBe(value)
-                
-    })
-    test('Test Property revision', () => {
-        const value = 1
-        model.revision = 1
-        expect(model.revision).toBe(value)
-        
-    })
-    test('Test Property callId', () => {
-        const value = "string"
-        model.callId = "string"
-        expect(model.callId).toBe(value)
-        
-    })
-    test('Test Property parentCallId', () => {
-        const value = "string"
-        model.parentCallId = "string"
-        expect(model.parentCallId).toBe(value)
-        
-    })
-    test('Test Property accountId', () => {
-        const value = "string"
-        model.accountId = "string"
-        expect(model.accountId).toBe(value)
-        
-    })
-    test('Test Property from', () => {
-        const value = "string"
-        model._from = "string"
-        expect(model._from).toBe(value)
-        
-    })
-    test('Test Property to', () => {
-        const value = "string"
-        model.to = "string"
-        expect(model.to).toBe(value)
-        
-    })
-    test('Test Property phoneNumberId', () => {
-        const value = "string"
-        model.phoneNumberId = "string"
-        expect(model.phoneNumberId).toBe(value)
-        
-    })
-    test('Test Property callStatus', () => {
-        
-        const value = "queued"
-        model.callStatus = freeclimb.CallStatus.QUEUED
-        expect(model.callStatus).toBe(value)
+        uri: "test_uri",
+        dateCreated: "test_dateCreated",
+        dateUpdated: "test_dateUpdated",
+        revision: 1,
+        callId: "test_callId",
+        parentCallId: "test_parentCallId",
+        accountId: "test_accountId",
+        _from: "test_from",
+        to: "test_to",
+        phoneNumberId: "test_phoneNumberId",
 
-    })
-    test('Test Property startTime', () => {
-        const value = "string"
-        model.startTime = "string"
-        expect(model.startTime).toBe(value)
-        
-    })
-    test('Test Property connectTime', () => {
-        const value = "string"
-        model.connectTime = "string"
-        expect(model.connectTime).toBe(value)
-        
-    })
-    test('Test Property endTime', () => {
-        const value = "string"
-        model.endTime = "string"
-        expect(model.endTime).toBe(value)
-        
-    })
-    test('Test Property duration', () => {
-        const value = 1
-        model.duration = 1
-        expect(model.duration).toBe(value)
+        callStatus: freeclimb.CallStatus.QUEUED,
+        startTime: "test_startTime",
+        connectTime: "test_connectTime",
+        endTime: "test_endTime",
+        duration: 1,
+        connectDuration: 1,
 
-    })
-    test('Test Property connectDuration', () => {
-        const value = 1
-        model.connectDuration = 1
-        expect(model.connectDuration).toBe(value)
+        direction: freeclimb.CallDirection.INBOUND,
 
+        answeredBy: freeclimb.AnsweredBy.HUMAN,
+        subresourceUris: {},
     })
-    test('Test Property direction', () => {
-        
-        const value = "inbound"
-        model.direction = freeclimb.CallDirection.INBOUND
-        expect(model.direction).toBe(value)
-
+    describe(".uri", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_uri"
+            expect(model.uri).toBe(value)
+        })
     })
-    test('Test Property answeredBy', () => {
-        
-        const value = "human"
-        model.answeredBy = freeclimb.AnsweredBy.HUMAN
-        expect(model.answeredBy).toBe(value)
-
+    describe(".dateCreated", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_dateCreated"
+            expect(model.dateCreated).toBe(value)
+        })
     })
-    test('Test Property subresourceUris', () => {
-        const value = {}
-        model.subresourceUris = {}
-        expect(model.subresourceUris).toStrictEqual(value)
+    describe(".dateUpdated", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_dateUpdated"
+            expect(model.dateUpdated).toBe(value)
+        })
+    })
+    describe(".revision", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = 1
+            expect(model.revision).toBe(value)
+        })
+    })
+    describe(".callId", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_callId"
+            expect(model.callId).toBe(value)
+        })
+    })
+    describe(".parentCallId", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_parentCallId"
+            expect(model.parentCallId).toBe(value)
+        })
+    })
+    describe(".accountId", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_accountId"
+            expect(model.accountId).toBe(value)
+        })
+    })
+    describe(".from", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_from"
+            expect(model._from).toBe(value)
+        })
+    })
+    describe(".to", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_to"
+            expect(model.to).toBe(value)
+        })
+    })
+    describe(".phoneNumberId", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_phoneNumberId"
+            expect(model.phoneNumberId).toBe(value)
+        })
+    })
+    describe(".callStatus", () => {
+        it('resolves to particular value on initialization', () => {
 
+            const value = "queued"
+            expect(model.callStatus).toBe(value)
+        })
+    })
+    describe(".startTime", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_startTime"
+            expect(model.startTime).toBe(value)
+        })
+    })
+    describe(".connectTime", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_connectTime"
+            expect(model.connectTime).toBe(value)
+        })
+    })
+    describe(".endTime", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_endTime"
+            expect(model.endTime).toBe(value)
+        })
+    })
+    describe(".duration", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = 1
+            expect(model.duration).toBe(value)
+        })
+    })
+    describe(".connectDuration", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = 1
+            expect(model.connectDuration).toBe(value)
+        })
+    })
+    describe(".direction", () => {
+        it('resolves to particular value on initialization', () => {
+
+            const value = "inbound"
+            expect(model.direction).toBe(value)
+        })
+    })
+    describe(".answeredBy", () => {
+        it('resolves to particular value on initialization', () => {
+
+            const value = "human"
+            expect(model.answeredBy).toBe(value)
+        })
+    })
+    describe(".subresourceUris", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = {}
+            expect(model.subresourceUris).toStrictEqual(value)
+        })
     })
 })

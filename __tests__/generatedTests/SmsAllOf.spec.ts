@@ -1,34 +1,35 @@
 import * as freeclimb  from '../../index'
-import { describe, expect, test, it } from "@jest/globals";
+import { describe, expect, it } from "@jest/globals";
     
-describe('SmsAllOf Tests', () => {
+describe('SmsAllOf', () => {
     let model: freeclimb.SmsAllOf = new freeclimb.SmsAllOf({
-        to: null as any,
-        _from: null as any,
-        text: null as any,
+        to: "test_to",
+        _from: "test_from",
+        text: "test_text",
+        notificationUrl: "test_notificationUrl",
     })
-    test('Test Property to', () => {
-        const value = "string"
-        model.to = "string"
-        expect(model.to).toBe(value)
-                 
+    describe(".to", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_to"
+            expect(model.to).toBe(value)
+        })
     })
-    test('Test Property from', () => {
-        const value = "string"
-        model._from = "string"
-        expect(model._from).toBe(value)
-                 
+    describe(".from", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_from"
+            expect(model._from).toBe(value)
+        })
     })
-    test('Test Property text', () => {
-        const value = "string"
-        model.text = "string"
-        expect(model.text).toBe(value)
-                 
+    describe(".text", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_text"
+            expect(model.text).toBe(value)
+        })
     })
-    test('Test Property notificationUrl', () => {
-        const value = "string"
-        model.notificationUrl = "string"
-        expect(model.notificationUrl).toBe(value)
-                 
+    describe(".notificationUrl", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_notificationUrl"
+            expect(model.notificationUrl).toBe(value)
+        })
     })
 })

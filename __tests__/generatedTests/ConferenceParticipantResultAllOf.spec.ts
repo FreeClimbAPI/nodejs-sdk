@@ -1,43 +1,49 @@
 import * as freeclimb  from '../../index'
-import { describe, expect, test, it } from "@jest/globals";
+import { describe, expect, it } from "@jest/globals";
     
-describe('ConferenceParticipantResultAllOf Tests', () => {
+describe('ConferenceParticipantResultAllOf', () => {
     let model: freeclimb.ConferenceParticipantResultAllOf = new freeclimb.ConferenceParticipantResultAllOf({
+        accountId: "test_accountId",
+        conferenceId: "test_conferenceId",
+        callId: "test_callId",
+        talk: true,
+        listen: true,
+        startConfOnEnter: true,
     })
-    test('Test Property accountId', () => {
-        const value = "string"
-        model.accountId = "string"
-        expect(model.accountId).toBe(value)
-                 
+    describe(".accountId", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_accountId"
+            expect(model.accountId).toBe(value)
+        })
     })
-    test('Test Property conferenceId', () => {
-        const value = "string"
-        model.conferenceId = "string"
-        expect(model.conferenceId).toBe(value)
-                 
+    describe(".conferenceId", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_conferenceId"
+            expect(model.conferenceId).toBe(value)
+        })
     })
-    test('Test Property callId', () => {
-        const value = "string"
-        model.callId = "string"
-        expect(model.callId).toBe(value)
-                 
+    describe(".callId", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_callId"
+            expect(model.callId).toBe(value)
+        })
     })
-    test('Test Property talk', () => {
-        const value = true
-        model.talk = true
-        expect(model.talk).toBe(value)
-         
+    describe(".talk", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = true
+            expect(model.talk).toBe(value)
+        })
     })
-    test('Test Property listen', () => {
-        const value = true
-        model.listen = true
-        expect(model.listen).toBe(value)
-         
+    describe(".listen", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = true
+            expect(model.listen).toBe(value)
+        })
     })
-    test('Test Property startConfOnEnter', () => {
-        const value = true
-        model.startConfOnEnter = true
-        expect(model.startConfOnEnter).toBe(value)
-         
+    describe(".startConfOnEnter", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = true
+            expect(model.startConfOnEnter).toBe(value)
+        })
     })
 })
