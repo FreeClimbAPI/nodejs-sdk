@@ -1,50 +1,56 @@
 import * as freeclimb  from '../../index'
-import { describe, expect, test, it } from "@jest/globals";
+import { describe, expect, it } from "@jest/globals";
     
-describe('RecordUtteranceAllOf Tests', () => {
+describe('RecordUtteranceAllOf', () => {
     let model: freeclimb.RecordUtteranceAllOf = new freeclimb.RecordUtteranceAllOf({
-        actionUrl: null as any,
+        actionUrl: "https://123.abc",
+        silenceTimeoutMs: 1,
+        finishOnKey: "test_finishOnKey",
+        maxLengthSec: 1,
+        playBeep: true,
+        autoStart: true,
+        privacyMode: true,
     })
-    test('Test Property actionUrl', () => {
-        const value = "https://123.abc"
-        model.actionUrl = value
-        expect(model.actionUrl).toBe(value)
-         
+    describe(".actionUrl", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "https://123.abc"
+            expect(model.actionUrl).toBe(value)
+        })
     })
-    test('Test Property silenceTimeoutMs', () => {
-        const value = 1
-        model.silenceTimeoutMs = 1
-        expect(model.silenceTimeoutMs).toBe(value)
-         
+    describe(".silenceTimeoutMs", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = 1
+            expect(model.silenceTimeoutMs).toBe(value)
+        })
     })
-    test('Test Property finishOnKey', () => {
-        const value = "string"
-        model.finishOnKey = "string"
-        expect(model.finishOnKey).toBe(value)
-                 
+    describe(".finishOnKey", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_finishOnKey"
+            expect(model.finishOnKey).toBe(value)
+        })
     })
-    test('Test Property maxLengthSec', () => {
-        const value = 1
-        model.maxLengthSec = 1
-        expect(model.maxLengthSec).toBe(value)
-         
+    describe(".maxLengthSec", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = 1
+            expect(model.maxLengthSec).toBe(value)
+        })
     })
-    test('Test Property playBeep', () => {
-        const value = true
-        model.playBeep = true
-        expect(model.playBeep).toBe(value)
-         
+    describe(".playBeep", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = true
+            expect(model.playBeep).toBe(value)
+        })
     })
-    test('Test Property autoStart', () => {
-        const value = true
-        model.autoStart = true
-        expect(model.autoStart).toBe(value)
-         
+    describe(".autoStart", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = true
+            expect(model.autoStart).toBe(value)
+        })
     })
-    test('Test Property privacyMode', () => {
-        const value = true
-        model.privacyMode = true
-        expect(model.privacyMode).toBe(value)
-         
+    describe(".privacyMode", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = true
+            expect(model.privacyMode).toBe(value)
+        })
     })
 })

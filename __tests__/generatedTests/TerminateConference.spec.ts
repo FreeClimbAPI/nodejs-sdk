@@ -1,20 +1,21 @@
 import * as freeclimb  from '../../index'
-import { describe, expect, test, it } from "@jest/globals";
+import { describe, expect, it } from "@jest/globals";
     
-describe('TerminateConference Tests', () => {
+describe('TerminateConference', () => {
     let model: freeclimb.TerminateConference = new freeclimb.TerminateConference({
-        conferenceId: null as any,
+        conferenceId: "test_conferenceId",
     })
-    test('Test Property command', () => {
-        const value = "string"
-        model.command = "string"
-        expect(model.command).toBe(value)
-                
+    describe(".command", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_command"
+            model.command = value
+            expect(model.command).toBe(value)
+        })
     })
-    test('Test Property conferenceId', () => {
-        const value = "string"
-        model.conferenceId = "string"
-        expect(model.conferenceId).toBe(value)
-        
+    describe(".conferenceId", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_conferenceId"
+            expect(model.conferenceId).toBe(value)
+        })
     })
 })

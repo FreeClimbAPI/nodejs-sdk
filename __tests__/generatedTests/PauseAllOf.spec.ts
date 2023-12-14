@@ -1,14 +1,14 @@
 import * as freeclimb  from '../../index'
-import { describe, expect, test, it } from "@jest/globals";
+import { describe, expect, it } from "@jest/globals";
     
-describe('PauseAllOf Tests', () => {
+describe('PauseAllOf', () => {
     let model: freeclimb.PauseAllOf = new freeclimb.PauseAllOf({
-        length: null as any,
+        length: 1,
     })
-    test('Test Property length', () => {
-        const value = 1
-        model.length = 1
-        expect(model.length).toBe(value)
-         
+    describe(".length", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = 1
+            expect(model.length).toBe(value)
+        })
     })
 })

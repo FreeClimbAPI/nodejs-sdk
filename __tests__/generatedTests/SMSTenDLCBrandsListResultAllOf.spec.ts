@@ -1,14 +1,15 @@
 import * as freeclimb  from '../../index'
-import { describe, expect, test, it } from "@jest/globals";
+import { describe, expect, it } from "@jest/globals";
     
-describe('SMSTenDLCBrandsListResultAllOf Tests', () => {
+describe('SMSTenDLCBrandsListResultAllOf', () => {
     let model: freeclimb.SMSTenDLCBrandsListResultAllOf = new freeclimb.SMSTenDLCBrandsListResultAllOf({
+        brands: [],
     })
-    test('Test Property brands', () => {
-        
-        const value:freeclimb.SMSTenDLCBrand[] = []
-        model.brands = value
-        expect(model.brands).toStrictEqual(value)
-         
+    describe(".brands", () => {
+        it('resolves to particular value on initialization', () => {
+
+            const value:freeclimb.SMSTenDLCBrand[] = []
+            expect(model.brands).toStrictEqual(value)
+        })
     })
 })

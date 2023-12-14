@@ -1,75 +1,84 @@
 import * as freeclimb  from '../../index'
-import { describe, expect, test, it } from "@jest/globals";
+import { describe, expect, it } from "@jest/globals";
     
-describe('SMSTenDLCPartnerCampaignBrand Tests', () => {
+describe('SMSTenDLCPartnerCampaignBrand', () => {
     let model: freeclimb.SMSTenDLCPartnerCampaignBrand = new freeclimb.SMSTenDLCPartnerCampaignBrand({
-        email: null as any,
-        phone: null as any,
+        accountId: "test_accountId",
+        brandId: "test_brandId",
+        firstName: "test_firstName",
+        lastName: "test_lastName",
+        displayName: "test_displayName",
+        companyName: "test_companyName",
+        phone: "test_phone",
+        email: "test_email",
+        website: "test_website",
+        optionalAttributes: {},
+        evpVettingScore: 1,
     })
-    test('Test Property accountId', () => {
-        const value = "string"
-        model.accountId = "string"
-        expect(model.accountId).toBe(value)
-                 
+    describe(".accountId", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_accountId"
+            expect(model.accountId).toBe(value)
+        })
     })
-    test('Test Property brandId', () => {
-        const value = "string"
-        model.brandId = "string"
-        expect(model.brandId).toBe(value)
-                 
+    describe(".brandId", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_brandId"
+            expect(model.brandId).toBe(value)
+        })
     })
-    test('Test Property firstName', () => {
-        const value = "string"
-        model.firstName = "string"
-        expect(model.firstName).toBe(value)
-                 
+    describe(".firstName", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_firstName"
+            expect(model.firstName).toBe(value)
+        })
     })
-    test('Test Property lastName', () => {
-        const value = "string"
-        model.lastName = "string"
-        expect(model.lastName).toBe(value)
-                 
+    describe(".lastName", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_lastName"
+            expect(model.lastName).toBe(value)
+        })
     })
-    test('Test Property displayName', () => {
-        const value = "string"
-        model.displayName = "string"
-        expect(model.displayName).toBe(value)
-                 
+    describe(".displayName", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_displayName"
+            expect(model.displayName).toBe(value)
+        })
     })
-    test('Test Property companyName', () => {
-        const value = "string"
-        model.companyName = "string"
-        expect(model.companyName).toBe(value)
-                 
+    describe(".companyName", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_companyName"
+            expect(model.companyName).toBe(value)
+        })
     })
-    test('Test Property phone', () => {
-        const value = "string"
-        model.phone = "string"
-        expect(model.phone).toBe(value)
-                 
+    describe(".phone", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_phone"
+            expect(model.phone).toBe(value)
+        })
     })
-    test('Test Property email', () => {
-        const value = "string"
-        model.email = "string"
-        expect(model.email).toBe(value)
-                 
+    describe(".email", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_email"
+            expect(model.email).toBe(value)
+        })
     })
-    test('Test Property website', () => {
-        const value = "string"
-        model.website = "string"
-        expect(model.website).toBe(value)
-                 
+    describe(".website", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_website"
+            expect(model.website).toBe(value)
+        })
     })
-    test('Test Property optionalAttributes', () => {
-        const value = {}
-        model.optionalAttributes = {}
-        expect(model.optionalAttributes).toStrictEqual(value)
-         
+    describe(".optionalAttributes", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = {}
+            expect(model.optionalAttributes).toStrictEqual(value)
+        })
     })
-    test('Test Property evpVettingScore', () => {
-        const value = 1
-        model.evpVettingScore = 1
-        expect(model.evpVettingScore).toBe(value)
-         
+    describe(".evpVettingScore", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = 1
+            expect(model.evpVettingScore).toBe(value)
+        })
     })
 })

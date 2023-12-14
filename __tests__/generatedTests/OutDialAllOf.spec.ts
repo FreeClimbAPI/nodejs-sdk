@@ -1,72 +1,79 @@
 import * as freeclimb  from '../../index'
-import { describe, expect, test, it } from "@jest/globals";
+import { describe, expect, it } from "@jest/globals";
     
-describe('OutDialAllOf Tests', () => {
+describe('OutDialAllOf', () => {
     let model: freeclimb.OutDialAllOf = new freeclimb.OutDialAllOf({
-        actionUrl: null as any,
-        callConnectUrl: null as any,
-        callingNumber: null as any,
-        destination: null as any,
+        actionUrl: "https://123.abc",
+        callConnectUrl: "https://123.abc",
+        callingNumber: "test_callingNumber",
+        destination: "test_destination",
+
+        ifMachine: freeclimb.IfMachine.REDIRECT,
+        ifMachineUrl: "test_ifMachineUrl",
+        sendDigits: "test_sendDigits",
+        statusCallbackUrl: "test_statusCallbackUrl",
+        timeout: 1,
+        privacyMode: true,
     })
-    test('Test Property actionUrl', () => {
-        const value = "https://123.abc"
-        model.actionUrl = value
-        expect(model.actionUrl).toBe(value)
-         
+    describe(".actionUrl", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "https://123.abc"
+            expect(model.actionUrl).toBe(value)
+        })
     })
-    test('Test Property callConnectUrl', () => {
-        const value = "https://123.abc"
-        model.callConnectUrl = value
-        expect(model.callConnectUrl).toBe(value)
-         
+    describe(".callConnectUrl", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "https://123.abc"
+            expect(model.callConnectUrl).toBe(value)
+        })
     })
-    test('Test Property callingNumber', () => {
-        const value = "string"
-        model.callingNumber = "string"
-        expect(model.callingNumber).toBe(value)
-                 
+    describe(".callingNumber", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_callingNumber"
+            expect(model.callingNumber).toBe(value)
+        })
     })
-    test('Test Property destination', () => {
-        const value = "string"
-        model.destination = "string"
-        expect(model.destination).toBe(value)
-                 
+    describe(".destination", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_destination"
+            expect(model.destination).toBe(value)
+        })
     })
-    test('Test Property ifMachine', () => {
-        
-        const value = "redirect"
-        model.ifMachine = freeclimb.IfMachine.REDIRECT
-        expect(model.ifMachine).toBe(value)
-         
+    describe(".ifMachine", () => {
+        it('resolves to particular value on initialization', () => {
+
+            const value = "redirect"
+            expect(model.ifMachine).toBe(value)
+        })
     })
-    test('Test Property ifMachineUrl', () => {
-        const value = "string"
-        model.ifMachineUrl = "string"
-        expect(model.ifMachineUrl).toBe(value)
-                 
+    describe(".ifMachineUrl", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_ifMachineUrl"
+            expect(model.ifMachineUrl).toBe(value)
+        })
     })
-    test('Test Property sendDigits', () => {
-        const value = "string"
-        model.sendDigits = "string"
-        expect(model.sendDigits).toBe(value)
-                 
+    describe(".sendDigits", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_sendDigits"
+            expect(model.sendDigits).toBe(value)
+        })
     })
-    test('Test Property statusCallbackUrl', () => {
-        const value = "string"
-        model.statusCallbackUrl = "string"
-        expect(model.statusCallbackUrl).toBe(value)
-                 
+    describe(".statusCallbackUrl", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_statusCallbackUrl"
+            expect(model.statusCallbackUrl).toBe(value)
+        })
     })
-    test('Test Property timeout', () => {
-        const value = 1
-        model.timeout = 1
-        expect(model.timeout).toBe(value)
-         
+    describe(".timeout", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = 1
+            expect(model.timeout).toBe(value)
+        })
     })
-    test('Test Property privacyMode', () => {
-        const value = true
-        model.privacyMode = true
-        expect(model.privacyMode).toBe(value)
-         
+    describe(".privacyMode", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = true
+            expect(model.privacyMode).toBe(value)
+        })
     })
 })

@@ -1,51 +1,60 @@
 import * as freeclimb  from '../../index'
-import { describe, expect, test, it } from "@jest/globals";
+import { describe, expect, it } from "@jest/globals";
     
-describe('AccountResultAllOf Tests', () => {
+describe('AccountResultAllOf', () => {
     let model: freeclimb.AccountResultAllOf = new freeclimb.AccountResultAllOf({
+        accountId: "test_accountId",
+        apiKey: "test_apiKey",
+        alias: "test_alias",
+        label: "test_label",
+
+        type: freeclimb.AccountType.TRIAL,
+
+        status: freeclimb.AccountStatus.CLOSED,
+        subresourceUris: {},
     })
-    test('Test Property accountId', () => {
-        const value = "string"
-        model.accountId = "string"
-        expect(model.accountId).toBe(value)
-                 
+    describe(".accountId", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_accountId"
+            expect(model.accountId).toBe(value)
+        })
     })
-    test('Test Property apiKey', () => {
-        const value = "string"
-        model.apiKey = "string"
-        expect(model.apiKey).toBe(value)
-                 
+    describe(".apiKey", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_apiKey"
+            expect(model.apiKey).toBe(value)
+        })
     })
-    test('Test Property alias', () => {
-        const value = "string"
-        model.alias = "string"
-        expect(model.alias).toBe(value)
-                 
+    describe(".alias", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_alias"
+            expect(model.alias).toBe(value)
+        })
     })
-    test('Test Property label', () => {
-        const value = "string"
-        model.label = "string"
-        expect(model.label).toBe(value)
-                 
+    describe(".label", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_label"
+            expect(model.label).toBe(value)
+        })
     })
-    test('Test Property type', () => {
-        
-        const value = "trial"
-        model.type = freeclimb.AccountType.TRIAL
-        expect(model.type).toBe(value)
-         
+    describe(".type", () => {
+        it('resolves to particular value on initialization', () => {
+
+            const value = "trial"
+            expect(model.type).toBe(value)
+        })
     })
-    test('Test Property status', () => {
-        
-        const value = "closed"
-        model.status = freeclimb.AccountStatus.CLOSED
-        expect(model.status).toBe(value)
-         
+    describe(".status", () => {
+        it('resolves to particular value on initialization', () => {
+
+            const value = "closed"
+            expect(model.status).toBe(value)
+        })
     })
-    test('Test Property subresourceUris', () => {
-        const value = {}
-        model.subresourceUris = {}
-        expect(model.subresourceUris).toStrictEqual(value)
-         
+    describe(".subresourceUris", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = {}
+            expect(model.subresourceUris).toStrictEqual(value)
+        })
     })
 })

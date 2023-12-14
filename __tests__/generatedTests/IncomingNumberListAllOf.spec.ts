@@ -1,14 +1,15 @@
 import * as freeclimb  from '../../index'
-import { describe, expect, test, it } from "@jest/globals";
+import { describe, expect, it } from "@jest/globals";
     
-describe('IncomingNumberListAllOf Tests', () => {
+describe('IncomingNumberListAllOf', () => {
     let model: freeclimb.IncomingNumberListAllOf = new freeclimb.IncomingNumberListAllOf({
+        incomingPhoneNumbers: [],
     })
-    test('Test Property incomingPhoneNumbers', () => {
-        
-        const value:freeclimb.IncomingNumberResult[] = []
-        model.incomingPhoneNumbers = value
-        expect(model.incomingPhoneNumbers).toStrictEqual(value)
-         
+    describe(".incomingPhoneNumbers", () => {
+        it('resolves to particular value on initialization', () => {
+
+            const value:freeclimb.IncomingNumberResult[] = []
+            expect(model.incomingPhoneNumbers).toStrictEqual(value)
+        })
     })
 })

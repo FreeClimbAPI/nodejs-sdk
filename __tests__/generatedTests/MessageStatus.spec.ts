@@ -1,38 +1,60 @@
 import * as freeclimb  from '../../index'
-import { describe, expect, test, it } from "@jest/globals";
+import { describe, expect, it } from "@jest/globals";
     
-describe('MessageStatus Tests', () => {
-    test('NEW_ENUM_TEST', () => {    
-        expect(freeclimb.MessageStatus.NEW).toBe("new")
+describe('MessageStatus', () => {
+    describe('.NEW', () => {
+        it('resolves to correct value for NEW enum property', () => {
+           expect(freeclimb.MessageStatus.NEW).toBe("new")
+        })
     })
-    test('QUEUED_ENUM_TEST', () => {    
-        expect(freeclimb.MessageStatus.QUEUED).toBe("queued")
+    describe('.QUEUED', () => {
+        it('resolves to correct value for QUEUED enum property', () => {
+           expect(freeclimb.MessageStatus.QUEUED).toBe("queued")
+        })
     })
-    test('REJECTED_ENUM_TEST', () => {    
-        expect(freeclimb.MessageStatus.REJECTED).toBe("rejected")
+    describe('.REJECTED', () => {
+        it('resolves to correct value for REJECTED enum property', () => {
+           expect(freeclimb.MessageStatus.REJECTED).toBe("rejected")
+        })
     })
-    test('SENDING_ENUM_TEST', () => {    
-        expect(freeclimb.MessageStatus.SENDING).toBe("sending")
+    describe('.SENDING', () => {
+        it('resolves to correct value for SENDING enum property', () => {
+           expect(freeclimb.MessageStatus.SENDING).toBe("sending")
+        })
     })
-    test('SENT_ENUM_TEST', () => {    
-        expect(freeclimb.MessageStatus.SENT).toBe("sent")
+    describe('.SENT', () => {
+        it('resolves to correct value for SENT enum property', () => {
+           expect(freeclimb.MessageStatus.SENT).toBe("sent")
+        })
     })
-    test('FAILED_ENUM_TEST', () => {    
-        expect(freeclimb.MessageStatus.FAILED).toBe("failed")
+    describe('.FAILED', () => {
+        it('resolves to correct value for FAILED enum property', () => {
+           expect(freeclimb.MessageStatus.FAILED).toBe("failed")
+        })
     })
-    test('RECEIVED_ENUM_TEST', () => {    
-        expect(freeclimb.MessageStatus.RECEIVED).toBe("received")
+    describe('.RECEIVED', () => {
+        it('resolves to correct value for RECEIVED enum property', () => {
+           expect(freeclimb.MessageStatus.RECEIVED).toBe("received")
+        })
     })
-    test('UNDELIVERED_ENUM_TEST', () => {    
-        expect(freeclimb.MessageStatus.UNDELIVERED).toBe("undelivered")
+    describe('.UNDELIVERED', () => {
+        it('resolves to correct value for UNDELIVERED enum property', () => {
+           expect(freeclimb.MessageStatus.UNDELIVERED).toBe("undelivered")
+        })
     })
-    test('EXPIRED_ENUM_TEST', () => {    
-        expect(freeclimb.MessageStatus.EXPIRED).toBe("expired")
+    describe('.EXPIRED', () => {
+        it('resolves to correct value for EXPIRED enum property', () => {
+           expect(freeclimb.MessageStatus.EXPIRED).toBe("expired")
+        })
     })
-    test('DELETED_ENUM_TEST', () => {    
-        expect(freeclimb.MessageStatus.DELETED).toBe("deleted")
+    describe('.DELETED', () => {
+        it('resolves to correct value for DELETED enum property', () => {
+           expect(freeclimb.MessageStatus.DELETED).toBe("deleted")
+        })
     })
-    test('UNKNOWN_ENUM_TEST', () => {    
-        expect(freeclimb.MessageStatus.UNKNOWN).toBe("unknown")
+    describe('.UNKNOWN', () => {
+        it('resolves to correct value for UNKNOWN enum property', () => {
+           expect(freeclimb.MessageStatus.UNKNOWN).toBe("unknown")
+        })
     })
 })

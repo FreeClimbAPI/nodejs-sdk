@@ -1,45 +1,58 @@
 import * as freeclimb  from '../../index'
-import { describe, expect, test, it } from "@jest/globals";
+import { describe, expect, it } from "@jest/globals";
     
-describe('TranscribeUtterance Tests', () => {
+describe('TranscribeUtterance', () => {
     let model: freeclimb.TranscribeUtterance = new freeclimb.TranscribeUtterance({
-        actionUrl: null as any,
+        actionUrl: "test_actionUrl",
+        playBeep: true,
+        record: new freeclimb.TranscribeUtteranceRecord({
+            saveRecording: true,
+            maxLengthSec: 1,
+            rcrdTerminationSilenceTimeMs: 1
+        }),
+        privacyForLogging: true,
+        privacyForRecording: true,
+        prompts: [],
     })
-    test('Test Property actionUrl', () => {
-        const value = "string"
-        model.actionUrl = "string"
-        expect(model.actionUrl).toBe(value)
-                 
+    describe(".actionUrl", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_actionUrl"
+            expect(model.actionUrl).toBe(value)
+        })
     })
-    test('Test Property playBeep', () => {
-        const value = true
-        model.playBeep = true
-        expect(model.playBeep).toBe(value)
-         
+    describe(".playBeep", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = true
+            expect(model.playBeep).toBe(value)
+        })
     })
-    test('Test Property record', () => {
-        const value = {}
-        model.record = {}
-        expect(model.record).toStrictEqual(value)
-         
+    describe(".record", () => {
+        it('resolves to particular value on initialization', () => {
+            const value: freeclimb.TranscribeUtteranceRecord  = new freeclimb.TranscribeUtteranceRecord({
+                saveRecording: true,
+                maxLengthSec: 1,
+                rcrdTerminationSilenceTimeMs: 1
+            })
+            expect(model.record).toStrictEqual(value)
+        })
     })
-    test('Test Property privacyForLogging', () => {
-        const value = true
-        model.privacyForLogging = true
-        expect(model.privacyForLogging).toBe(value)
-         
+    describe(".privacyForLogging", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = true
+            expect(model.privacyForLogging).toBe(value)
+        })
     })
-    test('Test Property privacyForRecording', () => {
-        const value = true
-        model.privacyForRecording = true
-        expect(model.privacyForRecording).toBe(value)
-         
+    describe(".privacyForRecording", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = true
+            expect(model.privacyForRecording).toBe(value)
+        })
     })
-    test('Test Property prompts', () => {
-        
-        const value:any[] = []
-        model.prompts = value
-        expect(model.prompts).toStrictEqual(value)
-         
+    describe(".prompts", () => {
+        it('resolves to particular value on initialization', () => {
+
+            const value:any[] = []
+            expect(model.prompts).toStrictEqual(value)
+        })
     })
 })

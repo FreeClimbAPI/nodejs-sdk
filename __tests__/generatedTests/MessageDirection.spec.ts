@@ -1,11 +1,15 @@
 import * as freeclimb  from '../../index'
-import { describe, expect, test, it } from "@jest/globals";
+import { describe, expect, it } from "@jest/globals";
     
-describe('MessageDirection Tests', () => {
-    test('INBOUND_ENUM_TEST', () => {    
-        expect(freeclimb.MessageDirection.INBOUND).toBe("inbound")
+describe('MessageDirection', () => {
+    describe('.INBOUND', () => {
+        it('resolves to correct value for INBOUND enum property', () => {
+           expect(freeclimb.MessageDirection.INBOUND).toBe("inbound")
+        })
     })
-    test('OUTBOUND_ENUM_TEST', () => {    
-        expect(freeclimb.MessageDirection.OUTBOUND).toBe("outbound")
+    describe('.OUTBOUND', () => {
+        it('resolves to correct value for OUTBOUND enum property', () => {
+           expect(freeclimb.MessageDirection.OUTBOUND).toBe("outbound")
+        })
     })
 })

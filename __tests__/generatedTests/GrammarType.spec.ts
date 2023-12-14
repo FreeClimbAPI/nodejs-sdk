@@ -1,11 +1,15 @@
 import * as freeclimb  from '../../index'
-import { describe, expect, test, it } from "@jest/globals";
+import { describe, expect, it } from "@jest/globals";
     
-describe('GrammarType Tests', () => {
-    test('URL_ENUM_TEST', () => {    
-        expect(freeclimb.GrammarType.URL).toBe("URL")
+describe('GrammarType', () => {
+    describe('.URL', () => {
+        it('resolves to correct value for URL enum property', () => {
+           expect(freeclimb.GrammarType.URL).toBe("URL")
+        })
     })
-    test('BUILT_IN_ENUM_TEST', () => {    
-        expect(freeclimb.GrammarType.BUILT_IN).toBe("BUILTIN")
+    describe('.BUILT_IN', () => {
+        it('resolves to correct value for BUILT_IN enum property', () => {
+           expect(freeclimb.GrammarType.BUILT_IN).toBe("BUILTIN")
+        })
     })
 })

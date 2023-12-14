@@ -1,32 +1,35 @@
 import * as freeclimb  from '../../index'
-import { describe, expect, test, it } from "@jest/globals";
+import { describe, expect, it } from "@jest/globals";
     
-describe('SendDigits Tests', () => {
+describe('SendDigits', () => {
     let model: freeclimb.SendDigits = new freeclimb.SendDigits({
-        digits: null as any,
+        digits: "test_digits",
+        pauseMs: 1,
+        privacyMode: true,
     })
-    test('Test Property command', () => {
-        const value = "string"
-        model.command = "string"
-        expect(model.command).toBe(value)
-                
+    describe(".command", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_command"
+            model.command = value
+            expect(model.command).toBe(value)
+        })
     })
-    test('Test Property digits', () => {
-        const value = "string"
-        model.digits = "string"
-        expect(model.digits).toBe(value)
-        
+    describe(".digits", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_digits"
+            expect(model.digits).toBe(value)
+        })
     })
-    test('Test Property pauseMs', () => {
-        const value = 1
-        model.pauseMs = 1
-        expect(model.pauseMs).toBe(value)
-
+    describe(".pauseMs", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = 1
+            expect(model.pauseMs).toBe(value)
+        })
     })
-    test('Test Property privacyMode', () => {
-        const value = true
-        model.privacyMode = true
-        expect(model.privacyMode).toBe(value)
-
+    describe(".privacyMode", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = true
+            expect(model.privacyMode).toBe(value)
+        })
     })
 })

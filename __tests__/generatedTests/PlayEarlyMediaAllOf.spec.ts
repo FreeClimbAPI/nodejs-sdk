@@ -1,14 +1,14 @@
 import * as freeclimb  from '../../index'
-import { describe, expect, test, it } from "@jest/globals";
+import { describe, expect, it } from "@jest/globals";
     
-describe('PlayEarlyMediaAllOf Tests', () => {
+describe('PlayEarlyMediaAllOf', () => {
     let model: freeclimb.PlayEarlyMediaAllOf = new freeclimb.PlayEarlyMediaAllOf({
-        file: null as any,
+        file: "test_file",
     })
-    test('Test Property file', () => {
-        const value = "string"
-        model.file = "string"
-        expect(model.file).toBe(value)
-                 
+    describe(".file", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_file"
+            expect(model.file).toBe(value)
+        })
     })
 })

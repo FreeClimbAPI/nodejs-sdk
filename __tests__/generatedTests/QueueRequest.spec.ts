@@ -1,19 +1,21 @@
 import * as freeclimb  from '../../index'
-import { describe, expect, test, it } from "@jest/globals";
+import { describe, expect, it } from "@jest/globals";
     
-describe('QueueRequest Tests', () => {
+describe('QueueRequest', () => {
     let model: freeclimb.QueueRequest = new freeclimb.QueueRequest({
+        alias: "test_alias",
+        maxSize: 1,
     })
-    test('Test Property alias', () => {
-        const value = "string"
-        model.alias = "string"
-        expect(model.alias).toBe(value)
-                 
+    describe(".alias", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_alias"
+            expect(model.alias).toBe(value)
+        })
     })
-    test('Test Property maxSize', () => {
-        const value = 1
-        model.maxSize = 1
-        expect(model.maxSize).toBe(value)
-         
+    describe(".maxSize", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = 1
+            expect(model.maxSize).toBe(value)
+        })
     })
 })

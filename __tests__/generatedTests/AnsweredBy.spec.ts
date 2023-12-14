@@ -1,11 +1,15 @@
 import * as freeclimb  from '../../index'
-import { describe, expect, test, it } from "@jest/globals";
+import { describe, expect, it } from "@jest/globals";
     
-describe('AnsweredBy Tests', () => {
-    test('HUMAN_ENUM_TEST', () => {    
-        expect(freeclimb.AnsweredBy.HUMAN).toBe("human")
+describe('AnsweredBy', () => {
+    describe('.HUMAN', () => {
+        it('resolves to correct value for HUMAN enum property', () => {
+           expect(freeclimb.AnsweredBy.HUMAN).toBe("human")
+        })
     })
-    test('MACHINE_ENUM_TEST', () => {    
-        expect(freeclimb.AnsweredBy.MACHINE).toBe("machine")
+    describe('.MACHINE', () => {
+        it('resolves to correct value for MACHINE enum property', () => {
+           expect(freeclimb.AnsweredBy.MACHINE).toBe("machine")
+        })
     })
 })

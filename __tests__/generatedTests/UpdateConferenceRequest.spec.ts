@@ -1,27 +1,32 @@
 import * as freeclimb  from '../../index'
-import { describe, expect, test, it } from "@jest/globals";
+import { describe, expect, it } from "@jest/globals";
     
-describe('UpdateConferenceRequest Tests', () => {
+describe('UpdateConferenceRequest', () => {
     let model: freeclimb.UpdateConferenceRequest = new freeclimb.UpdateConferenceRequest({
+        alias: "test_alias",
+
+        playBeep: freeclimb.PlayBeep.ALWAYS,
+
+        status: freeclimb.UpdateConferenceRequestStatus.EMPTY,
     })
-    test('Test Property alias', () => {
-        const value = "string"
-        model.alias = "string"
-        expect(model.alias).toBe(value)
-                 
+    describe(".alias", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_alias"
+            expect(model.alias).toBe(value)
+        })
     })
-    test('Test Property playBeep', () => {
-        
-        const value = "always"
-        model.playBeep = freeclimb.PlayBeep.ALWAYS
-        expect(model.playBeep).toBe(value)
-         
+    describe(".playBeep", () => {
+        it('resolves to particular value on initialization', () => {
+
+            const value = "always"
+            expect(model.playBeep).toBe(value)
+        })
     })
-    test('Test Property status', () => {
-        
-        const value = "empty"
-        model.status = freeclimb.UpdateConferenceRequestStatus.EMPTY
-        expect(model.status).toBe(value)
-         
+    describe(".status", () => {
+        it('resolves to particular value on initialization', () => {
+
+            const value = "empty"
+            expect(model.status).toBe(value)
+        })
     })
 })

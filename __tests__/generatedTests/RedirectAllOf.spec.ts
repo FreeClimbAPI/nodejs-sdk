@@ -1,14 +1,14 @@
 import * as freeclimb  from '../../index'
-import { describe, expect, test, it } from "@jest/globals";
+import { describe, expect, it } from "@jest/globals";
     
-describe('RedirectAllOf Tests', () => {
+describe('RedirectAllOf', () => {
     let model: freeclimb.RedirectAllOf = new freeclimb.RedirectAllOf({
-        actionUrl: null as any,
+        actionUrl: "https://123.abc",
     })
-    test('Test Property actionUrl', () => {
-        const value = "https://123.abc"
-        model.actionUrl = value
-        expect(model.actionUrl).toBe(value)
-         
+    describe(".actionUrl", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "https://123.abc"
+            expect(model.actionUrl).toBe(value)
+        })
     })
 })

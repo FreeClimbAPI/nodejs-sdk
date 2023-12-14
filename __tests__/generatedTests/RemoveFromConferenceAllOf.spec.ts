@@ -1,14 +1,14 @@
 import * as freeclimb  from '../../index'
-import { describe, expect, test, it } from "@jest/globals";
+import { describe, expect, it } from "@jest/globals";
     
-describe('RemoveFromConferenceAllOf Tests', () => {
+describe('RemoveFromConferenceAllOf', () => {
     let model: freeclimb.RemoveFromConferenceAllOf = new freeclimb.RemoveFromConferenceAllOf({
-        callId: null as any,
+        callId: "test_callId",
     })
-    test('Test Property callId', () => {
-        const value = "string"
-        model.callId = "string"
-        expect(model.callId).toBe(value)
-                 
+    describe(".callId", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_callId"
+            expect(model.callId).toBe(value)
+        })
     })
 })

@@ -1,11 +1,15 @@
 import * as freeclimb  from '../../index'
-import { describe, expect, test, it } from "@jest/globals";
+import { describe, expect, it } from "@jest/globals";
     
-describe('IfMachine Tests', () => {
-    test('REDIRECT_ENUM_TEST', () => {    
-        expect(freeclimb.IfMachine.REDIRECT).toBe("redirect")
+describe('IfMachine', () => {
+    describe('.REDIRECT', () => {
+        it('resolves to correct value for REDIRECT enum property', () => {
+           expect(freeclimb.IfMachine.REDIRECT).toBe("redirect")
+        })
     })
-    test('HANGUP_ENUM_TEST', () => {    
-        expect(freeclimb.IfMachine.HANGUP).toBe("hangup")
+    describe('.HANGUP', () => {
+        it('resolves to correct value for HANGUP enum property', () => {
+           expect(freeclimb.IfMachine.HANGUP).toBe("hangup")
+        })
     })
 })

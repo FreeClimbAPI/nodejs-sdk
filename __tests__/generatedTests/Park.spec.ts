@@ -1,33 +1,35 @@
 import * as freeclimb  from '../../index'
-import { describe, expect, test, it } from "@jest/globals";
+import { describe, expect, it } from "@jest/globals";
     
-describe('Park Tests', () => {
+describe('Park', () => {
     let model: freeclimb.Park = new freeclimb.Park({
-        waitUrl: null as any,
-        actionUrl: null as any,
+        waitUrl: "https://123.abc",
+        actionUrl: "https://123.abc",
+        notificationUrl: "test_notificationUrl",
     })
-    test('Test Property command', () => {
-        const value = "string"
-        model.command = "string"
-        expect(model.command).toBe(value)
-                
+    describe(".command", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_command"
+            model.command = value
+            expect(model.command).toBe(value)
+        })
     })
-    test('Test Property waitUrl', () => {
-        const value = "https://123.abc"
-        model.waitUrl = value
-        expect(model.waitUrl).toBe(value)
-
+    describe(".waitUrl", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "https://123.abc"
+            expect(model.waitUrl).toBe(value)
+        })
     })
-    test('Test Property actionUrl', () => {
-        const value = "https://123.abc"
-        model.actionUrl = value
-        expect(model.actionUrl).toBe(value)
-
+    describe(".actionUrl", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "https://123.abc"
+            expect(model.actionUrl).toBe(value)
+        })
     })
-    test('Test Property notificationUrl', () => {
-        const value = "string"
-        model.notificationUrl = "string"
-        expect(model.notificationUrl).toBe(value)
-        
+    describe(".notificationUrl", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_notificationUrl"
+            expect(model.notificationUrl).toBe(value)
+        })
     })
 })

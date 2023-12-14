@@ -1,50 +1,58 @@
 import * as freeclimb  from '../../index'
-import { describe, expect, test, it } from "@jest/globals";
+import { describe, expect, it } from "@jest/globals";
     
-describe('LogResult Tests', () => {
+describe('LogResult', () => {
     let model: freeclimb.LogResult = new freeclimb.LogResult({
+        timestamp: 1,
+
+        level: freeclimb.LogLevel.INFO,
+        requestId: "test_requestId",
+        accountId: "test_accountId",
+        callId: "test_callId",
+        message: "test_message",
+        metadata: {},
     })
-    test('Test Property timestamp', () => {
-        const value = 1
-        model.timestamp = 1
-        expect(model.timestamp).toBe(value)
-         
+    describe(".timestamp", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = 1
+            expect(model.timestamp).toBe(value)
+        })
     })
-    test('Test Property level', () => {
-        
-        const value = "info"
-        model.level = freeclimb.LogLevel.INFO
-        expect(model.level).toBe(value)
-         
+    describe(".level", () => {
+        it('resolves to particular value on initialization', () => {
+
+            const value = "info"
+            expect(model.level).toBe(value)
+        })
     })
-    test('Test Property requestId', () => {
-        const value = "string"
-        model.requestId = "string"
-        expect(model.requestId).toBe(value)
-                 
+    describe(".requestId", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_requestId"
+            expect(model.requestId).toBe(value)
+        })
     })
-    test('Test Property accountId', () => {
-        const value = "string"
-        model.accountId = "string"
-        expect(model.accountId).toBe(value)
-                 
+    describe(".accountId", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_accountId"
+            expect(model.accountId).toBe(value)
+        })
     })
-    test('Test Property callId', () => {
-        const value = "string"
-        model.callId = "string"
-        expect(model.callId).toBe(value)
-                 
+    describe(".callId", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_callId"
+            expect(model.callId).toBe(value)
+        })
     })
-    test('Test Property message', () => {
-        const value = "string"
-        model.message = "string"
-        expect(model.message).toBe(value)
-                 
+    describe(".message", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_message"
+            expect(model.message).toBe(value)
+        })
     })
-    test('Test Property metadata', () => {
-        const value = {}
-        model.metadata = {}
-        expect(model.metadata).toStrictEqual(value)
-         
+    describe(".metadata", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = {}
+            expect(model.metadata).toStrictEqual(value)
+        })
     })
 })

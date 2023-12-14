@@ -1,14 +1,15 @@
 import * as freeclimb  from '../../index'
-import { describe, expect, test, it } from "@jest/globals";
+import { describe, expect, it } from "@jest/globals";
     
-describe('QueueListAllOf Tests', () => {
+describe('QueueListAllOf', () => {
     let model: freeclimb.QueueListAllOf = new freeclimb.QueueListAllOf({
+        queues: [],
     })
-    test('Test Property queues', () => {
-        
-        const value:freeclimb.QueueResult[] = []
-        model.queues = value
-        expect(model.queues).toStrictEqual(value)
-         
+    describe(".queues", () => {
+        it('resolves to particular value on initialization', () => {
+
+            const value:freeclimb.QueueResult[] = []
+            expect(model.queues).toStrictEqual(value)
+        })
     })
 })

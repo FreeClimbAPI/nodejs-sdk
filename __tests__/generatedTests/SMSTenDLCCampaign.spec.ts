@@ -1,200 +1,224 @@
 import * as freeclimb  from '../../index'
-import { describe, expect, test, it } from "@jest/globals";
+import { describe, expect, it } from "@jest/globals";
     
-describe('SMSTenDLCCampaign Tests', () => {
+describe('SMSTenDLCCampaign', () => {
     let model: freeclimb.SMSTenDLCCampaign = new freeclimb.SMSTenDLCCampaign({
-        brandId: null as any,
-        campaignId: null as any,
-        cspId: null as any,
-        description: null as any,
-        mock: null as any,
-        subUsecases: null as any,
-        usecase: null as any,
+        accountId: "test_accountId",
+        campaignId: "test_campaignId",
+        cspId: "test_cspId",
+        resellerId: "test_resellerId",
+        status: freeclimb.SMSTenDLCCampaignStatusEnum.ACTIVE,
+        createDate: new Date('December 17, 1995 03:24:00'),
+        autoRenewal: true,
+        billedDate: new Date('December 17, 1995 03:24:00'),
+        brandId: "test_brandId",
+        usecase: "test_usecase",
+        subUsecases: new Set([]),
+        description: "test_description",
+        embeddedLink: true,
+        embeddedPhone: true,
+        affiliateMarketing: true,
+        numberPool: true,
+        ageGated: true,
+        directLending: true,
+        subscriberOptin: true,
+        subscriberOptout: true,
+        subscriberHelp: true,
+        sample1: "test_sample1",
+        sample2: "test_sample2",
+        sample3: "test_sample3",
+        sample4: "test_sample4",
+        sample5: "test_sample5",
+        messageFlow: "test_messageFlow",
+        helpMessage: "test_helpMessage",
+        referenceId: "test_referenceId",
+        mock: true,
+        nextRenewalOrExpirationDate: "test_nextRenewalOrExpirationDate",
     })
-    test('Test Property accountId', () => {
-        const value = "string"
-        model.accountId = "string"
-        expect(model.accountId).toBe(value)
-                 
+    describe(".accountId", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_accountId"
+            expect(model.accountId).toBe(value)
+        })
     })
-    test('Test Property campaignId', () => {
-        const value = "string"
-        model.campaignId = "string"
-        expect(model.campaignId).toBe(value)
-                 
+    describe(".campaignId", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_campaignId"
+            expect(model.campaignId).toBe(value)
+        })
     })
-    test('Test Property cspId', () => {
-        const value = "string"
-        model.cspId = "string"
-        expect(model.cspId).toBe(value)
-                 
+    describe(".cspId", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_cspId"
+            expect(model.cspId).toBe(value)
+        })
     })
-    test('Test Property resellerId', () => {
-        const value = "string"
-        model.resellerId = "string"
-        expect(model.resellerId).toBe(value)
-                 
+    describe(".resellerId", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_resellerId"
+            expect(model.resellerId).toBe(value)
+        })
     })
-    test('Test Property status', () => {
-        const value = freeclimb.SMSTenDLCCampaignStatusEnum.ACTIVE
-        model.status = freeclimb.SMSTenDLCCampaignStatusEnum.ACTIVE
-        expect(model.status).toBe(value)
-                 
+    describe(".status", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "ACTIVE"
+            expect(model.status).toBe(value)
+        })
     })
-    test('Test Property createDate', () => {
-        const value = new Date('December 17, 1995 03:24:00')
-        model.createDate = value
-        expect(model.createDate).toBe(value)
-         
+    describe(".createDate", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = new Date('December 17, 1995 03:24:00')
+            expect(model.createDate).toStrictEqual(value)
+        })
     })
-    test('Test Property autoRenewal', () => {
-        const value = true
-        model.autoRenewal = true
-        expect(model.autoRenewal).toBe(value)
-         
+    describe(".autoRenewal", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = true
+            expect(model.autoRenewal).toBe(value)
+        })
     })
-    test('Test Property billedDate', () => {
-        const value = new Date('December 17, 1995 03:24:00')
-        model.billedDate = value
-        expect(model.billedDate).toBe(value)
-         
+    describe(".billedDate", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = new Date('December 17, 1995 03:24:00')
+            expect(model.billedDate).toStrictEqual(value)
+        })
     })
-    test('Test Property brandId', () => {
-        const value = "string"
-        model.brandId = "string"
-        expect(model.brandId).toBe(value)
-                 
+    describe(".brandId", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_brandId"
+            expect(model.brandId).toBe(value)
+        })
     })
-    test('Test Property usecase', () => {
-        const value = "string"
-        model.usecase = "string"
-        expect(model.usecase).toBe(value)
-                 
+    describe(".usecase", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_usecase"
+            expect(model.usecase).toBe(value)
+        })
     })
-    test('Test Property subUsecases', () => {
-        const value = new Set([])
-        model.subUsecases = new Set([])
-        expect(model.subUsecases).toStrictEqual(value)
-         
+    describe(".subUsecases", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = new Set([])
+            expect(model.subUsecases).toStrictEqual(value)
+        })
     })
-    test('Test Property description', () => {
-        const value = "string"
-        model.description = "string"
-        expect(model.description).toBe(value)
-                 
+    describe(".description", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_description"
+            expect(model.description).toBe(value)
+        })
     })
-    test('Test Property embeddedLink', () => {
-        const value = true
-        model.embeddedLink = true
-        expect(model.embeddedLink).toBe(value)
-         
+    describe(".embeddedLink", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = true
+            expect(model.embeddedLink).toBe(value)
+        })
     })
-    test('Test Property embeddedPhone', () => {
-        const value = true
-        model.embeddedPhone = true
-        expect(model.embeddedPhone).toBe(value)
-         
+    describe(".embeddedPhone", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = true
+            expect(model.embeddedPhone).toBe(value)
+        })
     })
-    test('Test Property affiliateMarketing', () => {
-        const value = true
-        model.affiliateMarketing = true
-        expect(model.affiliateMarketing).toBe(value)
-         
+    describe(".affiliateMarketing", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = true
+            expect(model.affiliateMarketing).toBe(value)
+        })
     })
-    test('Test Property numberPool', () => {
-        const value = true
-        model.numberPool = true
-        expect(model.numberPool).toBe(value)
-         
+    describe(".numberPool", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = true
+            expect(model.numberPool).toBe(value)
+        })
     })
-    test('Test Property ageGated', () => {
-        const value = true
-        model.ageGated = true
-        expect(model.ageGated).toBe(value)
-         
+    describe(".ageGated", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = true
+            expect(model.ageGated).toBe(value)
+        })
     })
-    test('Test Property directLending', () => {
-        const value = true
-        model.directLending = true
-        expect(model.directLending).toBe(value)
-         
+    describe(".directLending", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = true
+            expect(model.directLending).toBe(value)
+        })
     })
-    test('Test Property subscriberOptin', () => {
-        const value = true
-        model.subscriberOptin = true
-        expect(model.subscriberOptin).toBe(value)
-         
+    describe(".subscriberOptin", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = true
+            expect(model.subscriberOptin).toBe(value)
+        })
     })
-    test('Test Property subscriberOptout', () => {
-        const value = true
-        model.subscriberOptout = true
-        expect(model.subscriberOptout).toBe(value)
-         
+    describe(".subscriberOptout", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = true
+            expect(model.subscriberOptout).toBe(value)
+        })
     })
-    test('Test Property subscriberHelp', () => {
-        const value = true
-        model.subscriberHelp = true
-        expect(model.subscriberHelp).toBe(value)
-         
+    describe(".subscriberHelp", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = true
+            expect(model.subscriberHelp).toBe(value)
+        })
     })
-    test('Test Property sample1', () => {
-        const value = "string"
-        model.sample1 = "string"
-        expect(model.sample1).toBe(value)
-                 
+    describe(".sample1", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_sample1"
+            expect(model.sample1).toBe(value)
+        })
     })
-    test('Test Property sample2', () => {
-        const value = "string"
-        model.sample2 = "string"
-        expect(model.sample2).toBe(value)
-                 
+    describe(".sample2", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_sample2"
+            expect(model.sample2).toBe(value)
+        })
     })
-    test('Test Property sample3', () => {
-        const value = "string"
-        model.sample3 = "string"
-        expect(model.sample3).toBe(value)
-                 
+    describe(".sample3", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_sample3"
+            expect(model.sample3).toBe(value)
+        })
     })
-    test('Test Property sample4', () => {
-        const value = "string"
-        model.sample4 = "string"
-        expect(model.sample4).toBe(value)
-                 
+    describe(".sample4", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_sample4"
+            expect(model.sample4).toBe(value)
+        })
     })
-    test('Test Property sample5', () => {
-        const value = "string"
-        model.sample5 = "string"
-        expect(model.sample5).toBe(value)
-                 
+    describe(".sample5", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_sample5"
+            expect(model.sample5).toBe(value)
+        })
     })
-    test('Test Property messageFlow', () => {
-        const value = "string"
-        model.messageFlow = "string"
-        expect(model.messageFlow).toBe(value)
-                 
+    describe(".messageFlow", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_messageFlow"
+            expect(model.messageFlow).toBe(value)
+        })
     })
-    test('Test Property helpMessage', () => {
-        const value = "string"
-        model.helpMessage = "string"
-        expect(model.helpMessage).toBe(value)
-                 
+    describe(".helpMessage", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_helpMessage"
+            expect(model.helpMessage).toBe(value)
+        })
     })
-    test('Test Property referenceId', () => {
-        const value = "string"
-        model.referenceId = "string"
-        expect(model.referenceId).toBe(value)
-                 
+    describe(".referenceId", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_referenceId"
+            expect(model.referenceId).toBe(value)
+        })
     })
-    test('Test Property mock', () => {
-        const value = true
-        model.mock = true
-        expect(model.mock).toBe(value)
-         
+    describe(".mock", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = true
+            expect(model.mock).toBe(value)
+        })
     })
-    test('Test Property nextRenewalOrExpirationDate', () => {
-        const value = "string"
-        model.nextRenewalOrExpirationDate = "string"
-        expect(model.nextRenewalOrExpirationDate).toBe(value)
-                 
+    describe(".nextRenewalOrExpirationDate", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_nextRenewalOrExpirationDate"
+            expect(model.nextRenewalOrExpirationDate).toBe(value)
+        })
     })
 })

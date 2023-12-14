@@ -9,6 +9,14 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 None
 
+<a name="3.5.3"></a>
+
+## [3.5.3] - 2023-12-13
+
+### Changed
+
+- Improved Unit Tests for NodeJS SDK
+
 <a name="3.5.2"></a>
 
 ## [3.5.2] - 2023-10-20

@@ -1,19 +1,21 @@
 import * as freeclimb  from '../../index'
-import { describe, expect, test, it } from "@jest/globals";
+import { describe, expect, it } from "@jest/globals";
     
-describe('AccountRequest Tests', () => {
+describe('AccountRequest', () => {
     let model: freeclimb.AccountRequest = new freeclimb.AccountRequest({
+        alias: "test_alias",
+        label: "test_label",
     })
-    test('Test Property alias', () => {
-        const value = "string"
-        model.alias = "string"
-        expect(model.alias).toBe(value)
-                 
+    describe(".alias", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_alias"
+            expect(model.alias).toBe(value)
+        })
     })
-    test('Test Property label', () => {
-        const value = "string"
-        model.label = "string"
-        expect(model.label).toBe(value)
-                 
+    describe(".label", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_label"
+            expect(model.label).toBe(value)
+        })
     })
 })

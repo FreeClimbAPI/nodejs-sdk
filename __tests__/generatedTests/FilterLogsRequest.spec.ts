@@ -1,14 +1,14 @@
 import * as freeclimb  from '../../index'
-import { describe, expect, test, it } from "@jest/globals";
+import { describe, expect, it } from "@jest/globals";
     
-describe('FilterLogsRequest Tests', () => {
+describe('FilterLogsRequest', () => {
     let model: freeclimb.FilterLogsRequest = new freeclimb.FilterLogsRequest({
-        pql: null as any,
+        pql: "test_pql",
     })
-    test('Test Property pql', () => {
-        const value = "string"
-        model.pql = "string"
-        expect(model.pql).toBe(value)
-                 
+    describe(".pql", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_pql"
+            expect(model.pql).toBe(value)
+        })
     })
 })
