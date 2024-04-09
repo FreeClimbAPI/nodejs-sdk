@@ -14,15 +14,15 @@ describe("SignatureInformation", () => {
             test("returns true", () => {
                 const requestHeader: string = "t=" + moment().unix().toString() + ",v1=c3957749baf61df4b1506802579cc69a74c77a1ae21447b930e5a704f9ec4120,v1=1ba18712726898fbbe48cd862dd096a709f7ad761a5bab14bda9ac24d963a6a8";
                 let test_instance = new SignatureInformation(requestHeader);
-                const tolerance: number = 5 * 60 * 1000;
+                const tolerance: number = 5 * 60;
                 const isRequestTimeValid: boolean = test_instance.isRequestTimeValid(tolerance);
                 expect(isRequestTimeValid).toBe(true)
             })
             test("returns false", () => {
-                const requestTimestamp: number = moment().unix() - (600 * 60 * 1000)
+                const requestTimestamp: number = moment().unix() - (600 * 60)
                 const requestHeader: string = "t=" + requestTimestamp.toString() + ",v1=c3957749baf61df4b1506802579cc69a74c77a1ae21447b930e5a704f9ec4120,v1=1ba18712726898fbbe48cd862dd096a709f7ad761a5bab14bda9ac24d963a6a8";
                 let test_instance = new SignatureInformation(requestHeader);
-                const tolerance: number = 500 * 60 * 1000;
+                const tolerance: number = 500 * 60;
                 const isRequestTimeValid: boolean = test_instance.isRequestTimeValid(tolerance);
                 expect(isRequestTimeValid).toBe(false)
             })
