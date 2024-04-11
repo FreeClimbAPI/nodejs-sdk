@@ -1,5 +1,6 @@
 import { describe, expect, test, beforeAll } from "@jest/globals";
 import { SignatureInformation } from '../utils/SignatureInformation'
+import * as moment from 'moment';
 
 describe("SignatureInformation", () => {
     const timestamp: number = 1679944186
@@ -11,13 +12,18 @@ describe("SignatureInformation", () => {
     describe("#isRequestTimeValid", () => {
         describe("request time is within tolerance threshold", () => {
             test("returns true", () => {
+                const requestHeader: string = "t=" + moment().unix().toString() + ",v1=c3957749baf61df4b1506802579cc69a74c77a1ae21447b930e5a704f9ec4120,v1=1ba18712726898fbbe48cd862dd096a709f7ad761a5bab14bda9ac24d963a6a8";
+                let test_instance = new SignatureInformation(requestHeader);
                 const tolerance: number = 5 * 60;
-                const isRequestTimeValid: boolean = instance.isRequestTimeValid(tolerance);
+                const isRequestTimeValid: boolean = test_instance.isRequestTimeValid(tolerance);
                 expect(isRequestTimeValid).toBe(true)
             })
             test("returns false", () => {
-                const tolerance: number = Number.MAX_SAFE_INTEGER - timestamp;
-                const isRequestTimeValid: boolean = instance.isRequestTimeValid(tolerance);
+                const requestTimestamp: number = moment().unix() - (600 * 60)
+                const requestHeader: string = "t=" + requestTimestamp.toString() + ",v1=c3957749baf61df4b1506802579cc69a74c77a1ae21447b930e5a704f9ec4120,v1=1ba18712726898fbbe48cd862dd096a709f7ad761a5bab14bda9ac24d963a6a8";
+                let test_instance = new SignatureInformation(requestHeader);
+                const tolerance: number = 500 * 60;
+                const isRequestTimeValid: boolean = test_instance.isRequestTimeValid(tolerance);
                 expect(isRequestTimeValid).toBe(false)
             })
         })
