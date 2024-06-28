@@ -53,6 +53,7 @@ export * from './IncomingNumberListAllOf';
 export * from './IncomingNumberRequest';
 export * from './IncomingNumberResult';
 export * from './IncomingNumberResultAllOf';
+export * from './InlineObject';
 export * from './Language';
 export * from './LogLevel';
 export * from './LogList';
@@ -104,7 +105,6 @@ export * from './RedirectAllOf';
 export * from './Reject';
 export * from './RejectAllOf';
 export * from './RemoveFromConference';
-export * from './RemoveFromConferenceAllOf';
 export * from './RequestType';
 export * from './SMSTenDLCBrand';
 export * from './SMSTenDLCBrandsListResult';
@@ -116,6 +116,9 @@ export * from './SMSTenDLCPartnerCampaign';
 export * from './SMSTenDLCPartnerCampaignBrand';
 export * from './SMSTenDLCPartnerCampaignsListResult';
 export * from './SMSTenDLCPartnerCampaignsListResultAllOf';
+export * from './SMSTollFreeCampaign';
+export * from './SMSTollFreeCampaignsListResult';
+export * from './SMSTollFreeCampaignsListResultAllOf';
 export * from './Say';
 export * from './SayAllOf';
 export * from './SendDigits';
@@ -127,8 +130,8 @@ export * from './SetTalkAllOf';
 export * from './Sms';
 export * from './SmsAllOf';
 export * from './StartRecordCall';
+export * from './TFN';
 export * from './TerminateConference';
-export * from './TerminateConferenceAllOf';
 export * from './TranscribeUtterance';
 export * from './TranscribeUtteranceRecord';
 export * from './Unpark';
@@ -193,6 +196,7 @@ import { IncomingNumberListAllOf } from './IncomingNumberListAllOf';
 import { IncomingNumberRequest } from './IncomingNumberRequest';
 import { IncomingNumberResult } from './IncomingNumberResult';
 import { IncomingNumberResultAllOf } from './IncomingNumberResultAllOf';
+import { InlineObject } from './InlineObject';
 import { Language } from './Language';
 import { LogLevel } from './LogLevel';
 import { LogList } from './LogList';
@@ -244,18 +248,20 @@ import { RedirectAllOf } from './RedirectAllOf';
 import { Reject } from './Reject';
 import { RejectAllOf } from './RejectAllOf';
 import { RemoveFromConference } from './RemoveFromConference';
-import { RemoveFromConferenceAllOf } from './RemoveFromConferenceAllOf';
 import { RequestType } from './RequestType';
 import { SMSTenDLCBrand , SMSTenDLCBrandEntityTypeEnum                  , SMSTenDLCBrandStockExchangeEnum    , SMSTenDLCBrandBrandRelationshipEnum    , SMSTenDLCBrandAltBusinessIdTypeEnum      , SMSTenDLCBrandIdentityStatusEnum    } from './SMSTenDLCBrand';
 import { SMSTenDLCBrandsListResult } from './SMSTenDLCBrandsListResult';
 import { SMSTenDLCBrandsListResultAllOf } from './SMSTenDLCBrandsListResultAllOf';
-import { SMSTenDLCCampaign    , SMSTenDLCCampaignStatusEnum                             } from './SMSTenDLCCampaign';
+import { SMSTenDLCCampaign    , SMSTenDLCCampaignStatusEnum                                  } from './SMSTenDLCCampaign';
 import { SMSTenDLCCampaignsListResult } from './SMSTenDLCCampaignsListResult';
 import { SMSTenDLCCampaignsListResultAllOf } from './SMSTenDLCCampaignsListResultAllOf';
 import { SMSTenDLCPartnerCampaign  , SMSTenDLCPartnerCampaignStatusEnum                             } from './SMSTenDLCPartnerCampaign';
 import { SMSTenDLCPartnerCampaignBrand } from './SMSTenDLCPartnerCampaignBrand';
 import { SMSTenDLCPartnerCampaignsListResult } from './SMSTenDLCPartnerCampaignsListResult';
 import { SMSTenDLCPartnerCampaignsListResultAllOf } from './SMSTenDLCPartnerCampaignsListResultAllOf';
+import { SMSTollFreeCampaign   , SMSTollFreeCampaignRegistrationStatusEnum      } from './SMSTollFreeCampaign';
+import { SMSTollFreeCampaignsListResult } from './SMSTollFreeCampaignsListResult';
+import { SMSTollFreeCampaignsListResultAllOf } from './SMSTollFreeCampaignsListResultAllOf';
 import { Say } from './Say';
 import { SayAllOf } from './SayAllOf';
 import { SendDigits } from './SendDigits';
@@ -267,8 +273,8 @@ import { SetTalkAllOf } from './SetTalkAllOf';
 import { Sms } from './Sms';
 import { SmsAllOf } from './SmsAllOf';
 import { StartRecordCall } from './StartRecordCall';
+import { TFN } from './TFN';
 import { TerminateConference } from './TerminateConference';
-import { TerminateConferenceAllOf } from './TerminateConferenceAllOf';
 import { TranscribeUtterance } from './TranscribeUtterance';
 import { TranscribeUtteranceRecord } from './TranscribeUtteranceRecord';
 import { Unpark } from './Unpark';
@@ -324,6 +330,7 @@ let enumsMap: Set<string> = new Set<string>([
     "SMSTenDLCBrandIdentityStatusEnum",
     "SMSTenDLCCampaignStatusEnum",
     "SMSTenDLCPartnerCampaignStatusEnum",
+    "SMSTollFreeCampaignRegistrationStatusEnum",
     "UpdateCallRequestStatus",
     "UpdateConferenceRequestStatus",
 ]);
@@ -374,6 +381,7 @@ let typeMap: {[index: string]: any} = {
     "IncomingNumberRequest": IncomingNumberRequest,
     "IncomingNumberResult": IncomingNumberResult,
     "IncomingNumberResultAllOf": IncomingNumberResultAllOf,
+    "InlineObject": InlineObject,
     "LogList": LogList,
     "LogListAllOf": LogListAllOf,
     "LogResult": LogResult,
@@ -417,7 +425,6 @@ let typeMap: {[index: string]: any} = {
     "Reject": Reject,
     "RejectAllOf": RejectAllOf,
     "RemoveFromConference": RemoveFromConference,
-    "RemoveFromConferenceAllOf": RemoveFromConferenceAllOf,
     "SMSTenDLCBrand": SMSTenDLCBrand,
     "SMSTenDLCBrandsListResult": SMSTenDLCBrandsListResult,
     "SMSTenDLCBrandsListResultAllOf": SMSTenDLCBrandsListResultAllOf,
@@ -428,6 +435,9 @@ let typeMap: {[index: string]: any} = {
     "SMSTenDLCPartnerCampaignBrand": SMSTenDLCPartnerCampaignBrand,
     "SMSTenDLCPartnerCampaignsListResult": SMSTenDLCPartnerCampaignsListResult,
     "SMSTenDLCPartnerCampaignsListResultAllOf": SMSTenDLCPartnerCampaignsListResultAllOf,
+    "SMSTollFreeCampaign": SMSTollFreeCampaign,
+    "SMSTollFreeCampaignsListResult": SMSTollFreeCampaignsListResult,
+    "SMSTollFreeCampaignsListResultAllOf": SMSTollFreeCampaignsListResultAllOf,
     "Say": Say,
     "SayAllOf": SayAllOf,
     "SendDigits": SendDigits,
@@ -439,8 +449,8 @@ let typeMap: {[index: string]: any} = {
     "Sms": Sms,
     "SmsAllOf": SmsAllOf,
     "StartRecordCall": StartRecordCall,
+    "TFN": TFN,
     "TerminateConference": TerminateConference,
-    "TerminateConferenceAllOf": TerminateConferenceAllOf,
     "TranscribeUtterance": TranscribeUtterance,
     "TranscribeUtteranceRecord": TranscribeUtteranceRecord,
     "Unpark": Unpark,

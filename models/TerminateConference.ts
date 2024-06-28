@@ -33,7 +33,6 @@ import { SetListen } from './SetListen';
 import { SetTalk } from './SetTalk';
 import { Sms } from './Sms';
 import { StartRecordCall } from './StartRecordCall';
-import { TerminateConferenceAllOf } from './TerminateConferenceAllOf';
 import { TranscribeUtterance } from './TranscribeUtterance';
 import { Unpark } from './Unpark';
 import { HttpFile } from '../http/http';
@@ -50,26 +49,13 @@ interface AttributeType {
     defaultValue: any
 }
 interface ArgumentsType {
-    'conferenceId': string;
 }
 export class TerminateConference extends PerclCommand {
-    /**
-    * ID of the conference to terminate.
-    */
-    'conferenceId': string;
 
     static readonly discriminator: string | undefined = "command";
 
     static readonly attributeTypeMap: AttributeType[] = [
-        {
-            "name": "conferenceId",
-            "baseName": "conferenceId",
-            "type": "string",
-            "format": "",
-
-            
-            "defaultValue": undefined
-        }    ];
+    ];
 
     static getAttributeTypeMap(): AttributeType[] {
         return super.getAttributeTypeMap().concat(TerminateConference.attributeTypeMap);

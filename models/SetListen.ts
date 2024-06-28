@@ -50,14 +50,9 @@ interface AttributeType {
     defaultValue: any
 }
 interface ArgumentsType {
-    'callId': string;
     'listen'?: boolean;
 }
 export class SetListen extends PerclCommand {
-    /**
-    * ID of the call leg that is to be assigned the listen privilege. The Call must be in a Conference or an error will be triggered.
-    */
-    'callId': string;
     /**
     * Specifying `false` will silence the Conference for this Participant.
     */
@@ -66,15 +61,6 @@ export class SetListen extends PerclCommand {
     static readonly discriminator: string | undefined = "command";
 
     static readonly attributeTypeMap: AttributeType[] = [
-        {
-            "name": "callId",
-            "baseName": "callId",
-            "type": "string",
-            "format": "",
-
-            
-            "defaultValue": undefined
-        },
         {
             "name": "listen",
             "baseName": "listen",

@@ -66,6 +66,7 @@ models/IncomingNumberListAllOf.ts
 models/IncomingNumberRequest.ts
 models/IncomingNumberResult.ts
 models/IncomingNumberResultAllOf.ts
+models/InlineObject.ts
 models/Language.ts
 models/LogLevel.ts
 models/LogList.ts
@@ -118,7 +119,6 @@ models/RedirectAllOf.ts
 models/Reject.ts
 models/RejectAllOf.ts
 models/RemoveFromConference.ts
-models/RemoveFromConferenceAllOf.ts
 models/RequestType.ts
 models/SMSTenDLCBrand.ts
 models/SMSTenDLCBrandsListResult.ts
@@ -130,6 +130,9 @@ models/SMSTenDLCPartnerCampaign.ts
 models/SMSTenDLCPartnerCampaignBrand.ts
 models/SMSTenDLCPartnerCampaignsListResult.ts
 models/SMSTenDLCPartnerCampaignsListResultAllOf.ts
+models/SMSTollFreeCampaign.ts
+models/SMSTollFreeCampaignsListResult.ts
+models/SMSTollFreeCampaignsListResultAllOf.ts
 models/Say.ts
 models/SayAllOf.ts
 models/SendDigits.ts
@@ -141,8 +144,8 @@ models/SetTalkAllOf.ts
 models/Sms.ts
 models/SmsAllOf.ts
 models/StartRecordCall.ts
+models/TFN.ts
 models/TerminateConference.ts
-models/TerminateConferenceAllOf.ts
 models/TranscribeUtterance.ts
 models/TranscribeUtteranceRecord.ts
 models/Unpark.ts

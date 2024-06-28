@@ -10,6 +10,7 @@
  * Do not edit the class manually.
  */
 
+import { SMSTollFreeCampaign } from './SMSTollFreeCampaign';
 import { HttpFile } from '../http/http';
 
 
@@ -21,21 +22,18 @@ interface AttributeType {
     defaultValue: any
 }
 interface ArgumentsType {
-    'talk'?: boolean;
+    'brands'?: Array<SMSTollFreeCampaign>;
 }
-export class SetTalkAllOf {
-    /**
-    * Specifying `false` mutes the Participant.
-    */
-    'talk'?: boolean;
+export class SMSTollFreeCampaignsListResultAllOf {
+    'brands'?: Array<SMSTollFreeCampaign>;
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly attributeTypeMap: AttributeType[] = [
         {
-            "name": "talk",
-            "baseName": "talk",
-            "type": "boolean",
+            "name": "brands",
+            "baseName": "brands",
+            "type": "Array<SMSTollFreeCampaign>",
             "format": "",
 
             
@@ -43,11 +41,11 @@ export class SetTalkAllOf {
         }    ];
 
     static getAttributeTypeMap(): AttributeType[] {
-        return SetTalkAllOf.attributeTypeMap;
+        return SMSTollFreeCampaignsListResultAllOf.attributeTypeMap;
     }
 
     public constructor(args: ArgumentsType) {
-        const preparedArgs = SetTalkAllOf.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
+        const preparedArgs = SMSTollFreeCampaignsListResultAllOf.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
             const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
             if (val !== undefined) {
                 acc[attr.name as keyof ArgumentsType] = val

@@ -50,14 +50,9 @@ interface AttributeType {
     defaultValue: any
 }
 interface ArgumentsType {
-    'callId': string;
     'talk'?: boolean;
 }
 export class SetTalk extends PerclCommand {
-    /**
-    * ID of the call leg that is to be muted or unmuted. The Call must be in a Conference or an error will be triggered.
-    */
-    'callId': string;
     /**
     * Specifying `false` mutes the Participant.
     */
@@ -66,15 +61,6 @@ export class SetTalk extends PerclCommand {
     static readonly discriminator: string | undefined = "command";
 
     static readonly attributeTypeMap: AttributeType[] = [
-        {
-            "name": "callId",
-            "baseName": "callId",
-            "type": "string",
-            "format": "",
-
-            
-            "defaultValue": undefined
-        },
         {
             "name": "talk",
             "baseName": "talk",

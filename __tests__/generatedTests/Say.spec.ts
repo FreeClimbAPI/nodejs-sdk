@@ -6,7 +6,6 @@ describe('Say', () => {
         text: "test_text",
         language: "test_language",
         loop: 1,
-        conferenceId: "test_conferenceId",
         privacyMode: true,
     })
     describe(".command", () => {
@@ -32,12 +31,6 @@ describe('Say', () => {
         it('resolves to particular value on initialization', () => {
             const value = 1
             expect(model.loop).toBe(value)
-        })
-    })
-    describe(".conferenceId", () => {
-        it('resolves to particular value on initialization', () => {
-            const value = "test_conferenceId"
-            expect(model.conferenceId).toBe(value)
         })
     })
     describe(".privacyMode", () => {

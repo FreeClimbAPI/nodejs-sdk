@@ -7,7 +7,7 @@ describe('GetDigits', () => {
         digitTimeoutMs: 1,
         finishOnKey: "test_finishOnKey",
         flushBuffer: true,
-        initialTimeoutMs: "test_initialTimeoutMs",
+        initialTimeoutMs: 1,
         maxDigits: 1,
         minDigits: 1,
         prompts: [],
@@ -46,7 +46,7 @@ describe('GetDigits', () => {
     })
     describe(".initialTimeoutMs", () => {
         it('resolves to particular value on initialization', () => {
-            const value = "test_initialTimeoutMs"
+            const value = 1
             expect(model.initialTimeoutMs).toBe(value)
         })
     })
