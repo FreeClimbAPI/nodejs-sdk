@@ -15,7 +15,7 @@ jobs:
         with:
           node-version: 16
       - name: Install Prism
-        run: (yarn global add @stoplight/prism-cli)
+        run: (yarn global add @stoplight/prism-cli@5.7.0)
       - name: Start Prism Server
         run: (prism mock -h 127.0.0.1 openapi.json &)
       - run: yarn install
