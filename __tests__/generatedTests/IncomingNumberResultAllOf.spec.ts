@@ -22,6 +22,10 @@ describe('IncomingNumberResultAllOf', () => {
         voiceEnabled: true,
         smsEnabled: true,
         offnet: true,
+
+        tfn: new freeclimb.TFN({
+                campaignId: null as any,
+        }),
     })
     describe(".capabilities", () => {
         it('resolves to particular value on initialization', () => {
@@ -100,6 +104,15 @@ describe('IncomingNumberResultAllOf', () => {
         it('resolves to particular value on initialization', () => {
             const value = true
             expect(model.offnet).toBe(value)
+        })
+    })
+    describe(".tfn", () => {
+        it('resolves to particular value on initialization', () => {
+
+            const value = new freeclimb.TFN({
+                campaignId: null as any,
+            })
+            expect(model.tfn).toStrictEqual(value)
         })
     })
 })

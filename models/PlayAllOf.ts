@@ -23,7 +23,6 @@ interface AttributeType {
 interface ArgumentsType {
     'file': string;
     'loop'?: number;
-    'conferenceId'?: string;
     'privacyMode'?: boolean;
 }
 export class PlayAllOf {
@@ -35,10 +34,6 @@ export class PlayAllOf {
     * Number of times the audio file is played. Specifying '0' causes the Play action to loop until the Call is hung up.
     */
     'loop'?: number;
-    /**
-    * ID of the Conference the audio should be rendered to. If this is not specified, the audio is by default rendered to the caller associated with the call leg that corresponds to the current PerCL execution context. The call leg associated with this command must be in the specified Conference or the command will return an error.
-    */
-    'conferenceId'?: string;
     /**
     * Parameter `privacyMode` will not log the `text` as required by PCI compliance.
     */
@@ -60,15 +55,6 @@ export class PlayAllOf {
             "name": "loop",
             "baseName": "loop",
             "type": "number",
-            "format": "",
-
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "conferenceId",
-            "baseName": "conferenceId",
-            "type": "string",
             "format": "",
 
             

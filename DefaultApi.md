@@ -32,6 +32,8 @@ Method | HTTP request | Description
 [**getTenDLCSmsCampaigns**](DefaultApi.md#getTenDLCSmsCampaigns) | **GET** /Accounts/{accountId}/Messages/10DLC/Campaigns | Get list of SMS 10DLC Campaigns
 [**getTenDLCSmsPartnerCampaign**](DefaultApi.md#getTenDLCSmsPartnerCampaign) | **GET** /Accounts/{accountId}/Messages/10DLC/PartnerCampaigns/{campaignId} | Get a 10DLC SMS Partner Campaign
 [**getTenDLCSmsPartnerCampaigns**](DefaultApi.md#getTenDLCSmsPartnerCampaigns) | **GET** /Accounts/{accountId}/Messages/10DLC/PartnerCampaigns | Get list of SMS 10DLC Partner Campaigns
+[**getTollFreeSmsCampaign**](DefaultApi.md#getTollFreeSmsCampaign) | **GET** /Accounts/{accountId}/Messages/TollFree/Campaigns/{campaignId} | Get a TollFree SMS Campaign
+[**getTollFreeSmsCampaigns**](DefaultApi.md#getTollFreeSmsCampaigns) | **GET** /Accounts/{accountId}/Messages/TollFree/Campaigns | Get list of TollFree Campaigns
 [**listActiveQueues**](DefaultApi.md#listActiveQueues) | **GET** /Accounts/{accountId}/Queues | List Active Queues
 [**listAllAccountLogs**](DefaultApi.md#listAllAccountLogs) | **GET** /Accounts/{accountId}/Logs | List All Account Logs
 [**listApplications**](DefaultApi.md#listApplications) | **GET** /Accounts/{accountId}/Applications | List applications
@@ -39,6 +41,7 @@ Method | HTTP request | Description
 [**listCallLogs**](DefaultApi.md#listCallLogs) | **GET** /Accounts/{accountId}/Calls/{callId}/Logs | List Call Logs
 [**listCallRecordings**](DefaultApi.md#listCallRecordings) | **GET** /Accounts/{accountId}/Calls/{callId}/Recordings | List Call Recordings
 [**listCalls**](DefaultApi.md#listCalls) | **GET** /Accounts/{accountId}/Calls | List Calls
+[**listConferenceRecordings**](DefaultApi.md#listConferenceRecordings) | **GET** /Accounts/{accountId}/Conferences/{conferenceId}/Recordings | List Conference Recordings
 [**listConferences**](DefaultApi.md#listConferences) | **GET** /Accounts/{accountId}/Conferences | List Conferences
 [**listIncomingNumbers**](DefaultApi.md#listIncomingNumbers) | **GET** /Accounts/{accountId}/IncomingPhoneNumbers | List Incoming Numbers
 [**listMembers**](DefaultApi.md#listMembers) | **GET** /Accounts/{accountId}/Queues/{queueId}/Members | List Members
@@ -46,6 +49,7 @@ Method | HTTP request | Description
 [**listRecordings**](DefaultApi.md#listRecordings) | **GET** /Accounts/{accountId}/Recordings | List Recordings
 [**listSmsMessages**](DefaultApi.md#listSmsMessages) | **GET** /Accounts/{accountId}/Messages | List SMS Messages
 [**makeACall**](DefaultApi.md#makeACall) | **POST** /Accounts/{accountId}/Calls | Make a Call
+[**makeAWebrtcJwt**](DefaultApi.md#makeAWebrtcJwt) | **POST** /Accounts/{accountId}/Calls/WebRTC/Token | Make a JWT for WebRTC calling
 [**removeAParticipant**](DefaultApi.md#removeAParticipant) | **DELETE** /Accounts/{accountId}/Conferences/{conferenceId}/Participants/{callId} | Remove a Participant
 [**sendAnSmsMessage**](DefaultApi.md#sendAnSmsMessage) | **POST** /Accounts/{accountId}/Messages | Send an SMS Message
 [**streamARecordingFile**](DefaultApi.md#streamARecordingFile) | **GET** /Accounts/{accountId}/Recordings/{recordingId}/Stream | Stream a Recording File
@@ -1705,6 +1709,116 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
+# **getTollFreeSmsCampaign**
+> SMSTollFreeCampaign getTollFreeSmsCampaign()
+
+
+### Example
+
+
+```typescript
+import { freeclimb } from '@freeclimb/sdk';
+import * as fs from 'fs';
+
+const configuration = freeclimb.createConfiguration({
+  accountId: 'YOUR_ACCOUND_ID',
+  apiKey: 'YOUR_API_KEY'
+});
+const apiInstance = new freeclimb.DefaultApi(configuration);
+
+let body:freeclimb.DefaultApiGetTollFreeSmsCampaignRequest = {
+
+  // string | String that uniquely identifies this TollFree Campaign resource.
+  campaignId: "campaignId_example",
+
+};
+
+apiInstance.getTollFreeSmsCampaign(body).then((data:any) => {
+  console.log('API called successfully. Returned data: ' + data);
+}).catch((error:any) => console.error(error));
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **campaignId** | [**string**] | String that uniquely identifies this TollFree Campaign resource. | defaults to undefined
+
+
+### Return type
+
+**SMSTollFreeCampaign**
+
+### Authorization
+
+[fc](README.md#fc)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The specific SMS TollFree Campaign that’s been processed by FreeClimb |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **getTollFreeSmsCampaigns**
+> SMSTollFreeCampaignsListResult getTollFreeSmsCampaigns()
+
+
+### Example
+
+
+```typescript
+import { freeclimb } from '@freeclimb/sdk';
+import * as fs from 'fs';
+
+const configuration = freeclimb.createConfiguration({
+  accountId: 'YOUR_ACCOUND_ID',
+  apiKey: 'YOUR_API_KEY'
+});
+const apiInstance = new freeclimb.DefaultApi(configuration);
+
+let body:freeclimb.DefaultApiGetTollFreeSmsCampaignsRequest = {
+
+};
+
+apiInstance.getTollFreeSmsCampaigns(body).then((data:any) => {
+  console.log('API called successfully. Returned data: ' + data);
+}).catch((error:any) => console.error(error));
+```
+
+
+### Parameters
+
+
+
+### Return type
+
+**SMSTollFreeCampaignsListResult**
+
+### Authorization
+
+[fc](README.md#fc)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The list toll-free campaigns |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
 # **listActiveQueues**
 > QueueList listActiveQueues()
 
@@ -2175,6 +2289,72 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
+# **listConferenceRecordings**
+> RecordingList listConferenceRecordings()
+
+
+### Example
+
+
+```typescript
+import { freeclimb } from '@freeclimb/sdk';
+import * as fs from 'fs';
+
+const configuration = freeclimb.createConfiguration({
+  accountId: 'YOUR_ACCOUND_ID',
+  apiKey: 'YOUR_API_KEY'
+});
+const apiInstance = new freeclimb.DefaultApi(configuration);
+
+let body:freeclimb.DefaultApiListConferenceRecordingsRequest = {
+
+  // string | Show only Recordings made during the Call with this ID. (optional)
+  callId: "callId_example",
+
+  // string | Show only Recordings made during the conference with this ID. (optional)
+  conferenceId: "conferenceId_example",
+
+  // string | Only show Recordings created on this date, formatted as *YYYY-MM-DD*. (optional)
+  dateCreated: "dateCreated_example",
+
+};
+
+apiInstance.listConferenceRecordings(body).then((data:any) => {
+  console.log('API called successfully. Returned data: ' + data);
+}).catch((error:any) => console.error(error));
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **callId** | [**string**] | Show only Recordings made during the Call with this ID. | (optional) defaults to undefined
+ **conferenceId** | [**string**] | Show only Recordings made during the conference with this ID. | (optional) defaults to undefined
+ **dateCreated** | [**string**] | Only show Recordings created on this date, formatted as *YYYY-MM-DD*. | (optional) defaults to undefined
+
+
+### Return type
+
+**RecordingList**
+
+### Authorization
+
+[fc](README.md#fc)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | List of Recordings |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
 # **listConferences**
 > ConferenceList listConferences()
 
@@ -2306,6 +2486,9 @@ let body:freeclimb.DefaultApiListIncomingNumbersRequest = {
   // boolean (optional)
   capabilitiesShortCode: true,
 
+  // string | Only show incoming phone number resources that have been assigned to the provided TFNCampaign ID. (optional)
+  tfnCampaignId: "tfn.campaignId_example",
+
   // boolean | Indication of whether the phone number was registered as an offnet number. This field will be rendered only for requests to the IncomingPhone number resource. (optional)
   offnet: true,
 
@@ -2335,6 +2518,7 @@ Name | Type | Description  | Notes
  **capabilitiesTollFree** | [**boolean**] |  | (optional) defaults to undefined
  **capabilitiesTenDLC** | [**boolean**] |  | (optional) defaults to undefined
  **capabilitiesShortCode** | [**boolean**] |  | (optional) defaults to undefined
+ **tfnCampaignId** | [**string**] | Only show incoming phone number resources that have been assigned to the provided TFNCampaign ID. | (optional) defaults to undefined
  **offnet** | [**boolean**] | Indication of whether the phone number was registered as an offnet number. This field will be rendered only for requests to the IncomingPhone number resource. | (optional) defaults to undefined
 
 
@@ -2701,6 +2885,69 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Call that was created |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **makeAWebrtcJwt**
+> string makeAWebrtcJwt(inlineObject)
+
+Make a JWT for WebRTC calling
+
+### Example
+
+
+```typescript
+import { freeclimb } from '@freeclimb/sdk';
+import * as fs from 'fs';
+
+const configuration = freeclimb.createConfiguration({
+  accountId: 'YOUR_ACCOUND_ID',
+  apiKey: 'YOUR_API_KEY'
+});
+const apiInstance = new freeclimb.DefaultApi(configuration);
+
+let body:freeclimb.DefaultApiMakeAWebrtcJwtRequest = {
+
+  // InlineObject
+  inlineObject: {
+    to: "to_example",
+    _from: "_from_example",
+    uses: 1,
+  },
+
+};
+
+apiInstance.makeAWebrtcJwt(body).then((data:any) => {
+  console.log('API called successfully. Returned data: ' + data);
+}).catch((error:any) => console.error(error));
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **inlineObject** | **InlineObject**|  |
+
+
+### Return type
+
+**string**
+
+### Authorization
+
+[fc](README.md#fc)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: text/plain
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The created JWT |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 

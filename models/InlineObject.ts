@@ -21,21 +21,49 @@ interface AttributeType {
     defaultValue: any
 }
 interface ArgumentsType {
-    'talk'?: boolean;
+    'to': string;
+    '_from': string;
+    'uses': number;
 }
-export class SetTalkAllOf {
+export class InlineObject {
     /**
-    * Specifying `false` mutes the Participant.
+    * E.164 formatted phone number to which calls using this token will be made.
     */
-    'talk'?: boolean;
+    'to': string;
+    /**
+    * E.164 formatted phone number owned by the reqeusting account from which calls using this token will be made.
+    */
+    '_from': string;
+    /**
+    * number of times this token may be used for a WebRTC call
+    */
+    'uses': number;
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly attributeTypeMap: AttributeType[] = [
         {
-            "name": "talk",
-            "baseName": "talk",
-            "type": "boolean",
+            "name": "to",
+            "baseName": "to",
+            "type": "string",
+            "format": "",
+
+            
+            "defaultValue": undefined
+        },
+        {
+            "name": "_from",
+            "baseName": "from",
+            "type": "string",
+            "format": "",
+
+            
+            "defaultValue": undefined
+        },
+        {
+            "name": "uses",
+            "baseName": "uses",
+            "type": "number",
             "format": "",
 
             
@@ -43,12 +71,12 @@ export class SetTalkAllOf {
         }    ];
 
     static getAttributeTypeMap(): AttributeType[] {
-        return SetTalkAllOf.attributeTypeMap;
+        return InlineObject.attributeTypeMap;
     }
 
     public constructor(args: ArgumentsType) {
-        const preparedArgs = SetTalkAllOf.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
-            const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
+        const preparedArgs = InlineObject.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
+            const val: any = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
             if (val !== undefined) {
                 acc[attr.name as keyof ArgumentsType] = val
             }

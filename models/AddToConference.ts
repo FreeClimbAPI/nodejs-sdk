@@ -54,7 +54,6 @@ interface ArgumentsType {
     'callControlSequence'?: string;
     'callControlUrl'?: string;
     'conferenceId': string;
-    'callId'?: string;
     'leaveConferenceUrl'?: string;
     'listen'?: boolean;
     'notificationUrl'?: string;
@@ -78,10 +77,6 @@ export class AddToConference extends PerclCommand {
     * ID of the Conference to which to add the Participant (Call leg). Conference must exist or an error will result.
     */
     'conferenceId': string;
-    /**
-    * ID of the Call that will be added to the specified Conference. The Call must be in progress or an error will result. If the Call is part of an existing Conference, it is first removed from that Conference and is then moved to the new one.
-    */
-    'callId'?: string;
     /**
     * URL to be invoked when the Participant leaves the Conference. 
     */
@@ -136,15 +131,6 @@ export class AddToConference extends PerclCommand {
         {
             "name": "conferenceId",
             "baseName": "conferenceId",
-            "type": "string",
-            "format": "",
-
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "callId",
-            "baseName": "callId",
             "type": "string",
             "format": "",
 

@@ -53,7 +53,6 @@ interface ArgumentsType {
     'text': string;
     'language'?: string;
     'loop'?: number;
-    'conferenceId'?: string;
     'privacyMode'?: boolean;
 }
 export class Say extends PerclCommand {
@@ -69,10 +68,6 @@ export class Say extends PerclCommand {
     * Number of times the text is said. Specifying '0' causes the `Say` action to loop until the Call is hung up.
     */
     'loop'?: number;
-    /**
-    * D of the Conference the speech should be rendered to. If this is not specified, the speech is by default rendered to the Caller associated with the call leg that corresponds to the current PerCL execution context. The call leg associated with this command must be in the specified Conference or the command will return an error.
-    */
-    'conferenceId'?: string;
     /**
     * Parameter `privacyMode` will not log the `text` as required by PCI compliance.
     */
@@ -107,15 +102,6 @@ export class Say extends PerclCommand {
 
             
             "defaultValue": 1
-        },
-        {
-            "name": "conferenceId",
-            "baseName": "conferenceId",
-            "type": "string",
-            "format": "",
-
-            
-            "defaultValue": undefined
         },
         {
             "name": "privacyMode",

@@ -13,6 +13,7 @@
 import { MessageResultAllOf } from './MessageResultAllOf';
 import { MessageStatus } from './MessageStatus';
 import { MutableResourceModel } from './MutableResourceModel';
+import { URI } from './URI';
 import { HttpFile } from '../http/http';
 
 
@@ -39,6 +40,7 @@ interface ArgumentsType {
     'brandId'?: string;
     'campaignId'?: string;
     'segmentCount'?: number;
+    'mediaUrls'?: Array<URI>;
 }
 export class MessageResult {
     /**
@@ -98,6 +100,10 @@ export class MessageResult {
     * The number of segments into which the message was split
     */
     'segmentCount'?: number;
+    /**
+    * an array of HTTP URLs which were attached this this message
+    */
+    'mediaUrls'?: Array<URI>;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -233,6 +239,15 @@ export class MessageResult {
             "baseName": "segmentCount",
             "type": "number",
             "format": "",
+
+            
+            "defaultValue": undefined
+        },
+        {
+            "name": "mediaUrls",
+            "baseName": "mediaUrls",
+            "type": "Array<URI>",
+            "format": "uri",
 
             
             "defaultValue": undefined

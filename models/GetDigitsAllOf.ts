@@ -26,7 +26,7 @@ interface ArgumentsType {
     'digitTimeoutMs'?: number;
     'finishOnKey'?: string;
     'flushBuffer'?: boolean;
-    'initialTimeoutMs'?: string;
+    'initialTimeoutMs'?: number;
     'maxDigits'?: number;
     'minDigits'?: number;
     'prompts'?: Array<PerclCommand>;
@@ -52,7 +52,7 @@ export class GetDigitsAllOf {
     /**
     * Maximum time in milliseconds that FreeClimb will wait for the Caller to press the first digit before making a determination that a `timeout` has occurred and moving on to make the request to the `actionUrl` to submit the results of the `GetDigits` command. This timeout interval begins when all nested commands have been fully executed.
     */
-    'initialTimeoutMs'?: string;
+    'initialTimeoutMs'?: number;
     /**
     * Maximum number of digits expected in the input. If the terminating digit is not entered and the caller has entered the maximum number of digits allowed, the `GetDigits` command terminates regardless of the value of `finishOnKey`.
     */
@@ -112,7 +112,7 @@ export class GetDigitsAllOf {
         {
             "name": "initialTimeoutMs",
             "baseName": "initialTimeoutMs",
-            "type": "string",
+            "type": "number",
             "format": "",
 
             

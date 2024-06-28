@@ -11,6 +11,7 @@
  */
 
 import { Capabilities } from './Capabilities';
+import { TFN } from './TFN';
 import { HttpFile } from '../http/http';
 
 
@@ -34,6 +35,7 @@ interface ArgumentsType {
     'voiceEnabled'?: boolean;
     'smsEnabled'?: boolean;
     'offnet'?: boolean;
+    'tfn'?: TFN;
 }
 export class IncomingNumberResultAllOf {
     'capabilities'?: Capabilities;
@@ -81,6 +83,7 @@ export class IncomingNumberResultAllOf {
     * The offnet field is a boolean representing whether the number is offnet registered or not. This field will be rendered only for requests to the IncomingPhone number resource.
     */
     'offnet'?: boolean;
+    'tfn'?: TFN;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -188,6 +191,15 @@ export class IncomingNumberResultAllOf {
             "name": "offnet",
             "baseName": "offnet",
             "type": "boolean",
+            "format": "",
+
+            
+            "defaultValue": undefined
+        },
+        {
+            "name": "tfn",
+            "baseName": "tfn",
+            "type": "TFN",
             "format": "",
 
             

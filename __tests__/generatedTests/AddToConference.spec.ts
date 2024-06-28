@@ -7,7 +7,6 @@ describe('AddToConference', () => {
         callControlSequence: "test_callControlSequence",
         callControlUrl: "test_callControlUrl",
         conferenceId: "test_conferenceId",
-        callId: "test_callId",
         leaveConferenceUrl: "test_leaveConferenceUrl",
         listen: true,
         notificationUrl: "test_notificationUrl",
@@ -43,12 +42,6 @@ describe('AddToConference', () => {
         it('resolves to particular value on initialization', () => {
             const value = "test_conferenceId"
             expect(model.conferenceId).toBe(value)
-        })
-    })
-    describe(".callId", () => {
-        it('resolves to particular value on initialization', () => {
-            const value = "test_callId"
-            expect(model.callId).toBe(value)
         })
     })
     describe(".leaveConferenceUrl", () => {

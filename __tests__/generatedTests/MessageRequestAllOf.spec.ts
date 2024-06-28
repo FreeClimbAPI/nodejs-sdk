@@ -7,7 +7,7 @@ describe('MessageRequestAllOf', () => {
         to: "test_to",
         text: "test_text",
         notificationUrl: "test_notificationUrl",
-        accountId: "test_accountId",
+        mediaUrls: [],
     })
     describe(".from", () => {
         it('resolves to particular value on initialization', () => {
@@ -33,10 +33,11 @@ describe('MessageRequestAllOf', () => {
             expect(model.notificationUrl).toBe(value)
         })
     })
-    describe(".accountId", () => {
+    describe(".mediaUrls", () => {
         it('resolves to particular value on initialization', () => {
-            const value = "test_accountId"
-            expect(model.accountId).toBe(value)
+
+            const value:any[] = []
+            expect(model.mediaUrls).toStrictEqual(value)
         })
     })
 })

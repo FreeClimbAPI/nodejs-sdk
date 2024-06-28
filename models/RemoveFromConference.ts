@@ -26,7 +26,6 @@ import { PlayEarlyMedia } from './PlayEarlyMedia';
 import { RecordUtterance } from './RecordUtterance';
 import { Redirect } from './Redirect';
 import { Reject } from './Reject';
-import { RemoveFromConferenceAllOf } from './RemoveFromConferenceAllOf';
 import { Say } from './Say';
 import { SendDigits } from './SendDigits';
 import { SetListen } from './SetListen';
@@ -50,26 +49,13 @@ interface AttributeType {
     defaultValue: any
 }
 interface ArgumentsType {
-    'callId': string;
 }
 export class RemoveFromConference extends PerclCommand {
-    /**
-    * ID of the Call leg to be removed from the Conference. The Call must be in a Conference or an error will be triggered.
-    */
-    'callId': string;
 
     static readonly discriminator: string | undefined = "command";
 
     static readonly attributeTypeMap: AttributeType[] = [
-        {
-            "name": "callId",
-            "baseName": "callId",
-            "type": "string",
-            "format": "",
-
-            
-            "defaultValue": undefined
-        }    ];
+    ];
 
     static getAttributeTypeMap(): AttributeType[] {
         return super.getAttributeTypeMap().concat(RemoveFromConference.attributeTypeMap);

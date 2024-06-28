@@ -19,6 +19,7 @@ describe('MessageResult', () => {
         brandId: "test_brandId",
         campaignId: "test_campaignId",
         segmentCount: 1.0,
+        mediaUrls: [],
     })
     describe(".uri", () => {
         it('resolves to particular value on initialization', () => {
@@ -109,6 +110,13 @@ describe('MessageResult', () => {
         it('resolves to particular value on initialization', () => {
             const value = 1.0
             expect(model.segmentCount).toBe(value)
+        })
+    })
+    describe(".mediaUrls", () => {
+        it('resolves to particular value on initialization', () => {
+
+            const value:any[] = []
+            expect(model.mediaUrls).toStrictEqual(value)
         })
     })
 })
