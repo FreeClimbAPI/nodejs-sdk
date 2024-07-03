@@ -39,6 +39,7 @@ import { ConferenceStatus } from '../models/ConferenceStatus';
 import { CreateConference } from '../models/CreateConference';
 import { CreateConferenceAllOf } from '../models/CreateConferenceAllOf';
 import { CreateConferenceRequest } from '../models/CreateConferenceRequest';
+import { CreateWebRTCToken } from '../models/CreateWebRTCToken';
 import { Dequeue } from '../models/Dequeue';
 import { Enqueue } from '../models/Enqueue';
 import { EnqueueAllOf } from '../models/EnqueueAllOf';
@@ -58,7 +59,6 @@ import { IncomingNumberListAllOf } from '../models/IncomingNumberListAllOf';
 import { IncomingNumberRequest } from '../models/IncomingNumberRequest';
 import { IncomingNumberResult } from '../models/IncomingNumberResult';
 import { IncomingNumberResultAllOf } from '../models/IncomingNumberResultAllOf';
-import { InlineObject } from '../models/InlineObject';
 import { Language } from '../models/Language';
 import { LogLevel } from '../models/LogLevel';
 import { LogList } from '../models/LogList';
@@ -1385,11 +1385,11 @@ export class ObservableDefaultApi {
      * Make a JWT for WebRTC calling
      * Make a JWT for WebRTC calling
      
-     * @param inlineObject 
+     * @param createWebRTCToken Information needed to craft a JWT compatible with the platforms WebRTC APIs
      
      */
-    public makeAWebrtcJwt(inlineObject: InlineObject, _options?: Configuration): Observable<string> {
-        const requestContextPromise = this.requestFactory.makeAWebrtcJwt(inlineObject, _options);
+    public makeAWebrtcJwt(createWebRTCToken: CreateWebRTCToken, _options?: Configuration): Observable<string> {
+        const requestContextPromise = this.requestFactory.makeAWebrtcJwt(createWebRTCToken, _options);
 
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
@@ -1492,7 +1492,7 @@ export class ObservableDefaultApi {
      * @param updateConferenceRequest Conference Details to update
      
      */
-    public updateAConference(conferenceId: string, updateConferenceRequest?: UpdateConferenceRequest, _options?: Configuration): Observable<ConferenceResult> {
+    public updateAConference(conferenceId: string, updateConferenceRequest?: UpdateConferenceRequest, _options?: Configuration): Observable<void> {
         const requestContextPromise = this.requestFactory.updateAConference(conferenceId, updateConferenceRequest, _options);
 
         // build promise chain

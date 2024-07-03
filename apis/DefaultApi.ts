@@ -25,11 +25,11 @@ import { ConferenceParticipantList } from '../models/ConferenceParticipantList';
 import { ConferenceParticipantResult } from '../models/ConferenceParticipantResult';
 import { ConferenceResult } from '../models/ConferenceResult';
 import { CreateConferenceRequest } from '../models/CreateConferenceRequest';
+import { CreateWebRTCToken } from '../models/CreateWebRTCToken';
 import { FilterLogsRequest } from '../models/FilterLogsRequest';
 import { IncomingNumberList } from '../models/IncomingNumberList';
 import { IncomingNumberRequest } from '../models/IncomingNumberRequest';
 import { IncomingNumberResult } from '../models/IncomingNumberResult';
-import { InlineObject } from '../models/InlineObject';
 import { LogList } from '../models/LogList';
 import { MakeCallRequest } from '../models/MakeCallRequest';
 import { MessageDirection } from '../models/MessageDirection';
@@ -1981,17 +1981,16 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
 
     /**
      * Make a JWT for WebRTC calling
-     * Make a JWT for WebRTC calling
-     
-     * @param inlineObject 
+      
+     * @param createWebRTCToken Information needed to craft a JWT compatible with the platforms WebRTC APIs
      */
-    public async makeAWebrtcJwt(inlineObject: InlineObject, _options?: Configuration): Promise<RequestContext> {
+    public async makeAWebrtcJwt(createWebRTCToken: CreateWebRTCToken, _options?: Configuration): Promise<RequestContext> {
         const _config = _options || this.configuration;
         const { accountId } = this.configuration
         
-        // verify required parameter 'inlineObject' is not null or undefined
-        if (inlineObject === null || inlineObject === undefined) {
-            throw new RequiredError("DefaultApi", "makeAWebrtcJwt", "inlineObject");
+        // verify required parameter 'createWebRTCToken' is not null or undefined
+        if (createWebRTCToken === null || createWebRTCToken === undefined) {
+            throw new RequiredError("DefaultApi", "makeAWebrtcJwt", "createWebRTCToken");
         }
         // Path Params
         const localVarPath = '/Accounts/{accountId}/Calls/WebRTC/Token'
@@ -2008,7 +2007,7 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         ]);
         requestContext.setHeaderParam("Content-Type", contentType);
         const serializedBody = ObjectSerializer.stringify(
-            ObjectSerializer.serialize(inlineObject, "InlineObject", ""),
+            ObjectSerializer.serialize(createWebRTCToken, "CreateWebRTCToken", ""),
             contentType
         );
         requestContext.setBody(serializedBody);
@@ -3787,20 +3786,11 @@ export class DefaultApiResponseProcessor {
      public async makeAWebrtcJwt(response: ResponseContext): Promise<string > {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            if (contentType === "text/plain") {
-                const body: string = ObjectSerializer.deserialize(
-                    response.body.text(),
-                    "string", ""
-                ) as string;
-                return body;
-            }
-            else {
-                const body: string = ObjectSerializer.deserialize(
-                    ObjectSerializer.parse(await response.body.text(), contentType),
-                    "string", ""
-                ) as string;
-                return body;
-            }
+            const body: string = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "string", ""
+            ) as string;
+            return body;
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -3902,22 +3892,18 @@ export class DefaultApiResponseProcessor {
      * @params response Response returned by the server for a request to updateAConference
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async updateAConference(response: ResponseContext): Promise<ConferenceResult > {
+     public async updateAConference(response: ResponseContext): Promise<void > {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
-        if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: ConferenceResult = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "ConferenceResult", ""
-            ) as ConferenceResult;
-            return body;
+        if (isCodeInRange("204", response.httpStatusCode)) {
+            return;
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: ConferenceResult = ObjectSerializer.deserialize(
+            const body: void = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "ConferenceResult", ""
-            ) as ConferenceResult;
+                "void", ""
+            ) as void;
             return body;
         }
 

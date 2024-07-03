@@ -38,6 +38,7 @@ import { ConferenceStatus } from '../models/ConferenceStatus';
 import { CreateConference } from '../models/CreateConference';
 import { CreateConferenceAllOf } from '../models/CreateConferenceAllOf';
 import { CreateConferenceRequest } from '../models/CreateConferenceRequest';
+import { CreateWebRTCToken } from '../models/CreateWebRTCToken';
 import { Dequeue } from '../models/Dequeue';
 import { Enqueue } from '../models/Enqueue';
 import { EnqueueAllOf } from '../models/EnqueueAllOf';
@@ -57,7 +58,6 @@ import { IncomingNumberListAllOf } from '../models/IncomingNumberListAllOf';
 import { IncomingNumberRequest } from '../models/IncomingNumberRequest';
 import { IncomingNumberResult } from '../models/IncomingNumberResult';
 import { IncomingNumberResultAllOf } from '../models/IncomingNumberResultAllOf';
-import { InlineObject } from '../models/InlineObject';
 import { Language } from '../models/Language';
 import { LogLevel } from '../models/LogLevel';
 import { LogList } from '../models/LogList';
@@ -751,11 +751,11 @@ export class PromiseDefaultApi {
      * Make a JWT for WebRTC calling
      * Make a JWT for WebRTC calling
      
-     * @param inlineObject 
+     * @param createWebRTCToken Information needed to craft a JWT compatible with the platforms WebRTC APIs
      
      */
-    public makeAWebrtcJwt(inlineObject: InlineObject, _options?: Configuration): Promise<string> {
-        const result = this.api.makeAWebrtcJwt(inlineObject, _options);
+    public makeAWebrtcJwt(createWebRTCToken: CreateWebRTCToken, _options?: Configuration): Promise<string> {
+        const result = this.api.makeAWebrtcJwt(createWebRTCToken, _options);
         return result.toPromise();
     }
 
@@ -802,7 +802,7 @@ export class PromiseDefaultApi {
      * @param updateConferenceRequest Conference Details to update
      
      */
-    public updateAConference(conferenceId: string, updateConferenceRequest?: UpdateConferenceRequest, _options?: Configuration): Promise<ConferenceResult> {
+    public updateAConference(conferenceId: string, updateConferenceRequest?: UpdateConferenceRequest, _options?: Configuration): Promise<void> {
         const result = this.api.updateAConference(conferenceId, updateConferenceRequest, _options);
         return result.toPromise();
     }

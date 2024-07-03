@@ -47,6 +47,7 @@ models/ConferenceStatus.ts
 models/CreateConference.ts
 models/CreateConferenceAllOf.ts
 models/CreateConferenceRequest.ts
+models/CreateWebRTCToken.ts
 models/Dequeue.ts
 models/Enqueue.ts
 models/EnqueueAllOf.ts
@@ -66,7 +67,6 @@ models/IncomingNumberListAllOf.ts
 models/IncomingNumberRequest.ts
 models/IncomingNumberResult.ts
 models/IncomingNumberResultAllOf.ts
-models/InlineObject.ts
 models/Language.ts
 models/LogLevel.ts
 models/LogList.ts

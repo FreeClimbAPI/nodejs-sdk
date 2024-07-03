@@ -2889,7 +2889,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **makeAWebrtcJwt**
-> string makeAWebrtcJwt(inlineObject)
+> string makeAWebrtcJwt(createWebRTCToken)
 
 Make a JWT for WebRTC calling
 
@@ -2908,8 +2908,8 @@ const apiInstance = new freeclimb.DefaultApi(configuration);
 
 let body:freeclimb.DefaultApiMakeAWebrtcJwtRequest = {
 
-  // InlineObject
-  inlineObject: {
+  // CreateWebRTCToken | Information needed to craft a JWT compatible with the platforms WebRTC APIs
+  createWebRTCToken: {
     to: "to_example",
     _from: "_from_example",
     uses: 1,
@@ -2927,7 +2927,7 @@ apiInstance.makeAWebrtcJwt(body).then((data:any) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **inlineObject** | **InlineObject**|  |
+ **createWebRTCToken** | **CreateWebRTCToken**| Information needed to craft a JWT compatible with the platforms WebRTC APIs |
 
 
 ### Return type
@@ -3130,7 +3130,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **updateAConference**
-> ConferenceResult updateAConference()
+> void updateAConference()
 
 
 ### Example
@@ -3176,7 +3176,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**ConferenceResult**
+**void**
 
 ### Authorization
 
@@ -3185,13 +3185,13 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Accept**: Not defined
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Conference Details to Update |  -  |
+**204** | Successful conference details update |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 

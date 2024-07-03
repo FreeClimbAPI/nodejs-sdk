@@ -352,7 +352,7 @@ describe('DefaultAPI', () => {
               status: UpdateConferenceRequestStatus.EMPTY,
         }
         let data = await apiInstance.updateAConference(conferenceId, request) 
-        expect(data).toBeInstanceOf(ConferenceResult)
+        expect(data).toBe(undefined)
     });
 
     test('#updateALiveCall', async () => {
@@ -439,12 +439,12 @@ describe('DefaultAPI', () => {
     });
 
     test('#makeAWebrtcJwt', async () => {
-        const inlineObject: freeclimb.InlineObject = {
+        const createWebrtcToken: freeclimb.CreateWebRTCToken = {
             to: "to_example",
             _from: "from_example",
             uses: 1,
         }
-        let data = await apiInstance.makeAWebrtcJwt(inlineObject)
+        let data = await apiInstance.makeAWebrtcJwt(createWebrtcToken)
         expect(typeof data).toBe("string")
     });
     

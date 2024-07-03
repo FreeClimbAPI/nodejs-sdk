@@ -34,6 +34,7 @@ export * from './ConferenceStatus';
 export * from './CreateConference';
 export * from './CreateConferenceAllOf';
 export * from './CreateConferenceRequest';
+export * from './CreateWebRTCToken';
 export * from './Dequeue';
 export * from './Enqueue';
 export * from './EnqueueAllOf';
@@ -53,7 +54,6 @@ export * from './IncomingNumberListAllOf';
 export * from './IncomingNumberRequest';
 export * from './IncomingNumberResult';
 export * from './IncomingNumberResultAllOf';
-export * from './InlineObject';
 export * from './Language';
 export * from './LogLevel';
 export * from './LogList';
@@ -177,6 +177,7 @@ import { ConferenceStatus } from './ConferenceStatus';
 import { CreateConference } from './CreateConference';
 import { CreateConferenceAllOf } from './CreateConferenceAllOf';
 import { CreateConferenceRequest } from './CreateConferenceRequest';
+import { CreateWebRTCToken } from './CreateWebRTCToken';
 import { Dequeue } from './Dequeue';
 import { Enqueue } from './Enqueue';
 import { EnqueueAllOf } from './EnqueueAllOf';
@@ -196,7 +197,6 @@ import { IncomingNumberListAllOf } from './IncomingNumberListAllOf';
 import { IncomingNumberRequest } from './IncomingNumberRequest';
 import { IncomingNumberResult } from './IncomingNumberResult';
 import { IncomingNumberResultAllOf } from './IncomingNumberResultAllOf';
-import { InlineObject } from './InlineObject';
 import { Language } from './Language';
 import { LogLevel } from './LogLevel';
 import { LogList } from './LogList';
@@ -299,7 +299,7 @@ let primitives = [
 const supportedMediaTypes: { [mediaType: string]: number } = {
   "application/json": Infinity,
   "application/octet-stream": 0,
-  "application/x-www-form-urlencoded": 0
+  "application/x-www-form-urlencoded": 0,
 }
 
 
@@ -366,6 +366,7 @@ let typeMap: {[index: string]: any} = {
     "CreateConference": CreateConference,
     "CreateConferenceAllOf": CreateConferenceAllOf,
     "CreateConferenceRequest": CreateConferenceRequest,
+    "CreateWebRTCToken": CreateWebRTCToken,
     "Dequeue": Dequeue,
     "Enqueue": Enqueue,
     "EnqueueAllOf": EnqueueAllOf,
@@ -381,7 +382,6 @@ let typeMap: {[index: string]: any} = {
     "IncomingNumberRequest": IncomingNumberRequest,
     "IncomingNumberResult": IncomingNumberResult,
     "IncomingNumberResultAllOf": IncomingNumberResultAllOf,
-    "InlineObject": InlineObject,
     "LogList": LogList,
     "LogListAllOf": LogListAllOf,
     "LogResult": LogResult,
@@ -642,6 +642,10 @@ export class ObjectSerializer {
 
         if (mediaType === "application/json") {
             return JSON.parse(rawData);
+        }
+
+        if (mediaType === "text/plain") {
+            return rawData
         }
 
         throw new Error("The mediaType " + mediaType + " is not supported by ObjectSerializer.parse.");

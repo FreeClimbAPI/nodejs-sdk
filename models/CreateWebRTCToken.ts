@@ -25,7 +25,7 @@ interface ArgumentsType {
     '_from': string;
     'uses': number;
 }
-export class InlineObject {
+export class CreateWebRTCToken {
     /**
     * E.164 formatted phone number to which calls using this token will be made.
     */
@@ -71,11 +71,11 @@ export class InlineObject {
         }    ];
 
     static getAttributeTypeMap(): AttributeType[] {
-        return InlineObject.attributeTypeMap;
+        return CreateWebRTCToken.attributeTypeMap;
     }
 
     public constructor(args: ArgumentsType) {
-        const preparedArgs = InlineObject.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
+        const preparedArgs = CreateWebRTCToken.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
             const val: any = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
             if (val !== undefined) {
                 acc[attr.name as keyof ArgumentsType] = val
