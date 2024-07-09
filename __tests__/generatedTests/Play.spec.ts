@@ -5,7 +5,6 @@ describe('Play', () => {
     let model: freeclimb.Play = new freeclimb.Play({
         file: "test_file",
         loop: 1,
-        conferenceId: "test_conferenceId",
         privacyMode: true,
     })
     describe(".command", () => {
@@ -25,12 +24,6 @@ describe('Play', () => {
         it('resolves to particular value on initialization', () => {
             const value = 1
             expect(model.loop).toBe(value)
-        })
-    })
-    describe(".conferenceId", () => {
-        it('resolves to particular value on initialization', () => {
-            const value = "test_conferenceId"
-            expect(model.conferenceId).toBe(value)
         })
     })
     describe(".privacyMode", () => {

@@ -25,6 +25,7 @@ import { ConferenceParticipantList } from '../models/ConferenceParticipantList';
 import { ConferenceParticipantResult } from '../models/ConferenceParticipantResult';
 import { ConferenceResult } from '../models/ConferenceResult';
 import { CreateConferenceRequest } from '../models/CreateConferenceRequest';
+import { CreateWebRTCToken } from '../models/CreateWebRTCToken';
 import { FilterLogsRequest } from '../models/FilterLogsRequest';
 import { IncomingNumberList } from '../models/IncomingNumberList';
 import { IncomingNumberRequest } from '../models/IncomingNumberRequest';
@@ -48,6 +49,8 @@ import { SMSTenDLCCampaign } from '../models/SMSTenDLCCampaign';
 import { SMSTenDLCCampaignsListResult } from '../models/SMSTenDLCCampaignsListResult';
 import { SMSTenDLCPartnerCampaign } from '../models/SMSTenDLCPartnerCampaign';
 import { SMSTenDLCPartnerCampaignsListResult } from '../models/SMSTenDLCPartnerCampaignsListResult';
+import { SMSTollFreeCampaign } from '../models/SMSTollFreeCampaign';
+import { SMSTollFreeCampaignsListResult } from '../models/SMSTollFreeCampaignsListResult';
 import { UpdateCallRequest } from '../models/UpdateCallRequest';
 import { UpdateConferenceParticipantRequest } from '../models/UpdateConferenceParticipantRequest';
 import { UpdateConferenceRequest } from '../models/UpdateConferenceRequest';
@@ -1126,6 +1129,74 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
+     * Get a TollFree SMS Campaign
+     
+     * @param campaignId String that uniquely identifies this TollFree Campaign resource.
+     */
+    public async getTollFreeSmsCampaign(campaignId: string, _options?: Configuration): Promise<RequestContext> {
+        const _config = _options || this.configuration;
+        const { accountId } = this.configuration
+        
+        // verify required parameter 'campaignId' is not null or undefined
+        if (campaignId === null || campaignId === undefined) {
+            throw new RequiredError("DefaultApi", "getTollFreeSmsCampaign", "campaignId");
+        }
+        // Path Params
+        const localVarPath = '/Accounts/{accountId}/Messages/TollFree/Campaigns/{campaignId}'
+            .replace('{' + 'accountId' + '}', encodeURIComponent(String(accountId)))
+            .replace('{' + 'campaignId' + '}', encodeURIComponent(String(campaignId)));
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+        
+
+
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["fc"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+        return requestContext;
+    }
+
+    /**
+     * Get list of TollFree Campaigns
+     
+     */
+    public async getTollFreeSmsCampaigns(_options?: Configuration): Promise<RequestContext> {
+        const _config = _options || this.configuration;
+        const { accountId } = this.configuration
+        
+        // Path Params
+        const localVarPath = '/Accounts/{accountId}/Messages/TollFree/Campaigns'
+            .replace('{' + 'accountId' + '}', encodeURIComponent(String(accountId)));
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+        
+
+
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["fc"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+        return requestContext;
+    }
+
+    /**
      * List Active Queues
      
      * @param alias Return only the Queue resources with aliases that exactly match this name.
@@ -1459,6 +1530,52 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
+     * List Conference Recordings
+     
+     * @param callId Show only Recordings made during the Call with this ID.
+     * @param conferenceId Show only Recordings made during the conference with this ID.
+     * @param dateCreated Only show Recordings created on this date, formatted as *YYYY-MM-DD*.
+     */
+    public async listConferenceRecordings(callId?: string, conferenceId?: string, dateCreated?: string, _options?: Configuration): Promise<RequestContext> {
+        const _config = _options || this.configuration;
+        const { accountId } = this.configuration
+        
+        // Path Params
+        const localVarPath = '/Accounts/{accountId}/Conferences/{conferenceId}/Recordings'
+            .replace('{' + 'accountId' + '}', encodeURIComponent(String(accountId)));
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+        // Query Params
+        if (callId !== undefined) {
+            requestContext.setQueryParam("callId", ObjectSerializer.serialize(callId, "string", ""));
+        }
+        // Query Params
+        if (conferenceId !== undefined) {
+            requestContext.setQueryParam("conferenceId", ObjectSerializer.serialize(conferenceId, "string", ""));
+        }
+        // Query Params
+        if (dateCreated !== undefined) {
+            requestContext.setQueryParam("dateCreated", ObjectSerializer.serialize(dateCreated, "string", ""));
+        }
+        
+
+
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["fc"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+        return requestContext;
+    }
+
+    /**
      * List Conferences
      
      * @param status Only show conferences that currently have the specified status. Valid values: &#x60;empty&#x60;, &#x60;populated&#x60;, &#x60;inProgress&#x60;, or &#x60;terminated&#x60;.
@@ -1526,9 +1643,10 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
      * @param capabilitiesTollFree 
      * @param capabilitiesTenDLC 
      * @param capabilitiesShortCode 
+     * @param tfnCampaignId Only show incoming phone number resources that have been assigned to the provided TFNCampaign ID.
      * @param offnet Indication of whether the phone number was registered as an offnet number. This field will be rendered only for requests to the IncomingPhone number resource.
      */
-    public async listIncomingNumbers(phoneNumber?: string, alias?: string, region?: string, country?: string, applicationId?: string, hasApplication?: boolean, voiceEnabled?: boolean, smsEnabled?: boolean, hasCampaign?: boolean, capabilitiesVoice?: boolean, capabilitiesSms?: boolean, capabilitiesTollFree?: boolean, capabilitiesTenDLC?: boolean, capabilitiesShortCode?: boolean, offnet?: boolean, _options?: Configuration): Promise<RequestContext> {
+    public async listIncomingNumbers(phoneNumber?: string, alias?: string, region?: string, country?: string, applicationId?: string, hasApplication?: boolean, voiceEnabled?: boolean, smsEnabled?: boolean, hasCampaign?: boolean, capabilitiesVoice?: boolean, capabilitiesSms?: boolean, capabilitiesTollFree?: boolean, capabilitiesTenDLC?: boolean, capabilitiesShortCode?: boolean, tfnCampaignId?: string, offnet?: boolean, _options?: Configuration): Promise<RequestContext> {
         const _config = _options || this.configuration;
         const { accountId } = this.configuration
         
@@ -1594,6 +1712,10 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         // Query Params
         if (capabilitiesShortCode !== undefined) {
             requestContext.setQueryParam("capabilities.shortCode", ObjectSerializer.serialize(capabilitiesShortCode, "boolean", ""));
+        }
+        // Query Params
+        if (tfnCampaignId !== undefined) {
+            requestContext.setQueryParam("tfn.campaignId", ObjectSerializer.serialize(tfnCampaignId, "string", ""));
         }
         // Query Params
         if (offnet !== undefined) {
@@ -1841,6 +1963,51 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         requestContext.setHeaderParam("Content-Type", contentType);
         const serializedBody = ObjectSerializer.stringify(
             ObjectSerializer.serialize(makeCallRequest, "MakeCallRequest", ""),
+            contentType
+        );
+        requestContext.setBody(serializedBody);
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["fc"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+        return requestContext;
+    }
+
+    /**
+     * Make a JWT for WebRTC calling
+      
+     * @param createWebRTCToken Information needed to craft a JWT compatible with the platforms WebRTC APIs
+     */
+    public async makeAWebrtcJwt(createWebRTCToken: CreateWebRTCToken, _options?: Configuration): Promise<RequestContext> {
+        const _config = _options || this.configuration;
+        const { accountId } = this.configuration
+        
+        // verify required parameter 'createWebRTCToken' is not null or undefined
+        if (createWebRTCToken === null || createWebRTCToken === undefined) {
+            throw new RequiredError("DefaultApi", "makeAWebrtcJwt", "createWebRTCToken");
+        }
+        // Path Params
+        const localVarPath = '/Accounts/{accountId}/Calls/WebRTC/Token'
+            .replace('{' + 'accountId' + '}', encodeURIComponent(String(accountId)));
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.POST);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+        
+
+        // Body Params
+        const contentType = ObjectSerializer.getPreferredMediaType([
+            "application/json"
+        ]);
+        requestContext.setHeaderParam("Content-Type", contentType);
+        const serializedBody = ObjectSerializer.stringify(
+            ObjectSerializer.serialize(createWebRTCToken, "CreateWebRTCToken", ""),
             contentType
         );
         requestContext.setBody(serializedBody);
@@ -3120,6 +3287,64 @@ export class DefaultApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
+     * @params response Response returned by the server for a request to getTollFreeSmsCampaign
+     * @throws ApiException if the response code was not in [200, 299]
+     */
+     public async getTollFreeSmsCampaign(response: ResponseContext): Promise<SMSTollFreeCampaign > {
+        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("200", response.httpStatusCode)) {
+            const body: SMSTollFreeCampaign = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "SMSTollFreeCampaign", ""
+            ) as SMSTollFreeCampaign;
+            return body;
+        }
+
+        // Work around for missing responses in specification, e.g. for petstore.yaml
+        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+            const body: SMSTollFreeCampaign = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "SMSTollFreeCampaign", ""
+            ) as SMSTollFreeCampaign;
+            return body;
+        }
+
+        throw new ApiException<string | Buffer | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
+    }
+
+    /**
+     * Unwraps the actual response sent by the server from the response context and deserializes the response content
+     * to the expected objects
+     *
+     * @params response Response returned by the server for a request to getTollFreeSmsCampaigns
+     * @throws ApiException if the response code was not in [200, 299]
+     */
+     public async getTollFreeSmsCampaigns(response: ResponseContext): Promise<SMSTollFreeCampaignsListResult > {
+        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("200", response.httpStatusCode)) {
+            const body: SMSTollFreeCampaignsListResult = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "SMSTollFreeCampaignsListResult", ""
+            ) as SMSTollFreeCampaignsListResult;
+            return body;
+        }
+
+        // Work around for missing responses in specification, e.g. for petstore.yaml
+        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+            const body: SMSTollFreeCampaignsListResult = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "SMSTollFreeCampaignsListResult", ""
+            ) as SMSTollFreeCampaignsListResult;
+            return body;
+        }
+
+        throw new ApiException<string | Buffer | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
+    }
+
+    /**
+     * Unwraps the actual response sent by the server from the response context and deserializes the response content
+     * to the expected objects
+     *
      * @params response Response returned by the server for a request to listActiveQueues
      * @throws ApiException if the response code was not in [200, 299]
      */
@@ -3313,6 +3538,35 @@ export class DefaultApiResponseProcessor {
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "CallList", ""
             ) as CallList;
+            return body;
+        }
+
+        throw new ApiException<string | Buffer | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
+    }
+
+    /**
+     * Unwraps the actual response sent by the server from the response context and deserializes the response content
+     * to the expected objects
+     *
+     * @params response Response returned by the server for a request to listConferenceRecordings
+     * @throws ApiException if the response code was not in [200, 299]
+     */
+     public async listConferenceRecordings(response: ResponseContext): Promise<RecordingList > {
+        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("200", response.httpStatusCode)) {
+            const body: RecordingList = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "RecordingList", ""
+            ) as RecordingList;
+            return body;
+        }
+
+        // Work around for missing responses in specification, e.g. for petstore.yaml
+        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+            const body: RecordingList = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "RecordingList", ""
+            ) as RecordingList;
             return body;
         }
 
@@ -3526,6 +3780,35 @@ export class DefaultApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
+     * @params response Response returned by the server for a request to makeAWebrtcJwt
+     * @throws ApiException if the response code was not in [200, 299]
+     */
+     public async makeAWebrtcJwt(response: ResponseContext): Promise<string > {
+        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("200", response.httpStatusCode)) {
+            const body: string = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "string", ""
+            ) as string;
+            return body;
+        }
+
+        // Work around for missing responses in specification, e.g. for petstore.yaml
+        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+            const body: string = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "string", ""
+            ) as string;
+            return body;
+        }
+
+        throw new ApiException<string | Buffer | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
+    }
+
+    /**
+     * Unwraps the actual response sent by the server from the response context and deserializes the response content
+     * to the expected objects
+     *
      * @params response Response returned by the server for a request to removeAParticipant
      * @throws ApiException if the response code was not in [200, 299]
      */
@@ -3609,22 +3892,18 @@ export class DefaultApiResponseProcessor {
      * @params response Response returned by the server for a request to updateAConference
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async updateAConference(response: ResponseContext): Promise<ConferenceResult > {
+     public async updateAConference(response: ResponseContext): Promise<void > {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
-        if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: ConferenceResult = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "ConferenceResult", ""
-            ) as ConferenceResult;
-            return body;
+        if (isCodeInRange("204", response.httpStatusCode)) {
+            return;
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: ConferenceResult = ObjectSerializer.deserialize(
+            const body: void = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "ConferenceResult", ""
-            ) as ConferenceResult;
+                "void", ""
+            ) as void;
             return body;
         }
 

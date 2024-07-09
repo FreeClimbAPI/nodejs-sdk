@@ -31,6 +31,11 @@ describe('SMSTenDLCCampaign', () => {
         sample5: "test_sample5",
         messageFlow: "test_messageFlow",
         helpMessage: "test_helpMessage",
+        optinKeywords: "test_optinKeywords",
+        optoutKeywords: "test_optoutKeywords",
+        helpKeywords: "test_helpKeywords",
+        optinMessage: "test_optinMessage",
+        optoutMessage: "test_optoutMessage",
         referenceId: "test_referenceId",
         mock: true,
         nextRenewalOrExpirationDate: "test_nextRenewalOrExpirationDate",
@@ -201,6 +206,36 @@ describe('SMSTenDLCCampaign', () => {
         it('resolves to particular value on initialization', () => {
             const value = "test_helpMessage"
             expect(model.helpMessage).toBe(value)
+        })
+    })
+    describe(".optinKeywords", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_optinKeywords"
+            expect(model.optinKeywords).toBe(value)
+        })
+    })
+    describe(".optoutKeywords", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_optoutKeywords"
+            expect(model.optoutKeywords).toBe(value)
+        })
+    })
+    describe(".helpKeywords", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_helpKeywords"
+            expect(model.helpKeywords).toBe(value)
+        })
+    })
+    describe(".optinMessage", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_optinMessage"
+            expect(model.optinMessage).toBe(value)
+        })
+    })
+    describe(".optoutMessage", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = "test_optoutMessage"
+            expect(model.optoutMessage).toBe(value)
         })
     })
     describe(".referenceId", () => {

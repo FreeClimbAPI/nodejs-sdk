@@ -38,6 +38,7 @@ import { ConferenceStatus } from '../models/ConferenceStatus';
 import { CreateConference } from '../models/CreateConference';
 import { CreateConferenceAllOf } from '../models/CreateConferenceAllOf';
 import { CreateConferenceRequest } from '../models/CreateConferenceRequest';
+import { CreateWebRTCToken } from '../models/CreateWebRTCToken';
 import { Dequeue } from '../models/Dequeue';
 import { Enqueue } from '../models/Enqueue';
 import { EnqueueAllOf } from '../models/EnqueueAllOf';
@@ -108,7 +109,6 @@ import { RedirectAllOf } from '../models/RedirectAllOf';
 import { Reject } from '../models/Reject';
 import { RejectAllOf } from '../models/RejectAllOf';
 import { RemoveFromConference } from '../models/RemoveFromConference';
-import { RemoveFromConferenceAllOf } from '../models/RemoveFromConferenceAllOf';
 import { RequestType } from '../models/RequestType';
 import { SMSTenDLCBrand } from '../models/SMSTenDLCBrand';
 import { SMSTenDLCBrandsListResult } from '../models/SMSTenDLCBrandsListResult';
@@ -120,6 +120,9 @@ import { SMSTenDLCPartnerCampaign } from '../models/SMSTenDLCPartnerCampaign';
 import { SMSTenDLCPartnerCampaignBrand } from '../models/SMSTenDLCPartnerCampaignBrand';
 import { SMSTenDLCPartnerCampaignsListResult } from '../models/SMSTenDLCPartnerCampaignsListResult';
 import { SMSTenDLCPartnerCampaignsListResultAllOf } from '../models/SMSTenDLCPartnerCampaignsListResultAllOf';
+import { SMSTollFreeCampaign } from '../models/SMSTollFreeCampaign';
+import { SMSTollFreeCampaignsListResult } from '../models/SMSTollFreeCampaignsListResult';
+import { SMSTollFreeCampaignsListResultAllOf } from '../models/SMSTollFreeCampaignsListResultAllOf';
 import { Say } from '../models/Say';
 import { SayAllOf } from '../models/SayAllOf';
 import { SendDigits } from '../models/SendDigits';
@@ -131,8 +134,8 @@ import { SetTalkAllOf } from '../models/SetTalkAllOf';
 import { Sms } from '../models/Sms';
 import { SmsAllOf } from '../models/SmsAllOf';
 import { StartRecordCall } from '../models/StartRecordCall';
+import { TFN } from '../models/TFN';
 import { TerminateConference } from '../models/TerminateConference';
-import { TerminateConferenceAllOf } from '../models/TerminateConferenceAllOf';
 import { TranscribeUtterance } from '../models/TranscribeUtterance';
 import { TranscribeUtteranceRecord } from '../models/TranscribeUtteranceRecord';
 import { Unpark } from '../models/Unpark';
@@ -460,6 +463,21 @@ export interface DefaultApiGetTenDLCSmsPartnerCampaignsRequest {
     
 }
 
+export interface DefaultApiGetTollFreeSmsCampaignRequest {
+    
+    /**
+     * String that uniquely identifies this TollFree Campaign resource.
+     * @type string
+     * @memberof DefaultApigetTollFreeSmsCampaign
+     */
+    campaignId: string
+    
+}
+
+export interface DefaultApiGetTollFreeSmsCampaignsRequest {
+    
+}
+
 export interface DefaultApiListActiveQueuesRequest {
     
     /**
@@ -649,6 +667,31 @@ export interface DefaultApiListCallsRequest {
     
 }
 
+export interface DefaultApiListConferenceRecordingsRequest {
+    
+    /**
+     * Show only Recordings made during the Call with this ID.
+     * @type string
+     * @memberof DefaultApilistConferenceRecordings
+     */
+    callId?: string
+    
+    /**
+     * Show only Recordings made during the conference with this ID.
+     * @type string
+     * @memberof DefaultApilistConferenceRecordings
+     */
+    conferenceId?: string
+    
+    /**
+     * Only show Recordings created on this date, formatted as *YYYY-MM-DD*.
+     * @type string
+     * @memberof DefaultApilistConferenceRecordings
+     */
+    dateCreated?: string
+    
+}
+
 export interface DefaultApiListConferencesRequest {
     
     /**
@@ -780,6 +823,13 @@ export interface DefaultApiListIncomingNumbersRequest {
      * @memberof DefaultApilistIncomingNumbers
      */
     capabilitiesShortCode?: boolean
+    
+    /**
+     * Only show incoming phone number resources that have been assigned to the provided TFNCampaign ID.
+     * @type string
+     * @memberof DefaultApilistIncomingNumbers
+     */
+    tfnCampaignId?: string
     
     /**
      * Indication of whether the phone number was registered as an offnet number. This field will be rendered only for requests to the IncomingPhone number resource.
@@ -919,6 +969,17 @@ export interface DefaultApiMakeACallRequest {
      * @memberof DefaultApimakeACall
      */
     makeCallRequest?: MakeCallRequest
+    
+}
+
+export interface DefaultApiMakeAWebrtcJwtRequest {
+    
+    /**
+     * Information needed to craft a JWT compatible with the platforms WebRTC APIs
+     * @type CreateWebRTCToken
+     * @memberof DefaultApimakeAWebrtcJwt
+     */
+    createWebRTCToken: CreateWebRTCToken
     
 }
 
@@ -1320,6 +1381,22 @@ export class ObjectDefaultApi {
     }
 
     /**
+     * Get a TollFree SMS Campaign
+     * @param param the request object
+     */
+    public getTollFreeSmsCampaign(param: DefaultApiGetTollFreeSmsCampaignRequest, options?: Configuration): Promise<SMSTollFreeCampaign> {
+        return this.api.getTollFreeSmsCampaign(param.campaignId,  options).toPromise();
+    }
+
+    /**
+     * Get list of TollFree Campaigns
+     * @param param the request object
+     */
+    public getTollFreeSmsCampaigns(param: DefaultApiGetTollFreeSmsCampaignsRequest, options?: Configuration): Promise<SMSTollFreeCampaignsListResult> {
+        return this.api.getTollFreeSmsCampaigns( options).toPromise();
+    }
+
+    /**
      * List Active Queues
      * @param param the request object
      */
@@ -1376,6 +1453,14 @@ export class ObjectDefaultApi {
     }
 
     /**
+     * List Conference Recordings
+     * @param param the request object
+     */
+    public listConferenceRecordings(param: DefaultApiListConferenceRecordingsRequest, options?: Configuration): Promise<RecordingList> {
+        return this.api.listConferenceRecordings(param.callId, param.conferenceId, param.dateCreated,  options).toPromise();
+    }
+
+    /**
      * List Conferences
      * @param param the request object
      */
@@ -1388,7 +1473,7 @@ export class ObjectDefaultApi {
      * @param param the request object
      */
     public listIncomingNumbers(param: DefaultApiListIncomingNumbersRequest, options?: Configuration): Promise<IncomingNumberList> {
-        return this.api.listIncomingNumbers(param.phoneNumber, param.alias, param.region, param.country, param.applicationId, param.hasApplication, param.voiceEnabled, param.smsEnabled, param.hasCampaign, param.capabilitiesVoice, param.capabilitiesSms, param.capabilitiesTollFree, param.capabilitiesTenDLC, param.capabilitiesShortCode, param.offnet,  options).toPromise();
+        return this.api.listIncomingNumbers(param.phoneNumber, param.alias, param.region, param.country, param.applicationId, param.hasApplication, param.voiceEnabled, param.smsEnabled, param.hasCampaign, param.capabilitiesVoice, param.capabilitiesSms, param.capabilitiesTollFree, param.capabilitiesTenDLC, param.capabilitiesShortCode, param.tfnCampaignId, param.offnet,  options).toPromise();
     }
 
     /**
@@ -1432,6 +1517,15 @@ export class ObjectDefaultApi {
     }
 
     /**
+     * Make a JWT for WebRTC calling
+     * Make a JWT for WebRTC calling
+     * @param param the request object
+     */
+    public makeAWebrtcJwt(param: DefaultApiMakeAWebrtcJwtRequest, options?: Configuration): Promise<string> {
+        return this.api.makeAWebrtcJwt(param.createWebRTCToken,  options).toPromise();
+    }
+
+    /**
      * Remove a Participant
      * @param param the request object
      */
@@ -1459,7 +1553,7 @@ export class ObjectDefaultApi {
      * Update a Conference
      * @param param the request object
      */
-    public updateAConference(param: DefaultApiUpdateAConferenceRequest, options?: Configuration): Promise<ConferenceResult> {
+    public updateAConference(param: DefaultApiUpdateAConferenceRequest, options?: Configuration): Promise<void> {
         return this.api.updateAConference(param.conferenceId, param.updateConferenceRequest,  options).toPromise();
     }
 

@@ -12,6 +12,7 @@
 
 import { MessageRequestAllOf } from './MessageRequestAllOf';
 import { MutableResourceModel } from './MutableResourceModel';
+import { URI } from './URI';
 import { HttpFile } from '../http/http';
 
 
@@ -31,7 +32,7 @@ interface ArgumentsType {
     'to': string;
     'text': string;
     'notificationUrl'?: string;
-    'accountId'?: string;
+    'mediaUrls'?: Array<URI>;
 }
 export class MessageRequest {
     /**
@@ -67,9 +68,9 @@ export class MessageRequest {
     */
     'notificationUrl'?: string;
     /**
-    * String that uniquely identifies this account resource.
+    * an array of HTTP URLs which are to be used as attachments to the message. This will force the message into being an MMS message and must be done using a from number which is MMS capabile.
     */
-    'accountId'?: string;
+    'mediaUrls'?: Array<URI>;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -147,10 +148,10 @@ export class MessageRequest {
             "defaultValue": undefined
         },
         {
-            "name": "accountId",
-            "baseName": "accountId",
-            "type": "string",
-            "format": "",
+            "name": "mediaUrls",
+            "baseName": "mediaUrls",
+            "type": "Array<URI>",
+            "format": "uri",
 
             
             "defaultValue": undefined

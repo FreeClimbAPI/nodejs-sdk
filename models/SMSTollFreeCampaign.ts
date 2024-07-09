@@ -10,9 +10,16 @@
  * Do not edit the class manually.
  */
 
-import { URI } from './URI';
 import { HttpFile } from '../http/http';
 
+export enum SMSTollFreeCampaignRegistrationStatusEnum {
+
+    UNREGISTERED = 'UNREGISTERED',
+    INITIATED = 'INITIATED',
+    PENDING = 'PENDING',
+    DECLINED = 'DECLINED',
+    REGISTERED = 'REGISTERED'
+}
 
 interface AttributeType {
     name: string
@@ -22,40 +29,38 @@ interface AttributeType {
     defaultValue: any
 }
 interface ArgumentsType {
-    '_from': string;
-    'to': string;
-    'text': string;
-    'notificationUrl'?: string;
-    'mediaUrls'?: Array<URI>;
+    'accountId': string;
+    'campaignId': string;
+    'useCase': string;
+    'registrationStatus': SMSTollFreeCampaignRegistrationStatusEnum;
+    'dateCreated': string;
+    'dateUpdated': string;
+    'revision': number;
 }
-export class MessageRequestAllOf {
+export class SMSTollFreeCampaign {
     /**
-    * Phone number to use as the sender. This must be an incoming phone number that you have purchased from FreeClimb.
+    * ID of the account that created this toll-free campaign
     */
-    '_from': string;
+    'accountId': string;
     /**
-    * Phone number to receive the message. Must be within FreeClimb's service area.
+    * Alphanumeric identifier used by the platform to identify this toll-free campaign
     */
-    'to': string;
+    'campaignId': string;
+    'useCase': string;
     /**
-    * Text contained in the message (maximum 160 characters).   **Note:** For text, only ASCII characters are supported.
+    * Current toll-free campaign registration status.Possible values: UNREGISTERED,INITIATED,PENDING,DECLINED,REGISTERED. A newly created campaign defaults to INITIATED status. 
     */
-    'text': string;
-    /**
-    * When the Message changes status, this URL is invoked using HTTP POST with the messageStatus parameters.  **Note:** This is a notification only; any PerCL returned is ignored.
-    */
-    'notificationUrl'?: string;
-    /**
-    * an array of HTTP URLs which are to be used as attachments to the message. This will force the message into being an MMS message and must be done using a from number which is MMS capabile.
-    */
-    'mediaUrls'?: Array<URI>;
+    'registrationStatus': SMSTollFreeCampaignRegistrationStatusEnum;
+    'dateCreated': string;
+    'dateUpdated': string;
+    'revision': number;
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly attributeTypeMap: AttributeType[] = [
         {
-            "name": "_from",
-            "baseName": "from",
+            "name": "accountId",
+            "baseName": "accountId",
             "type": "string",
             "format": "",
 
@@ -63,8 +68,8 @@ export class MessageRequestAllOf {
             "defaultValue": undefined
         },
         {
-            "name": "to",
-            "baseName": "to",
+            "name": "campaignId",
+            "baseName": "campaignId",
             "type": "string",
             "format": "",
 
@@ -72,8 +77,8 @@ export class MessageRequestAllOf {
             "defaultValue": undefined
         },
         {
-            "name": "text",
-            "baseName": "text",
+            "name": "useCase",
+            "baseName": "useCase",
             "type": "string",
             "format": "",
 
@@ -81,8 +86,17 @@ export class MessageRequestAllOf {
             "defaultValue": undefined
         },
         {
-            "name": "notificationUrl",
-            "baseName": "notificationUrl",
+            "name": "registrationStatus",
+            "baseName": "registrationStatus",
+            "type": "SMSTollFreeCampaignRegistrationStatusEnum",
+            "format": "",
+
+            
+            "defaultValue": undefined
+        },
+        {
+            "name": "dateCreated",
+            "baseName": "dateCreated",
             "type": "string",
             "format": "",
 
@@ -90,22 +104,31 @@ export class MessageRequestAllOf {
             "defaultValue": undefined
         },
         {
-            "name": "mediaUrls",
-            "baseName": "mediaUrls",
-            "type": "Array<URI>",
-            "format": "uri",
+            "name": "dateUpdated",
+            "baseName": "dateUpdated",
+            "type": "string",
+            "format": "",
+
+            
+            "defaultValue": undefined
+        },
+        {
+            "name": "revision",
+            "baseName": "revision",
+            "type": "number",
+            "format": "",
 
             
             "defaultValue": undefined
         }    ];
 
     static getAttributeTypeMap(): AttributeType[] {
-        return MessageRequestAllOf.attributeTypeMap;
+        return SMSTollFreeCampaign.attributeTypeMap;
     }
 
     public constructor(args: ArgumentsType) {
-        const preparedArgs = MessageRequestAllOf.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
-            const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
+        const preparedArgs = SMSTollFreeCampaign.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
+            const val: any = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
             if (val !== undefined) {
                 acc[attr.name as keyof ArgumentsType] = val
             }

@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 import { HttpFile } from '../http/http';
 
 export enum SMSTenDLCCampaignStatusEnum {
@@ -55,6 +54,11 @@ interface ArgumentsType {
     'sample5'?: string;
     'messageFlow'?: string;
     'helpMessage'?: string;
+    'optinKeywords'?: string;
+    'optoutKeywords'?: string;
+    'helpKeywords'?: string;
+    'optinMessage'?: string;
+    'optoutMessage'?: string;
     'referenceId'?: string;
     'mock': boolean;
     'nextRenewalOrExpirationDate'?: string;
@@ -169,6 +173,26 @@ export class SMSTenDLCCampaign {
     * Help message of the campaign.
     */
     'helpMessage'?: string;
+    /**
+    * Subscriber opt-in keywords. Multiple keywords are comma separated without space.
+    */
+    'optinKeywords'?: string;
+    /**
+    * Subscriber opt-out keywords. Multiple keywords are comma separated without space.
+    */
+    'optoutKeywords'?: string;
+    /**
+    * Subscriber help keywords. Multiple keywords are comma separated without space.
+    */
+    'helpKeywords'?: string;
+    /**
+    * Subscriber opt-in message.
+    */
+    'optinMessage'?: string;
+    /**
+    * Subscriber opt-out message.
+    */
+    'optoutMessage'?: string;
     /**
     * Caller supplied campaign reference ID. If supplied, the value must be unique across all submitted campaigns. Can be used to prevent duplicate campaign registrations.
     */
@@ -438,6 +462,51 @@ export class SMSTenDLCCampaign {
             "defaultValue": undefined
         },
         {
+            "name": "optinKeywords",
+            "baseName": "optinKeywords",
+            "type": "string",
+            "format": "",
+
+            
+            "defaultValue": undefined
+        },
+        {
+            "name": "optoutKeywords",
+            "baseName": "optoutKeywords",
+            "type": "string",
+            "format": "",
+
+            
+            "defaultValue": undefined
+        },
+        {
+            "name": "helpKeywords",
+            "baseName": "helpKeywords",
+            "type": "string",
+            "format": "",
+
+            
+            "defaultValue": undefined
+        },
+        {
+            "name": "optinMessage",
+            "baseName": "optinMessage",
+            "type": "string",
+            "format": "",
+
+            
+            "defaultValue": undefined
+        },
+        {
+            "name": "optoutMessage",
+            "baseName": "optoutMessage",
+            "type": "string",
+            "format": "",
+
+            
+            "defaultValue": undefined
+        },
+        {
             "name": "referenceId",
             "baseName": "referenceId",
             "type": "string",
@@ -480,3 +549,4 @@ export class SMSTenDLCCampaign {
         Object.assign(this, preparedArgs)
     }
 }
+

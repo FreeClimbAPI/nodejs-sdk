@@ -2,7 +2,7 @@ import { describe, expect, test } from "@jest/globals";
 import * as freeclimb  from '../index'
 import * as DefaultApi from '../apis/DefaultApi'
 import { AccountRequest, AccountResult, ApplicationList, ApplicationRequest, ApplicationResult, AvailableNumberList, BuyIncomingNumberRequest, CallList, CallResult, ConferenceList, ConferenceParticipantList, ConferenceParticipantResult, ConferenceResult, CreateConferenceRequest, FilterLogsRequest, IncomingNumberList, IncomingNumberRequest, IncomingNumberResult, LogList, MessageResult, MessagesList, QueueList, QueueMember, QueueMemberList, QueueRequest, QueueResult, RecordingList, RecordingResult, ServerConfiguration, UpdateCallRequest, UpdateConferenceRequest } from "../index";
-import {AccountStatus, AccountType, CallStatus, MessageDirection, PlayBeep, SMSTenDLCBrandsListResult, UpdateCallRequestStatus, UpdateConferenceRequestStatus, SMSTenDLCCampaignsListResult, SMSTenDLCPartnerCampaignsListResult, SMSTenDLCBrand, SMSTenDLCCampaign} from "../models/all";
+import {AccountStatus, AccountType, CallStatus, MessageDirection, PlayBeep, SMSTenDLCBrandsListResult, UpdateCallRequestStatus, UpdateConferenceRequestStatus, SMSTenDLCCampaignsListResult, SMSTenDLCPartnerCampaignsListResult, SMSTenDLCBrand, SMSTenDLCCampaign, SMSTollFreeCampaignsListResult} from "../models/all";
 
 describe('DefaultAPI', () => {
     
@@ -262,7 +262,8 @@ describe('DefaultAPI', () => {
         const capabilitiesTollFree = true
         const capabilitiesTenDLC = true
         const capabilitiesShortCode = true
-        let data = await apiInstance.listIncomingNumbers(phoneNumber, alias, region, country, applicationId, hasApplication, voiceEnabled, smsEnabled, hasCampaign, capabilitiesVoice, capabilitiesSms, capabilitiesTollFree, capabilitiesTenDLC, capabilitiesShortCode)  
+        const tfnCampaignId = "CX56XX4"
+        let data = await apiInstance.listIncomingNumbers(phoneNumber, alias, region, country, applicationId, hasApplication, voiceEnabled, smsEnabled, hasCampaign, capabilitiesVoice, capabilitiesSms, capabilitiesTollFree, capabilitiesTenDLC, capabilitiesShortCode, tfnCampaignId)  
         expect(data).toBeInstanceOf(IncomingNumberList)
     });
 
@@ -351,7 +352,7 @@ describe('DefaultAPI', () => {
               status: UpdateConferenceRequestStatus.EMPTY,
         }
         let data = await apiInstance.updateAConference(conferenceId, request) 
-        expect(data).toBeInstanceOf(ConferenceResult)
+        expect(data).toBe(undefined)
     });
 
     test('#updateALiveCall', async () => {
@@ -435,6 +436,24 @@ describe('DefaultAPI', () => {
         const campaignId = "CX56XX4"
         let data = await apiInstance.getTenDLCSmsCampaign(campaignId)
         expect(data).toBeInstanceOf(SMSTenDLCCampaign)
+    });
+
+    test('#makeAWebrtcJwt', async () => {
+        const createWebrtcToken: freeclimb.CreateWebRTCToken = {
+            to: "to_example",
+            _from: "from_example",
+            uses: 1,
+        }
+        let data = await apiInstance.makeAWebrtcJwt(createWebrtcToken)
+        expect(typeof data).toBe("string")
+    });
+    
+    test('#listConferenceRecordings', async () => {
+        const callId = "CX56XX4"
+        const conferenceId = "CX56XX4"
+        const dateCreated = "CX56XX4"
+        let data = await apiInstance.listConferenceRecordings(callId, conferenceId, dateCreated)
+        expect(data).toBeInstanceOf(RecordingList)
     });
 })
 

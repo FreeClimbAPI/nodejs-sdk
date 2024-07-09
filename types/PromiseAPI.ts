@@ -38,6 +38,7 @@ import { ConferenceStatus } from '../models/ConferenceStatus';
 import { CreateConference } from '../models/CreateConference';
 import { CreateConferenceAllOf } from '../models/CreateConferenceAllOf';
 import { CreateConferenceRequest } from '../models/CreateConferenceRequest';
+import { CreateWebRTCToken } from '../models/CreateWebRTCToken';
 import { Dequeue } from '../models/Dequeue';
 import { Enqueue } from '../models/Enqueue';
 import { EnqueueAllOf } from '../models/EnqueueAllOf';
@@ -108,7 +109,6 @@ import { RedirectAllOf } from '../models/RedirectAllOf';
 import { Reject } from '../models/Reject';
 import { RejectAllOf } from '../models/RejectAllOf';
 import { RemoveFromConference } from '../models/RemoveFromConference';
-import { RemoveFromConferenceAllOf } from '../models/RemoveFromConferenceAllOf';
 import { RequestType } from '../models/RequestType';
 import { SMSTenDLCBrand } from '../models/SMSTenDLCBrand';
 import { SMSTenDLCBrandsListResult } from '../models/SMSTenDLCBrandsListResult';
@@ -120,6 +120,9 @@ import { SMSTenDLCPartnerCampaign } from '../models/SMSTenDLCPartnerCampaign';
 import { SMSTenDLCPartnerCampaignBrand } from '../models/SMSTenDLCPartnerCampaignBrand';
 import { SMSTenDLCPartnerCampaignsListResult } from '../models/SMSTenDLCPartnerCampaignsListResult';
 import { SMSTenDLCPartnerCampaignsListResultAllOf } from '../models/SMSTenDLCPartnerCampaignsListResultAllOf';
+import { SMSTollFreeCampaign } from '../models/SMSTollFreeCampaign';
+import { SMSTollFreeCampaignsListResult } from '../models/SMSTollFreeCampaignsListResult';
+import { SMSTollFreeCampaignsListResultAllOf } from '../models/SMSTollFreeCampaignsListResultAllOf';
 import { Say } from '../models/Say';
 import { SayAllOf } from '../models/SayAllOf';
 import { SendDigits } from '../models/SendDigits';
@@ -131,8 +134,8 @@ import { SetTalkAllOf } from '../models/SetTalkAllOf';
 import { Sms } from '../models/Sms';
 import { SmsAllOf } from '../models/SmsAllOf';
 import { StartRecordCall } from '../models/StartRecordCall';
+import { TFN } from '../models/TFN';
 import { TerminateConference } from '../models/TerminateConference';
-import { TerminateConferenceAllOf } from '../models/TerminateConferenceAllOf';
 import { TranscribeUtterance } from '../models/TranscribeUtterance';
 import { TranscribeUtteranceRecord } from '../models/TranscribeUtteranceRecord';
 import { Unpark } from '../models/Unpark';
@@ -466,6 +469,26 @@ export class PromiseDefaultApi {
     }
 
     /**
+     * Get a TollFree SMS Campaign
+     
+     * @param campaignId String that uniquely identifies this TollFree Campaign resource.
+     
+     */
+    public getTollFreeSmsCampaign(campaignId: string, _options?: Configuration): Promise<SMSTollFreeCampaign> {
+        const result = this.api.getTollFreeSmsCampaign(campaignId, _options);
+        return result.toPromise();
+    }
+
+    /**
+     * Get list of TollFree Campaigns
+     
+     */
+    public getTollFreeSmsCampaigns(_options?: Configuration): Promise<SMSTollFreeCampaignsListResult> {
+        const result = this.api.getTollFreeSmsCampaigns(_options);
+        return result.toPromise();
+    }
+
+    /**
      * List Active Queues
      
      * @param alias Return only the Queue resources with aliases that exactly match this name.
@@ -575,6 +598,21 @@ export class PromiseDefaultApi {
     }
 
     /**
+     * List Conference Recordings
+     
+     * @param callId Show only Recordings made during the Call with this ID.
+     
+     * @param conferenceId Show only Recordings made during the conference with this ID.
+     
+     * @param dateCreated Only show Recordings created on this date, formatted as *YYYY-MM-DD*.
+     
+     */
+    public listConferenceRecordings(callId?: string, conferenceId?: string, dateCreated?: string, _options?: Configuration): Promise<RecordingList> {
+        const result = this.api.listConferenceRecordings(callId, conferenceId, dateCreated, _options);
+        return result.toPromise();
+    }
+
+    /**
      * List Conferences
      
      * @param status Only show conferences that currently have the specified status. Valid values: &#x60;empty&#x60;, &#x60;populated&#x60;, &#x60;inProgress&#x60;, or &#x60;terminated&#x60;.
@@ -622,11 +660,13 @@ export class PromiseDefaultApi {
      
      * @param capabilitiesShortCode 
      
+     * @param tfnCampaignId Only show incoming phone number resources that have been assigned to the provided TFNCampaign ID.
+     
      * @param offnet Indication of whether the phone number was registered as an offnet number. This field will be rendered only for requests to the IncomingPhone number resource.
      
      */
-    public listIncomingNumbers(phoneNumber?: string, alias?: string, region?: string, country?: string, applicationId?: string, hasApplication?: boolean, voiceEnabled?: boolean, smsEnabled?: boolean, hasCampaign?: boolean, capabilitiesVoice?: boolean, capabilitiesSms?: boolean, capabilitiesTollFree?: boolean, capabilitiesTenDLC?: boolean, capabilitiesShortCode?: boolean, offnet?: boolean, _options?: Configuration): Promise<IncomingNumberList> {
-        const result = this.api.listIncomingNumbers(phoneNumber, alias, region, country, applicationId, hasApplication, voiceEnabled, smsEnabled, hasCampaign, capabilitiesVoice, capabilitiesSms, capabilitiesTollFree, capabilitiesTenDLC, capabilitiesShortCode, offnet, _options);
+    public listIncomingNumbers(phoneNumber?: string, alias?: string, region?: string, country?: string, applicationId?: string, hasApplication?: boolean, voiceEnabled?: boolean, smsEnabled?: boolean, hasCampaign?: boolean, capabilitiesVoice?: boolean, capabilitiesSms?: boolean, capabilitiesTollFree?: boolean, capabilitiesTenDLC?: boolean, capabilitiesShortCode?: boolean, tfnCampaignId?: string, offnet?: boolean, _options?: Configuration): Promise<IncomingNumberList> {
+        const result = this.api.listIncomingNumbers(phoneNumber, alias, region, country, applicationId, hasApplication, voiceEnabled, smsEnabled, hasCampaign, capabilitiesVoice, capabilitiesSms, capabilitiesTollFree, capabilitiesTenDLC, capabilitiesShortCode, tfnCampaignId, offnet, _options);
         return result.toPromise();
     }
 
@@ -708,6 +748,18 @@ export class PromiseDefaultApi {
     }
 
     /**
+     * Make a JWT for WebRTC calling
+     * Make a JWT for WebRTC calling
+     
+     * @param createWebRTCToken Information needed to craft a JWT compatible with the platforms WebRTC APIs
+     
+     */
+    public makeAWebrtcJwt(createWebRTCToken: CreateWebRTCToken, _options?: Configuration): Promise<string> {
+        const result = this.api.makeAWebrtcJwt(createWebRTCToken, _options);
+        return result.toPromise();
+    }
+
+    /**
      * Remove a Participant
      
      * @param conferenceId ID of the conference this participant is in.
@@ -750,7 +802,7 @@ export class PromiseDefaultApi {
      * @param updateConferenceRequest Conference Details to update
      
      */
-    public updateAConference(conferenceId: string, updateConferenceRequest?: UpdateConferenceRequest, _options?: Configuration): Promise<ConferenceResult> {
+    public updateAConference(conferenceId: string, updateConferenceRequest?: UpdateConferenceRequest, _options?: Configuration): Promise<void> {
         const result = this.api.updateAConference(conferenceId, updateConferenceRequest, _options);
         return result.toPromise();
     }

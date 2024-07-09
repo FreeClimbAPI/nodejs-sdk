@@ -5,11 +5,7 @@ describe('TranscribeUtterance', () => {
     let model: freeclimb.TranscribeUtterance = new freeclimb.TranscribeUtterance({
         actionUrl: "test_actionUrl",
         playBeep: true,
-        record: new freeclimb.TranscribeUtteranceRecord({
-            saveRecording: true,
-            maxLengthSec: 1,
-            rcrdTerminationSilenceTimeMs: 1
-        }),
+        record: {},
         privacyForLogging: true,
         privacyForRecording: true,
         prompts: [],
@@ -28,11 +24,7 @@ describe('TranscribeUtterance', () => {
     })
     describe(".record", () => {
         it('resolves to particular value on initialization', () => {
-            const value: freeclimb.TranscribeUtteranceRecord  = new freeclimb.TranscribeUtteranceRecord({
-                saveRecording: true,
-                maxLengthSec: 1,
-                rcrdTerminationSilenceTimeMs: 1
-            })
+            const value = {}
             expect(model.record).toStrictEqual(value)
         })
     })

@@ -39,6 +39,7 @@ import { ConferenceStatus } from '../models/ConferenceStatus';
 import { CreateConference } from '../models/CreateConference';
 import { CreateConferenceAllOf } from '../models/CreateConferenceAllOf';
 import { CreateConferenceRequest } from '../models/CreateConferenceRequest';
+import { CreateWebRTCToken } from '../models/CreateWebRTCToken';
 import { Dequeue } from '../models/Dequeue';
 import { Enqueue } from '../models/Enqueue';
 import { EnqueueAllOf } from '../models/EnqueueAllOf';
@@ -109,7 +110,6 @@ import { RedirectAllOf } from '../models/RedirectAllOf';
 import { Reject } from '../models/Reject';
 import { RejectAllOf } from '../models/RejectAllOf';
 import { RemoveFromConference } from '../models/RemoveFromConference';
-import { RemoveFromConferenceAllOf } from '../models/RemoveFromConferenceAllOf';
 import { RequestType } from '../models/RequestType';
 import { SMSTenDLCBrand } from '../models/SMSTenDLCBrand';
 import { SMSTenDLCBrandsListResult } from '../models/SMSTenDLCBrandsListResult';
@@ -121,6 +121,9 @@ import { SMSTenDLCPartnerCampaign } from '../models/SMSTenDLCPartnerCampaign';
 import { SMSTenDLCPartnerCampaignBrand } from '../models/SMSTenDLCPartnerCampaignBrand';
 import { SMSTenDLCPartnerCampaignsListResult } from '../models/SMSTenDLCPartnerCampaignsListResult';
 import { SMSTenDLCPartnerCampaignsListResultAllOf } from '../models/SMSTenDLCPartnerCampaignsListResultAllOf';
+import { SMSTollFreeCampaign } from '../models/SMSTollFreeCampaign';
+import { SMSTollFreeCampaignsListResult } from '../models/SMSTollFreeCampaignsListResult';
+import { SMSTollFreeCampaignsListResultAllOf } from '../models/SMSTollFreeCampaignsListResultAllOf';
 import { Say } from '../models/Say';
 import { SayAllOf } from '../models/SayAllOf';
 import { SendDigits } from '../models/SendDigits';
@@ -132,8 +135,8 @@ import { SetTalkAllOf } from '../models/SetTalkAllOf';
 import { Sms } from '../models/Sms';
 import { SmsAllOf } from '../models/SmsAllOf';
 import { StartRecordCall } from '../models/StartRecordCall';
+import { TFN } from '../models/TFN';
 import { TerminateConference } from '../models/TerminateConference';
-import { TerminateConferenceAllOf } from '../models/TerminateConferenceAllOf';
 import { TranscribeUtterance } from '../models/TranscribeUtterance';
 import { TranscribeUtteranceRecord } from '../models/TranscribeUtteranceRecord';
 import { Unpark } from '../models/Unpark';
@@ -862,6 +865,54 @@ export class ObservableDefaultApi {
     }
 
     /**
+     * Get a TollFree SMS Campaign
+     
+     * @param campaignId String that uniquely identifies this TollFree Campaign resource.
+     
+     */
+    public getTollFreeSmsCampaign(campaignId: string, _options?: Configuration): Observable<SMSTollFreeCampaign> {
+        const requestContextPromise = this.requestFactory.getTollFreeSmsCampaign(campaignId, _options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (let middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (let middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getTollFreeSmsCampaign(rsp)));
+            }));
+    }
+
+    /**
+     * Get list of TollFree Campaigns
+     
+     */
+    public getTollFreeSmsCampaigns(_options?: Configuration): Observable<SMSTollFreeCampaignsListResult> {
+        const requestContextPromise = this.requestFactory.getTollFreeSmsCampaigns(_options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (let middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (let middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getTollFreeSmsCampaigns(rsp)));
+            }));
+    }
+
+    /**
      * List Active Queues
      
      * @param alias Return only the Queue resources with aliases that exactly match this name.
@@ -1069,6 +1120,35 @@ export class ObservableDefaultApi {
     }
 
     /**
+     * List Conference Recordings
+     
+     * @param callId Show only Recordings made during the Call with this ID.
+     
+     * @param conferenceId Show only Recordings made during the conference with this ID.
+     
+     * @param dateCreated Only show Recordings created on this date, formatted as *YYYY-MM-DD*.
+     
+     */
+    public listConferenceRecordings(callId?: string, conferenceId?: string, dateCreated?: string, _options?: Configuration): Observable<RecordingList> {
+        const requestContextPromise = this.requestFactory.listConferenceRecordings(callId, conferenceId, dateCreated, _options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (let middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (let middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listConferenceRecordings(rsp)));
+            }));
+    }
+
+    /**
      * List Conferences
      
      * @param status Only show conferences that currently have the specified status. Valid values: &#x60;empty&#x60;, &#x60;populated&#x60;, &#x60;inProgress&#x60;, or &#x60;terminated&#x60;.
@@ -1130,11 +1210,13 @@ export class ObservableDefaultApi {
      
      * @param capabilitiesShortCode 
      
+     * @param tfnCampaignId Only show incoming phone number resources that have been assigned to the provided TFNCampaign ID.
+     
      * @param offnet Indication of whether the phone number was registered as an offnet number. This field will be rendered only for requests to the IncomingPhone number resource.
      
      */
-    public listIncomingNumbers(phoneNumber?: string, alias?: string, region?: string, country?: string, applicationId?: string, hasApplication?: boolean, voiceEnabled?: boolean, smsEnabled?: boolean, hasCampaign?: boolean, capabilitiesVoice?: boolean, capabilitiesSms?: boolean, capabilitiesTollFree?: boolean, capabilitiesTenDLC?: boolean, capabilitiesShortCode?: boolean, offnet?: boolean, _options?: Configuration): Observable<IncomingNumberList> {
-        const requestContextPromise = this.requestFactory.listIncomingNumbers(phoneNumber, alias, region, country, applicationId, hasApplication, voiceEnabled, smsEnabled, hasCampaign, capabilitiesVoice, capabilitiesSms, capabilitiesTollFree, capabilitiesTenDLC, capabilitiesShortCode, offnet, _options);
+    public listIncomingNumbers(phoneNumber?: string, alias?: string, region?: string, country?: string, applicationId?: string, hasApplication?: boolean, voiceEnabled?: boolean, smsEnabled?: boolean, hasCampaign?: boolean, capabilitiesVoice?: boolean, capabilitiesSms?: boolean, capabilitiesTollFree?: boolean, capabilitiesTenDLC?: boolean, capabilitiesShortCode?: boolean, tfnCampaignId?: string, offnet?: boolean, _options?: Configuration): Observable<IncomingNumberList> {
+        const requestContextPromise = this.requestFactory.listIncomingNumbers(phoneNumber, alias, region, country, applicationId, hasApplication, voiceEnabled, smsEnabled, hasCampaign, capabilitiesVoice, capabilitiesSms, capabilitiesTollFree, capabilitiesTenDLC, capabilitiesShortCode, tfnCampaignId, offnet, _options);
 
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
@@ -1300,6 +1382,32 @@ export class ObservableDefaultApi {
     }
 
     /**
+     * Make a JWT for WebRTC calling
+     * Make a JWT for WebRTC calling
+     
+     * @param createWebRTCToken Information needed to craft a JWT compatible with the platforms WebRTC APIs
+     
+     */
+    public makeAWebrtcJwt(createWebRTCToken: CreateWebRTCToken, _options?: Configuration): Observable<string> {
+        const requestContextPromise = this.requestFactory.makeAWebrtcJwt(createWebRTCToken, _options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (let middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (let middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.makeAWebrtcJwt(rsp)));
+            }));
+    }
+
+    /**
      * Remove a Participant
      
      * @param conferenceId ID of the conference this participant is in.
@@ -1384,7 +1492,7 @@ export class ObservableDefaultApi {
      * @param updateConferenceRequest Conference Details to update
      
      */
-    public updateAConference(conferenceId: string, updateConferenceRequest?: UpdateConferenceRequest, _options?: Configuration): Observable<ConferenceResult> {
+    public updateAConference(conferenceId: string, updateConferenceRequest?: UpdateConferenceRequest, _options?: Configuration): Observable<void> {
         const requestContextPromise = this.requestFactory.updateAConference(conferenceId, updateConferenceRequest, _options);
 
         // build promise chain
