@@ -14,9 +14,9 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 18.20.1
-      - name: Install Prism
-        run: (yarn global add @stoplight/prism-cli)
       - name: Start Prism Server
-        run: (prism mock -h 127.0.0.1 openapi.json &)
+        run: |
+          yarn install
+          ./node_modules/.bin/prism mock -h 127.0.0.1 openapi.json &
       - run: yarn install
       - run: yarn test
