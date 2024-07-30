@@ -1,9 +1,8 @@
 import * as freeclimb  from '../../index'
 import { describe, expect, it } from "@jest/globals";
     
-describe('TranscribeUtterance', () => {
-    let model: freeclimb.TranscribeUtterance = new freeclimb.TranscribeUtterance({
-       
+describe('TranscribeUtteranceAllOf', () => {
+    let model: freeclimb.TranscribeUtteranceAllOf = new freeclimb.TranscribeUtteranceAllOf({
         actionUrl: "test_actionUrl",
         playBeep: true,
         record: {},
@@ -11,7 +10,6 @@ describe('TranscribeUtterance', () => {
         privacyForRecording: true,
         prompts: [],
     })
-
     describe(".actionUrl", () => {
         it('resolves to particular value on initialization', () => {
             const value = "test_actionUrl"

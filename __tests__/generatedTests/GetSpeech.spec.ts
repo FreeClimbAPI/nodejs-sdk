@@ -3,6 +3,7 @@ import { describe, expect, it } from "@jest/globals";
     
 describe('GetSpeech', () => {
     let model: freeclimb.GetSpeech = new freeclimb.GetSpeech({
+       
         actionUrl: "https://123.abc",
 
         grammarType: freeclimb.GrammarType.URL,
@@ -18,13 +19,7 @@ describe('GetSpeech', () => {
         speechIncompleteTimeoutMs: 1,
         privacyMode: true,
     })
-    describe(".command", () => {
-        it('resolves to particular value on initialization', () => {
-            const value = "test_command"
-            model.command = value
-            expect(model.command).toBe(value)
-        })
-    })
+
     describe(".actionUrl", () => {
         it('resolves to particular value on initialization', () => {
             const value = "https://123.abc"

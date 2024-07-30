@@ -4,7 +4,7 @@ import { describe, expect, it } from "@jest/globals";
 describe('SMSTenDLCBrand', () => {
     let model: freeclimb.SMSTenDLCBrand = new freeclimb.SMSTenDLCBrand({
         accountId: "test_accountId",
-        entityType: freeclimb.SMSTenDLCBrandEntityTypeEnum.GOVERNMENT,
+        entityType: "test_entityType",
         cspId: "test_cspId",
         brandId: "test_brandId",
         firstName: "test_firstName",
@@ -21,18 +21,18 @@ describe('SMSTenDLCBrand', () => {
         country: "test_country",
         email: "test_email",
         stockSymbol: "test_stockSymbol",
-        stockExchange: freeclimb.SMSTenDLCBrandStockExchangeEnum.AMEX,
+        stockExchange: "test_stockExchange",
         ipAddress: "test_ipAddress",
         website: "test_website",
-        brandRelationship: freeclimb.SMSTenDLCBrandBrandRelationshipEnum.BASIC_ACCOUNT,
+        brandRelationship: "test_brandRelationship",
         vertical: "test_vertical",
         altBusinessId: "test_altBusinessId",
-        altBusinessIdType: freeclimb.SMSTenDLCBrandAltBusinessIdTypeEnum.DUNS,
+        altBusinessIdType: "test_altBusinessIdType",
         universalEin: "test_universalEin",
         referenceId: "test_referenceId",
         optionalAttributes: {},
         mock: true,
-        identityStatus: freeclimb.SMSTenDLCBrandIdentityStatusEnum.SELF_DECLARED,
+        identityStatus: "test_identityStatus",
         createDate: new Date('December 17, 1995 03:24:00'),
     })
     describe(".accountId", () => {
@@ -43,7 +43,7 @@ describe('SMSTenDLCBrand', () => {
     })
     describe(".entityType", () => {
         it('resolves to particular value on initialization', () => {
-            const value = "GOVERNMENT"
+            const value = "test_entityType"
             expect(model.entityType).toBe(value)
         })
     })
@@ -145,7 +145,7 @@ describe('SMSTenDLCBrand', () => {
     })
     describe(".stockExchange", () => {
         it('resolves to particular value on initialization', () => {
-            const value = "AMEX"
+            const value = "test_stockExchange"
             expect(model.stockExchange).toBe(value)
         })
     })
@@ -163,7 +163,7 @@ describe('SMSTenDLCBrand', () => {
     })
     describe(".brandRelationship", () => {
         it('resolves to particular value on initialization', () => {
-            const value = "BASIC_ACCOUNT"
+            const value = "test_brandRelationship"
             expect(model.brandRelationship).toBe(value)
         })
     })
@@ -181,7 +181,7 @@ describe('SMSTenDLCBrand', () => {
     })
     describe(".altBusinessIdType", () => {
         it('resolves to particular value on initialization', () => {
-            const value = "DUNS"
+            const value = "test_altBusinessIdType"
             expect(model.altBusinessIdType).toBe(value)
         })
     })
@@ -211,7 +211,7 @@ describe('SMSTenDLCBrand', () => {
     })
     describe(".identityStatus", () => {
         it('resolves to particular value on initialization', () => {
-            const value = "SELF_DECLARED"
+            const value = "test_identityStatus"
             expect(model.identityStatus).toBe(value)
         })
     })

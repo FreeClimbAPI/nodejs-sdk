@@ -147,7 +147,8 @@ models/StartRecordCall.ts
 models/TFN.ts
 models/TerminateConference.ts
 models/TranscribeUtterance.ts
-models/TranscribeUtteranceRecord.ts
+models/TranscribeUtteranceAllOf.ts
+models/TranscribeUtteranceAllOfRecord.ts
 models/Unpark.ts
 models/UpdateCallRequest.ts
 models/UpdateCallRequestStatus.ts

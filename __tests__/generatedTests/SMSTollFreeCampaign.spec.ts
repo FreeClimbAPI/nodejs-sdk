@@ -6,7 +6,7 @@ describe('SMSTollFreeCampaign', () => {
         accountId: "test_accountId",
         campaignId: "test_campaignId",
         useCase: "test_useCase",
-        registrationStatus: freeclimb.SMSTollFreeCampaignRegistrationStatusEnum.REGISTERED,
+        registrationStatus: "test_registrationStatus",
         dateCreated: "test_dateCreated",
         dateUpdated: "test_dateUpdated",
         revision: 1,
@@ -31,7 +31,7 @@ describe('SMSTollFreeCampaign', () => {
     })
     describe(".registrationStatus", () => {
         it('resolves to particular value on initialization', () => {
-            const value = "REGISTERED"
+            const value = "test_registrationStatus"
             expect(model.registrationStatus).toBe(value)
         })
     })

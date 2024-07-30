@@ -10,10 +10,12 @@
  * Do not edit the class manually.
  */
 
-import { AccountStatus } from './AccountStatus';
-import { AccountType } from './AccountType';
+import { TranscribeUtteranceAllOfRecord } from './TranscribeUtteranceAllOfRecord';
 import { HttpFile } from '../http/http';
 
+/**
+* The `TranscribeUtterance` command transcribes the caller’s voice and returns transcription of the audio and optionally returns the recording of the audio transcribed.  `TranscribeUtterance` is blocking and is a terminal command. As such, the actionUrl property is required, and control of the Call picks up using the `PerCL` returned in response of the `actionUrl`. Recording and Transcription information is returned in the actionUrl request. If the reason this command ended was due to the call hanging up, any PerCL returned will not execute.
+*/
 
 interface AttributeType {
     name: string
@@ -23,44 +25,27 @@ interface AttributeType {
     defaultValue: any
 }
 interface ArgumentsType {
-    'accountId'?: string;
-    'apiKey'?: string;
-    'alias'?: string;
-    'label'?: string;
-    'type'?: AccountType;
-    'status'?: AccountStatus;
-    'subresourceUris'?: any;
+    'actionUrl': string;
+    'playBeep'?: boolean;
+    'record'?: TranscribeUtteranceAllOfRecord;
+    'privacyForLogging'?: boolean;
+    'privacyForRecording'?: boolean;
+    'prompts'?: Array<any>;
 }
-export class AccountResultAllOf {
-    /**
-    * String that uniquely identifies this account resource.
-    */
-    'accountId'?: string;
-    /**
-    * The API key assigned to this account. This key must be kept a secret by the customer.
-    */
-    'apiKey'?: string;
-    /**
-    * A description for this account.
-    */
-    'alias'?: string;
-    /**
-    * A string that identifies a category or group to which the account belongs.
-    */
-    'label'?: string;
-    'type'?: AccountType;
-    'status'?: AccountStatus;
-    /**
-    * The list of subresources for this account.
-    */
-    'subresourceUris'?: any;
+export class TranscribeUtteranceAllOf {
+    'actionUrl': string;
+    'playBeep'?: boolean;
+    'record'?: TranscribeUtteranceAllOfRecord;
+    'privacyForLogging'?: boolean;
+    'privacyForRecording'?: boolean;
+    'prompts'?: Array<any>;
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly attributeTypeMap: AttributeType[] = [
         {
-            "name": "accountId",
-            "baseName": "accountId",
+            "name": "actionUrl",
+            "baseName": "actionUrl",
             "type": "string",
             "format": "",
 
@@ -68,54 +53,45 @@ export class AccountResultAllOf {
             "defaultValue": undefined
         },
         {
-            "name": "apiKey",
-            "baseName": "apiKey",
-            "type": "string",
+            "name": "playBeep",
+            "baseName": "playBeep",
+            "type": "boolean",
             "format": "",
 
             
             "defaultValue": undefined
         },
         {
-            "name": "alias",
-            "baseName": "alias",
-            "type": "string",
+            "name": "record",
+            "baseName": "record",
+            "type": "TranscribeUtteranceAllOfRecord",
             "format": "",
 
             
             "defaultValue": undefined
         },
         {
-            "name": "label",
-            "baseName": "label",
-            "type": "string",
+            "name": "privacyForLogging",
+            "baseName": "privacyForLogging",
+            "type": "boolean",
             "format": "",
 
             
             "defaultValue": undefined
         },
         {
-            "name": "type",
-            "baseName": "type",
-            "type": "AccountType",
+            "name": "privacyForRecording",
+            "baseName": "privacyForRecording",
+            "type": "boolean",
             "format": "",
 
             
             "defaultValue": undefined
         },
         {
-            "name": "status",
-            "baseName": "status",
-            "type": "AccountStatus",
-            "format": "",
-
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "subresourceUris",
-            "baseName": "subresourceUris",
-            "type": "any",
+            "name": "prompts",
+            "baseName": "prompts",
+            "type": "Array<any>",
             "format": "",
 
             
@@ -123,11 +99,11 @@ export class AccountResultAllOf {
         }    ];
 
     static getAttributeTypeMap(): AttributeType[] {
-        return AccountResultAllOf.attributeTypeMap;
+        return TranscribeUtteranceAllOf.attributeTypeMap;
     }
 
     public constructor(args: ArgumentsType) {
-        const preparedArgs = AccountResultAllOf.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
+        const preparedArgs = TranscribeUtteranceAllOf.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
             
             const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
             

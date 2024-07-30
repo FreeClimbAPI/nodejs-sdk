@@ -128,7 +128,8 @@ export class SMSTollFreeCampaign {
 
     public constructor(args: ArgumentsType) {
         const preparedArgs = SMSTollFreeCampaign.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
-            const val: any = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
+            const val:any = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
+            
             if (val !== undefined) {
                 acc[attr.name as keyof ArgumentsType] = val
             }
