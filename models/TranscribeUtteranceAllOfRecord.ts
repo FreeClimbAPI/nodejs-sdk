@@ -21,21 +21,40 @@ interface AttributeType {
     defaultValue: any
 }
 interface ArgumentsType {
-    'callId': string;
+    'saveRecording'?: boolean;
+    'maxLengthSec'?: number;
+    'rcrdTerminationSilenceTimeMs'?: number;
 }
-export class RemoveFromConferenceAllOf {
-    /**
-    * ID of the Call leg to be removed from the Conference. The Call must be in a Conference or an error will be triggered.
-    */
-    'callId': string;
+export class TranscribeUtteranceAllOfRecord {
+    'saveRecording'?: boolean;
+    'maxLengthSec'?: number;
+    'rcrdTerminationSilenceTimeMs'?: number;
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly attributeTypeMap: AttributeType[] = [
         {
-            "name": "callId",
-            "baseName": "callId",
-            "type": "string",
+            "name": "saveRecording",
+            "baseName": "saveRecording",
+            "type": "boolean",
+            "format": "",
+
+            
+            "defaultValue": undefined
+        },
+        {
+            "name": "maxLengthSec",
+            "baseName": "maxLengthSec",
+            "type": "number",
+            "format": "",
+
+            
+            "defaultValue": 60
+        },
+        {
+            "name": "rcrdTerminationSilenceTimeMs",
+            "baseName": "rcrdTerminationSilenceTimeMs",
+            "type": "number",
             "format": "",
 
             
@@ -43,12 +62,14 @@ export class RemoveFromConferenceAllOf {
         }    ];
 
     static getAttributeTypeMap(): AttributeType[] {
-        return RemoveFromConferenceAllOf.attributeTypeMap;
+        return TranscribeUtteranceAllOfRecord.attributeTypeMap;
     }
 
     public constructor(args: ArgumentsType) {
-        const preparedArgs = RemoveFromConferenceAllOf.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
+        const preparedArgs = TranscribeUtteranceAllOfRecord.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
+            
             const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
+            
             if (val !== undefined) {
                 acc[attr.name as keyof ArgumentsType] = val
             }

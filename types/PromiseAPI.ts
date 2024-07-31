@@ -137,7 +137,8 @@ import { StartRecordCall } from '../models/StartRecordCall';
 import { TFN } from '../models/TFN';
 import { TerminateConference } from '../models/TerminateConference';
 import { TranscribeUtterance } from '../models/TranscribeUtterance';
-import { TranscribeUtteranceRecord } from '../models/TranscribeUtteranceRecord';
+import { TranscribeUtteranceAllOf } from '../models/TranscribeUtteranceAllOf';
+import { TranscribeUtteranceAllOfRecord } from '../models/TranscribeUtteranceAllOfRecord';
 import { Unpark } from '../models/Unpark';
 import { UpdateCallRequest } from '../models/UpdateCallRequest';
 import { UpdateCallRequestStatus } from '../models/UpdateCallRequestStatus';
@@ -600,15 +601,15 @@ export class PromiseDefaultApi {
     /**
      * List Conference Recordings
      
-     * @param callId Show only Recordings made during the Call with this ID.
-     
      * @param conferenceId Show only Recordings made during the conference with this ID.
+     
+     * @param callId Show only Recordings made during the Call with this ID.
      
      * @param dateCreated Only show Recordings created on this date, formatted as *YYYY-MM-DD*.
      
      */
-    public listConferenceRecordings(callId?: string, conferenceId?: string, dateCreated?: string, _options?: Configuration): Promise<RecordingList> {
-        const result = this.api.listConferenceRecordings(callId, conferenceId, dateCreated, _options);
+    public listConferenceRecordings(conferenceId: string, callId?: string, dateCreated?: string, _options?: Configuration): Promise<RecordingList> {
+        const result = this.api.listConferenceRecordings(conferenceId, callId, dateCreated, _options);
         return result.toPromise();
     }
 

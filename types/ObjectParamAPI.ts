@@ -137,7 +137,8 @@ import { StartRecordCall } from '../models/StartRecordCall';
 import { TFN } from '../models/TFN';
 import { TerminateConference } from '../models/TerminateConference';
 import { TranscribeUtterance } from '../models/TranscribeUtterance';
-import { TranscribeUtteranceRecord } from '../models/TranscribeUtteranceRecord';
+import { TranscribeUtteranceAllOf } from '../models/TranscribeUtteranceAllOf';
+import { TranscribeUtteranceAllOfRecord } from '../models/TranscribeUtteranceAllOfRecord';
 import { Unpark } from '../models/Unpark';
 import { UpdateCallRequest } from '../models/UpdateCallRequest';
 import { UpdateCallRequestStatus } from '../models/UpdateCallRequestStatus';
@@ -670,18 +671,18 @@ export interface DefaultApiListCallsRequest {
 export interface DefaultApiListConferenceRecordingsRequest {
     
     /**
+     * Show only Recordings made during the conference with this ID.
+     * @type string
+     * @memberof DefaultApilistConferenceRecordings
+     */
+    conferenceId: string
+    
+    /**
      * Show only Recordings made during the Call with this ID.
      * @type string
      * @memberof DefaultApilistConferenceRecordings
      */
     callId?: string
-    
-    /**
-     * Show only Recordings made during the conference with this ID.
-     * @type string
-     * @memberof DefaultApilistConferenceRecordings
-     */
-    conferenceId?: string
     
     /**
      * Only show Recordings created on this date, formatted as *YYYY-MM-DD*.
@@ -1457,7 +1458,7 @@ export class ObjectDefaultApi {
      * @param param the request object
      */
     public listConferenceRecordings(param: DefaultApiListConferenceRecordingsRequest, options?: Configuration): Promise<RecordingList> {
-        return this.api.listConferenceRecordings(param.callId, param.conferenceId, param.dateCreated,  options).toPromise();
+        return this.api.listConferenceRecordings(param.conferenceId, param.callId, param.dateCreated,  options).toPromise();
     }
 
     /**

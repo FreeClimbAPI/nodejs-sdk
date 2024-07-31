@@ -78,7 +78,9 @@ export class Pause extends PerclCommand {
     public constructor(args: ArgumentsType) {
         super({ command: "Pause" });
         const preparedArgs = Pause.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
+            
             const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
+            
             if (val !== undefined) {
                 acc[attr.name as keyof ArgumentsType] = val
             }

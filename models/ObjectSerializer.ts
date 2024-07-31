@@ -133,7 +133,8 @@ export * from './StartRecordCall';
 export * from './TFN';
 export * from './TerminateConference';
 export * from './TranscribeUtterance';
-export * from './TranscribeUtteranceRecord';
+export * from './TranscribeUtteranceAllOf';
+export * from './TranscribeUtteranceAllOfRecord';
 export * from './Unpark';
 export * from './UpdateCallRequest';
 export * from './UpdateCallRequestStatus';
@@ -276,7 +277,8 @@ import { StartRecordCall } from './StartRecordCall';
 import { TFN } from './TFN';
 import { TerminateConference } from './TerminateConference';
 import { TranscribeUtterance } from './TranscribeUtterance';
-import { TranscribeUtteranceRecord } from './TranscribeUtteranceRecord';
+import { TranscribeUtteranceAllOf } from './TranscribeUtteranceAllOf';
+import { TranscribeUtteranceAllOfRecord } from './TranscribeUtteranceAllOfRecord';
 import { Unpark } from './Unpark';
 import { UpdateCallRequest } from './UpdateCallRequest';
 import { UpdateCallRequestStatus } from './UpdateCallRequestStatus';
@@ -299,7 +301,7 @@ let primitives = [
 const supportedMediaTypes: { [mediaType: string]: number } = {
   "application/json": Infinity,
   "application/octet-stream": 0,
-  "application/x-www-form-urlencoded": 0,
+  "application/x-www-form-urlencoded": 0
 }
 
 
@@ -452,7 +454,8 @@ let typeMap: {[index: string]: any} = {
     "TFN": TFN,
     "TerminateConference": TerminateConference,
     "TranscribeUtterance": TranscribeUtterance,
-    "TranscribeUtteranceRecord": TranscribeUtteranceRecord,
+    "TranscribeUtteranceAllOf": TranscribeUtteranceAllOf,
+    "TranscribeUtteranceAllOfRecord": TranscribeUtteranceAllOfRecord,
     "Unpark": Unpark,
     "UpdateCallRequest": UpdateCallRequest,
     "UpdateConferenceParticipantRequest": UpdateConferenceParticipantRequest,

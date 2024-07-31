@@ -1,15 +1,12 @@
 import * as freeclimb  from '../../index'
 import { describe, expect, it } from "@jest/globals";
     
-describe('Sms', () => {
-    let model: freeclimb.Sms = new freeclimb.Sms({
-       
+describe('CreateWebRTCToken', () => {
+    let model: freeclimb.CreateWebRTCToken = new freeclimb.CreateWebRTCToken({
         to: "test_to",
         _from: "test_from",
-        text: "test_text",
-        notificationUrl: "test_notificationUrl",
+        uses: 1,
     })
-
     describe(".to", () => {
         it('resolves to particular value on initialization', () => {
             const value = "test_to"
@@ -22,16 +19,10 @@ describe('Sms', () => {
             expect(model._from).toStrictEqual(value)
         })
     })
-    describe(".text", () => {
+    describe(".uses", () => {
         it('resolves to particular value on initialization', () => {
-            const value = "test_text"
-            expect(model.text).toBe(value)
-        })
-    })
-    describe(".notificationUrl", () => {
-        it('resolves to particular value on initialization', () => {
-            const value = "test_notificationUrl"
-            expect(model.notificationUrl).toBe(value)
+            const value = 1
+            expect(model.uses).toBe(value)
         })
     })
 })

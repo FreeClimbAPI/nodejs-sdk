@@ -3,6 +3,7 @@ import { describe, expect, it } from "@jest/globals";
     
 describe('RecordUtterance', () => {
     let model: freeclimb.RecordUtterance = new freeclimb.RecordUtterance({
+       
         actionUrl: "https://123.abc",
         silenceTimeoutMs: 1,
         finishOnKey: "test_finishOnKey",
@@ -11,13 +12,7 @@ describe('RecordUtterance', () => {
         autoStart: true,
         privacyMode: true,
     })
-    describe(".command", () => {
-        it('resolves to particular value on initialization', () => {
-            const value = "test_command"
-            model.command = value
-            expect(model.command).toBe(value)
-        })
-    })
+
     describe(".actionUrl", () => {
         it('resolves to particular value on initialization', () => {
             const value = "https://123.abc"

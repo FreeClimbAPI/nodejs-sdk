@@ -1,6 +1,6 @@
 {
   "name": "@freeclimb/sdk",
-  "version": "3.6.0",
+  "version": "3.6.1",
   "description": "OpenAPI client for @freeclimb/sdk",
   "author": "OpenAPI-Generator Contributors",
   "keywords": [
@@ -40,7 +40,7 @@
     "node-fetch": "^2.6.0",
     "qs": "^6.11.1",
     "reflect-metadata": "^0.1.13",
-    "url-parse": "^1.4.3"
+    "url-parse": "^1.4.3" 
   },
   "devDependencies": {
     "@babel/preset-env": "^7.19.3",

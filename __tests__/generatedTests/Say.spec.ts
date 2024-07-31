@@ -3,18 +3,13 @@ import { describe, expect, it } from "@jest/globals";
     
 describe('Say', () => {
     let model: freeclimb.Say = new freeclimb.Say({
+       
         text: "test_text",
         language: "test_language",
         loop: 1,
         privacyMode: true,
     })
-    describe(".command", () => {
-        it('resolves to particular value on initialization', () => {
-            const value = "test_command"
-            model.command = value
-            expect(model.command).toBe(value)
-        })
-    })
+
     describe(".text", () => {
         it('resolves to particular value on initialization', () => {
             const value = "test_text"

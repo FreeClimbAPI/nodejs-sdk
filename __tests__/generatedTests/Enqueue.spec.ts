@@ -3,18 +3,13 @@ import { describe, expect, it } from "@jest/globals";
     
 describe('Enqueue', () => {
     let model: freeclimb.Enqueue = new freeclimb.Enqueue({
+       
         actionUrl: "https://123.abc",
         notificationUrl: "https://123.abc",
         queueId: "test_queueId",
         waitUrl: "test_waitUrl",
     })
-    describe(".command", () => {
-        it('resolves to particular value on initialization', () => {
-            const value = "test_command"
-            model.command = value
-            expect(model.command).toBe(value)
-        })
-    })
+
     describe(".actionUrl", () => {
         it('resolves to particular value on initialization', () => {
             const value = "https://123.abc"

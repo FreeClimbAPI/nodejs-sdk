@@ -66,8 +66,8 @@ describe('SMSTenDLCCampaign', () => {
     })
     describe(".status", () => {
         it('resolves to particular value on initialization', () => {
-            const value = "ACTIVE"
-            expect(model.status).toBe(value)
+        const value = freeclimb.SMSTenDLCCampaignStatusEnum.ACTIVE
+        expect(model.status).toBe(value)
         })
     })
     describe(".createDate", () => {

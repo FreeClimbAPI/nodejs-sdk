@@ -76,7 +76,9 @@ export class BuyIncomingNumberRequest {
 
     public constructor(args: ArgumentsType) {
         const preparedArgs = BuyIncomingNumberRequest.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
+            
             const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
+            
             if (val !== undefined) {
                 acc[attr.name as keyof ArgumentsType] = val
             }

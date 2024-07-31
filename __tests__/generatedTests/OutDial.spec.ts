@@ -3,6 +3,7 @@ import { describe, expect, it } from "@jest/globals";
     
 describe('OutDial', () => {
     let model: freeclimb.OutDial = new freeclimb.OutDial({
+       
         actionUrl: "https://123.abc",
         callConnectUrl: "https://123.abc",
         callingNumber: "test_callingNumber",
@@ -15,13 +16,7 @@ describe('OutDial', () => {
         timeout: 1,
         privacyMode: true,
     })
-    describe(".command", () => {
-        it('resolves to particular value on initialization', () => {
-            const value = "test_command"
-            model.command = value
-            expect(model.command).toBe(value)
-        })
-    })
+
     describe(".actionUrl", () => {
         it('resolves to particular value on initialization', () => {
             const value = "https://123.abc"

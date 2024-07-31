@@ -3,6 +3,7 @@ import { describe, expect, it } from "@jest/globals";
     
 describe('CreateConference', () => {
     let model: freeclimb.CreateConference = new freeclimb.CreateConference({
+       
         actionUrl: "https://123.abc",
         alias: true,
 
@@ -11,13 +12,7 @@ describe('CreateConference', () => {
         statusCallbackUrl: "test_statusCallbackUrl",
         waitUrl: "test_waitUrl",
     })
-    describe(".command", () => {
-        it('resolves to particular value on initialization', () => {
-            const value = "test_command"
-            model.command = value
-            expect(model.command).toBe(value)
-        })
-    })
+
     describe(".actionUrl", () => {
         it('resolves to particular value on initialization', () => {
             const value = "https://123.abc"

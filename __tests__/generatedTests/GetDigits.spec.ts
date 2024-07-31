@@ -3,6 +3,7 @@ import { describe, expect, it } from "@jest/globals";
     
 describe('GetDigits', () => {
     let model: freeclimb.GetDigits = new freeclimb.GetDigits({
+       
         actionUrl: "https://123.abc",
         digitTimeoutMs: 1,
         finishOnKey: "test_finishOnKey",
@@ -13,13 +14,7 @@ describe('GetDigits', () => {
         prompts: [],
         privacyMode: true,
     })
-    describe(".command", () => {
-        it('resolves to particular value on initialization', () => {
-            const value = "test_command"
-            model.command = value
-            expect(model.command).toBe(value)
-        })
-    })
+
     describe(".actionUrl", () => {
         it('resolves to particular value on initialization', () => {
             const value = "https://123.abc"
