@@ -4,7 +4,7 @@ import { describe, expect, it } from "@jest/globals";
 describe('SMSTenDLCBrand', () => {
     let model: freeclimb.SMSTenDLCBrand = new freeclimb.SMSTenDLCBrand({
         accountId: "test_accountId",
-        entityType: "test_entityType",
+        entityType: freeclimb.SMSTenDLCBrandEntityTypeEnum.PRIVATE_PROFIT,
         cspId: "test_cspId",
         brandId: "test_brandId",
         firstName: "test_firstName",
@@ -21,18 +21,18 @@ describe('SMSTenDLCBrand', () => {
         country: "test_country",
         email: "test_email",
         stockSymbol: "test_stockSymbol",
-        stockExchange: "test_stockExchange",
+        stockExchange: freeclimb.SMSTenDLCBrandStockExchangeEnum.NONE,
         ipAddress: "test_ipAddress",
         website: "test_website",
-        brandRelationship: "test_brandRelationship",
+        brandRelationship: freeclimb.SMSTenDLCBrandBrandRelationshipEnum.BASIC_ACCOUNT,
         vertical: "test_vertical",
         altBusinessId: "test_altBusinessId",
-        altBusinessIdType: "test_altBusinessIdType",
+        altBusinessIdType: freeclimb.SMSTenDLCBrandAltBusinessIdTypeEnum.NONE,
         universalEin: "test_universalEin",
         referenceId: "test_referenceId",
         optionalAttributes: {},
         mock: true,
-        identityStatus: "test_identityStatus",
+        identityStatus: freeclimb.SMSTenDLCBrandIdentityStatusEnum.SELF_DECLARED,
         createDate: new Date('December 17, 1995 03:24:00'),
     })
     describe(".accountId", () => {
@@ -43,8 +43,8 @@ describe('SMSTenDLCBrand', () => {
     })
     describe(".entityType", () => {
         it('resolves to particular value on initialization', () => {
-            const value = "test_entityType"
-            expect(model.entityType).toBe(value)
+        const value = freeclimb.SMSTenDLCBrandEntityTypeEnum.PRIVATE_PROFIT
+        expect(model.entityType).toBe(value)
         })
     })
     describe(".cspId", () => {
@@ -145,8 +145,8 @@ describe('SMSTenDLCBrand', () => {
     })
     describe(".stockExchange", () => {
         it('resolves to particular value on initialization', () => {
-            const value = "test_stockExchange"
-            expect(model.stockExchange).toBe(value)
+        const value = freeclimb.SMSTenDLCBrandStockExchangeEnum.NONE
+        expect(model.stockExchange).toBe(value)
         })
     })
     describe(".ipAddress", () => {
@@ -163,8 +163,8 @@ describe('SMSTenDLCBrand', () => {
     })
     describe(".brandRelationship", () => {
         it('resolves to particular value on initialization', () => {
-            const value = "test_brandRelationship"
-            expect(model.brandRelationship).toBe(value)
+        const value = freeclimb.SMSTenDLCBrandBrandRelationshipEnum.BASIC_ACCOUNT
+        expect(model.brandRelationship).toBe(value)
         })
     })
     describe(".vertical", () => {
@@ -181,8 +181,8 @@ describe('SMSTenDLCBrand', () => {
     })
     describe(".altBusinessIdType", () => {
         it('resolves to particular value on initialization', () => {
-            const value = "test_altBusinessIdType"
-            expect(model.altBusinessIdType).toBe(value)
+        const value = freeclimb.SMSTenDLCBrandAltBusinessIdTypeEnum.NONE
+        expect(model.altBusinessIdType).toBe(value)
         })
     })
     describe(".universalEin", () => {
@@ -211,8 +211,8 @@ describe('SMSTenDLCBrand', () => {
     })
     describe(".identityStatus", () => {
         it('resolves to particular value on initialization', () => {
-            const value = "test_identityStatus"
-            expect(model.identityStatus).toBe(value)
+        const value = freeclimb.SMSTenDLCBrandIdentityStatusEnum.SELF_DECLARED
+        expect(model.identityStatus).toBe(value)
         })
     })
     describe(".createDate", () => {

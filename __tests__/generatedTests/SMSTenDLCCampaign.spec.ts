@@ -7,7 +7,7 @@ describe('SMSTenDLCCampaign', () => {
         campaignId: "test_campaignId",
         cspId: "test_cspId",
         resellerId: "test_resellerId",
-        status: "test_status",
+        status: freeclimb.SMSTenDLCCampaignStatusEnum.ACTIVE,
         createDate: new Date('December 17, 1995 03:24:00'),
         autoRenewal: true,
         billedDate: new Date('December 17, 1995 03:24:00'),
@@ -66,8 +66,8 @@ describe('SMSTenDLCCampaign', () => {
     })
     describe(".status", () => {
         it('resolves to particular value on initialization', () => {
-            const value = "test_status"
-            expect(model.status).toBe(value)
+        const value = freeclimb.SMSTenDLCCampaignStatusEnum.ACTIVE
+        expect(model.status).toBe(value)
         })
     })
     describe(".createDate", () => {
