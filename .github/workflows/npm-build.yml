@@ -17,7 +17,6 @@ jobs:
       - name: Start Prism Server
         run: |
           yarn install
-          ls -a
           ./node_modules/.bin/prism mock -h 127.0.0.1 openapi.json &
       - run: yarn install
       - run: yarn test

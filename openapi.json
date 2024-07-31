@@ -473,6 +473,7 @@
         },
         "properties": {
           "command": {
+            "x-is-no-property": true,
             "type": "string",
             "description": "Name of PerCL Command (this is automatically derived from mapping configuration and should not be manually supplied in any arguments)"
           }
@@ -1132,6 +1133,7 @@
                 "type": "string"
               },
               "from": {
+                "x-is-private-property": true,
                 "description": "E.164 representation of the phone number to use as the sender. This must be an incoming phone number you have purchased from FreeClimb.",
                 "type": "string"
               },
@@ -1682,6 +1684,7 @@
                 "nullable": true
               },
               "from": {
+                "x-is-private-property": true,
                 "type": "string",
                 "description": "Phone number that initiated this Call.",
                 "nullable": true
@@ -1753,6 +1756,7 @@
         "required": ["from", "to"],
         "properties": {
           "from": {
+            "x-is-private-property": true,
             "type": "string",
             "description": "Phone number to use as the caller ID. This can be: (a) The To or From number provided in FreeClimb's initial request to your app or (b) Any incoming phone number you have purchased from FreeClimb."
           },
@@ -2021,6 +2025,7 @@
             "required": ["from", "to", "text"],
             "properties": {
               "from": {
+                "x-is-private-property": true,
                 "type": "string",
                 "description": "Phone number to use as the sender. This must be an incoming phone number that you have purchased from FreeClimb."
               },
@@ -2091,6 +2096,7 @@
                 "$ref": "#/components/schemas/MessageStatus"
               },
               "from": {
+                "x-is-private-property": true,
                 "type": "string",
                 "description": "Phone number in E.164 format that sent the message.",
                 "nullable": true
@@ -2454,6 +2460,7 @@
             "type": "string",
             "x-has-writer": true,
             "description": "Current campaign status. Possible values: ACTIVE, EXPIRED. A newly created campaign defaults to ACTIVE status. ",
+            "x-enum-type": "SMSTenDLCCampaignStatusEnum",
             "enum": ["ACTIVE", "EXPIRED"],
             "x-enum-varnames": ["ACTIVE", "EXPIRED"]
           },
@@ -2696,6 +2703,7 @@
             "type": "string",
             "x-has-writer": true,
             "description": "Current campaign status. Possible values: ACTIVE, EXPIRED. A newly created campaign defaults to ACTIVE status. ",
+            "x-enum-type": "SMSTenDLCPartnerCampaignStatusEnum",
             "enum": ["ACTIVE", "EXPIRED"],
             "x-enum-varnames": ["ACTIVE", "EXPIRED"]
           },
@@ -2992,6 +3000,7 @@
             "type": "string",
             "x-has-writer": true,
             "description": "Entity type behind the brand. This is the form of business establishment.",
+            "x-enum-type": "SMSTenDLCBrandEntityTypeEnum",
             "enum": [
               "PRIVATE_PROFIT",
               "PUBLIC_PROFIT",
@@ -3105,6 +3114,7 @@
             "x-has-writer": true,
             "description": "(Required for public company) stock exchange.",
             "example": "NASDAQ",
+            "x-enum-type": "SMSTenDLCBrandStockExchangeEnum",
             "enum": [
               "NONE",
               "NASDAQ",
@@ -3179,6 +3189,7 @@
             "type": "string",
             "x-has-writer": true,
             "description": "Brand relationship to the CSP",
+            "x-enum-type": "SMSTenDLCBrandBrandRelationshipEnum",
             "enum": [
               "BASIC_ACCOUNT",
               "SMALL_ACCOUNT",
@@ -3207,6 +3218,7 @@
           "altBusinessIdType": {
             "type": "string",
             "x-has-writer": true,
+            "x-enum-type": "SMSTenDLCBrandAltBusinessIdTypeEnum",
             "enum": ["NONE", "DUNS", "GIIN", "LEI"],
             "x-enum-varnames": ["NONE", "DUNS", "GIIN", "LEI"],
             "description": "The type of the Alternative business identifier"
@@ -3239,6 +3251,7 @@
             "type": "string",
             "x-has-writer": true,
             "description": "TCR assessment of the brand identification status.",
+            "x-enum-type": "SMSTenDLCBrandIdentityStatusEnum",
             "enum": [
               "SELF_DECLARED",
               "UNVERIFIED",
@@ -3341,6 +3354,7 @@
             "type": "string",
             "x-has-writer": true,
             "description": "Current toll-free campaign registration status.Possible values: UNREGISTERED,INITIATED,PENDING,DECLINED,REGISTERED. A newly created campaign defaults to INITIATED status. ",
+            "x-enum-type": "SMSTollFreeCampaignRegistrationStatusEnum",
             "enum": [
               "UNREGISTERED",
               "INITIATED",
@@ -3460,6 +3474,7 @@
             "description": "E.164 formatted phone number to which calls using this token will be made."
           },
           "from": {
+            "x-is-private-property": true,
             "type": "string",
             "description": "E.164 formatted phone number owned by the reqeusting account from which calls using this token will be made."
           },
