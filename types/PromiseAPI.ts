@@ -750,7 +750,6 @@ export class PromiseDefaultApi {
 
     /**
      * Make a JWT for WebRTC calling
-     * Make a JWT for WebRTC calling
      
      * @param createWebRTCToken Information needed to craft a JWT compatible with the platforms WebRTC APIs
      

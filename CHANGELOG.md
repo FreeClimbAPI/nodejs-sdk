@@ -15,7 +15,7 @@ None
 
 ### Changed
 
-- GetDigit initialTimeoutMS property type change from string to integer
+- Manual changes removed and handled by code generation
 
 <a name="3.6.0"></a>
 

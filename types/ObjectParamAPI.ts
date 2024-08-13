@@ -1519,7 +1519,6 @@ export class ObjectDefaultApi {
 
     /**
      * Make a JWT for WebRTC calling
-     * Make a JWT for WebRTC calling
      * @param param the request object
      */
     public makeAWebrtcJwt(param: DefaultApiMakeAWebrtcJwtRequest, options?: Configuration): Promise<string> {

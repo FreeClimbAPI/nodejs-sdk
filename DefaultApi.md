@@ -2891,7 +2891,6 @@ Name | Type | Description  | Notes
 # **makeAWebrtcJwt**
 > string makeAWebrtcJwt(createWebRTCToken)
 
-Make a JWT for WebRTC calling
 
 ### Example
 
