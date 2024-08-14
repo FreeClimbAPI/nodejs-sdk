@@ -10,6 +10,7 @@
  * Do not edit the class manually.
  */
 
+import { Set } from './Set';
 import { HttpFile } from '../http/http';
 
 export enum SMSTenDLCCampaignStatusEnum {
@@ -540,7 +541,9 @@ export class SMSTenDLCCampaign {
 
     public constructor(args: ArgumentsType) {
         const preparedArgs = SMSTenDLCCampaign.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
+            
             const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
+            
             if (val !== undefined) {
                 acc[attr.name as keyof ArgumentsType] = val
             }

@@ -138,7 +138,8 @@ import { StartRecordCall } from '../models/StartRecordCall';
 import { TFN } from '../models/TFN';
 import { TerminateConference } from '../models/TerminateConference';
 import { TranscribeUtterance } from '../models/TranscribeUtterance';
-import { TranscribeUtteranceRecord } from '../models/TranscribeUtteranceRecord';
+import { TranscribeUtteranceAllOf } from '../models/TranscribeUtteranceAllOf';
+import { TranscribeUtteranceAllOfRecord } from '../models/TranscribeUtteranceAllOfRecord';
 import { Unpark } from '../models/Unpark';
 import { UpdateCallRequest } from '../models/UpdateCallRequest';
 import { UpdateCallRequestStatus } from '../models/UpdateCallRequestStatus';
@@ -1122,15 +1123,15 @@ export class ObservableDefaultApi {
     /**
      * List Conference Recordings
      
-     * @param callId Show only Recordings made during the Call with this ID.
-     
      * @param conferenceId Show only Recordings made during the conference with this ID.
+     
+     * @param callId Show only Recordings made during the Call with this ID.
      
      * @param dateCreated Only show Recordings created on this date, formatted as *YYYY-MM-DD*.
      
      */
-    public listConferenceRecordings(callId?: string, conferenceId?: string, dateCreated?: string, _options?: Configuration): Observable<RecordingList> {
-        const requestContextPromise = this.requestFactory.listConferenceRecordings(callId, conferenceId, dateCreated, _options);
+    public listConferenceRecordings(conferenceId: string, callId?: string, dateCreated?: string, _options?: Configuration): Observable<RecordingList> {
+        const requestContextPromise = this.requestFactory.listConferenceRecordings(conferenceId, callId, dateCreated, _options);
 
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
@@ -1382,7 +1383,6 @@ export class ObservableDefaultApi {
     }
 
     /**
-     * Make a JWT for WebRTC calling
      * Make a JWT for WebRTC calling
      
      * @param createWebRTCToken Information needed to craft a JWT compatible with the platforms WebRTC APIs

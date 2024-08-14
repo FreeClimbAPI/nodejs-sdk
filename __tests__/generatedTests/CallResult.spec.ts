@@ -71,7 +71,7 @@ describe('CallResult', () => {
     describe(".from", () => {
         it('resolves to particular value on initialization', () => {
             const value = "test_from"
-            expect(model._from).toBe(value)
+            expect(model._from).toStrictEqual(value)
         })
     })
     describe(".to", () => {

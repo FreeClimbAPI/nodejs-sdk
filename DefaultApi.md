@@ -2308,11 +2308,11 @@ const apiInstance = new freeclimb.DefaultApi(configuration);
 
 let body:freeclimb.DefaultApiListConferenceRecordingsRequest = {
 
+  // string | Show only Recordings made during the conference with this ID.
+  conferenceId: "conferenceId_example",
+
   // string | Show only Recordings made during the Call with this ID. (optional)
   callId: "callId_example",
-
-  // string | Show only Recordings made during the conference with this ID. (optional)
-  conferenceId: "conferenceId_example",
 
   // string | Only show Recordings created on this date, formatted as *YYYY-MM-DD*. (optional)
   dateCreated: "dateCreated_example",
@@ -2329,8 +2329,8 @@ apiInstance.listConferenceRecordings(body).then((data:any) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **conferenceId** | [**string**] | Show only Recordings made during the conference with this ID. | defaults to undefined
  **callId** | [**string**] | Show only Recordings made during the Call with this ID. | (optional) defaults to undefined
- **conferenceId** | [**string**] | Show only Recordings made during the conference with this ID. | (optional) defaults to undefined
  **dateCreated** | [**string**] | Only show Recordings created on this date, formatted as *YYYY-MM-DD*. | (optional) defaults to undefined
 
 
@@ -2891,7 +2891,6 @@ Name | Type | Description  | Notes
 # **makeAWebrtcJwt**
 > string makeAWebrtcJwt(createWebRTCToken)
 
-Make a JWT for WebRTC calling
 
 ### Example
 

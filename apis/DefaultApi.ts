@@ -1532,17 +1532,22 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
     /**
      * List Conference Recordings
      
-     * @param callId Show only Recordings made during the Call with this ID.
      * @param conferenceId Show only Recordings made during the conference with this ID.
+     * @param callId Show only Recordings made during the Call with this ID.
      * @param dateCreated Only show Recordings created on this date, formatted as *YYYY-MM-DD*.
      */
-    public async listConferenceRecordings(callId?: string, conferenceId?: string, dateCreated?: string, _options?: Configuration): Promise<RequestContext> {
+    public async listConferenceRecordings(conferenceId: string, callId?: string, dateCreated?: string, _options?: Configuration): Promise<RequestContext> {
         const _config = _options || this.configuration;
         const { accountId } = this.configuration
         
+        // verify required parameter 'conferenceId' is not null or undefined
+        if (conferenceId === null || conferenceId === undefined) {
+            throw new RequiredError("DefaultApi", "listConferenceRecordings", "conferenceId");
+        }
         // Path Params
         const localVarPath = '/Accounts/{accountId}/Conferences/{conferenceId}/Recordings'
-            .replace('{' + 'accountId' + '}', encodeURIComponent(String(accountId)));
+            .replace('{' + 'accountId' + '}', encodeURIComponent(String(accountId)))
+            .replace('{' + 'conferenceId' + '}', encodeURIComponent(String(conferenceId)));
 
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
@@ -1550,10 +1555,6 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         // Query Params
         if (callId !== undefined) {
             requestContext.setQueryParam("callId", ObjectSerializer.serialize(callId, "string", ""));
-        }
-        // Query Params
-        if (conferenceId !== undefined) {
-            requestContext.setQueryParam("conferenceId", ObjectSerializer.serialize(conferenceId, "string", ""));
         }
         // Query Params
         if (dateCreated !== undefined) {
@@ -1981,7 +1982,7 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
 
     /**
      * Make a JWT for WebRTC calling
-      
+     
      * @param createWebRTCToken Information needed to craft a JWT compatible with the platforms WebRTC APIs
      */
     public async makeAWebrtcJwt(createWebRTCToken: CreateWebRTCToken, _options?: Configuration): Promise<RequestContext> {

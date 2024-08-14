@@ -3,17 +3,12 @@ import { describe, expect, it } from "@jest/globals";
     
 describe('Park', () => {
     let model: freeclimb.Park = new freeclimb.Park({
+       
         waitUrl: "https://123.abc",
         actionUrl: "https://123.abc",
         notificationUrl: "test_notificationUrl",
     })
-    describe(".command", () => {
-        it('resolves to particular value on initialization', () => {
-            const value = "test_command"
-            model.command = value
-            expect(model.command).toBe(value)
-        })
-    })
+
     describe(".waitUrl", () => {
         it('resolves to particular value on initialization', () => {
             const value = "https://123.abc"
