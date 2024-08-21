@@ -9,6 +9,18 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 None
 
+<a name="3.6.2"></a>
+
+## [3.6.2] - 2024-07-31
+
+### Removed
+
+- Set import from all node model files
+
+### Add
+
+- Model instance type tests
+
 <a name="3.6.1"></a>
 
 ## [3.6.1] - 2024-07-31
