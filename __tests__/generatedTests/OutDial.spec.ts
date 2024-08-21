@@ -16,6 +16,11 @@ describe('OutDial', () => {
         timeout: 1,
         privacyMode: true,
     })
+describe("OutDial class test", () => {
+     it('resolves to the class type upon initialization', () => {
+        expect(model).toBeInstanceOf(freeclimb.OutDial)
+     })
+})
 
     describe(".actionUrl", () => {
         it('resolves to particular value on initialization', () => {

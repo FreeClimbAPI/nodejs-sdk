@@ -5,6 +5,11 @@ describe('QueueListAllOf', () => {
     let model: freeclimb.QueueListAllOf = new freeclimb.QueueListAllOf({
         queues: [],
     })
+describe("QueueListAllOf class test", () => {
+     it('resolves to the class type upon initialization', () => {
+        expect(model).toBeInstanceOf(freeclimb.QueueListAllOf)
+     })
+})
     describe(".queues", () => {
         it('resolves to particular value on initialization', () => {
 

@@ -11,6 +11,11 @@ describe('ApplicationRequest', () => {
         smsUrl: "test_smsUrl",
         smsFallbackUrl: "test_smsFallbackUrl",
     })
+describe("ApplicationRequest class test", () => {
+     it('resolves to the class type upon initialization', () => {
+        expect(model).toBeInstanceOf(freeclimb.ApplicationRequest)
+     })
+})
     describe(".alias", () => {
         it('resolves to particular value on initialization', () => {
             const value = "test_alias"

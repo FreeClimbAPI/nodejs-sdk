@@ -8,6 +8,11 @@ describe('SmsAllOf', () => {
         text: "test_text",
         notificationUrl: "test_notificationUrl",
     })
+describe("SmsAllOf class test", () => {
+     it('resolves to the class type upon initialization', () => {
+        expect(model).toBeInstanceOf(freeclimb.SmsAllOf)
+     })
+})
     describe(".to", () => {
         it('resolves to particular value on initialization', () => {
             const value = "test_to"

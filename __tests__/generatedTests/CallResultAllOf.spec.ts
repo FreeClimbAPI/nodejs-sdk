@@ -22,6 +22,11 @@ describe('CallResultAllOf', () => {
         answeredBy: freeclimb.AnsweredBy.HUMAN,
         subresourceUris: {},
     })
+describe("CallResultAllOf class test", () => {
+     it('resolves to the class type upon initialization', () => {
+        expect(model).toBeInstanceOf(freeclimb.CallResultAllOf)
+     })
+})
     describe(".callId", () => {
         it('resolves to particular value on initialization', () => {
             const value = "test_callId"

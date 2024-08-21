@@ -11,6 +11,11 @@ describe('QueueResultAllOf', () => {
         averageQueueRemovalTime: 1,
         subresourceUris: {},
     })
+describe("QueueResultAllOf class test", () => {
+     it('resolves to the class type upon initialization', () => {
+        expect(model).toBeInstanceOf(freeclimb.QueueResultAllOf)
+     })
+})
     describe(".accountId", () => {
         it('resolves to particular value on initialization', () => {
             const value = "test_accountId"

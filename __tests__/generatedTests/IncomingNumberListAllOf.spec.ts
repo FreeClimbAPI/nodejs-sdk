@@ -5,6 +5,11 @@ describe('IncomingNumberListAllOf', () => {
     let model: freeclimb.IncomingNumberListAllOf = new freeclimb.IncomingNumberListAllOf({
         incomingPhoneNumbers: [],
     })
+describe("IncomingNumberListAllOf class test", () => {
+     it('resolves to the class type upon initialization', () => {
+        expect(model).toBeInstanceOf(freeclimb.IncomingNumberListAllOf)
+     })
+})
     describe(".incomingPhoneNumbers", () => {
         it('resolves to particular value on initialization', () => {
 

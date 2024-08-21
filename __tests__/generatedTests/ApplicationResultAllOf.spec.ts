@@ -13,6 +13,11 @@ describe('ApplicationResultAllOf', () => {
         smsUrl: "test_smsUrl",
         smsFallbackUrl: "test_smsFallbackUrl",
     })
+describe("ApplicationResultAllOf class test", () => {
+     it('resolves to the class type upon initialization', () => {
+        expect(model).toBeInstanceOf(freeclimb.ApplicationResultAllOf)
+     })
+})
     describe(".accountId", () => {
         it('resolves to particular value on initialization', () => {
             const value = "test_accountId"

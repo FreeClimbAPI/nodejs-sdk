@@ -6,6 +6,11 @@ describe('Redirect', () => {
        
         actionUrl: "https://123.abc",
     })
+describe("Redirect class test", () => {
+     it('resolves to the class type upon initialization', () => {
+        expect(model).toBeInstanceOf(freeclimb.Redirect)
+     })
+})
 
     describe(".actionUrl", () => {
         it('resolves to particular value on initialization', () => {

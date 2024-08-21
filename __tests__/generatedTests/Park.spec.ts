@@ -8,6 +8,11 @@ describe('Park', () => {
         actionUrl: "https://123.abc",
         notificationUrl: "test_notificationUrl",
     })
+describe("Park class test", () => {
+     it('resolves to the class type upon initialization', () => {
+        expect(model).toBeInstanceOf(freeclimb.Park)
+     })
+})
 
     describe(".waitUrl", () => {
         it('resolves to particular value on initialization', () => {

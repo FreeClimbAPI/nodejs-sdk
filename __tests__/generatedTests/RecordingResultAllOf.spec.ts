@@ -9,6 +9,11 @@ describe('RecordingResultAllOf', () => {
         durationSec: 1,
         conferenceId: "test_conferenceId",
     })
+describe("RecordingResultAllOf class test", () => {
+     it('resolves to the class type upon initialization', () => {
+        expect(model).toBeInstanceOf(freeclimb.RecordingResultAllOf)
+     })
+})
     describe(".recordingId", () => {
         it('resolves to particular value on initialization', () => {
             const value = "test_recordingId"

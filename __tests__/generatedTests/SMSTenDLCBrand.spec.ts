@@ -35,6 +35,11 @@ describe('SMSTenDLCBrand', () => {
         identityStatus: freeclimb.SMSTenDLCBrandIdentityStatusEnum.SELF_DECLARED,
         createDate: new Date('December 17, 1995 03:24:00'),
     })
+describe("SMSTenDLCBrand class test", () => {
+     it('resolves to the class type upon initialization', () => {
+        expect(model).toBeInstanceOf(freeclimb.SMSTenDLCBrand)
+     })
+})
     describe(".accountId", () => {
         it('resolves to particular value on initialization', () => {
             const value = "test_accountId"

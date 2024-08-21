@@ -5,6 +5,11 @@ describe('CallListAllOf', () => {
     let model: freeclimb.CallListAllOf = new freeclimb.CallListAllOf({
         calls: [],
     })
+describe("CallListAllOf class test", () => {
+     it('resolves to the class type upon initialization', () => {
+        expect(model).toBeInstanceOf(freeclimb.CallListAllOf)
+     })
+})
     describe(".calls", () => {
         it('resolves to particular value on initialization', () => {
 

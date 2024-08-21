@@ -10,6 +10,11 @@ describe('ConferenceParticipantResultAllOf', () => {
         listen: true,
         startConfOnEnter: true,
     })
+describe("ConferenceParticipantResultAllOf class test", () => {
+     it('resolves to the class type upon initialization', () => {
+        expect(model).toBeInstanceOf(freeclimb.ConferenceParticipantResultAllOf)
+     })
+})
     describe(".accountId", () => {
         it('resolves to particular value on initialization', () => {
             const value = "test_accountId"

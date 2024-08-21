@@ -12,6 +12,11 @@ describe('QueueList', () => {
         nextPageUri: "test_nextPageUri",
         queues: [],
     })
+describe("QueueList class test", () => {
+     it('resolves to the class type upon initialization', () => {
+        expect(model).toBeInstanceOf(freeclimb.QueueList)
+     })
+})
     describe(".total", () => {
         it('resolves to particular value on initialization', () => {
             const value = 1

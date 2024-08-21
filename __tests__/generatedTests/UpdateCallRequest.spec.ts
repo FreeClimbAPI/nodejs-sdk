@@ -6,6 +6,11 @@ describe('UpdateCallRequest', () => {
 
         status: freeclimb.UpdateCallRequestStatus.CANCELED,
     })
+describe("UpdateCallRequest class test", () => {
+     it('resolves to the class type upon initialization', () => {
+        expect(model).toBeInstanceOf(freeclimb.UpdateCallRequest)
+     })
+})
     describe(".status", () => {
         it('resolves to particular value on initialization', () => {
 

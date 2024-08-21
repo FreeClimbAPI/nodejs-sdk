@@ -40,6 +40,11 @@ describe('SMSTenDLCCampaign', () => {
         mock: true,
         nextRenewalOrExpirationDate: "test_nextRenewalOrExpirationDate",
     })
+describe("SMSTenDLCCampaign class test", () => {
+     it('resolves to the class type upon initialization', () => {
+        expect(model).toBeInstanceOf(freeclimb.SMSTenDLCCampaign)
+     })
+})
     describe(".accountId", () => {
         it('resolves to particular value on initialization', () => {
             const value = "test_accountId"

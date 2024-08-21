@@ -8,6 +8,11 @@ describe('EnqueueAllOf', () => {
         queueId: "test_queueId",
         waitUrl: "test_waitUrl",
     })
+describe("EnqueueAllOf class test", () => {
+     it('resolves to the class type upon initialization', () => {
+        expect(model).toBeInstanceOf(freeclimb.EnqueueAllOf)
+     })
+})
     describe(".actionUrl", () => {
         it('resolves to particular value on initialization', () => {
             const value = "https://123.abc"

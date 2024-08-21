@@ -26,6 +26,11 @@ describe('CallResult', () => {
         answeredBy: freeclimb.AnsweredBy.HUMAN,
         subresourceUris: {},
     })
+describe("CallResult class test", () => {
+     it('resolves to the class type upon initialization', () => {
+        expect(model).toBeInstanceOf(freeclimb.CallResult)
+     })
+})
     describe(".uri", () => {
         it('resolves to particular value on initialization', () => {
             const value = "test_uri"

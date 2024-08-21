@@ -5,5 +5,10 @@ describe('StartRecordCall', () => {
     let model: freeclimb.StartRecordCall = new freeclimb.StartRecordCall({
        
     })
+describe("StartRecordCall class test", () => {
+     it('resolves to the class type upon initialization', () => {
+        expect(model).toBeInstanceOf(freeclimb.StartRecordCall)
+     })
+})
 
 })

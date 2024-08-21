@@ -11,6 +11,11 @@ describe('RecordUtteranceAllOf', () => {
         autoStart: true,
         privacyMode: true,
     })
+describe("RecordUtteranceAllOf class test", () => {
+     it('resolves to the class type upon initialization', () => {
+        expect(model).toBeInstanceOf(freeclimb.RecordUtteranceAllOf)
+     })
+})
     describe(".actionUrl", () => {
         it('resolves to particular value on initialization', () => {
             const value = "https://123.abc"

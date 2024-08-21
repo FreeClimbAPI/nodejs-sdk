@@ -15,6 +15,11 @@ describe('OutDialAllOf', () => {
         timeout: 1,
         privacyMode: true,
     })
+describe("OutDialAllOf class test", () => {
+     it('resolves to the class type upon initialization', () => {
+        expect(model).toBeInstanceOf(freeclimb.OutDialAllOf)
+     })
+})
     describe(".actionUrl", () => {
         it('resolves to particular value on initialization', () => {
             const value = "https://123.abc"

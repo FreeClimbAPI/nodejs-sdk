@@ -6,6 +6,11 @@ describe('QueueRequest', () => {
         alias: "test_alias",
         maxSize: 1,
     })
+describe("QueueRequest class test", () => {
+     it('resolves to the class type upon initialization', () => {
+        expect(model).toBeInstanceOf(freeclimb.QueueRequest)
+     })
+})
     describe(".alias", () => {
         it('resolves to particular value on initialization', () => {
             const value = "test_alias"

@@ -6,6 +6,11 @@ describe('Pause', () => {
        
         length: 1,
     })
+describe("Pause class test", () => {
+     it('resolves to the class type upon initialization', () => {
+        expect(model).toBeInstanceOf(freeclimb.Pause)
+     })
+})
 
     describe(".length", () => {
         it('resolves to particular value on initialization', () => {

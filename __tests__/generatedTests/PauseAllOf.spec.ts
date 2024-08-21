@@ -5,6 +5,11 @@ describe('PauseAllOf', () => {
     let model: freeclimb.PauseAllOf = new freeclimb.PauseAllOf({
         length: 1,
     })
+describe("PauseAllOf class test", () => {
+     it('resolves to the class type upon initialization', () => {
+        expect(model).toBeInstanceOf(freeclimb.PauseAllOf)
+     })
+})
     describe(".length", () => {
         it('resolves to particular value on initialization', () => {
             const value = 1

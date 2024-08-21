@@ -11,6 +11,11 @@ describe('SMSTollFreeCampaign', () => {
         dateUpdated: "test_dateUpdated",
         revision: 1,
     })
+describe("SMSTollFreeCampaign class test", () => {
+     it('resolves to the class type upon initialization', () => {
+        expect(model).toBeInstanceOf(freeclimb.SMSTollFreeCampaign)
+     })
+})
     describe(".accountId", () => {
         it('resolves to particular value on initialization', () => {
             const value = "test_accountId"
