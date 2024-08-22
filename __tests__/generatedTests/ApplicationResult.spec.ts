@@ -17,11 +17,11 @@ describe('ApplicationResult', () => {
         smsUrl: "test_smsUrl",
         smsFallbackUrl: "test_smsFallbackUrl",
     })
-describe("ApplicationResult class test", () => {
-     it('resolves to the class type upon initialization', () => {
-        expect(model).toBeInstanceOf(freeclimb.ApplicationResult)
-     })
-})
+    describe("ApplicationResult class test", () => {
+        it('resolves to the class type upon initialization', () => {
+           expect(model).toBeInstanceOf(freeclimb.ApplicationResult)
+        })
+    })
     describe(".uri", () => {
         it('resolves to particular value on initialization', () => {
             const value = "test_uri"

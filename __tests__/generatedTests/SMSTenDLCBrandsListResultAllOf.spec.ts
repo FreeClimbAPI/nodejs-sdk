@@ -5,11 +5,11 @@ describe('SMSTenDLCBrandsListResultAllOf', () => {
     let model: freeclimb.SMSTenDLCBrandsListResultAllOf = new freeclimb.SMSTenDLCBrandsListResultAllOf({
         brands: [],
     })
-describe("SMSTenDLCBrandsListResultAllOf class test", () => {
-     it('resolves to the class type upon initialization', () => {
-        expect(model).toBeInstanceOf(freeclimb.SMSTenDLCBrandsListResultAllOf)
-     })
-})
+    describe("SMSTenDLCBrandsListResultAllOf class test", () => {
+        it('resolves to the class type upon initialization', () => {
+           expect(model).toBeInstanceOf(freeclimb.SMSTenDLCBrandsListResultAllOf)
+        })
+    })
     describe(".brands", () => {
         it('resolves to particular value on initialization', () => {
 

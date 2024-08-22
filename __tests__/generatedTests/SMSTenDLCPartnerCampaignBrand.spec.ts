@@ -15,11 +15,11 @@ describe('SMSTenDLCPartnerCampaignBrand', () => {
         optionalAttributes: {},
         evpVettingScore: 1,
     })
-describe("SMSTenDLCPartnerCampaignBrand class test", () => {
-     it('resolves to the class type upon initialization', () => {
-        expect(model).toBeInstanceOf(freeclimb.SMSTenDLCPartnerCampaignBrand)
-     })
-})
+    describe("SMSTenDLCPartnerCampaignBrand class test", () => {
+        it('resolves to the class type upon initialization', () => {
+           expect(model).toBeInstanceOf(freeclimb.SMSTenDLCPartnerCampaignBrand)
+        })
+    })
     describe(".accountId", () => {
         it('resolves to particular value on initialization', () => {
             const value = "test_accountId"

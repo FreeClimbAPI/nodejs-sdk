@@ -7,11 +7,11 @@ describe('IncomingNumberRequest', () => {
         alias: "test_alias",
         campaignId: "test_campaignId",
     })
-describe("IncomingNumberRequest class test", () => {
-     it('resolves to the class type upon initialization', () => {
-        expect(model).toBeInstanceOf(freeclimb.IncomingNumberRequest)
-     })
-})
+    describe("IncomingNumberRequest class test", () => {
+        it('resolves to the class type upon initialization', () => {
+           expect(model).toBeInstanceOf(freeclimb.IncomingNumberRequest)
+        })
+    })
     describe(".applicationId", () => {
         it('resolves to particular value on initialization', () => {
             const value = "test_applicationId"

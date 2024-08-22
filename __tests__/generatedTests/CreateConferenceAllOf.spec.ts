@@ -11,11 +11,11 @@ describe('CreateConferenceAllOf', () => {
         statusCallbackUrl: "test_statusCallbackUrl",
         waitUrl: "test_waitUrl",
     })
-describe("CreateConferenceAllOf class test", () => {
-     it('resolves to the class type upon initialization', () => {
-        expect(model).toBeInstanceOf(freeclimb.CreateConferenceAllOf)
-     })
-})
+    describe("CreateConferenceAllOf class test", () => {
+        it('resolves to the class type upon initialization', () => {
+           expect(model).toBeInstanceOf(freeclimb.CreateConferenceAllOf)
+        })
+    })
     describe(".actionUrl", () => {
         it('resolves to particular value on initialization', () => {
             const value = "https://123.abc"

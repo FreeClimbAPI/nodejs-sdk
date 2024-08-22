@@ -6,11 +6,11 @@ describe('SetTalk', () => {
        
         talk: true,
     })
-describe("SetTalk class test", () => {
-     it('resolves to the class type upon initialization', () => {
-        expect(model).toBeInstanceOf(freeclimb.SetTalk)
-     })
-})
+    describe("SetTalk class test", () => {
+        it('resolves to the class type upon initialization', () => {
+           expect(model).toBeInstanceOf(freeclimb.SetTalk)
+        })
+    })
 
     describe(".talk", () => {
         it('resolves to particular value on initialization', () => {

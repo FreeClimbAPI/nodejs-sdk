@@ -7,11 +7,11 @@ describe('PlayAllOf', () => {
         loop: 1,
         privacyMode: true,
     })
-describe("PlayAllOf class test", () => {
-     it('resolves to the class type upon initialization', () => {
-        expect(model).toBeInstanceOf(freeclimb.PlayAllOf)
-     })
-})
+    describe("PlayAllOf class test", () => {
+        it('resolves to the class type upon initialization', () => {
+           expect(model).toBeInstanceOf(freeclimb.PlayAllOf)
+        })
+    })
     describe(".file", () => {
         it('resolves to particular value on initialization', () => {
             const value = "test_file"

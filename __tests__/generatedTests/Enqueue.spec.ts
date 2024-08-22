@@ -9,11 +9,11 @@ describe('Enqueue', () => {
         queueId: "test_queueId",
         waitUrl: "test_waitUrl",
     })
-describe("Enqueue class test", () => {
-     it('resolves to the class type upon initialization', () => {
-        expect(model).toBeInstanceOf(freeclimb.Enqueue)
-     })
-})
+    describe("Enqueue class test", () => {
+        it('resolves to the class type upon initialization', () => {
+           expect(model).toBeInstanceOf(freeclimb.Enqueue)
+        })
+    })
 
     describe(".actionUrl", () => {
         it('resolves to particular value on initialization', () => {

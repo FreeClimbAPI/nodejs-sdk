@@ -6,11 +6,11 @@ describe('Hangup', () => {
        
         reason: "test_reason",
     })
-describe("Hangup class test", () => {
-     it('resolves to the class type upon initialization', () => {
-        expect(model).toBeInstanceOf(freeclimb.Hangup)
-     })
-})
+    describe("Hangup class test", () => {
+        it('resolves to the class type upon initialization', () => {
+           expect(model).toBeInstanceOf(freeclimb.Hangup)
+        })
+    })
 
     describe(".reason", () => {
         it('resolves to particular value on initialization', () => {

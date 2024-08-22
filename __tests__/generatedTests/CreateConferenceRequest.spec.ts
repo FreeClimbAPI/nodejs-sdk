@@ -10,11 +10,11 @@ describe('CreateConferenceRequest', () => {
         waitUrl: "test_waitUrl",
         statusCallbackUrl: "test_statusCallbackUrl",
     })
-describe("CreateConferenceRequest class test", () => {
-     it('resolves to the class type upon initialization', () => {
-        expect(model).toBeInstanceOf(freeclimb.CreateConferenceRequest)
-     })
-})
+    describe("CreateConferenceRequest class test", () => {
+        it('resolves to the class type upon initialization', () => {
+           expect(model).toBeInstanceOf(freeclimb.CreateConferenceRequest)
+        })
+    })
     describe(".alias", () => {
         it('resolves to particular value on initialization', () => {
             const value = "test_alias"

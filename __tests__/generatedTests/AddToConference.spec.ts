@@ -14,11 +14,11 @@ describe('AddToConference', () => {
         startConfOnEnter: true,
         talk: true,
     })
-describe("AddToConference class test", () => {
-     it('resolves to the class type upon initialization', () => {
-        expect(model).toBeInstanceOf(freeclimb.AddToConference)
-     })
-})
+    describe("AddToConference class test", () => {
+        it('resolves to the class type upon initialization', () => {
+           expect(model).toBeInstanceOf(freeclimb.AddToConference)
+        })
+    })
 
     describe(".allowCallControl", () => {
         it('resolves to particular value on initialization', () => {

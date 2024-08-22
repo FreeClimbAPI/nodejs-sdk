@@ -31,11 +31,11 @@ describe('IncomingNumberResult', () => {
                 campaignId: null as any,
         }),
     })
-describe("IncomingNumberResult class test", () => {
-     it('resolves to the class type upon initialization', () => {
-        expect(model).toBeInstanceOf(freeclimb.IncomingNumberResult)
-     })
-})
+    describe("IncomingNumberResult class test", () => {
+        it('resolves to the class type upon initialization', () => {
+           expect(model).toBeInstanceOf(freeclimb.IncomingNumberResult)
+        })
+    })
     describe(".uri", () => {
         it('resolves to particular value on initialization', () => {
             const value = "test_uri"

@@ -5,11 +5,11 @@ describe('QueueMemberListAllOf', () => {
     let model: freeclimb.QueueMemberListAllOf = new freeclimb.QueueMemberListAllOf({
         queueMembers: [],
     })
-describe("QueueMemberListAllOf class test", () => {
-     it('resolves to the class type upon initialization', () => {
-        expect(model).toBeInstanceOf(freeclimb.QueueMemberListAllOf)
-     })
-})
+    describe("QueueMemberListAllOf class test", () => {
+        it('resolves to the class type upon initialization', () => {
+           expect(model).toBeInstanceOf(freeclimb.QueueMemberListAllOf)
+        })
+    })
     describe(".queueMembers", () => {
         it('resolves to particular value on initialization', () => {
 

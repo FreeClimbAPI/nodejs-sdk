@@ -7,11 +7,11 @@ describe('ParkAllOf', () => {
         actionUrl: "https://123.abc",
         notificationUrl: "test_notificationUrl",
     })
-describe("ParkAllOf class test", () => {
-     it('resolves to the class type upon initialization', () => {
-        expect(model).toBeInstanceOf(freeclimb.ParkAllOf)
-     })
-})
+    describe("ParkAllOf class test", () => {
+        it('resolves to the class type upon initialization', () => {
+           expect(model).toBeInstanceOf(freeclimb.ParkAllOf)
+        })
+    })
     describe(".waitUrl", () => {
         it('resolves to particular value on initialization', () => {
             const value = "https://123.abc"

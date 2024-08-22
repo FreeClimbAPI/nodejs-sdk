@@ -5,11 +5,11 @@ describe('SMSTenDLCPartnerCampaignsListResultAllOf', () => {
     let model: freeclimb.SMSTenDLCPartnerCampaignsListResultAllOf = new freeclimb.SMSTenDLCPartnerCampaignsListResultAllOf({
         partnerCampaigns: [],
     })
-describe("SMSTenDLCPartnerCampaignsListResultAllOf class test", () => {
-     it('resolves to the class type upon initialization', () => {
-        expect(model).toBeInstanceOf(freeclimb.SMSTenDLCPartnerCampaignsListResultAllOf)
-     })
-})
+    describe("SMSTenDLCPartnerCampaignsListResultAllOf class test", () => {
+        it('resolves to the class type upon initialization', () => {
+           expect(model).toBeInstanceOf(freeclimb.SMSTenDLCPartnerCampaignsListResultAllOf)
+        })
+    })
     describe(".partnerCampaigns", () => {
         it('resolves to particular value on initialization', () => {
 

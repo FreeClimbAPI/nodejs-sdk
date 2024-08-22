@@ -10,11 +10,11 @@ describe('TranscribeUtteranceAllOf', () => {
         privacyForRecording: true,
         prompts: [],
     })
-describe("TranscribeUtteranceAllOf class test", () => {
-     it('resolves to the class type upon initialization', () => {
-        expect(model).toBeInstanceOf(freeclimb.TranscribeUtteranceAllOf)
-     })
-})
+    describe("TranscribeUtteranceAllOf class test", () => {
+        it('resolves to the class type upon initialization', () => {
+           expect(model).toBeInstanceOf(freeclimb.TranscribeUtteranceAllOf)
+        })
+    })
     describe(".actionUrl", () => {
         it('resolves to particular value on initialization', () => {
             const value = "test_actionUrl"

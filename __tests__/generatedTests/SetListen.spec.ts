@@ -6,11 +6,11 @@ describe('SetListen', () => {
        
         listen: true,
     })
-describe("SetListen class test", () => {
-     it('resolves to the class type upon initialization', () => {
-        expect(model).toBeInstanceOf(freeclimb.SetListen)
-     })
-})
+    describe("SetListen class test", () => {
+        it('resolves to the class type upon initialization', () => {
+           expect(model).toBeInstanceOf(freeclimb.SetListen)
+        })
+    })
 
     describe(".listen", () => {
         it('resolves to particular value on initialization', () => {

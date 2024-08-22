@@ -8,11 +8,11 @@ describe('SendDigits', () => {
         pauseMs: 1,
         privacyMode: true,
     })
-describe("SendDigits class test", () => {
-     it('resolves to the class type upon initialization', () => {
-        expect(model).toBeInstanceOf(freeclimb.SendDigits)
-     })
-})
+    describe("SendDigits class test", () => {
+        it('resolves to the class type upon initialization', () => {
+           expect(model).toBeInstanceOf(freeclimb.SendDigits)
+        })
+    })
 
     describe(".digits", () => {
         it('resolves to particular value on initialization', () => {

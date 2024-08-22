@@ -12,11 +12,11 @@ describe('RecordUtterance', () => {
         autoStart: true,
         privacyMode: true,
     })
-describe("RecordUtterance class test", () => {
-     it('resolves to the class type upon initialization', () => {
-        expect(model).toBeInstanceOf(freeclimb.RecordUtterance)
-     })
-})
+    describe("RecordUtterance class test", () => {
+        it('resolves to the class type upon initialization', () => {
+           expect(model).toBeInstanceOf(freeclimb.RecordUtterance)
+        })
+    })
 
     describe(".actionUrl", () => {
         it('resolves to particular value on initialization', () => {

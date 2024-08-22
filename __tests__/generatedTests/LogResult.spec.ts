@@ -12,11 +12,11 @@ describe('LogResult', () => {
         message: "test_message",
         metadata: {},
     })
-describe("LogResult class test", () => {
-     it('resolves to the class type upon initialization', () => {
-        expect(model).toBeInstanceOf(freeclimb.LogResult)
-     })
-})
+    describe("LogResult class test", () => {
+        it('resolves to the class type upon initialization', () => {
+           expect(model).toBeInstanceOf(freeclimb.LogResult)
+        })
+    })
     describe(".timestamp", () => {
         it('resolves to particular value on initialization', () => {
             const value = 1

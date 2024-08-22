@@ -12,11 +12,11 @@ describe('RecordingList', () => {
         nextPageUri: "test_nextPageUri",
         recordings: [],
     })
-describe("RecordingList class test", () => {
-     it('resolves to the class type upon initialization', () => {
-        expect(model).toBeInstanceOf(freeclimb.RecordingList)
-     })
-})
+    describe("RecordingList class test", () => {
+        it('resolves to the class type upon initialization', () => {
+           expect(model).toBeInstanceOf(freeclimb.RecordingList)
+        })
+    })
     describe(".total", () => {
         it('resolves to particular value on initialization', () => {
             const value = 1

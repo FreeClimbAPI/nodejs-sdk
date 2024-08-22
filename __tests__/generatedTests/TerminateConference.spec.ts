@@ -5,10 +5,10 @@ describe('TerminateConference', () => {
     let model: freeclimb.TerminateConference = new freeclimb.TerminateConference({
        
     })
-describe("TerminateConference class test", () => {
-     it('resolves to the class type upon initialization', () => {
-        expect(model).toBeInstanceOf(freeclimb.TerminateConference)
-     })
-})
+    describe("TerminateConference class test", () => {
+        it('resolves to the class type upon initialization', () => {
+           expect(model).toBeInstanceOf(freeclimb.TerminateConference)
+        })
+    })
 
 })
