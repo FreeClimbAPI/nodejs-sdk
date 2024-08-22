@@ -27,6 +27,11 @@ describe('IncomingNumberResultAllOf', () => {
                 campaignId: null as any,
         }),
     })
+    describe("IncomingNumberResultAllOf class test", () => {
+        it('resolves to the class type upon initialization', () => {
+           expect(model).toBeInstanceOf(freeclimb.IncomingNumberResultAllOf)
+        })
+    })
     describe(".capabilities", () => {
         it('resolves to particular value on initialization', () => {
 

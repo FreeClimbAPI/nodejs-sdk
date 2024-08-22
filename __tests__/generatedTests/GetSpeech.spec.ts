@@ -19,6 +19,11 @@ describe('GetSpeech', () => {
         speechIncompleteTimeoutMs: 1,
         privacyMode: true,
     })
+    describe("GetSpeech class test", () => {
+        it('resolves to the class type upon initialization', () => {
+           expect(model).toBeInstanceOf(freeclimb.GetSpeech)
+        })
+    })
 
     describe(".actionUrl", () => {
         it('resolves to particular value on initialization', () => {

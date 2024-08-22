@@ -7,6 +7,11 @@ describe('SendDigitsAllOf', () => {
         pauseMs: 1,
         privacyMode: true,
     })
+    describe("SendDigitsAllOf class test", () => {
+        it('resolves to the class type upon initialization', () => {
+           expect(model).toBeInstanceOf(freeclimb.SendDigitsAllOf)
+        })
+    })
     describe(".digits", () => {
         it('resolves to particular value on initialization', () => {
             const value = "test_digits"

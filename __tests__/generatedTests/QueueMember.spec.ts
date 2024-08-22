@@ -9,6 +9,11 @@ describe('QueueMember', () => {
         position: 1,
         dateEnqueued: "test_dateEnqueued",
     })
+    describe("QueueMember class test", () => {
+        it('resolves to the class type upon initialization', () => {
+           expect(model).toBeInstanceOf(freeclimb.QueueMember)
+        })
+    })
     describe(".uri", () => {
         it('resolves to particular value on initialization', () => {
             const value = "test_uri"

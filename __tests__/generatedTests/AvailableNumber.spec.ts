@@ -18,6 +18,11 @@ describe('AvailableNumber', () => {
         region: "test_region",
         country: "test_country",
     })
+    describe("AvailableNumber class test", () => {
+        it('resolves to the class type upon initialization', () => {
+           expect(model).toBeInstanceOf(freeclimb.AvailableNumber)
+        })
+    })
     describe(".capabilities", () => {
         it('resolves to particular value on initialization', () => {
 

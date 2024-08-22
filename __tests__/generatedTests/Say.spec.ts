@@ -9,6 +9,11 @@ describe('Say', () => {
         loop: 1,
         privacyMode: true,
     })
+    describe("Say class test", () => {
+        it('resolves to the class type upon initialization', () => {
+           expect(model).toBeInstanceOf(freeclimb.Say)
+        })
+    })
 
     describe(".text", () => {
         it('resolves to particular value on initialization', () => {

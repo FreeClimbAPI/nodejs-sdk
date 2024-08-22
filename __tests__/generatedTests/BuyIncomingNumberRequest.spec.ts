@@ -7,6 +7,11 @@ describe('BuyIncomingNumberRequest', () => {
         alias: "test_alias",
         applicationId: "test_applicationId",
     })
+    describe("BuyIncomingNumberRequest class test", () => {
+        it('resolves to the class type upon initialization', () => {
+           expect(model).toBeInstanceOf(freeclimb.BuyIncomingNumberRequest)
+        })
+    })
     describe(".phoneNumber", () => {
         it('resolves to particular value on initialization', () => {
             const value = "test_phoneNumber"

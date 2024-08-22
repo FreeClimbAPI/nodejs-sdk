@@ -9,6 +9,11 @@ describe('Capabilities', () => {
         tenDLC: true,
         shortCode: true,
     })
+    describe("Capabilities class test", () => {
+        it('resolves to the class type upon initialization', () => {
+           expect(model).toBeInstanceOf(freeclimb.Capabilities)
+        })
+    })
     describe(".voice", () => {
         it('resolves to particular value on initialization', () => {
             const value = true

@@ -20,6 +20,11 @@ describe('ConferenceResult', () => {
         statusCallbackUrl: "test_statusCallbackUrl",
         subresourceUris: {},
     })
+    describe("ConferenceResult class test", () => {
+        it('resolves to the class type upon initialization', () => {
+           expect(model).toBeInstanceOf(freeclimb.ConferenceResult)
+        })
+    })
     describe(".uri", () => {
         it('resolves to particular value on initialization', () => {
             const value = "test_uri"

@@ -6,6 +6,11 @@ describe('PlayEarlyMedia', () => {
        
         file: "test_file",
     })
+    describe("PlayEarlyMedia class test", () => {
+        it('resolves to the class type upon initialization', () => {
+           expect(model).toBeInstanceOf(freeclimb.PlayEarlyMedia)
+        })
+    })
 
     describe(".file", () => {
         it('resolves to particular value on initialization', () => {

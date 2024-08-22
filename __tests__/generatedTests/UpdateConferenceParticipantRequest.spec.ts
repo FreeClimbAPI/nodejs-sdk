@@ -6,6 +6,11 @@ describe('UpdateConferenceParticipantRequest', () => {
         talk: true,
         listen: true,
     })
+    describe("UpdateConferenceParticipantRequest class test", () => {
+        it('resolves to the class type upon initialization', () => {
+           expect(model).toBeInstanceOf(freeclimb.UpdateConferenceParticipantRequest)
+        })
+    })
     describe(".talk", () => {
         it('resolves to particular value on initialization', () => {
             const value = true

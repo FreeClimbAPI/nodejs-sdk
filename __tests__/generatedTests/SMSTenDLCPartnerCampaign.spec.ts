@@ -37,6 +37,11 @@ describe('SMSTenDLCPartnerCampaign', () => {
                 phone: null as any,
         }),
     })
+    describe("SMSTenDLCPartnerCampaign class test", () => {
+        it('resolves to the class type upon initialization', () => {
+           expect(model).toBeInstanceOf(freeclimb.SMSTenDLCPartnerCampaign)
+        })
+    })
     describe(".accountId", () => {
         it('resolves to particular value on initialization', () => {
             const value = "test_accountId"

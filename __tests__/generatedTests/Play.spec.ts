@@ -8,6 +8,11 @@ describe('Play', () => {
         loop: 1,
         privacyMode: true,
     })
+    describe("Play class test", () => {
+        it('resolves to the class type upon initialization', () => {
+           expect(model).toBeInstanceOf(freeclimb.Play)
+        })
+    })
 
     describe(".file", () => {
         it('resolves to particular value on initialization', () => {

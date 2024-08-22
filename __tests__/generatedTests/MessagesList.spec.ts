@@ -12,6 +12,11 @@ describe('MessagesList', () => {
         nextPageUri: "test_nextPageUri",
         messages: [],
     })
+    describe("MessagesList class test", () => {
+        it('resolves to the class type upon initialization', () => {
+           expect(model).toBeInstanceOf(freeclimb.MessagesList)
+        })
+    })
     describe(".total", () => {
         it('resolves to particular value on initialization', () => {
             const value = 1

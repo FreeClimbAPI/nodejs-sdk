@@ -9,6 +9,11 @@ describe('Sms', () => {
         text: "test_text",
         notificationUrl: "test_notificationUrl",
     })
+    describe("Sms class test", () => {
+        it('resolves to the class type upon initialization', () => {
+           expect(model).toBeInstanceOf(freeclimb.Sms)
+        })
+    })
 
     describe(".to", () => {
         it('resolves to particular value on initialization', () => {

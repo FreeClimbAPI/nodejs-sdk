@@ -21,6 +21,11 @@ describe('MessageResult', () => {
         segmentCount: 1.0,
         mediaUrls: [],
     })
+    describe("MessageResult class test", () => {
+        it('resolves to the class type upon initialization', () => {
+           expect(model).toBeInstanceOf(freeclimb.MessageResult)
+        })
+    })
     describe(".uri", () => {
         it('resolves to particular value on initialization', () => {
             const value = "test_uri"

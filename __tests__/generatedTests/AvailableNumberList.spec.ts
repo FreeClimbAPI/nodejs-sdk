@@ -12,6 +12,11 @@ describe('AvailableNumberList', () => {
         nextPageUri: "test_nextPageUri",
         availablePhoneNumbers: [],
     })
+    describe("AvailableNumberList class test", () => {
+        it('resolves to the class type upon initialization', () => {
+           expect(model).toBeInstanceOf(freeclimb.AvailableNumberList)
+        })
+    })
     describe(".total", () => {
         it('resolves to particular value on initialization', () => {
             const value = 1

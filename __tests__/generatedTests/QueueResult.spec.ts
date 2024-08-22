@@ -15,6 +15,11 @@ describe('QueueResult', () => {
         averageQueueRemovalTime: 1,
         subresourceUris: {},
     })
+    describe("QueueResult class test", () => {
+        it('resolves to the class type upon initialization', () => {
+           expect(model).toBeInstanceOf(freeclimb.QueueResult)
+        })
+    })
     describe(".uri", () => {
         it('resolves to particular value on initialization', () => {
             const value = "test_uri"

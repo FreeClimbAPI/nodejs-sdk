@@ -13,6 +13,11 @@ describe('AccountResultAllOf', () => {
         status: freeclimb.AccountStatus.CLOSED,
         subresourceUris: {},
     })
+    describe("AccountResultAllOf class test", () => {
+        it('resolves to the class type upon initialization', () => {
+           expect(model).toBeInstanceOf(freeclimb.AccountResultAllOf)
+        })
+    })
     describe(".accountId", () => {
         it('resolves to particular value on initialization', () => {
             const value = "test_accountId"

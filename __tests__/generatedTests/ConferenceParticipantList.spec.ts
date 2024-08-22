@@ -12,6 +12,11 @@ describe('ConferenceParticipantList', () => {
         nextPageUri: "test_nextPageUri",
         participants: [],
     })
+    describe("ConferenceParticipantList class test", () => {
+        it('resolves to the class type upon initialization', () => {
+           expect(model).toBeInstanceOf(freeclimb.ConferenceParticipantList)
+        })
+    })
     describe(".total", () => {
         it('resolves to particular value on initialization', () => {
             const value = 1

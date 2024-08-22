@@ -6,6 +6,11 @@ describe('AccountRequest', () => {
         alias: "test_alias",
         label: "test_label",
     })
+    describe("AccountRequest class test", () => {
+        it('resolves to the class type upon initialization', () => {
+           expect(model).toBeInstanceOf(freeclimb.AccountRequest)
+        })
+    })
     describe(".alias", () => {
         it('resolves to particular value on initialization', () => {
             const value = "test_alias"

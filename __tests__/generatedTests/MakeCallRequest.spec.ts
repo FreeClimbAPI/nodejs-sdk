@@ -14,6 +14,11 @@ describe('MakeCallRequest', () => {
         privacyMode: true,
         callConnectUrl: "test_callConnectUrl",
     })
+    describe("MakeCallRequest class test", () => {
+        it('resolves to the class type upon initialization', () => {
+           expect(model).toBeInstanceOf(freeclimb.MakeCallRequest)
+        })
+    })
     describe(".from", () => {
         it('resolves to particular value on initialization', () => {
             const value = "test_from"

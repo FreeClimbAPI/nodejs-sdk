@@ -8,6 +8,11 @@ describe('SayAllOf', () => {
         loop: 1,
         privacyMode: true,
     })
+    describe("SayAllOf class test", () => {
+        it('resolves to the class type upon initialization', () => {
+           expect(model).toBeInstanceOf(freeclimb.SayAllOf)
+        })
+    })
     describe(".text", () => {
         it('resolves to particular value on initialization', () => {
             const value = "test_text"

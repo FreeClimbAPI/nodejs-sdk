@@ -14,6 +14,11 @@ describe('GetDigits', () => {
         prompts: [],
         privacyMode: true,
     })
+    describe("GetDigits class test", () => {
+        it('resolves to the class type upon initialization', () => {
+           expect(model).toBeInstanceOf(freeclimb.GetDigits)
+        })
+    })
 
     describe(".actionUrl", () => {
         it('resolves to particular value on initialization', () => {

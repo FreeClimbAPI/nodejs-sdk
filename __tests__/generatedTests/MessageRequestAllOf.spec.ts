@@ -9,6 +9,11 @@ describe('MessageRequestAllOf', () => {
         notificationUrl: "test_notificationUrl",
         mediaUrls: [],
     })
+    describe("MessageRequestAllOf class test", () => {
+        it('resolves to the class type upon initialization', () => {
+           expect(model).toBeInstanceOf(freeclimb.MessageRequestAllOf)
+        })
+    })
     describe(".from", () => {
         it('resolves to particular value on initialization', () => {
             const value = "test_from"

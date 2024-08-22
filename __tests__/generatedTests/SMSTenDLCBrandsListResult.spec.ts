@@ -12,6 +12,11 @@ describe('SMSTenDLCBrandsListResult', () => {
         nextPageUri: "test_nextPageUri",
         brands: [],
     })
+    describe("SMSTenDLCBrandsListResult class test", () => {
+        it('resolves to the class type upon initialization', () => {
+           expect(model).toBeInstanceOf(freeclimb.SMSTenDLCBrandsListResult)
+        })
+    })
     describe(".total", () => {
         it('resolves to particular value on initialization', () => {
             const value = 1

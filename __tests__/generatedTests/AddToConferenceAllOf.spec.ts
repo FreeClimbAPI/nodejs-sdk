@@ -13,6 +13,11 @@ describe('AddToConferenceAllOf', () => {
         startConfOnEnter: true,
         talk: true,
     })
+    describe("AddToConferenceAllOf class test", () => {
+        it('resolves to the class type upon initialization', () => {
+           expect(model).toBeInstanceOf(freeclimb.AddToConferenceAllOf)
+        })
+    })
     describe(".allowCallControl", () => {
         it('resolves to particular value on initialization', () => {
             const value = true

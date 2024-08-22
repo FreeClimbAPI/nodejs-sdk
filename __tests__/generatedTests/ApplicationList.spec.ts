@@ -12,6 +12,11 @@ describe('ApplicationList', () => {
         nextPageUri: "test_nextPageUri",
         applications: [],
     })
+    describe("ApplicationList class test", () => {
+        it('resolves to the class type upon initialization', () => {
+           expect(model).toBeInstanceOf(freeclimb.ApplicationList)
+        })
+    })
     describe(".total", () => {
         it('resolves to particular value on initialization', () => {
             const value = 1

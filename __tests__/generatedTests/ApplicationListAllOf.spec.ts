@@ -5,6 +5,11 @@ describe('ApplicationListAllOf', () => {
     let model: freeclimb.ApplicationListAllOf = new freeclimb.ApplicationListAllOf({
         applications: [],
     })
+    describe("ApplicationListAllOf class test", () => {
+        it('resolves to the class type upon initialization', () => {
+           expect(model).toBeInstanceOf(freeclimb.ApplicationListAllOf)
+        })
+    })
     describe(".applications", () => {
         it('resolves to particular value on initialization', () => {
 

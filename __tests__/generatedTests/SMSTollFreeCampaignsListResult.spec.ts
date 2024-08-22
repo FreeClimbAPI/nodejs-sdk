@@ -12,6 +12,11 @@ describe('SMSTollFreeCampaignsListResult', () => {
         nextPageUri: "test_nextPageUri",
         brands: [],
     })
+    describe("SMSTollFreeCampaignsListResult class test", () => {
+        it('resolves to the class type upon initialization', () => {
+           expect(model).toBeInstanceOf(freeclimb.SMSTollFreeCampaignsListResult)
+        })
+    })
     describe(".total", () => {
         it('resolves to particular value on initialization', () => {
             const value = 1

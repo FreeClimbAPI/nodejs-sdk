@@ -8,6 +8,11 @@ describe('MutableResourceModel', () => {
         dateUpdated: "test_dateUpdated",
         revision: 1,
     })
+    describe("MutableResourceModel class test", () => {
+        it('resolves to the class type upon initialization', () => {
+           expect(model).toBeInstanceOf(freeclimb.MutableResourceModel)
+        })
+    })
     describe(".uri", () => {
         it('resolves to particular value on initialization', () => {
             const value = "test_uri"

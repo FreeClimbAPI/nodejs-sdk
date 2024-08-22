@@ -9,6 +9,11 @@ describe('UpdateConferenceRequest', () => {
 
         status: freeclimb.UpdateConferenceRequestStatus.EMPTY,
     })
+    describe("UpdateConferenceRequest class test", () => {
+        it('resolves to the class type upon initialization', () => {
+           expect(model).toBeInstanceOf(freeclimb.UpdateConferenceRequest)
+        })
+    })
     describe(".alias", () => {
         it('resolves to particular value on initialization', () => {
             const value = "test_alias"

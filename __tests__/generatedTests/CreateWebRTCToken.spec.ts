@@ -7,6 +7,11 @@ describe('CreateWebRTCToken', () => {
         _from: "test_from",
         uses: 1,
     })
+    describe("CreateWebRTCToken class test", () => {
+        it('resolves to the class type upon initialization', () => {
+           expect(model).toBeInstanceOf(freeclimb.CreateWebRTCToken)
+        })
+    })
     describe(".to", () => {
         it('resolves to particular value on initialization', () => {
             const value = "test_to"

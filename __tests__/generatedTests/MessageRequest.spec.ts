@@ -13,6 +13,11 @@ describe('MessageRequest', () => {
         notificationUrl: "test_notificationUrl",
         mediaUrls: [],
     })
+    describe("MessageRequest class test", () => {
+        it('resolves to the class type upon initialization', () => {
+           expect(model).toBeInstanceOf(freeclimb.MessageRequest)
+        })
+    })
     describe(".uri", () => {
         it('resolves to particular value on initialization', () => {
             const value = "test_uri"
