@@ -3590,3 +3590,62 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 
+# **getNextPage**
+> PaginationModel<T> getNextPage<T>()
+
+### Example
+
+
+```typescript
+import { freeclimb } from '@freeclimb';
+import * as fs from 'fs';
+
+const configuration = freeclimb.createConfiguration({
+  accountId: 'YOUR_ACCOUND_ID',
+  apiKey: 'YOUR_API_KEY'
+});
+const apiInstance = new freeclimb.DefaultApi(configuration);
+
+let body:freeclimb.DefaultApiListCallRecordingsRequest = {
+
+  // string | String that uniquely identifies this call resource.
+  callId: "callId_example",
+
+  // string | Only show recordings created on the specified date, in the form *YYYY-MM-DD*. (optional)
+  dateCreated: "dateCreated_example",
+
+};
+
+const recordingsResponse = await apiInstance.listCallRecordings(body)
+
+await apiInstance.getNextPage(recordingsResponse).then((data:any) => {
+  console.log('Next page fetched succesfully. Returned data: ' + data);
+}).catch((error:any) => console.error(error));
+```
+
+
+### Parameters
+Name               | Type                     | Description                                    | Notes
+------------------ | ------------------------ | ---------------------------------------------- | ---------------------               
+**responseObject** | [**PaginationModel<T>**] | Response from resource used to fetch next page | defaults to undefined
+
+### Return type
+
+**PaginationModel<T>**
+
+### Authorization
+
+[fc](README.md#fc)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Next page of resource data |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
