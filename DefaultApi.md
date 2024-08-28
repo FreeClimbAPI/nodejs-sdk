@@ -61,6 +61,7 @@ Method | HTTP request | Description
 [**updateAnApplication**](DefaultApi.md#updateAnApplication) | **POST** /Accounts/{accountId}/Applications/{applicationId} | Update an application
 [**updateAnIncomingNumber**](DefaultApi.md#updateAnIncomingNumber) | **POST** /Accounts/{accountId}/IncomingPhoneNumbers/{phoneNumberId} | Update an Incoming Number
 
+[**getNextPage**](DefaultApi.md#getNextPage) | **GET** /Accounts/{accountId}/{nextPageUri} | Get next page of resource data
 
 # **buyAPhoneNumber**
 > IncomingNumberResult buyAPhoneNumber(buyIncomingNumberRequest)
