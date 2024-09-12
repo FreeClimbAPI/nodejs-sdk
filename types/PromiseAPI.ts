@@ -886,6 +886,17 @@ export class PromiseDefaultApi {
     }
 
 
+     /**
+     * Get next page of a resource
+     
+     * @param responseObject Response object supplied by previous request to fetch resource
+     
+     */
+    public getNextPage<T extends PaginationModel>(responseObject: T, _options?: Configuration): Promise<T> {
+        const result = this.api.getNextPage<T>(responseObject, _options);
+        return result.toPromise();
+    }
+
 }
 
 

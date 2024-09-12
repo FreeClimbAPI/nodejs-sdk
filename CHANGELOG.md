@@ -9,6 +9,14 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 None
 
+<a name="3.7.0"></a>
+
+## [3.7.0] - 2024-08-28
+
+### Add
+
+- getNextPage functions to PromiseApi, DefaultApi, and ObservableApi
+
 <a name="3.6.2"></a>
 
 ## [3.6.2] - 2024-07-31

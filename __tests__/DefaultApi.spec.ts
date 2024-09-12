@@ -1,4 +1,4 @@
-import { describe, expect, test } from "@jest/globals";
+import { describe, expect, test, beforeAll } from "@jest/globals";
 import * as freeclimb  from '../index'
 import * as DefaultApi from '../apis/DefaultApi'
 import { AccountRequest, AccountResult, ApplicationList, ApplicationRequest, ApplicationResult, AvailableNumberList, BuyIncomingNumberRequest, CallList, CallResult, ConferenceList, ConferenceParticipantList, ConferenceParticipantResult, ConferenceResult, CreateConferenceRequest, FilterLogsRequest, IncomingNumberList, IncomingNumberRequest, IncomingNumberResult, LogList, MessageResult, MessagesList, QueueList, QueueMember, QueueMemberList, QueueRequest, QueueResult, RecordingList, RecordingResult, ServerConfiguration, UpdateCallRequest, UpdateConferenceRequest } from "../index";
@@ -454,6 +454,43 @@ describe('DefaultAPI', () => {
         const dateCreated = "CX56XX4"
         let data = await apiInstance.listConferenceRecordings(callId, conferenceId, dateCreated)
         expect(data).toBeInstanceOf(RecordingList)
+    });
+
+    test('#getNextPage', async () => {
+        const responseObject: RecordingList = {
+            total: 0,
+            start: 0,
+            end: 0,
+            page: 0,
+            numPages: 0,
+            pageSize: 0,
+            nextPageUri: '/Recordings?cursor=1',
+            recordings: []
+        }
+        const expectedResponseObject: RecordingList = {
+            total: 0,
+            start: 0,
+            end: 0,
+            page: 0,
+            numPages: 0,
+            pageSize: 0,
+            nextPageUri: 'string',
+            recordings: [
+                {
+                    accountId: "string",
+                    callId: "string",
+                    conferenceId: "string",
+                    dateCreated: "string",
+                    dateUpdated: "string",
+                    durationSec: 0,
+                    recordingId: "string",
+                    revision: 0,
+                    uri: "string",
+                }
+            ]
+        }
+        let data = await apiInstance.getNextPage(responseObject)
+        expect(data).toStrictEqual(expectedResponseObject)
     });
 })
 

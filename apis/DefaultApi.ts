@@ -4,7 +4,7 @@ import {Configuration} from '../configuration';
 import {RequestContext, HttpMethod, ResponseContext, HttpFile} from '../http/http';
 import * as FormData from "form-data";
 import { URLSearchParams } from 'url';
-import {ObjectSerializer} from '../models/ObjectSerializer';
+import {ObjectSerializer, PaginationModel} from '../models/ObjectSerializer';
 import {ApiException} from './exception';
 import {canConsumeForm, isCodeInRange} from '../util';
 import {SecurityAuthentication} from '../auth/auth';
@@ -2483,6 +2483,30 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         return requestContext;
     }
 
+
+    public async getNextPage<T extends PaginationModel>(responseObject: T, _options?: Configuration): Promise<RequestContext> {
+        const _config = _options || this.configuration;
+        const { accountId } = this.configuration
+        // Path Params
+        const localVarPath = `/Accounts/{accountId}${responseObject.nextPageUri}`
+            .replace('{' + 'accountId' + '}', encodeURIComponent(String(accountId)));
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+        
+
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["fc"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+        return requestContext;
+    }
 }
 
 export class DefaultApiResponseProcessor {
@@ -4077,4 +4101,24 @@ export class DefaultApiResponseProcessor {
         throw new ApiException<string | Buffer | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
     }
 
+
+    public async getNextPage<T extends PaginationModel>(response: ResponseContext): Promise<T> {
+        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("200", response.httpStatusCode)) {
+            const body: T = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "T", ""
+            ) as T;
+            return body;
+        }
+        // Work around for missing responses in specification, e.g. for petstore.yaml
+        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+            const body: T = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "T", ""
+            ) as T;
+            return body;
+        }
+        throw new ApiException<string | Buffer | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
+    }
 }

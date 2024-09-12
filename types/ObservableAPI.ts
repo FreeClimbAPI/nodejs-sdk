@@ -1673,4 +1673,29 @@ export class ObservableDefaultApi {
             }));
     }
 
+
+    /**
+     * Get next page of a resource
+     
+     * @param responseObject Response object supplied by previous request to fetch resource
+     
+     */
+    public getNextPage<T extends PaginationModel>(responseObject: T, _options?: Configuration): Observable<T> {
+        const requestContextPromise = this.requestFactory.getNextPage<T>(responseObject);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (let middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (let middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getNextPage<T>(rsp)));
+            }));
+    }
 }
