@@ -9,6 +9,14 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 None
 
+<a name="3.7.1"></a>
+
+## [3.7.1] - 2024-09-12
+
+### Fixed
+
+- getNextPage() bug that incorrectly built url 
+
 <a name="3.7.0"></a>
 
 ## [3.7.0] - 2024-08-28
