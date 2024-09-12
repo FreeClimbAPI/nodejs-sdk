@@ -7,10 +7,11 @@ import {AccountStatus, AccountType, CallStatus, MessageDirection, PlayBeep, SMST
 describe('DefaultAPI', () => {
     
     let apiInstance: freeclimb.DefaultApi
+    const accountId = 'YOUR_ACCOUNT_ID'
     beforeAll(() => {
         const configuration = freeclimb.createConfiguration({
             baseServer: new ServerConfiguration<{  }>("http://127.0.0.1:4010", {  }),
-            accountId: 'YOUR_ACCOUNT_ID',
+            accountId: accountId,
             apiKey: 'YOUR_API_KEY'
         });
         apiInstance = new freeclimb.DefaultApi(configuration);
@@ -464,7 +465,7 @@ describe('DefaultAPI', () => {
             page: 0,
             numPages: 0,
             pageSize: 0,
-            nextPageUri: '/Recordings?cursor=1',
+            nextPageUri: `/Accounts/${accountId}/Recordings?cursor=1`,
             recordings: []
         }
         const expectedResponseObject: RecordingList = {
