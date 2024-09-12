@@ -464,7 +464,7 @@ describe('DefaultAPI', () => {
             page: 0,
             numPages: 0,
             pageSize: 0,
-            nextPageUri: '/Recordings?cursor=1',
+            nextPageUri: '/Accounts/YOUR_ACCOUNT_ID/Recordings?cursor=1',
             recordings: []
         }
         const expectedResponseObject: RecordingList = {

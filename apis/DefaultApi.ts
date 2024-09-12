@@ -2486,14 +2486,9 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
 
     public async getNextPage<T extends PaginationModel>(responseObject: T, _options?: Configuration): Promise<RequestContext> {
         const _config = _options || this.configuration;
-        const { accountId } = this.configuration
-        // Path Params
-        const localVarPath = `/Accounts/{accountId}${responseObject.nextPageUri}`
-            .replace('{' + 'accountId' + '}', encodeURIComponent(String(accountId)));
         // Make Request Context
-        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
+        const requestContext = _config.baseServer.makeRequestContext(responseObject.nextPageUri!, HttpMethod.GET);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-        
 
         let authMethod: SecurityAuthentication | undefined;
         // Apply auth methods
