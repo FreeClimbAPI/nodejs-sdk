@@ -7,7 +7,7 @@ describe('MessageRequest', () => {
         dateCreated: "test_dateCreated",
         dateUpdated: "test_dateUpdated",
         revision: 1,
-        _from: "test_from",
+        from: "test_from",
         to: "test_to",
         text: "test_text",
         notificationUrl: "test_notificationUrl",
@@ -45,7 +45,7 @@ describe('MessageRequest', () => {
     describe(".from", () => {
         it('resolves to particular value on initialization', () => {
             const value = "test_from"
-            expect(model._from).toStrictEqual(value)
+            expect(model.from).toBe(value)
         })
     })
     describe(".to", () => {

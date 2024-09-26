@@ -4,7 +4,7 @@ import { describe, expect, it } from "@jest/globals";
 describe('SmsAllOf', () => {
     let model: freeclimb.SmsAllOf = new freeclimb.SmsAllOf({
         to: "test_to",
-        _from: "test_from",
+        from: "test_from",
         text: "test_text",
         notificationUrl: "test_notificationUrl",
     })
@@ -22,7 +22,7 @@ describe('SmsAllOf', () => {
     describe(".from", () => {
         it('resolves to particular value on initialization', () => {
             const value = "test_from"
-            expect(model._from).toStrictEqual(value)
+            expect(model.from).toBe(value)
         })
     })
     describe(".text", () => {

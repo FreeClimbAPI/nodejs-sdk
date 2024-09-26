@@ -5,7 +5,7 @@ describe('Sms', () => {
     let model: freeclimb.Sms = new freeclimb.Sms({
        
         to: "test_to",
-        _from: "test_from",
+        from: "test_from",
         text: "test_text",
         notificationUrl: "test_notificationUrl",
     })
@@ -24,7 +24,7 @@ describe('Sms', () => {
     describe(".from", () => {
         it('resolves to particular value on initialization', () => {
             const value = "test_from"
-            expect(model._from).toStrictEqual(value)
+            expect(model.from).toBe(value)
         })
     })
     describe(".text", () => {

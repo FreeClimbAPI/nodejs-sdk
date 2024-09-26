@@ -10,7 +10,7 @@ describe('CallResult', () => {
         callId: "test_callId",
         parentCallId: "test_parentCallId",
         accountId: "test_accountId",
-        _from: "test_from",
+        from: "test_from",
         to: "test_to",
         phoneNumberId: "test_phoneNumberId",
 
@@ -76,7 +76,7 @@ describe('CallResult', () => {
     describe(".from", () => {
         it('resolves to particular value on initialization', () => {
             const value = "test_from"
-            expect(model._from).toStrictEqual(value)
+            expect(model.from).toBe(value)
         })
     })
     describe(".to", () => {
