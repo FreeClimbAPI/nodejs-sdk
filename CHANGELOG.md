@@ -11,7 +11,7 @@ None
 
 <a name="3.8.0"></a>
 
-## [3.7.1] - 2024-09-26
+## [3.8.0] - 2024-09-26
 
 ### Fixed
 - All models containing `_from` updated to use `from`
