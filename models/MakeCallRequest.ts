@@ -21,7 +21,7 @@ interface AttributeType {
     defaultValue: any
 }
 interface ArgumentsType {
-    '_from': string;
+    'from': string;
     'to': string;
     'applicationId'?: string;
     'sendDigits'?: string;
@@ -36,7 +36,7 @@ export class MakeCallRequest {
     /**
     * Phone number to use as the caller ID. This can be: (a) The To or From number provided in FreeClimb's initial request to your app or (b) Any incoming phone number you have purchased from FreeClimb.
     */
-    '_from': string;
+    'from': string;
     /**
     * Phone number to place the Call to.
     */
@@ -78,7 +78,7 @@ export class MakeCallRequest {
 
     static readonly attributeTypeMap: AttributeType[] = [
         {
-            "name": "_from",
+            "name": "from",
             "baseName": "from",
             "type": "string",
             "format": "",

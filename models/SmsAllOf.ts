@@ -22,7 +22,7 @@ interface AttributeType {
 }
 interface ArgumentsType {
     'to': string;
-    '_from': string;
+    'from': string;
     'text': string;
     'notificationUrl'?: string;
 }
@@ -34,7 +34,7 @@ export class SmsAllOf {
     /**
     * E.164 representation of the phone number to use as the sender. This must be an incoming phone number you have purchased from FreeClimb.
     */
-    '_from': string;
+    'from': string;
     /**
     * Text contained in the message (maximum 160 characters).
     */
@@ -57,7 +57,7 @@ export class SmsAllOf {
             "defaultValue": undefined
         },
         {
-            "name": "_from",
+            "name": "from",
             "baseName": "from",
             "type": "string",
             "format": "",

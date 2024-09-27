@@ -22,7 +22,7 @@ interface AttributeType {
     defaultValue: any
 }
 interface ArgumentsType {
-    '_from': string;
+    'from': string;
     'to': string;
     'text': string;
     'notificationUrl'?: string;
@@ -32,7 +32,7 @@ export class MessageRequestAllOf {
     /**
     * Phone number to use as the sender. This must be an incoming phone number that you have purchased from FreeClimb.
     */
-    '_from': string;
+    'from': string;
     /**
     * Phone number to receive the message. Must be within FreeClimb's service area.
     */
@@ -54,7 +54,7 @@ export class MessageRequestAllOf {
 
     static readonly attributeTypeMap: AttributeType[] = [
         {
-            "name": "_from",
+            "name": "from",
             "baseName": "from",
             "type": "string",
             "format": "",

@@ -89,14 +89,13 @@ export class PerclCommand {
     public toPerclObject() {
         const reduce = (acc: any, attr: AttributeType) => {
             let val = this[attr.name as keyof PerclCommand] ?? attr.defaultValue
-            const attrName = attr.name === '_from' ? 'from' : attr.name
             if (val instanceof Array) {
                 val = val.map(v => v instanceof PerclCommand ? v.toPerclObject() : v)
             } else if (val instanceof PerclCommand) {
                 val = val.toPerclObject()
             }
             if (val != undefined) {
-                acc[attrName] = val
+                acc[attr.name] = val
             }
             return acc
         }

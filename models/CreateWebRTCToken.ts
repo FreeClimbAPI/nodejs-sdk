@@ -22,7 +22,7 @@ interface AttributeType {
 }
 interface ArgumentsType {
     'to': string;
-    '_from': string;
+    'from': string;
     'uses': number;
 }
 export class CreateWebRTCToken {
@@ -33,7 +33,7 @@ export class CreateWebRTCToken {
     /**
     * E.164 formatted phone number owned by the reqeusting account from which calls using this token will be made.
     */
-    '_from': string;
+    'from': string;
     /**
     * number of times this token may be used for a WebRTC call
     */
@@ -52,7 +52,7 @@ export class CreateWebRTCToken {
             "defaultValue": undefined
         },
         {
-            "name": "_from",
+            "name": "from",
             "baseName": "from",
             "type": "string",
             "format": "",

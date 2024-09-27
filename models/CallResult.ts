@@ -33,7 +33,7 @@ interface ArgumentsType {
     'callId'?: string;
     'parentCallId'?: string;
     'accountId'?: string;
-    '_from'?: string;
+    'from'?: string;
     'to'?: string;
     'phoneNumberId'?: string;
     'callStatus'?: CallStatus;
@@ -78,7 +78,7 @@ export class CallResult {
     /**
     * Phone number that initiated this Call.
     */
-    '_from'?: string;
+    'from'?: string;
     /**
     * Phone number that received this Call.
     */
@@ -182,7 +182,7 @@ export class CallResult {
             "defaultValue": undefined
         },
         {
-            "name": "_from",
+            "name": "from",
             "baseName": "from",
             "type": "string",
             "format": "",
