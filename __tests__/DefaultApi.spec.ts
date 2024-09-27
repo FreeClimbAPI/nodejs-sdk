@@ -292,20 +292,20 @@ describe('DefaultAPI', () => {
 
     test('#listSmsMessages', async () => {
         const to = "to_example"
-        const _from = "from_example"
+        const from = "from_example"
         const beginTime = "beginTime_example"
         const endTime = "endTime_example"
         const direction = MessageDirection.INBOUND
         const campaignId = "CX56XX4"
         const brandId = "BX56XX4"
         const is10DLC = true
-        let data = await apiInstance.listSmsMessages(to, _from, beginTime, endTime, direction)      
+        let data = await apiInstance.listSmsMessages(to, from, beginTime, endTime, direction)      
         expect(data).toBeInstanceOf(MessagesList)
     }); 
 
     test('#makeACall', async () => {
         const request =  {
-            _from: "_from_example",
+            from: "from_example",
             to: "to_example",
             applicationId: "applicationId_example",
             sendDigits: "sendDigits_example",
@@ -330,7 +330,7 @@ describe('DefaultAPI', () => {
 
     test('#sendAnSmsMessage', async () => {
         const request = {
-            _from: "_from_example",
+            from: "from_example",
             to: "to_example",
             text: "Example Text"
         }
@@ -442,7 +442,7 @@ describe('DefaultAPI', () => {
     test('#makeAWebrtcJwt', async () => {
         const createWebrtcToken: freeclimb.CreateWebRTCToken = {
             to: "to_example",
-            _from: "from_example",
+            from: "from_example",
             uses: 1,
         }
         let data = await apiInstance.makeAWebrtcJwt(createWebrtcToken)
