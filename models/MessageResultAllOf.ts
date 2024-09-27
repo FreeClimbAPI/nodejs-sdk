@@ -26,7 +26,7 @@ interface ArgumentsType {
     'accountId'?: string;
     'messageId'?: string;
     'status'?: MessageStatus;
-    '_from'?: string;
+    'from'?: string;
     'to'?: string;
     'text'?: string;
     'direction'?: string;
@@ -49,7 +49,7 @@ export class MessageResultAllOf {
     /**
     * Phone number in E.164 format that sent the message.
     */
-    '_from'?: string;
+    'from'?: string;
     /**
     * Phone number in E.164 format that received the message.
     */
@@ -114,7 +114,7 @@ export class MessageResultAllOf {
             "defaultValue": undefined
         },
         {
-            "name": "_from",
+            "name": "from",
             "baseName": "from",
             "type": "string",
             "format": "",

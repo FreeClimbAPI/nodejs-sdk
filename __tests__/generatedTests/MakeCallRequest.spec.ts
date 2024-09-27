@@ -3,7 +3,7 @@ import { describe, expect, it } from "@jest/globals";
     
 describe('MakeCallRequest', () => {
     let model: freeclimb.MakeCallRequest = new freeclimb.MakeCallRequest({
-        _from: "test_from",
+        from: "test_from",
         to: "test_to",
         applicationId: "test_applicationId",
         sendDigits: "test_sendDigits",
@@ -22,7 +22,7 @@ describe('MakeCallRequest', () => {
     describe(".from", () => {
         it('resolves to particular value on initialization', () => {
             const value = "test_from"
-            expect(model._from).toStrictEqual(value)
+            expect(model.from).toBe(value)
         })
     })
     describe(".to", () => {

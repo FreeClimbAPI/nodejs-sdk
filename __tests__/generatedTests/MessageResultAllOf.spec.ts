@@ -7,7 +7,7 @@ describe('MessageResultAllOf', () => {
         messageId: "test_messageId",
 
         status: freeclimb.MessageStatus.NEW,
-        _from: "test_from",
+        from: "test_from",
         to: "test_to",
         text: "test_text",
         direction: "test_direction",
@@ -44,7 +44,7 @@ describe('MessageResultAllOf', () => {
     describe(".from", () => {
         it('resolves to particular value on initialization', () => {
             const value = "test_from"
-            expect(model._from).toStrictEqual(value)
+            expect(model.from).toBe(value)
         })
     })
     describe(".to", () => {
