@@ -26,6 +26,8 @@ import { CallResult } from '../models/CallResult';
 import { CallResultAllOf } from '../models/CallResultAllOf';
 import { CallStatus } from '../models/CallStatus';
 import { Capabilities } from '../models/Capabilities';
+import { CompletionRequest } from '../models/CompletionRequest';
+import { CompletionResult } from '../models/CompletionResult';
 import { ConferenceList } from '../models/ConferenceList';
 import { ConferenceListAllOf } from '../models/ConferenceListAllOf';
 import { ConferenceParticipantList } from '../models/ConferenceParticipantList';
@@ -486,6 +488,19 @@ export class PromiseDefaultApi {
      */
     public getTollFreeSmsCampaigns(_options?: Configuration): Promise<SMSTollFreeCampaignsListResult> {
         const result = this.api.getTollFreeSmsCampaigns(_options);
+        return result.toPromise();
+    }
+
+    /**
+     * Query the knowledge base
+     
+     * @param knowledgeBaseId A string that uniquely identifies the KnowledgeBase resource.
+     
+     * @param completionRequest Completion request details
+     
+     */
+    public knowledgebaseCompletion(knowledgeBaseId: string, completionRequest?: CompletionRequest, _options?: Configuration): Promise<CompletionResult> {
+        const result = this.api.knowledgebaseCompletion(knowledgeBaseId, completionRequest, _options);
         return result.toPromise();
     }
 

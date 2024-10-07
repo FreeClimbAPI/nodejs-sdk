@@ -26,6 +26,8 @@ import { CallResult } from '../models/CallResult';
 import { CallResultAllOf } from '../models/CallResultAllOf';
 import { CallStatus } from '../models/CallStatus';
 import { Capabilities } from '../models/Capabilities';
+import { CompletionRequest } from '../models/CompletionRequest';
+import { CompletionResult } from '../models/CompletionResult';
 import { ConferenceList } from '../models/ConferenceList';
 import { ConferenceListAllOf } from '../models/ConferenceListAllOf';
 import { ConferenceParticipantList } from '../models/ConferenceParticipantList';
@@ -476,6 +478,24 @@ export interface DefaultApiGetTollFreeSmsCampaignRequest {
 }
 
 export interface DefaultApiGetTollFreeSmsCampaignsRequest {
+    
+}
+
+export interface DefaultApiKnowledgebaseCompletionRequest {
+    
+    /**
+     * A string that uniquely identifies the KnowledgeBase resource.
+     * @type string
+     * @memberof DefaultApiknowledgebaseCompletion
+     */
+    knowledgeBaseId: string
+    
+    /**
+     * Completion request details
+     * @type CompletionRequest
+     * @memberof DefaultApiknowledgebaseCompletion
+     */
+    completionRequest?: CompletionRequest
     
 }
 
@@ -1395,6 +1415,14 @@ export class ObjectDefaultApi {
      */
     public getTollFreeSmsCampaigns(param: DefaultApiGetTollFreeSmsCampaignsRequest, options?: Configuration): Promise<SMSTollFreeCampaignsListResult> {
         return this.api.getTollFreeSmsCampaigns( options).toPromise();
+    }
+
+    /**
+     * Query the knowledge base
+     * @param param the request object
+     */
+    public knowledgebaseCompletion(param: DefaultApiKnowledgebaseCompletionRequest, options?: Configuration): Promise<CompletionResult> {
+        return this.api.knowledgebaseCompletion(param.knowledgeBaseId, param.completionRequest,  options).toPromise();
     }
 
     /**
