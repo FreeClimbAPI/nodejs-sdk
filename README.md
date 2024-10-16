@@ -25,7 +25,7 @@ yarn add @freeclimb/sdk@3.8.1
 import freeclimb from '@freeclimb/sdk';
 
 const configuration = freeclimb.createConfiguration({
-  accountId: 'YOUR_ACCOUND_ID',
+  accountId: 'YOUR_ACCOUNT_ID',
   apiKey: 'YOUR_API_KEY'
 });
 const apiInstance = new freeclimb.DefaultApi(configuration);
@@ -34,7 +34,7 @@ apiInstance.listApplications().then(applications => console.log('got application
 ```
 
 ## Detailed SDK documentation
-For more details on how to use the individual methods on the sdk - go [here](DefaultApi.md)
+For more details on how to use the individual methods on the sdk - go [here](https://github.com/FreeClimbAPI/nodejs-sdk/blob/master/DefaultApi.md)
 
 ## Using PerCL
 
