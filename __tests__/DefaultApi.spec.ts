@@ -494,12 +494,12 @@ describe('DefaultAPI', () => {
         expect(data).toStrictEqual(expectedResponseObject)
     });
 
-    test('#knowledgebaseCompletion', async() => {
+    test('#createKnowledgeBaseCompletion', async() => {
         const knowledgeBaseId = "knowledge_base_id"
         const completionRequest: CompletionRequest  =  {
             query: "query_example"
         }
-        let data = await apiInstance.knowledgebaseCompletion(knowledgeBaseId, completionRequest)
+        let data = await apiInstance.createKnowledgeBaseCompletion(knowledgeBaseId, completionRequest)
         expect(data).toBeInstanceOf(CompletionResult)
     })
 })

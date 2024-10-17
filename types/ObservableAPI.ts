@@ -266,6 +266,33 @@ export class ObservableDefaultApi {
     }
 
     /**
+     * Query the knowledge base
+     
+     * @param knowledgeBaseId A string that uniquely identifies the KnowledgeBase resource.
+     
+     * @param completionRequest Completion request details
+     
+     */
+    public createKnowledgeBaseCompletion(knowledgeBaseId: string, completionRequest?: CompletionRequest, _options?: Configuration): Observable<CompletionResult> {
+        const requestContextPromise = this.requestFactory.createKnowledgeBaseCompletion(knowledgeBaseId, completionRequest, _options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (let middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (let middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createKnowledgeBaseCompletion(rsp)));
+            }));
+    }
+
+    /**
      * Delete a Recording
      
      * @param recordingId String that uniquely identifies this recording resource.
@@ -912,33 +939,6 @@ export class ObservableDefaultApi {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getTollFreeSmsCampaigns(rsp)));
-            }));
-    }
-
-    /**
-     * Query the knowledge base
-     
-     * @param knowledgeBaseId A string that uniquely identifies the KnowledgeBase resource.
-     
-     * @param completionRequest Completion request details
-     
-     */
-    public knowledgebaseCompletion(knowledgeBaseId: string, completionRequest?: CompletionRequest, _options?: Configuration): Observable<CompletionResult> {
-        const requestContextPromise = this.requestFactory.knowledgebaseCompletion(knowledgeBaseId, completionRequest, _options);
-
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (let middleware of this.configuration.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (let middleware of this.configuration.middleware) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.knowledgebaseCompletion(rsp)));
             }));
     }
 

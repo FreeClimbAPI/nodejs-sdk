@@ -206,6 +206,19 @@ export class PromiseDefaultApi {
     }
 
     /**
+     * Query the knowledge base
+     
+     * @param knowledgeBaseId A string that uniquely identifies the KnowledgeBase resource.
+     
+     * @param completionRequest Completion request details
+     
+     */
+    public createKnowledgeBaseCompletion(knowledgeBaseId: string, completionRequest?: CompletionRequest, _options?: Configuration): Promise<CompletionResult> {
+        const result = this.api.createKnowledgeBaseCompletion(knowledgeBaseId, completionRequest, _options);
+        return result.toPromise();
+    }
+
+    /**
      * Delete a Recording
      
      * @param recordingId String that uniquely identifies this recording resource.
@@ -488,19 +501,6 @@ export class PromiseDefaultApi {
      */
     public getTollFreeSmsCampaigns(_options?: Configuration): Promise<SMSTollFreeCampaignsListResult> {
         const result = this.api.getTollFreeSmsCampaigns(_options);
-        return result.toPromise();
-    }
-
-    /**
-     * Query the knowledge base
-     
-     * @param knowledgeBaseId A string that uniquely identifies the KnowledgeBase resource.
-     
-     * @param completionRequest Completion request details
-     
-     */
-    public knowledgebaseCompletion(knowledgeBaseId: string, completionRequest?: CompletionRequest, _options?: Configuration): Promise<CompletionResult> {
-        const result = this.api.knowledgebaseCompletion(knowledgeBaseId, completionRequest, _options);
         return result.toPromise();
     }
 

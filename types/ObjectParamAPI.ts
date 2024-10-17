@@ -195,6 +195,24 @@ export interface DefaultApiCreateAnApplicationRequest {
     
 }
 
+export interface DefaultApiCreateKnowledgeBaseCompletionRequest {
+    
+    /**
+     * A string that uniquely identifies the KnowledgeBase resource.
+     * @type string
+     * @memberof DefaultApicreateKnowledgeBaseCompletion
+     */
+    knowledgeBaseId: string
+    
+    /**
+     * Completion request details
+     * @type CompletionRequest
+     * @memberof DefaultApicreateKnowledgeBaseCompletion
+     */
+    completionRequest?: CompletionRequest
+    
+}
+
 export interface DefaultApiDeleteARecordingRequest {
     
     /**
@@ -478,24 +496,6 @@ export interface DefaultApiGetTollFreeSmsCampaignRequest {
 }
 
 export interface DefaultApiGetTollFreeSmsCampaignsRequest {
-    
-}
-
-export interface DefaultApiKnowledgebaseCompletionRequest {
-    
-    /**
-     * A string that uniquely identifies the KnowledgeBase resource.
-     * @type string
-     * @memberof DefaultApiknowledgebaseCompletion
-     */
-    knowledgeBaseId: string
-    
-    /**
-     * Completion request details
-     * @type CompletionRequest
-     * @memberof DefaultApiknowledgebaseCompletion
-     */
-    completionRequest?: CompletionRequest
     
 }
 
@@ -1210,6 +1210,14 @@ export class ObjectDefaultApi {
     }
 
     /**
+     * Query the knowledge base
+     * @param param the request object
+     */
+    public createKnowledgeBaseCompletion(param: DefaultApiCreateKnowledgeBaseCompletionRequest, options?: Configuration): Promise<CompletionResult> {
+        return this.api.createKnowledgeBaseCompletion(param.knowledgeBaseId, param.completionRequest,  options).toPromise();
+    }
+
+    /**
      * Delete a Recording
      * @param param the request object
      */
@@ -1415,14 +1423,6 @@ export class ObjectDefaultApi {
      */
     public getTollFreeSmsCampaigns(param: DefaultApiGetTollFreeSmsCampaignsRequest, options?: Configuration): Promise<SMSTollFreeCampaignsListResult> {
         return this.api.getTollFreeSmsCampaigns( options).toPromise();
-    }
-
-    /**
-     * Query the knowledge base
-     * @param param the request object
-     */
-    public knowledgebaseCompletion(param: DefaultApiKnowledgebaseCompletionRequest, options?: Configuration): Promise<CompletionResult> {
-        return this.api.knowledgebaseCompletion(param.knowledgeBaseId, param.completionRequest,  options).toPromise();
     }
 
     /**

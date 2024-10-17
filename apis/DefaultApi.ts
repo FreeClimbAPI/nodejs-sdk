@@ -231,6 +231,53 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
+     * Query the knowledge base
+     
+     * @param knowledgeBaseId A string that uniquely identifies the KnowledgeBase resource.
+     * @param completionRequest Completion request details
+     */
+    public async createKnowledgeBaseCompletion(knowledgeBaseId: string, completionRequest?: CompletionRequest, _options?: Configuration): Promise<RequestContext> {
+        const _config = _options || this.configuration;
+        const { accountId } = this.configuration
+        
+        // verify required parameter 'knowledgeBaseId' is not null or undefined
+        if (knowledgeBaseId === null || knowledgeBaseId === undefined) {
+            throw new RequiredError("DefaultApi", "createKnowledgeBaseCompletion", "knowledgeBaseId");
+        }
+        // Path Params
+        const localVarPath = '/Accounts/{accountId}/KnowledgeBases/{knowledgeBaseId}/Completion'
+            .replace('{' + 'accountId' + '}', encodeURIComponent(String(accountId)))
+            .replace('{' + 'knowledgeBaseId' + '}', encodeURIComponent(String(knowledgeBaseId)));
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.POST);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+        
+
+        // Body Params
+        const contentType = ObjectSerializer.getPreferredMediaType([
+            "application/json"
+        ]);
+        requestContext.setHeaderParam("Content-Type", contentType);
+        const serializedBody = ObjectSerializer.stringify(
+            ObjectSerializer.serialize(completionRequest, "CompletionRequest", ""),
+            contentType
+        );
+        requestContext.setBody(serializedBody);
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["fc"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+        return requestContext;
+    }
+
+    /**
      * Delete a Recording
      
      * @param recordingId String that uniquely identifies this recording resource.
@@ -1185,53 +1232,6 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         
 
 
-        let authMethod: SecurityAuthentication | undefined;
-        // Apply auth methods
-        authMethod = _config.authMethods["fc"]
-        if (authMethod?.applySecurityAuthentication) {
-            await authMethod?.applySecurityAuthentication(requestContext);
-        }
-        const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
-        if (defaultAuth?.applySecurityAuthentication) {
-            await defaultAuth?.applySecurityAuthentication(requestContext);
-        }
-        return requestContext;
-    }
-
-    /**
-     * Query the knowledge base
-     
-     * @param knowledgeBaseId A string that uniquely identifies the KnowledgeBase resource.
-     * @param completionRequest Completion request details
-     */
-    public async knowledgebaseCompletion(knowledgeBaseId: string, completionRequest?: CompletionRequest, _options?: Configuration): Promise<RequestContext> {
-        const _config = _options || this.configuration;
-        const { accountId } = this.configuration
-        
-        // verify required parameter 'knowledgeBaseId' is not null or undefined
-        if (knowledgeBaseId === null || knowledgeBaseId === undefined) {
-            throw new RequiredError("DefaultApi", "knowledgebaseCompletion", "knowledgeBaseId");
-        }
-        // Path Params
-        const localVarPath = '/Accounts/{accountId}/KnowledgeBases/{knowledgeBaseId}/Completion'
-            .replace('{' + 'accountId' + '}', encodeURIComponent(String(accountId)))
-            .replace('{' + 'knowledgeBaseId' + '}', encodeURIComponent(String(knowledgeBaseId)));
-
-        // Make Request Context
-        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.POST);
-        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-        
-
-        // Body Params
-        const contentType = ObjectSerializer.getPreferredMediaType([
-            "application/json"
-        ]);
-        requestContext.setHeaderParam("Content-Type", contentType);
-        const serializedBody = ObjectSerializer.stringify(
-            ObjectSerializer.serialize(completionRequest, "CompletionRequest", ""),
-            contentType
-        );
-        requestContext.setBody(serializedBody);
         let authMethod: SecurityAuthentication | undefined;
         // Apply auth methods
         authMethod = _config.authMethods["fc"]
@@ -2675,6 +2675,35 @@ export class DefaultApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
+     * @params response Response returned by the server for a request to createKnowledgeBaseCompletion
+     * @throws ApiException if the response code was not in [200, 299]
+     */
+     public async createKnowledgeBaseCompletion(response: ResponseContext): Promise<CompletionResult > {
+        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("200", response.httpStatusCode)) {
+            const body: CompletionResult = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "CompletionResult", ""
+            ) as CompletionResult;
+            return body;
+        }
+
+        // Work around for missing responses in specification, e.g. for petstore.yaml
+        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+            const body: CompletionResult = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "CompletionResult", ""
+            ) as CompletionResult;
+            return body;
+        }
+
+        throw new ApiException<string | Buffer | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
+    }
+
+    /**
+     * Unwraps the actual response sent by the server from the response context and deserializes the response content
+     * to the expected objects
+     *
      * @params response Response returned by the server for a request to deleteARecording
      * @throws ApiException if the response code was not in [200, 299]
      */
@@ -3404,35 +3433,6 @@ export class DefaultApiResponseProcessor {
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "SMSTollFreeCampaignsListResult", ""
             ) as SMSTollFreeCampaignsListResult;
-            return body;
-        }
-
-        throw new ApiException<string | Buffer | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
-    }
-
-    /**
-     * Unwraps the actual response sent by the server from the response context and deserializes the response content
-     * to the expected objects
-     *
-     * @params response Response returned by the server for a request to knowledgebaseCompletion
-     * @throws ApiException if the response code was not in [200, 299]
-     */
-     public async knowledgebaseCompletion(response: ResponseContext): Promise<CompletionResult > {
-        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
-        if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: CompletionResult = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "CompletionResult", ""
-            ) as CompletionResult;
-            return body;
-        }
-
-        // Work around for missing responses in specification, e.g. for petstore.yaml
-        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: CompletionResult = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "CompletionResult", ""
-            ) as CompletionResult;
             return body;
         }
 

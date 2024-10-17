@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**createAConference**](DefaultApi.md#createAConference) | **POST** /Accounts/{accountId}/Conferences | Create a Conference
 [**createAQueue**](DefaultApi.md#createAQueue) | **POST** /Accounts/{accountId}/Queues | Create a Queue
 [**createAnApplication**](DefaultApi.md#createAnApplication) | **POST** /Accounts/{accountId}/Applications | Create an application
+[**createKnowledgeBaseCompletion**](DefaultApi.md#createKnowledgeBaseCompletion) | **POST** /Accounts/{accountId}/KnowledgeBases/{knowledgeBaseId}/Completion | Query the knowledge base
 [**deleteARecording**](DefaultApi.md#deleteARecording) | **DELETE** /Accounts/{accountId}/Recordings/{recordingId} | Delete a Recording
 [**deleteAnApplication**](DefaultApi.md#deleteAnApplication) | **DELETE** /Accounts/{accountId}/Applications/{applicationId} | Delete an application
 [**deleteAnIncomingNumber**](DefaultApi.md#deleteAnIncomingNumber) | **DELETE** /Accounts/{accountId}/IncomingPhoneNumbers/{phoneNumberId} | Delete an Incoming Number
@@ -34,7 +35,6 @@ Method | HTTP request | Description
 [**getTenDLCSmsPartnerCampaigns**](DefaultApi.md#getTenDLCSmsPartnerCampaigns) | **GET** /Accounts/{accountId}/Messages/10DLC/PartnerCampaigns | Get list of SMS 10DLC Partner Campaigns
 [**getTollFreeSmsCampaign**](DefaultApi.md#getTollFreeSmsCampaign) | **GET** /Accounts/{accountId}/Messages/TollFree/Campaigns/{campaignId} | Get a TollFree SMS Campaign
 [**getTollFreeSmsCampaigns**](DefaultApi.md#getTollFreeSmsCampaigns) | **GET** /Accounts/{accountId}/Messages/TollFree/Campaigns | Get list of TollFree Campaigns
-[**knowledgebaseCompletion**](DefaultApi.md#knowledgebaseCompletion) | **POST** /Accounts/{accountId}/KnowledgeBases/{knowledgeBaseId}/Completion | Query the knowledge base
 [**listActiveQueues**](DefaultApi.md#listActiveQueues) | **GET** /Accounts/{accountId}/Queues | List Active Queues
 [**listAllAccountLogs**](DefaultApi.md#listAllAccountLogs) | **GET** /Accounts/{accountId}/Logs | List All Account Logs
 [**listApplications**](DefaultApi.md#listApplications) | **GET** /Accounts/{accountId}/Applications | List applications
@@ -313,6 +313,70 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Application successfuly created |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **createKnowledgeBaseCompletion**
+> CompletionResult createKnowledgeBaseCompletion()
+
+
+### Example
+
+
+```typescript
+import { freeclimb } from '@freeclimb/sdk';
+import * as fs from 'fs';
+
+const configuration = freeclimb.createConfiguration({
+  accountId: 'YOUR_ACCOUNT_ID',
+  apiKey: 'YOUR_API_KEY'
+});
+const apiInstance = new freeclimb.DefaultApi(configuration);
+
+let body:freeclimb.DefaultApiCreateKnowledgeBaseCompletionRequest = {
+
+  // string | A string that uniquely identifies the KnowledgeBase resource.
+  knowledgeBaseId: "knowledgeBaseId_example",
+
+  // CompletionRequest | Completion request details (optional)
+  completionRequest: {
+    query: "query_example",
+  },
+
+};
+
+apiInstance.createKnowledgeBaseCompletion(body).then((data:any) => {
+  console.log('API called successfully. Returned data: ' + data);
+}).catch((error:any) => console.error(error));
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **completionRequest** | **CompletionRequest**| Completion request details |
+ **knowledgeBaseId** | [**string**] | A string that uniquely identifies the KnowledgeBase resource. | defaults to undefined
+
+
+### Return type
+
+**CompletionResult**
+
+### Authorization
+
+[fc](README.md#fc)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | KnowledgeaBase completion response |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -1817,70 +1881,6 @@ apiInstance.getTollFreeSmsCampaigns(body).then((data:any) => {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | The list toll-free campaigns |  -  |
-
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
-
-# **knowledgebaseCompletion**
-> CompletionResult knowledgebaseCompletion()
-
-
-### Example
-
-
-```typescript
-import { freeclimb } from '@freeclimb/sdk';
-import * as fs from 'fs';
-
-const configuration = freeclimb.createConfiguration({
-  accountId: 'YOUR_ACCOUNT_ID',
-  apiKey: 'YOUR_API_KEY'
-});
-const apiInstance = new freeclimb.DefaultApi(configuration);
-
-let body:freeclimb.DefaultApiKnowledgebaseCompletionRequest = {
-
-  // string | A string that uniquely identifies the KnowledgeBase resource.
-  knowledgeBaseId: "knowledgeBaseId_example",
-
-  // CompletionRequest | Completion request details (optional)
-  completionRequest: {
-    query: "query_example",
-  },
-
-};
-
-apiInstance.knowledgebaseCompletion(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **completionRequest** | **CompletionRequest**| Completion request details |
- **knowledgeBaseId** | [**string**] | A string that uniquely identifies the KnowledgeBase resource. | defaults to undefined
-
-
-### Return type
-
-**CompletionResult**
-
-### Authorization
-
-[fc](README.md#fc)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | KnowledgeaBase completion response |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
