@@ -14,9 +14,9 @@ For more information, please visit [https://www.freeclimb.com/support/](https://
 ## Installing
 
 ```sh
-npm install @freeclimb/sdk@3.8.0
+npm install @freeclimb/sdk@3.9.0
 or 
-yarn add @freeclimb/sdk@3.8.0
+yarn add @freeclimb/sdk@3.9.0
 ```
 
 ## Getting Started 
@@ -25,7 +25,7 @@ yarn add @freeclimb/sdk@3.8.0
 import freeclimb from '@freeclimb/sdk';
 
 const configuration = freeclimb.createConfiguration({
-  accountId: 'YOUR_ACCOUND_ID',
+  accountId: 'YOUR_ACCOUNT_ID',
   apiKey: 'YOUR_API_KEY'
 });
 const apiInstance = new freeclimb.DefaultApi(configuration);
@@ -34,7 +34,7 @@ apiInstance.listApplications().then(applications => console.log('got application
 ```
 
 ## Detailed SDK documentation
-For more details on how to use the individual methods on the sdk - go [here](DefaultApi.md)
+For more details on how to use the individual methods on the sdk - go [here](https://github.com/FreeClimbAPI/nodejs-sdk/blob/master/DefaultApi.md)
 
 ## Using PerCL
 
@@ -72,11 +72,11 @@ console.log(perclScript.toJSON())
   export function RequestVerifierExample() {
     const tolerance: number = 5 * 60;
 
-    const requestBody: string = '{"accountId":"AC1334ffb694cd8d969f51cddf5f7c9b478546d50c","callId":"CAccb0b00506553cda09b51c5477f672a49e0b2213","callStatus":"ringing","conferenceId":null,"direction":"inbound","from":"+13121000109","parentCallId":null,"queueId":null,"requestType":"inboundCall","to":"+13121000096"}';
+    const requestBody: string = '{"accountId":"YOUR_ACCOUNT_ID","callId":"YOUR_CALL_ID","callStatus":"YOUR_CALL_STATUS","conferenceId":null,"direction":"YOUR_CALL_DIRECTION,"from":"FROM_EXAMPLE","parentCallId":null,"queueId":null,"requestType":"YOUR_REQUEST_TYPE","to":"TO_EXAMPLE"}';
 
-    const signingSecret: string = "sigsec_ead6d3b6904196c60835d039e91b3341c77a7793";
+    const signingSecret: string = "YOUR_SIGNING_SECRET";
 
-    const requestHeader: string = "t=1679944186,v1=c3957749baf61df4b1506802579cc69a74c77a1ae21447b930e5a704f9ec4120,v1=1ba18712726898fbbe48cd862dd096a709f7ad761a5bab14bda9ac24d963a6a8";
+    const requestHeader: string = "t=YOUR_TIMESTAMP,v1=YOUR_HASH_EXAMPLE,v1=YOUR_HASH_EXAMPLE";
     
     RequestVerifier.verifyRequestSignature(
       requestBody,

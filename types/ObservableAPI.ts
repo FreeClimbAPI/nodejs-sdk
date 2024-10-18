@@ -27,6 +27,8 @@ import { CallResult } from '../models/CallResult';
 import { CallResultAllOf } from '../models/CallResultAllOf';
 import { CallStatus } from '../models/CallStatus';
 import { Capabilities } from '../models/Capabilities';
+import { CompletionRequest } from '../models/CompletionRequest';
+import { CompletionResult } from '../models/CompletionResult';
 import { ConferenceList } from '../models/ConferenceList';
 import { ConferenceListAllOf } from '../models/ConferenceListAllOf';
 import { ConferenceParticipantList } from '../models/ConferenceParticipantList';
@@ -260,6 +262,33 @@ export class ObservableDefaultApi {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createAnApplication(rsp)));
+            }));
+    }
+
+    /**
+     * Query the knowledge base
+     
+     * @param knowledgeBaseId A string that uniquely identifies the KnowledgeBase resource.
+     
+     * @param completionRequest Completion request details
+     
+     */
+    public createKnowledgeBaseCompletion(knowledgeBaseId: string, completionRequest?: CompletionRequest, _options?: Configuration): Observable<CompletionResult> {
+        const requestContextPromise = this.requestFactory.createKnowledgeBaseCompletion(knowledgeBaseId, completionRequest, _options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (let middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (let middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createKnowledgeBaseCompletion(rsp)));
             }));
     }
 

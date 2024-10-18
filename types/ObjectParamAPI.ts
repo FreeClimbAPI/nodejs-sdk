@@ -26,6 +26,8 @@ import { CallResult } from '../models/CallResult';
 import { CallResultAllOf } from '../models/CallResultAllOf';
 import { CallStatus } from '../models/CallStatus';
 import { Capabilities } from '../models/Capabilities';
+import { CompletionRequest } from '../models/CompletionRequest';
+import { CompletionResult } from '../models/CompletionResult';
 import { ConferenceList } from '../models/ConferenceList';
 import { ConferenceListAllOf } from '../models/ConferenceListAllOf';
 import { ConferenceParticipantList } from '../models/ConferenceParticipantList';
@@ -190,6 +192,24 @@ export interface DefaultApiCreateAnApplicationRequest {
      * @memberof DefaultApicreateAnApplication
      */
     applicationRequest?: ApplicationRequest
+    
+}
+
+export interface DefaultApiCreateKnowledgeBaseCompletionRequest {
+    
+    /**
+     * A string that uniquely identifies the KnowledgeBase resource.
+     * @type string
+     * @memberof DefaultApicreateKnowledgeBaseCompletion
+     */
+    knowledgeBaseId: string
+    
+    /**
+     * Completion request details
+     * @type CompletionRequest
+     * @memberof DefaultApicreateKnowledgeBaseCompletion
+     */
+    completionRequest?: CompletionRequest
     
 }
 
@@ -1187,6 +1207,14 @@ export class ObjectDefaultApi {
      */
     public createAnApplication(param: DefaultApiCreateAnApplicationRequest, options?: Configuration): Promise<ApplicationResult> {
         return this.api.createAnApplication(param.applicationRequest,  options).toPromise();
+    }
+
+    /**
+     * Query the knowledge base
+     * @param param the request object
+     */
+    public createKnowledgeBaseCompletion(param: DefaultApiCreateKnowledgeBaseCompletionRequest, options?: Configuration): Promise<CompletionResult> {
+        return this.api.createKnowledgeBaseCompletion(param.knowledgeBaseId, param.completionRequest,  options).toPromise();
     }
 
     /**
