@@ -35,6 +35,8 @@ models/CallResult.ts
 models/CallResultAllOf.ts
 models/CallStatus.ts
 models/Capabilities.ts
+models/CompletionRequest.ts
+models/CompletionResult.ts
 models/ConferenceList.ts
 models/ConferenceListAllOf.ts
 models/ConferenceParticipantList.ts

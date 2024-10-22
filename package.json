@@ -1,6 +1,6 @@
 {
   "name": "@freeclimb/sdk",
-  "version": "3.8.0",
+  "version": "3.9.0",
   "description": "OpenAPI client for @freeclimb/sdk",
   "author": "OpenAPI-Generator Contributors",
   "keywords": [
@@ -52,6 +52,10 @@
     "@stoplight/prism-cli": "5.6.0"
   },
   "resolutions": {
-    "@stoplight/json": "3.20.0"
+    "@stoplight/json": "3.20.0",
+    "jsonpath-plus": "^10.0.0",
+    "fast-xml-parser": "^4.5.0",
+    "braces": "^3.0.3",
+    "micromatch": "^4.0.8"
   }
 }

@@ -1,7 +1,7 @@
 import { describe, expect, test, beforeAll } from "@jest/globals";
 import * as freeclimb  from '../index'
 import * as DefaultApi from '../apis/DefaultApi'
-import { AccountRequest, AccountResult, ApplicationList, ApplicationRequest, ApplicationResult, AvailableNumberList, BuyIncomingNumberRequest, CallList, CallResult, ConferenceList, ConferenceParticipantList, ConferenceParticipantResult, ConferenceResult, CreateConferenceRequest, FilterLogsRequest, IncomingNumberList, IncomingNumberRequest, IncomingNumberResult, LogList, MessageResult, MessagesList, QueueList, QueueMember, QueueMemberList, QueueRequest, QueueResult, RecordingList, RecordingResult, ServerConfiguration, UpdateCallRequest, UpdateConferenceRequest } from "../index";
+import { AccountRequest, AccountResult, ApplicationList, ApplicationRequest, ApplicationResult, AvailableNumberList, BuyIncomingNumberRequest, CallList, CallResult, CompletionRequest, CompletionResult, ConferenceList, ConferenceParticipantList, ConferenceParticipantResult, ConferenceResult, CreateConferenceRequest, FilterLogsRequest, IncomingNumberList, IncomingNumberRequest, IncomingNumberResult, LogList, MessageResult, MessagesList, QueueList, QueueMember, QueueMemberList, QueueRequest, QueueResult, RecordingList, RecordingResult, ServerConfiguration, UpdateCallRequest, UpdateConferenceRequest } from "../index";
 import {AccountStatus, AccountType, CallStatus, MessageDirection, PlayBeep, SMSTenDLCBrandsListResult, UpdateCallRequestStatus, UpdateConferenceRequestStatus, SMSTenDLCCampaignsListResult, SMSTenDLCPartnerCampaignsListResult, SMSTenDLCBrand, SMSTenDLCCampaign, SMSTollFreeCampaignsListResult} from "../models/all";
 
 describe('DefaultAPI', () => {
@@ -493,5 +493,14 @@ describe('DefaultAPI', () => {
         let data = await apiInstance.getNextPage(responseObject)
         expect(data).toStrictEqual(expectedResponseObject)
     });
+
+    test('#createKnowledgeBaseCompletion', async() => {
+        const knowledgeBaseId = "knowledge_base_id"
+        const completionRequest: CompletionRequest  =  {
+            query: "query_example"
+        }
+        let data = await apiInstance.createKnowledgeBaseCompletion(knowledgeBaseId, completionRequest)
+        expect(data).toBeInstanceOf(CompletionResult)
+    })
 })
 

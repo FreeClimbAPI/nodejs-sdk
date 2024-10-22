@@ -22,6 +22,8 @@ export * from './CallResult';
 export * from './CallResultAllOf';
 export * from './CallStatus';
 export * from './Capabilities';
+export * from './CompletionRequest';
+export * from './CompletionResult';
 export * from './ConferenceList';
 export * from './ConferenceListAllOf';
 export * from './ConferenceParticipantList';
@@ -166,6 +168,8 @@ import { CallResult } from './CallResult';
 import { CallResultAllOf } from './CallResultAllOf';
 import { CallStatus } from './CallStatus';
 import { Capabilities } from './Capabilities';
+import { CompletionRequest } from './CompletionRequest';
+import { CompletionResult , CompletionResultStatusEnum   } from './CompletionResult';
 import { ConferenceList } from './ConferenceList';
 import { ConferenceListAllOf } from './ConferenceListAllOf';
 import { ConferenceParticipantList } from './ConferenceParticipantList';
@@ -311,6 +315,7 @@ let enumsMap: Set<string> = new Set<string>([
     "AnsweredBy",
     "CallDirection",
     "CallStatus",
+    "CompletionResultStatusEnum",
     "ConferenceStatus",
     "GetSpeechReason",
     "GrammarFileBuiltIn",
@@ -357,6 +362,8 @@ let typeMap: {[index: string]: any} = {
     "CallResult": CallResult,
     "CallResultAllOf": CallResultAllOf,
     "Capabilities": Capabilities,
+    "CompletionRequest": CompletionRequest,
+    "CompletionResult": CompletionResult,
     "ConferenceList": ConferenceList,
     "ConferenceListAllOf": ConferenceListAllOf,
     "ConferenceParticipantList": ConferenceParticipantList,

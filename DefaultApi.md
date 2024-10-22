@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**createAConference**](DefaultApi.md#createAConference) | **POST** /Accounts/{accountId}/Conferences | Create a Conference
 [**createAQueue**](DefaultApi.md#createAQueue) | **POST** /Accounts/{accountId}/Queues | Create a Queue
 [**createAnApplication**](DefaultApi.md#createAnApplication) | **POST** /Accounts/{accountId}/Applications | Create an application
+[**createKnowledgeBaseCompletion**](DefaultApi.md#createKnowledgeBaseCompletion) | **POST** /Accounts/{accountId}/KnowledgeBases/{knowledgeBaseId}/Completion | Query the knowledge base
 [**deleteARecording**](DefaultApi.md#deleteARecording) | **DELETE** /Accounts/{accountId}/Recordings/{recordingId} | Delete a Recording
 [**deleteAnApplication**](DefaultApi.md#deleteAnApplication) | **DELETE** /Accounts/{accountId}/Applications/{applicationId} | Delete an application
 [**deleteAnIncomingNumber**](DefaultApi.md#deleteAnIncomingNumber) | **DELETE** /Accounts/{accountId}/IncomingPhoneNumbers/{phoneNumberId} | Delete an Incoming Number
@@ -74,7 +75,7 @@ import { freeclimb } from '@freeclimb/sdk';
 import * as fs from 'fs';
 
 const configuration = freeclimb.createConfiguration({
-  accountId: 'YOUR_ACCOUND_ID',
+  accountId: 'YOUR_ACCOUNT_ID',
   apiKey: 'YOUR_API_KEY'
 });
 const apiInstance = new freeclimb.DefaultApi(configuration);
@@ -136,7 +137,7 @@ import { freeclimb } from '@freeclimb/sdk';
 import * as fs from 'fs';
 
 const configuration = freeclimb.createConfiguration({
-  accountId: 'YOUR_ACCOUND_ID',
+  accountId: 'YOUR_ACCOUNT_ID',
   apiKey: 'YOUR_API_KEY'
 });
 const apiInstance = new freeclimb.DefaultApi(configuration);
@@ -200,7 +201,7 @@ import { freeclimb } from '@freeclimb/sdk';
 import * as fs from 'fs';
 
 const configuration = freeclimb.createConfiguration({
-  accountId: 'YOUR_ACCOUND_ID',
+  accountId: 'YOUR_ACCOUNT_ID',
   apiKey: 'YOUR_API_KEY'
 });
 const apiInstance = new freeclimb.DefaultApi(configuration);
@@ -261,7 +262,7 @@ import { freeclimb } from '@freeclimb/sdk';
 import * as fs from 'fs';
 
 const configuration = freeclimb.createConfiguration({
-  accountId: 'YOUR_ACCOUND_ID',
+  accountId: 'YOUR_ACCOUNT_ID',
   apiKey: 'YOUR_API_KEY'
 });
 const apiInstance = new freeclimb.DefaultApi(configuration);
@@ -315,6 +316,70 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
+# **createKnowledgeBaseCompletion**
+> CompletionResult createKnowledgeBaseCompletion()
+
+
+### Example
+
+
+```typescript
+import { freeclimb } from '@freeclimb/sdk';
+import * as fs from 'fs';
+
+const configuration = freeclimb.createConfiguration({
+  accountId: 'YOUR_ACCOUNT_ID',
+  apiKey: 'YOUR_API_KEY'
+});
+const apiInstance = new freeclimb.DefaultApi(configuration);
+
+let body:freeclimb.DefaultApiCreateKnowledgeBaseCompletionRequest = {
+
+  // string | A string that uniquely identifies the KnowledgeBase resource.
+  knowledgeBaseId: "knowledgeBaseId_example",
+
+  // CompletionRequest | Completion request details (optional)
+  completionRequest: {
+    query: "query_example",
+  },
+
+};
+
+apiInstance.createKnowledgeBaseCompletion(body).then((data:any) => {
+  console.log('API called successfully. Returned data: ' + data);
+}).catch((error:any) => console.error(error));
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **completionRequest** | **CompletionRequest**| Completion request details |
+ **knowledgeBaseId** | [**string**] | A string that uniquely identifies the KnowledgeBase resource. | defaults to undefined
+
+
+### Return type
+
+**CompletionResult**
+
+### Authorization
+
+[fc](README.md#fc)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | KnowledgeaBase completion response |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
 # **deleteARecording**
 > void deleteARecording()
 
@@ -327,7 +392,7 @@ import { freeclimb } from '@freeclimb/sdk';
 import * as fs from 'fs';
 
 const configuration = freeclimb.createConfiguration({
-  accountId: 'YOUR_ACCOUND_ID',
+  accountId: 'YOUR_ACCOUNT_ID',
   apiKey: 'YOUR_API_KEY'
 });
 const apiInstance = new freeclimb.DefaultApi(configuration);
@@ -385,7 +450,7 @@ import { freeclimb } from '@freeclimb/sdk';
 import * as fs from 'fs';
 
 const configuration = freeclimb.createConfiguration({
-  accountId: 'YOUR_ACCOUND_ID',
+  accountId: 'YOUR_ACCOUNT_ID',
   apiKey: 'YOUR_API_KEY'
 });
 const apiInstance = new freeclimb.DefaultApi(configuration);
@@ -443,7 +508,7 @@ import { freeclimb } from '@freeclimb/sdk';
 import * as fs from 'fs';
 
 const configuration = freeclimb.createConfiguration({
-  accountId: 'YOUR_ACCOUND_ID',
+  accountId: 'YOUR_ACCOUNT_ID',
   apiKey: 'YOUR_API_KEY'
 });
 const apiInstance = new freeclimb.DefaultApi(configuration);
@@ -501,7 +566,7 @@ import { freeclimb } from '@freeclimb/sdk';
 import * as fs from 'fs';
 
 const configuration = freeclimb.createConfiguration({
-  accountId: 'YOUR_ACCOUND_ID',
+  accountId: 'YOUR_ACCOUNT_ID',
   apiKey: 'YOUR_API_KEY'
 });
 const apiInstance = new freeclimb.DefaultApi(configuration);
@@ -563,7 +628,7 @@ import { freeclimb } from '@freeclimb/sdk';
 import * as fs from 'fs';
 
 const configuration = freeclimb.createConfiguration({
-  accountId: 'YOUR_ACCOUND_ID',
+  accountId: 'YOUR_ACCOUNT_ID',
   apiKey: 'YOUR_API_KEY'
 });
 const apiInstance = new freeclimb.DefaultApi(configuration);
@@ -621,7 +686,7 @@ import { freeclimb } from '@freeclimb/sdk';
 import * as fs from 'fs';
 
 const configuration = freeclimb.createConfiguration({
-  accountId: 'YOUR_ACCOUND_ID',
+  accountId: 'YOUR_ACCOUNT_ID',
   apiKey: 'YOUR_API_KEY'
 });
 const apiInstance = new freeclimb.DefaultApi(configuration);
@@ -679,7 +744,7 @@ import { freeclimb } from '@freeclimb/sdk';
 import * as fs from 'fs';
 
 const configuration = freeclimb.createConfiguration({
-  accountId: 'YOUR_ACCOUND_ID',
+  accountId: 'YOUR_ACCOUNT_ID',
   apiKey: 'YOUR_API_KEY'
 });
 const apiInstance = new freeclimb.DefaultApi(configuration);
@@ -739,7 +804,7 @@ import { freeclimb } from '@freeclimb/sdk';
 import * as fs from 'fs';
 
 const configuration = freeclimb.createConfiguration({
-  accountId: 'YOUR_ACCOUND_ID',
+  accountId: 'YOUR_ACCOUNT_ID',
   apiKey: 'YOUR_API_KEY'
 });
 const apiInstance = new freeclimb.DefaultApi(configuration);
@@ -797,7 +862,7 @@ import { freeclimb } from '@freeclimb/sdk';
 import * as fs from 'fs';
 
 const configuration = freeclimb.createConfiguration({
-  accountId: 'YOUR_ACCOUND_ID',
+  accountId: 'YOUR_ACCOUNT_ID',
   apiKey: 'YOUR_API_KEY'
 });
 const apiInstance = new freeclimb.DefaultApi(configuration);
@@ -855,7 +920,7 @@ import { freeclimb } from '@freeclimb/sdk';
 import * as fs from 'fs';
 
 const configuration = freeclimb.createConfiguration({
-  accountId: 'YOUR_ACCOUND_ID',
+  accountId: 'YOUR_ACCOUNT_ID',
   apiKey: 'YOUR_API_KEY'
 });
 const apiInstance = new freeclimb.DefaultApi(configuration);
@@ -917,7 +982,7 @@ import { freeclimb } from '@freeclimb/sdk';
 import * as fs from 'fs';
 
 const configuration = freeclimb.createConfiguration({
-  accountId: 'YOUR_ACCOUND_ID',
+  accountId: 'YOUR_ACCOUNT_ID',
   apiKey: 'YOUR_API_KEY'
 });
 const apiInstance = new freeclimb.DefaultApi(configuration);
@@ -979,7 +1044,7 @@ import { freeclimb } from '@freeclimb/sdk';
 import * as fs from 'fs';
 
 const configuration = freeclimb.createConfiguration({
-  accountId: 'YOUR_ACCOUND_ID',
+  accountId: 'YOUR_ACCOUNT_ID',
   apiKey: 'YOUR_API_KEY'
 });
 const apiInstance = new freeclimb.DefaultApi(configuration);
@@ -1037,7 +1102,7 @@ import { freeclimb } from '@freeclimb/sdk';
 import * as fs from 'fs';
 
 const configuration = freeclimb.createConfiguration({
-  accountId: 'YOUR_ACCOUND_ID',
+  accountId: 'YOUR_ACCOUNT_ID',
   apiKey: 'YOUR_API_KEY'
 });
 const apiInstance = new freeclimb.DefaultApi(configuration);
@@ -1095,7 +1160,7 @@ import { freeclimb } from '@freeclimb/sdk';
 import * as fs from 'fs';
 
 const configuration = freeclimb.createConfiguration({
-  accountId: 'YOUR_ACCOUND_ID',
+  accountId: 'YOUR_ACCOUNT_ID',
   apiKey: 'YOUR_API_KEY'
 });
 const apiInstance = new freeclimb.DefaultApi(configuration);
@@ -1147,7 +1212,7 @@ import { freeclimb } from '@freeclimb/sdk';
 import * as fs from 'fs';
 
 const configuration = freeclimb.createConfiguration({
-  accountId: 'YOUR_ACCOUND_ID',
+  accountId: 'YOUR_ACCOUNT_ID',
   apiKey: 'YOUR_API_KEY'
 });
 const apiInstance = new freeclimb.DefaultApi(configuration);
@@ -1205,7 +1270,7 @@ import { freeclimb } from '@freeclimb/sdk';
 import * as fs from 'fs';
 
 const configuration = freeclimb.createConfiguration({
-  accountId: 'YOUR_ACCOUND_ID',
+  accountId: 'YOUR_ACCOUNT_ID',
   apiKey: 'YOUR_API_KEY'
 });
 const apiInstance = new freeclimb.DefaultApi(configuration);
@@ -1263,7 +1328,7 @@ import { freeclimb } from '@freeclimb/sdk';
 import * as fs from 'fs';
 
 const configuration = freeclimb.createConfiguration({
-  accountId: 'YOUR_ACCOUND_ID',
+  accountId: 'YOUR_ACCOUNT_ID',
   apiKey: 'YOUR_API_KEY'
 });
 const apiInstance = new freeclimb.DefaultApi(configuration);
@@ -1321,7 +1386,7 @@ import { freeclimb } from '@freeclimb/sdk';
 import * as fs from 'fs';
 
 const configuration = freeclimb.createConfiguration({
-  accountId: 'YOUR_ACCOUND_ID',
+  accountId: 'YOUR_ACCOUNT_ID',
   apiKey: 'YOUR_API_KEY'
 });
 const apiInstance = new freeclimb.DefaultApi(configuration);
@@ -1379,7 +1444,7 @@ import { freeclimb } from '@freeclimb/sdk';
 import * as fs from 'fs';
 
 const configuration = freeclimb.createConfiguration({
-  accountId: 'YOUR_ACCOUND_ID',
+  accountId: 'YOUR_ACCOUNT_ID',
   apiKey: 'YOUR_API_KEY'
 });
 const apiInstance = new freeclimb.DefaultApi(configuration);
@@ -1437,7 +1502,7 @@ import { freeclimb } from '@freeclimb/sdk';
 import * as fs from 'fs';
 
 const configuration = freeclimb.createConfiguration({
-  accountId: 'YOUR_ACCOUND_ID',
+  accountId: 'YOUR_ACCOUNT_ID',
   apiKey: 'YOUR_API_KEY'
 });
 const apiInstance = new freeclimb.DefaultApi(configuration);
@@ -1489,7 +1554,7 @@ import { freeclimb } from '@freeclimb/sdk';
 import * as fs from 'fs';
 
 const configuration = freeclimb.createConfiguration({
-  accountId: 'YOUR_ACCOUND_ID',
+  accountId: 'YOUR_ACCOUNT_ID',
   apiKey: 'YOUR_API_KEY'
 });
 const apiInstance = new freeclimb.DefaultApi(configuration);
@@ -1547,7 +1612,7 @@ import { freeclimb } from '@freeclimb/sdk';
 import * as fs from 'fs';
 
 const configuration = freeclimb.createConfiguration({
-  accountId: 'YOUR_ACCOUND_ID',
+  accountId: 'YOUR_ACCOUNT_ID',
   apiKey: 'YOUR_API_KEY'
 });
 const apiInstance = new freeclimb.DefaultApi(configuration);
@@ -1605,7 +1670,7 @@ import { freeclimb } from '@freeclimb/sdk';
 import * as fs from 'fs';
 
 const configuration = freeclimb.createConfiguration({
-  accountId: 'YOUR_ACCOUND_ID',
+  accountId: 'YOUR_ACCOUNT_ID',
   apiKey: 'YOUR_API_KEY'
 });
 const apiInstance = new freeclimb.DefaultApi(configuration);
@@ -1663,7 +1728,7 @@ import { freeclimb } from '@freeclimb/sdk';
 import * as fs from 'fs';
 
 const configuration = freeclimb.createConfiguration({
-  accountId: 'YOUR_ACCOUND_ID',
+  accountId: 'YOUR_ACCOUNT_ID',
   apiKey: 'YOUR_API_KEY'
 });
 const apiInstance = new freeclimb.DefaultApi(configuration);
@@ -1721,7 +1786,7 @@ import { freeclimb } from '@freeclimb/sdk';
 import * as fs from 'fs';
 
 const configuration = freeclimb.createConfiguration({
-  accountId: 'YOUR_ACCOUND_ID',
+  accountId: 'YOUR_ACCOUNT_ID',
   apiKey: 'YOUR_API_KEY'
 });
 const apiInstance = new freeclimb.DefaultApi(configuration);
@@ -1779,7 +1844,7 @@ import { freeclimb } from '@freeclimb/sdk';
 import * as fs from 'fs';
 
 const configuration = freeclimb.createConfiguration({
-  accountId: 'YOUR_ACCOUND_ID',
+  accountId: 'YOUR_ACCOUNT_ID',
   apiKey: 'YOUR_API_KEY'
 });
 const apiInstance = new freeclimb.DefaultApi(configuration);
@@ -1831,7 +1896,7 @@ import { freeclimb } from '@freeclimb/sdk';
 import * as fs from 'fs';
 
 const configuration = freeclimb.createConfiguration({
-  accountId: 'YOUR_ACCOUND_ID',
+  accountId: 'YOUR_ACCOUNT_ID',
   apiKey: 'YOUR_API_KEY'
 });
 const apiInstance = new freeclimb.DefaultApi(configuration);
@@ -1889,7 +1954,7 @@ import { freeclimb } from '@freeclimb/sdk';
 import * as fs from 'fs';
 
 const configuration = freeclimb.createConfiguration({
-  accountId: 'YOUR_ACCOUND_ID',
+  accountId: 'YOUR_ACCOUNT_ID',
   apiKey: 'YOUR_API_KEY'
 });
 const apiInstance = new freeclimb.DefaultApi(configuration);
@@ -1941,7 +2006,7 @@ import { freeclimb } from '@freeclimb/sdk';
 import * as fs from 'fs';
 
 const configuration = freeclimb.createConfiguration({
-  accountId: 'YOUR_ACCOUND_ID',
+  accountId: 'YOUR_ACCOUNT_ID',
   apiKey: 'YOUR_API_KEY'
 });
 const apiInstance = new freeclimb.DefaultApi(configuration);
@@ -1999,7 +2064,7 @@ import { freeclimb } from '@freeclimb/sdk';
 import * as fs from 'fs';
 
 const configuration = freeclimb.createConfiguration({
-  accountId: 'YOUR_ACCOUND_ID',
+  accountId: 'YOUR_ACCOUNT_ID',
   apiKey: 'YOUR_API_KEY'
 });
 const apiInstance = new freeclimb.DefaultApi(configuration);
@@ -2093,7 +2158,7 @@ import { freeclimb } from '@freeclimb/sdk';
 import * as fs from 'fs';
 
 const configuration = freeclimb.createConfiguration({
-  accountId: 'YOUR_ACCOUND_ID',
+  accountId: 'YOUR_ACCOUNT_ID',
   apiKey: 'YOUR_API_KEY'
 });
 const apiInstance = new freeclimb.DefaultApi(configuration);
@@ -2151,7 +2216,7 @@ import { freeclimb } from '@freeclimb/sdk';
 import * as fs from 'fs';
 
 const configuration = freeclimb.createConfiguration({
-  accountId: 'YOUR_ACCOUND_ID',
+  accountId: 'YOUR_ACCOUNT_ID',
   apiKey: 'YOUR_API_KEY'
 });
 const apiInstance = new freeclimb.DefaultApi(configuration);
@@ -2213,7 +2278,7 @@ import { freeclimb } from '@freeclimb/sdk';
 import * as fs from 'fs';
 
 const configuration = freeclimb.createConfiguration({
-  accountId: 'YOUR_ACCOUND_ID',
+  accountId: 'YOUR_ACCOUNT_ID',
   apiKey: 'YOUR_API_KEY'
 });
 const apiInstance = new freeclimb.DefaultApi(configuration);
@@ -2301,7 +2366,7 @@ import { freeclimb } from '@freeclimb/sdk';
 import * as fs from 'fs';
 
 const configuration = freeclimb.createConfiguration({
-  accountId: 'YOUR_ACCOUND_ID',
+  accountId: 'YOUR_ACCOUNT_ID',
   apiKey: 'YOUR_API_KEY'
 });
 const apiInstance = new freeclimb.DefaultApi(configuration);
@@ -2367,7 +2432,7 @@ import { freeclimb } from '@freeclimb/sdk';
 import * as fs from 'fs';
 
 const configuration = freeclimb.createConfiguration({
-  accountId: 'YOUR_ACCOUND_ID',
+  accountId: 'YOUR_ACCOUNT_ID',
   apiKey: 'YOUR_API_KEY'
 });
 const apiInstance = new freeclimb.DefaultApi(configuration);
@@ -2437,7 +2502,7 @@ import { freeclimb } from '@freeclimb/sdk';
 import * as fs from 'fs';
 
 const configuration = freeclimb.createConfiguration({
-  accountId: 'YOUR_ACCOUND_ID',
+  accountId: 'YOUR_ACCOUNT_ID',
   apiKey: 'YOUR_API_KEY'
 });
 const apiInstance = new freeclimb.DefaultApi(configuration);
@@ -2555,7 +2620,7 @@ import { freeclimb } from '@freeclimb/sdk';
 import * as fs from 'fs';
 
 const configuration = freeclimb.createConfiguration({
-  accountId: 'YOUR_ACCOUND_ID',
+  accountId: 'YOUR_ACCOUNT_ID',
   apiKey: 'YOUR_API_KEY'
 });
 const apiInstance = new freeclimb.DefaultApi(configuration);
@@ -2613,7 +2678,7 @@ import { freeclimb } from '@freeclimb/sdk';
 import * as fs from 'fs';
 
 const configuration = freeclimb.createConfiguration({
-  accountId: 'YOUR_ACCOUND_ID',
+  accountId: 'YOUR_ACCOUNT_ID',
   apiKey: 'YOUR_API_KEY'
 });
 const apiInstance = new freeclimb.DefaultApi(configuration);
@@ -2679,7 +2744,7 @@ import { freeclimb } from '@freeclimb/sdk';
 import * as fs from 'fs';
 
 const configuration = freeclimb.createConfiguration({
-  accountId: 'YOUR_ACCOUND_ID',
+  accountId: 'YOUR_ACCOUNT_ID',
   apiKey: 'YOUR_API_KEY'
 });
 const apiInstance = new freeclimb.DefaultApi(configuration);
@@ -2745,7 +2810,7 @@ import { freeclimb } from '@freeclimb/sdk';
 import * as fs from 'fs';
 
 const configuration = freeclimb.createConfiguration({
-  accountId: 'YOUR_ACCOUND_ID',
+  accountId: 'YOUR_ACCOUNT_ID',
   apiKey: 'YOUR_API_KEY'
 });
 const apiInstance = new freeclimb.DefaultApi(configuration);
@@ -2831,7 +2896,7 @@ import { freeclimb } from '@freeclimb/sdk';
 import * as fs from 'fs';
 
 const configuration = freeclimb.createConfiguration({
-  accountId: 'YOUR_ACCOUND_ID',
+  accountId: 'YOUR_ACCOUNT_ID',
   apiKey: 'YOUR_API_KEY'
 });
 const apiInstance = new freeclimb.DefaultApi(configuration);
@@ -2900,7 +2965,7 @@ import { freeclimb } from '@freeclimb/sdk';
 import * as fs from 'fs';
 
 const configuration = freeclimb.createConfiguration({
-  accountId: 'YOUR_ACCOUND_ID',
+  accountId: 'YOUR_ACCOUNT_ID',
   apiKey: 'YOUR_API_KEY'
 });
 const apiInstance = new freeclimb.DefaultApi(configuration);
@@ -2962,7 +3027,7 @@ import { freeclimb } from '@freeclimb/sdk';
 import * as fs from 'fs';
 
 const configuration = freeclimb.createConfiguration({
-  accountId: 'YOUR_ACCOUND_ID',
+  accountId: 'YOUR_ACCOUNT_ID',
   apiKey: 'YOUR_API_KEY'
 });
 const apiInstance = new freeclimb.DefaultApi(configuration);
@@ -3024,7 +3089,7 @@ import { freeclimb } from '@freeclimb/sdk';
 import * as fs from 'fs';
 
 const configuration = freeclimb.createConfiguration({
-  accountId: 'YOUR_ACCOUND_ID',
+  accountId: 'YOUR_ACCOUNT_ID',
   apiKey: 'YOUR_API_KEY'
 });
 const apiInstance = new freeclimb.DefaultApi(configuration);
@@ -3082,7 +3147,7 @@ import { freeclimb } from '@freeclimb/sdk';
 import * as fs from 'fs';
 
 const configuration = freeclimb.createConfiguration({
-  accountId: 'YOUR_ACCOUND_ID',
+  accountId: 'YOUR_ACCOUNT_ID',
   apiKey: 'YOUR_API_KEY'
 });
 const apiInstance = new freeclimb.DefaultApi(configuration);
@@ -3140,7 +3205,7 @@ import { freeclimb } from '@freeclimb/sdk';
 import * as fs from 'fs';
 
 const configuration = freeclimb.createConfiguration({
-  accountId: 'YOUR_ACCOUND_ID',
+  accountId: 'YOUR_ACCOUNT_ID',
   apiKey: 'YOUR_API_KEY'
 });
 const apiInstance = new freeclimb.DefaultApi(configuration);
@@ -3206,7 +3271,7 @@ import { freeclimb } from '@freeclimb/sdk';
 import * as fs from 'fs';
 
 const configuration = freeclimb.createConfiguration({
-  accountId: 'YOUR_ACCOUND_ID',
+  accountId: 'YOUR_ACCOUNT_ID',
   apiKey: 'YOUR_API_KEY'
 });
 const apiInstance = new freeclimb.DefaultApi(configuration);
@@ -3270,7 +3335,7 @@ import { freeclimb } from '@freeclimb/sdk';
 import * as fs from 'fs';
 
 const configuration = freeclimb.createConfiguration({
-  accountId: 'YOUR_ACCOUND_ID',
+  accountId: 'YOUR_ACCOUNT_ID',
   apiKey: 'YOUR_API_KEY'
 });
 const apiInstance = new freeclimb.DefaultApi(configuration);
@@ -3339,7 +3404,7 @@ import { freeclimb } from '@freeclimb/sdk';
 import * as fs from 'fs';
 
 const configuration = freeclimb.createConfiguration({
-  accountId: 'YOUR_ACCOUND_ID',
+  accountId: 'YOUR_ACCOUNT_ID',
   apiKey: 'YOUR_API_KEY'
 });
 const apiInstance = new freeclimb.DefaultApi(configuration);
@@ -3404,7 +3469,7 @@ import { freeclimb } from '@freeclimb/sdk';
 import * as fs from 'fs';
 
 const configuration = freeclimb.createConfiguration({
-  accountId: 'YOUR_ACCOUND_ID',
+  accountId: 'YOUR_ACCOUNT_ID',
   apiKey: 'YOUR_API_KEY'
 });
 const apiInstance = new freeclimb.DefaultApi(configuration);
@@ -3465,7 +3530,7 @@ import { freeclimb } from '@freeclimb/sdk';
 import * as fs from 'fs';
 
 const configuration = freeclimb.createConfiguration({
-  accountId: 'YOUR_ACCOUND_ID',
+  accountId: 'YOUR_ACCOUNT_ID',
   apiKey: 'YOUR_API_KEY'
 });
 const apiInstance = new freeclimb.DefaultApi(configuration);
@@ -3535,7 +3600,7 @@ import { freeclimb } from '@freeclimb/sdk';
 import * as fs from 'fs';
 
 const configuration = freeclimb.createConfiguration({
-  accountId: 'YOUR_ACCOUND_ID',
+  accountId: 'YOUR_ACCOUNT_ID',
   apiKey: 'YOUR_API_KEY'
 });
 const apiInstance = new freeclimb.DefaultApi(configuration);
@@ -3601,7 +3666,7 @@ import { freeclimb } from '@freeclimb';
 import * as fs from 'fs';
 
 const configuration = freeclimb.createConfiguration({
-  accountId: 'YOUR_ACCOUND_ID',
+  accountId: 'YOUR_ACCOUNT_ID',
   apiKey: 'YOUR_API_KEY'
 });
 const apiInstance = new freeclimb.DefaultApi(configuration);
