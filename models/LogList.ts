@@ -10,10 +10,9 @@
  * Do not edit the class manually.
  */
 
-import { LogListAllOf } from './LogListAllOf';
-import { LogResult } from './LogResult';
-import { PaginationModel } from './PaginationModel';
+import { LogResult } from './../models/LogResult';
 import { HttpFile } from '../http/http';
+
 
 
 interface AttributeType {
@@ -64,7 +63,10 @@ export class LogList {
     'nextPageUri'?: string;
     'logs'?: Array<LogResult>;
 
+    
     static readonly discriminator: string | undefined = undefined;
+    
+
 
     static readonly attributeTypeMap: AttributeType[] = [
         {

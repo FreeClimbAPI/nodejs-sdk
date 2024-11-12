@@ -10,11 +10,10 @@
  * Do not edit the class manually.
  */
 
-import { AccountResultAllOf } from './AccountResultAllOf';
-import { AccountStatus } from './AccountStatus';
-import { AccountType } from './AccountType';
-import { MutableResourceModel } from './MutableResourceModel';
+import { AccountStatus } from './../models/AccountStatus';
+import { AccountType } from './../models/AccountType';
 import { HttpFile } from '../http/http';
+
 
 
 interface AttributeType {
@@ -77,7 +76,10 @@ export class AccountResult {
     */
     'subresourceUris'?: any;
 
+    
     static readonly discriminator: string | undefined = undefined;
+    
+
 
     static readonly attributeTypeMap: AttributeType[] = [
         {

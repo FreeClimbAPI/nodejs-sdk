@@ -10,8 +10,9 @@
  * Do not edit the class manually.
  */
 
-import { Capabilities } from './Capabilities';
+import { Capabilities } from './../models/Capabilities';
 import { HttpFile } from '../http/http';
+
 
 
 interface AttributeType {
@@ -57,7 +58,10 @@ export class AvailableNumber {
     */
     'country'?: string;
 
+    
     static readonly discriminator: string | undefined = undefined;
+    
+
 
     static readonly attributeTypeMap: AttributeType[] = [
         {

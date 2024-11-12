@@ -10,10 +10,9 @@
  * Do not edit the class manually.
  */
 
-import { PaginationModel } from './PaginationModel';
-import { RecordingListAllOf } from './RecordingListAllOf';
-import { RecordingResult } from './RecordingResult';
+import { RecordingResult } from './../models/RecordingResult';
 import { HttpFile } from '../http/http';
+
 
 
 interface AttributeType {
@@ -64,7 +63,10 @@ export class RecordingList {
     'nextPageUri'?: string;
     'recordings'?: Array<RecordingResult>;
 
+    
     static readonly discriminator: string | undefined = undefined;
+    
+
 
     static readonly attributeTypeMap: AttributeType[] = [
         {

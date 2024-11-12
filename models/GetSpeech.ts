@@ -10,39 +10,14 @@
  * Do not edit the class manually.
  */
 
-import { AddToConference } from './AddToConference';
-import { CreateConference } from './CreateConference';
-import { Dequeue } from './Dequeue';
-import { Enqueue } from './Enqueue';
-import { GetDigits } from './GetDigits';
-import { GetSpeechAllOf } from './GetSpeechAllOf';
-import { GrammarType } from './GrammarType';
-import { Hangup } from './Hangup';
-import { OutDial } from './OutDial';
-import { Park } from './Park';
-import { Pause } from './Pause';
-import { PerclCommand } from './PerclCommand';
-import { Play } from './Play';
-import { PlayEarlyMedia } from './PlayEarlyMedia';
-import { RecordUtterance } from './RecordUtterance';
-import { Redirect } from './Redirect';
-import { Reject } from './Reject';
-import { RemoveFromConference } from './RemoveFromConference';
-import { Say } from './Say';
-import { SendDigits } from './SendDigits';
-import { SetListen } from './SetListen';
-import { SetTalk } from './SetTalk';
-import { Sms } from './Sms';
-import { StartRecordCall } from './StartRecordCall';
-import { TerminateConference } from './TerminateConference';
-import { TranscribeUtterance } from './TranscribeUtterance';
-import { URI } from './URI';
-import { Unpark } from './Unpark';
+import { GrammarType } from './../models/GrammarType';
+import { PerclCommand } from './../models/PerclCommand';
 import { HttpFile } from '../http/http';
 
 /**
 * The `GetSpeech` command enables the Caller to respond to the application using a supported language. Unlike DTMF entry, which implicitly restricts the user to using the available buttons on the phone key pad, speech input allows for flexible audio inputs based on grammar. FreeClimb supports grammars written using GRXML compatible with the Microsoft Speech Platform. `GetSpeech` is only supported on a single call leg. It is not supported when there are two or more call legs connected (as in within a Conference).
 */
+
 
 interface AttributeType {
     name: string
@@ -52,7 +27,7 @@ interface AttributeType {
     defaultValue: any
 }
 interface ArgumentsType {
-    'actionUrl': URI;
+    'actionUrl': string;
     'grammarType'?: GrammarType;
     'grammarFile': string;
     'grammarRule'?: string;
@@ -70,7 +45,7 @@ export class GetSpeech extends PerclCommand {
     /**
     * When the caller has finished speaking or the command has timed out, FreeClimb will make a POST request to this URL. A PerCL response is expected to continue handling the call.
     */
-    'actionUrl': URI;
+    'actionUrl': string;
     'grammarType'?: GrammarType;
     /**
     * The grammar file to use for speech recognition. If grammarType is set to URL, this attribute is specified as a download URL.
@@ -118,12 +93,14 @@ export class GetSpeech extends PerclCommand {
     'privacyMode'?: boolean;
 
     static readonly discriminator: string | undefined = "command";
+    
+
 
     static readonly attributeTypeMap: AttributeType[] = [
         {
             "name": "actionUrl",
             "baseName": "actionUrl",
-            "type": "URI",
+            "type": "string",
             "format": "uri",
 
             

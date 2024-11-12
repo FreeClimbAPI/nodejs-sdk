@@ -10,10 +10,8 @@
  * Do not edit the class manually.
  */
 
-import { MessageRequestAllOf } from './MessageRequestAllOf';
-import { MutableResourceModel } from './MutableResourceModel';
-import { URI } from './URI';
 import { HttpFile } from '../http/http';
+
 
 
 interface AttributeType {
@@ -32,7 +30,7 @@ interface ArgumentsType {
     'to': string;
     'text': string;
     'notificationUrl'?: string;
-    'mediaUrls'?: Array<URI>;
+    'mediaUrls'?: Array<string>;
 }
 export class MessageRequest {
     /**
@@ -56,7 +54,7 @@ export class MessageRequest {
     */
     'from': string;
     /**
-    * Phone number to receive the message. Must be within FreeClimb's service area.
+    * Phone number to receive the message. Must be within FreeClimb\'s service area.
     */
     'to': string;
     /**
@@ -70,9 +68,12 @@ export class MessageRequest {
     /**
     * an array of HTTP URLs which are to be used as attachments to the message. This will force the message into being an MMS message and must be done using a from number which is MMS capabile.
     */
-    'mediaUrls'?: Array<URI>;
+    'mediaUrls'?: Array<string>;
 
+    
     static readonly discriminator: string | undefined = undefined;
+    
+
 
     static readonly attributeTypeMap: AttributeType[] = [
         {
@@ -150,7 +151,7 @@ export class MessageRequest {
         {
             "name": "mediaUrls",
             "baseName": "mediaUrls",
-            "type": "Array<URI>",
+            "type": "Array<string>",
             "format": "uri",
 
             

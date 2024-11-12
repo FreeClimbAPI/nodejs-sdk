@@ -10,8 +10,9 @@
  * Do not edit the class manually.
  */
 
-import { LogLevel } from './LogLevel';
+import { LogLevel } from './../models/LogLevel';
 import { HttpFile } from '../http/http';
+
 
 
 interface AttributeType {
@@ -57,7 +58,10 @@ export class LogResult {
     */
     'metadata'?: any;
 
+    
     static readonly discriminator: string | undefined = undefined;
+    
+
 
     static readonly attributeTypeMap: AttributeType[] = [
         {

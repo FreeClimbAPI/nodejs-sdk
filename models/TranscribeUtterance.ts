@@ -10,38 +10,14 @@
  * Do not edit the class manually.
  */
 
-import { AddToConference } from './AddToConference';
-import { CreateConference } from './CreateConference';
-import { Dequeue } from './Dequeue';
-import { Enqueue } from './Enqueue';
-import { GetDigits } from './GetDigits';
-import { GetSpeech } from './GetSpeech';
-import { Hangup } from './Hangup';
-import { OutDial } from './OutDial';
-import { Park } from './Park';
-import { Pause } from './Pause';
-import { PerclCommand } from './PerclCommand';
-import { Play } from './Play';
-import { PlayEarlyMedia } from './PlayEarlyMedia';
-import { RecordUtterance } from './RecordUtterance';
-import { Redirect } from './Redirect';
-import { Reject } from './Reject';
-import { RemoveFromConference } from './RemoveFromConference';
-import { Say } from './Say';
-import { SendDigits } from './SendDigits';
-import { SetListen } from './SetListen';
-import { SetTalk } from './SetTalk';
-import { Sms } from './Sms';
-import { StartRecordCall } from './StartRecordCall';
-import { TerminateConference } from './TerminateConference';
-import { TranscribeUtteranceAllOf } from './TranscribeUtteranceAllOf';
-import { TranscribeUtteranceAllOfRecord } from './TranscribeUtteranceAllOfRecord';
-import { Unpark } from './Unpark';
+import { PerclCommand } from './../models/PerclCommand';
+import { TranscribeUtteranceAllOfRecord } from './../models/TranscribeUtteranceAllOfRecord';
 import { HttpFile } from '../http/http';
 
 /**
 * The `TranscribeUtterance` command transcribes the caller’s voice and returns transcription of the audio and optionally returns the recording of the audio transcribed.  `TranscribeUtterance` is blocking and is a terminal command. As such, the actionUrl property is required, and control of the Call picks up using the `PerCL` returned in response of the `actionUrl`. Recording and Transcription information is returned in the actionUrl request. If the reason this command ended was due to the call hanging up, any PerCL returned will not execute.
 */
+
 
 interface AttributeType {
     name: string
@@ -67,6 +43,8 @@ export class TranscribeUtterance extends PerclCommand {
     'prompts'?: Array<any>;
 
     static readonly discriminator: string | undefined = "command";
+    
+
 
     static readonly attributeTypeMap: AttributeType[] = [
         {
@@ -85,7 +63,7 @@ export class TranscribeUtterance extends PerclCommand {
             "format": "",
 
             
-            "defaultValue": undefined
+            "defaultValue": false
         },
         {
             "name": "record",
@@ -103,7 +81,7 @@ export class TranscribeUtterance extends PerclCommand {
             "format": "",
 
             
-            "defaultValue": undefined
+            "defaultValue": false
         },
         {
             "name": "privacyForRecording",
@@ -112,7 +90,7 @@ export class TranscribeUtterance extends PerclCommand {
             "format": "",
 
             
-            "defaultValue": undefined
+            "defaultValue": false
         },
         {
             "name": "prompts",

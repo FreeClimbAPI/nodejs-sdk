@@ -10,10 +10,9 @@
  * Do not edit the class manually.
  */
 
-import { MessageResult } from './MessageResult';
-import { MessagesListAllOf } from './MessagesListAllOf';
-import { PaginationModel } from './PaginationModel';
+import { MessageResult } from './../models/MessageResult';
 import { HttpFile } from '../http/http';
+
 
 
 interface AttributeType {
@@ -67,7 +66,10 @@ export class MessagesList {
     */
     'messages'?: Array<MessageResult>;
 
+    
     static readonly discriminator: string | undefined = undefined;
+    
+
 
     static readonly attributeTypeMap: AttributeType[] = [
         {

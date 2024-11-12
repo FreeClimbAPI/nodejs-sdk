@@ -10,10 +10,9 @@
  * Do not edit the class manually.
  */
 
-import { PaginationModel } from './PaginationModel';
-import { QueueListAllOf } from './QueueListAllOf';
-import { QueueResult } from './QueueResult';
+import { QueueResult } from './../models/QueueResult';
 import { HttpFile } from '../http/http';
+
 
 
 interface AttributeType {
@@ -64,7 +63,10 @@ export class QueueList {
     'nextPageUri'?: string;
     'queues'?: Array<QueueResult>;
 
+    
     static readonly discriminator: string | undefined = undefined;
+    
+
 
     static readonly attributeTypeMap: AttributeType[] = [
         {

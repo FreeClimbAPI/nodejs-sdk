@@ -10,9 +10,8 @@
  * Do not edit the class manually.
  */
 
-import { ApplicationResultAllOf } from './ApplicationResultAllOf';
-import { MutableResourceModel } from './MutableResourceModel';
 import { HttpFile } from '../http/http';
+
 
 
 interface AttributeType {
@@ -91,7 +90,10 @@ export class ApplicationResult {
     */
     'smsFallbackUrl'?: string;
 
+    
     static readonly discriminator: string | undefined = undefined;
+    
+
 
     static readonly attributeTypeMap: AttributeType[] = [
         {

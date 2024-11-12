@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 
-import { SMSTenDLCPartnerCampaignBrand } from './SMSTenDLCPartnerCampaignBrand';
+import { SMSTenDLCPartnerCampaignBrand } from './../models/SMSTenDLCPartnerCampaignBrand';
 import { HttpFile } from '../http/http';
 
 export enum SMSTenDLCPartnerCampaignStatusEnum {
@@ -18,6 +18,7 @@ export enum SMSTenDLCPartnerCampaignStatusEnum {
     ACTIVE = 'ACTIVE',
     EXPIRED = 'EXPIRED'
 }
+
 
 interface AttributeType {
     name: string
@@ -169,7 +170,10 @@ export class SMSTenDLCPartnerCampaign {
     'optoutMessage'?: string;
     'brand'?: SMSTenDLCPartnerCampaignBrand;
 
+    
     static readonly discriminator: string | undefined = undefined;
+    
+
 
     static readonly attributeTypeMap: AttributeType[] = [
         {
@@ -242,7 +246,7 @@ export class SMSTenDLCPartnerCampaign {
             "format": "",
 
             
-            "defaultValue": undefined
+            "defaultValue": false
         },
         {
             "name": "embeddedPhone",
@@ -251,7 +255,7 @@ export class SMSTenDLCPartnerCampaign {
             "format": "",
 
             
-            "defaultValue": undefined
+            "defaultValue": false
         },
         {
             "name": "affiliateMarketing",
@@ -269,7 +273,7 @@ export class SMSTenDLCPartnerCampaign {
             "format": "",
 
             
-            "defaultValue": undefined
+            "defaultValue": false
         },
         {
             "name": "ageGated",
@@ -296,7 +300,7 @@ export class SMSTenDLCPartnerCampaign {
             "format": "",
 
             
-            "defaultValue": undefined
+            "defaultValue": false
         },
         {
             "name": "subscriberOptout",
@@ -305,7 +309,7 @@ export class SMSTenDLCPartnerCampaign {
             "format": "",
 
             
-            "defaultValue": undefined
+            "defaultValue": false
         },
         {
             "name": "subscriberHelp",
@@ -314,7 +318,7 @@ export class SMSTenDLCPartnerCampaign {
             "format": "",
 
             
-            "defaultValue": undefined
+            "defaultValue": false
         },
         {
             "name": "sample1",

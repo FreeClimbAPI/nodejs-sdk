@@ -16,6 +16,7 @@ import { HttpFile } from '../http/http';
 * Details for which features this number may be used.
 */
 
+
 interface AttributeType {
     name: string
     baseName: string
@@ -52,7 +53,10 @@ export class Capabilities {
     */
     'shortCode': boolean;
 
+    
     static readonly discriminator: string | undefined = undefined;
+    
+
 
     static readonly attributeTypeMap: AttributeType[] = [
         {

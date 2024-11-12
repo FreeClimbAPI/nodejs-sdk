@@ -13,6 +13,7 @@
 import { HttpFile } from '../http/http';
 
 
+
 interface AttributeType {
     name: string
     baseName: string
@@ -79,7 +80,10 @@ export class SMSTenDLCPartnerCampaignBrand {
     */
     'evpVettingScore'?: number;
 
+    
     static readonly discriminator: string | undefined = undefined;
+    
+
 
     static readonly attributeTypeMap: AttributeType[] = [
         {

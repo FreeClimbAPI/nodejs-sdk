@@ -10,10 +10,9 @@
  * Do not edit the class manually.
  */
 
-import { AvailableNumber } from './AvailableNumber';
-import { AvailableNumberListAllOf } from './AvailableNumberListAllOf';
-import { PaginationModel } from './PaginationModel';
+import { AvailableNumber } from './../models/AvailableNumber';
 import { HttpFile } from '../http/http';
+
 
 
 interface AttributeType {
@@ -64,7 +63,10 @@ export class AvailableNumberList {
     'nextPageUri'?: string;
     'availablePhoneNumbers'?: Array<AvailableNumber>;
 
+    
     static readonly discriminator: string | undefined = undefined;
+    
+
 
     static readonly attributeTypeMap: AttributeType[] = [
         {

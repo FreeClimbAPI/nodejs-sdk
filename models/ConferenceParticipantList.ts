@@ -10,10 +10,9 @@
  * Do not edit the class manually.
  */
 
-import { ConferenceParticipantListAllOf } from './ConferenceParticipantListAllOf';
-import { ConferenceParticipantResult } from './ConferenceParticipantResult';
-import { PaginationModel } from './PaginationModel';
+import { ConferenceParticipantResult } from './../models/ConferenceParticipantResult';
 import { HttpFile } from '../http/http';
+
 
 
 interface AttributeType {
@@ -64,7 +63,10 @@ export class ConferenceParticipantList {
     'nextPageUri'?: string;
     'participants'?: Array<ConferenceParticipantResult>;
 
+    
     static readonly discriminator: string | undefined = undefined;
+    
+
 
     static readonly attributeTypeMap: AttributeType[] = [
         {

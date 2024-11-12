@@ -10,10 +10,9 @@
  * Do not edit the class manually.
  */
 
-import { PaginationModel } from './PaginationModel';
-import { SMSTenDLCCampaign } from './SMSTenDLCCampaign';
-import { SMSTenDLCCampaignsListResultAllOf } from './SMSTenDLCCampaignsListResultAllOf';
+import { SMSTenDLCCampaign } from './../models/SMSTenDLCCampaign';
 import { HttpFile } from '../http/http';
+
 
 
 interface AttributeType {
@@ -64,7 +63,10 @@ export class SMSTenDLCCampaignsListResult {
     'nextPageUri'?: string;
     'campaigns'?: Array<SMSTenDLCCampaign>;
 
+    
     static readonly discriminator: string | undefined = undefined;
+    
+
 
     static readonly attributeTypeMap: AttributeType[] = [
         {

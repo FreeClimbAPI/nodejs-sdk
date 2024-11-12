@@ -10,10 +10,9 @@
  * Do not edit the class manually.
  */
 
-import { IncomingNumberListAllOf } from './IncomingNumberListAllOf';
-import { IncomingNumberResult } from './IncomingNumberResult';
-import { PaginationModel } from './PaginationModel';
+import { IncomingNumberResult } from './../models/IncomingNumberResult';
 import { HttpFile } from '../http/http';
+
 
 
 interface AttributeType {
@@ -64,7 +63,10 @@ export class IncomingNumberList {
     'nextPageUri'?: string;
     'incomingPhoneNumbers'?: Array<IncomingNumberResult>;
 
+    
     static readonly discriminator: string | undefined = undefined;
+    
+
 
     static readonly attributeTypeMap: AttributeType[] = [
         {

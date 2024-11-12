@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 import { HttpFile } from '../http/http';
 
 export enum SMSTenDLCCampaignStatusEnum {
@@ -18,6 +17,7 @@ export enum SMSTenDLCCampaignStatusEnum {
     ACTIVE = 'ACTIVE',
     EXPIRED = 'EXPIRED'
 }
+
 
 interface AttributeType {
     name: string
@@ -207,7 +207,10 @@ export class SMSTenDLCCampaign {
     */
     'nextRenewalOrExpirationDate'?: string;
 
+    
     static readonly discriminator: string | undefined = undefined;
+    
+
 
     static readonly attributeTypeMap: AttributeType[] = [
         {
@@ -325,7 +328,7 @@ export class SMSTenDLCCampaign {
             "format": "",
 
             
-            "defaultValue": undefined
+            "defaultValue": false
         },
         {
             "name": "embeddedPhone",
@@ -334,7 +337,7 @@ export class SMSTenDLCCampaign {
             "format": "",
 
             
-            "defaultValue": undefined
+            "defaultValue": false
         },
         {
             "name": "affiliateMarketing",
@@ -352,7 +355,7 @@ export class SMSTenDLCCampaign {
             "format": "",
 
             
-            "defaultValue": undefined
+            "defaultValue": false
         },
         {
             "name": "ageGated",
@@ -379,7 +382,7 @@ export class SMSTenDLCCampaign {
             "format": "",
 
             
-            "defaultValue": undefined
+            "defaultValue": false
         },
         {
             "name": "subscriberOptout",
@@ -388,7 +391,7 @@ export class SMSTenDLCCampaign {
             "format": "",
 
             
-            "defaultValue": undefined
+            "defaultValue": false
         },
         {
             "name": "subscriberHelp",
@@ -397,7 +400,7 @@ export class SMSTenDLCCampaign {
             "format": "",
 
             
-            "defaultValue": undefined
+            "defaultValue": false
         },
         {
             "name": "sample1",

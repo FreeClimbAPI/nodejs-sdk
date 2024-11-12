@@ -10,9 +10,8 @@
  * Do not edit the class manually.
  */
 
-import { MutableResourceModel } from './MutableResourceModel';
-import { QueueResultAllOf } from './QueueResultAllOf';
 import { HttpFile } from '../http/http';
+
 
 
 interface AttributeType {
@@ -81,7 +80,10 @@ export class QueueResult {
     */
     'subresourceUris'?: any;
 
+    
     static readonly discriminator: string | undefined = undefined;
+    
+
 
     static readonly attributeTypeMap: AttributeType[] = [
         {

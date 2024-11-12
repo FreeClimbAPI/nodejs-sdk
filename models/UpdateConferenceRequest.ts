@@ -10,9 +10,10 @@
  * Do not edit the class manually.
  */
 
-import { PlayBeep } from './PlayBeep';
-import { UpdateConferenceRequestStatus } from './UpdateConferenceRequestStatus';
+import { PlayBeep } from './../models/PlayBeep';
+import { UpdateConferenceRequestStatus } from './../models/UpdateConferenceRequestStatus';
 import { HttpFile } from '../http/http';
+
 
 
 interface AttributeType {
@@ -35,7 +36,10 @@ export class UpdateConferenceRequest {
     'playBeep'?: PlayBeep;
     'status'?: UpdateConferenceRequestStatus;
 
+    
     static readonly discriminator: string | undefined = undefined;
+    
+
 
     static readonly attributeTypeMap: AttributeType[] = [
         {

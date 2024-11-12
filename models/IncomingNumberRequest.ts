@@ -13,6 +13,7 @@
 import { HttpFile } from '../http/http';
 
 
+
 interface AttributeType {
     name: string
     baseName: string
@@ -39,7 +40,10 @@ export class IncomingNumberRequest {
     */
     'campaignId'?: string;
 
+    
     static readonly discriminator: string | undefined = undefined;
+    
+
 
     static readonly attributeTypeMap: AttributeType[] = [
         {

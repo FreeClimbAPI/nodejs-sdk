@@ -13,6 +13,7 @@
 import { HttpFile } from '../http/http';
 
 
+
 interface AttributeType {
     name: string
     baseName: string
@@ -34,7 +35,10 @@ export class UpdateConferenceParticipantRequest {
     */
     'listen'?: boolean;
 
+    
     static readonly discriminator: string | undefined = undefined;
+    
+
 
     static readonly attributeTypeMap: AttributeType[] = [
         {

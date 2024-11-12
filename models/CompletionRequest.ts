@@ -13,6 +13,7 @@
 import { HttpFile } from '../http/http';
 
 
+
 interface AttributeType {
     name: string
     baseName: string
@@ -29,7 +30,10 @@ export class CompletionRequest {
     */
     'query': string;
 
+    
     static readonly discriminator: string | undefined = undefined;
+    
+
 
     static readonly attributeTypeMap: AttributeType[] = [
         {

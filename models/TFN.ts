@@ -16,6 +16,7 @@ import { HttpFile } from '../http/http';
 * TollFree Campaign details for this number
 */
 
+
 interface AttributeType {
     name: string
     baseName: string
@@ -32,7 +33,10 @@ export class TFN {
     */
     'campaignId': string;
 
+    
     static readonly discriminator: string | undefined = undefined;
+    
+
 
     static readonly attributeTypeMap: AttributeType[] = [
         {

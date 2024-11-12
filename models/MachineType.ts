@@ -14,8 +14,9 @@ import { HttpFile } from '../http/http';
 
 export enum MachineType {
 
-    ANSWERING_MACHINE = 'answeringMachine',
-    FAX_MACHINE = 'faxMachine'
+    ANSWERING_MACHINE = 'answering machine',
+    FAX_MODEM = 'fax modem'
 }
+
 
 

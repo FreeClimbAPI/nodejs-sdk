@@ -10,9 +10,8 @@
  * Do not edit the class manually.
  */
 
-import { ConferenceParticipantResultAllOf } from './ConferenceParticipantResultAllOf';
-import { MutableResourceModel } from './MutableResourceModel';
 import { HttpFile } from '../http/http';
+
 
 
 interface AttributeType {
@@ -76,7 +75,10 @@ export class ConferenceParticipantResult {
     */
     'startConfOnEnter'?: boolean;
 
+    
     static readonly discriminator: string | undefined = undefined;
+    
+
 
     static readonly attributeTypeMap: AttributeType[] = [
         {

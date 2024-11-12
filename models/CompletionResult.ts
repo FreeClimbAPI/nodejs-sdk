@@ -18,6 +18,7 @@ export enum CompletionResultStatusEnum {
     NO_CONTEXT = 'no_context'
 }
 
+
 interface AttributeType {
     name: string
     baseName: string
@@ -39,7 +40,10 @@ export class CompletionResult {
     */
     'status': CompletionResultStatusEnum;
 
+    
     static readonly discriminator: string | undefined = undefined;
+    
+
 
     static readonly attributeTypeMap: AttributeType[] = [
         {

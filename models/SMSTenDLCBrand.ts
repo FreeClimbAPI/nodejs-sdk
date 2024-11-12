@@ -76,6 +76,7 @@ export enum SMSTenDLCBrandIdentityStatusEnum {
     VETTED_VERIFIED = 'VETTED_VERIFIED'
 }
 
+
 interface AttributeType {
     name: string
     baseName: string
@@ -242,7 +243,10 @@ export class SMSTenDLCBrand {
     */
     'createDate'?: Date;
 
+    
     static readonly discriminator: string | undefined = undefined;
+    
+
 
     static readonly attributeTypeMap: AttributeType[] = [
         {

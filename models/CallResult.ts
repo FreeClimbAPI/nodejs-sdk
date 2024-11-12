@@ -10,12 +10,11 @@
  * Do not edit the class manually.
  */
 
-import { AnsweredBy } from './AnsweredBy';
-import { CallDirection } from './CallDirection';
-import { CallResultAllOf } from './CallResultAllOf';
-import { CallStatus } from './CallStatus';
-import { MutableResourceModel } from './MutableResourceModel';
+import { AnsweredBy } from './../models/AnsweredBy';
+import { CallDirection } from './../models/CallDirection';
+import { CallStatus } from './../models/CallStatus';
 import { HttpFile } from '../http/http';
+
 
 
 interface AttributeType {
@@ -115,7 +114,10 @@ export class CallResult {
     */
     'subresourceUris'?: any;
 
+    
     static readonly discriminator: string | undefined = undefined;
+    
+
 
     static readonly attributeTypeMap: AttributeType[] = [
         {

@@ -10,10 +10,9 @@
  * Do not edit the class manually.
  */
 
-import { PaginationModel } from './PaginationModel';
-import { SMSTenDLCBrand } from './SMSTenDLCBrand';
-import { SMSTenDLCBrandsListResultAllOf } from './SMSTenDLCBrandsListResultAllOf';
+import { SMSTenDLCBrand } from './../models/SMSTenDLCBrand';
 import { HttpFile } from '../http/http';
+
 
 
 interface AttributeType {
@@ -64,7 +63,10 @@ export class SMSTenDLCBrandsListResult {
     'nextPageUri'?: string;
     'brands'?: Array<SMSTenDLCBrand>;
 
+    
     static readonly discriminator: string | undefined = undefined;
+    
+
 
     static readonly attributeTypeMap: AttributeType[] = [
         {

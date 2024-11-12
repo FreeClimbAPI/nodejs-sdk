@@ -13,6 +13,7 @@
 import { HttpFile } from '../http/http';
 
 
+
 interface AttributeType {
     name: string
     baseName: string
@@ -41,7 +42,7 @@ export class QueueMember {
     */
     'waitTime'?: number;
     /**
-    * Member's current position in the Queue, 1 indexed.
+    * Member\'s current position in the Queue, 1 indexed.
     */
     'position'?: number;
     /**
@@ -49,7 +50,10 @@ export class QueueMember {
     */
     'dateEnqueued'?: string;
 
+    
     static readonly discriminator: string | undefined = undefined;
+    
+
 
     static readonly attributeTypeMap: AttributeType[] = [
         {

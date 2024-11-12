@@ -10,10 +10,9 @@
  * Do not edit the class manually.
  */
 
-import { PaginationModel } from './PaginationModel';
-import { SMSTollFreeCampaign } from './SMSTollFreeCampaign';
-import { SMSTollFreeCampaignsListResultAllOf } from './SMSTollFreeCampaignsListResultAllOf';
+import { SMSTollFreeCampaign } from './../models/SMSTollFreeCampaign';
 import { HttpFile } from '../http/http';
+
 
 
 interface AttributeType {
@@ -64,7 +63,10 @@ export class SMSTollFreeCampaignsListResult {
     'nextPageUri'?: string;
     'brands'?: Array<SMSTollFreeCampaign>;
 
+    
     static readonly discriminator: string | undefined = undefined;
+    
+
 
     static readonly attributeTypeMap: AttributeType[] = [
         {

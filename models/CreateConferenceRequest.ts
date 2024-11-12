@@ -10,8 +10,9 @@
  * Do not edit the class manually.
  */
 
-import { PlayBeep } from './PlayBeep';
+import { PlayBeep } from './../models/PlayBeep';
 import { HttpFile } from '../http/http';
+
 
 
 interface AttributeType {
@@ -47,7 +48,10 @@ export class CreateConferenceRequest {
     */
     'statusCallbackUrl'?: string;
 
+    
     static readonly discriminator: string | undefined = undefined;
+    
+
 
     static readonly attributeTypeMap: AttributeType[] = [
         {

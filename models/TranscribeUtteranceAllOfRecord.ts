@@ -13,6 +13,7 @@
 import { HttpFile } from '../http/http';
 
 
+
 interface AttributeType {
     name: string
     baseName: string
@@ -30,7 +31,10 @@ export class TranscribeUtteranceAllOfRecord {
     'maxLengthSec'?: number;
     'rcrdTerminationSilenceTimeMs'?: number;
 
+    
     static readonly discriminator: string | undefined = undefined;
+    
+
 
     static readonly attributeTypeMap: AttributeType[] = [
         {
@@ -40,7 +44,7 @@ export class TranscribeUtteranceAllOfRecord {
             "format": "",
 
             
-            "defaultValue": undefined
+            "defaultValue": false
         },
         {
             "name": "maxLengthSec",

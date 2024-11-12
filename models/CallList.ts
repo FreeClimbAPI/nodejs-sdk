@@ -10,10 +10,9 @@
  * Do not edit the class manually.
  */
 
-import { CallListAllOf } from './CallListAllOf';
-import { CallResult } from './CallResult';
-import { PaginationModel } from './PaginationModel';
+import { CallResult } from './../models/CallResult';
 import { HttpFile } from '../http/http';
+
 
 
 interface AttributeType {
@@ -64,7 +63,10 @@ export class CallList {
     'nextPageUri'?: string;
     'calls'?: Array<CallResult>;
 
+    
     static readonly discriminator: string | undefined = undefined;
+    
+
 
     static readonly attributeTypeMap: AttributeType[] = [
         {
