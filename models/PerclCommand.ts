@@ -16,7 +16,6 @@ import { HttpFile } from '../http/http';
 * An individual command used in a PerCLScript.
 */
 
-
 interface AttributeType {
     name: string
     baseName: string
@@ -34,8 +33,6 @@ export class PerclCommand {
     'command'?: string;
 
     static readonly discriminator: string | undefined = "command";
-    
-
 
     static readonly attributeTypeMap: AttributeType[] = [
         {

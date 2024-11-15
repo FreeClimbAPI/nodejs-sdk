@@ -12,13 +12,12 @@
 
 import { CallDirection } from './../models/CallDirection';
 import { CallStatus } from './../models/CallStatus';
-import { Webhook } from './Webhook'
+import { Webhook } from './../models/Webhook';
 import { HttpFile } from '../http/http';
 
 /**
 * The OutDial command has started and the actionUrl is being invoked. This request is made in the context of the parent call (Call leg that invoked). A PerCL response is expected.
 */
-
 
 interface AttributeType {
     name: string
@@ -40,7 +39,7 @@ interface ArgumentsType {
     'dialCallId'?: string;
     'parentCallId'?: string;
 }
-export class OutDialStartWebhook {
+export class OutDialStartWebhook extends Webhook {
     /**
     * Context or reason why this request is being made. Will be outDialStart - The OutDial command has started and the actionUrl is being invoked.
     */
@@ -80,9 +79,7 @@ export class OutDialStartWebhook {
     */
     'parentCallId'?: string;
 
-    static readonly discriminator: string | undefined = "outDialStart";
-    
-
+    static readonly discriminator: string | undefined = "requestType";
 
     static readonly attributeTypeMap: AttributeType[] = [
         {
@@ -186,10 +183,11 @@ export class OutDialStartWebhook {
         }    ];
 
     static getAttributeTypeMap(): AttributeType[] {
-        return OutDialStartWebhook.attributeTypeMap;
+        return super.getAttributeTypeMap().concat(OutDialStartWebhook.attributeTypeMap);
     }
 
     public constructor(args: ArgumentsType) {
+        super({ requestType: "outDialStart" });
         const preparedArgs = OutDialStartWebhook.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
             
             const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
@@ -201,12 +199,8 @@ export class OutDialStartWebhook {
         }, {})
         Object.assign(this, preparedArgs)
     }
-    static isRequestType(requestType: string): boolean {
-        return requestType === this.discriminator
-    }
-    static create(args: ArgumentsType): OutDialStartWebhook {
-        return new OutDialStartWebhook(args)
+    public static deserialize(payload: string): OutDialStartWebhook {
+        return new OutDialStartWebhook(JSON.parse(payload));
     }
 }
 
-Webhook.register(OutDialStartWebhook)

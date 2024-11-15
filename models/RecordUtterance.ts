@@ -17,7 +17,6 @@ import { HttpFile } from '../http/http';
 * The `RecordUtterance` command records the caller\'s voice and returns the URL of a file containing the audio recording. `RecordUtterance` is blocking and is a terminal command. As such, the `actionUrl` property is required, and control of the Call picks up using the PerCL returned in response to the `actionUrl`. Recording information is returned in the `actionUrl` request.
 */
 
-
 interface AttributeType {
     name: string
     baseName: string
@@ -65,8 +64,6 @@ export class RecordUtterance extends PerclCommand {
     'privacyMode'?: boolean;
 
     static readonly discriminator: string | undefined = "command";
-    
-
 
     static readonly attributeTypeMap: AttributeType[] = [
         {

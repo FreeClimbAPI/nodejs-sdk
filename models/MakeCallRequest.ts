@@ -13,7 +13,6 @@
 import { HttpFile } from '../http/http';
 
 
-
 interface AttributeType {
     name: string
     baseName: string
@@ -75,10 +74,7 @@ export class MakeCallRequest {
     */
     'callConnectUrl'?: string;
 
-    
     static readonly discriminator: string | undefined = undefined;
-    
-
 
     static readonly attributeTypeMap: AttributeType[] = [
         {

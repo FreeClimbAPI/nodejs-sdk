@@ -13,13 +13,12 @@
 import { CallDirection } from './../models/CallDirection';
 import { CallStatus } from './../models/CallStatus';
 import { QueueResultStatus } from './../models/QueueResultStatus';
-import { Webhook } from './Webhook'
+import { Webhook } from './../models/Webhook';
 import { HttpFile } from '../http/http';
 
 /**
 * A call has been removed from a queue and the Enqueue command’s actionUrl is being invoked. A PerCL response is expected except if reason is hangup.
 */
-
 
 interface AttributeType {
     name: string
@@ -41,7 +40,7 @@ interface ArgumentsType {
     'queueResult'?: QueueResultStatus;
     'queueTime'?: number;
 }
-export class RemoveFromQueueNotificationWebhook {
+export class RemoveFromQueueNotificationWebhook extends Webhook {
     /**
     * Context or reason why this request is being made. Will be removeFromQueueNotification - A Call has been removed from a Queue and the Enqueue command’s actionUrl is being invoked.
     */
@@ -78,9 +77,7 @@ export class RemoveFromQueueNotificationWebhook {
     */
     'queueTime'?: number;
 
-    static readonly discriminator: string | undefined = "removeFromQueueNotification";
-    
-
+    static readonly discriminator: string | undefined = "requestType";
 
     static readonly attributeTypeMap: AttributeType[] = [
         {
@@ -184,10 +181,11 @@ export class RemoveFromQueueNotificationWebhook {
         }    ];
 
     static getAttributeTypeMap(): AttributeType[] {
-        return RemoveFromQueueNotificationWebhook.attributeTypeMap;
+        return super.getAttributeTypeMap().concat(RemoveFromQueueNotificationWebhook.attributeTypeMap);
     }
 
     public constructor(args: ArgumentsType) {
+        super({ requestType: "removeFromQueueNotification" });
         const preparedArgs = RemoveFromQueueNotificationWebhook.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
             
             const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
@@ -199,12 +197,8 @@ export class RemoveFromQueueNotificationWebhook {
         }, {})
         Object.assign(this, preparedArgs)
     }
-    static isRequestType(requestType: string): boolean {
-        return requestType === this.discriminator
-    }
-    static create(args: ArgumentsType): RemoveFromQueueNotificationWebhook {
-        return new RemoveFromQueueNotificationWebhook(args)
+    public static deserialize(payload: string): RemoveFromQueueNotificationWebhook {
+        return new RemoveFromQueueNotificationWebhook(JSON.parse(payload));
     }
 }
 
-Webhook.register(RemoveFromQueueNotificationWebhook)

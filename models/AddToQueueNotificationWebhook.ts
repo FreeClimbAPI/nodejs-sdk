@@ -12,13 +12,12 @@
 
 import { CallDirection } from './../models/CallDirection';
 import { CallStatus } from './../models/CallStatus';
-import { Webhook } from './Webhook'
+import { Webhook } from './../models/Webhook';
 import { HttpFile } from '../http/http';
 
 /**
 * A Call has been added to a Queue and the Enqueue command’s notificationUrl is being invoked. This is a notification only; any PerCL returned will be ignored.
 */
-
 
 interface AttributeType {
     name: string
@@ -38,7 +37,7 @@ interface ArgumentsType {
     'conferenceId'?: string;
     'queueId'?: string;
 }
-export class AddToQueueNotificationWebhook {
+export class AddToQueueNotificationWebhook extends Webhook {
     /**
     * Context or reason why this request is being made. Will be addToQueueNotification - A call has been added to a queue and the Enqueue command’s notificationUrl is being invoked.
     */
@@ -70,9 +69,7 @@ export class AddToQueueNotificationWebhook {
     */
     'queueId'?: string;
 
-    static readonly discriminator: string | undefined = "addToQueueNotification";
-    
-
+    static readonly discriminator: string | undefined = "requestType";
 
     static readonly attributeTypeMap: AttributeType[] = [
         {
@@ -158,10 +155,11 @@ export class AddToQueueNotificationWebhook {
         }    ];
 
     static getAttributeTypeMap(): AttributeType[] {
-        return AddToQueueNotificationWebhook.attributeTypeMap;
+        return super.getAttributeTypeMap().concat(AddToQueueNotificationWebhook.attributeTypeMap);
     }
 
     public constructor(args: ArgumentsType) {
+        super({ requestType: "addToQueueNotification" });
         const preparedArgs = AddToQueueNotificationWebhook.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
             
             const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
@@ -173,12 +171,8 @@ export class AddToQueueNotificationWebhook {
         }, {})
         Object.assign(this, preparedArgs)
     }
-    static isRequestType(requestType: string): boolean {
-        return requestType === this.discriminator
-    }
-    static create(args: ArgumentsType): AddToQueueNotificationWebhook {
-        return new AddToQueueNotificationWebhook(args)
+    public static deserialize(payload: string): AddToQueueNotificationWebhook {
+        return new AddToQueueNotificationWebhook(JSON.parse(payload));
     }
 }
 
-Webhook.register(AddToQueueNotificationWebhook)

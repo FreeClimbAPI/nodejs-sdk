@@ -12,13 +12,12 @@
 
 import { CallDirection } from './../models/CallDirection';
 import { CallStatus } from './../models/CallStatus';
-import { Webhook } from './Webhook'
+import { Webhook } from './../models/Webhook';
 import { HttpFile } from '../http/http';
 
 /**
 * A queued Call is requesting instructions to execute during the wait in the Queue and the corresponding waitUrl is being invoked. A PerCL response is expected. The following are the only PerCL commands supported in the PerCL script response to a request to the waitUrl: Play,Say,Pause,GetDigits,Dequeue,Hangup
 */
-
 
 interface AttributeType {
     name: string
@@ -41,7 +40,7 @@ interface ArgumentsType {
     'queueTime'?: number;
     'currentQueueSize'?: number;
 }
-export class QueueWaitWebhook {
+export class QueueWaitWebhook extends Webhook {
     /**
     * Context or reason why this request is being made. Will be queueWait - A queued call is requesting instructions to execute during the wait in the queue and the corresponding waitUrl is being invoked.
     */
@@ -85,9 +84,7 @@ export class QueueWaitWebhook {
     */
     'currentQueueSize'?: number;
 
-    static readonly discriminator: string | undefined = "queueWait";
-    
-
+    static readonly discriminator: string | undefined = "requestType";
 
     static readonly attributeTypeMap: AttributeType[] = [
         {
@@ -200,10 +197,11 @@ export class QueueWaitWebhook {
         }    ];
 
     static getAttributeTypeMap(): AttributeType[] {
-        return QueueWaitWebhook.attributeTypeMap;
+        return super.getAttributeTypeMap().concat(QueueWaitWebhook.attributeTypeMap);
     }
 
     public constructor(args: ArgumentsType) {
+        super({ requestType: "queueWait" });
         const preparedArgs = QueueWaitWebhook.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
             
             const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
@@ -215,12 +213,8 @@ export class QueueWaitWebhook {
         }, {})
         Object.assign(this, preparedArgs)
     }
-    static isRequestType(requestType: string): boolean {
-        return requestType === this.discriminator
-    }
-    static create(args: ArgumentsType): QueueWaitWebhook {
-        return new QueueWaitWebhook(args)
+    public static deserialize(payload: string): QueueWaitWebhook {
+        return new QueueWaitWebhook(JSON.parse(payload));
     }
 }
 
-Webhook.register(QueueWaitWebhook)

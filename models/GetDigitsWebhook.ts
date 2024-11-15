@@ -13,13 +13,12 @@
 import { CallDirection } from './../models/CallDirection';
 import { CallStatus } from './../models/CallStatus';
 import { GetDigitsReason } from './../models/GetDigitsReason';
-import { Webhook } from './Webhook'
+import { Webhook } from './../models/Webhook';
 import { HttpFile } from '../http/http';
 
 /**
 * A POST request with the following fields will be sent to the actionUrl provided in your GetDigits command.
 */
-
 
 interface AttributeType {
     name: string
@@ -42,7 +41,7 @@ interface ArgumentsType {
     'reason'?: GetDigitsReason;
     'parentCallId'?: string;
 }
-export class GetDigitsWebhook {
+export class GetDigitsWebhook extends Webhook {
     /**
     * Context or reason why this request is being made. Will be getDigits - The GetDigits command has completed and its actionUrl is being invoked.
     */
@@ -83,9 +82,7 @@ export class GetDigitsWebhook {
     */
     'parentCallId'?: string;
 
-    static readonly discriminator: string | undefined = "getDigits";
-    
-
+    static readonly discriminator: string | undefined = "requestType";
 
     static readonly attributeTypeMap: AttributeType[] = [
         {
@@ -198,10 +195,11 @@ export class GetDigitsWebhook {
         }    ];
 
     static getAttributeTypeMap(): AttributeType[] {
-        return GetDigitsWebhook.attributeTypeMap;
+        return super.getAttributeTypeMap().concat(GetDigitsWebhook.attributeTypeMap);
     }
 
     public constructor(args: ArgumentsType) {
+        super({ requestType: "getDigits" });
         const preparedArgs = GetDigitsWebhook.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
             
             const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
@@ -213,12 +211,8 @@ export class GetDigitsWebhook {
         }, {})
         Object.assign(this, preparedArgs)
     }
-    static isRequestType(requestType: string): boolean {
-        return requestType === this.discriminator
-    }
-    static create(args: ArgumentsType): GetDigitsWebhook {
-        return new GetDigitsWebhook(args)
+    public static deserialize(payload: string): GetDigitsWebhook {
+        return new GetDigitsWebhook(JSON.parse(payload));
     }
 }
 
-Webhook.register(GetDigitsWebhook)

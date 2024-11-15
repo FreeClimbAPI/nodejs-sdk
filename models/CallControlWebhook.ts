@@ -10,13 +10,12 @@
  * Do not edit the class manually.
  */
 
-import { Webhook } from './Webhook'
+import { Webhook } from './../models/Webhook';
 import { HttpFile } from '../http/http';
 
 /**
 * The digit sequence defined in the callControlSequence attribute of the AddToConference PerCL command has been entered by the Conference participant. A PerCL response is expected. If invalid PerCL is provided, the call leg which triggered this webhook will terminate.
 */
-
 
 interface AttributeType {
     name: string
@@ -32,7 +31,7 @@ interface ArgumentsType {
     'conferenceId'?: string;
     'digits'?: string;
 }
-export class CallControlWebhook {
+export class CallControlWebhook extends Webhook {
     /**
     * Context or reason why this request is being made. Will be callControl.
     */
@@ -54,9 +53,7 @@ export class CallControlWebhook {
     */
     'digits'?: string;
 
-    static readonly discriminator: string | undefined = "callControl";
-    
-
+    static readonly discriminator: string | undefined = "requestType";
 
     static readonly attributeTypeMap: AttributeType[] = [
         {
@@ -106,10 +103,11 @@ export class CallControlWebhook {
         }    ];
 
     static getAttributeTypeMap(): AttributeType[] {
-        return CallControlWebhook.attributeTypeMap;
+        return super.getAttributeTypeMap().concat(CallControlWebhook.attributeTypeMap);
     }
 
     public constructor(args: ArgumentsType) {
+        super({ requestType: "callControl" });
         const preparedArgs = CallControlWebhook.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
             
             const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
@@ -121,12 +119,8 @@ export class CallControlWebhook {
         }, {})
         Object.assign(this, preparedArgs)
     }
-    static isRequestType(requestType: string): boolean {
-        return requestType === this.discriminator
-    }
-    static create(args: ArgumentsType): CallControlWebhook {
-        return new CallControlWebhook(args)
+    public static deserialize(payload: string): CallControlWebhook {
+        return new CallControlWebhook(JSON.parse(payload));
     }
 }
 
-Webhook.register(CallControlWebhook)

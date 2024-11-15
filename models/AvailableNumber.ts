@@ -14,7 +14,6 @@ import { Capabilities } from './../models/Capabilities';
 import { HttpFile } from '../http/http';
 
 
-
 interface AttributeType {
     name: string
     baseName: string
@@ -58,10 +57,7 @@ export class AvailableNumber {
     */
     'country'?: string;
 
-    
     static readonly discriminator: string | undefined = undefined;
-    
-
 
     static readonly attributeTypeMap: AttributeType[] = [
         {

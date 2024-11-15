@@ -3,6 +3,7 @@ import { describe, expect, it } from "@jest/globals";
     
 describe('MachineDetectedWebhook', () => {
     let model: freeclimb.MachineDetectedWebhook = new freeclimb.MachineDetectedWebhook({
+       
         requestType: "test_requestType",
         callId: "test_callId",
         accountId: "test_accountId",
@@ -23,6 +24,7 @@ describe('MachineDetectedWebhook', () => {
            expect(model).toBeInstanceOf(freeclimb.MachineDetectedWebhook)
         })
     })
+
     describe(".requestType", () => {
         it('resolves to particular value on initialization', () => {
             const value = "test_requestType"
@@ -92,9 +94,9 @@ describe('MachineDetectedWebhook', () => {
             expect(model.machineType).toBe(value)
         })
     })
-    describe('Webhook.parseFromObject with MachineType', () => {
-        it('returns an instance of MachineDetectedWebhook when requestType="machineDeteched"', () => {
-            expect(freeclimb.Webhook.parseFromObject({ requestType: 'machineDeteched'})).toBeInstanceOf(freeclimb.MachineDetectedWebhook)
+    describe('.deserialize', () => {
+        it('returns an instance of MachineDetectedWebhook', () => {
+            expect(freeclimb.MachineDetectedWebhook.deserialize('{ "requestType": "machineDeteched"}')).toBeInstanceOf(freeclimb.MachineDetectedWebhook)
         })
     })
 })

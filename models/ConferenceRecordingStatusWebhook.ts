@@ -13,13 +13,12 @@
 import { CallDirection } from './../models/CallDirection';
 import { CallStatus } from './../models/CallStatus';
 import { ConferenceStatus } from './../models/ConferenceStatus';
-import { Webhook } from './Webhook'
+import { Webhook } from './../models/Webhook';
 import { HttpFile } from '../http/http';
 
 /**
 * The statusCallbackUrl request includes Recording information for a Conference that ended. This is a notification only; any PerCL returned will be ignored.
 */
-
 
 interface AttributeType {
     name: string
@@ -43,7 +42,7 @@ interface ArgumentsType {
     'recordingId'?: string;
     'recordingDurationSec'?: number;
 }
-export class ConferenceRecordingStatusWebhook {
+export class ConferenceRecordingStatusWebhook extends Webhook {
     /**
     * Context or reason why this request is being made. Will be conferenceRecordingStatus - The statusCallbackUrl request includes Recording information for a Conference that ended.
     */
@@ -88,9 +87,7 @@ export class ConferenceRecordingStatusWebhook {
     */
     'recordingDurationSec'?: number;
 
-    static readonly discriminator: string | undefined = "conferenceRecordingStatus";
-    
-
+    static readonly discriminator: string | undefined = "requestType";
 
     static readonly attributeTypeMap: AttributeType[] = [
         {
@@ -212,10 +209,11 @@ export class ConferenceRecordingStatusWebhook {
         }    ];
 
     static getAttributeTypeMap(): AttributeType[] {
-        return ConferenceRecordingStatusWebhook.attributeTypeMap;
+        return super.getAttributeTypeMap().concat(ConferenceRecordingStatusWebhook.attributeTypeMap);
     }
 
     public constructor(args: ArgumentsType) {
+        super({ requestType: "conferenceRecordingStatus" });
         const preparedArgs = ConferenceRecordingStatusWebhook.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
             
             const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
@@ -227,12 +225,8 @@ export class ConferenceRecordingStatusWebhook {
         }, {})
         Object.assign(this, preparedArgs)
     }
-    static isRequestType(requestType: string): boolean {
-        return requestType === this.discriminator
-    }
-    static create(args: ArgumentsType): ConferenceRecordingStatusWebhook {
-        return new ConferenceRecordingStatusWebhook(args)
+    public static deserialize(payload: string): ConferenceRecordingStatusWebhook {
+        return new ConferenceRecordingStatusWebhook(JSON.parse(payload));
     }
 }
 
-Webhook.register(ConferenceRecordingStatusWebhook)

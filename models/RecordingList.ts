@@ -14,7 +14,6 @@ import { RecordingResult } from './../models/RecordingResult';
 import { HttpFile } from '../http/http';
 
 
-
 interface AttributeType {
     name: string
     baseName: string
@@ -63,10 +62,7 @@ export class RecordingList {
     'nextPageUri'?: string;
     'recordings'?: Array<RecordingResult>;
 
-    
     static readonly discriminator: string | undefined = undefined;
-    
-
 
     static readonly attributeTypeMap: AttributeType[] = [
         {

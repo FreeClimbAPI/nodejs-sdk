@@ -14,7 +14,6 @@ import { IncomingNumberResult } from './../models/IncomingNumberResult';
 import { HttpFile } from '../http/http';
 
 
-
 interface AttributeType {
     name: string
     baseName: string
@@ -63,10 +62,7 @@ export class IncomingNumberList {
     'nextPageUri'?: string;
     'incomingPhoneNumbers'?: Array<IncomingNumberResult>;
 
-    
     static readonly discriminator: string | undefined = undefined;
-    
-
 
     static readonly attributeTypeMap: AttributeType[] = [
         {

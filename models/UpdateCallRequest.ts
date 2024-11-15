@@ -14,7 +14,6 @@ import { UpdateCallRequestStatus } from './../models/UpdateCallRequestStatus';
 import { HttpFile } from '../http/http';
 
 
-
 interface AttributeType {
     name: string
     baseName: string
@@ -28,10 +27,7 @@ interface ArgumentsType {
 export class UpdateCallRequest {
     'status': UpdateCallRequestStatus;
 
-    
     static readonly discriminator: string | undefined = undefined;
-    
-
 
     static readonly attributeTypeMap: AttributeType[] = [
         {

@@ -14,7 +14,6 @@ import { SMSTenDLCPartnerCampaign } from './../models/SMSTenDLCPartnerCampaign';
 import { HttpFile } from '../http/http';
 
 
-
 interface AttributeType {
     name: string
     baseName: string
@@ -63,10 +62,7 @@ export class SMSTenDLCPartnerCampaignsListResult {
     'nextPageUri'?: string;
     'partnerCampaigns'?: Array<SMSTenDLCPartnerCampaign>;
 
-    
     static readonly discriminator: string | undefined = undefined;
-    
-
 
     static readonly attributeTypeMap: AttributeType[] = [
         {

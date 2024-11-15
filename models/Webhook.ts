@@ -13,14 +13,6 @@
 import { HttpFile } from '../http/http';
 
 
-interface FreeClimbWebhookKlass {
-    create(args: any): any
-    isRequestType(requestType: string): boolean
-}
-interface FreeClimbWebhookPayload {
-    requestType: string
-}
-
 interface AttributeType {
     name: string
     baseName: string
@@ -38,9 +30,6 @@ export class Webhook {
     'requestType'?: string;
 
     static readonly discriminator: string | undefined = "requestType";
-    
-
-    static webhooks: FreeClimbWebhookKlass[] = []
 
     static readonly attributeTypeMap: AttributeType[] = [
         {
@@ -68,23 +57,6 @@ export class Webhook {
             return acc
         }, {})
         Object.assign(this, preparedArgs)
-    }
-    static register(webhookKlass: any) {
-        this.webhooks.push(webhookKlass)
-    }
-    static parseFromString(payload: string) {
-        const parsed = JSON.parse(payload)
-        if (!parsed.requestType) {
-            throw new Error("Webhook payload does not contain required key - requestType")
-        }
-        return this.parseFromObject(parsed)
-    }
-    static parseFromObject(payload: FreeClimbWebhookPayload): FreeClimbWebhookKlass {
-        const WebhookKlass = this.webhooks.find(wb => wb.isRequestType(payload.requestType))
-        if (!WebhookKlass) {
-            throw new Error(`requestType='${ payload.requestType }' does not resolve to a supported webhook class`)
-        }
-        return WebhookKlass.create(payload)
     }
 }
 

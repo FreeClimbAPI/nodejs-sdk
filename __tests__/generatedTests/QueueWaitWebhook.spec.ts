@@ -3,6 +3,7 @@ import { describe, expect, it } from "@jest/globals";
     
 describe('QueueWaitWebhook', () => {
     let model: freeclimb.QueueWaitWebhook = new freeclimb.QueueWaitWebhook({
+       
         requestType: "test_requestType",
         accountId: "test_accountId",
         callId: "test_callId",
@@ -23,6 +24,7 @@ describe('QueueWaitWebhook', () => {
            expect(model).toBeInstanceOf(freeclimb.QueueWaitWebhook)
         })
     })
+
     describe(".requestType", () => {
         it('resolves to particular value on initialization', () => {
             const value = "test_requestType"
@@ -97,9 +99,9 @@ describe('QueueWaitWebhook', () => {
             expect(model.currentQueueSize).toBe(value)
         })
     })
-    describe('Webhook.parseFromObject with CallDirection', () => {
-        it('returns an instance of QueueWaitWebhook when requestType="queueWait"', () => {
-            expect(freeclimb.Webhook.parseFromObject({ requestType: 'queueWait'})).toBeInstanceOf(freeclimb.QueueWaitWebhook)
+    describe('.deserialize', () => {
+        it('returns an instance of QueueWaitWebhook', () => {
+            expect(freeclimb.QueueWaitWebhook.deserialize('{ "requestType": "queueWait"}')).toBeInstanceOf(freeclimb.QueueWaitWebhook)
         })
     })
 })

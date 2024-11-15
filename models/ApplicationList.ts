@@ -14,7 +14,6 @@ import { ApplicationResult } from './../models/ApplicationResult';
 import { HttpFile } from '../http/http';
 
 
-
 interface AttributeType {
     name: string
     baseName: string
@@ -63,10 +62,7 @@ export class ApplicationList {
     'nextPageUri'?: string;
     'applications'?: Array<ApplicationResult>;
 
-    
     static readonly discriminator: string | undefined = undefined;
-    
-
 
     static readonly attributeTypeMap: AttributeType[] = [
         {

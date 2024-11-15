@@ -3,6 +3,7 @@ import { describe, expect, it } from "@jest/globals";
     
 describe('GetSpeechWebhook', () => {
     let model: freeclimb.GetSpeechWebhook = new freeclimb.GetSpeechWebhook({
+       
         requestType: "test_requestType",
         callId: "test_callId",
         accountId: "test_accountId",
@@ -28,6 +29,7 @@ describe('GetSpeechWebhook', () => {
            expect(model).toBeInstanceOf(freeclimb.GetSpeechWebhook)
         })
     })
+
     describe(".requestType", () => {
         it('resolves to particular value on initialization', () => {
             const value = "test_requestType"
@@ -131,9 +133,9 @@ describe('GetSpeechWebhook', () => {
             expect(model.mrcpDiagnostic).toBe(value)
         })
     })
-    describe('Webhook.parseFromObject with GetSpeechReason', () => {
-        it('returns an instance of GetSpeechWebhook when requestType="getSpeech"', () => {
-            expect(freeclimb.Webhook.parseFromObject({ requestType: 'getSpeech'})).toBeInstanceOf(freeclimb.GetSpeechWebhook)
+    describe('.deserialize', () => {
+        it('returns an instance of GetSpeechWebhook', () => {
+            expect(freeclimb.GetSpeechWebhook.deserialize('{ "requestType": "getSpeech"}')).toBeInstanceOf(freeclimb.GetSpeechWebhook)
         })
     })
 })

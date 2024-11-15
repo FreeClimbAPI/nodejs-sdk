@@ -17,7 +17,6 @@ import { HttpFile } from '../http/http';
 * The `Play` command plays an audio file back to the caller. The audio file may be located at any location accessible via a URL. `Play` can exist as a stand-alone command or as a nested command. It does not allow barge-in unless nested within a `GetSpeech` command. The file will always be played to completion unless nested.
 */
 
-
 interface AttributeType {
     name: string
     baseName: string
@@ -45,8 +44,6 @@ export class Play extends PerclCommand {
     'privacyMode'?: boolean;
 
     static readonly discriminator: string | undefined = "command";
-    
-
 
     static readonly attributeTypeMap: AttributeType[] = [
         {

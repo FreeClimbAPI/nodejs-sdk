@@ -13,7 +13,6 @@
 import { HttpFile } from '../http/http';
 
 
-
 interface AttributeType {
     name: string
     baseName: string
@@ -45,10 +44,7 @@ export class MutableResourceModel {
     */
     'revision'?: number;
 
-    
     static readonly discriminator: string | undefined = undefined;
-    
-
 
     static readonly attributeTypeMap: AttributeType[] = [
         {

@@ -14,7 +14,6 @@ import { ConferenceParticipantResult } from './../models/ConferenceParticipantRe
 import { HttpFile } from '../http/http';
 
 
-
 interface AttributeType {
     name: string
     baseName: string
@@ -63,10 +62,7 @@ export class ConferenceParticipantList {
     'nextPageUri'?: string;
     'participants'?: Array<ConferenceParticipantResult>;
 
-    
     static readonly discriminator: string | undefined = undefined;
-    
-
 
     static readonly attributeTypeMap: AttributeType[] = [
         {

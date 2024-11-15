@@ -3,6 +3,7 @@ import { describe, expect, it } from "@jest/globals";
     
 describe('MessageDeliveryWebhook', () => {
     let model: freeclimb.MessageDeliveryWebhook = new freeclimb.MessageDeliveryWebhook({
+       
         requestType: "test_requestType",
         accountId: "test_accountId",
         from: "test_from",
@@ -19,6 +20,7 @@ describe('MessageDeliveryWebhook', () => {
            expect(model).toBeInstanceOf(freeclimb.MessageDeliveryWebhook)
         })
     })
+
     describe(".requestType", () => {
         it('resolves to particular value on initialization', () => {
             const value = "test_requestType"
@@ -79,9 +81,9 @@ describe('MessageDeliveryWebhook', () => {
             expect(model.uri).toBe(value)
         })
     })
-    describe('Webhook.parseFromObject with MessageDeliveryWebhook', () => {
-        it('returns an instance of MessageDeliveryWebhook when requestType="messageDelivery"', () => {
-            expect(freeclimb.Webhook.parseFromObject({ requestType: 'messageDelivery'})).toBeInstanceOf(freeclimb.MessageDeliveryWebhook)
+    describe('.deserialize', () => {
+        it('returns an instance of MessageDeliveryWebhook', () => {
+            expect(freeclimb.MessageDeliveryWebhook.deserialize('{ "requestType": "messageDelivery"}')).toBeInstanceOf(freeclimb.MessageDeliveryWebhook)
         })
     })
 })

@@ -15,7 +15,6 @@ import { PlayBeep } from './../models/PlayBeep';
 import { HttpFile } from '../http/http';
 
 
-
 interface AttributeType {
     name: string
     baseName: string
@@ -91,10 +90,7 @@ export class ConferenceResult {
     */
     'subresourceUris'?: any;
 
-    
     static readonly discriminator: string | undefined = undefined;
-    
-
 
     static readonly attributeTypeMap: AttributeType[] = [
         {

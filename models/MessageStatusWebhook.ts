@@ -11,13 +11,12 @@
  */
 
 import { MessageStatus } from './../models/MessageStatus';
-import { Webhook } from './Webhook'
+import { Webhook } from './../models/Webhook';
 import { HttpFile } from '../http/http';
 
 /**
 * An outbound SMS has changed status and the notificationUrl from the Sms command or Send an SMS request is being invoked. A PerCL response will be ignored.
 */
-
 
 interface AttributeType {
     name: string
@@ -39,7 +38,7 @@ interface ArgumentsType {
     'status'?: MessageStatus;
     'phoneNumberId'?: string;
 }
-export class MessageStatusWebhook {
+export class MessageStatusWebhook extends Webhook {
     /**
     * Value will be messageStatus - An outbound SMS has changed status and the Sms command\'s notificationUrl is being invoked.
     */
@@ -82,9 +81,7 @@ export class MessageStatusWebhook {
     */
     'phoneNumberId'?: string;
 
-    static readonly discriminator: string | undefined = "messageStatus";
-    
-
+    static readonly discriminator: string | undefined = "requestType";
 
     static readonly attributeTypeMap: AttributeType[] = [
         {
@@ -188,10 +185,11 @@ export class MessageStatusWebhook {
         }    ];
 
     static getAttributeTypeMap(): AttributeType[] {
-        return MessageStatusWebhook.attributeTypeMap;
+        return super.getAttributeTypeMap().concat(MessageStatusWebhook.attributeTypeMap);
     }
 
     public constructor(args: ArgumentsType) {
+        super({ requestType: "messageStatus" });
         const preparedArgs = MessageStatusWebhook.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
             
             const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
@@ -203,12 +201,8 @@ export class MessageStatusWebhook {
         }, {})
         Object.assign(this, preparedArgs)
     }
-    static isRequestType(requestType: string): boolean {
-        return requestType === this.discriminator
-    }
-    static create(args: ArgumentsType): MessageStatusWebhook {
-        return new MessageStatusWebhook(args)
+    public static deserialize(payload: string): MessageStatusWebhook {
+        return new MessageStatusWebhook(JSON.parse(payload));
     }
 }
 
-Webhook.register(MessageStatusWebhook)

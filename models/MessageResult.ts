@@ -14,7 +14,6 @@ import { MessageStatus } from './../models/MessageStatus';
 import { HttpFile } from '../http/http';
 
 
-
 interface AttributeType {
     name: string
     baseName: string
@@ -103,10 +102,7 @@ export class MessageResult {
     */
     'mediaUrls'?: Array<string>;
 
-    
     static readonly discriminator: string | undefined = undefined;
-    
-
 
     static readonly attributeTypeMap: AttributeType[] = [
         {

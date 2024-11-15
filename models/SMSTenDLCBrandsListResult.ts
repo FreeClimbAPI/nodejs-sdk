@@ -14,7 +14,6 @@ import { SMSTenDLCBrand } from './../models/SMSTenDLCBrand';
 import { HttpFile } from '../http/http';
 
 
-
 interface AttributeType {
     name: string
     baseName: string
@@ -63,10 +62,7 @@ export class SMSTenDLCBrandsListResult {
     'nextPageUri'?: string;
     'brands'?: Array<SMSTenDLCBrand>;
 
-    
     static readonly discriminator: string | undefined = undefined;
-    
-
 
     static readonly attributeTypeMap: AttributeType[] = [
         {

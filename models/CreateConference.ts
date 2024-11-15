@@ -18,7 +18,6 @@ import { HttpFile } from '../http/http';
 * The `CreateConference` command does exactly what its name implies — it creates an unpopulated Conference (one without any Participants). Once created, a Conference remains in FreeClimb until explicitly terminated by a customer. Once a Conference has been terminated, it can no longer be used.
 */
 
-
 interface AttributeType {
     name: string
     baseName: string
@@ -58,8 +57,6 @@ export class CreateConference extends PerclCommand {
     'waitUrl'?: string;
 
     static readonly discriminator: string | undefined = "command";
-    
-
 
     static readonly attributeTypeMap: AttributeType[] = [
         {

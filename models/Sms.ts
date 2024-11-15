@@ -17,7 +17,6 @@ import { HttpFile } from '../http/http';
 * The `Sms` command can be used to send an SMS message to a phone number during a phone call. International SMS is disabled by default.
 */
 
-
 interface AttributeType {
     name: string
     baseName: string
@@ -50,8 +49,6 @@ export class Sms extends PerclCommand {
     'notificationUrl'?: string;
 
     static readonly discriminator: string | undefined = "command";
-    
-
 
     static readonly attributeTypeMap: AttributeType[] = [
         {

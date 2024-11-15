@@ -16,7 +16,6 @@ import { CallStatus } from './../models/CallStatus';
 import { HttpFile } from '../http/http';
 
 
-
 interface AttributeType {
     name: string
     baseName: string
@@ -114,10 +113,7 @@ export class CallResult {
     */
     'subresourceUris'?: any;
 
-    
     static readonly discriminator: string | undefined = undefined;
-    
-
 
     static readonly attributeTypeMap: AttributeType[] = [
         {

@@ -13,13 +13,12 @@
 import { CallDirection } from './../models/CallDirection';
 import { CallStatus } from './../models/CallStatus';
 import { MachineType } from './../models/MachineType';
-import { Webhook } from './Webhook'
+import { Webhook } from './../models/Webhook';
 import { HttpFile } from '../http/http';
 
 /**
 * An outbound call spawned by OutDial detected an answer by a machine (answering machine or fax/modem machine) and ifMachineUrl is being invoked. A PerCL response is expected.
 */
-
 
 interface AttributeType {
     name: string
@@ -41,7 +40,7 @@ interface ArgumentsType {
     'parentCallId'?: string;
     'machineType'?: MachineType;
 }
-export class MachineDetectedWebhook {
+export class MachineDetectedWebhook extends Webhook {
     /**
     * Context or reason why this request is being made. Will be machineDetected - An outbound call spawned by OutDial was answered by a machine and the ifMachineUrl is being invoked.
     */
@@ -78,9 +77,7 @@ export class MachineDetectedWebhook {
     'parentCallId'?: string;
     'machineType'?: MachineType;
 
-    static readonly discriminator: string | undefined = "machineDeteched";
-    
-
+    static readonly discriminator: string | undefined = "requestType";
 
     static readonly attributeTypeMap: AttributeType[] = [
         {
@@ -184,10 +181,11 @@ export class MachineDetectedWebhook {
         }    ];
 
     static getAttributeTypeMap(): AttributeType[] {
-        return MachineDetectedWebhook.attributeTypeMap;
+        return super.getAttributeTypeMap().concat(MachineDetectedWebhook.attributeTypeMap);
     }
 
     public constructor(args: ArgumentsType) {
+        super({ requestType: "machineDeteched" });
         const preparedArgs = MachineDetectedWebhook.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
             
             const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
@@ -199,12 +197,8 @@ export class MachineDetectedWebhook {
         }, {})
         Object.assign(this, preparedArgs)
     }
-    static isRequestType(requestType: string): boolean {
-        return requestType === this.discriminator
-    }
-    static create(args: ArgumentsType): MachineDetectedWebhook {
-        return new MachineDetectedWebhook(args)
+    public static deserialize(payload: string): MachineDetectedWebhook {
+        return new MachineDetectedWebhook(JSON.parse(payload));
     }
 }
 
-Webhook.register(MachineDetectedWebhook)

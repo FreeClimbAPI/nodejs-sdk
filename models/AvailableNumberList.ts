@@ -14,7 +14,6 @@ import { AvailableNumber } from './../models/AvailableNumber';
 import { HttpFile } from '../http/http';
 
 
-
 interface AttributeType {
     name: string
     baseName: string
@@ -63,10 +62,7 @@ export class AvailableNumberList {
     'nextPageUri'?: string;
     'availablePhoneNumbers'?: Array<AvailableNumber>;
 
-    
     static readonly discriminator: string | undefined = undefined;
-    
-
 
     static readonly attributeTypeMap: AttributeType[] = [
         {

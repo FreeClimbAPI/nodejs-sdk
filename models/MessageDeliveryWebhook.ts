@@ -10,13 +10,12 @@
  * Do not edit the class manually.
  */
 
-import { Webhook } from './Webhook'
+import { Webhook } from './../models/Webhook';
 import { HttpFile } from '../http/http';
 
 /**
 * An SMS has been received by the platform and is being delivered to the smsUrl of the customer application that is associated with the destination number. A PerCL response will be ignored.
 */
-
 
 interface AttributeType {
     name: string
@@ -37,7 +36,7 @@ interface ArgumentsType {
     'phoneNumberId'?: string;
     'uri'?: string;
 }
-export class MessageDeliveryWebhook {
+export class MessageDeliveryWebhook extends Webhook {
     /**
     * Value will be messageDelivery - An SMS message has been received by the platform and is being delivered to the customer application associated with the destination number.
     */
@@ -79,9 +78,7 @@ export class MessageDeliveryWebhook {
     */
     'uri'?: string;
 
-    static readonly discriminator: string | undefined = "messageDelivery";
-    
-
+    static readonly discriminator: string | undefined = "requestType";
 
     static readonly attributeTypeMap: AttributeType[] = [
         {
@@ -176,10 +173,11 @@ export class MessageDeliveryWebhook {
         }    ];
 
     static getAttributeTypeMap(): AttributeType[] {
-        return MessageDeliveryWebhook.attributeTypeMap;
+        return super.getAttributeTypeMap().concat(MessageDeliveryWebhook.attributeTypeMap);
     }
 
     public constructor(args: ArgumentsType) {
+        super({ requestType: "messageDelivery" });
         const preparedArgs = MessageDeliveryWebhook.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
             
             const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
@@ -191,12 +189,8 @@ export class MessageDeliveryWebhook {
         }, {})
         Object.assign(this, preparedArgs)
     }
-    static isRequestType(requestType: string): boolean {
-        return requestType === this.discriminator
-    }
-    static create(args: ArgumentsType): MessageDeliveryWebhook {
-        return new MessageDeliveryWebhook(args)
+    public static deserialize(payload: string): MessageDeliveryWebhook {
+        return new MessageDeliveryWebhook(JSON.parse(payload));
     }
 }
 
-Webhook.register(MessageDeliveryWebhook)

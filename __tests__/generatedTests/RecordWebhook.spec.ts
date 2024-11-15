@@ -3,6 +3,7 @@ import { describe, expect, it } from "@jest/globals";
     
 describe('RecordWebhook', () => {
     let model: freeclimb.RecordWebhook = new freeclimb.RecordWebhook({
+       
         requestType: "test_requestType",
         accountId: "test_accountId",
         callId: "test_callId",
@@ -29,6 +30,7 @@ describe('RecordWebhook', () => {
            expect(model).toBeInstanceOf(freeclimb.RecordWebhook)
         })
     })
+
     describe(".requestType", () => {
         it('resolves to particular value on initialization', () => {
             const value = "test_requestType"
@@ -134,9 +136,9 @@ describe('RecordWebhook', () => {
             expect(model.privacyMode).toBe(value)
         })
     })
-    describe('Webhook.parseFromObject with RecordUtteranceTermReason', () => {
-        it('returns an instance of RecordWebhook when requestType="record"', () => {
-            expect(freeclimb.Webhook.parseFromObject({ requestType: 'record'})).toBeInstanceOf(freeclimb.RecordWebhook)
+    describe('.deserialize', () => {
+        it('returns an instance of RecordWebhook', () => {
+            expect(freeclimb.RecordWebhook.deserialize('{ "requestType": "record"}')).toBeInstanceOf(freeclimb.RecordWebhook)
         })
     })
 })

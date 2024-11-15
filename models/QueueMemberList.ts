@@ -14,7 +14,6 @@ import { QueueMember } from './../models/QueueMember';
 import { HttpFile } from '../http/http';
 
 
-
 interface AttributeType {
     name: string
     baseName: string
@@ -63,10 +62,7 @@ export class QueueMemberList {
     'nextPageUri'?: string;
     'queueMembers'?: Array<QueueMember>;
 
-    
     static readonly discriminator: string | undefined = undefined;
-    
-
 
     static readonly attributeTypeMap: AttributeType[] = [
         {

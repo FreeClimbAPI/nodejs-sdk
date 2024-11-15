@@ -14,7 +14,6 @@ import { MessageResult } from './../models/MessageResult';
 import { HttpFile } from '../http/http';
 
 
-
 interface AttributeType {
     name: string
     baseName: string
@@ -66,10 +65,7 @@ export class MessagesList {
     */
     'messages'?: Array<MessageResult>;
 
-    
     static readonly discriminator: string | undefined = undefined;
-    
-
 
     static readonly attributeTypeMap: AttributeType[] = [
         {

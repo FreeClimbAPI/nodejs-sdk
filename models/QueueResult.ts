@@ -13,7 +13,6 @@
 import { HttpFile } from '../http/http';
 
 
-
 interface AttributeType {
     name: string
     baseName: string
@@ -80,10 +79,7 @@ export class QueueResult {
     */
     'subresourceUris'?: any;
 
-    
     static readonly discriminator: string | undefined = undefined;
-    
-
 
     static readonly attributeTypeMap: AttributeType[] = [
         {

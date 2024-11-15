@@ -3,6 +3,7 @@ import { describe, expect, it } from "@jest/globals";
     
 describe('TranscribeWebhook', () => {
     let model: freeclimb.TranscribeWebhook = new freeclimb.TranscribeWebhook({
+       
         requestType: "test_requestType",
         accountId: "test_accountId",
         callId: "test_callId",
@@ -36,6 +37,7 @@ describe('TranscribeWebhook', () => {
            expect(model).toBeInstanceOf(freeclimb.TranscribeWebhook)
         })
     })
+
     describe(".requestType", () => {
         it('resolves to particular value on initialization', () => {
             const value = "test_requestType"
@@ -178,9 +180,9 @@ describe('TranscribeWebhook', () => {
             expect(model.transcriptionDurationMs).toBe(value)
         })
     })
-    describe('Webhook.parseFromObject with TranscribeReason', () => {
-        it('returns an instance of TranscribeWebhook when requestType="transcribe"', () => {
-            expect(freeclimb.Webhook.parseFromObject({ requestType: 'transcribe'})).toBeInstanceOf(freeclimb.TranscribeWebhook)
+    describe('.deserialize', () => {
+        it('returns an instance of TranscribeWebhook', () => {
+            expect(freeclimb.TranscribeWebhook.deserialize('{ "requestType": "transcribe"}')).toBeInstanceOf(freeclimb.TranscribeWebhook)
         })
     })
 })

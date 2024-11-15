@@ -12,13 +12,12 @@
 
 import { CallDirection } from './../models/CallDirection';
 import { CallStatus } from './../models/CallStatus';
-import { Webhook } from './Webhook'
+import { Webhook } from './../models/Webhook';
 import { HttpFile } from '../http/http';
 
 /**
 * An outbound call initiated by the REST API has connected and the callConnectUrl specified in the API request is being invoked. A PerCL response is expected if the call was successfully connected (with status of inProgress).
 */
-
 
 interface AttributeType {
     name: string
@@ -39,7 +38,7 @@ interface ArgumentsType {
     'queueId'?: string;
     'parentCallId'?: string;
 }
-export class OutDialApiConnectWebhook {
+export class OutDialApiConnectWebhook extends Webhook {
     /**
     * Context or reason why this request is being made. Will be outDialApiConnect - An outbound call spawned by the REST API has connected and the callConnectUrl specified in the API request is being invoked.
     */
@@ -75,9 +74,7 @@ export class OutDialApiConnectWebhook {
     */
     'parentCallId'?: string;
 
-    static readonly discriminator: string | undefined = "outDialApiConnect";
-    
-
+    static readonly discriminator: string | undefined = "requestType";
 
     static readonly attributeTypeMap: AttributeType[] = [
         {
@@ -172,10 +169,11 @@ export class OutDialApiConnectWebhook {
         }    ];
 
     static getAttributeTypeMap(): AttributeType[] {
-        return OutDialApiConnectWebhook.attributeTypeMap;
+        return super.getAttributeTypeMap().concat(OutDialApiConnectWebhook.attributeTypeMap);
     }
 
     public constructor(args: ArgumentsType) {
+        super({ requestType: "outDialApiConnect" });
         const preparedArgs = OutDialApiConnectWebhook.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
             
             const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
@@ -187,12 +185,8 @@ export class OutDialApiConnectWebhook {
         }, {})
         Object.assign(this, preparedArgs)
     }
-    static isRequestType(requestType: string): boolean {
-        return requestType === this.discriminator
-    }
-    static create(args: ArgumentsType): OutDialApiConnectWebhook {
-        return new OutDialApiConnectWebhook(args)
+    public static deserialize(payload: string): OutDialApiConnectWebhook {
+        return new OutDialApiConnectWebhook(JSON.parse(payload));
     }
 }
 
-Webhook.register(OutDialApiConnectWebhook)

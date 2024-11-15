@@ -3,6 +3,7 @@ import { describe, expect, it } from "@jest/globals";
     
 describe('OutDialStartWebhook', () => {
     let model: freeclimb.OutDialStartWebhook = new freeclimb.OutDialStartWebhook({
+       
         requestType: "test_requestType",
         accountId: "test_accountId",
         callId: "test_callId",
@@ -22,6 +23,7 @@ describe('OutDialStartWebhook', () => {
            expect(model).toBeInstanceOf(freeclimb.OutDialStartWebhook)
         })
     })
+
     describe(".requestType", () => {
         it('resolves to particular value on initialization', () => {
             const value = "test_requestType"
@@ -90,9 +92,9 @@ describe('OutDialStartWebhook', () => {
             expect(model.parentCallId).toBe(value)
         })
     })
-    describe('Webhook.parseFromObject with CallDirection', () => {
-        it('returns an instance of OutDialStartWebhook when requestType="outDialStart"', () => {
-            expect(freeclimb.Webhook.parseFromObject({ requestType: 'outDialStart'})).toBeInstanceOf(freeclimb.OutDialStartWebhook)
+    describe('.deserialize', () => {
+        it('returns an instance of OutDialStartWebhook', () => {
+            expect(freeclimb.OutDialStartWebhook.deserialize('{ "requestType": "outDialStart"}')).toBeInstanceOf(freeclimb.OutDialStartWebhook)
         })
     })
 })

@@ -10,9 +10,11 @@
  * Do not edit the class manually.
  */
 
-import { IncomingNumberResult } from './IncomingNumberResult';
 import { HttpFile } from '../http/http';
 
+/**
+* Semantic content (either a string if speech was recognized or a digit if a digit was input instead of speech) returned from the entry or tag that was recognized within the grammar. The content will be replaced by \'xxxxx\' when privacyMode is set to true. This field is populated only if the reason field is set to recognition or digit.
+*/
 
 interface AttributeType {
     name: string
@@ -22,30 +24,20 @@ interface AttributeType {
     defaultValue: any
 }
 interface ArgumentsType {
-    'incomingPhoneNumbers'?: Array<IncomingNumberResult>;
 }
-export class IncomingNumberListAllOf {
-    'incomingPhoneNumbers'?: Array<IncomingNumberResult>;
+export class GetSpeechWebhookAllOfRecognitionResult {
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly attributeTypeMap: AttributeType[] = [
-        {
-            "name": "incomingPhoneNumbers",
-            "baseName": "incomingPhoneNumbers",
-            "type": "Array<IncomingNumberResult>",
-            "format": "",
-
-            
-            "defaultValue": undefined
-        }    ];
+    ];
 
     static getAttributeTypeMap(): AttributeType[] {
-        return IncomingNumberListAllOf.attributeTypeMap;
+        return GetSpeechWebhookAllOfRecognitionResult.attributeTypeMap;
     }
 
     public constructor(args: ArgumentsType) {
-        const preparedArgs = IncomingNumberListAllOf.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
+        const preparedArgs = GetSpeechWebhookAllOfRecognitionResult.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
             
             const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
             

@@ -3,6 +3,7 @@ import { describe, expect, it } from "@jest/globals";
     
 describe('AddToQueueNotificationWebhook', () => {
     let model: freeclimb.AddToQueueNotificationWebhook = new freeclimb.AddToQueueNotificationWebhook({
+       
         requestType: "test_requestType",
         callId: "test_callId",
         accountId: "test_accountId",
@@ -20,6 +21,7 @@ describe('AddToQueueNotificationWebhook', () => {
            expect(model).toBeInstanceOf(freeclimb.AddToQueueNotificationWebhook)
         })
     })
+
     describe(".requestType", () => {
         it('resolves to particular value on initialization', () => {
             const value = "test_requestType"
@@ -76,9 +78,9 @@ describe('AddToQueueNotificationWebhook', () => {
             expect(model.queueId).toBe(value)
         })
     })
-    describe('Webhook.parseFromObject with CallDirection', () => {
-        it('returns an instance of AddToQueueNotificationWebhook when requestType="addToQueueNotification"', () => {
-            expect(freeclimb.Webhook.parseFromObject({ requestType: 'addToQueueNotification'})).toBeInstanceOf(freeclimb.AddToQueueNotificationWebhook)
+    describe('.deserialize', () => {
+        it('returns an instance of AddToQueueNotificationWebhook', () => {
+            expect(freeclimb.AddToQueueNotificationWebhook.deserialize('{ "requestType": "addToQueueNotification"}')).toBeInstanceOf(freeclimb.AddToQueueNotificationWebhook)
         })
     })
 })

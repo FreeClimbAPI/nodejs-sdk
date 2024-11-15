@@ -3,6 +3,7 @@ import { describe, expect, it } from "@jest/globals";
     
 describe('OutDialApiConnectWebhook', () => {
     let model: freeclimb.OutDialApiConnectWebhook = new freeclimb.OutDialApiConnectWebhook({
+       
         requestType: "test_requestType",
         accountId: "test_accountId",
         callId: "test_callId",
@@ -21,6 +22,7 @@ describe('OutDialApiConnectWebhook', () => {
            expect(model).toBeInstanceOf(freeclimb.OutDialApiConnectWebhook)
         })
     })
+
     describe(".requestType", () => {
         it('resolves to particular value on initialization', () => {
             const value = "test_requestType"
@@ -83,9 +85,9 @@ describe('OutDialApiConnectWebhook', () => {
             expect(model.parentCallId).toBe(value)
         })
     })
-    describe('Webhook.parseFromObject with CallDirection', () => {
-        it('returns an instance of OutDialApiConnectWebhook when requestType="outDialApiConnect"', () => {
-            expect(freeclimb.Webhook.parseFromObject({ requestType: 'outDialApiConnect'})).toBeInstanceOf(freeclimb.OutDialApiConnectWebhook)
+    describe('.deserialize', () => {
+        it('returns an instance of OutDialApiConnectWebhook', () => {
+            expect(freeclimb.OutDialApiConnectWebhook.deserialize('{ "requestType": "outDialApiConnect"}')).toBeInstanceOf(freeclimb.OutDialApiConnectWebhook)
         })
     })
 })

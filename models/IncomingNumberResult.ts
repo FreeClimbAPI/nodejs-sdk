@@ -15,7 +15,6 @@ import { TFN } from './../models/TFN';
 import { HttpFile } from '../http/http';
 
 
-
 interface AttributeType {
     name: string
     baseName: string
@@ -106,10 +105,7 @@ export class IncomingNumberResult {
     'offnet'?: boolean;
     'tfn'?: TFN;
 
-    
     static readonly discriminator: string | undefined = undefined;
-    
-
 
     static readonly attributeTypeMap: AttributeType[] = [
         {

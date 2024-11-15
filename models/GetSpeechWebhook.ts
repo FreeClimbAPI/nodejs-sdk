@@ -13,14 +13,13 @@
 import { CallDirection } from './../models/CallDirection';
 import { CallStatus } from './../models/CallStatus';
 import { GetSpeechReason } from './../models/GetSpeechReason';
-import { GetSpeechWebhookRecognitionResult } from './../models/GetSpeechWebhookRecognitionResult';
-import { Webhook } from './Webhook'
+import { GetSpeechWebhookAllOfRecognitionResult } from './../models/GetSpeechWebhookAllOfRecognitionResult';
+import { Webhook } from './../models/Webhook';
 import { HttpFile } from '../http/http';
 
 /**
 * The GetSpeech command has completed and its actionUrl is being invoked. A PerCL response is expected, unless reason is hangup.
 */
-
 
 interface AttributeType {
     name: string
@@ -40,7 +39,7 @@ interface ArgumentsType {
     'conferenceId'?: string;
     'queueId'?: string;
     'reason'?: GetSpeechReason;
-    'recognitionResult'?: GetSpeechWebhookRecognitionResult;
+    'recognitionResult'?: GetSpeechWebhookAllOfRecognitionResult;
     'confidence'?: number;
     'parentCallId'?: string;
     'completionReason'?: string;
@@ -48,7 +47,7 @@ interface ArgumentsType {
     'mrcpCode'?: number;
     'mrcpDiagnostic'?: string;
 }
-export class GetSpeechWebhook {
+export class GetSpeechWebhook extends Webhook {
     /**
     * Context or reason why this request is being made. Will be getSpeech - The GetSpeech command has completed and its actionUrl is being invoked.
     */
@@ -80,7 +79,7 @@ export class GetSpeechWebhook {
     */
     'queueId'?: string;
     'reason'?: GetSpeechReason;
-    'recognitionResult'?: GetSpeechWebhookRecognitionResult;
+    'recognitionResult'?: GetSpeechWebhookAllOfRecognitionResult;
     /**
     * Level of confidence in the obtained result. This is a value in the range 0 to 100 – with 0 being total lack of confidence and 100 being absolute certainty in the recognition. This field is populated only if the reason field is set to recognition.
     */
@@ -106,9 +105,7 @@ export class GetSpeechWebhook {
     */
     'mrcpDiagnostic'?: string;
 
-    static readonly discriminator: string | undefined = "getSpeech";
-    
-
+    static readonly discriminator: string | undefined = "requestType";
 
     static readonly attributeTypeMap: AttributeType[] = [
         {
@@ -204,7 +201,7 @@ export class GetSpeechWebhook {
         {
             "name": "recognitionResult",
             "baseName": "recognitionResult",
-            "type": "GetSpeechWebhookRecognitionResult",
+            "type": "GetSpeechWebhookAllOfRecognitionResult",
             "format": "",
 
             
@@ -266,10 +263,11 @@ export class GetSpeechWebhook {
         }    ];
 
     static getAttributeTypeMap(): AttributeType[] {
-        return GetSpeechWebhook.attributeTypeMap;
+        return super.getAttributeTypeMap().concat(GetSpeechWebhook.attributeTypeMap);
     }
 
     public constructor(args: ArgumentsType) {
+        super({ requestType: "getSpeech" });
         const preparedArgs = GetSpeechWebhook.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
             
             const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
@@ -281,12 +279,8 @@ export class GetSpeechWebhook {
         }, {})
         Object.assign(this, preparedArgs)
     }
-    static isRequestType(requestType: string): boolean {
-        return requestType === this.discriminator
-    }
-    static create(args: ArgumentsType): GetSpeechWebhook {
-        return new GetSpeechWebhook(args)
+    public static deserialize(payload: string): GetSpeechWebhook {
+        return new GetSpeechWebhook(JSON.parse(payload));
     }
 }
 
-Webhook.register(GetSpeechWebhook)

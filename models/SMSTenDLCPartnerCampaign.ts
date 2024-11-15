@@ -19,7 +19,6 @@ export enum SMSTenDLCPartnerCampaignStatusEnum {
     EXPIRED = 'EXPIRED'
 }
 
-
 interface AttributeType {
     name: string
     baseName: string
@@ -170,10 +169,7 @@ export class SMSTenDLCPartnerCampaign {
     'optoutMessage'?: string;
     'brand'?: SMSTenDLCPartnerCampaignBrand;
 
-    
     static readonly discriminator: string | undefined = undefined;
-    
-
 
     static readonly attributeTypeMap: AttributeType[] = [
         {

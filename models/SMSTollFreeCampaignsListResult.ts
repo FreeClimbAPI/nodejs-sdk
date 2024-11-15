@@ -14,7 +14,6 @@ import { SMSTollFreeCampaign } from './../models/SMSTollFreeCampaign';
 import { HttpFile } from '../http/http';
 
 
-
 interface AttributeType {
     name: string
     baseName: string
@@ -63,10 +62,7 @@ export class SMSTollFreeCampaignsListResult {
     'nextPageUri'?: string;
     'brands'?: Array<SMSTollFreeCampaign>;
 
-    
     static readonly discriminator: string | undefined = undefined;
-    
-
 
     static readonly attributeTypeMap: AttributeType[] = [
         {

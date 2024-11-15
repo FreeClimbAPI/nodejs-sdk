@@ -17,7 +17,6 @@ import { HttpFile } from '../http/http';
 * The `Pause` command halts execution of the current PerCL script for a specified number of milliseconds. If `Pause` is the first command in a PerCL document, FreeClimb will wait for the specified time to elapse before picking up the call.
 */
 
-
 interface AttributeType {
     name: string
     baseName: string
@@ -35,8 +34,6 @@ export class Pause extends PerclCommand {
     'length': number;
 
     static readonly discriminator: string | undefined = "command";
-    
-
 
     static readonly attributeTypeMap: AttributeType[] = [
         {

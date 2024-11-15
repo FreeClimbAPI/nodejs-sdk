@@ -13,7 +13,6 @@
 import { HttpFile } from '../http/http';
 
 
-
 interface AttributeType {
     name: string
     baseName: string
@@ -40,10 +39,7 @@ export class CreateWebRTCToken {
     */
     'uses': number;
 
-    
     static readonly discriminator: string | undefined = undefined;
-    
-
 
     static readonly attributeTypeMap: AttributeType[] = [
         {

@@ -18,7 +18,6 @@ import { HttpFile } from '../http/http';
 * The OutDial command is used to call a phone number
 */
 
-
 interface AttributeType {
     name: string
     baseName: string
@@ -78,8 +77,6 @@ export class OutDial extends PerclCommand {
     'privacyMode'?: boolean;
 
     static readonly discriminator: string | undefined = "command";
-    
-
 
     static readonly attributeTypeMap: AttributeType[] = [
         {

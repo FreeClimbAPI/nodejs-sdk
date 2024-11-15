@@ -21,7 +21,6 @@ export enum SMSTollFreeCampaignRegistrationStatusEnum {
     REGISTERED = 'REGISTERED'
 }
 
-
 interface AttributeType {
     name: string
     baseName: string
@@ -56,10 +55,7 @@ export class SMSTollFreeCampaign {
     'dateUpdated': string;
     'revision': number;
 
-    
     static readonly discriminator: string | undefined = undefined;
-    
-
 
     static readonly attributeTypeMap: AttributeType[] = [
         {

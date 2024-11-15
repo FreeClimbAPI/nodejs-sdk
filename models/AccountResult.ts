@@ -15,7 +15,6 @@ import { AccountType } from './../models/AccountType';
 import { HttpFile } from '../http/http';
 
 
-
 interface AttributeType {
     name: string
     baseName: string
@@ -76,10 +75,7 @@ export class AccountResult {
     */
     'subresourceUris'?: any;
 
-    
     static readonly discriminator: string | undefined = undefined;
-    
-
 
     static readonly attributeTypeMap: AttributeType[] = [
         {

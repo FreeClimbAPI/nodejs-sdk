@@ -18,7 +18,6 @@ export enum SMSTenDLCCampaignStatusEnum {
     EXPIRED = 'EXPIRED'
 }
 
-
 interface AttributeType {
     name: string
     baseName: string
@@ -207,10 +206,7 @@ export class SMSTenDLCCampaign {
     */
     'nextRenewalOrExpirationDate'?: string;
 
-    
     static readonly discriminator: string | undefined = undefined;
-    
-
 
     static readonly attributeTypeMap: AttributeType[] = [
         {

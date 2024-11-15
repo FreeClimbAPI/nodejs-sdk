@@ -13,13 +13,12 @@
 import { CallDirection } from './../models/CallDirection';
 import { CallStatus } from './../models/CallStatus';
 import { RecordUtteranceTermReason } from './../models/RecordUtteranceTermReason';
-import { Webhook } from './Webhook'
+import { Webhook } from './../models/Webhook';
 import { HttpFile } from '../http/http';
 
 /**
 * The RecordUtterance command has completed and its actionUrl is being invoked.
 */
-
 
 interface AttributeType {
     name: string
@@ -47,7 +46,7 @@ interface ArgumentsType {
     'parentCallId'?: string;
     'privacyMode'?: boolean;
 }
-export class RecordWebhook {
+export class RecordWebhook extends Webhook {
     /**
     * The context or reason why this request is being made. Will be record - The RecordUtterance command has completed and its actionUrl is being invoked.
     */
@@ -108,9 +107,7 @@ export class RecordWebhook {
     */
     'privacyMode'?: boolean;
 
-    static readonly discriminator: string | undefined = "record";
-    
-
+    static readonly discriminator: string | undefined = "requestType";
 
     static readonly attributeTypeMap: AttributeType[] = [
         {
@@ -268,10 +265,11 @@ export class RecordWebhook {
         }    ];
 
     static getAttributeTypeMap(): AttributeType[] {
-        return RecordWebhook.attributeTypeMap;
+        return super.getAttributeTypeMap().concat(RecordWebhook.attributeTypeMap);
     }
 
     public constructor(args: ArgumentsType) {
+        super({ requestType: "record" });
         const preparedArgs = RecordWebhook.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
             
             const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
@@ -283,12 +281,8 @@ export class RecordWebhook {
         }, {})
         Object.assign(this, preparedArgs)
     }
-    static isRequestType(requestType: string): boolean {
-        return requestType === this.discriminator
-    }
-    static create(args: ArgumentsType): RecordWebhook {
-        return new RecordWebhook(args)
+    public static deserialize(payload: string): RecordWebhook {
+        return new RecordWebhook(JSON.parse(payload));
     }
 }
 
-Webhook.register(RecordWebhook)

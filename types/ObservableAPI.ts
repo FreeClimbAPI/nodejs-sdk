@@ -49,7 +49,7 @@ import { GetDigitsWebhook } from '../models/GetDigitsWebhook';
 import { GetSpeech } from '../models/GetSpeech';
 import { GetSpeechReason } from '../models/GetSpeechReason';
 import { GetSpeechWebhook } from '../models/GetSpeechWebhook';
-import { GetSpeechWebhookRecognitionResult } from '../models/GetSpeechWebhookRecognitionResult';
+import { GetSpeechWebhookAllOfRecognitionResult } from '../models/GetSpeechWebhookAllOfRecognitionResult';
 import { GrammarFileBuiltIn } from '../models/GrammarFileBuiltIn';
 import { GrammarType } from '../models/GrammarType';
 import { Hangup } from '../models/Hangup';

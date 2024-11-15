@@ -44,7 +44,7 @@ export * from './GetDigitsWebhook';
 export * from './GetSpeech';
 export * from './GetSpeechReason';
 export * from './GetSpeechWebhook';
-export * from './GetSpeechWebhookRecognitionResult';
+export * from './GetSpeechWebhookAllOfRecognitionResult';
 export * from './GrammarFileBuiltIn';
 export * from './GrammarType';
 export * from './Hangup';
@@ -175,7 +175,7 @@ import { GetDigitsWebhook             } from './GetDigitsWebhook';
 import { GetSpeech              } from './GetSpeech';
 import { GetSpeechReason } from './GetSpeechReason';
 import { GetSpeechWebhook                  } from './GetSpeechWebhook';
-import { GetSpeechWebhookRecognitionResult } from './GetSpeechWebhookRecognitionResult';
+import { GetSpeechWebhookAllOfRecognitionResult } from './GetSpeechWebhookAllOfRecognitionResult';
 import { GrammarFileBuiltIn } from './GrammarFileBuiltIn';
 import { GrammarType } from './GrammarType';
 import { Hangup } from './Hangup';
@@ -354,7 +354,7 @@ let typeMap: {[index: string]: any} = {
     "GetDigitsWebhook": GetDigitsWebhook,
     "GetSpeech": GetSpeech,
     "GetSpeechWebhook": GetSpeechWebhook,
-    "GetSpeechWebhookRecognitionResult": GetSpeechWebhookRecognitionResult,
+    "GetSpeechWebhookAllOfRecognitionResult": GetSpeechWebhookAllOfRecognitionResult,
     "Hangup": Hangup,
     "InboundCallWebhook": InboundCallWebhook,
     "IncomingNumberList": IncomingNumberList,

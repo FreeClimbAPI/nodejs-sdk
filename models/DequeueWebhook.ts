@@ -12,13 +12,12 @@
 
 import { CallDirection } from './../models/CallDirection';
 import { CallStatus } from './../models/CallStatus';
-import { Webhook } from './Webhook'
+import { Webhook } from './../models/Webhook';
 import { HttpFile } from '../http/http';
 
 /**
 * A queued call has been dequeued and the actionUrl of the corresponding Enqueue action is being invoked. A PerCL response is expected.
 */
-
 
 interface AttributeType {
     name: string
@@ -40,7 +39,7 @@ interface ArgumentsType {
     'queueResult'?: string;
     'queueTime'?: number;
 }
-export class DequeueWebhook {
+export class DequeueWebhook extends Webhook {
     /**
     * Context or reason why this request is being made. Will be dequeue - A queued call has been dequeued and the actionUrl of the corresponding Enqueue action is being invoked.
     */
@@ -80,9 +79,7 @@ export class DequeueWebhook {
     */
     'queueTime'?: number;
 
-    static readonly discriminator: string | undefined = "dequeue";
-    
-
+    static readonly discriminator: string | undefined = "requestType";
 
     static readonly attributeTypeMap: AttributeType[] = [
         {
@@ -186,10 +183,11 @@ export class DequeueWebhook {
         }    ];
 
     static getAttributeTypeMap(): AttributeType[] {
-        return DequeueWebhook.attributeTypeMap;
+        return super.getAttributeTypeMap().concat(DequeueWebhook.attributeTypeMap);
     }
 
     public constructor(args: ArgumentsType) {
+        super({ requestType: "dequeue" });
         const preparedArgs = DequeueWebhook.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
             
             const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
@@ -201,12 +199,8 @@ export class DequeueWebhook {
         }, {})
         Object.assign(this, preparedArgs)
     }
-    static isRequestType(requestType: string): boolean {
-        return requestType === this.discriminator
-    }
-    static create(args: ArgumentsType): DequeueWebhook {
-        return new DequeueWebhook(args)
+    public static deserialize(payload: string): DequeueWebhook {
+        return new DequeueWebhook(JSON.parse(payload));
     }
 }
 
-Webhook.register(DequeueWebhook)

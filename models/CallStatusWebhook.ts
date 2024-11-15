@@ -13,13 +13,12 @@
 import { CallDirection } from './../models/CallDirection';
 import { CallEndedReason } from './../models/CallEndedReason';
 import { CallStatus } from './../models/CallStatus';
-import { Webhook } from './Webhook'
+import { Webhook } from './../models/Webhook';
 import { HttpFile } from '../http/http';
 
 /**
 * A Call has ended and the statusCallbackUrl is being invoked. This is a notification only; All PerCL commands will be ignored.
 */
-
 
 interface AttributeType {
     name: string
@@ -40,7 +39,7 @@ interface ArgumentsType {
     'conferenceId'?: string;
     'queueId'?: string;
 }
-export class CallStatusWebhook {
+export class CallStatusWebhook extends Webhook {
     /**
     * Context or reason why this request is being made. Will be callStatus - A Call has ended and the statusCallbackUrl is being invoked.
     */
@@ -73,9 +72,7 @@ export class CallStatusWebhook {
     */
     'queueId'?: string;
 
-    static readonly discriminator: string | undefined = "callStatus";
-    
-
+    static readonly discriminator: string | undefined = "requestType";
 
     static readonly attributeTypeMap: AttributeType[] = [
         {
@@ -170,10 +167,11 @@ export class CallStatusWebhook {
         }    ];
 
     static getAttributeTypeMap(): AttributeType[] {
-        return CallStatusWebhook.attributeTypeMap;
+        return super.getAttributeTypeMap().concat(CallStatusWebhook.attributeTypeMap);
     }
 
     public constructor(args: ArgumentsType) {
+        super({ requestType: "callStatus" });
         const preparedArgs = CallStatusWebhook.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
             
             const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
@@ -185,12 +183,8 @@ export class CallStatusWebhook {
         }, {})
         Object.assign(this, preparedArgs)
     }
-    static isRequestType(requestType: string): boolean {
-        return requestType === this.discriminator
-    }
-    static create(args: ArgumentsType): CallStatusWebhook {
-        return new CallStatusWebhook(args)
+    public static deserialize(payload: string): CallStatusWebhook {
+        return new CallStatusWebhook(JSON.parse(payload));
     }
 }
 
-Webhook.register(CallStatusWebhook)

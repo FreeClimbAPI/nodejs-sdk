@@ -17,7 +17,6 @@ import { HttpFile } from '../http/http';
 * The `Reject` command blocks an incoming Call. Using `Reject` is the only way to prevent FreeClimb from answering a Call. Any other response will result in an answered Call and your account will be billed.
 */
 
-
 interface AttributeType {
     name: string
     baseName: string
@@ -35,8 +34,6 @@ export class Reject extends PerclCommand {
     'reason'?: string;
 
     static readonly discriminator: string | undefined = "command";
-    
-
 
     static readonly attributeTypeMap: AttributeType[] = [
         {

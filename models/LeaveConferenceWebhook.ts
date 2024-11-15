@@ -12,13 +12,12 @@
 
 import { CallDirection } from './../models/CallDirection';
 import { CallStatus } from './../models/CallStatus';
-import { Webhook } from './Webhook'
+import { Webhook } from './../models/Webhook';
 import { HttpFile } from '../http/http';
 
 /**
 * A Call has been unbridged from a Conference and its leaveConferenceUrl is being invoked. A PerCL response is expected — unless the URL is invoked due to the participant hanging up.
 */
-
 
 interface AttributeType {
     name: string
@@ -38,7 +37,7 @@ interface ArgumentsType {
     'conferenceId'?: string;
     'queueId'?: string;
 }
-export class LeaveConferenceWebhook {
+export class LeaveConferenceWebhook extends Webhook {
     /**
     * Context or reason why this request is being made. Will be leaveConference - Call has been unbridged from a Conference and its leaveConferenceUrl is being invoked.
     */
@@ -70,9 +69,7 @@ export class LeaveConferenceWebhook {
     */
     'queueId'?: string;
 
-    static readonly discriminator: string | undefined = "leaveConference";
-    
-
+    static readonly discriminator: string | undefined = "requestType";
 
     static readonly attributeTypeMap: AttributeType[] = [
         {
@@ -158,10 +155,11 @@ export class LeaveConferenceWebhook {
         }    ];
 
     static getAttributeTypeMap(): AttributeType[] {
-        return LeaveConferenceWebhook.attributeTypeMap;
+        return super.getAttributeTypeMap().concat(LeaveConferenceWebhook.attributeTypeMap);
     }
 
     public constructor(args: ArgumentsType) {
+        super({ requestType: "leaveConference" });
         const preparedArgs = LeaveConferenceWebhook.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
             
             const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
@@ -173,12 +171,8 @@ export class LeaveConferenceWebhook {
         }, {})
         Object.assign(this, preparedArgs)
     }
-    static isRequestType(requestType: string): boolean {
-        return requestType === this.discriminator
-    }
-    static create(args: ArgumentsType): LeaveConferenceWebhook {
-        return new LeaveConferenceWebhook(args)
+    public static deserialize(payload: string): LeaveConferenceWebhook {
+        return new LeaveConferenceWebhook(JSON.parse(payload));
     }
 }
 
-Webhook.register(LeaveConferenceWebhook)

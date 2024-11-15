@@ -14,9 +14,8 @@ import { BargeInReason } from './../models/BargeInReason';
 import { RecordUtteranceTermReason } from './../models/RecordUtteranceTermReason';
 import { TranscribeReason } from './../models/TranscribeReason';
 import { TranscribeTermReason } from './../models/TranscribeTermReason';
-import { Webhook } from './Webhook'
+import { Webhook } from './../models/Webhook';
 import { HttpFile } from '../http/http';
-
 
 
 interface AttributeType {
@@ -51,7 +50,7 @@ interface ArgumentsType {
     'transcribeReason'?: TranscribeReason;
     'transcriptionDurationMs'?: number;
 }
-export class TranscribeWebhook {
+export class TranscribeWebhook extends Webhook {
     /**
     * The context or reason why this request is being made. Will be transcribe - The TranscribeUtterance command has completed and its actionUrl is being invoked.
     */
@@ -127,9 +126,7 @@ export class TranscribeWebhook {
     */
     'transcriptionDurationMs'?: number;
 
-    static readonly discriminator: string | undefined = "transcribe";
-    
-
+    static readonly discriminator: string | undefined = "requestType";
 
     static readonly attributeTypeMap: AttributeType[] = [
         {
@@ -341,10 +338,11 @@ export class TranscribeWebhook {
         }    ];
 
     static getAttributeTypeMap(): AttributeType[] {
-        return TranscribeWebhook.attributeTypeMap;
+        return super.getAttributeTypeMap().concat(TranscribeWebhook.attributeTypeMap);
     }
 
     public constructor(args: ArgumentsType) {
+        super({ requestType: "transcribe" });
         const preparedArgs = TranscribeWebhook.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
             
             const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
@@ -356,12 +354,8 @@ export class TranscribeWebhook {
         }, {})
         Object.assign(this, preparedArgs)
     }
-    static isRequestType(requestType: string): boolean {
-        return requestType === this.discriminator
-    }
-    static create(args: ArgumentsType): TranscribeWebhook {
-        return new TranscribeWebhook(args)
+    public static deserialize(payload: string): TranscribeWebhook {
+        return new TranscribeWebhook(JSON.parse(payload));
     }
 }
 
-Webhook.register(TranscribeWebhook)

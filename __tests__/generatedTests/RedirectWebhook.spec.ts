@@ -3,6 +3,7 @@ import { describe, expect, it } from "@jest/globals";
     
 describe('RedirectWebhook', () => {
     let model: freeclimb.RedirectWebhook = new freeclimb.RedirectWebhook({
+       
         requestType: "test_requestType",
         accountId: "test_accountId",
         callId: "test_callId",
@@ -21,6 +22,7 @@ describe('RedirectWebhook', () => {
            expect(model).toBeInstanceOf(freeclimb.RedirectWebhook)
         })
     })
+
     describe(".requestType", () => {
         it('resolves to particular value on initialization', () => {
             const value = "test_requestType"
@@ -83,9 +85,9 @@ describe('RedirectWebhook', () => {
             expect(model.parentCallId).toBe(value)
         })
     })
-    describe('Webhook.parseFromObject with CallDirection', () => {
-        it('returns an instance of RedirectWebhook when requestType="redirect"', () => {
-            expect(freeclimb.Webhook.parseFromObject({ requestType: 'redirect'})).toBeInstanceOf(freeclimb.RedirectWebhook)
+    describe('.deserialize', () => {
+        it('returns an instance of RedirectWebhook', () => {
+            expect(freeclimb.RedirectWebhook.deserialize('{ "requestType": "redirect"}')).toBeInstanceOf(freeclimb.RedirectWebhook)
         })
     })
 })

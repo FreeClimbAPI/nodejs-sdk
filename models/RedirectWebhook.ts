@@ -12,13 +12,12 @@
 
 import { CallDirection } from './../models/CallDirection';
 import { CallStatus } from './../models/CallStatus';
-import { Webhook } from './Webhook'
+import { Webhook } from './../models/Webhook';
 import { HttpFile } from '../http/http';
 
 /**
 * The Redirect command is executing and its actionUrl is being invoked. A PerCL response is expected.
 */
-
 
 interface AttributeType {
     name: string
@@ -39,7 +38,7 @@ interface ArgumentsType {
     'queueId'?: string;
     'parentCallId'?: string;
 }
-export class RedirectWebhook {
+export class RedirectWebhook extends Webhook {
     /**
     * Context or reason why this request is being made. Will be redirect - The Redirect command is executing and its actionUrl is being invoked.
     */
@@ -75,9 +74,7 @@ export class RedirectWebhook {
     */
     'parentCallId'?: string;
 
-    static readonly discriminator: string | undefined = "redirect";
-    
-
+    static readonly discriminator: string | undefined = "requestType";
 
     static readonly attributeTypeMap: AttributeType[] = [
         {
@@ -172,10 +169,11 @@ export class RedirectWebhook {
         }    ];
 
     static getAttributeTypeMap(): AttributeType[] {
-        return RedirectWebhook.attributeTypeMap;
+        return super.getAttributeTypeMap().concat(RedirectWebhook.attributeTypeMap);
     }
 
     public constructor(args: ArgumentsType) {
+        super({ requestType: "redirect" });
         const preparedArgs = RedirectWebhook.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
             
             const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
@@ -187,12 +185,8 @@ export class RedirectWebhook {
         }, {})
         Object.assign(this, preparedArgs)
     }
-    static isRequestType(requestType: string): boolean {
-        return requestType === this.discriminator
-    }
-    static create(args: ArgumentsType): RedirectWebhook {
-        return new RedirectWebhook(args)
+    public static deserialize(payload: string): RedirectWebhook {
+        return new RedirectWebhook(JSON.parse(payload));
     }
 }
 
-Webhook.register(RedirectWebhook)

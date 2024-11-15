@@ -3,6 +3,7 @@ import { describe, expect, it } from "@jest/globals";
     
 describe('InboundCallWebhook', () => {
     let model: freeclimb.InboundCallWebhook = new freeclimb.InboundCallWebhook({
+       
         requestType: "test_requestType",
         callId: "test_callId",
         accountId: "test_accountId",
@@ -20,6 +21,7 @@ describe('InboundCallWebhook', () => {
            expect(model).toBeInstanceOf(freeclimb.InboundCallWebhook)
         })
     })
+
     describe(".requestType", () => {
         it('resolves to particular value on initialization', () => {
             const value = "test_requestType"
@@ -80,9 +82,9 @@ describe('InboundCallWebhook', () => {
         it('resolves to particular value on initialization', () => {
         })
     })
-    describe('Webhook.parseFromObject with CallDirection', () => {
-        it('returns an instance of InboundCallWebhook when requestType="inboundCall"', () => {
-            expect(freeclimb.Webhook.parseFromObject({ requestType: 'inboundCall'})).toBeInstanceOf(freeclimb.InboundCallWebhook)
+    describe('.deserialize', () => {
+        it('returns an instance of InboundCallWebhook', () => {
+            expect(freeclimb.InboundCallWebhook.deserialize('{ "requestType": "inboundCall"}')).toBeInstanceOf(freeclimb.InboundCallWebhook)
         })
     })
 })

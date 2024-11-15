@@ -14,7 +14,6 @@ import { PlayBeep } from './../models/PlayBeep';
 import { HttpFile } from '../http/http';
 
 
-
 interface AttributeType {
     name: string
     baseName: string
@@ -48,10 +47,7 @@ export class CreateConferenceRequest {
     */
     'statusCallbackUrl'?: string;
 
-    
     static readonly discriminator: string | undefined = undefined;
-    
-
 
     static readonly attributeTypeMap: AttributeType[] = [
         {

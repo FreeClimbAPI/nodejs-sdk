@@ -13,13 +13,12 @@
 import { CallDirection } from './../models/CallDirection';
 import { CallStatus } from './../models/CallStatus';
 import { ConferenceStatus } from './../models/ConferenceStatus';
-import { Webhook } from './Webhook'
+import { Webhook } from './../models/Webhook';
 import { HttpFile } from '../http/http';
 
 /**
 * A Conference has been created and its statusCallbackUrl or actionUrl is being invoked. A PerCL response is expected if the actionUrl is being invoked.
 */
-
 
 interface AttributeType {
     name: string
@@ -43,7 +42,7 @@ interface ArgumentsType {
     'recordingId'?: string;
     'recordingDurationSec'?: number;
 }
-export class CreateConferenceWebhook {
+export class CreateConferenceWebhook extends Webhook {
     /**
     * Context or reason why this request is being made. Will be createConference - A Conference has been created and its statusCallbackUrl or actionUrl is being invoked.
     */
@@ -88,9 +87,7 @@ export class CreateConferenceWebhook {
     */
     'recordingDurationSec'?: number;
 
-    static readonly discriminator: string | undefined = "createConference";
-    
-
+    static readonly discriminator: string | undefined = "requestType";
 
     static readonly attributeTypeMap: AttributeType[] = [
         {
@@ -212,10 +209,11 @@ export class CreateConferenceWebhook {
         }    ];
 
     static getAttributeTypeMap(): AttributeType[] {
-        return CreateConferenceWebhook.attributeTypeMap;
+        return super.getAttributeTypeMap().concat(CreateConferenceWebhook.attributeTypeMap);
     }
 
     public constructor(args: ArgumentsType) {
+        super({ requestType: "createConference" });
         const preparedArgs = CreateConferenceWebhook.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
             
             const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
@@ -227,12 +225,8 @@ export class CreateConferenceWebhook {
         }, {})
         Object.assign(this, preparedArgs)
     }
-    static isRequestType(requestType: string): boolean {
-        return requestType === this.discriminator
-    }
-    static create(args: ArgumentsType): CreateConferenceWebhook {
-        return new CreateConferenceWebhook(args)
+    public static deserialize(payload: string): CreateConferenceWebhook {
+        return new CreateConferenceWebhook(JSON.parse(payload));
     }
 }
 
-Webhook.register(CreateConferenceWebhook)

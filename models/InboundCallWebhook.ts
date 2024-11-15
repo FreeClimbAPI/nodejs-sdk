@@ -12,13 +12,12 @@
 
 import { CallDirection } from './../models/CallDirection';
 import { CallStatus } from './../models/CallStatus';
-import { Webhook } from './Webhook'
+import { Webhook } from './../models/Webhook';
 import { HttpFile } from '../http/http';
 
 /**
 * An inbound Call to a number registered on FreeClimb will trigger a request to the voiceUrl of the application the number is assigned to. FreeClimb expects to receive PerCL in response to this request in order to process the Call. The following parameters are sent as the POST body.
 */
-
 
 interface AttributeType {
     name: string
@@ -39,7 +38,7 @@ interface ArgumentsType {
     'queueId'?: string;
     'parentCallId'?: any;
 }
-export class InboundCallWebhook {
+export class InboundCallWebhook extends Webhook {
     /**
     * Context or reason why this request is being made. Will be inboundCall - An inbound call was received and the voiceUrl is being invoked.
     */
@@ -72,9 +71,7 @@ export class InboundCallWebhook {
     'queueId'?: string;
     'parentCallId'?: any;
 
-    static readonly discriminator: string | undefined = "inboundCall";
-    
-
+    static readonly discriminator: string | undefined = "requestType";
 
     static readonly attributeTypeMap: AttributeType[] = [
         {
@@ -169,10 +166,11 @@ export class InboundCallWebhook {
         }    ];
 
     static getAttributeTypeMap(): AttributeType[] {
-        return InboundCallWebhook.attributeTypeMap;
+        return super.getAttributeTypeMap().concat(InboundCallWebhook.attributeTypeMap);
     }
 
     public constructor(args: ArgumentsType) {
+        super({ requestType: "inboundCall" });
         const preparedArgs = InboundCallWebhook.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
             
             const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
@@ -184,12 +182,8 @@ export class InboundCallWebhook {
         }, {})
         Object.assign(this, preparedArgs)
     }
-    static isRequestType(requestType: string): boolean {
-        return requestType === this.discriminator
-    }
-    static create(args: ArgumentsType): InboundCallWebhook {
-        return new InboundCallWebhook(args)
+    public static deserialize(payload: string): InboundCallWebhook {
+        return new InboundCallWebhook(JSON.parse(payload));
     }
 }
 
-Webhook.register(InboundCallWebhook)

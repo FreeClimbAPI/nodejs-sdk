@@ -58,7 +58,7 @@ models/GetDigitsWebhook.ts
 models/GetSpeech.ts
 models/GetSpeechReason.ts
 models/GetSpeechWebhook.ts
-models/GetSpeechWebhookRecognitionResult.ts
+models/GetSpeechWebhookAllOfRecognitionResult.ts
 models/GrammarFileBuiltIn.ts
 models/GrammarType.ts
 models/Hangup.ts

@@ -14,7 +14,6 @@ import { LogResult } from './../models/LogResult';
 import { HttpFile } from '../http/http';
 
 
-
 interface AttributeType {
     name: string
     baseName: string
@@ -63,10 +62,7 @@ export class LogList {
     'nextPageUri'?: string;
     'logs'?: Array<LogResult>;
 
-    
     static readonly discriminator: string | undefined = undefined;
-    
-
 
     static readonly attributeTypeMap: AttributeType[] = [
         {

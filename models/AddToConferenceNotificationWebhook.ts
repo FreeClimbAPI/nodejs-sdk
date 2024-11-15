@@ -13,13 +13,12 @@
 import { CallDirection } from './../models/CallDirection';
 import { CallStatus } from './../models/CallStatus';
 import { ConferenceStatus } from './../models/ConferenceStatus';
-import { Webhook } from './Webhook'
+import { Webhook } from './../models/Webhook';
 import { HttpFile } from '../http/http';
 
 /**
 * A Call has been bridged to a Conference and the AddToConference command’s notificationUrl is being invoked. This is a notification only; any PerCL returned will be ignored.
 */
-
 
 interface AttributeType {
     name: string
@@ -43,7 +42,7 @@ interface ArgumentsType {
     'recordingId'?: string;
     'recordingDurationSec'?: number;
 }
-export class AddToConferenceNotificationWebhook {
+export class AddToConferenceNotificationWebhook extends Webhook {
     /**
     * Context or reason why this request is being made. Will be addToConferenceNotification - A Call has been bridged to a conference and the addToConference command’s notificationUrl is being invoked.
     */
@@ -88,9 +87,7 @@ export class AddToConferenceNotificationWebhook {
     */
     'recordingDurationSec'?: number;
 
-    static readonly discriminator: string | undefined = "addToConferenceNotification";
-    
-
+    static readonly discriminator: string | undefined = "requestType";
 
     static readonly attributeTypeMap: AttributeType[] = [
         {
@@ -212,10 +209,11 @@ export class AddToConferenceNotificationWebhook {
         }    ];
 
     static getAttributeTypeMap(): AttributeType[] {
-        return AddToConferenceNotificationWebhook.attributeTypeMap;
+        return super.getAttributeTypeMap().concat(AddToConferenceNotificationWebhook.attributeTypeMap);
     }
 
     public constructor(args: ArgumentsType) {
+        super({ requestType: "addToConferenceNotification" });
         const preparedArgs = AddToConferenceNotificationWebhook.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
             
             const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
@@ -227,12 +225,8 @@ export class AddToConferenceNotificationWebhook {
         }, {})
         Object.assign(this, preparedArgs)
     }
-    static isRequestType(requestType: string): boolean {
-        return requestType === this.discriminator
-    }
-    static create(args: ArgumentsType): AddToConferenceNotificationWebhook {
-        return new AddToConferenceNotificationWebhook(args)
+    public static deserialize(payload: string): AddToConferenceNotificationWebhook {
+        return new AddToConferenceNotificationWebhook(JSON.parse(payload));
     }
 }
 
-Webhook.register(AddToConferenceNotificationWebhook)
