@@ -430,7 +430,7 @@
       "BargeInReason": {
         "type": "string",
         "enum": ["noBargeIn", "bargeInByDTMF", "bargeInByEnergy"],
-        "x-enum-varnames": ["NO_BARGE_IN", "BARGE_IN_BY_DTMF", "bargeInByEnergy"],
+        "x-enum-varnames": ["NO_BARGE_IN", "BARGE_IN_BY_DTMF", "BARGE_IN_BY_ENERGY"],
         "x-enum": true
       },
       "TranscribeTermReason": {

@@ -16,7 +16,7 @@ export enum BargeInReason {
 
     NO_BARGE_IN = 'noBargeIn',
     BARGE_IN_BY_DTMF = 'bargeInByDTMF',
-    bargeInByEnergy = 'bargeInByEnergy'
+    BARGE_IN_BY_ENERGY = 'bargeInByEnergy'
 }
 
 

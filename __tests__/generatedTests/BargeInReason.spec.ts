@@ -12,9 +12,9 @@ describe('BargeInReason', () => {
            expect(freeclimb.BargeInReason.BARGE_IN_BY_DTMF).toBe("bargeInByDTMF")
         })
     })
-    describe('.bargeInByEnergy', () => {
-        it('resolves to correct value for bargeInByEnergy enum property', () => {
-           expect(freeclimb.BargeInReason.bargeInByEnergy).toBe("bargeInByEnergy")
+    describe('.BARGE_IN_BY_ENERGY', () => {
+        it('resolves to correct value for BARGE_IN_BY_ENERGY enum property', () => {
+           expect(freeclimb.BargeInReason.BARGE_IN_BY_ENERGY).toBe("bargeInByEnergy")
         })
     })
 })
