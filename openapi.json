@@ -576,33 +576,35 @@
         "discriminator": {
          "propertyName": "requestType",
          "mapping": {
-           "AddToConferenceNotificationWebhook":  "#/components/schemas/AddToConferenceNotificationWebhook",
-           "AddToQueueNotificationWebhook": "#/components/schemas/AddToQueueNotificationWebhook",
-           "CallControlWebhook": "#/components/schemas/CallControlWebhook",
-           "CallStatusWebhook": "#/components/schemas/CallStatusWebhook",
-           "ConferenceRecordingStatusWebhook": "#/components/schemas/ConferenceRecordingStatusWebhook",
-           "ConferenceStatusWebhook": "#/components/schemas/ConferenceStatusWebhook",
-           "CreateConferenceWebhook": "#/components/schemas/CreateConferenceWebhook",
-           "DequeueWebhook": "#/components/schemas/DequeueWebhook",
-           "GetDigitsWebhook": "#/components/schemas/GetDigitsWebhook",
-           "GetSpeechWebhook": "#/components/schemas/GetSpeechWebhook",
-           "LeaveConferenceWebhook": "#/components/schemas/LeaveConferenceWebhook",
-           "MachineDetectedWebhook": "#/components/schemas/MachineDetectedWebhook",
-           "MessageDeliveryWebhook": "#/components/schemas/MessageDeliveryWebhook",
-           "MessageStatusWebhook": "#/components/schemas/MessageStatusWebhook",
-           "OutDialApiConnectWebhook": "#/components/schemas/OutDialApiConnectWebhook",
-           "OutDialConnectWebhook": "#/components/schemas/OutDialConnectWebhook",
-           "OutDialStartWebhook": "#/components/schemas/OutDialStartWebhook",
-           "QueueWaitWebhook": "#/components/schemas/QueueWaitWebhook",
-           "RecordWebhook": "#/components/schemas/RecordWebhook",
-           "RedirectWebhook": "#/components/schemas/RedirectWebhook",
-           "RemoveFromQueueNotificationWebhook": "#/components/schemas/RemoveFromQueueNotificationWebhook",
-           "TranscribeWebhook": "#/components/schemas/TranscribeWebhook"
+           "addToConferenceNotification":  "#/components/schemas/AddToConferenceNotificationWebhook",
+           "addToQueueNotification": "#/components/schemas/AddToQueueNotificationWebhook",
+           "callControl": "#/components/schemas/CallControlWebhook",
+           "callStatus": "#/components/schemas/CallStatusWebhook",
+           "conferenceRecordingStatus": "#/components/schemas/ConferenceRecordingStatusWebhook",
+           "conferenceStatus": "#/components/schemas/ConferenceStatusWebhook",
+           "createConference": "#/components/schemas/CreateConferenceWebhook",
+           "dequeue": "#/components/schemas/DequeueWebhook",
+           "getDigits": "#/components/schemas/GetDigitsWebhook",
+           "getSpeech": "#/components/schemas/GetSpeechWebhook",
+           "inboundCall": "#/components/schemas/InboundCallWebhook",
+           "leaveConference": "#/components/schemas/LeaveConferenceWebhook",
+           "machineDetected": "#/components/schemas/MachineDetectedWebhook",
+           "messageDelivery": "#/components/schemas/MessageDeliveryWebhook",
+           "messageStatus": "#/components/schemas/MessageStatusWebhook",
+           "outDialApiConnect": "#/components/schemas/OutDialApiConnectWebhook",
+           "outDialConnect": "#/components/schemas/OutDialConnectWebhook",
+           "outDialStart": "#/components/schemas/OutDialStartWebhook",
+           "queueWait": "#/components/schemas/QueueWaitWebhook",
+           "record": "#/components/schemas/RecordWebhook",
+           "redirect": "#/components/schemas/RedirectWebhook",
+           "removeFromQueueNotification": "#/components/schemas/RemoveFromQueueNotificationWebhook",
+           "transcribe": "#/components/schemas/TranscribeWebhook"
          }
         },
         "properties": {
           "requestType": {
             "x-is-no-property": true,
+            "x-webhook-base": true,
             "type": "string",
             "description": "Type of webhook request"
           }
@@ -1310,7 +1312,7 @@
         ]
       },
       "MachineDetectedWebhook": {
-        "x-webhook": "machineDeteched",
+        "x-webhook": "machineDetected",
         "description": "An outbound call spawned by OutDial detected an answer by a machine (answering machine or fax/modem machine) and ifMachineUrl is being invoked. A PerCL response is expected.",
         "allOf": [
           {

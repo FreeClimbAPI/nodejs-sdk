@@ -185,7 +185,7 @@ export class MachineDetectedWebhook extends Webhook {
     }
 
     public constructor(args: ArgumentsType) {
-        super({ requestType: "machineDeteched" });
+        super({ requestType: "machineDetected" });
         const preparedArgs = MachineDetectedWebhook.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
             
             const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue

@@ -96,7 +96,7 @@ describe('MachineDetectedWebhook', () => {
     })
     describe('.deserialize', () => {
         it('returns an instance of MachineDetectedWebhook', () => {
-            expect(freeclimb.MachineDetectedWebhook.deserialize('{ "requestType": "machineDeteched"}')).toBeInstanceOf(freeclimb.MachineDetectedWebhook)
+            expect(freeclimb.MachineDetectedWebhook.deserialize('{ "requestType": "machineDetected"}')).toBeInstanceOf(freeclimb.MachineDetectedWebhook)
         })
     })
 })
