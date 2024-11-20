@@ -515,7 +515,6 @@
       },
       "SMSTollFreeCampaignRegistrationStatus": {
         "type": "string",
-        "x-has-writer": true,
         "description": "Current toll-free campaign registration status.Possible values: UNREGISTERED,INITIATED,PENDING,DECLINED,REGISTERED. A newly created campaign defaults to INITIATED status. ",
         "x-enum": true,
         "enum": [
@@ -535,7 +534,6 @@
       },
       "SMSTenDLCCampaignStatus": {
         "type": "string",
-        "x-has-writer": true,
         "description": "Current campaign status. Possible values: ACTIVE, EXPIRED. A newly created campaign defaults to ACTIVE status. ",
         "x-enum": true,
         "enum": ["ACTIVE", "EXPIRED"],
@@ -543,7 +541,6 @@
       },
       "SMSTenDLCPartnerCampaignStatus": {
         "type": "string",
-        "x-has-writer": true,
         "description": "Current campaign status. Possible values: ACTIVE, EXPIRED. A newly created campaign defaults to ACTIVE status. ",
         "x-enum": true,
         "enum": ["ACTIVE", "EXPIRED"],
@@ -552,7 +549,6 @@
       "SMSTenDLCBrandEntityType": {
         "maxLength": 20,
         "type": "string",
-        "x-has-writer": true,
         "description": "Entity type behind the brand. This is the form of business establishment.",
         "x-enum": true,
         "enum": [
@@ -572,7 +568,6 @@
       },
       "SMSTenDLCBrandRelationship": {
         "type": "string",
-        "x-has-writer": true,
         "description": "Brand relationship to the CSP",
         "x-enum": true,
         "enum": [
@@ -592,7 +587,6 @@
       },
       "SMSTenDLCBrandStockExchange": {
         "type": "string",
-        "x-has-writer": true,
         "description": "(Required for public company) stock exchange.",
         "x-enum": true,
         "example": "NASDAQ",
@@ -657,7 +651,6 @@
       },
       "SMSTenDLCBrandAltBusinessIdType": {
         "type": "string",
-        "x-has-writer": true,
         "x-enum": true,
         "enum": ["NONE", "DUNS", "GIIN", "LEI"],
         "x-enum-varnames": ["NONE", "DUNS", "GIIN", "LEI"],
@@ -665,7 +658,6 @@
       },
       "SMSTenDLCBrandIdentityStatus": {
         "type": "string",
-        "x-has-writer": true,
         "description": "TCR assessment of the brand identification status.",
         "x-enum": true,
         "enum": [
@@ -683,7 +675,6 @@
       },
       "CompletionResultStatus": {
         "type": "string",
-        "x-has-writer": true,
         "description": "Completion result status. Possible values: success, no_context",
         "x-enum": true,
         "enum": ["success", "no_context"],
