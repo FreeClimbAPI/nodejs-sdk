@@ -17,6 +17,7 @@ describe('GetSpeechWebhook', () => {
         queueId: "test_queueId",
 
         reason: freeclimb.GetSpeechReason.ERROR,
+        recognitionResult: "test_recognitionResult",
         confidence: 1,
         parentCallId: "test_parentCallId",
         completionReason: "test_completionReason",
@@ -95,6 +96,8 @@ describe('GetSpeechWebhook', () => {
     })
     describe(".recognitionResult", () => {
         it('resolves to particular value on initialization', () => {
+            const value = "test_recognitionResult"
+            expect(model.recognitionResult).toBe(value)
         })
     })
     describe(".confidence", () => {

@@ -13,7 +13,6 @@
 import { CallDirection } from './../models/CallDirection';
 import { CallStatus } from './../models/CallStatus';
 import { GetSpeechReason } from './../models/GetSpeechReason';
-import { GetSpeechWebhookAllOfRecognitionResult } from './../models/GetSpeechWebhookAllOfRecognitionResult';
 import { Webhook } from './../models/Webhook';
 import { HttpFile } from '../http/http';
 
@@ -39,7 +38,7 @@ interface ArgumentsType {
     'conferenceId'?: string;
     'queueId'?: string;
     'reason'?: GetSpeechReason;
-    'recognitionResult'?: GetSpeechWebhookAllOfRecognitionResult;
+    'recognitionResult'?: string;
     'confidence'?: number;
     'parentCallId'?: string;
     'completionReason'?: string;
@@ -79,7 +78,10 @@ export class GetSpeechWebhook extends Webhook {
     */
     'queueId'?: string;
     'reason'?: GetSpeechReason;
-    'recognitionResult'?: GetSpeechWebhookAllOfRecognitionResult;
+    /**
+    * Semantic content (either a string if speech was recognized or a digit if a digit was input instead of speech) returned from the entry or tag that was recognized within the grammar. The content will be replaced by \'xxxxx\' when privacyMode is set to true. This field is populated only if the reason field is set to recognition or digit.
+    */
+    'recognitionResult'?: string;
     /**
     * Level of confidence in the obtained result. This is a value in the range 0 to 100 – with 0 being total lack of confidence and 100 being absolute certainty in the recognition. This field is populated only if the reason field is set to recognition.
     */
@@ -201,7 +203,7 @@ export class GetSpeechWebhook extends Webhook {
         {
             "name": "recognitionResult",
             "baseName": "recognitionResult",
-            "type": "GetSpeechWebhookAllOfRecognitionResult",
+            "type": "string",
             "format": "",
 
             
