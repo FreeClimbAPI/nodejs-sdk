@@ -10,13 +10,9 @@
  * Do not edit the class manually.
  */
 
+import { CompletionResultStatus } from './../models/CompletionResultStatus';
 import { HttpFile } from '../http/http';
 
-export enum CompletionResultStatusEnum {
-
-    SUCCESS = 'success',
-    NO_CONTEXT = 'no_context'
-}
 
 interface AttributeType {
     name: string
@@ -27,17 +23,14 @@ interface AttributeType {
 }
 interface ArgumentsType {
     'response': string;
-    'status': CompletionResultStatusEnum;
+    'status': CompletionResultStatus;
 }
 export class CompletionResult {
     /**
     * The generative response from the KnowledgeBase
     */
     'response': string;
-    /**
-    * Completion result status. Possible values: success, no_context
-    */
-    'status': CompletionResultStatusEnum;
+    'status': CompletionResultStatus;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -54,7 +47,7 @@ export class CompletionResult {
         {
             "name": "status",
             "baseName": "status",
-            "type": "CompletionResultStatusEnum",
+            "type": "CompletionResultStatus",
             "format": "",
 
             

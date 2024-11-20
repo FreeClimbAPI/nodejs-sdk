@@ -23,6 +23,7 @@ export * from './CallStatusWebhook';
 export * from './Capabilities';
 export * from './CompletionRequest';
 export * from './CompletionResult';
+export * from './CompletionResultStatus';
 export * from './ConferenceList';
 export * from './ConferenceParticipantList';
 export * from './ConferenceParticipantResult';
@@ -99,13 +100,21 @@ export * from './RemoveFromConference';
 export * from './RemoveFromQueueNotificationWebhook';
 export * from './RequestType';
 export * from './SMSTenDLCBrand';
+export * from './SMSTenDLCBrandAltBusinessIdType';
+export * from './SMSTenDLCBrandEntityType';
+export * from './SMSTenDLCBrandIdentityStatus';
+export * from './SMSTenDLCBrandRelationship';
+export * from './SMSTenDLCBrandStockExchange';
 export * from './SMSTenDLCBrandsListResult';
 export * from './SMSTenDLCCampaign';
+export * from './SMSTenDLCCampaignStatus';
 export * from './SMSTenDLCCampaignsListResult';
 export * from './SMSTenDLCPartnerCampaign';
 export * from './SMSTenDLCPartnerCampaignBrand';
+export * from './SMSTenDLCPartnerCampaignStatus';
 export * from './SMSTenDLCPartnerCampaignsListResult';
 export * from './SMSTollFreeCampaign';
+export * from './SMSTollFreeCampaignRegistrationStatus';
 export * from './SMSTollFreeCampaignsListResult';
 export * from './Say';
 export * from './SendDigits';
@@ -152,7 +161,8 @@ import { CallStatus } from './CallStatus';
 import { CallStatusWebhook           } from './CallStatusWebhook';
 import { Capabilities } from './Capabilities';
 import { CompletionRequest } from './CompletionRequest';
-import { CompletionResult , CompletionResultStatusEnum   } from './CompletionResult';
+import { CompletionResult   } from './CompletionResult';
+import { CompletionResultStatus } from './CompletionResultStatus';
 import { ConferenceList } from './ConferenceList';
 import { ConferenceParticipantList } from './ConferenceParticipantList';
 import { ConferenceParticipantResult } from './ConferenceParticipantResult';
@@ -228,14 +238,22 @@ import { Reject } from './Reject';
 import { RemoveFromConference } from './RemoveFromConference';
 import { RemoveFromQueueNotificationWebhook            } from './RemoveFromQueueNotificationWebhook';
 import { RequestType } from './RequestType';
-import { SMSTenDLCBrand , SMSTenDLCBrandEntityTypeEnum                  , SMSTenDLCBrandStockExchangeEnum    , SMSTenDLCBrandBrandRelationshipEnum    , SMSTenDLCBrandAltBusinessIdTypeEnum      , SMSTenDLCBrandIdentityStatusEnum    } from './SMSTenDLCBrand';
+import { SMSTenDLCBrand                                } from './SMSTenDLCBrand';
+import { SMSTenDLCBrandAltBusinessIdType } from './SMSTenDLCBrandAltBusinessIdType';
+import { SMSTenDLCBrandEntityType } from './SMSTenDLCBrandEntityType';
+import { SMSTenDLCBrandIdentityStatus } from './SMSTenDLCBrandIdentityStatus';
+import { SMSTenDLCBrandRelationship } from './SMSTenDLCBrandRelationship';
+import { SMSTenDLCBrandStockExchange } from './SMSTenDLCBrandStockExchange';
 import { SMSTenDLCBrandsListResult } from './SMSTenDLCBrandsListResult';
-import { SMSTenDLCCampaign    , SMSTenDLCCampaignStatusEnum                                  } from './SMSTenDLCCampaign';
+import { SMSTenDLCCampaign                                     } from './SMSTenDLCCampaign';
+import { SMSTenDLCCampaignStatus } from './SMSTenDLCCampaignStatus';
 import { SMSTenDLCCampaignsListResult } from './SMSTenDLCCampaignsListResult';
-import { SMSTenDLCPartnerCampaign  , SMSTenDLCPartnerCampaignStatusEnum                             } from './SMSTenDLCPartnerCampaign';
+import { SMSTenDLCPartnerCampaign                              } from './SMSTenDLCPartnerCampaign';
 import { SMSTenDLCPartnerCampaignBrand } from './SMSTenDLCPartnerCampaignBrand';
+import { SMSTenDLCPartnerCampaignStatus } from './SMSTenDLCPartnerCampaignStatus';
 import { SMSTenDLCPartnerCampaignsListResult } from './SMSTenDLCPartnerCampaignsListResult';
-import { SMSTollFreeCampaign   , SMSTollFreeCampaignRegistrationStatusEnum      } from './SMSTollFreeCampaign';
+import { SMSTollFreeCampaign        } from './SMSTollFreeCampaign';
+import { SMSTollFreeCampaignRegistrationStatus } from './SMSTollFreeCampaignRegistrationStatus';
 import { SMSTollFreeCampaignsListResult } from './SMSTollFreeCampaignsListResult';
 import { Say } from './Say';
 import { SendDigits } from './SendDigits';
@@ -285,7 +303,7 @@ let enumsMap: Set<string> = new Set<string>([
     "CallDirection",
     "CallEndedReason",
     "CallStatus",
-    "CompletionResultStatusEnum",
+    "CompletionResultStatus",
     "ConferenceStatus",
     "GetDigitsReason",
     "GetSpeechReason",
@@ -301,14 +319,14 @@ let enumsMap: Set<string> = new Set<string>([
     "QueueResultStatus",
     "RecordUtteranceTermReason",
     "RequestType",
-    "SMSTenDLCBrandEntityTypeEnum",
-    "SMSTenDLCBrandStockExchangeEnum",
-    "SMSTenDLCBrandBrandRelationshipEnum",
-    "SMSTenDLCBrandAltBusinessIdTypeEnum",
-    "SMSTenDLCBrandIdentityStatusEnum",
-    "SMSTenDLCCampaignStatusEnum",
-    "SMSTenDLCPartnerCampaignStatusEnum",
-    "SMSTollFreeCampaignRegistrationStatusEnum",
+    "SMSTenDLCBrandAltBusinessIdType",
+    "SMSTenDLCBrandEntityType",
+    "SMSTenDLCBrandIdentityStatus",
+    "SMSTenDLCBrandRelationship",
+    "SMSTenDLCBrandStockExchange",
+    "SMSTenDLCCampaignStatus",
+    "SMSTenDLCPartnerCampaignStatus",
+    "SMSTollFreeCampaignRegistrationStatus",
     "TranscribeReason",
     "TranscribeTermReason",
     "UpdateCallRequestStatus",

@@ -5,7 +5,8 @@ describe('SMSTenDLCPartnerCampaign', () => {
     let model: freeclimb.SMSTenDLCPartnerCampaign = new freeclimb.SMSTenDLCPartnerCampaign({
         accountId: "test_accountId",
         campaignId: "test_campaignId",
-        status: freeclimb.SMSTenDLCPartnerCampaignStatusEnum.ACTIVE,
+
+        status: freeclimb.SMSTenDLCPartnerCampaignStatus.ACTIVE,
         createDate: new Date('December 17, 1995 03:24:00'),
         brandId: "test_brandId",
         usecase: "test_usecase",
@@ -56,8 +57,9 @@ describe('SMSTenDLCPartnerCampaign', () => {
     })
     describe(".status", () => {
         it('resolves to particular value on initialization', () => {
-        const value = freeclimb.SMSTenDLCPartnerCampaignStatusEnum.ACTIVE
-        expect(model.status).toBe(value)
+
+            const value = "ACTIVE"
+            expect(model.status).toBe(value)
         })
     })
     describe(".createDate", () => {

@@ -513,6 +513,182 @@
         "x-enum": true,
         "description": "New status of the conference. Valid values: `empty` or `terminated`. For more information, see **Status Parameter** below.**"
       },
+      "SMSTollFreeCampaignRegistrationStatus": {
+        "type": "string",
+        "x-has-writer": true,
+        "description": "Current toll-free campaign registration status.Possible values: UNREGISTERED,INITIATED,PENDING,DECLINED,REGISTERED. A newly created campaign defaults to INITIATED status. ",
+        "x-enum": true,
+        "enum": [
+          "UNREGISTERED",
+          "INITIATED",
+          "PENDING",
+          "DECLINED",
+          "REGISTERED"
+        ],
+        "x-enum-varnames": [
+          "UNREGISTERED",
+          "INITIATED",
+          "PENDING",
+          "DECLINED",
+          "REGISTERED"
+        ]
+      },
+      "SMSTenDLCCampaignStatus": {
+        "type": "string",
+        "x-has-writer": true,
+        "description": "Current campaign status. Possible values: ACTIVE, EXPIRED. A newly created campaign defaults to ACTIVE status. ",
+        "x-enum": true,
+        "enum": ["ACTIVE", "EXPIRED"],
+        "x-enum-varnames": ["ACTIVE", "EXPIRED"]
+      },
+      "SMSTenDLCPartnerCampaignStatus": {
+        "type": "string",
+        "x-has-writer": true,
+        "description": "Current campaign status. Possible values: ACTIVE, EXPIRED. A newly created campaign defaults to ACTIVE status. ",
+        "x-enum": true,
+        "enum": ["ACTIVE", "EXPIRED"],
+        "x-enum-varnames": ["ACTIVE", "EXPIRED"]
+      },
+      "SMSTenDLCBrandEntityType": {
+        "maxLength": 20,
+        "type": "string",
+        "x-has-writer": true,
+        "description": "Entity type behind the brand. This is the form of business establishment.",
+        "x-enum": true,
+        "enum": [
+          "PRIVATE_PROFIT",
+          "PUBLIC_PROFIT",
+          "NON_PROFIT",
+          "GOVERNMENT",
+          "SOLE_PROPRIETOR"
+        ],
+        "x-enum-varnames": [
+          "PRIVATE_PROFIT",
+          "PUBLIC_PROFIT",
+          "NON_PROFIT",
+          "GOVERNMENT",
+          "SOLE_PROPRIETOR"
+        ]
+      },
+      "SMSTenDLCBrandRelationship": {
+        "type": "string",
+        "x-has-writer": true,
+        "description": "Brand relationship to the CSP",
+        "x-enum": true,
+        "enum": [
+          "BASIC_ACCOUNT",
+          "SMALL_ACCOUNT",
+          "MEDIUM_ACCOUNT",
+          "LARGE_ACCOUNT",
+          "KEY_ACCOUNT"
+        ],
+        "x-enum-varnames": [
+          "BASIC_ACCOUNT",
+          "SMALL_ACCOUNT",
+          "MEDIUM_ACCOUNT",
+          "LARGE_ACCOUNT",
+          "KEY_ACCOUNT"
+        ]
+      },
+      "SMSTenDLCBrandStockExchange": {
+        "type": "string",
+        "x-has-writer": true,
+        "description": "(Required for public company) stock exchange.",
+        "x-enum": true,
+        "example": "NASDAQ",
+        "enum": [
+          "NONE",
+          "NASDAQ",
+          "NYSE",
+          "AMEX",
+          "AMX",
+          "ASX",
+          "B3",
+          "BME",
+          "BSE",
+          "FRA",
+          "ICEX",
+          "JPX",
+          "JSE",
+          "KRX",
+          "LON",
+          "NSE",
+          "OMX",
+          "SEHK",
+          "SGX",
+          "SSE",
+          "STO",
+          "SWX",
+          "SZSE",
+          "TSX",
+          "TWSE",
+          "VSE",
+          "OTHER"
+        ],
+        "x-enum-varnames": [
+          "NONE",
+          "NASDAQ",
+          "NYSE",
+          "AMEX",
+          "AMX",
+          "ASX",
+          "B3",
+          "BME",
+          "BSE",
+          "FRA",
+          "ICEX",
+          "JPX",
+          "JSE",
+          "KRX",
+          "LON",
+          "NSE",
+          "OMX",
+          "SEHK",
+          "SGX",
+          "SSE",
+          "STO",
+          "SWX",
+          "SZSE",
+          "TSX",
+          "TWSE",
+          "VSE",
+          "OTHER"
+        ]
+      },
+      "SMSTenDLCBrandAltBusinessIdType": {
+        "type": "string",
+        "x-has-writer": true,
+        "x-enum": true,
+        "enum": ["NONE", "DUNS", "GIIN", "LEI"],
+        "x-enum-varnames": ["NONE", "DUNS", "GIIN", "LEI"],
+        "description": "The type of the Alternative business identifier"
+      },
+      "SMSTenDLCBrandIdentityStatus": {
+        "type": "string",
+        "x-has-writer": true,
+        "description": "TCR assessment of the brand identification status.",
+        "x-enum": true,
+        "enum": [
+          "SELF_DECLARED",
+          "UNVERIFIED",
+          "VERIFIED",
+          "VETTED_VERIFIED"
+        ],
+        "x-enum-varnames": [
+          "SELF_DECLARED",
+          "UNVERIFIED",
+          "VERIFIED",
+          "VETTED_VERIFIED"
+        ]
+      },
+      "CompletionResultStatus": {
+        "type": "string",
+        "x-has-writer": true,
+        "description": "Completion result status. Possible values: success, no_context",
+        "x-enum": true,
+        "enum": ["success", "no_context"],
+        "x-enum-varnames": ["SUCCESS", "NO_CONTEXT"]
+      },
       "PerclScript": {
         "type": "object",
         "description": "A PerCL script to be returned to the FreeClimb servers in FreeClimb applications",
@@ -3704,14 +3880,7 @@
             "description": "The generative response from the KnowledgeBase"
           },
           "status": {
-            "type": "string",
-            "x-has-writer": true,
-            "description": "Completion result status. Possible values: success, no_context",
-            "x-enum-type": "CompletionResultStatusEnum",
-            "x-enum-type-c-sharp": "StatusEnum",
-            "enum": ["success", "no_context"],
-            "x-enum-varnames": ["SUCCESS", "NO_CONTEXT"],
-            "x-enum-varnames-values": ["success", "no_context"]
+            "$ref": "#/components/schemas/CompletionResultStatus"
           }
         }
       },
@@ -4122,13 +4291,7 @@
             "description": "Alphanumeric identifier of the reseller that you want to associate with this campaign."
           },
           "status": {
-            "type": "string",
-            "x-has-writer": true,
-            "description": "Current campaign status. Possible values: ACTIVE, EXPIRED. A newly created campaign defaults to ACTIVE status. ",
-            "x-enum-type": "SMSTenDLCCampaignStatusEnum",
-            "x-enum-type-c-sharp": "StatusEnum",
-            "enum": ["ACTIVE", "EXPIRED"],
-            "x-enum-varnames": ["ACTIVE", "EXPIRED"]
+            "$ref": "#/components/schemas/SMSTenDLCCampaignStatus"
           },
           "createDate": {
             "type": "string",
@@ -4367,13 +4530,7 @@
             "description": "Alphanumeric identifier assigned by the registry for a campaign. This identifier is required by the NetNumber OSR SMS enabling process of 10DLC."
           },
           "status": {
-            "type": "string",
-            "x-has-writer": true,
-            "description": "Current campaign status. Possible values: ACTIVE, EXPIRED. A newly created campaign defaults to ACTIVE status. ",
-            "x-enum-type": "SMSTenDLCPartnerCampaignStatusEnum",
-            "x-enum-type-c-sharp": "StatusEnum",
-            "enum": ["ACTIVE", "EXPIRED"],
-            "x-enum-varnames": ["ACTIVE", "EXPIRED"]
+            "$ref": "#/components/schemas/SMSTenDLCPartnerCampaignStatus"
           },
           "createDate": {
             "type": "string",
@@ -4678,26 +4835,7 @@
             "nullable": true
           },
           "entityType": {
-            "maxLength": 20,
-            "type": "string",
-            "x-has-writer": true,
-            "description": "Entity type behind the brand. This is the form of business establishment.",
-            "x-enum-type": "SMSTenDLCBrandEntityTypeEnum",
-            "x-enum-type-c-sharp": "EntityTypeEnum",
-            "enum": [
-              "PRIVATE_PROFIT",
-              "PUBLIC_PROFIT",
-              "NON_PROFIT",
-              "GOVERNMENT",
-              "SOLE_PROPRIETOR"
-            ],
-            "x-enum-varnames": [
-              "PRIVATE_PROFIT",
-              "PUBLIC_PROFIT",
-              "NON_PROFIT",
-              "GOVERNMENT",
-              "SOLE_PROPRIETOR"
-            ]
+            "$ref": "#/components/schemas/SMSTenDLCBrandEntityType"
           },
           "cspId": {
             "type": "string",
@@ -4793,70 +4931,7 @@
             "example": "ABC"
           },
           "stockExchange": {
-            "type": "string",
-            "x-has-writer": true,
-            "description": "(Required for public company) stock exchange.",
-            "example": "NASDAQ",
-            "x-enum-type": "SMSTenDLCBrandStockExchangeEnum",
-            "x-enum-type-c-sharp": "StockExchangeEnum",
-            "enum": [
-              "NONE",
-              "NASDAQ",
-              "NYSE",
-              "AMEX",
-              "AMX",
-              "ASX",
-              "B3",
-              "BME",
-              "BSE",
-              "FRA",
-              "ICEX",
-              "JPX",
-              "JSE",
-              "KRX",
-              "LON",
-              "NSE",
-              "OMX",
-              "SEHK",
-              "SGX",
-              "SSE",
-              "STO",
-              "SWX",
-              "SZSE",
-              "TSX",
-              "TWSE",
-              "VSE",
-              "OTHER"
-            ],
-            "x-enum-varnames": [
-              "NONE",
-              "NASDAQ",
-              "NYSE",
-              "AMEX",
-              "AMX",
-              "ASX",
-              "B3",
-              "BME",
-              "BSE",
-              "FRA",
-              "ICEX",
-              "JPX",
-              "JSE",
-              "KRX",
-              "LON",
-              "NSE",
-              "OMX",
-              "SEHK",
-              "SGX",
-              "SSE",
-              "STO",
-              "SWX",
-              "SZSE",
-              "TSX",
-              "TWSE",
-              "VSE",
-              "OTHER"
-            ]
+            "$ref": "#/components/schemas/SMSTenDLCBrandStockExchange"
           },
           "ipAddress": {
             "maxLength": 50,
@@ -4870,25 +4945,7 @@
             "example": "http://www.abcmobile.com"
           },
           "brandRelationship": {
-            "type": "string",
-            "x-has-writer": true,
-            "description": "Brand relationship to the CSP",
-            "x-enum-type": "SMSTenDLCBrandBrandRelationshipEnum",
-            "x-enum-type-c-sharp": "BrandRelationshipEnum",
-            "enum": [
-              "BASIC_ACCOUNT",
-              "SMALL_ACCOUNT",
-              "MEDIUM_ACCOUNT",
-              "LARGE_ACCOUNT",
-              "KEY_ACCOUNT"
-            ],
-            "x-enum-varnames": [
-              "BASIC_ACCOUNT",
-              "SMALL_ACCOUNT",
-              "MEDIUM_ACCOUNT",
-              "LARGE_ACCOUNT",
-              "KEY_ACCOUNT"
-            ]
+            "$ref": "#/components/schemas/SMSTenDLCBrandRelationship"
           },
           "vertical": {
             "maxLength": 50,
@@ -4901,13 +4958,7 @@
             "description": "Alternate business identifier such as DUNS, LEI, or GIIN"
           },
           "altBusinessIdType": {
-            "type": "string",
-            "x-has-writer": true,
-            "x-enum-type": "SMSTenDLCBrandAltBusinessIdTypeEnum",
-            "x-enum-type-c-sharp": "AltBusinessIdTypeEnum",
-            "enum": ["NONE", "DUNS", "GIIN", "LEI"],
-            "x-enum-varnames": ["NONE", "DUNS", "GIIN", "LEI"],
-            "description": "The type of the Alternative business identifier"
+            "$ref": "#/components/schemas/SMSTenDLCBrandAltBusinessIdType"
           },
           "universalEin": {
             "type": "string",
@@ -4934,23 +4985,7 @@
             "description": "Test brand."
           },
           "identityStatus": {
-            "type": "string",
-            "x-has-writer": true,
-            "description": "TCR assessment of the brand identification status.",
-            "x-enum-type": "SMSTenDLCBrandIdentityStatusEnum",
-            "x-enum-type-c-sharp": "IdentityStatusEnum",
-            "enum": [
-              "SELF_DECLARED",
-              "UNVERIFIED",
-              "VERIFIED",
-              "VETTED_VERIFIED"
-            ],
-            "x-enum-varnames": [
-              "SELF_DECLARED",
-              "UNVERIFIED",
-              "VERIFIED",
-              "VETTED_VERIFIED"
-            ]
+            "$ref": "#/components/schemas/SMSTenDLCBrandIdentityStatus"
           },
           "createDate": {
             "type": "string",
@@ -5039,25 +5074,7 @@
             "type": "string"
           },
           "registrationStatus": {
-            "type": "string",
-            "x-has-writer": true,
-            "description": "Current toll-free campaign registration status.Possible values: UNREGISTERED,INITIATED,PENDING,DECLINED,REGISTERED. A newly created campaign defaults to INITIATED status. ",
-            "x-enum-type": "SMSTollFreeCampaignRegistrationStatusEnum",
-            "x-enum-type-c-sharp": "RegistrationStatusEnum",
-            "enum": [
-              "UNREGISTERED",
-              "INITIATED",
-              "PENDING",
-              "DECLINED",
-              "REGISTERED"
-            ],
-            "x-enum-varnames": [
-              "UNREGISTERED",
-              "INITIATED",
-              "PENDING",
-              "DECLINED",
-              "REGISTERED"
-            ]
+            "$ref": "#/components/schemas/SMSTollFreeCampaignRegistrationStatus"
           },
           "dateCreated": {
             "type": "string"
