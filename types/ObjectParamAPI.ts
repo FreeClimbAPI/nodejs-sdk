@@ -122,6 +122,7 @@ import { SMSTollFreeCampaignRegistrationStatus } from '../models/SMSTollFreeCamp
 import { SMSTollFreeCampaignsListResult } from '../models/SMSTollFreeCampaignsListResult';
 import { Say } from '../models/Say';
 import { SendDigits } from '../models/SendDigits';
+import { SetDTMFPassThrough } from '../models/SetDTMFPassThrough';
 import { SetListen } from '../models/SetListen';
 import { SetTalk } from '../models/SetTalk';
 import { Sms } from '../models/Sms';
@@ -131,7 +132,7 @@ import { TerminateConference } from '../models/TerminateConference';
 import { TranscribeReason } from '../models/TranscribeReason';
 import { TranscribeTermReason } from '../models/TranscribeTermReason';
 import { TranscribeUtterance } from '../models/TranscribeUtterance';
-import { TranscribeUtteranceAllOfRecord } from '../models/TranscribeUtteranceAllOfRecord';
+import { TranscribeUtteranceRecord } from '../models/TranscribeUtteranceRecord';
 import { TranscribeWebhook } from '../models/TranscribeWebhook';
 import { Unpark } from '../models/Unpark';
 import { UpdateCallRequest } from '../models/UpdateCallRequest';
@@ -888,6 +889,13 @@ export interface DefaultApiListParticipantsRequest {
      */
     listen?: boolean
     
+    /**
+     * Only show Participants with the dtmfPassThrough privilege.
+     * @type boolean
+     * @memberof DefaultApilistParticipants
+     */
+    dtmfPassThrough?: boolean
+    
 }
 
 export interface DefaultApiListRecordingsRequest {
@@ -1511,7 +1519,7 @@ export class ObjectDefaultApi {
      * @param param the request object
      */
     public listParticipants(param: DefaultApiListParticipantsRequest, options?: Configuration): Promise<ConferenceParticipantList> {
-        return this.api.listParticipants(param.conferenceId, param.talk, param.listen,  options).toPromise();
+        return this.api.listParticipants(param.conferenceId, param.talk, param.listen, param.dtmfPassThrough,  options).toPromise();
     }
 
     /**

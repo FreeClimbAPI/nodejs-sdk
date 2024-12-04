@@ -133,6 +133,7 @@ models/SMSTollFreeCampaignRegistrationStatus.ts
 models/SMSTollFreeCampaignsListResult.ts
 models/Say.ts
 models/SendDigits.ts
+models/SetDTMFPassThrough.ts
 models/SetListen.ts
 models/SetTalk.ts
 models/Sms.ts
@@ -142,7 +143,7 @@ models/TerminateConference.ts
 models/TranscribeReason.ts
 models/TranscribeTermReason.ts
 models/TranscribeUtterance.ts
-models/TranscribeUtteranceAllOfRecord.ts
+models/TranscribeUtteranceRecord.ts
 models/TranscribeWebhook.ts
 models/Unpark.ts
 models/UpdateCallRequest.ts

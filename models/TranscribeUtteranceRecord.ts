@@ -25,7 +25,7 @@ interface ArgumentsType {
     'maxLengthSec'?: number;
     'rcrdTerminationSilenceTimeMs'?: number;
 }
-export class TranscribeUtteranceAllOfRecord {
+export class TranscribeUtteranceRecord {
     'saveRecording'?: boolean;
     'maxLengthSec'?: number;
     'rcrdTerminationSilenceTimeMs'?: number;
@@ -62,11 +62,11 @@ export class TranscribeUtteranceAllOfRecord {
         }    ];
 
     static getAttributeTypeMap(): AttributeType[] {
-        return TranscribeUtteranceAllOfRecord.attributeTypeMap;
+        return TranscribeUtteranceRecord.attributeTypeMap;
     }
 
     public constructor(args: ArgumentsType) {
-        const preparedArgs = TranscribeUtteranceAllOfRecord.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
+        const preparedArgs = TranscribeUtteranceRecord.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
             
             const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
             

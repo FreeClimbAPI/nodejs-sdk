@@ -23,6 +23,7 @@ interface AttributeType {
 interface ArgumentsType {
     'talk'?: boolean;
     'listen'?: boolean;
+    'dtmfPassThrough'?: boolean;
 }
 export class UpdateConferenceParticipantRequest {
     /**
@@ -33,6 +34,10 @@ export class UpdateConferenceParticipantRequest {
     * (Optional) Default is `true`. Setting to `false` silences the Conference for this Participant. FreeClimb returns an error and ignores any other value.
     */
     'listen'?: boolean;
+    /**
+    * (Optional) Default is `true`. Setting to `false` mutes dtmf audio for this Participant. FreeClimb returns an error and ignores any other value.
+    */
+    'dtmfPassThrough'?: boolean;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -49,6 +54,15 @@ export class UpdateConferenceParticipantRequest {
         {
             "name": "listen",
             "baseName": "listen",
+            "type": "boolean",
+            "format": "",
+
+            
+            "defaultValue": undefined
+        },
+        {
+            "name": "dtmfPassThrough",
+            "baseName": "dtmfPassThrough",
             "type": "boolean",
             "format": "",
 

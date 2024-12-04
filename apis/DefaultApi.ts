@@ -1830,8 +1830,9 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
      * @param conferenceId ID of the conference this participant is in.
      * @param talk Only show Participants with the talk privilege.
      * @param listen Only show Participants with the listen privilege.
+     * @param dtmfPassThrough Only show Participants with the dtmfPassThrough privilege.
      */
-    public async listParticipants(conferenceId: string, talk?: boolean, listen?: boolean, _options?: Configuration): Promise<RequestContext> {
+    public async listParticipants(conferenceId: string, talk?: boolean, listen?: boolean, dtmfPassThrough?: boolean, _options?: Configuration): Promise<RequestContext> {
         const _config = _options || this.configuration;
         const { accountId } = this.configuration
         
@@ -1854,6 +1855,10 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         // Query Params
         if (listen !== undefined) {
             requestContext.setQueryParam("listen", ObjectSerializer.serialize(listen, "boolean", ""));
+        }
+        // Query Params
+        if (dtmfPassThrough !== undefined) {
+            requestContext.setQueryParam("dtmfPassThrough", ObjectSerializer.serialize(dtmfPassThrough, "boolean", ""));
         }
         
 

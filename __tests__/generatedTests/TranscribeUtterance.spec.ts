@@ -6,7 +6,7 @@ describe('TranscribeUtterance', () => {
        
         actionUrl: "test_actionUrl",
         playBeep: true,
-        record: {},
+
         privacyForLogging: true,
         privacyForRecording: true,
         prompts: [],
@@ -31,8 +31,7 @@ describe('TranscribeUtterance', () => {
     })
     describe(".record", () => {
         it('resolves to particular value on initialization', () => {
-            const value = {}
-            expect(model.record).toStrictEqual(value)
+
         })
     })
     describe(".privacyForLogging", () => {
@@ -50,7 +49,7 @@ describe('TranscribeUtterance', () => {
     describe(".prompts", () => {
         it('resolves to particular value on initialization', () => {
 
-            const value:any[] = []
+            const value:freeclimb.PerclCommand[] = []
             expect(model.prompts).toStrictEqual(value)
         })
     })

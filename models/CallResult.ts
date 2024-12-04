@@ -43,6 +43,7 @@ interface ArgumentsType {
     'direction'?: CallDirection;
     'answeredBy'?: AnsweredBy;
     'subresourceUris'?: any;
+    'applicationId'?: string;
 }
 export class CallResult {
     /**
@@ -112,6 +113,10 @@ export class CallResult {
     * The list of subresources for this Call. These include things like logs and recordings associated with the Call.
     */
     'subresourceUris'?: any;
+    /**
+    * ApplicationId associated with the Call.
+    */
+    'applicationId'?: string;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -282,6 +287,15 @@ export class CallResult {
             "name": "subresourceUris",
             "baseName": "subresourceUris",
             "type": "any",
+            "format": "",
+
+            
+            "defaultValue": undefined
+        },
+        {
+            "name": "applicationId",
+            "baseName": "applicationId",
+            "type": "string",
             "format": "",
 
             

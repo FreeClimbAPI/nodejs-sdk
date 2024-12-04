@@ -11,7 +11,7 @@
  */
 
 import { PerclCommand } from './../models/PerclCommand';
-import { TranscribeUtteranceAllOfRecord } from './../models/TranscribeUtteranceAllOfRecord';
+import { TranscribeUtteranceRecord } from './../models/TranscribeUtteranceRecord';
 import { HttpFile } from '../http/http';
 
 /**
@@ -28,18 +28,18 @@ interface AttributeType {
 interface ArgumentsType {
     'actionUrl': string;
     'playBeep'?: boolean;
-    'record'?: TranscribeUtteranceAllOfRecord;
+    'record'?: TranscribeUtteranceRecord;
     'privacyForLogging'?: boolean;
     'privacyForRecording'?: boolean;
-    'prompts'?: Array<any>;
+    'prompts'?: Array<PerclCommand>;
 }
 export class TranscribeUtterance extends PerclCommand {
     'actionUrl': string;
     'playBeep'?: boolean;
-    'record'?: TranscribeUtteranceAllOfRecord;
+    'record'?: TranscribeUtteranceRecord;
     'privacyForLogging'?: boolean;
     'privacyForRecording'?: boolean;
-    'prompts'?: Array<any>;
+    'prompts'?: Array<PerclCommand>;
 
     static readonly discriminator: string | undefined = "command";
 
@@ -65,7 +65,7 @@ export class TranscribeUtterance extends PerclCommand {
         {
             "name": "record",
             "baseName": "record",
-            "type": "TranscribeUtteranceAllOfRecord",
+            "type": "TranscribeUtteranceRecord",
             "format": "",
 
             
@@ -92,7 +92,7 @@ export class TranscribeUtterance extends PerclCommand {
         {
             "name": "prompts",
             "baseName": "prompts",
-            "type": "Array<any>",
+            "type": "Array<PerclCommand>",
             "format": "",
 
             

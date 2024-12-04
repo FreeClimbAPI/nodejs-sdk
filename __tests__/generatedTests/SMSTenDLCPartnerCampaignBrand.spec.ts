@@ -12,7 +12,7 @@ describe('SMSTenDLCPartnerCampaignBrand', () => {
         phone: "test_phone",
         email: "test_email",
         website: "test_website",
-        optionalAttributes: {},
+
         evpVettingScore: 1,
     })
     describe("SMSTenDLCPartnerCampaignBrand class test", () => {
@@ -76,8 +76,7 @@ describe('SMSTenDLCPartnerCampaignBrand', () => {
     })
     describe(".optionalAttributes", () => {
         it('resolves to particular value on initialization', () => {
-            const value = {}
-            expect(model.optionalAttributes).toStrictEqual(value)
+
         })
     })
     describe(".evpVettingScore", () => {

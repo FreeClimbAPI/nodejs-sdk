@@ -122,6 +122,7 @@ import { SMSTollFreeCampaignRegistrationStatus } from '../models/SMSTollFreeCamp
 import { SMSTollFreeCampaignsListResult } from '../models/SMSTollFreeCampaignsListResult';
 import { Say } from '../models/Say';
 import { SendDigits } from '../models/SendDigits';
+import { SetDTMFPassThrough } from '../models/SetDTMFPassThrough';
 import { SetListen } from '../models/SetListen';
 import { SetTalk } from '../models/SetTalk';
 import { Sms } from '../models/Sms';
@@ -131,7 +132,7 @@ import { TerminateConference } from '../models/TerminateConference';
 import { TranscribeReason } from '../models/TranscribeReason';
 import { TranscribeTermReason } from '../models/TranscribeTermReason';
 import { TranscribeUtterance } from '../models/TranscribeUtterance';
-import { TranscribeUtteranceAllOfRecord } from '../models/TranscribeUtteranceAllOfRecord';
+import { TranscribeUtteranceRecord } from '../models/TranscribeUtteranceRecord';
 import { TranscribeWebhook } from '../models/TranscribeWebhook';
 import { Unpark } from '../models/Unpark';
 import { UpdateCallRequest } from '../models/UpdateCallRequest';
@@ -699,9 +700,11 @@ export class PromiseDefaultApi {
      
      * @param listen Only show Participants with the listen privilege.
      
+     * @param dtmfPassThrough Only show Participants with the dtmfPassThrough privilege.
+     
      */
-    public listParticipants(conferenceId: string, talk?: boolean, listen?: boolean, _options?: Configuration): Promise<ConferenceParticipantList> {
-        const result = this.api.listParticipants(conferenceId, talk, listen, _options);
+    public listParticipants(conferenceId: string, talk?: boolean, listen?: boolean, dtmfPassThrough?: boolean, _options?: Configuration): Promise<ConferenceParticipantList> {
+        const result = this.api.listParticipants(conferenceId, talk, listen, dtmfPassThrough, _options);
         return result.toPromise();
     }
 

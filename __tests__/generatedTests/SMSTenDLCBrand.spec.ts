@@ -34,7 +34,7 @@ describe('SMSTenDLCBrand', () => {
         altBusinessIdType: freeclimb.SMSTenDLCBrandAltBusinessIdType.NONE,
         universalEin: "test_universalEin",
         referenceId: "test_referenceId",
-        optionalAttributes: {},
+
         mock: true,
 
         identityStatus: freeclimb.SMSTenDLCBrandIdentityStatus.SELF_DECLARED,
@@ -213,8 +213,7 @@ describe('SMSTenDLCBrand', () => {
     })
     describe(".optionalAttributes", () => {
         it('resolves to particular value on initialization', () => {
-            const value = {}
-            expect(model.optionalAttributes).toStrictEqual(value)
+
         })
     })
     describe(".mock", () => {

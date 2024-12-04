@@ -14,7 +14,7 @@ import { PerclCommand } from './../models/PerclCommand';
 import { HttpFile } from '../http/http';
 
 /**
-* The `SetTalk` command enables or disables the talk privilege for this Conference Participant. If \'true\', no audio from that Participant is shared with the other Participants of the Conference.
+* The `SetDTMFPassThrough` command enables or disables the dtmfPassThrough privilege for this Conference Participant. If \'true\', DTMFs will be passed through from this Participant to all other Participants in the Conference
 */
 
 interface AttributeType {
@@ -25,20 +25,20 @@ interface AttributeType {
     defaultValue: any
 }
 interface ArgumentsType {
-    'talk'?: boolean;
+    'dtmfPassThrough'?: boolean;
 }
-export class SetTalk extends PerclCommand {
+export class SetDTMFPassThrough extends PerclCommand {
     /**
-    * Specifying `false` mutes the Participant.
+    * Specifying `false` mutes the Participant\'s dtmf audio.
     */
-    'talk'?: boolean;
+    'dtmfPassThrough'?: boolean;
 
     static readonly discriminator: string | undefined = "command";
 
     static readonly attributeTypeMap: AttributeType[] = [
         {
-            "name": "talk",
-            "baseName": "talk",
+            "name": "dtmfPassThrough",
+            "baseName": "dtmfPassThrough",
             "type": "boolean",
             "format": "",
 
@@ -47,12 +47,12 @@ export class SetTalk extends PerclCommand {
         }    ];
 
     static getAttributeTypeMap(): AttributeType[] {
-        return super.getAttributeTypeMap().concat(SetTalk.attributeTypeMap);
+        return super.getAttributeTypeMap().concat(SetDTMFPassThrough.attributeTypeMap);
     }
 
     public constructor(args: ArgumentsType) {
-        super({ command: "SetTalk" });
-        const preparedArgs = SetTalk.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
+        super({ command: "SetDTMFPassThrough" });
+        const preparedArgs = SetDTMFPassThrough.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
             
             const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
             

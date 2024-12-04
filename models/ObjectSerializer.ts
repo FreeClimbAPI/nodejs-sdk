@@ -118,6 +118,7 @@ export * from './SMSTollFreeCampaignRegistrationStatus';
 export * from './SMSTollFreeCampaignsListResult';
 export * from './Say';
 export * from './SendDigits';
+export * from './SetDTMFPassThrough';
 export * from './SetListen';
 export * from './SetTalk';
 export * from './Sms';
@@ -127,7 +128,7 @@ export * from './TerminateConference';
 export * from './TranscribeReason';
 export * from './TranscribeTermReason';
 export * from './TranscribeUtterance';
-export * from './TranscribeUtteranceAllOfRecord';
+export * from './TranscribeUtteranceRecord';
 export * from './TranscribeWebhook';
 export * from './Unpark';
 export * from './UpdateCallRequest';
@@ -156,7 +157,7 @@ import { CallControlWebhook } from './CallControlWebhook';
 import { CallDirection } from './CallDirection';
 import { CallEndedReason } from './CallEndedReason';
 import { CallList } from './CallList';
-import { CallResult                    } from './CallResult';
+import { CallResult                     } from './CallResult';
 import { CallStatus } from './CallStatus';
 import { CallStatusWebhook           } from './CallStatusWebhook';
 import { Capabilities } from './Capabilities';
@@ -257,6 +258,7 @@ import { SMSTollFreeCampaignRegistrationStatus } from './SMSTollFreeCampaignRegi
 import { SMSTollFreeCampaignsListResult } from './SMSTollFreeCampaignsListResult';
 import { Say } from './Say';
 import { SendDigits } from './SendDigits';
+import { SetDTMFPassThrough } from './SetDTMFPassThrough';
 import { SetListen } from './SetListen';
 import { SetTalk } from './SetTalk';
 import { Sms } from './Sms';
@@ -266,7 +268,7 @@ import { TerminateConference } from './TerminateConference';
 import { TranscribeReason } from './TranscribeReason';
 import { TranscribeTermReason } from './TranscribeTermReason';
 import { TranscribeUtterance } from './TranscribeUtterance';
-import { TranscribeUtteranceAllOfRecord } from './TranscribeUtteranceAllOfRecord';
+import { TranscribeUtteranceRecord } from './TranscribeUtteranceRecord';
 import { TranscribeWebhook                        } from './TranscribeWebhook';
 import { Unpark } from './Unpark';
 import { UpdateCallRequest  } from './UpdateCallRequest';
@@ -423,6 +425,7 @@ let typeMap: {[index: string]: any} = {
     "SMSTollFreeCampaignsListResult": SMSTollFreeCampaignsListResult,
     "Say": Say,
     "SendDigits": SendDigits,
+    "SetDTMFPassThrough": SetDTMFPassThrough,
     "SetListen": SetListen,
     "SetTalk": SetTalk,
     "Sms": Sms,
@@ -430,7 +433,7 @@ let typeMap: {[index: string]: any} = {
     "TFN": TFN,
     "TerminateConference": TerminateConference,
     "TranscribeUtterance": TranscribeUtterance,
-    "TranscribeUtteranceAllOfRecord": TranscribeUtteranceAllOfRecord,
+    "TranscribeUtteranceRecord": TranscribeUtteranceRecord,
     "TranscribeWebhook": TranscribeWebhook,
     "Unpark": Unpark,
     "UpdateCallRequest": UpdateCallRequest,
