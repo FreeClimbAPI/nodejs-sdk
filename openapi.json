@@ -269,6 +269,12 @@
           { "enum": "inProgress", "varname": "IN_PROGRESS"}, 
           { "enum": "terminated", "varname": "TERMINATED" }
         ],
+        "x-php-enum-mapping": [
+          { "enum": "empty",      "varname": "EMPTY"},
+          { "enum": "populated",  "varname": "POPULATED"},
+          { "enum": "inProgress", "varname": "IN_PROGRESS"},
+          { "enum": "terminated", "varname": "TERMINATED" }
+        ],
         "x-enum": true,
         "description": "The status of the Conference. One of: creating, empty, populated, inProgress, or terminated."
       },
@@ -495,6 +501,19 @@
           "DELETED",
           "UNKNOWN"
         ],
+        "x-php-enum-mapping": [
+           { "enum": "new",        "varname": "NEW"},
+           { "enum": "queued",     "varname": "QUEUED"},
+           { "enum": "rejected",   "varname": "REJECTED"},
+           { "enum": "sending",    "varname": "SENDING"},
+           { "enum": "sent",       "varname": "SENT"},
+           { "enum": "failed",     "varname": "FAILED"},
+           { "enum": "received",   "varname": "RECEIVED"},
+           { "enum": "undelivered","varname": "UNDELIVERED"},
+           { "enum": "expired",    "varname": "EXPIRED"},
+           { "enum": "deleted",    "varname": "DELETED"},
+           { "enum": "unknown",    "varname": "UNKNOWN" }
+        ],
         "x-enum": true
       },
       "PlayBeep": {
@@ -656,6 +675,10 @@
         "type": "string",
         "enum": ["empty", "terminated"],
         "x-enum-varnames": ["EMPTY", "TERMINATED"],
+        "x-php-enum-mapping": [
+          { "enum": "empty", "varname": "EMPTY"},
+          { "enum": "terminated", "varname": "TERMINATED" }
+        ],
         "x-enum": true,
         "description": "New status of the conference. Valid values: `empty` or `terminated`. For more information, see **Status Parameter** below.**"
       },
@@ -890,6 +913,7 @@
         "properties": {
           "command": {
             "x-is-no-property": true,
+            "x-percl-command-base": true,
             "type": "string",
             "description": "Name of PerCL Command (this is automatically derived from mapping configuration and should not be manually supplied in any arguments)"
           }
@@ -1577,6 +1601,7 @@
                 "nullable": true
               },
               "parentCallId": {
+                "type": "string",
                 "nullable": true
               }
             }

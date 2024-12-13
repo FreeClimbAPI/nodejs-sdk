@@ -15,6 +15,7 @@ describe('InboundCallWebhook', () => {
         direction: freeclimb.CallDirection.INBOUND,
         conferenceId: "test_conferenceId",
         queueId: "test_queueId",
+        parentCallId: "test_parentCallId",
     })
     describe("InboundCallWebhook class test", () => {
         it('resolves to the class type upon initialization', () => {
@@ -80,6 +81,8 @@ describe('InboundCallWebhook', () => {
     })
     describe(".parentCallId", () => {
         it('resolves to particular value on initialization', () => {
+            const value = "test_parentCallId"
+            expect(model.parentCallId).toBe(value)
         })
     })
     describe('.deserialize', () => {

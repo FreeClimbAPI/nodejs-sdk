@@ -36,7 +36,7 @@ interface ArgumentsType {
     'direction'?: CallDirection;
     'conferenceId'?: string;
     'queueId'?: string;
-    'parentCallId'?: any;
+    'parentCallId'?: string;
 }
 export class InboundCallWebhook extends Webhook {
     /**
@@ -69,7 +69,7 @@ export class InboundCallWebhook extends Webhook {
     * This is only populated if the request pertains to a Queue. Otherwise, it is set to null.
     */
     'queueId'?: string;
-    'parentCallId'?: any;
+    'parentCallId'?: string;
 
     static readonly discriminator: string | undefined = "requestType";
 
@@ -158,7 +158,7 @@ export class InboundCallWebhook extends Webhook {
         {
             "name": "parentCallId",
             "baseName": "parentCallId",
-            "type": "any",
+            "type": "string",
             "format": "",
 
             
