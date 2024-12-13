@@ -10,10 +10,8 @@
  * Do not edit the class manually.
  */
 
-import { Capabilities } from './Capabilities';
-import { IncomingNumberResultAllOf } from './IncomingNumberResultAllOf';
-import { MutableResourceModel } from './MutableResourceModel';
-import { TFN } from './TFN';
+import { Capabilities } from './../models/Capabilities';
+import { TFN } from './../models/TFN';
 import { HttpFile } from '../http/http';
 
 

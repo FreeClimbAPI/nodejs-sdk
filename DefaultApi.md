@@ -2086,19 +2086,19 @@ let body:freeclimb.DefaultApiListAvailableNumbersRequest = {
   // boolean | Indication of whether the phone number can handle sending and receiving SMS messages. Typically set to true for all numbers. (optional)
   smsEnabled: true,
 
-  // boolean (optional)
+  // boolean |  (optional)
   capabilitiesVoice: true,
 
-  // boolean (optional)
+  // boolean |  (optional)
   capabilitiesSms: true,
 
-  // boolean (optional)
+  // boolean |  (optional)
   capabilitiesTollFree: true,
 
-  // boolean (optional)
+  // boolean |  (optional)
   capabilitiesTenDLC: true,
 
-  // boolean (optional)
+  // boolean |  (optional)
   capabilitiesShortCode: true,
 
 };
@@ -2116,8 +2116,8 @@ Name | Type | Description  | Notes
  **phoneNumber** | [**string**] | PCRE-compatible regular expression to filter against &#x60;phoneNumber&#x60; field, which is in E.164 format. | (optional) defaults to undefined
  **region** | [**string**] | State or province of this phone number. | (optional) defaults to undefined
  **country** | [**string**] | Country of this phone number. | (optional) defaults to undefined
- **voiceEnabled** | [**boolean**] | Indicates whether the phone number can handle Calls. Typically set to true for all numbers. | (optional) defaults to undefined
- **smsEnabled** | [**boolean**] | Indication of whether the phone number can handle sending and receiving SMS messages. Typically set to true for all numbers. | (optional) defaults to undefined
+ **voiceEnabled** | [**boolean**] | Indicates whether the phone number can handle Calls. Typically set to true for all numbers. | (optional) defaults to true
+ **smsEnabled** | [**boolean**] | Indication of whether the phone number can handle sending and receiving SMS messages. Typically set to true for all numbers. | (optional) defaults to true
  **capabilitiesVoice** | [**boolean**] |  | (optional) defaults to undefined
  **capabilitiesSms** | [**boolean**] |  | (optional) defaults to undefined
  **capabilitiesTollFree** | [**boolean**] |  | (optional) defaults to undefined
@@ -2323,7 +2323,7 @@ apiInstance.listCalls(body).then((data:any) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **active** | [**boolean**] | If active is set to true then all calls of the nature queued, ringing, inProgress are returned in the query. | (optional) defaults to undefined
+ **active** | [**boolean**] | If active is set to true then all calls of the nature queued, ringing, inProgress are returned in the query. | (optional) defaults to false
  **to** | [**string**] | Only show Calls to this phone number. | (optional) defaults to undefined
  **_from** | [**string**] | Only show Calls from this phone number. | (optional) defaults to undefined
  **status** | **CallStatus** | Only show Calls currently in this status. May be &#x60;queued&#x60;, &#x60;ringing&#x60;, &#x60;inProgress&#x60;, &#x60;canceled&#x60;, &#x60;completed&#x60;, &#x60;failed&#x60;, &#x60;busy&#x60;, or &#x60;noAnswer&#x60;. | (optional) defaults to undefined
@@ -2536,19 +2536,19 @@ let body:freeclimb.DefaultApiListIncomingNumbersRequest = {
   // boolean | Indication of whether the phone number has a campaign associated with it (optional)
   hasCampaign: true,
 
-  // boolean (optional)
+  // boolean |  (optional)
   capabilitiesVoice: true,
 
-  // boolean (optional)
+  // boolean |  (optional)
   capabilitiesSms: true,
 
-  // boolean (optional)
+  // boolean |  (optional)
   capabilitiesTollFree: true,
 
-  // boolean (optional)
+  // boolean |  (optional)
   capabilitiesTenDLC: true,
 
-  // boolean (optional)
+  // boolean |  (optional)
   capabilitiesShortCode: true,
 
   // string | Only show incoming phone number resources that have been assigned to the provided TFNCampaign ID. (optional)
@@ -2574,9 +2574,9 @@ Name | Type | Description  | Notes
  **region** | [**string**] | State or province of this phone number. | (optional) defaults to undefined
  **country** | [**string**] | Country of this phone number. | (optional) defaults to undefined
  **applicationId** | [**string**] | ID of the Application that FreeClimb should contact if a Call or SMS arrives for this phone number or a Call from this number is placed. An incoming phone number is not useful until associated with an applicationId. | (optional) defaults to undefined
- **hasApplication** | [**boolean**] | Indication of whether the phone number has an application linked to it. | (optional) defaults to undefined
- **voiceEnabled** | [**boolean**] | Indicates whether the phone number can handle Calls. Typically set to true for all numbers. | (optional) defaults to undefined
- **smsEnabled** | [**boolean**] | Indication of whether the phone number can handle sending and receiving SMS messages. Typically set to true for all numbers. | (optional) defaults to undefined
+ **hasApplication** | [**boolean**] | Indication of whether the phone number has an application linked to it. | (optional) defaults to false
+ **voiceEnabled** | [**boolean**] | Indicates whether the phone number can handle Calls. Typically set to true for all numbers. | (optional) defaults to true
+ **smsEnabled** | [**boolean**] | Indication of whether the phone number can handle sending and receiving SMS messages. Typically set to true for all numbers. | (optional) defaults to true
  **hasCampaign** | [**boolean**] | Indication of whether the phone number has a campaign associated with it | (optional) defaults to undefined
  **capabilitiesVoice** | [**boolean**] |  | (optional) defaults to undefined
  **capabilitiesSms** | [**boolean**] |  | (optional) defaults to undefined
@@ -2694,6 +2694,9 @@ let body:freeclimb.DefaultApiListParticipantsRequest = {
   // boolean | Only show Participants with the listen privilege. (optional)
   listen: true,
 
+  // boolean | Only show Participants with the dtmfPassThrough privilege. (optional)
+  dtmfPassThrough: true,
+
 };
 
 apiInstance.listParticipants(body).then((data:any) => {
@@ -2709,6 +2712,7 @@ Name | Type | Description  | Notes
  **conferenceId** | [**string**] | ID of the conference this participant is in. | defaults to undefined
  **talk** | [**boolean**] | Only show Participants with the talk privilege. | (optional) defaults to undefined
  **listen** | [**boolean**] | Only show Participants with the listen privilege. | (optional) defaults to undefined
+ **dtmfPassThrough** | [**boolean**] | Only show Participants with the dtmfPassThrough privilege. | (optional) defaults to undefined
 
 
 ### Return type
@@ -3352,6 +3356,7 @@ let body:freeclimb.DefaultApiUpdateAParticipantRequest = {
   updateConferenceParticipantRequest: {
     talk: true,
     listen: true,
+    dtmfPassThrough: true,
   },
 
 };

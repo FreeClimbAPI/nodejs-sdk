@@ -10,9 +10,7 @@
  * Do not edit the class manually.
  */
 
-import { PaginationModel } from './PaginationModel';
-import { SMSTenDLCBrand } from './SMSTenDLCBrand';
-import { SMSTenDLCBrandsListResultAllOf } from './SMSTenDLCBrandsListResultAllOf';
+import { SMSTenDLCBrand } from './../models/SMSTenDLCBrand';
 import { HttpFile } from '../http/http';
 
 

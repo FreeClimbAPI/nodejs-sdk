@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 
-import { PerclCommand } from './PerclCommand';
+import { PerclCommand } from './../models/PerclCommand';
 import { HttpFile } from '../http/http';
 
 /**

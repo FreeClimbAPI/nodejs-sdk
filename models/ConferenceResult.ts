@@ -10,10 +10,8 @@
  * Do not edit the class manually.
  */
 
-import { ConferenceResultAllOf } from './ConferenceResultAllOf';
-import { ConferenceStatus } from './ConferenceStatus';
-import { MutableResourceModel } from './MutableResourceModel';
-import { PlayBeep } from './PlayBeep';
+import { ConferenceStatus } from './../models/ConferenceStatus';
+import { PlayBeep } from './../models/PlayBeep';
 import { HttpFile } from '../http/http';
 
 

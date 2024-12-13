@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 
-import { PlayBeep } from './PlayBeep';
+import { PlayBeep } from './../models/PlayBeep';
 import { HttpFile } from '../http/http';
 
 

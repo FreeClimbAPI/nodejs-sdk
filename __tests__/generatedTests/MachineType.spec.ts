@@ -4,12 +4,12 @@ import { describe, expect, it } from "@jest/globals";
 describe('MachineType', () => {
     describe('.ANSWERING_MACHINE', () => {
         it('resolves to correct value for ANSWERING_MACHINE enum property', () => {
-           expect(freeclimb.MachineType.ANSWERING_MACHINE).toBe("answeringMachine")
+           expect(freeclimb.MachineType.ANSWERING_MACHINE).toBe("answering machine")
         })
     })
-    describe('.FAX_MACHINE', () => {
-        it('resolves to correct value for FAX_MACHINE enum property', () => {
-           expect(freeclimb.MachineType.FAX_MACHINE).toBe("faxMachine")
+    describe('.FAX_MODEM', () => {
+        it('resolves to correct value for FAX_MODEM enum property', () => {
+           expect(freeclimb.MachineType.FAX_MODEM).toBe("fax modem")
         })
     })
 })

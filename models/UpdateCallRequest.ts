@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 
-import { UpdateCallRequestStatus } from './UpdateCallRequestStatus';
+import { UpdateCallRequestStatus } from './../models/UpdateCallRequestStatus';
 import { HttpFile } from '../http/http';
 
 

@@ -4,7 +4,8 @@ import { describe, expect, it } from "@jest/globals";
 describe('CompletionResult', () => {
     let model: freeclimb.CompletionResult = new freeclimb.CompletionResult({
         response: "test_response",
-        status: freeclimb.CompletionResultStatusEnum.SUCCESS,
+
+        status: freeclimb.CompletionResultStatus.SUCCESS,
     })
     describe("CompletionResult class test", () => {
         it('resolves to the class type upon initialization', () => {
@@ -19,8 +20,9 @@ describe('CompletionResult', () => {
     })
     describe(".status", () => {
         it('resolves to particular value on initialization', () => {
-        const value = freeclimb.CompletionResultStatusEnum.SUCCESS
-        expect(model.status).toBe(value)
+
+            const value = "success"
+            expect(model.status).toBe(value)
         })
     })
 })

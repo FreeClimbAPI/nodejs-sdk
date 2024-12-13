@@ -9,6 +9,12 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 None
 
+## [4.0.0] - 2024-12-04
+
+### Added
+- Use latest specification and generator templates
+- Webhook model objects to be used in responses
+
 <a name="3.9.0"></a>
 
 ## [3.9.0] - 2024-10-08

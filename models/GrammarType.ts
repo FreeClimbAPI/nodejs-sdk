@@ -13,7 +13,7 @@
 import { HttpFile } from '../http/http';
 
 /**
-* The grammar file type to use for speech recognition. A value of 'URL' indicates the grammarFile attribute specifies a URL that points to the grammar file. A value of `BUILTIN` indicates the grammarFile attribute specifies the name of one of the platform built-in grammar files.
+* The grammar file type to use for speech recognition. A value of \'URL\' indicates the grammarFile attribute specifies a URL that points to the grammar file. A value of `BUILTIN` indicates the grammarFile attribute specifies the name of one of the platform built-in grammar files.
 */
 export enum GrammarType {
 

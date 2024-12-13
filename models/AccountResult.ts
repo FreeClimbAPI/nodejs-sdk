@@ -10,10 +10,8 @@
  * Do not edit the class manually.
  */
 
-import { AccountResultAllOf } from './AccountResultAllOf';
-import { AccountStatus } from './AccountStatus';
-import { AccountType } from './AccountType';
-import { MutableResourceModel } from './MutableResourceModel';
+import { AccountStatus } from './../models/AccountStatus';
+import { AccountType } from './../models/AccountType';
 import { HttpFile } from '../http/http';
 
 

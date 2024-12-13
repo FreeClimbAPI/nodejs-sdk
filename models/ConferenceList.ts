@@ -10,9 +10,7 @@
  * Do not edit the class manually.
  */
 
-import { ConferenceListAllOf } from './ConferenceListAllOf';
-import { ConferenceResult } from './ConferenceResult';
-import { PaginationModel } from './PaginationModel';
+import { ConferenceResult } from './../models/ConferenceResult';
 import { HttpFile } from '../http/http';
 
 

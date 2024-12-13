@@ -10,14 +10,10 @@
  * Do not edit the class manually.
  */
 
-import { SMSTenDLCPartnerCampaignBrand } from './SMSTenDLCPartnerCampaignBrand';
+import { SMSTenDLCPartnerCampaignBrand } from './../models/SMSTenDLCPartnerCampaignBrand';
+import { SMSTenDLCPartnerCampaignStatus } from './../models/SMSTenDLCPartnerCampaignStatus';
 import { HttpFile } from '../http/http';
 
-export enum SMSTenDLCPartnerCampaignStatusEnum {
-
-    ACTIVE = 'ACTIVE',
-    EXPIRED = 'EXPIRED'
-}
 
 interface AttributeType {
     name: string
@@ -29,7 +25,7 @@ interface AttributeType {
 interface ArgumentsType {
     'accountId'?: string;
     'campaignId': string;
-    'status'?: SMSTenDLCPartnerCampaignStatusEnum;
+    'status'?: SMSTenDLCPartnerCampaignStatus;
     'createDate'?: Date;
     'brandId': string;
     'usecase': string;
@@ -66,10 +62,7 @@ export class SMSTenDLCPartnerCampaign {
     * Alphanumeric identifier assigned by the registry for a campaign. This identifier is required by the NetNumber OSR SMS enabling process of 10DLC.
     */
     'campaignId': string;
-    /**
-    * Current campaign status. Possible values: ACTIVE, EXPIRED. A newly created campaign defaults to ACTIVE status. 
-    */
-    'status'?: SMSTenDLCPartnerCampaignStatusEnum;
+    'status'?: SMSTenDLCPartnerCampaignStatus;
     /**
     * Unix timestamp when campaign was created.
     */
@@ -193,7 +186,7 @@ export class SMSTenDLCPartnerCampaign {
         {
             "name": "status",
             "baseName": "status",
-            "type": "SMSTenDLCPartnerCampaignStatusEnum",
+            "type": "SMSTenDLCPartnerCampaignStatus",
             "format": "",
 
             
@@ -242,7 +235,7 @@ export class SMSTenDLCPartnerCampaign {
             "format": "",
 
             
-            "defaultValue": undefined
+            "defaultValue": false
         },
         {
             "name": "embeddedPhone",
@@ -251,7 +244,7 @@ export class SMSTenDLCPartnerCampaign {
             "format": "",
 
             
-            "defaultValue": undefined
+            "defaultValue": false
         },
         {
             "name": "affiliateMarketing",
@@ -269,7 +262,7 @@ export class SMSTenDLCPartnerCampaign {
             "format": "",
 
             
-            "defaultValue": undefined
+            "defaultValue": false
         },
         {
             "name": "ageGated",
@@ -296,7 +289,7 @@ export class SMSTenDLCPartnerCampaign {
             "format": "",
 
             
-            "defaultValue": undefined
+            "defaultValue": false
         },
         {
             "name": "subscriberOptout",
@@ -305,7 +298,7 @@ export class SMSTenDLCPartnerCampaign {
             "format": "",
 
             
-            "defaultValue": undefined
+            "defaultValue": false
         },
         {
             "name": "subscriberHelp",
@@ -314,7 +307,7 @@ export class SMSTenDLCPartnerCampaign {
             "format": "",
 
             
-            "defaultValue": undefined
+            "defaultValue": false
         },
         {
             "name": "sample1",

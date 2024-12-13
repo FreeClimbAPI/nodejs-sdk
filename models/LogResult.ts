@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 
-import { LogLevel } from './LogLevel';
+import { LogLevel } from './../models/LogLevel';
 import { HttpFile } from '../http/http';
 
 

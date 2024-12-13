@@ -10,9 +10,7 @@
  * Do not edit the class manually.
  */
 
-import { PaginationModel } from './PaginationModel';
-import { RecordingListAllOf } from './RecordingListAllOf';
-import { RecordingResult } from './RecordingResult';
+import { RecordingResult } from './../models/RecordingResult';
 import { HttpFile } from '../http/http';
 
 

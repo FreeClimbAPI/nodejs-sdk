@@ -10,8 +10,6 @@
  * Do not edit the class manually.
  */
 
-import { ConferenceParticipantResultAllOf } from './ConferenceParticipantResultAllOf';
-import { MutableResourceModel } from './MutableResourceModel';
 import { HttpFile } from '../http/http';
 
 
@@ -32,6 +30,7 @@ interface ArgumentsType {
     'callId'?: string;
     'talk'?: boolean;
     'listen'?: boolean;
+    'dtmfPassThrough'?: boolean;
     'startConfOnEnter'?: boolean;
 }
 export class ConferenceParticipantResult {
@@ -71,6 +70,10 @@ export class ConferenceParticipantResult {
     * True if this Participant has listen privileges in the Conference. False otherwise.
     */
     'listen'?: boolean;
+    /**
+    * True if this Participant had dtmfPassThrough privileges in the Conference. False otherwise.
+    */
+    'dtmfPassThrough'?: boolean;
     /**
     * True if this Participant joining the Conference caused the Conference to start (status = inProgress). False otherwise.
     */
@@ -154,6 +157,15 @@ export class ConferenceParticipantResult {
         {
             "name": "listen",
             "baseName": "listen",
+            "type": "boolean",
+            "format": "",
+
+            
+            "defaultValue": undefined
+        },
+        {
+            "name": "dtmfPassThrough",
+            "baseName": "dtmfPassThrough",
             "type": "boolean",
             "format": "",
 

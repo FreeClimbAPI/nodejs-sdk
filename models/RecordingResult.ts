@@ -10,8 +10,6 @@
  * Do not edit the class manually.
  */
 
-import { MutableResourceModel } from './MutableResourceModel';
-import { RecordingResultAllOf } from './RecordingResultAllOf';
 import { HttpFile } from '../http/http';
 
 

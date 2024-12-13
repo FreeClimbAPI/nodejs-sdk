@@ -10,9 +10,7 @@
  * Do not edit the class manually.
  */
 
-import { PaginationModel } from './PaginationModel';
-import { SMSTenDLCCampaign } from './SMSTenDLCCampaign';
-import { SMSTenDLCCampaignsListResultAllOf } from './SMSTenDLCCampaignsListResultAllOf';
+import { SMSTenDLCCampaign } from './../models/SMSTenDLCCampaign';
 import { HttpFile } from '../http/http';
 
 

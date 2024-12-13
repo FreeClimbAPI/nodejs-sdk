@@ -10,9 +10,7 @@
  * Do not edit the class manually.
  */
 
-import { LogListAllOf } from './LogListAllOf';
-import { LogResult } from './LogResult';
-import { PaginationModel } from './PaginationModel';
+import { LogResult } from './../models/LogResult';
 import { HttpFile } from '../http/http';
 
 

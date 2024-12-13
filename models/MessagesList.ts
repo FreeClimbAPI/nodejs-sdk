@@ -10,9 +10,7 @@
  * Do not edit the class manually.
  */
 
-import { MessageResult } from './MessageResult';
-import { MessagesListAllOf } from './MessagesListAllOf';
-import { PaginationModel } from './PaginationModel';
+import { MessageResult } from './../models/MessageResult';
 import { HttpFile } from '../http/http';
 
 

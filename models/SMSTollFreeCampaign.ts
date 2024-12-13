@@ -10,16 +10,9 @@
  * Do not edit the class manually.
  */
 
+import { SMSTollFreeCampaignRegistrationStatus } from './../models/SMSTollFreeCampaignRegistrationStatus';
 import { HttpFile } from '../http/http';
 
-export enum SMSTollFreeCampaignRegistrationStatusEnum {
-
-    UNREGISTERED = 'UNREGISTERED',
-    INITIATED = 'INITIATED',
-    PENDING = 'PENDING',
-    DECLINED = 'DECLINED',
-    REGISTERED = 'REGISTERED'
-}
 
 interface AttributeType {
     name: string
@@ -32,7 +25,7 @@ interface ArgumentsType {
     'accountId': string;
     'campaignId': string;
     'useCase': string;
-    'registrationStatus': SMSTollFreeCampaignRegistrationStatusEnum;
+    'registrationStatus': SMSTollFreeCampaignRegistrationStatus;
     'dateCreated': string;
     'dateUpdated': string;
     'revision': number;
@@ -47,10 +40,7 @@ export class SMSTollFreeCampaign {
     */
     'campaignId': string;
     'useCase': string;
-    /**
-    * Current toll-free campaign registration status.Possible values: UNREGISTERED,INITIATED,PENDING,DECLINED,REGISTERED. A newly created campaign defaults to INITIATED status. 
-    */
-    'registrationStatus': SMSTollFreeCampaignRegistrationStatusEnum;
+    'registrationStatus': SMSTollFreeCampaignRegistrationStatus;
     'dateCreated': string;
     'dateUpdated': string;
     'revision': number;
@@ -88,7 +78,7 @@ export class SMSTollFreeCampaign {
         {
             "name": "registrationStatus",
             "baseName": "registrationStatus",
-            "type": "SMSTollFreeCampaignRegistrationStatusEnum",
+            "type": "SMSTollFreeCampaignRegistrationStatus",
             "format": "",
 
             

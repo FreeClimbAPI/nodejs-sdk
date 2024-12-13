@@ -41,7 +41,7 @@ export class QueueMember {
     */
     'waitTime'?: number;
     /**
-    * Member's current position in the Queue, 1 indexed.
+    * Member\'s current position in the Queue, 1 indexed.
     */
     'position'?: number;
     /**

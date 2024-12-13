@@ -10,34 +10,8 @@
  * Do not edit the class manually.
  */
 
-import { AddToConference } from './AddToConference';
-import { CreateConference } from './CreateConference';
-import { Dequeue } from './Dequeue';
-import { Enqueue } from './Enqueue';
-import { GetDigits } from './GetDigits';
-import { GetSpeechAllOf } from './GetSpeechAllOf';
-import { GrammarType } from './GrammarType';
-import { Hangup } from './Hangup';
-import { OutDial } from './OutDial';
-import { Park } from './Park';
-import { Pause } from './Pause';
-import { PerclCommand } from './PerclCommand';
-import { Play } from './Play';
-import { PlayEarlyMedia } from './PlayEarlyMedia';
-import { RecordUtterance } from './RecordUtterance';
-import { Redirect } from './Redirect';
-import { Reject } from './Reject';
-import { RemoveFromConference } from './RemoveFromConference';
-import { Say } from './Say';
-import { SendDigits } from './SendDigits';
-import { SetListen } from './SetListen';
-import { SetTalk } from './SetTalk';
-import { Sms } from './Sms';
-import { StartRecordCall } from './StartRecordCall';
-import { TerminateConference } from './TerminateConference';
-import { TranscribeUtterance } from './TranscribeUtterance';
-import { URI } from './URI';
-import { Unpark } from './Unpark';
+import { GrammarType } from './../models/GrammarType';
+import { PerclCommand } from './../models/PerclCommand';
 import { HttpFile } from '../http/http';
 
 /**
@@ -52,7 +26,7 @@ interface AttributeType {
     defaultValue: any
 }
 interface ArgumentsType {
-    'actionUrl': URI;
+    'actionUrl': string;
     'grammarType'?: GrammarType;
     'grammarFile': string;
     'grammarRule'?: string;
@@ -70,7 +44,7 @@ export class GetSpeech extends PerclCommand {
     /**
     * When the caller has finished speaking or the command has timed out, FreeClimb will make a POST request to this URL. A PerCL response is expected to continue handling the call.
     */
-    'actionUrl': URI;
+    'actionUrl': string;
     'grammarType'?: GrammarType;
     /**
     * The grammar file to use for speech recognition. If grammarType is set to URL, this attribute is specified as a download URL.
@@ -123,7 +97,7 @@ export class GetSpeech extends PerclCommand {
         {
             "name": "actionUrl",
             "baseName": "actionUrl",
-            "type": "URI",
+            "type": "string",
             "format": "uri",
 
             

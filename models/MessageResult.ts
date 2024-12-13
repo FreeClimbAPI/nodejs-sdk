@@ -10,10 +10,7 @@
  * Do not edit the class manually.
  */
 
-import { MessageResultAllOf } from './MessageResultAllOf';
-import { MessageStatus } from './MessageStatus';
-import { MutableResourceModel } from './MutableResourceModel';
-import { URI } from './URI';
+import { MessageStatus } from './../models/MessageStatus';
 import { HttpFile } from '../http/http';
 
 
@@ -40,7 +37,7 @@ interface ArgumentsType {
     'brandId'?: string;
     'campaignId'?: string;
     'segmentCount'?: number;
-    'mediaUrls'?: Array<URI>;
+    'mediaUrls'?: Array<string>;
 }
 export class MessageResult {
     /**
@@ -103,7 +100,7 @@ export class MessageResult {
     /**
     * an array of HTTP URLs which were attached this this message
     */
-    'mediaUrls'?: Array<URI>;
+    'mediaUrls'?: Array<string>;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -246,7 +243,7 @@ export class MessageResult {
         {
             "name": "mediaUrls",
             "baseName": "mediaUrls",
-            "type": "Array<URI>",
+            "type": "Array<string>",
             "format": "uri",
 
             

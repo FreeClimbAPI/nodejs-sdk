@@ -10,71 +10,16 @@
  * Do not edit the class manually.
  */
 
+import { SMSTenDLCBrandAltBusinessIdType } from './../models/SMSTenDLCBrandAltBusinessIdType';
+import { SMSTenDLCBrandEntityType } from './../models/SMSTenDLCBrandEntityType';
+import { SMSTenDLCBrandIdentityStatus } from './../models/SMSTenDLCBrandIdentityStatus';
+import { SMSTenDLCBrandRelationship } from './../models/SMSTenDLCBrandRelationship';
+import { SMSTenDLCBrandStockExchange } from './../models/SMSTenDLCBrandStockExchange';
 import { HttpFile } from '../http/http';
 
 /**
 * A brand is a business identity behind the campaign.
 */
-export enum SMSTenDLCBrandEntityTypeEnum {
-
-    PRIVATE_PROFIT = 'PRIVATE_PROFIT',
-    PUBLIC_PROFIT = 'PUBLIC_PROFIT',
-    NON_PROFIT = 'NON_PROFIT',
-    GOVERNMENT = 'GOVERNMENT',
-    SOLE_PROPRIETOR = 'SOLE_PROPRIETOR'
-}
-export enum SMSTenDLCBrandStockExchangeEnum {
-
-    NONE = 'NONE',
-    NASDAQ = 'NASDAQ',
-    NYSE = 'NYSE',
-    AMEX = 'AMEX',
-    AMX = 'AMX',
-    ASX = 'ASX',
-    B3 = 'B3',
-    BME = 'BME',
-    BSE = 'BSE',
-    FRA = 'FRA',
-    ICEX = 'ICEX',
-    JPX = 'JPX',
-    JSE = 'JSE',
-    KRX = 'KRX',
-    LON = 'LON',
-    NSE = 'NSE',
-    OMX = 'OMX',
-    SEHK = 'SEHK',
-    SGX = 'SGX',
-    SSE = 'SSE',
-    STO = 'STO',
-    SWX = 'SWX',
-    SZSE = 'SZSE',
-    TSX = 'TSX',
-    TWSE = 'TWSE',
-    VSE = 'VSE',
-    OTHER = 'OTHER'
-}
-export enum SMSTenDLCBrandBrandRelationshipEnum {
-
-    BASIC_ACCOUNT = 'BASIC_ACCOUNT',
-    SMALL_ACCOUNT = 'SMALL_ACCOUNT',
-    MEDIUM_ACCOUNT = 'MEDIUM_ACCOUNT',
-    LARGE_ACCOUNT = 'LARGE_ACCOUNT',
-    KEY_ACCOUNT = 'KEY_ACCOUNT'
-}
-export enum SMSTenDLCBrandAltBusinessIdTypeEnum {
-
-    NONE = 'NONE',
-    DUNS = 'DUNS',
-    GIIN = 'GIIN',
-    LEI = 'LEI'
-}
-export enum SMSTenDLCBrandIdentityStatusEnum {
-
-    SELF_DECLARED = 'SELF_DECLARED',
-    UNVERIFIED = 'UNVERIFIED',
-    VERIFIED = 'VERIFIED',
-    VETTED_VERIFIED = 'VETTED_VERIFIED'
-}
 
 interface AttributeType {
     name: string
@@ -85,7 +30,7 @@ interface AttributeType {
 }
 interface ArgumentsType {
     'accountId'?: string;
-    'entityType': SMSTenDLCBrandEntityTypeEnum;
+    'entityType': SMSTenDLCBrandEntityType;
     'cspId'?: string;
     'brandId'?: string;
     'firstName'?: string;
@@ -102,18 +47,18 @@ interface ArgumentsType {
     'country': string;
     'email': string;
     'stockSymbol'?: string;
-    'stockExchange'?: SMSTenDLCBrandStockExchangeEnum;
+    'stockExchange'?: SMSTenDLCBrandStockExchange;
     'ipAddress'?: string;
     'website'?: string;
-    'brandRelationship': SMSTenDLCBrandBrandRelationshipEnum;
+    'brandRelationship': SMSTenDLCBrandRelationship;
     'vertical': string;
     'altBusinessId'?: string;
-    'altBusinessIdType'?: SMSTenDLCBrandAltBusinessIdTypeEnum;
+    'altBusinessIdType'?: SMSTenDLCBrandAltBusinessIdType;
     'universalEin'?: string;
     'referenceId'?: string;
     'optionalAttributes'?: { [key: string]: any; };
     'mock': boolean;
-    'identityStatus': SMSTenDLCBrandIdentityStatusEnum;
+    'identityStatus': SMSTenDLCBrandIdentityStatus;
     'createDate'?: Date;
 }
 export class SMSTenDLCBrand {
@@ -121,10 +66,7 @@ export class SMSTenDLCBrand {
     * ID of the account that created this Queue.
     */
     'accountId'?: string;
-    /**
-    * Entity type behind the brand. This is the form of business establishment.
-    */
-    'entityType': SMSTenDLCBrandEntityTypeEnum;
+    'entityType': SMSTenDLCBrandEntityType;
     /**
     * Unique identifier assigned to the csp by the registry.
     */
@@ -189,10 +131,7 @@ export class SMSTenDLCBrand {
     * (Required for public company) stock symbol.
     */
     'stockSymbol'?: string;
-    /**
-    * (Required for public company) stock exchange.
-    */
-    'stockExchange'?: SMSTenDLCBrandStockExchangeEnum;
+    'stockExchange'?: SMSTenDLCBrandStockExchange;
     /**
     * IP address of the browser requesting to create brand identity.
     */
@@ -201,10 +140,7 @@ export class SMSTenDLCBrand {
     * Brand website URL.
     */
     'website'?: string;
-    /**
-    * Brand relationship to the CSP
-    */
-    'brandRelationship': SMSTenDLCBrandBrandRelationshipEnum;
+    'brandRelationship': SMSTenDLCBrandRelationship;
     /**
     * Vertical or industry segment of the brand.
     */
@@ -213,10 +149,7 @@ export class SMSTenDLCBrand {
     * Alternate business identifier such as DUNS, LEI, or GIIN
     */
     'altBusinessId'?: string;
-    /**
-    * The type of the Alternative business identifier
-    */
-    'altBusinessIdType'?: SMSTenDLCBrandAltBusinessIdTypeEnum;
+    'altBusinessIdType'?: SMSTenDLCBrandAltBusinessIdType;
     /**
     * Universal EIN of Brand, Read Only.
     */
@@ -233,10 +166,7 @@ export class SMSTenDLCBrand {
     * Test brand.
     */
     'mock': boolean;
-    /**
-    * TCR assessment of the brand identification status.
-    */
-    'identityStatus': SMSTenDLCBrandIdentityStatusEnum;
+    'identityStatus': SMSTenDLCBrandIdentityStatus;
     /**
     * Unix timestamp when brand was created.
     */
@@ -257,7 +187,7 @@ export class SMSTenDLCBrand {
         {
             "name": "entityType",
             "baseName": "entityType",
-            "type": "SMSTenDLCBrandEntityTypeEnum",
+            "type": "SMSTenDLCBrandEntityType",
             "format": "",
 
             
@@ -410,7 +340,7 @@ export class SMSTenDLCBrand {
         {
             "name": "stockExchange",
             "baseName": "stockExchange",
-            "type": "SMSTenDLCBrandStockExchangeEnum",
+            "type": "SMSTenDLCBrandStockExchange",
             "format": "",
 
             
@@ -437,7 +367,7 @@ export class SMSTenDLCBrand {
         {
             "name": "brandRelationship",
             "baseName": "brandRelationship",
-            "type": "SMSTenDLCBrandBrandRelationshipEnum",
+            "type": "SMSTenDLCBrandRelationship",
             "format": "",
 
             
@@ -464,7 +394,7 @@ export class SMSTenDLCBrand {
         {
             "name": "altBusinessIdType",
             "baseName": "altBusinessIdType",
-            "type": "SMSTenDLCBrandAltBusinessIdTypeEnum",
+            "type": "SMSTenDLCBrandAltBusinessIdType",
             "format": "",
 
             
@@ -509,7 +439,7 @@ export class SMSTenDLCBrand {
         {
             "name": "identityStatus",
             "baseName": "identityStatus",
-            "type": "SMSTenDLCBrandIdentityStatusEnum",
+            "type": "SMSTenDLCBrandIdentityStatus",
             "format": "",
 
             

@@ -10,9 +10,7 @@
  * Do not edit the class manually.
  */
 
-import { ApplicationListAllOf } from './ApplicationListAllOf';
-import { ApplicationResult } from './ApplicationResult';
-import { PaginationModel } from './PaginationModel';
+import { ApplicationResult } from './../models/ApplicationResult';
 import { HttpFile } from '../http/http';
 
 

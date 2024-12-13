@@ -10,8 +10,6 @@
  * Do not edit the class manually.
  */
 
-import { ApplicationResultAllOf } from './ApplicationResultAllOf';
-import { MutableResourceModel } from './MutableResourceModel';
 import { HttpFile } from '../http/http';
 
 

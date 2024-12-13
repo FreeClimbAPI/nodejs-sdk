@@ -10,9 +10,7 @@
  * Do not edit the class manually.
  */
 
-import { PaginationModel } from './PaginationModel';
-import { QueueMember } from './QueueMember';
-import { QueueMemberListAllOf } from './QueueMemberListAllOf';
+import { QueueMember } from './../models/QueueMember';
 import { HttpFile } from '../http/http';
 
 

@@ -10,9 +10,7 @@
  * Do not edit the class manually.
  */
 
-import { AvailableNumber } from './AvailableNumber';
-import { AvailableNumberListAllOf } from './AvailableNumberListAllOf';
-import { PaginationModel } from './PaginationModel';
+import { AvailableNumber } from './../models/AvailableNumber';
 import { HttpFile } from '../http/http';
 
 

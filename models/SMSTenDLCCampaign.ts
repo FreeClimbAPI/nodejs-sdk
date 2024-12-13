@@ -10,14 +10,9 @@
  * Do not edit the class manually.
  */
 
-
+import { SMSTenDLCCampaignStatus } from './../models/SMSTenDLCCampaignStatus';
 import { HttpFile } from '../http/http';
 
-export enum SMSTenDLCCampaignStatusEnum {
-
-    ACTIVE = 'ACTIVE',
-    EXPIRED = 'EXPIRED'
-}
 
 interface AttributeType {
     name: string
@@ -31,7 +26,7 @@ interface ArgumentsType {
     'campaignId': string;
     'cspId': string;
     'resellerId'?: string;
-    'status'?: SMSTenDLCCampaignStatusEnum;
+    'status'?: SMSTenDLCCampaignStatus;
     'createDate'?: Date;
     'autoRenewal'?: boolean;
     'billedDate'?: Date;
@@ -81,10 +76,7 @@ export class SMSTenDLCCampaign {
     * Alphanumeric identifier of the reseller that you want to associate with this campaign.
     */
     'resellerId'?: string;
-    /**
-    * Current campaign status. Possible values: ACTIVE, EXPIRED. A newly created campaign defaults to ACTIVE status. 
-    */
-    'status'?: SMSTenDLCCampaignStatusEnum;
+    'status'?: SMSTenDLCCampaignStatus;
     /**
     * Unix timestamp when campaign was created.
     */
@@ -249,7 +241,7 @@ export class SMSTenDLCCampaign {
         {
             "name": "status",
             "baseName": "status",
-            "type": "SMSTenDLCCampaignStatusEnum",
+            "type": "SMSTenDLCCampaignStatus",
             "format": "",
 
             
@@ -325,7 +317,7 @@ export class SMSTenDLCCampaign {
             "format": "",
 
             
-            "defaultValue": undefined
+            "defaultValue": false
         },
         {
             "name": "embeddedPhone",
@@ -334,7 +326,7 @@ export class SMSTenDLCCampaign {
             "format": "",
 
             
-            "defaultValue": undefined
+            "defaultValue": false
         },
         {
             "name": "affiliateMarketing",
@@ -352,7 +344,7 @@ export class SMSTenDLCCampaign {
             "format": "",
 
             
-            "defaultValue": undefined
+            "defaultValue": false
         },
         {
             "name": "ageGated",
@@ -379,7 +371,7 @@ export class SMSTenDLCCampaign {
             "format": "",
 
             
-            "defaultValue": undefined
+            "defaultValue": false
         },
         {
             "name": "subscriberOptout",
@@ -388,7 +380,7 @@ export class SMSTenDLCCampaign {
             "format": "",
 
             
-            "defaultValue": undefined
+            "defaultValue": false
         },
         {
             "name": "subscriberHelp",
@@ -397,7 +389,7 @@ export class SMSTenDLCCampaign {
             "format": "",
 
             
-            "defaultValue": undefined
+            "defaultValue": false
         },
         {
             "name": "sample1",

@@ -10,9 +10,7 @@
  * Do not edit the class manually.
  */
 
-import { CallListAllOf } from './CallListAllOf';
-import { CallResult } from './CallResult';
-import { PaginationModel } from './PaginationModel';
+import { CallResult } from './../models/CallResult';
 import { HttpFile } from '../http/http';
 
 

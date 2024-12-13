@@ -1,294 +1,282 @@
 export * from './AccountRequest';
 export * from './AccountResult';
-export * from './AccountResultAllOf';
 export * from './AccountStatus';
 export * from './AccountType';
 export * from './AddToConference';
-export * from './AddToConferenceAllOf';
+export * from './AddToConferenceNotificationWebhook';
+export * from './AddToQueueNotificationWebhook';
 export * from './AnsweredBy';
 export * from './ApplicationList';
-export * from './ApplicationListAllOf';
 export * from './ApplicationRequest';
 export * from './ApplicationResult';
-export * from './ApplicationResultAllOf';
 export * from './AvailableNumber';
 export * from './AvailableNumberList';
-export * from './AvailableNumberListAllOf';
+export * from './BargeInReason';
 export * from './BuyIncomingNumberRequest';
+export * from './CallControlWebhook';
 export * from './CallDirection';
+export * from './CallEndedReason';
 export * from './CallList';
-export * from './CallListAllOf';
 export * from './CallResult';
-export * from './CallResultAllOf';
 export * from './CallStatus';
+export * from './CallStatusWebhook';
 export * from './Capabilities';
 export * from './CompletionRequest';
 export * from './CompletionResult';
+export * from './CompletionResultStatus';
 export * from './ConferenceList';
-export * from './ConferenceListAllOf';
 export * from './ConferenceParticipantList';
-export * from './ConferenceParticipantListAllOf';
 export * from './ConferenceParticipantResult';
-export * from './ConferenceParticipantResultAllOf';
+export * from './ConferenceRecordingStatusWebhook';
 export * from './ConferenceResult';
-export * from './ConferenceResultAllOf';
 export * from './ConferenceStatus';
+export * from './ConferenceStatusWebhook';
 export * from './CreateConference';
-export * from './CreateConferenceAllOf';
 export * from './CreateConferenceRequest';
+export * from './CreateConferenceWebhook';
 export * from './CreateWebRTCToken';
 export * from './Dequeue';
+export * from './DequeueWebhook';
 export * from './Enqueue';
-export * from './EnqueueAllOf';
 export * from './FilterLogsRequest';
 export * from './GetDigits';
-export * from './GetDigitsAllOf';
+export * from './GetDigitsReason';
+export * from './GetDigitsWebhook';
 export * from './GetSpeech';
-export * from './GetSpeechAllOf';
 export * from './GetSpeechReason';
+export * from './GetSpeechWebhook';
 export * from './GrammarFileBuiltIn';
 export * from './GrammarType';
 export * from './Hangup';
-export * from './HangupAllOf';
 export * from './IfMachine';
+export * from './InboundCallWebhook';
 export * from './IncomingNumberList';
-export * from './IncomingNumberListAllOf';
 export * from './IncomingNumberRequest';
 export * from './IncomingNumberResult';
-export * from './IncomingNumberResultAllOf';
 export * from './Language';
+export * from './LeaveConferenceWebhook';
 export * from './LogLevel';
 export * from './LogList';
-export * from './LogListAllOf';
 export * from './LogResult';
+export * from './MachineDetectedWebhook';
 export * from './MachineType';
 export * from './MakeCallRequest';
+export * from './MessageDeliveryWebhook';
 export * from './MessageDirection';
 export * from './MessageRequest';
-export * from './MessageRequestAllOf';
 export * from './MessageResult';
-export * from './MessageResultAllOf';
 export * from './MessageStatus';
+export * from './MessageStatusWebhook';
 export * from './MessagesList';
-export * from './MessagesListAllOf';
 export * from './MutableResourceModel';
 export * from './OutDial';
-export * from './OutDialAllOf';
+export * from './OutDialApiConnectWebhook';
+export * from './OutDialConnectWebhook';
+export * from './OutDialStartWebhook';
 export * from './PaginationModel';
 export * from './Park';
-export * from './ParkAllOf';
 export * from './Pause';
-export * from './PauseAllOf';
 export * from './PerclCommand';
 export * from './PerclScript';
 export * from './Play';
-export * from './PlayAllOf';
 export * from './PlayBeep';
 export * from './PlayEarlyMedia';
-export * from './PlayEarlyMediaAllOf';
 export * from './QueueList';
-export * from './QueueListAllOf';
 export * from './QueueMember';
 export * from './QueueMemberList';
-export * from './QueueMemberListAllOf';
 export * from './QueueRequest';
 export * from './QueueResult';
-export * from './QueueResultAllOf';
 export * from './QueueResultStatus';
+export * from './QueueWaitWebhook';
 export * from './RecordUtterance';
-export * from './RecordUtteranceAllOf';
 export * from './RecordUtteranceTermReason';
+export * from './RecordWebhook';
 export * from './RecordingList';
-export * from './RecordingListAllOf';
 export * from './RecordingResult';
-export * from './RecordingResultAllOf';
 export * from './Redirect';
-export * from './RedirectAllOf';
+export * from './RedirectWebhook';
 export * from './Reject';
-export * from './RejectAllOf';
 export * from './RemoveFromConference';
+export * from './RemoveFromQueueNotificationWebhook';
 export * from './RequestType';
 export * from './SMSTenDLCBrand';
+export * from './SMSTenDLCBrandAltBusinessIdType';
+export * from './SMSTenDLCBrandEntityType';
+export * from './SMSTenDLCBrandIdentityStatus';
+export * from './SMSTenDLCBrandRelationship';
+export * from './SMSTenDLCBrandStockExchange';
 export * from './SMSTenDLCBrandsListResult';
-export * from './SMSTenDLCBrandsListResultAllOf';
 export * from './SMSTenDLCCampaign';
+export * from './SMSTenDLCCampaignStatus';
 export * from './SMSTenDLCCampaignsListResult';
-export * from './SMSTenDLCCampaignsListResultAllOf';
 export * from './SMSTenDLCPartnerCampaign';
 export * from './SMSTenDLCPartnerCampaignBrand';
+export * from './SMSTenDLCPartnerCampaignStatus';
 export * from './SMSTenDLCPartnerCampaignsListResult';
-export * from './SMSTenDLCPartnerCampaignsListResultAllOf';
 export * from './SMSTollFreeCampaign';
+export * from './SMSTollFreeCampaignRegistrationStatus';
 export * from './SMSTollFreeCampaignsListResult';
-export * from './SMSTollFreeCampaignsListResultAllOf';
 export * from './Say';
-export * from './SayAllOf';
 export * from './SendDigits';
-export * from './SendDigitsAllOf';
+export * from './SetDTMFPassThrough';
 export * from './SetListen';
-export * from './SetListenAllOf';
 export * from './SetTalk';
-export * from './SetTalkAllOf';
 export * from './Sms';
-export * from './SmsAllOf';
 export * from './StartRecordCall';
 export * from './TFN';
 export * from './TerminateConference';
+export * from './TranscribeReason';
+export * from './TranscribeTermReason';
 export * from './TranscribeUtterance';
-export * from './TranscribeUtteranceAllOf';
-export * from './TranscribeUtteranceAllOfRecord';
+export * from './TranscribeUtteranceRecord';
+export * from './TranscribeWebhook';
 export * from './Unpark';
 export * from './UpdateCallRequest';
 export * from './UpdateCallRequestStatus';
 export * from './UpdateConferenceParticipantRequest';
 export * from './UpdateConferenceRequest';
 export * from './UpdateConferenceRequestStatus';
+export * from './Webhook';
 
 import { AccountRequest } from './AccountRequest';
-import { AccountResult } from './AccountResult';
-import { AccountResultAllOf } from './AccountResultAllOf';
+import { AccountResult            } from './AccountResult';
 import { AccountStatus } from './AccountStatus';
 import { AccountType } from './AccountType';
 import { AddToConference } from './AddToConference';
-import { AddToConferenceAllOf } from './AddToConferenceAllOf';
+import { AddToConferenceNotificationWebhook              } from './AddToConferenceNotificationWebhook';
+import { AddToQueueNotificationWebhook          } from './AddToQueueNotificationWebhook';
 import { AnsweredBy } from './AnsweredBy';
 import { ApplicationList } from './ApplicationList';
-import { ApplicationListAllOf } from './ApplicationListAllOf';
 import { ApplicationRequest } from './ApplicationRequest';
 import { ApplicationResult } from './ApplicationResult';
-import { ApplicationResultAllOf } from './ApplicationResultAllOf';
 import { AvailableNumber } from './AvailableNumber';
 import { AvailableNumberList } from './AvailableNumberList';
-import { AvailableNumberListAllOf } from './AvailableNumberListAllOf';
+import { BargeInReason } from './BargeInReason';
 import { BuyIncomingNumberRequest } from './BuyIncomingNumberRequest';
+import { CallControlWebhook } from './CallControlWebhook';
 import { CallDirection } from './CallDirection';
+import { CallEndedReason } from './CallEndedReason';
 import { CallList } from './CallList';
-import { CallListAllOf } from './CallListAllOf';
-import { CallResult } from './CallResult';
-import { CallResultAllOf } from './CallResultAllOf';
+import { CallResult                     } from './CallResult';
 import { CallStatus } from './CallStatus';
+import { CallStatusWebhook           } from './CallStatusWebhook';
 import { Capabilities } from './Capabilities';
 import { CompletionRequest } from './CompletionRequest';
-import { CompletionResult , CompletionResultStatusEnum   } from './CompletionResult';
+import { CompletionResult   } from './CompletionResult';
+import { CompletionResultStatus } from './CompletionResultStatus';
 import { ConferenceList } from './ConferenceList';
-import { ConferenceListAllOf } from './ConferenceListAllOf';
 import { ConferenceParticipantList } from './ConferenceParticipantList';
-import { ConferenceParticipantListAllOf } from './ConferenceParticipantListAllOf';
 import { ConferenceParticipantResult } from './ConferenceParticipantResult';
-import { ConferenceParticipantResultAllOf } from './ConferenceParticipantResultAllOf';
-import { ConferenceResult } from './ConferenceResult';
-import { ConferenceResultAllOf } from './ConferenceResultAllOf';
+import { ConferenceRecordingStatusWebhook              } from './ConferenceRecordingStatusWebhook';
+import { ConferenceResult               } from './ConferenceResult';
 import { ConferenceStatus } from './ConferenceStatus';
-import { CreateConference } from './CreateConference';
-import { CreateConferenceAllOf } from './CreateConferenceAllOf';
-import { CreateConferenceRequest } from './CreateConferenceRequest';
+import { ConferenceStatusWebhook              } from './ConferenceStatusWebhook';
+import { CreateConference       } from './CreateConference';
+import { CreateConferenceRequest      } from './CreateConferenceRequest';
+import { CreateConferenceWebhook              } from './CreateConferenceWebhook';
 import { CreateWebRTCToken } from './CreateWebRTCToken';
 import { Dequeue } from './Dequeue';
+import { DequeueWebhook            } from './DequeueWebhook';
 import { Enqueue } from './Enqueue';
-import { EnqueueAllOf } from './EnqueueAllOf';
 import { FilterLogsRequest } from './FilterLogsRequest';
 import { GetDigits } from './GetDigits';
-import { GetDigitsAllOf } from './GetDigitsAllOf';
-import { GetSpeech } from './GetSpeech';
-import { GetSpeechAllOf } from './GetSpeechAllOf';
+import { GetDigitsReason } from './GetDigitsReason';
+import { GetDigitsWebhook             } from './GetDigitsWebhook';
+import { GetSpeech              } from './GetSpeech';
 import { GetSpeechReason } from './GetSpeechReason';
+import { GetSpeechWebhook                  } from './GetSpeechWebhook';
 import { GrammarFileBuiltIn } from './GrammarFileBuiltIn';
 import { GrammarType } from './GrammarType';
 import { Hangup } from './Hangup';
-import { HangupAllOf } from './HangupAllOf';
 import { IfMachine } from './IfMachine';
+import { InboundCallWebhook           } from './InboundCallWebhook';
 import { IncomingNumberList } from './IncomingNumberList';
-import { IncomingNumberListAllOf } from './IncomingNumberListAllOf';
 import { IncomingNumberRequest } from './IncomingNumberRequest';
 import { IncomingNumberResult } from './IncomingNumberResult';
-import { IncomingNumberResultAllOf } from './IncomingNumberResultAllOf';
 import { Language } from './Language';
+import { LeaveConferenceWebhook          } from './LeaveConferenceWebhook';
 import { LogLevel } from './LogLevel';
 import { LogList } from './LogList';
-import { LogListAllOf } from './LogListAllOf';
-import { LogResult } from './LogResult';
+import { LogResult        } from './LogResult';
+import { MachineDetectedWebhook            } from './MachineDetectedWebhook';
 import { MachineType } from './MachineType';
 import { MakeCallRequest } from './MakeCallRequest';
+import { MessageDeliveryWebhook } from './MessageDeliveryWebhook';
 import { MessageDirection } from './MessageDirection';
 import { MessageRequest } from './MessageRequest';
-import { MessageRequestAllOf } from './MessageRequestAllOf';
-import { MessageResult } from './MessageResult';
-import { MessageResultAllOf } from './MessageResultAllOf';
+import { MessageResult                 } from './MessageResult';
 import { MessageStatus } from './MessageStatus';
+import { MessageStatusWebhook            } from './MessageStatusWebhook';
 import { MessagesList } from './MessagesList';
-import { MessagesListAllOf } from './MessagesListAllOf';
 import { MutableResourceModel } from './MutableResourceModel';
-import { OutDial } from './OutDial';
-import { OutDialAllOf } from './OutDialAllOf';
+import { OutDial           } from './OutDial';
+import { OutDialApiConnectWebhook           } from './OutDialApiConnectWebhook';
+import { OutDialConnectWebhook           } from './OutDialConnectWebhook';
+import { OutDialStartWebhook            } from './OutDialStartWebhook';
 import { PaginationModel } from './PaginationModel';
 import { Park } from './Park';
-import { ParkAllOf } from './ParkAllOf';
 import { Pause } from './Pause';
-import { PauseAllOf } from './PauseAllOf';
 import { PerclCommand } from './PerclCommand';
 import { PerclScript } from './PerclScript';
 import { Play } from './Play';
-import { PlayAllOf } from './PlayAllOf';
 import { PlayBeep } from './PlayBeep';
 import { PlayEarlyMedia } from './PlayEarlyMedia';
-import { PlayEarlyMediaAllOf } from './PlayEarlyMediaAllOf';
 import { QueueList } from './QueueList';
-import { QueueListAllOf } from './QueueListAllOf';
 import { QueueMember } from './QueueMember';
 import { QueueMemberList } from './QueueMemberList';
-import { QueueMemberListAllOf } from './QueueMemberListAllOf';
 import { QueueRequest } from './QueueRequest';
 import { QueueResult } from './QueueResult';
-import { QueueResultAllOf } from './QueueResultAllOf';
 import { QueueResultStatus } from './QueueResultStatus';
+import { QueueWaitWebhook             } from './QueueWaitWebhook';
 import { RecordUtterance } from './RecordUtterance';
-import { RecordUtteranceAllOf } from './RecordUtteranceAllOf';
 import { RecordUtteranceTermReason } from './RecordUtteranceTermReason';
+import { RecordWebhook                  } from './RecordWebhook';
 import { RecordingList } from './RecordingList';
-import { RecordingListAllOf } from './RecordingListAllOf';
 import { RecordingResult } from './RecordingResult';
-import { RecordingResultAllOf } from './RecordingResultAllOf';
 import { Redirect } from './Redirect';
-import { RedirectAllOf } from './RedirectAllOf';
+import { RedirectWebhook           } from './RedirectWebhook';
 import { Reject } from './Reject';
-import { RejectAllOf } from './RejectAllOf';
 import { RemoveFromConference } from './RemoveFromConference';
+import { RemoveFromQueueNotificationWebhook            } from './RemoveFromQueueNotificationWebhook';
 import { RequestType } from './RequestType';
-import { SMSTenDLCBrand , SMSTenDLCBrandEntityTypeEnum                  , SMSTenDLCBrandStockExchangeEnum    , SMSTenDLCBrandBrandRelationshipEnum    , SMSTenDLCBrandAltBusinessIdTypeEnum      , SMSTenDLCBrandIdentityStatusEnum    } from './SMSTenDLCBrand';
+import { SMSTenDLCBrand                                } from './SMSTenDLCBrand';
+import { SMSTenDLCBrandAltBusinessIdType } from './SMSTenDLCBrandAltBusinessIdType';
+import { SMSTenDLCBrandEntityType } from './SMSTenDLCBrandEntityType';
+import { SMSTenDLCBrandIdentityStatus } from './SMSTenDLCBrandIdentityStatus';
+import { SMSTenDLCBrandRelationship } from './SMSTenDLCBrandRelationship';
+import { SMSTenDLCBrandStockExchange } from './SMSTenDLCBrandStockExchange';
 import { SMSTenDLCBrandsListResult } from './SMSTenDLCBrandsListResult';
-import { SMSTenDLCBrandsListResultAllOf } from './SMSTenDLCBrandsListResultAllOf';
-import { SMSTenDLCCampaign    , SMSTenDLCCampaignStatusEnum                                  } from './SMSTenDLCCampaign';
+import { SMSTenDLCCampaign                                     } from './SMSTenDLCCampaign';
+import { SMSTenDLCCampaignStatus } from './SMSTenDLCCampaignStatus';
 import { SMSTenDLCCampaignsListResult } from './SMSTenDLCCampaignsListResult';
-import { SMSTenDLCCampaignsListResultAllOf } from './SMSTenDLCCampaignsListResultAllOf';
-import { SMSTenDLCPartnerCampaign  , SMSTenDLCPartnerCampaignStatusEnum                             } from './SMSTenDLCPartnerCampaign';
+import { SMSTenDLCPartnerCampaign                              } from './SMSTenDLCPartnerCampaign';
 import { SMSTenDLCPartnerCampaignBrand } from './SMSTenDLCPartnerCampaignBrand';
+import { SMSTenDLCPartnerCampaignStatus } from './SMSTenDLCPartnerCampaignStatus';
 import { SMSTenDLCPartnerCampaignsListResult } from './SMSTenDLCPartnerCampaignsListResult';
-import { SMSTenDLCPartnerCampaignsListResultAllOf } from './SMSTenDLCPartnerCampaignsListResultAllOf';
-import { SMSTollFreeCampaign   , SMSTollFreeCampaignRegistrationStatusEnum      } from './SMSTollFreeCampaign';
+import { SMSTollFreeCampaign        } from './SMSTollFreeCampaign';
+import { SMSTollFreeCampaignRegistrationStatus } from './SMSTollFreeCampaignRegistrationStatus';
 import { SMSTollFreeCampaignsListResult } from './SMSTollFreeCampaignsListResult';
-import { SMSTollFreeCampaignsListResultAllOf } from './SMSTollFreeCampaignsListResultAllOf';
 import { Say } from './Say';
-import { SayAllOf } from './SayAllOf';
 import { SendDigits } from './SendDigits';
-import { SendDigitsAllOf } from './SendDigitsAllOf';
+import { SetDTMFPassThrough } from './SetDTMFPassThrough';
 import { SetListen } from './SetListen';
-import { SetListenAllOf } from './SetListenAllOf';
 import { SetTalk } from './SetTalk';
-import { SetTalkAllOf } from './SetTalkAllOf';
 import { Sms } from './Sms';
-import { SmsAllOf } from './SmsAllOf';
 import { StartRecordCall } from './StartRecordCall';
 import { TFN } from './TFN';
 import { TerminateConference } from './TerminateConference';
+import { TranscribeReason } from './TranscribeReason';
+import { TranscribeTermReason } from './TranscribeTermReason';
 import { TranscribeUtterance } from './TranscribeUtterance';
-import { TranscribeUtteranceAllOf } from './TranscribeUtteranceAllOf';
-import { TranscribeUtteranceAllOfRecord } from './TranscribeUtteranceAllOfRecord';
+import { TranscribeUtteranceRecord } from './TranscribeUtteranceRecord';
+import { TranscribeWebhook                        } from './TranscribeWebhook';
 import { Unpark } from './Unpark';
-import { UpdateCallRequest } from './UpdateCallRequest';
+import { UpdateCallRequest  } from './UpdateCallRequest';
 import { UpdateCallRequestStatus } from './UpdateCallRequestStatus';
 import { UpdateConferenceParticipantRequest } from './UpdateConferenceParticipantRequest';
-import { UpdateConferenceRequest } from './UpdateConferenceRequest';
+import { UpdateConferenceRequest    } from './UpdateConferenceRequest';
 import { UpdateConferenceRequestStatus } from './UpdateConferenceRequestStatus';
+import { Webhook } from './Webhook';
 
 /* tslint:disable:no-unused-variable */
 let primitives = [
@@ -313,10 +301,13 @@ let enumsMap: Set<string> = new Set<string>([
     "AccountStatus",
     "AccountType",
     "AnsweredBy",
+    "BargeInReason",
     "CallDirection",
+    "CallEndedReason",
     "CallStatus",
-    "CompletionResultStatusEnum",
+    "CompletionResultStatus",
     "ConferenceStatus",
+    "GetDigitsReason",
     "GetSpeechReason",
     "GrammarFileBuiltIn",
     "GrammarType",
@@ -330,14 +321,16 @@ let enumsMap: Set<string> = new Set<string>([
     "QueueResultStatus",
     "RecordUtteranceTermReason",
     "RequestType",
-    "SMSTenDLCBrandEntityTypeEnum",
-    "SMSTenDLCBrandStockExchangeEnum",
-    "SMSTenDLCBrandBrandRelationshipEnum",
-    "SMSTenDLCBrandAltBusinessIdTypeEnum",
-    "SMSTenDLCBrandIdentityStatusEnum",
-    "SMSTenDLCCampaignStatusEnum",
-    "SMSTenDLCPartnerCampaignStatusEnum",
-    "SMSTollFreeCampaignRegistrationStatusEnum",
+    "SMSTenDLCBrandAltBusinessIdType",
+    "SMSTenDLCBrandEntityType",
+    "SMSTenDLCBrandIdentityStatus",
+    "SMSTenDLCBrandRelationship",
+    "SMSTenDLCBrandStockExchange",
+    "SMSTenDLCCampaignStatus",
+    "SMSTenDLCPartnerCampaignStatus",
+    "SMSTollFreeCampaignRegistrationStatus",
+    "TranscribeReason",
+    "TranscribeTermReason",
     "UpdateCallRequestStatus",
     "UpdateConferenceRequestStatus",
 ]);
@@ -345,128 +338,108 @@ let enumsMap: Set<string> = new Set<string>([
 let typeMap: {[index: string]: any} = {
     "AccountRequest": AccountRequest,
     "AccountResult": AccountResult,
-    "AccountResultAllOf": AccountResultAllOf,
     "AddToConference": AddToConference,
-    "AddToConferenceAllOf": AddToConferenceAllOf,
+    "AddToConferenceNotificationWebhook": AddToConferenceNotificationWebhook,
+    "AddToQueueNotificationWebhook": AddToQueueNotificationWebhook,
     "ApplicationList": ApplicationList,
-    "ApplicationListAllOf": ApplicationListAllOf,
     "ApplicationRequest": ApplicationRequest,
     "ApplicationResult": ApplicationResult,
-    "ApplicationResultAllOf": ApplicationResultAllOf,
     "AvailableNumber": AvailableNumber,
     "AvailableNumberList": AvailableNumberList,
-    "AvailableNumberListAllOf": AvailableNumberListAllOf,
     "BuyIncomingNumberRequest": BuyIncomingNumberRequest,
+    "CallControlWebhook": CallControlWebhook,
     "CallList": CallList,
-    "CallListAllOf": CallListAllOf,
     "CallResult": CallResult,
-    "CallResultAllOf": CallResultAllOf,
+    "CallStatusWebhook": CallStatusWebhook,
     "Capabilities": Capabilities,
     "CompletionRequest": CompletionRequest,
     "CompletionResult": CompletionResult,
     "ConferenceList": ConferenceList,
-    "ConferenceListAllOf": ConferenceListAllOf,
     "ConferenceParticipantList": ConferenceParticipantList,
-    "ConferenceParticipantListAllOf": ConferenceParticipantListAllOf,
     "ConferenceParticipantResult": ConferenceParticipantResult,
-    "ConferenceParticipantResultAllOf": ConferenceParticipantResultAllOf,
+    "ConferenceRecordingStatusWebhook": ConferenceRecordingStatusWebhook,
     "ConferenceResult": ConferenceResult,
-    "ConferenceResultAllOf": ConferenceResultAllOf,
+    "ConferenceStatusWebhook": ConferenceStatusWebhook,
     "CreateConference": CreateConference,
-    "CreateConferenceAllOf": CreateConferenceAllOf,
     "CreateConferenceRequest": CreateConferenceRequest,
+    "CreateConferenceWebhook": CreateConferenceWebhook,
     "CreateWebRTCToken": CreateWebRTCToken,
     "Dequeue": Dequeue,
+    "DequeueWebhook": DequeueWebhook,
     "Enqueue": Enqueue,
-    "EnqueueAllOf": EnqueueAllOf,
     "FilterLogsRequest": FilterLogsRequest,
     "GetDigits": GetDigits,
-    "GetDigitsAllOf": GetDigitsAllOf,
+    "GetDigitsWebhook": GetDigitsWebhook,
     "GetSpeech": GetSpeech,
-    "GetSpeechAllOf": GetSpeechAllOf,
+    "GetSpeechWebhook": GetSpeechWebhook,
     "Hangup": Hangup,
-    "HangupAllOf": HangupAllOf,
+    "InboundCallWebhook": InboundCallWebhook,
     "IncomingNumberList": IncomingNumberList,
-    "IncomingNumberListAllOf": IncomingNumberListAllOf,
     "IncomingNumberRequest": IncomingNumberRequest,
     "IncomingNumberResult": IncomingNumberResult,
-    "IncomingNumberResultAllOf": IncomingNumberResultAllOf,
+    "LeaveConferenceWebhook": LeaveConferenceWebhook,
     "LogList": LogList,
-    "LogListAllOf": LogListAllOf,
     "LogResult": LogResult,
+    "MachineDetectedWebhook": MachineDetectedWebhook,
     "MakeCallRequest": MakeCallRequest,
+    "MessageDeliveryWebhook": MessageDeliveryWebhook,
     "MessageRequest": MessageRequest,
-    "MessageRequestAllOf": MessageRequestAllOf,
     "MessageResult": MessageResult,
-    "MessageResultAllOf": MessageResultAllOf,
+    "MessageStatusWebhook": MessageStatusWebhook,
     "MessagesList": MessagesList,
-    "MessagesListAllOf": MessagesListAllOf,
     "MutableResourceModel": MutableResourceModel,
     "OutDial": OutDial,
-    "OutDialAllOf": OutDialAllOf,
+    "OutDialApiConnectWebhook": OutDialApiConnectWebhook,
+    "OutDialConnectWebhook": OutDialConnectWebhook,
+    "OutDialStartWebhook": OutDialStartWebhook,
     "PaginationModel": PaginationModel,
     "Park": Park,
-    "ParkAllOf": ParkAllOf,
     "Pause": Pause,
-    "PauseAllOf": PauseAllOf,
     "PerclCommand": PerclCommand,
     "PerclScript": PerclScript,
     "Play": Play,
-    "PlayAllOf": PlayAllOf,
     "PlayEarlyMedia": PlayEarlyMedia,
-    "PlayEarlyMediaAllOf": PlayEarlyMediaAllOf,
     "QueueList": QueueList,
-    "QueueListAllOf": QueueListAllOf,
     "QueueMember": QueueMember,
     "QueueMemberList": QueueMemberList,
-    "QueueMemberListAllOf": QueueMemberListAllOf,
     "QueueRequest": QueueRequest,
     "QueueResult": QueueResult,
-    "QueueResultAllOf": QueueResultAllOf,
+    "QueueWaitWebhook": QueueWaitWebhook,
     "RecordUtterance": RecordUtterance,
-    "RecordUtteranceAllOf": RecordUtteranceAllOf,
+    "RecordWebhook": RecordWebhook,
     "RecordingList": RecordingList,
-    "RecordingListAllOf": RecordingListAllOf,
     "RecordingResult": RecordingResult,
-    "RecordingResultAllOf": RecordingResultAllOf,
     "Redirect": Redirect,
-    "RedirectAllOf": RedirectAllOf,
+    "RedirectWebhook": RedirectWebhook,
     "Reject": Reject,
-    "RejectAllOf": RejectAllOf,
     "RemoveFromConference": RemoveFromConference,
+    "RemoveFromQueueNotificationWebhook": RemoveFromQueueNotificationWebhook,
     "SMSTenDLCBrand": SMSTenDLCBrand,
     "SMSTenDLCBrandsListResult": SMSTenDLCBrandsListResult,
-    "SMSTenDLCBrandsListResultAllOf": SMSTenDLCBrandsListResultAllOf,
     "SMSTenDLCCampaign": SMSTenDLCCampaign,
     "SMSTenDLCCampaignsListResult": SMSTenDLCCampaignsListResult,
-    "SMSTenDLCCampaignsListResultAllOf": SMSTenDLCCampaignsListResultAllOf,
     "SMSTenDLCPartnerCampaign": SMSTenDLCPartnerCampaign,
     "SMSTenDLCPartnerCampaignBrand": SMSTenDLCPartnerCampaignBrand,
     "SMSTenDLCPartnerCampaignsListResult": SMSTenDLCPartnerCampaignsListResult,
-    "SMSTenDLCPartnerCampaignsListResultAllOf": SMSTenDLCPartnerCampaignsListResultAllOf,
     "SMSTollFreeCampaign": SMSTollFreeCampaign,
     "SMSTollFreeCampaignsListResult": SMSTollFreeCampaignsListResult,
-    "SMSTollFreeCampaignsListResultAllOf": SMSTollFreeCampaignsListResultAllOf,
     "Say": Say,
-    "SayAllOf": SayAllOf,
     "SendDigits": SendDigits,
-    "SendDigitsAllOf": SendDigitsAllOf,
+    "SetDTMFPassThrough": SetDTMFPassThrough,
     "SetListen": SetListen,
-    "SetListenAllOf": SetListenAllOf,
     "SetTalk": SetTalk,
-    "SetTalkAllOf": SetTalkAllOf,
     "Sms": Sms,
-    "SmsAllOf": SmsAllOf,
     "StartRecordCall": StartRecordCall,
     "TFN": TFN,
     "TerminateConference": TerminateConference,
     "TranscribeUtterance": TranscribeUtterance,
-    "TranscribeUtteranceAllOf": TranscribeUtteranceAllOf,
-    "TranscribeUtteranceAllOfRecord": TranscribeUtteranceAllOfRecord,
+    "TranscribeUtteranceRecord": TranscribeUtteranceRecord,
+    "TranscribeWebhook": TranscribeWebhook,
     "Unpark": Unpark,
     "UpdateCallRequest": UpdateCallRequest,
     "UpdateConferenceParticipantRequest": UpdateConferenceParticipantRequest,
     "UpdateConferenceRequest": UpdateConferenceRequest,
+    "Webhook": Webhook,
 }
 
 export class ObjectSerializer {

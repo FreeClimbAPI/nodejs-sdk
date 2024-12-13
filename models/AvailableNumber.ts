@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 
-import { Capabilities } from './Capabilities';
+import { Capabilities } from './../models/Capabilities';
 import { HttpFile } from '../http/http';
 
 

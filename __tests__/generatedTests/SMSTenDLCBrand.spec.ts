@@ -4,7 +4,8 @@ import { describe, expect, it } from "@jest/globals";
 describe('SMSTenDLCBrand', () => {
     let model: freeclimb.SMSTenDLCBrand = new freeclimb.SMSTenDLCBrand({
         accountId: "test_accountId",
-        entityType: freeclimb.SMSTenDLCBrandEntityTypeEnum.PRIVATE_PROFIT,
+
+        entityType: freeclimb.SMSTenDLCBrandEntityType.PRIVATE_PROFIT,
         cspId: "test_cspId",
         brandId: "test_brandId",
         firstName: "test_firstName",
@@ -21,18 +22,22 @@ describe('SMSTenDLCBrand', () => {
         country: "test_country",
         email: "test_email",
         stockSymbol: "test_stockSymbol",
-        stockExchange: freeclimb.SMSTenDLCBrandStockExchangeEnum.NONE,
+
+        stockExchange: freeclimb.SMSTenDLCBrandStockExchange.NONE,
         ipAddress: "test_ipAddress",
         website: "test_website",
-        brandRelationship: freeclimb.SMSTenDLCBrandBrandRelationshipEnum.BASIC_ACCOUNT,
+
+        brandRelationship: freeclimb.SMSTenDLCBrandRelationship.BASIC_ACCOUNT,
         vertical: "test_vertical",
         altBusinessId: "test_altBusinessId",
-        altBusinessIdType: freeclimb.SMSTenDLCBrandAltBusinessIdTypeEnum.NONE,
+
+        altBusinessIdType: freeclimb.SMSTenDLCBrandAltBusinessIdType.NONE,
         universalEin: "test_universalEin",
         referenceId: "test_referenceId",
-        optionalAttributes: {},
+
         mock: true,
-        identityStatus: freeclimb.SMSTenDLCBrandIdentityStatusEnum.SELF_DECLARED,
+
+        identityStatus: freeclimb.SMSTenDLCBrandIdentityStatus.SELF_DECLARED,
         createDate: new Date('December 17, 1995 03:24:00'),
     })
     describe("SMSTenDLCBrand class test", () => {
@@ -48,8 +53,9 @@ describe('SMSTenDLCBrand', () => {
     })
     describe(".entityType", () => {
         it('resolves to particular value on initialization', () => {
-        const value = freeclimb.SMSTenDLCBrandEntityTypeEnum.PRIVATE_PROFIT
-        expect(model.entityType).toBe(value)
+
+            const value = "PRIVATE_PROFIT"
+            expect(model.entityType).toBe(value)
         })
     })
     describe(".cspId", () => {
@@ -150,8 +156,9 @@ describe('SMSTenDLCBrand', () => {
     })
     describe(".stockExchange", () => {
         it('resolves to particular value on initialization', () => {
-        const value = freeclimb.SMSTenDLCBrandStockExchangeEnum.NONE
-        expect(model.stockExchange).toBe(value)
+
+            const value = "NONE"
+            expect(model.stockExchange).toBe(value)
         })
     })
     describe(".ipAddress", () => {
@@ -168,8 +175,9 @@ describe('SMSTenDLCBrand', () => {
     })
     describe(".brandRelationship", () => {
         it('resolves to particular value on initialization', () => {
-        const value = freeclimb.SMSTenDLCBrandBrandRelationshipEnum.BASIC_ACCOUNT
-        expect(model.brandRelationship).toBe(value)
+
+            const value = "BASIC_ACCOUNT"
+            expect(model.brandRelationship).toBe(value)
         })
     })
     describe(".vertical", () => {
@@ -186,8 +194,9 @@ describe('SMSTenDLCBrand', () => {
     })
     describe(".altBusinessIdType", () => {
         it('resolves to particular value on initialization', () => {
-        const value = freeclimb.SMSTenDLCBrandAltBusinessIdTypeEnum.NONE
-        expect(model.altBusinessIdType).toBe(value)
+
+            const value = "NONE"
+            expect(model.altBusinessIdType).toBe(value)
         })
     })
     describe(".universalEin", () => {
@@ -204,8 +213,7 @@ describe('SMSTenDLCBrand', () => {
     })
     describe(".optionalAttributes", () => {
         it('resolves to particular value on initialization', () => {
-            const value = {}
-            expect(model.optionalAttributes).toStrictEqual(value)
+
         })
     })
     describe(".mock", () => {
@@ -216,8 +224,9 @@ describe('SMSTenDLCBrand', () => {
     })
     describe(".identityStatus", () => {
         it('resolves to particular value on initialization', () => {
-        const value = freeclimb.SMSTenDLCBrandIdentityStatusEnum.SELF_DECLARED
-        expect(model.identityStatus).toBe(value)
+
+            const value = "SELF_DECLARED"
+            expect(model.identityStatus).toBe(value)
         })
     })
     describe(".createDate", () => {
