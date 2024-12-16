@@ -130,6 +130,8 @@ import { Say } from '../models/Say';
 import { SayAllOf } from '../models/SayAllOf';
 import { SendDigits } from '../models/SendDigits';
 import { SendDigitsAllOf } from '../models/SendDigitsAllOf';
+import { SetDTMFPassThrough } from '../models/SetDTMFPassThrough';
+import { SetDTMFPassThroughAllOf } from '../models/SetDTMFPassThroughAllOf';
 import { SetListen } from '../models/SetListen';
 import { SetListenAllOf } from '../models/SetListenAllOf';
 import { SetTalk } from '../models/SetTalk';
@@ -1298,9 +1300,11 @@ export class ObservableDefaultApi {
      
      * @param listen Only show Participants with the listen privilege.
      
+     * @param dtmfPassThrough Only show Participants with the dtmfPassThrough privilege.
+     
      */
-    public listParticipants(conferenceId: string, talk?: boolean, listen?: boolean, _options?: Configuration): Observable<ConferenceParticipantList> {
-        const requestContextPromise = this.requestFactory.listParticipants(conferenceId, talk, listen, _options);
+    public listParticipants(conferenceId: string, talk?: boolean, listen?: boolean, dtmfPassThrough?: boolean, _options?: Configuration): Observable<ConferenceParticipantList> {
+        const requestContextPromise = this.requestFactory.listParticipants(conferenceId, talk, listen, dtmfPassThrough, _options);
 
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);

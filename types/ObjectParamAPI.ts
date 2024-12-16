@@ -129,6 +129,8 @@ import { Say } from '../models/Say';
 import { SayAllOf } from '../models/SayAllOf';
 import { SendDigits } from '../models/SendDigits';
 import { SendDigitsAllOf } from '../models/SendDigitsAllOf';
+import { SetDTMFPassThrough } from '../models/SetDTMFPassThrough';
+import { SetDTMFPassThroughAllOf } from '../models/SetDTMFPassThroughAllOf';
 import { SetListen } from '../models/SetListen';
 import { SetListenAllOf } from '../models/SetListenAllOf';
 import { SetTalk } from '../models/SetTalk';
@@ -895,6 +897,13 @@ export interface DefaultApiListParticipantsRequest {
      */
     listen?: boolean
     
+    /**
+     * Only show Participants with the dtmfPassThrough privilege.
+     * @type boolean
+     * @memberof DefaultApilistParticipants
+     */
+    dtmfPassThrough?: boolean
+    
 }
 
 export interface DefaultApiListRecordingsRequest {
@@ -1518,7 +1527,7 @@ export class ObjectDefaultApi {
      * @param param the request object
      */
     public listParticipants(param: DefaultApiListParticipantsRequest, options?: Configuration): Promise<ConferenceParticipantList> {
-        return this.api.listParticipants(param.conferenceId, param.talk, param.listen,  options).toPromise();
+        return this.api.listParticipants(param.conferenceId, param.talk, param.listen, param.dtmfPassThrough,  options).toPromise();
     }
 
     /**

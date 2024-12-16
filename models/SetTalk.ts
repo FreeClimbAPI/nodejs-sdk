@@ -29,6 +29,7 @@ import { Reject } from './Reject';
 import { RemoveFromConference } from './RemoveFromConference';
 import { Say } from './Say';
 import { SendDigits } from './SendDigits';
+import { SetDTMFPassThrough } from './SetDTMFPassThrough';
 import { SetListen } from './SetListen';
 import { SetTalkAllOf } from './SetTalkAllOf';
 import { Sms } from './Sms';
@@ -39,7 +40,7 @@ import { Unpark } from './Unpark';
 import { HttpFile } from '../http/http';
 
 /**
-* The `SetTalk` command enables or disables the talk privilege for a Participant in a Conference provided both calls are in the same conference. If 'true', no audio from that Participant is shared with the other Participants of the Conference.
+* The `SetTalk` command enables or disables the talk privilege for this Conference Participant. If 'true', no audio from that Participant is shared with the other Participants of the Conference.
 */
 
 interface AttributeType {

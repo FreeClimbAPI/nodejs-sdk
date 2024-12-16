@@ -2694,6 +2694,9 @@ let body:freeclimb.DefaultApiListParticipantsRequest = {
   // boolean | Only show Participants with the listen privilege. (optional)
   listen: true,
 
+  // boolean | Only show Participants with the dtmfPassThrough privilege. (optional)
+  dtmfPassThrough: true,
+
 };
 
 apiInstance.listParticipants(body).then((data:any) => {
@@ -2709,6 +2712,7 @@ Name | Type | Description  | Notes
  **conferenceId** | [**string**] | ID of the conference this participant is in. | defaults to undefined
  **talk** | [**boolean**] | Only show Participants with the talk privilege. | (optional) defaults to undefined
  **listen** | [**boolean**] | Only show Participants with the listen privilege. | (optional) defaults to undefined
+ **dtmfPassThrough** | [**boolean**] | Only show Participants with the dtmfPassThrough privilege. | (optional) defaults to undefined
 
 
 ### Return type
@@ -3352,6 +3356,7 @@ let body:freeclimb.DefaultApiUpdateAParticipantRequest = {
   updateConferenceParticipantRequest: {
     talk: true,
     listen: true,
+    dtmfPassThrough: true,
   },
 
 };

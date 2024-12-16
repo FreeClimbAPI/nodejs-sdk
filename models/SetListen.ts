@@ -29,6 +29,7 @@ import { Reject } from './Reject';
 import { RemoveFromConference } from './RemoveFromConference';
 import { Say } from './Say';
 import { SendDigits } from './SendDigits';
+import { SetDTMFPassThrough } from './SetDTMFPassThrough';
 import { SetListenAllOf } from './SetListenAllOf';
 import { SetTalk } from './SetTalk';
 import { Sms } from './Sms';
@@ -39,7 +40,7 @@ import { Unpark } from './Unpark';
 import { HttpFile } from '../http/http';
 
 /**
-* The `SetListen` command enables or disables the listen privilege for a Conference Participant provided both calls are in the same conference. The Participant can hear what the other participants are saying only if this privilege is enabled.
+* The `SetListen` command enables or disables the listen privilege for this Conference Participant. The Participant can hear what the other participants are saying only if this privilege is enabled.
 */
 
 interface AttributeType {

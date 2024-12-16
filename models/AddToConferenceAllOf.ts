@@ -30,6 +30,7 @@ interface ArgumentsType {
     'notificationUrl'?: string;
     'startConfOnEnter'?: boolean;
     'talk'?: boolean;
+    'dtmfPassThrough'?: boolean;
 }
 export class AddToConferenceAllOf {
     /**
@@ -68,6 +69,10 @@ export class AddToConferenceAllOf {
     * If `true`, the Participant joins the Conference with talk privileges. This may be modified later via the REST API or `SetTalk` PerCL command. 
     */
     'talk'?: boolean;
+    /**
+    * If `true`, the Participant joins the Conference with dtmfPassThrough privileges. This may be modified later via the REST API or `SetDTMFPassThrough` PerCL command. 
+    */
+    'dtmfPassThrough'?: boolean;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -147,6 +152,15 @@ export class AddToConferenceAllOf {
         {
             "name": "talk",
             "baseName": "talk",
+            "type": "boolean",
+            "format": "",
+
+            
+            "defaultValue": undefined
+        },
+        {
+            "name": "dtmfPassThrough",
+            "baseName": "dtmfPassThrough",
             "type": "boolean",
             "format": "",
 

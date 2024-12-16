@@ -139,6 +139,8 @@ models/Say.ts
 models/SayAllOf.ts
 models/SendDigits.ts
 models/SendDigitsAllOf.ts
+models/SetDTMFPassThrough.ts
+models/SetDTMFPassThroughAllOf.ts
 models/SetListen.ts
 models/SetListenAllOf.ts
 models/SetTalk.ts

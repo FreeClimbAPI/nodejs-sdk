@@ -8,6 +8,7 @@ describe('ConferenceParticipantResultAllOf', () => {
         callId: "test_callId",
         talk: true,
         listen: true,
+        dtmfPassThrough: true,
         startConfOnEnter: true,
     })
     describe("ConferenceParticipantResultAllOf class test", () => {
@@ -43,6 +44,12 @@ describe('ConferenceParticipantResultAllOf', () => {
         it('resolves to particular value on initialization', () => {
             const value = true
             expect(model.listen).toBe(value)
+        })
+    })
+    describe(".dtmfPassThrough", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = true
+            expect(model.dtmfPassThrough).toBe(value)
         })
     })
     describe(".startConfOnEnter", () => {

@@ -125,6 +125,8 @@ export * from './Say';
 export * from './SayAllOf';
 export * from './SendDigits';
 export * from './SendDigitsAllOf';
+export * from './SetDTMFPassThrough';
+export * from './SetDTMFPassThroughAllOf';
 export * from './SetListen';
 export * from './SetListenAllOf';
 export * from './SetTalk';
@@ -271,6 +273,8 @@ import { Say } from './Say';
 import { SayAllOf } from './SayAllOf';
 import { SendDigits } from './SendDigits';
 import { SendDigitsAllOf } from './SendDigitsAllOf';
+import { SetDTMFPassThrough } from './SetDTMFPassThrough';
+import { SetDTMFPassThroughAllOf } from './SetDTMFPassThroughAllOf';
 import { SetListen } from './SetListen';
 import { SetListenAllOf } from './SetListenAllOf';
 import { SetTalk } from './SetTalk';
@@ -451,6 +455,8 @@ let typeMap: {[index: string]: any} = {
     "SayAllOf": SayAllOf,
     "SendDigits": SendDigits,
     "SendDigitsAllOf": SendDigitsAllOf,
+    "SetDTMFPassThrough": SetDTMFPassThrough,
+    "SetDTMFPassThroughAllOf": SetDTMFPassThroughAllOf,
     "SetListen": SetListen,
     "SetListenAllOf": SetListenAllOf,
     "SetTalk": SetTalk,

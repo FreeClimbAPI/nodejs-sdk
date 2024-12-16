@@ -12,6 +12,7 @@ describe('AddToConferenceAllOf', () => {
         notificationUrl: "test_notificationUrl",
         startConfOnEnter: true,
         talk: true,
+        dtmfPassThrough: true,
     })
     describe("AddToConferenceAllOf class test", () => {
         it('resolves to the class type upon initialization', () => {
@@ -70,6 +71,12 @@ describe('AddToConferenceAllOf', () => {
         it('resolves to particular value on initialization', () => {
             const value = true
             expect(model.talk).toBe(value)
+        })
+    })
+    describe(".dtmfPassThrough", () => {
+        it('resolves to particular value on initialization', () => {
+            const value = true
+            expect(model.dtmfPassThrough).toBe(value)
         })
     })
 })
