@@ -21,45 +21,17 @@ interface AttributeType {
     defaultValue: any
 }
 interface ArgumentsType {
-    'talk'?: boolean;
-    'listen'?: boolean;
     'dtmfPassThrough'?: boolean;
 }
-export class UpdateConferenceParticipantRequest {
+export class SetDTMFPassThroughAllOf {
     /**
-    * (Optional) Default is `true`. Setting to `false` mutes the Participant. FreeClimb returns an error and ignores any other value.
-    */
-    'talk'?: boolean;
-    /**
-    * (Optional) Default is `true`. Setting to `false` silences the Conference for this Participant. FreeClimb returns an error and ignores any other value.
-    */
-    'listen'?: boolean;
-    /**
-    * (Optional) Default is `true`. Setting to `false` mutes dtmf audio for this Participant. FreeClimb returns an error and ignores any other value.
+    * Specifying `false` mutes the Participant's dtmf audio.
     */
     'dtmfPassThrough'?: boolean;
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly attributeTypeMap: AttributeType[] = [
-        {
-            "name": "talk",
-            "baseName": "talk",
-            "type": "boolean",
-            "format": "",
-
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "listen",
-            "baseName": "listen",
-            "type": "boolean",
-            "format": "",
-
-            
-            "defaultValue": undefined
-        },
         {
             "name": "dtmfPassThrough",
             "baseName": "dtmfPassThrough",
@@ -71,11 +43,11 @@ export class UpdateConferenceParticipantRequest {
         }    ];
 
     static getAttributeTypeMap(): AttributeType[] {
-        return UpdateConferenceParticipantRequest.attributeTypeMap;
+        return SetDTMFPassThroughAllOf.attributeTypeMap;
     }
 
     public constructor(args: ArgumentsType) {
-        const preparedArgs = UpdateConferenceParticipantRequest.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
+        const preparedArgs = SetDTMFPassThroughAllOf.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
             
             const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
             

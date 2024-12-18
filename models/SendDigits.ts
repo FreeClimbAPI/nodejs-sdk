@@ -29,6 +29,7 @@ import { Reject } from './Reject';
 import { RemoveFromConference } from './RemoveFromConference';
 import { Say } from './Say';
 import { SendDigitsAllOf } from './SendDigitsAllOf';
+import { SetDTMFPassThrough } from './SetDTMFPassThrough';
 import { SetListen } from './SetListen';
 import { SetTalk } from './SetTalk';
 import { Sms } from './Sms';

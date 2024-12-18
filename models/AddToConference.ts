@@ -29,6 +29,7 @@ import { Reject } from './Reject';
 import { RemoveFromConference } from './RemoveFromConference';
 import { Say } from './Say';
 import { SendDigits } from './SendDigits';
+import { SetDTMFPassThrough } from './SetDTMFPassThrough';
 import { SetListen } from './SetListen';
 import { SetTalk } from './SetTalk';
 import { Sms } from './Sms';
@@ -59,6 +60,7 @@ interface ArgumentsType {
     'notificationUrl'?: string;
     'startConfOnEnter'?: boolean;
     'talk'?: boolean;
+    'dtmfPassThrough'?: boolean;
 }
 export class AddToConference extends PerclCommand {
     /**
@@ -97,6 +99,10 @@ export class AddToConference extends PerclCommand {
     * If `true`, the Participant joins the Conference with talk privileges. This may be modified later via the REST API or `SetTalk` PerCL command. 
     */
     'talk'?: boolean;
+    /**
+    * If `true`, the Participant joins the Conference with dtmfPassThrough privileges. This may be modified later via the REST API or `SetDTMFPassThrough` PerCL command. 
+    */
+    'dtmfPassThrough'?: boolean;
 
     static readonly discriminator: string | undefined = "command";
 
@@ -176,6 +182,15 @@ export class AddToConference extends PerclCommand {
         {
             "name": "talk",
             "baseName": "talk",
+            "type": "boolean",
+            "format": "",
+
+            
+            "defaultValue": undefined
+        },
+        {
+            "name": "dtmfPassThrough",
+            "baseName": "dtmfPassThrough",
             "type": "boolean",
             "format": "",
 

@@ -26,9 +26,10 @@ import { PlayEarlyMedia } from './PlayEarlyMedia';
 import { RecordUtterance } from './RecordUtterance';
 import { Redirect } from './Redirect';
 import { Reject } from './Reject';
+import { RemoveFromConference } from './RemoveFromConference';
 import { Say } from './Say';
 import { SendDigits } from './SendDigits';
-import { SetDTMFPassThrough } from './SetDTMFPassThrough';
+import { SetDTMFPassThroughAllOf } from './SetDTMFPassThroughAllOf';
 import { SetListen } from './SetListen';
 import { SetTalk } from './SetTalk';
 import { Sms } from './Sms';
@@ -39,7 +40,7 @@ import { Unpark } from './Unpark';
 import { HttpFile } from '../http/http';
 
 /**
-* The `RemoveFromConference` command removes a Participant from a Conference but does not hang up. Instead, the Call is simply unbridged and what happens next with the Call is determined by the PerCL returned in response to the `leaveConferenceUrl` attribute.
+* The `SetDTMFPassThrough` command enables or disables the dtmfPassThrough privilege for this Conference Participant. If 'true', DTMFs will be passed through from this Participant to all other Participants in the Conference
 */
 
 interface AttributeType {
@@ -50,21 +51,34 @@ interface AttributeType {
     defaultValue: any
 }
 interface ArgumentsType {
+    'dtmfPassThrough'?: boolean;
 }
-export class RemoveFromConference extends PerclCommand {
+export class SetDTMFPassThrough extends PerclCommand {
+    /**
+    * Specifying `false` mutes the Participant's dtmf audio.
+    */
+    'dtmfPassThrough'?: boolean;
 
     static readonly discriminator: string | undefined = "command";
 
     static readonly attributeTypeMap: AttributeType[] = [
-    ];
+        {
+            "name": "dtmfPassThrough",
+            "baseName": "dtmfPassThrough",
+            "type": "boolean",
+            "format": "",
+
+            
+            "defaultValue": undefined
+        }    ];
 
     static getAttributeTypeMap(): AttributeType[] {
-        return super.getAttributeTypeMap().concat(RemoveFromConference.attributeTypeMap);
+        return super.getAttributeTypeMap().concat(SetDTMFPassThrough.attributeTypeMap);
     }
 
     public constructor(args: ArgumentsType) {
-        super({ command: "RemoveFromConference" });
-        const preparedArgs = RemoveFromConference.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
+        super({ command: "SetDTMFPassThrough" });
+        const preparedArgs = SetDTMFPassThrough.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
             
             const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
             

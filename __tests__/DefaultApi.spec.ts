@@ -278,7 +278,8 @@ describe('DefaultAPI', () => {
         const conferenceId = "conferenceId_example"
         const talk = true
         const listen = true
-        let data = await apiInstance.listParticipants(conferenceId, talk, listen )       
+        const dtmfPassThrough = true
+        let data = await apiInstance.listParticipants(conferenceId, talk, listen, dtmfPassThrough )       
         expect(data).toBeInstanceOf(ConferenceParticipantList)
     });
 
