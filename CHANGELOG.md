@@ -9,6 +9,16 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 None
 
+<a name="3.10.0"></a>
+
+## [3.10.0] - 2024-12-17
+
+### Added
+
+- Use latest spec updates
+- mediaUrls are nullable
+- Add SetDTMFPassThrough command
+
 <a name="3.9.0"></a>
 
 ## [3.9.0] - 2024-10-08
