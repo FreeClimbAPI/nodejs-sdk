@@ -10,112 +10,86 @@
  * Do not edit the class manually.
  */
 
-import { AddToConference } from './AddToConference';
-import { CreateConference } from './CreateConference';
-import { Dequeue } from './Dequeue';
-import { Enqueue } from './Enqueue';
-import { GetDigits } from './GetDigits';
-import { GetSpeech } from './GetSpeech';
-import { Hangup } from './Hangup';
-import { OutDial } from './OutDial';
-import { Park } from './Park';
-import { Pause } from './Pause';
-import { PerclCommand } from './PerclCommand';
-import { Play } from './Play';
-import { PlayEarlyMedia } from './PlayEarlyMedia';
-import { RecordUtterance } from './RecordUtterance';
-import { Redirect } from './Redirect';
-import { Reject } from './Reject';
-import { RemoveFromConference } from './RemoveFromConference';
-import { Say } from './Say';
-import { SendDigitsAllOf } from './SendDigitsAllOf';
-import { SetDTMFPassThrough } from './SetDTMFPassThrough';
-import { SetListen } from './SetListen';
-import { SetTalk } from './SetTalk';
-import { Sms } from './Sms';
-import { StartRecordCall } from './StartRecordCall';
-import { TerminateConference } from './TerminateConference';
-import { TranscribeUtterance } from './TranscribeUtterance';
-import { Unpark } from './Unpark';
-import { HttpFile } from '../http/http';
+import { PerclCommand } from "./../models/PerclCommand";
+import { HttpFile } from "../http/http";
 
 /**
-* The `SendDigits` command plays DTMF tones on a live Call. This is useful for navigating through IVR menus or dialing extensions.
-*/
+ * The `SendDigits` command plays DTMF tones on a live Call. This is useful for navigating through IVR menus or dialing extensions.
+ */
 
 interface AttributeType {
-    name: string
-    baseName: string
-    type: string
-    format: string
-    defaultValue: any
+  name: string;
+  baseName: string;
+  type: string;
+  format: string;
+  defaultValue: any;
 }
 interface ArgumentsType {
-    'digits': string;
-    'pauseMs'?: number;
-    'privacyMode'?: boolean;
+  digits: string;
+  pauseMs?: number;
+  privacyMode?: boolean;
 }
 export class SendDigits extends PerclCommand {
-    /**
-    * String containing the digits to be played. The string cannot be empty and can include any digit, plus `#`, or `*`, and allows embedding specification for delay or pause between the output of individual digits.
-    */
-    'digits': string;
-    /**
-    * Pause between digits in milliseconds. Valid values are 100-1000 milliseconds and will be adjusted by FreeClimb to satisfy the constraint.
-    */
-    'pauseMs'?: number;
-    /**
-    * Parameter `privacyMode` will not log the `text` as required by PCI compliance.
-    */
-    'privacyMode'?: boolean;
+  /**
+   * String containing the digits to be played. The string cannot be empty and can include any digit, plus `#`, or `*`, and allows embedding specification for delay or pause between the output of individual digits.
+   */
+  "digits": string;
+  /**
+   * Pause between digits in milliseconds. Valid values are 100-1000 milliseconds and will be adjusted by FreeClimb to satisfy the constraint.
+   */
+  "pauseMs"?: number;
+  /**
+   * Parameter `privacyMode` will not log the `text` as required by PCI compliance.
+   */
+  "privacyMode"?: boolean;
 
-    static readonly discriminator: string | undefined = "command";
+  static readonly discriminator: string | undefined = "command";
 
-    static readonly attributeTypeMap: AttributeType[] = [
-        {
-            "name": "digits",
-            "baseName": "digits",
-            "type": "string",
-            "format": "",
+  static readonly attributeTypeMap: AttributeType[] = [
+    {
+      name: "digits",
+      baseName: "digits",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "pauseMs",
-            "baseName": "pauseMs",
-            "type": "number",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "pauseMs",
+      baseName: "pauseMs",
+      type: "number",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "privacyMode",
-            "baseName": "privacyMode",
-            "type": "boolean",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "privacyMode",
+      baseName: "privacyMode",
+      type: "boolean",
+      format: "",
 
-            
-            "defaultValue": undefined
-        }    ];
+      defaultValue: undefined,
+    },
+  ];
 
-    static getAttributeTypeMap(): AttributeType[] {
-        return super.getAttributeTypeMap().concat(SendDigits.attributeTypeMap);
+  static getAttributeTypeMap(): AttributeType[] {
+    return super.getAttributeTypeMap().concat(SendDigits.attributeTypeMap);
+  }
+  public constructor(args: ArgumentsType) {
+    super({ command: "SendDigits" });
+    const assign = <T>(attribute: keyof ArgumentsType): T => {
+      return (args[attribute] ??
+        SendDigits.attributeTypeMap.find((attr) => attr.name === attribute)
+          ?.defaultValue) as T;
+    };
+    if (args["digits"]) {
+      this["digits"] = assign<string>("digits");
     }
-
-    public constructor(args: ArgumentsType) {
-        super({ command: "SendDigits" });
-        const preparedArgs = SendDigits.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
-            
-            const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
-            
-            if (val !== undefined) {
-                acc[attr.name as keyof ArgumentsType] = val
-            }
-            return acc
-        }, {})
-        Object.assign(this, preparedArgs)
+    if (args["pauseMs"]) {
+      this["pauseMs"] = assign<number>("pauseMs");
     }
+    if (args["privacyMode"]) {
+      this["privacyMode"] = assign<boolean>("privacyMode");
+    }
+  }
 }
-

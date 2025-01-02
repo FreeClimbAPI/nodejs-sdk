@@ -10,51 +10,47 @@
  * Do not edit the class manually.
  */
 
-import { UpdateCallRequestStatus } from './UpdateCallRequestStatus';
-import { HttpFile } from '../http/http';
-
+import { UpdateCallRequestStatus } from "./../models/UpdateCallRequestStatus";
+import { HttpFile } from "../http/http";
 
 interface AttributeType {
-    name: string
-    baseName: string
-    type: string
-    format: string
-    defaultValue: any
+  name: string;
+  baseName: string;
+  type: string;
+  format: string;
+  defaultValue: any;
 }
 interface ArgumentsType {
-    'status': UpdateCallRequestStatus;
+  status: UpdateCallRequestStatus;
 }
 export class UpdateCallRequest {
-    'status': UpdateCallRequestStatus;
+  "status": UpdateCallRequestStatus;
 
-    static readonly discriminator: string | undefined = undefined;
+  static readonly discriminator: string | undefined = undefined;
 
-    static readonly attributeTypeMap: AttributeType[] = [
-        {
-            "name": "status",
-            "baseName": "status",
-            "type": "UpdateCallRequestStatus",
-            "format": "",
+  static readonly attributeTypeMap: AttributeType[] = [
+    {
+      name: "status",
+      baseName: "status",
+      type: "UpdateCallRequestStatus",
+      format: "",
 
-            
-            "defaultValue": undefined
-        }    ];
+      defaultValue: undefined,
+    },
+  ];
 
-    static getAttributeTypeMap(): AttributeType[] {
-        return UpdateCallRequest.attributeTypeMap;
+  static getAttributeTypeMap(): AttributeType[] {
+    return UpdateCallRequest.attributeTypeMap;
+  }
+  public constructor(args: ArgumentsType) {
+    const assign = <T>(attribute: keyof ArgumentsType): T => {
+      return (args[attribute] ??
+        UpdateCallRequest.attributeTypeMap.find(
+          (attr) => attr.name === attribute,
+        )?.defaultValue) as T;
+    };
+    if (args["status"]) {
+      this["status"] = assign<UpdateCallRequestStatus>("status");
     }
-
-    public constructor(args: ArgumentsType) {
-        const preparedArgs = UpdateCallRequest.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
-            
-            const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
-            
-            if (val !== undefined) {
-                acc[attr.name as keyof ArgumentsType] = val
-            }
-            return acc
-        }, {})
-        Object.assign(this, preparedArgs)
-    }
+  }
 }
-

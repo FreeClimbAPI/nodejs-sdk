@@ -10,15 +10,12 @@
  * Do not edit the class manually.
  */
 
-import { HttpFile } from '../http/http';
+import { HttpFile } from "../http/http";
 
 /**
-* Either `canceled` or `completed`.  Specifying `canceled` attempts to hang up calls that are queued without affecting calls already in progress. Specifying `completed` attempts to hang up a call already in progress.
-*/
+ * Either `canceled` or `completed`.  Specifying `canceled` attempts to hang up calls that are queued without affecting calls already in progress. Specifying `completed` attempts to hang up a call already in progress.
+ */
 export enum UpdateCallRequestStatus {
-
-    CANCELED = 'canceled',
-    COMPLETED = 'completed'
+  CANCELED = "canceled",
+  COMPLETED = "completed",
 }
-
-

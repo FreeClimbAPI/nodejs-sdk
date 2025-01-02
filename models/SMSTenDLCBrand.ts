@@ -10,536 +10,528 @@
  * Do not edit the class manually.
  */
 
-import { HttpFile } from '../http/http';
+import { SMSTenDLCBrandAltBusinessIdType } from "./../models/SMSTenDLCBrandAltBusinessIdType";
+import { SMSTenDLCBrandEntityType } from "./../models/SMSTenDLCBrandEntityType";
+import { SMSTenDLCBrandIdentityStatus } from "./../models/SMSTenDLCBrandIdentityStatus";
+import { SMSTenDLCBrandRelationship } from "./../models/SMSTenDLCBrandRelationship";
+import { SMSTenDLCBrandStockExchange } from "./../models/SMSTenDLCBrandStockExchange";
+import { HttpFile } from "../http/http";
 
 /**
-* A brand is a business identity behind the campaign.
-*/
-export enum SMSTenDLCBrandEntityTypeEnum {
-
-    PRIVATE_PROFIT = 'PRIVATE_PROFIT',
-    PUBLIC_PROFIT = 'PUBLIC_PROFIT',
-    NON_PROFIT = 'NON_PROFIT',
-    GOVERNMENT = 'GOVERNMENT',
-    SOLE_PROPRIETOR = 'SOLE_PROPRIETOR'
-}
-export enum SMSTenDLCBrandStockExchangeEnum {
-
-    NONE = 'NONE',
-    NASDAQ = 'NASDAQ',
-    NYSE = 'NYSE',
-    AMEX = 'AMEX',
-    AMX = 'AMX',
-    ASX = 'ASX',
-    B3 = 'B3',
-    BME = 'BME',
-    BSE = 'BSE',
-    FRA = 'FRA',
-    ICEX = 'ICEX',
-    JPX = 'JPX',
-    JSE = 'JSE',
-    KRX = 'KRX',
-    LON = 'LON',
-    NSE = 'NSE',
-    OMX = 'OMX',
-    SEHK = 'SEHK',
-    SGX = 'SGX',
-    SSE = 'SSE',
-    STO = 'STO',
-    SWX = 'SWX',
-    SZSE = 'SZSE',
-    TSX = 'TSX',
-    TWSE = 'TWSE',
-    VSE = 'VSE',
-    OTHER = 'OTHER'
-}
-export enum SMSTenDLCBrandBrandRelationshipEnum {
-
-    BASIC_ACCOUNT = 'BASIC_ACCOUNT',
-    SMALL_ACCOUNT = 'SMALL_ACCOUNT',
-    MEDIUM_ACCOUNT = 'MEDIUM_ACCOUNT',
-    LARGE_ACCOUNT = 'LARGE_ACCOUNT',
-    KEY_ACCOUNT = 'KEY_ACCOUNT'
-}
-export enum SMSTenDLCBrandAltBusinessIdTypeEnum {
-
-    NONE = 'NONE',
-    DUNS = 'DUNS',
-    GIIN = 'GIIN',
-    LEI = 'LEI'
-}
-export enum SMSTenDLCBrandIdentityStatusEnum {
-
-    SELF_DECLARED = 'SELF_DECLARED',
-    UNVERIFIED = 'UNVERIFIED',
-    VERIFIED = 'VERIFIED',
-    VETTED_VERIFIED = 'VETTED_VERIFIED'
-}
+ * A brand is a business identity behind the campaign.
+ */
 
 interface AttributeType {
-    name: string
-    baseName: string
-    type: string
-    format: string
-    defaultValue: any
+  name: string;
+  baseName: string;
+  type: string;
+  format: string;
+  defaultValue: any;
 }
 interface ArgumentsType {
-    'accountId'?: string;
-    'entityType': SMSTenDLCBrandEntityTypeEnum;
-    'cspId'?: string;
-    'brandId'?: string;
-    'firstName'?: string;
-    'lastName'?: string;
-    'displayName': string;
-    'companyName'?: string;
-    'ein'?: string;
-    'einIssuingCountry'?: string;
-    'phone': string;
-    'street'?: string;
-    'city'?: string;
-    'state'?: string;
-    'postalCode'?: string;
-    'country': string;
-    'email': string;
-    'stockSymbol'?: string;
-    'stockExchange'?: SMSTenDLCBrandStockExchangeEnum;
-    'ipAddress'?: string;
-    'website'?: string;
-    'brandRelationship': SMSTenDLCBrandBrandRelationshipEnum;
-    'vertical': string;
-    'altBusinessId'?: string;
-    'altBusinessIdType'?: SMSTenDLCBrandAltBusinessIdTypeEnum;
-    'universalEin'?: string;
-    'referenceId'?: string;
-    'optionalAttributes'?: { [key: string]: any; };
-    'mock': boolean;
-    'identityStatus': SMSTenDLCBrandIdentityStatusEnum;
-    'createDate'?: Date;
+  accountId?: string;
+  entityType: SMSTenDLCBrandEntityType;
+  cspId?: string;
+  brandId?: string;
+  firstName?: string;
+  lastName?: string;
+  displayName: string;
+  companyName?: string;
+  ein?: string;
+  einIssuingCountry?: string;
+  phone: string;
+  street?: string;
+  city?: string;
+  state?: string;
+  postalCode?: string;
+  country: string;
+  email: string;
+  stockSymbol?: string;
+  stockExchange?: SMSTenDLCBrandStockExchange;
+  ipAddress?: string;
+  website?: string;
+  brandRelationship: SMSTenDLCBrandRelationship;
+  vertical: string;
+  altBusinessId?: string;
+  altBusinessIdType?: SMSTenDLCBrandAltBusinessIdType;
+  universalEin?: string;
+  referenceId?: string;
+  optionalAttributes?: { [key: string]: any };
+  mock: boolean;
+  identityStatus: SMSTenDLCBrandIdentityStatus;
+  createDate?: Date;
 }
 export class SMSTenDLCBrand {
-    /**
-    * ID of the account that created this Queue.
-    */
-    'accountId'?: string;
-    /**
-    * Entity type behind the brand. This is the form of business establishment.
-    */
-    'entityType': SMSTenDLCBrandEntityTypeEnum;
-    /**
-    * Unique identifier assigned to the csp by the registry.
-    */
-    'cspId'?: string;
-    /**
-    * Unique identifier assigned to the brand by the registry.
-    */
-    'brandId'?: string;
-    /**
-    * First or given name. 
-    */
-    'firstName'?: string;
-    /**
-    * Last or Surname.
-    */
-    'lastName'?: string;
-    /**
-    * Display or marketing name of the brand.
-    */
-    'displayName': string;
-    /**
-    * (Required for Non-profit/private/public) Legal company name.
-    */
-    'companyName'?: string;
-    /**
-    * (Required for Non-profit) Government assigned corporate tax ID. EIN is 9-digits in U.S.
-    */
-    'ein'?: string;
-    /**
-    * ISO2 2 characters country code. Example: US - United States
-    */
-    'einIssuingCountry'?: string;
-    /**
-    * Valid phone number in e.164 international format.
-    */
-    'phone': string;
-    /**
-    * Street number and name.
-    */
-    'street'?: string;
-    /**
-    * City name
-    */
-    'city'?: string;
-    /**
-    * State. Must be 2 letters code for United States.
-    */
-    'state'?: string;
-    /**
-    * Postal codes. Use 5 digit zipcode for United States
-    */
-    'postalCode'?: string;
-    /**
-    * ISO2 2 characters country code. Example: US - United States
-    */
-    'country': string;
-    /**
-    * Valid email address of brand support contact.
-    */
-    'email': string;
-    /**
-    * (Required for public company) stock symbol.
-    */
-    'stockSymbol'?: string;
-    /**
-    * (Required for public company) stock exchange.
-    */
-    'stockExchange'?: SMSTenDLCBrandStockExchangeEnum;
-    /**
-    * IP address of the browser requesting to create brand identity.
-    */
-    'ipAddress'?: string;
-    /**
-    * Brand website URL.
-    */
-    'website'?: string;
-    /**
-    * Brand relationship to the CSP
-    */
-    'brandRelationship': SMSTenDLCBrandBrandRelationshipEnum;
-    /**
-    * Vertical or industry segment of the brand.
-    */
-    'vertical': string;
-    /**
-    * Alternate business identifier such as DUNS, LEI, or GIIN
-    */
-    'altBusinessId'?: string;
-    /**
-    * The type of the Alternative business identifier
-    */
-    'altBusinessIdType'?: SMSTenDLCBrandAltBusinessIdTypeEnum;
-    /**
-    * Universal EIN of Brand, Read Only.
-    */
-    'universalEin'?: string;
-    /**
-    * Caller supplied brand reference ID. If supplied, the value must be unique across all submitted brands. Can be used to prevent duplicate brand registrations.
-    */
-    'referenceId'?: string;
-    /**
-    * Optional brand attributes. Please refer to GET /enum/optionalAttributeNames for dictionary of optional attribute names.
-    */
-    'optionalAttributes'?: { [key: string]: any; };
-    /**
-    * Test brand.
-    */
-    'mock': boolean;
-    /**
-    * TCR assessment of the brand identification status.
-    */
-    'identityStatus': SMSTenDLCBrandIdentityStatusEnum;
-    /**
-    * Unix timestamp when brand was created.
-    */
-    'createDate'?: Date;
+  /**
+   * ID of the account that created this Queue.
+   */
+  "accountId"?: string;
+  "entityType": SMSTenDLCBrandEntityType;
+  /**
+   * Unique identifier assigned to the csp by the registry.
+   */
+  "cspId"?: string;
+  /**
+   * Unique identifier assigned to the brand by the registry.
+   */
+  "brandId"?: string;
+  /**
+   * First or given name.
+   */
+  "firstName"?: string;
+  /**
+   * Last or Surname.
+   */
+  "lastName"?: string;
+  /**
+   * Display or marketing name of the brand.
+   */
+  "displayName": string;
+  /**
+   * (Required for Non-profit/private/public) Legal company name.
+   */
+  "companyName"?: string;
+  /**
+   * (Required for Non-profit) Government assigned corporate tax ID. EIN is 9-digits in U.S.
+   */
+  "ein"?: string;
+  /**
+   * ISO2 2 characters country code. Example: US - United States
+   */
+  "einIssuingCountry"?: string;
+  /**
+   * Valid phone number in e.164 international format.
+   */
+  "phone": string;
+  /**
+   * Street number and name.
+   */
+  "street"?: string;
+  /**
+   * City name
+   */
+  "city"?: string;
+  /**
+   * State. Must be 2 letters code for United States.
+   */
+  "state"?: string;
+  /**
+   * Postal codes. Use 5 digit zipcode for United States
+   */
+  "postalCode"?: string;
+  /**
+   * ISO2 2 characters country code. Example: US - United States
+   */
+  "country": string;
+  /**
+   * Valid email address of brand support contact.
+   */
+  "email": string;
+  /**
+   * (Required for public company) stock symbol.
+   */
+  "stockSymbol"?: string;
+  "stockExchange"?: SMSTenDLCBrandStockExchange;
+  /**
+   * IP address of the browser requesting to create brand identity.
+   */
+  "ipAddress"?: string;
+  /**
+   * Brand website URL.
+   */
+  "website"?: string;
+  "brandRelationship": SMSTenDLCBrandRelationship;
+  /**
+   * Vertical or industry segment of the brand.
+   */
+  "vertical": string;
+  /**
+   * Alternate business identifier such as DUNS, LEI, or GIIN
+   */
+  "altBusinessId"?: string;
+  "altBusinessIdType"?: SMSTenDLCBrandAltBusinessIdType;
+  /**
+   * Universal EIN of Brand, Read Only.
+   */
+  "universalEin"?: string;
+  /**
+   * Caller supplied brand reference ID. If supplied, the value must be unique across all submitted brands. Can be used to prevent duplicate brand registrations.
+   */
+  "referenceId"?: string;
+  /**
+   * Optional brand attributes. Please refer to GET /enum/optionalAttributeNames for dictionary of optional attribute names.
+   */
+  "optionalAttributes"?: { [key: string]: any };
+  /**
+   * Test brand.
+   */
+  "mock": boolean;
+  "identityStatus": SMSTenDLCBrandIdentityStatus;
+  /**
+   * Unix timestamp when brand was created.
+   */
+  "createDate"?: Date;
 
-    static readonly discriminator: string | undefined = undefined;
+  static readonly discriminator: string | undefined = undefined;
 
-    static readonly attributeTypeMap: AttributeType[] = [
-        {
-            "name": "accountId",
-            "baseName": "accountId",
-            "type": "string",
-            "format": "",
+  static readonly attributeTypeMap: AttributeType[] = [
+    {
+      name: "accountId",
+      baseName: "accountId",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "entityType",
-            "baseName": "entityType",
-            "type": "SMSTenDLCBrandEntityTypeEnum",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "entityType",
+      baseName: "entityType",
+      type: "SMSTenDLCBrandEntityType",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "cspId",
-            "baseName": "cspId",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "cspId",
+      baseName: "cspId",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "brandId",
-            "baseName": "brandId",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "brandId",
+      baseName: "brandId",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "firstName",
-            "baseName": "firstName",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "firstName",
+      baseName: "firstName",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "lastName",
-            "baseName": "lastName",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "lastName",
+      baseName: "lastName",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "displayName",
-            "baseName": "displayName",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "displayName",
+      baseName: "displayName",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "companyName",
-            "baseName": "companyName",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "companyName",
+      baseName: "companyName",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "ein",
-            "baseName": "ein",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "ein",
+      baseName: "ein",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "einIssuingCountry",
-            "baseName": "einIssuingCountry",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "einIssuingCountry",
+      baseName: "einIssuingCountry",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "phone",
-            "baseName": "phone",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "phone",
+      baseName: "phone",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "street",
-            "baseName": "street",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "street",
+      baseName: "street",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "city",
-            "baseName": "city",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "city",
+      baseName: "city",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "state",
-            "baseName": "state",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "state",
+      baseName: "state",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "postalCode",
-            "baseName": "postalCode",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "postalCode",
+      baseName: "postalCode",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "country",
-            "baseName": "country",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "country",
+      baseName: "country",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "email",
-            "baseName": "email",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "email",
+      baseName: "email",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "stockSymbol",
-            "baseName": "stockSymbol",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "stockSymbol",
+      baseName: "stockSymbol",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "stockExchange",
-            "baseName": "stockExchange",
-            "type": "SMSTenDLCBrandStockExchangeEnum",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "stockExchange",
+      baseName: "stockExchange",
+      type: "SMSTenDLCBrandStockExchange",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "ipAddress",
-            "baseName": "ipAddress",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "ipAddress",
+      baseName: "ipAddress",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "website",
-            "baseName": "website",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "website",
+      baseName: "website",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "brandRelationship",
-            "baseName": "brandRelationship",
-            "type": "SMSTenDLCBrandBrandRelationshipEnum",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "brandRelationship",
+      baseName: "brandRelationship",
+      type: "SMSTenDLCBrandRelationship",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "vertical",
-            "baseName": "vertical",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "vertical",
+      baseName: "vertical",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "altBusinessId",
-            "baseName": "altBusinessId",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "altBusinessId",
+      baseName: "altBusinessId",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "altBusinessIdType",
-            "baseName": "altBusinessIdType",
-            "type": "SMSTenDLCBrandAltBusinessIdTypeEnum",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "altBusinessIdType",
+      baseName: "altBusinessIdType",
+      type: "SMSTenDLCBrandAltBusinessIdType",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "universalEin",
-            "baseName": "universalEin",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "universalEin",
+      baseName: "universalEin",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "referenceId",
-            "baseName": "referenceId",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "referenceId",
+      baseName: "referenceId",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "optionalAttributes",
-            "baseName": "optionalAttributes",
-            "type": "{ [key: string]: any; }",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "optionalAttributes",
+      baseName: "optionalAttributes",
+      type: "{ [key: string]: any; }",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "mock",
-            "baseName": "mock",
-            "type": "boolean",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "mock",
+      baseName: "mock",
+      type: "boolean",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "identityStatus",
-            "baseName": "identityStatus",
-            "type": "SMSTenDLCBrandIdentityStatusEnum",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "identityStatus",
+      baseName: "identityStatus",
+      type: "SMSTenDLCBrandIdentityStatus",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "createDate",
-            "baseName": "createDate",
-            "type": "Date",
-            "format": "date-time",
+      defaultValue: undefined,
+    },
+    {
+      name: "createDate",
+      baseName: "createDate",
+      type: "Date",
+      format: "date-time",
 
-            
-            "defaultValue": undefined
-        }    ];
+      defaultValue: undefined,
+    },
+  ];
 
-    static getAttributeTypeMap(): AttributeType[] {
-        return SMSTenDLCBrand.attributeTypeMap;
+  static getAttributeTypeMap(): AttributeType[] {
+    return SMSTenDLCBrand.attributeTypeMap;
+  }
+  public constructor(args: ArgumentsType) {
+    const assign = <T>(attribute: keyof ArgumentsType): T => {
+      return (args[attribute] ??
+        SMSTenDLCBrand.attributeTypeMap.find((attr) => attr.name === attribute)
+          ?.defaultValue) as T;
+    };
+    if (args["accountId"]) {
+      this["accountId"] = assign<string>("accountId");
     }
-
-    public constructor(args: ArgumentsType) {
-        const preparedArgs = SMSTenDLCBrand.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
-            
-            const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
-            
-            if (val !== undefined) {
-                acc[attr.name as keyof ArgumentsType] = val
-            }
-            return acc
-        }, {})
-        Object.assign(this, preparedArgs)
+    if (args["entityType"]) {
+      this["entityType"] = assign<SMSTenDLCBrandEntityType>("entityType");
     }
+    if (args["cspId"]) {
+      this["cspId"] = assign<string>("cspId");
+    }
+    if (args["brandId"]) {
+      this["brandId"] = assign<string>("brandId");
+    }
+    if (args["firstName"]) {
+      this["firstName"] = assign<string>("firstName");
+    }
+    if (args["lastName"]) {
+      this["lastName"] = assign<string>("lastName");
+    }
+    if (args["displayName"]) {
+      this["displayName"] = assign<string>("displayName");
+    }
+    if (args["companyName"]) {
+      this["companyName"] = assign<string>("companyName");
+    }
+    if (args["ein"]) {
+      this["ein"] = assign<string>("ein");
+    }
+    if (args["einIssuingCountry"]) {
+      this["einIssuingCountry"] = assign<string>("einIssuingCountry");
+    }
+    if (args["phone"]) {
+      this["phone"] = assign<string>("phone");
+    }
+    if (args["street"]) {
+      this["street"] = assign<string>("street");
+    }
+    if (args["city"]) {
+      this["city"] = assign<string>("city");
+    }
+    if (args["state"]) {
+      this["state"] = assign<string>("state");
+    }
+    if (args["postalCode"]) {
+      this["postalCode"] = assign<string>("postalCode");
+    }
+    if (args["country"]) {
+      this["country"] = assign<string>("country");
+    }
+    if (args["email"]) {
+      this["email"] = assign<string>("email");
+    }
+    if (args["stockSymbol"]) {
+      this["stockSymbol"] = assign<string>("stockSymbol");
+    }
+    if (args["stockExchange"]) {
+      this["stockExchange"] =
+        assign<SMSTenDLCBrandStockExchange>("stockExchange");
+    }
+    if (args["ipAddress"]) {
+      this["ipAddress"] = assign<string>("ipAddress");
+    }
+    if (args["website"]) {
+      this["website"] = assign<string>("website");
+    }
+    if (args["brandRelationship"]) {
+      this["brandRelationship"] =
+        assign<SMSTenDLCBrandRelationship>("brandRelationship");
+    }
+    if (args["vertical"]) {
+      this["vertical"] = assign<string>("vertical");
+    }
+    if (args["altBusinessId"]) {
+      this["altBusinessId"] = assign<string>("altBusinessId");
+    }
+    if (args["altBusinessIdType"]) {
+      this["altBusinessIdType"] =
+        assign<SMSTenDLCBrandAltBusinessIdType>("altBusinessIdType");
+    }
+    if (args["universalEin"]) {
+      this["universalEin"] = assign<string>("universalEin");
+    }
+    if (args["referenceId"]) {
+      this["referenceId"] = assign<string>("referenceId");
+    }
+    if (args["optionalAttributes"]) {
+      this["optionalAttributes"] = assign<{ [key: string]: any }>(
+        "optionalAttributes",
+      );
+    }
+    if (args["mock"]) {
+      this["mock"] = assign<boolean>("mock");
+    }
+    if (args["identityStatus"]) {
+      this["identityStatus"] =
+        assign<SMSTenDLCBrandIdentityStatus>("identityStatus");
+    }
+    if (args["createDate"]) {
+      this["createDate"] = assign<Date>("createDate");
+    }
+  }
 }
-

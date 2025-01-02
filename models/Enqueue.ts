@@ -10,126 +10,102 @@
  * Do not edit the class manually.
  */
 
-import { AddToConference } from './AddToConference';
-import { CreateConference } from './CreateConference';
-import { Dequeue } from './Dequeue';
-import { EnqueueAllOf } from './EnqueueAllOf';
-import { GetDigits } from './GetDigits';
-import { GetSpeech } from './GetSpeech';
-import { Hangup } from './Hangup';
-import { OutDial } from './OutDial';
-import { Park } from './Park';
-import { Pause } from './Pause';
-import { PerclCommand } from './PerclCommand';
-import { Play } from './Play';
-import { PlayEarlyMedia } from './PlayEarlyMedia';
-import { RecordUtterance } from './RecordUtterance';
-import { Redirect } from './Redirect';
-import { Reject } from './Reject';
-import { RemoveFromConference } from './RemoveFromConference';
-import { Say } from './Say';
-import { SendDigits } from './SendDigits';
-import { SetDTMFPassThrough } from './SetDTMFPassThrough';
-import { SetListen } from './SetListen';
-import { SetTalk } from './SetTalk';
-import { Sms } from './Sms';
-import { StartRecordCall } from './StartRecordCall';
-import { TerminateConference } from './TerminateConference';
-import { TranscribeUtterance } from './TranscribeUtterance';
-import { Unpark } from './Unpark';
-import { HttpFile } from '../http/http';
+import { PerclCommand } from "./../models/PerclCommand";
+import { HttpFile } from "../http/http";
 
 /**
-* The `Enqueue` command adds the current Call to a call Queue. If the specified Queue does not exist, it is created and then the Call is added to it. The default maximum length of the queue is 100. This can be modified using the REST API.
-*/
+ * The `Enqueue` command adds the current Call to a call Queue. If the specified Queue does not exist, it is created and then the Call is added to it. The default maximum length of the queue is 100. This can be modified using the REST API.
+ */
 
 interface AttributeType {
-    name: string
-    baseName: string
-    type: string
-    format: string
-    defaultValue: any
+  name: string;
+  baseName: string;
+  type: string;
+  format: string;
+  defaultValue: any;
 }
 interface ArgumentsType {
-    'actionUrl': string;
-    'notificationUrl'?: string;
-    'queueId': string;
-    'waitUrl': string;
+  actionUrl: string;
+  notificationUrl?: string;
+  queueId: string;
+  waitUrl: string;
 }
 export class Enqueue extends PerclCommand {
-    /**
-    * A request is made to this URL when the Call leaves the Queue, which can occur if enqueue of the Call fails or when the call is dequeued via the `Dequeue` command, the REST API (POST to Queue Member resource), or the caller hangs up.
-    */
-    'actionUrl': string;
-    /**
-    * URL to be invoked when the call enters the queue. The request to the URL contains the standard request parameters.This is a notification only; any PerCL returned will be ignored.
-    */
-    'notificationUrl'?: string;
-    /**
-    * ID of the Queue to which to add the Call. If the Queue does not exist, it will be created. The ID must start with QU followed by 40 hex characters.
-    */
-    'queueId': string;
-    /**
-    * A request is made to this URL when the Call leaves the Queue, which can occur if enqueue of the Call fails or when the call is dequeued via the `Dequeue` command, the REST API (POST to Queue Member resource), or the caller hangs up.
-    */
-    'waitUrl': string;
+  /**
+   * A request is made to this URL when the Call leaves the Queue, which can occur if enqueue of the Call fails or when the call is dequeued via the `Dequeue` command, the REST API (POST to Queue Member resource), or the caller hangs up.
+   */
+  "actionUrl": string;
+  /**
+   * URL to be invoked when the call enters the queue. The request to the URL contains the standard request parameters.This is a notification only; any PerCL returned will be ignored.
+   */
+  "notificationUrl"?: string;
+  /**
+   * ID of the Queue to which to add the Call. If the Queue does not exist, it will be created. The ID must start with QU followed by 40 hex characters.
+   */
+  "queueId": string;
+  /**
+   * A request is made to this URL when the Call leaves the Queue, which can occur if enqueue of the Call fails or when the call is dequeued via the `Dequeue` command, the REST API (POST to Queue Member resource), or the caller hangs up.
+   */
+  "waitUrl": string;
 
-    static readonly discriminator: string | undefined = "command";
+  static readonly discriminator: string | undefined = "command";
 
-    static readonly attributeTypeMap: AttributeType[] = [
-        {
-            "name": "actionUrl",
-            "baseName": "actionUrl",
-            "type": "string",
-            "format": "",
+  static readonly attributeTypeMap: AttributeType[] = [
+    {
+      name: "actionUrl",
+      baseName: "actionUrl",
+      type: "string",
+      format: "uri",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "notificationUrl",
-            "baseName": "notificationUrl",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "notificationUrl",
+      baseName: "notificationUrl",
+      type: "string",
+      format: "uri",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "queueId",
-            "baseName": "queueId",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "queueId",
+      baseName: "queueId",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "waitUrl",
-            "baseName": "waitUrl",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "waitUrl",
+      baseName: "waitUrl",
+      type: "string",
+      format: "uri",
 
-            
-            "defaultValue": undefined
-        }    ];
+      defaultValue: undefined,
+    },
+  ];
 
-    static getAttributeTypeMap(): AttributeType[] {
-        return super.getAttributeTypeMap().concat(Enqueue.attributeTypeMap);
+  static getAttributeTypeMap(): AttributeType[] {
+    return super.getAttributeTypeMap().concat(Enqueue.attributeTypeMap);
+  }
+  public constructor(args: ArgumentsType) {
+    super({ command: "Enqueue" });
+    const assign = <T>(attribute: keyof ArgumentsType): T => {
+      return (args[attribute] ??
+        Enqueue.attributeTypeMap.find((attr) => attr.name === attribute)
+          ?.defaultValue) as T;
+    };
+    if (args["actionUrl"]) {
+      this["actionUrl"] = assign<string>("actionUrl");
     }
-
-    public constructor(args: ArgumentsType) {
-        super({ command: "Enqueue" });
-        const preparedArgs = Enqueue.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
-            
-            const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
-            
-            if (val !== undefined) {
-                acc[attr.name as keyof ArgumentsType] = val
-            }
-            return acc
-        }, {})
-        Object.assign(this, preparedArgs)
+    if (args["notificationUrl"]) {
+      this["notificationUrl"] = assign<string>("notificationUrl");
     }
+    if (args["queueId"]) {
+      this["queueId"] = assign<string>("queueId");
+    }
+    if (args["waitUrl"]) {
+      this["waitUrl"] = assign<string>("waitUrl");
+    }
+  }
 }
-

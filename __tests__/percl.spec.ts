@@ -46,7 +46,7 @@ describe("PerCL Smoke Test", () => {
             ],
           },
         },
-      ])
+      ]),
     );
   });
 });

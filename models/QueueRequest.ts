@@ -10,67 +10,64 @@
  * Do not edit the class manually.
  */
 
-import { HttpFile } from '../http/http';
-
+import { HttpFile } from "../http/http";
 
 interface AttributeType {
-    name: string
-    baseName: string
-    type: string
-    format: string
-    defaultValue: any
+  name: string;
+  baseName: string;
+  type: string;
+  format: string;
+  defaultValue: any;
 }
 interface ArgumentsType {
-    'alias'?: string;
-    'maxSize'?: number;
+  alias?: string;
+  maxSize?: number;
 }
 export class QueueRequest {
-    /**
-    * Description for this Queue. Max length is 64 characters.
-    */
-    'alias'?: string;
-    /**
-    * Maximum number of calls this queue can hold. Default is 100. Maximum is 1000. **Note:** Reducing the maxSize of a Queue causes the Queue to reject incoming requests until it shrinks below the new value of maxSize.
-    */
-    'maxSize'?: number;
+  /**
+   * Description for this Queue. Max length is 64 characters.
+   */
+  "alias"?: string;
+  /**
+   * Maximum number of calls this queue can hold. Default is 100. Maximum is 1000. **Note:** Reducing the maxSize of a Queue causes the Queue to reject incoming requests until it shrinks below the new value of maxSize.
+   */
+  "maxSize"?: number;
 
-    static readonly discriminator: string | undefined = undefined;
+  static readonly discriminator: string | undefined = undefined;
 
-    static readonly attributeTypeMap: AttributeType[] = [
-        {
-            "name": "alias",
-            "baseName": "alias",
-            "type": "string",
-            "format": "",
+  static readonly attributeTypeMap: AttributeType[] = [
+    {
+      name: "alias",
+      baseName: "alias",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "maxSize",
-            "baseName": "maxSize",
-            "type": "number",
-            "format": "int32",
+      defaultValue: undefined,
+    },
+    {
+      name: "maxSize",
+      baseName: "maxSize",
+      type: "number",
+      format: "int32",
 
-            
-            "defaultValue": 100
-        }    ];
+      defaultValue: 100,
+    },
+  ];
 
-    static getAttributeTypeMap(): AttributeType[] {
-        return QueueRequest.attributeTypeMap;
+  static getAttributeTypeMap(): AttributeType[] {
+    return QueueRequest.attributeTypeMap;
+  }
+  public constructor(args: ArgumentsType) {
+    const assign = <T>(attribute: keyof ArgumentsType): T => {
+      return (args[attribute] ??
+        QueueRequest.attributeTypeMap.find((attr) => attr.name === attribute)
+          ?.defaultValue) as T;
+    };
+    if (args["alias"]) {
+      this["alias"] = assign<string>("alias");
     }
-
-    public constructor(args: ArgumentsType) {
-        const preparedArgs = QueueRequest.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
-            
-            const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
-            
-            if (val !== undefined) {
-                acc[attr.name as keyof ArgumentsType] = val
-            }
-            return acc
-        }, {})
-        Object.assign(this, preparedArgs)
+    if (args["maxSize"]) {
+      this["maxSize"] = assign<number>("maxSize");
     }
+  }
 }
-

@@ -10,17 +10,14 @@
  * Do not edit the class manually.
  */
 
-import { HttpFile } from '../http/http';
+import { HttpFile } from "../http/http";
 
 /**
-* The status of the Conference. One of: creating, empty, populated, inProgress, or terminated.
-*/
+ * The status of the Conference. One of: creating, empty, populated, inProgress, or terminated.
+ */
 export enum ConferenceStatus {
-
-    EMPTY = 'empty',
-    POPULATED = 'populated',
-    IN_PROGRESS = 'inProgress',
-    TERMINATED = 'terminated'
+  EMPTY = "empty",
+  POPULATED = "populated",
+  IN_PROGRESS = "inProgress",
+  TERMINATED = "terminated",
 }
-
-

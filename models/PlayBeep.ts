@@ -10,17 +10,14 @@
  * Do not edit the class manually.
  */
 
-import { HttpFile } from '../http/http';
+import { HttpFile } from "../http/http";
 
 /**
-* Indicates whether to play a beep when a Participant enters or leaves the Conference. either `always`, `never`, `entryOnly`, or `exitOnly`. Leaving this unset will make conference default to `always` 
-*/
+ * Indicates whether to play a beep when a Participant enters or leaves the Conference. either `always`, `never`, `entryOnly`, or `exitOnly`. Leaving this unset will make conference default to `always`
+ */
 export enum PlayBeep {
-
-    ALWAYS = 'always',
-    NEVER = 'never',
-    ENTRY_ONLY = 'entryOnly',
-    EXIT_ONLY = 'exitOnly'
+  ALWAYS = "always",
+  NEVER = "never",
+  ENTRY_ONLY = "entryOnly",
+  EXIT_ONLY = "exitOnly",
 }
-
-

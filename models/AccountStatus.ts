@@ -10,16 +10,13 @@
  * Do not edit the class manually.
  */
 
-import { HttpFile } from '../http/http';
+import { HttpFile } from "../http/http";
 
 /**
-* The status of this account. It is one of: active, suspended, or closed.
-*/
+ * The status of this account. It is one of: active, suspended, or closed.
+ */
 export enum AccountStatus {
-
-    CLOSED = 'closed',
-    SUSPENDED = 'suspended',
-    ACTIVE = 'active'
+  CLOSED = "closed",
+  SUSPENDED = "suspended",
+  ACTIVE = "active",
 }
-
-

@@ -10,137 +10,120 @@
  * Do not edit the class manually.
  */
 
-import { AddToConference } from './AddToConference';
-import { CreateConference } from './CreateConference';
-import { Dequeue } from './Dequeue';
-import { Enqueue } from './Enqueue';
-import { GetDigits } from './GetDigits';
-import { GetSpeech } from './GetSpeech';
-import { Hangup } from './Hangup';
-import { OutDial } from './OutDial';
-import { Park } from './Park';
-import { Pause } from './Pause';
-import { PerclCommand } from './PerclCommand';
-import { Play } from './Play';
-import { PlayEarlyMedia } from './PlayEarlyMedia';
-import { RecordUtterance } from './RecordUtterance';
-import { Redirect } from './Redirect';
-import { Reject } from './Reject';
-import { RemoveFromConference } from './RemoveFromConference';
-import { Say } from './Say';
-import { SendDigits } from './SendDigits';
-import { SetDTMFPassThrough } from './SetDTMFPassThrough';
-import { SetListen } from './SetListen';
-import { SetTalk } from './SetTalk';
-import { Sms } from './Sms';
-import { StartRecordCall } from './StartRecordCall';
-import { TerminateConference } from './TerminateConference';
-import { TranscribeUtteranceAllOf } from './TranscribeUtteranceAllOf';
-import { TranscribeUtteranceAllOfRecord } from './TranscribeUtteranceAllOfRecord';
-import { Unpark } from './Unpark';
-import { HttpFile } from '../http/http';
+import { PerclCommand } from "./../models/PerclCommand";
+import { TranscribeUtteranceRecord } from "./../models/TranscribeUtteranceRecord";
+import { HttpFile } from "../http/http";
 
 /**
-* The `TranscribeUtterance` command transcribes the caller’s voice and returns transcription of the audio and optionally returns the recording of the audio transcribed.  `TranscribeUtterance` is blocking and is a terminal command. As such, the actionUrl property is required, and control of the Call picks up using the `PerCL` returned in response of the `actionUrl`. Recording and Transcription information is returned in the actionUrl request. If the reason this command ended was due to the call hanging up, any PerCL returned will not execute.
-*/
+ * The `TranscribeUtterance` command transcribes the caller’s voice and returns transcription of the audio and optionally returns the recording of the audio transcribed.  `TranscribeUtterance` is blocking and is a terminal command. As such, the actionUrl property is required, and control of the Call picks up using the `PerCL` returned in response of the `actionUrl`. Recording and Transcription information is returned in the actionUrl request. If the reason this command ended was due to the call hanging up, any PerCL returned will not execute.
+ */
 
 interface AttributeType {
-    name: string
-    baseName: string
-    type: string
-    format: string
-    defaultValue: any
+  name: string;
+  baseName: string;
+  type: string;
+  format: string;
+  defaultValue: any;
 }
 interface ArgumentsType {
-    'actionUrl': string;
-    'playBeep'?: boolean;
-    'record'?: TranscribeUtteranceAllOfRecord;
-    'privacyForLogging'?: boolean;
-    'privacyForRecording'?: boolean;
-    'prompts'?: Array<any>;
+  actionUrl: string;
+  playBeep?: boolean;
+  record?: TranscribeUtteranceRecord;
+  privacyForLogging?: boolean;
+  privacyForRecording?: boolean;
+  prompts?: Array<PerclCommand>;
 }
 export class TranscribeUtterance extends PerclCommand {
-    'actionUrl': string;
-    'playBeep'?: boolean;
-    'record'?: TranscribeUtteranceAllOfRecord;
-    'privacyForLogging'?: boolean;
-    'privacyForRecording'?: boolean;
-    'prompts'?: Array<any>;
+  "actionUrl": string;
+  "playBeep"?: boolean;
+  "record"?: TranscribeUtteranceRecord;
+  "privacyForLogging"?: boolean;
+  "privacyForRecording"?: boolean;
+  "prompts"?: Array<PerclCommand>;
 
-    static readonly discriminator: string | undefined = "command";
+  static readonly discriminator: string | undefined = "command";
 
-    static readonly attributeTypeMap: AttributeType[] = [
-        {
-            "name": "actionUrl",
-            "baseName": "actionUrl",
-            "type": "string",
-            "format": "",
+  static readonly attributeTypeMap: AttributeType[] = [
+    {
+      name: "actionUrl",
+      baseName: "actionUrl",
+      type: "string",
+      format: "uri",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "playBeep",
-            "baseName": "playBeep",
-            "type": "boolean",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "playBeep",
+      baseName: "playBeep",
+      type: "boolean",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "record",
-            "baseName": "record",
-            "type": "TranscribeUtteranceAllOfRecord",
-            "format": "",
+      defaultValue: false,
+    },
+    {
+      name: "record",
+      baseName: "record",
+      type: "TranscribeUtteranceRecord",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "privacyForLogging",
-            "baseName": "privacyForLogging",
-            "type": "boolean",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "privacyForLogging",
+      baseName: "privacyForLogging",
+      type: "boolean",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "privacyForRecording",
-            "baseName": "privacyForRecording",
-            "type": "boolean",
-            "format": "",
+      defaultValue: false,
+    },
+    {
+      name: "privacyForRecording",
+      baseName: "privacyForRecording",
+      type: "boolean",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "prompts",
-            "baseName": "prompts",
-            "type": "Array<any>",
-            "format": "",
+      defaultValue: false,
+    },
+    {
+      name: "prompts",
+      baseName: "prompts",
+      type: "Array<PerclCommand>",
+      format: "",
 
-            
-            "defaultValue": undefined
-        }    ];
+      defaultValue: undefined,
+    },
+  ];
 
-    static getAttributeTypeMap(): AttributeType[] {
-        return super.getAttributeTypeMap().concat(TranscribeUtterance.attributeTypeMap);
+  static getAttributeTypeMap(): AttributeType[] {
+    return super
+      .getAttributeTypeMap()
+      .concat(TranscribeUtterance.attributeTypeMap);
+  }
+  public constructor(args: ArgumentsType) {
+    super({ command: "TranscribeUtterance" });
+    const assign = <T>(attribute: keyof ArgumentsType): T => {
+      return (args[attribute] ??
+        TranscribeUtterance.attributeTypeMap.find(
+          (attr) => attr.name === attribute,
+        )?.defaultValue) as T;
+    };
+    if (args["actionUrl"]) {
+      this["actionUrl"] = assign<string>("actionUrl");
     }
-
-    public constructor(args: ArgumentsType) {
-        super({ command: "TranscribeUtterance" });
-        const preparedArgs = TranscribeUtterance.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
-            
-            const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
-            
-            if (val !== undefined) {
-                acc[attr.name as keyof ArgumentsType] = val
-            }
-            return acc
-        }, {})
-        Object.assign(this, preparedArgs)
+    if (args["playBeep"]) {
+      this["playBeep"] = assign<boolean>("playBeep");
     }
+    if (args["record"]) {
+      this["record"] = assign<TranscribeUtteranceRecord>("record");
+    }
+    if (args["privacyForLogging"]) {
+      this["privacyForLogging"] = assign<boolean>("privacyForLogging");
+    }
+    if (args["privacyForRecording"]) {
+      this["privacyForRecording"] = assign<boolean>("privacyForRecording");
+    }
+    if (args["prompts"]) {
+      this["prompts"] = assign<Array<PerclCommand>>("prompts");
+    }
+  }
 }
-

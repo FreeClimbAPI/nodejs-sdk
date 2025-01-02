@@ -10,208 +10,196 @@
  * Do not edit the class manually.
  */
 
-import { AddToConference } from './AddToConference';
-import { CreateConference } from './CreateConference';
-import { Dequeue } from './Dequeue';
-import { Enqueue } from './Enqueue';
-import { GetDigits } from './GetDigits';
-import { GetSpeech } from './GetSpeech';
-import { Hangup } from './Hangup';
-import { IfMachine } from './IfMachine';
-import { OutDialAllOf } from './OutDialAllOf';
-import { Park } from './Park';
-import { Pause } from './Pause';
-import { PerclCommand } from './PerclCommand';
-import { Play } from './Play';
-import { PlayEarlyMedia } from './PlayEarlyMedia';
-import { RecordUtterance } from './RecordUtterance';
-import { Redirect } from './Redirect';
-import { Reject } from './Reject';
-import { RemoveFromConference } from './RemoveFromConference';
-import { Say } from './Say';
-import { SendDigits } from './SendDigits';
-import { SetDTMFPassThrough } from './SetDTMFPassThrough';
-import { SetListen } from './SetListen';
-import { SetTalk } from './SetTalk';
-import { Sms } from './Sms';
-import { StartRecordCall } from './StartRecordCall';
-import { TerminateConference } from './TerminateConference';
-import { TranscribeUtterance } from './TranscribeUtterance';
-import { Unpark } from './Unpark';
-import { HttpFile } from '../http/http';
+import { IfMachine } from "./../models/IfMachine";
+import { PerclCommand } from "./../models/PerclCommand";
+import { HttpFile } from "../http/http";
 
 /**
-* The OutDial command is used to call a phone number
-*/
+ * The OutDial command is used to call a phone number
+ */
 
 interface AttributeType {
-    name: string
-    baseName: string
-    type: string
-    format: string
-    defaultValue: any
+  name: string;
+  baseName: string;
+  type: string;
+  format: string;
+  defaultValue: any;
 }
 interface ArgumentsType {
-    'actionUrl': string;
-    'callConnectUrl': string;
-    'callingNumber': string;
-    'destination': string;
-    'ifMachine'?: IfMachine;
-    'ifMachineUrl'?: string;
-    'sendDigits'?: string;
-    'statusCallbackUrl'?: string;
-    'timeout'?: number;
-    'privacyMode'?: boolean;
+  actionUrl: string;
+  callConnectUrl: string;
+  callingNumber: string;
+  destination: string;
+  ifMachine?: IfMachine;
+  ifMachineUrl?: string;
+  sendDigits?: string;
+  statusCallbackUrl?: string;
+  timeout?: number;
+  privacyMode?: boolean;
 }
 export class OutDial extends PerclCommand {
-    /**
-    * URL to which FreeClimb sends an HTTP POST request. 
-    */
-    'actionUrl': string;
-    /**
-    * URL to which FreeClimb makes an HTTP POST request informing the result of the OutDial.
-    */
-    'callConnectUrl': string;
-    /**
-    * he caller ID to show to the called party when FreeClimb calls. This can be one of the following: The To or From number provided in the first Webhook to your webserver. Any phone number you have purchased from FreeClimb.
-    */
-    'callingNumber': string;
-    /**
-    * E.164 representation of the phone number to Call. 
-    */
-    'destination': string;
-    'ifMachine'?: IfMachine;
-    /**
-    * When the `ifMachine` flag is set to `redirect`, this attribute specifies a URL to which FreeClimb makes a POST request when an answering machine or a fax machine is detected. This URL is required if the `ifMachine` flag is set to `redirect`. Otherwise, it should not be included.
-    */
-    'ifMachineUrl'?: string;
-    /**
-    * DTMF tones to play to the outdialed Call. This is typically used to dial a number and then dial an extension.
-    */
-    'sendDigits'?: string;
-    /**
-    * When the outdialed Call leg terminates, FreeClimb sends a `callStatus` Webhook to the `statusCallbackUrl`. This is a notification only; any PerCL command returned is ignored.
-    */
-    'statusCallbackUrl'?: string;
-    /**
-    * Maximum time in seconds the `OutDial` command waits for the called party to answer the Call. When a timeout occurs, FreeClimb invokes the `callConnectUrl` Webhook to report that the out-dialed Call has ended with a status of `noAnswer`.
-    */
-    'timeout'?: number;
-    /**
-    * Parameter `privacyMode` will not log the `text` as required by PCI compliance.
-    */
-    'privacyMode'?: boolean;
+  /**
+   * URL to which FreeClimb sends an HTTP POST request.
+   */
+  "actionUrl": string;
+  /**
+   * URL to which FreeClimb makes an HTTP POST request informing the result of the OutDial.
+   */
+  "callConnectUrl": string;
+  /**
+   * he caller ID to show to the called party when FreeClimb calls. This can be one of the following: The To or From number provided in the first Webhook to your webserver. Any phone number you have purchased from FreeClimb.
+   */
+  "callingNumber": string;
+  /**
+   * E.164 representation of the phone number to Call.
+   */
+  "destination": string;
+  "ifMachine"?: IfMachine;
+  /**
+   * When the `ifMachine` flag is set to `redirect`, this attribute specifies a URL to which FreeClimb makes a POST request when an answering machine or a fax machine is detected. This URL is required if the `ifMachine` flag is set to `redirect`. Otherwise, it should not be included.
+   */
+  "ifMachineUrl"?: string;
+  /**
+   * DTMF tones to play to the outdialed Call. This is typically used to dial a number and then dial an extension.
+   */
+  "sendDigits"?: string;
+  /**
+   * When the outdialed Call leg terminates, FreeClimb sends a `callStatus` Webhook to the `statusCallbackUrl`. This is a notification only; any PerCL command returned is ignored.
+   */
+  "statusCallbackUrl"?: string;
+  /**
+   * Maximum time in seconds the `OutDial` command waits for the called party to answer the Call. When a timeout occurs, FreeClimb invokes the `callConnectUrl` Webhook to report that the out-dialed Call has ended with a status of `noAnswer`.
+   */
+  "timeout"?: number;
+  /**
+   * Parameter `privacyMode` will not log the `text` as required by PCI compliance.
+   */
+  "privacyMode"?: boolean;
 
-    static readonly discriminator: string | undefined = "command";
+  static readonly discriminator: string | undefined = "command";
 
-    static readonly attributeTypeMap: AttributeType[] = [
-        {
-            "name": "actionUrl",
-            "baseName": "actionUrl",
-            "type": "string",
-            "format": "",
+  static readonly attributeTypeMap: AttributeType[] = [
+    {
+      name: "actionUrl",
+      baseName: "actionUrl",
+      type: "string",
+      format: "uri",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "callConnectUrl",
-            "baseName": "callConnectUrl",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "callConnectUrl",
+      baseName: "callConnectUrl",
+      type: "string",
+      format: "uri",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "callingNumber",
-            "baseName": "callingNumber",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "callingNumber",
+      baseName: "callingNumber",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "destination",
-            "baseName": "destination",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "destination",
+      baseName: "destination",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "ifMachine",
-            "baseName": "ifMachine",
-            "type": "IfMachine",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "ifMachine",
+      baseName: "ifMachine",
+      type: "IfMachine",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "ifMachineUrl",
-            "baseName": "ifMachineUrl",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "ifMachineUrl",
+      baseName: "ifMachineUrl",
+      type: "string",
+      format: "uri",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "sendDigits",
-            "baseName": "sendDigits",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "sendDigits",
+      baseName: "sendDigits",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "statusCallbackUrl",
-            "baseName": "statusCallbackUrl",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "statusCallbackUrl",
+      baseName: "statusCallbackUrl",
+      type: "string",
+      format: "uri",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "timeout",
-            "baseName": "timeout",
-            "type": "number",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "timeout",
+      baseName: "timeout",
+      type: "number",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "privacyMode",
-            "baseName": "privacyMode",
-            "type": "boolean",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "privacyMode",
+      baseName: "privacyMode",
+      type: "boolean",
+      format: "",
 
-            
-            "defaultValue": undefined
-        }    ];
+      defaultValue: undefined,
+    },
+  ];
 
-    static getAttributeTypeMap(): AttributeType[] {
-        return super.getAttributeTypeMap().concat(OutDial.attributeTypeMap);
+  static getAttributeTypeMap(): AttributeType[] {
+    return super.getAttributeTypeMap().concat(OutDial.attributeTypeMap);
+  }
+  public constructor(args: ArgumentsType) {
+    super({ command: "OutDial" });
+    const assign = <T>(attribute: keyof ArgumentsType): T => {
+      return (args[attribute] ??
+        OutDial.attributeTypeMap.find((attr) => attr.name === attribute)
+          ?.defaultValue) as T;
+    };
+    if (args["actionUrl"]) {
+      this["actionUrl"] = assign<string>("actionUrl");
     }
-
-    public constructor(args: ArgumentsType) {
-        super({ command: "OutDial" });
-        const preparedArgs = OutDial.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
-            
-            const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
-            
-            if (val !== undefined) {
-                acc[attr.name as keyof ArgumentsType] = val
-            }
-            return acc
-        }, {})
-        Object.assign(this, preparedArgs)
+    if (args["callConnectUrl"]) {
+      this["callConnectUrl"] = assign<string>("callConnectUrl");
     }
+    if (args["callingNumber"]) {
+      this["callingNumber"] = assign<string>("callingNumber");
+    }
+    if (args["destination"]) {
+      this["destination"] = assign<string>("destination");
+    }
+    if (args["ifMachine"]) {
+      this["ifMachine"] = assign<IfMachine>("ifMachine");
+    }
+    if (args["ifMachineUrl"]) {
+      this["ifMachineUrl"] = assign<string>("ifMachineUrl");
+    }
+    if (args["sendDigits"]) {
+      this["sendDigits"] = assign<string>("sendDigits");
+    }
+    if (args["statusCallbackUrl"]) {
+      this["statusCallbackUrl"] = assign<string>("statusCallbackUrl");
+    }
+    if (args["timeout"]) {
+      this["timeout"] = assign<number>("timeout");
+    }
+    if (args["privacyMode"]) {
+      this["privacyMode"] = assign<boolean>("privacyMode");
+    }
+  }
 }
-

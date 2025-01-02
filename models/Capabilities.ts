@@ -10,112 +10,116 @@
  * Do not edit the class manually.
  */
 
-import { HttpFile } from '../http/http';
+import { HttpFile } from "../http/http";
 
 /**
-* Details for which features this number may be used.
-*/
+ * Details for which features this number may be used.
+ */
 
 interface AttributeType {
-    name: string
-    baseName: string
-    type: string
-    format: string
-    defaultValue: any
+  name: string;
+  baseName: string;
+  type: string;
+  format: string;
+  defaultValue: any;
 }
 interface ArgumentsType {
-    'voice': boolean;
-    'sms': boolean;
-    'tollFree': boolean;
-    'tenDLC': boolean;
-    'shortCode': boolean;
+  voice: boolean;
+  sms: boolean;
+  tollFree: boolean;
+  tenDLC: boolean;
+  shortCode: boolean;
 }
 export class Capabilities {
-    /**
-    * Indicates whether a number can be used for voice calls. Replaces voiceEnabled.
-    */
-    'voice': boolean;
-    /**
-    * Indicates whether a number can be used SMS messaging. Replaces smsEnabled.
-    */
-    'sms': boolean;
-    /**
-    * Indicates that a number is toll-free and will make toll-free calls, and when enabled, toll-free messages.
-    */
-    'tollFree': boolean;
-    /**
-    * Indicates that a number, if sms is true, will be used for 10DLC messaging
-    */
-    'tenDLC': boolean;
-    /**
-    * Indicates that a number is a short code and can be used for short code messaging
-    */
-    'shortCode': boolean;
+  /**
+   * Indicates whether a number can be used for voice calls. Replaces voiceEnabled.
+   */
+  "voice": boolean;
+  /**
+   * Indicates whether a number can be used SMS messaging. Replaces smsEnabled.
+   */
+  "sms": boolean;
+  /**
+   * Indicates that a number is toll-free and will make toll-free calls, and when enabled, toll-free messages.
+   */
+  "tollFree": boolean;
+  /**
+   * Indicates that a number, if sms is true, will be used for 10DLC messaging
+   */
+  "tenDLC": boolean;
+  /**
+   * Indicates that a number is a short code and can be used for short code messaging
+   */
+  "shortCode": boolean;
 
-    static readonly discriminator: string | undefined = undefined;
+  static readonly discriminator: string | undefined = undefined;
 
-    static readonly attributeTypeMap: AttributeType[] = [
-        {
-            "name": "voice",
-            "baseName": "voice",
-            "type": "boolean",
-            "format": "",
+  static readonly attributeTypeMap: AttributeType[] = [
+    {
+      name: "voice",
+      baseName: "voice",
+      type: "boolean",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "sms",
-            "baseName": "sms",
-            "type": "boolean",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "sms",
+      baseName: "sms",
+      type: "boolean",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "tollFree",
-            "baseName": "tollFree",
-            "type": "boolean",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "tollFree",
+      baseName: "tollFree",
+      type: "boolean",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "tenDLC",
-            "baseName": "tenDLC",
-            "type": "boolean",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "tenDLC",
+      baseName: "tenDLC",
+      type: "boolean",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "shortCode",
-            "baseName": "shortCode",
-            "type": "boolean",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "shortCode",
+      baseName: "shortCode",
+      type: "boolean",
+      format: "",
 
-            
-            "defaultValue": undefined
-        }    ];
+      defaultValue: undefined,
+    },
+  ];
 
-    static getAttributeTypeMap(): AttributeType[] {
-        return Capabilities.attributeTypeMap;
+  static getAttributeTypeMap(): AttributeType[] {
+    return Capabilities.attributeTypeMap;
+  }
+  public constructor(args: ArgumentsType) {
+    const assign = <T>(attribute: keyof ArgumentsType): T => {
+      return (args[attribute] ??
+        Capabilities.attributeTypeMap.find((attr) => attr.name === attribute)
+          ?.defaultValue) as T;
+    };
+    if (args["voice"]) {
+      this["voice"] = assign<boolean>("voice");
     }
-
-    public constructor(args: ArgumentsType) {
-        const preparedArgs = Capabilities.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
-            
-            const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
-            
-            if (val !== undefined) {
-                acc[attr.name as keyof ArgumentsType] = val
-            }
-            return acc
-        }, {})
-        Object.assign(this, preparedArgs)
+    if (args["sms"]) {
+      this["sms"] = assign<boolean>("sms");
     }
+    if (args["tollFree"]) {
+      this["tollFree"] = assign<boolean>("tollFree");
+    }
+    if (args["tenDLC"]) {
+      this["tenDLC"] = assign<boolean>("tenDLC");
+    }
+    if (args["shortCode"]) {
+      this["shortCode"] = assign<boolean>("shortCode");
+    }
+  }
 }
-

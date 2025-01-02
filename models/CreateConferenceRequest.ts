@@ -10,107 +10,111 @@
  * Do not edit the class manually.
  */
 
-import { PlayBeep } from './PlayBeep';
-import { HttpFile } from '../http/http';
-
+import { PlayBeep } from "./../models/PlayBeep";
+import { HttpFile } from "../http/http";
 
 interface AttributeType {
-    name: string
-    baseName: string
-    type: string
-    format: string
-    defaultValue: any
+  name: string;
+  baseName: string;
+  type: string;
+  format: string;
+  defaultValue: any;
 }
 interface ArgumentsType {
-    'alias'?: string;
-    'playBeep'?: PlayBeep;
-    'record'?: boolean;
-    'waitUrl'?: string;
-    'statusCallbackUrl'?: string;
+  alias?: string;
+  playBeep?: PlayBeep;
+  record?: boolean;
+  waitUrl?: string;
+  statusCallbackUrl?: string;
 }
 export class CreateConferenceRequest {
-    /**
-    * A description for this Conference. Maximum 64 characters.
-    */
-    'alias'?: string;
-    'playBeep'?: PlayBeep;
-    /**
-    * Setting to `true` records the entire Conference.
-    */
-    'record'?: boolean;
-    /**
-    * If specified, a URL for the audio file that provides custom hold music for the Conference when it is in the populated state. Otherwise, FreeClimb uses a system default audio file. This is always fetched using HTTP GET and is fetched just once &mdash; when the Conference is created.
-    */
-    'waitUrl'?: string;
-    /**
-    * This URL is invoked when the status of the Conference changes. For more information, see **statusCallbackUrl** (below).
-    */
-    'statusCallbackUrl'?: string;
+  /**
+   * A description for this Conference. Maximum 64 characters.
+   */
+  "alias"?: string;
+  "playBeep"?: PlayBeep;
+  /**
+   * Setting to `true` records the entire Conference.
+   */
+  "record"?: boolean;
+  /**
+   * If specified, a URL for the audio file that provides custom hold music for the Conference when it is in the populated state. Otherwise, FreeClimb uses a system default audio file. This is always fetched using HTTP GET and is fetched just once &mdash; when the Conference is created.
+   */
+  "waitUrl"?: string;
+  /**
+   * This URL is invoked when the status of the Conference changes. For more information, see **statusCallbackUrl** (below).
+   */
+  "statusCallbackUrl"?: string;
 
-    static readonly discriminator: string | undefined = undefined;
+  static readonly discriminator: string | undefined = undefined;
 
-    static readonly attributeTypeMap: AttributeType[] = [
-        {
-            "name": "alias",
-            "baseName": "alias",
-            "type": "string",
-            "format": "",
+  static readonly attributeTypeMap: AttributeType[] = [
+    {
+      name: "alias",
+      baseName: "alias",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "playBeep",
-            "baseName": "playBeep",
-            "type": "PlayBeep",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "playBeep",
+      baseName: "playBeep",
+      type: "PlayBeep",
+      format: "",
 
-            
-            "defaultValue": PlayBeep.ALWAYS
-        },
-        {
-            "name": "record",
-            "baseName": "record",
-            "type": "boolean",
-            "format": "",
+      defaultValue: PlayBeep.ALWAYS,
+    },
+    {
+      name: "record",
+      baseName: "record",
+      type: "boolean",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "waitUrl",
-            "baseName": "waitUrl",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "waitUrl",
+      baseName: "waitUrl",
+      type: "string",
+      format: "uri",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "statusCallbackUrl",
-            "baseName": "statusCallbackUrl",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "statusCallbackUrl",
+      baseName: "statusCallbackUrl",
+      type: "string",
+      format: "uri",
 
-            
-            "defaultValue": undefined
-        }    ];
+      defaultValue: undefined,
+    },
+  ];
 
-    static getAttributeTypeMap(): AttributeType[] {
-        return CreateConferenceRequest.attributeTypeMap;
+  static getAttributeTypeMap(): AttributeType[] {
+    return CreateConferenceRequest.attributeTypeMap;
+  }
+  public constructor(args: ArgumentsType) {
+    const assign = <T>(attribute: keyof ArgumentsType): T => {
+      return (args[attribute] ??
+        CreateConferenceRequest.attributeTypeMap.find(
+          (attr) => attr.name === attribute,
+        )?.defaultValue) as T;
+    };
+    if (args["alias"]) {
+      this["alias"] = assign<string>("alias");
     }
-
-    public constructor(args: ArgumentsType) {
-        const preparedArgs = CreateConferenceRequest.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
-            
-            const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
-            
-            if (val !== undefined) {
-                acc[attr.name as keyof ArgumentsType] = val
-            }
-            return acc
-        }, {})
-        Object.assign(this, preparedArgs)
+    if (args["playBeep"]) {
+      this["playBeep"] = assign<PlayBeep>("playBeep");
     }
+    if (args["record"]) {
+      this["record"] = assign<boolean>("record");
+    }
+    if (args["waitUrl"]) {
+      this["waitUrl"] = assign<string>("waitUrl");
+    }
+    if (args["statusCallbackUrl"]) {
+      this["statusCallbackUrl"] = assign<string>("statusCallbackUrl");
+    }
+  }
 }
-

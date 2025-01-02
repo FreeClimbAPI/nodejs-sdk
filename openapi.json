@@ -22,7 +22,6 @@
         "in": "path",
         "description": "ID of the account",
         "required": true,
-        "x-account-id": true,
         "schema": {
           "type": "string"
         }
@@ -84,8 +83,6 @@
       "AccountStatus": {
         "type": "string",
         "enum": ["closed", "suspended", "active"],
-        "x-enum-varnames": ["CLOSED", "SUSPENDED", "ACTIVE"],
-        "x-enum": true,
         "description": "The status of this account. It is one of: active, suspended, or closed.",
         "nullable": true
       },
@@ -93,24 +90,18 @@
         "type": "string",
         "description": "The type of this account. It is one of: trial or full.",
         "enum": ["trial", "full"],
-        "x-enum": true,
-        "x-enum-varnames": ["TRIAL", "FULL"],
         "nullable": true
       },
       "AnsweredBy": {
         "type": "string",
         "nullable": true,
         "enum": ["human", "machine"],
-        "x-enum-varnames": ["HUMAN", "MACHINE"],
-        "x-enum": true,
         "description": "If this Call was initiated with answering machine detection, either `human` or `machine`. Empty otherwise."
       },
       "CallDirection": {
         "type": "string",
         "nullable": true,
         "enum": ["inbound", "outboundAPI", "outboundDial"],
-        "x-enum-varnames": ["INBOUND", "OUTBOUND_API", "OUTBOUND_DIAL"],
-        "x-enum": true,
         "description": "Direction of the Call. `inbound` for Calls into FreeClimb, `outboundAPI` for Calls initiated via the REST API,  `outboundDial` for Calls initiated by the `OutDial` PerCL command."
       },
       "CallStatus": {
@@ -126,25 +117,47 @@
           "busy",
           "noAnswer"
         ],
-        "x-enum-varnames": [
-          "QUEUED",
-          "RINGING",
-          "IN_PROGRESS",
-          "CANCELED",
-          "COMPLETED",
-          "FAILED",
-          "BUSY",
-          "NO_ANSWER"
-        ],
-        "x-enum": true,
         "description": "* `queued` &ndash; Call is ready and waiting in line before going out. * `ringing` &ndash; Call is currently ringing. * `inProgress` &ndash; Call was answered and is currently in progress. * `canceled` &ndash; Call was hung up while it was queued or ringing. * `completed` &ndash; Call was answered and has ended normally. * `busy` &ndash; Caller received a busy signal. * `failed` &ndash; Call could not be completed as dialed, most likely because the phone number was non-existent. * `noAnswer` &ndash; Call ended without being answered."
+      },
+      "CallEndedReason": {
+        "type": "string",
+        "nullable": true,
+        "enum": [
+          "busy",
+          "failed",
+          "noAnswer",
+          "callCanceled",
+          "farEndHangup",
+          "appHangup",
+          "appReject",
+          "appNoPercl",
+          "appInvalidPercl",
+          "conferenceTerminated",
+          "conferenceEmptied",
+          "removedFromConference",
+          "machineDetected",
+          "webhookFailed",
+          "webhookInvalidResponse",
+          "voiceDisabled",
+          "configErrorNoApplication",
+          "configErrorNoVoiceUrl",
+          "maxRedirectsError",
+          "perclProcessingError",
+          "internalError",
+          "grpcHangup",
+          "maxDuration"
+        ],
+        "description": "Enhanced status for the Call with additional information where available."
+      },
+      "GetDigitsReason": {
+        "type": "string",
+        "enum": ["finishKey", "timeout", "maxDigits", "tone"],
+        "description": "This field explains how the GetDigits action ended. The value is one of the below: •finishKey - The finish key as specified had been pressed by the caller. Digit string has all keys up to, but not including, the finish key.  •timeout - The timeout limit was reached prior to any other criteria being met. If any digits were collected, they will be included.  •maxDigits - The maximum number of digits was reached and digit collection ended.  •tone - Answering machine or fax tone detection occurred, interrupting digit collection. Any digits received up to this point are included in this webhook."
       },
       "ConferenceStatus": {
         "type": "string",
         "nullable": true,
         "enum": ["empty", "populated", "inProgress", "terminated"],
-        "x-enum-varnames": ["EMPTY", "POPULATED", "IN_PROGRESS", "TERMINATED"],
-        "x-enum": true,
         "description": "The status of the Conference. One of: creating, empty, populated, inProgress, or terminated."
       },
       "GetSpeechReason": {
@@ -156,16 +169,7 @@
           "noInput",
           "noMatch",
           "recognition"
-        ],
-        "x-enum-varnames": [
-          "ERROR",
-          "HANGUP",
-          "DIGIT",
-          "NO_INPUT",
-          "NO_MATCH",
-          "RECOGNITION"
-        ],
-        "x-enum": true
+        ]
       },
       "GrammarFileBuiltIn": {
         "type": "string",
@@ -185,39 +189,17 @@
           "DIG11",
           "UP_TO_20_DIGIT_SEQUENCE",
           "VERSAY_YESNO"
-        ],
-        "x-enum-varnames": [
-          "ALPHNUM6",
-          "ANY_DIG",
-          "DIG1",
-          "DIG2",
-          "DIG3",
-          "DIG4",
-          "DIG5",
-          "DIG6",
-          "DIG7",
-          "DIG8",
-          "DIG9",
-          "DIG10",
-          "DIG11",
-          "UP_TO_20_DIGIT_SEQUENCE",
-          "VERSAY_YESNO"
-        ],
-        "x-enum": true
+        ]
       },
       "GrammarType": {
         "type": "string",
         "enum": ["URL", "BUILTIN"],
         "nullable": true,
-        "x-enum-varnames": ["URL", "BUILT_IN"],
-        "x-enum": true,
         "description": "The grammar file type to use for speech recognition. A value of 'URL' indicates the grammarFile attribute specifies a URL that points to the grammar file. A value of `BUILTIN` indicates the grammarFile attribute specifies the name of one of the platform built-in grammar files."
       },
       "IfMachine": {
         "type": "string",
         "enum": ["redirect", "hangup"],
-        "x-enum-varnames": ["REDIRECT", "HANGUP"],
-        "x-enum": true,
         "description": "Specifies how FreeClimb should handle this OutDial if an answering machine answers the Call. Valid values: `redirect` invokes the ifMachineUrl for instructions. `hangup` hangs up the Call. The ifMachineUrl will not be invoked."
       },
       "Language": {
@@ -249,56 +231,21 @@
           "zh-CN",
           "zh-HK",
           "zh-TW"
-        ],
-        "x-enum-varnames": [
-          "CATALAN",
-          "DANISH",
-          "GERMAN",
-          "ENGLISH_AU",
-          "ENGLISH_CA",
-          "ENGLISH_UK",
-          "ENGLISH_IN",
-          "ENGLISH_US",
-          "ENGLISH_ES",
-          "ENGLISH_MX",
-          "FINNISH",
-          "FRENCH_CA",
-          "FRENCH_FR",
-          "ITALIAN",
-          "JAPANESE",
-          "KOREAN",
-          "NORWEGIAN",
-          "DUTCH",
-          "POLISH",
-          "PORTUGESE_BR",
-          "PORTUGESE_PT",
-          "RUSSIAN",
-          "SWEDISH",
-          "CHINESE_CN",
-          "CHINESE_HK",
-          "CHINESE_TW"
-        ],
-        "x-enum": true
+        ]
       },
       "LogLevel": {
         "type": "string",
         "enum": ["info", "warning", "error"],
         "nullable": true,
-        "x-enum-varnames": ["INFO", "WARNING", "ERROR"],
-        "x-enum": true,
         "description": "Level of the log. Possible values are info, warning, and error."
       },
       "MachineType": {
         "type": "string",
-        "enum": ["answeringMachine", "faxMachine"],
-        "x-enum-varnames": ["ANSWERING_MACHINE", "FAX_MACHINE"],
-        "x-enum": true
+        "enum": ["answering machine", "fax modem"]
       },
       "MessageDirection": {
         "type": "string",
-        "enum": ["inbound", "outbound"],
-        "x-enum-varnames": ["INBOUND", "OUTBOUND"],
-        "x-enum": true
+        "enum": ["inbound", "outbound"]
       },
       "MessageStatus": {
         "type": "string",
@@ -316,43 +263,33 @@
           "expired",
           "deleted",
           "unknown"
-        ],
-        "x-enum-varnames": [
-          "NEW",
-          "QUEUED",
-          "REJECTED",
-          "SENDING",
-          "SENT",
-          "FAILED",
-          "RECEIVED",
-          "UNDELIVERED",
-          "EXPIRED",
-          "DELETED",
-          "UNKNOWN"
-        ],
-        "x-enum": true
+        ]
       },
       "PlayBeep": {
         "type": "string",
         "nullable": true,
         "enum": ["always", "never", "entryOnly", "exitOnly"],
-        "x-enum-varnames": ["ALWAYS", "NEVER", "ENTRY_ONLY", "EXIT_ONLY"],
-        "x-enum": true,
-        "description": "Indicates whether to play a beep when a Participant enters or leaves the Conference. either `always`, `never`, `entryOnly`, or `exitOnly`. Leaving this unset will make conference default to `always` ",
-        "default": "always",
-        "x-enum-default-attr": "ALWAYS"
+        "description": "Indicates whether to play a beep when a Participant enters or leaves the Conference. either `always`, `never`, `entryOnly`, or `exitOnly`. Leaving this unset will make conference default to `always` "
       },
       "QueueResultStatus": {
         "type": "string",
-        "enum": ["queueFull", "dequeued", "hangup", "systemError"],
-        "x-enum-varnames": ["QUEUE_FULL", "DEQUEUED", "HANGUP", "SYSTEM_ERROR"],
-        "x-enum": true
+        "enum": ["queueFull", "dequeued", "hangup", "systemError"]
       },
       "RecordUtteranceTermReason": {
         "type": "string",
-        "enum": ["finishKey", "timeout", "hangup", "maxLength"],
-        "x-enum-varnames": ["FINISH_KEY", "TIMEOUT", "HANGUP", "MAX_LENGTH"],
-        "x-enum": true
+        "enum": ["finishKey", "timeout", "hangup", "maxLength"]
+      },
+      "BargeInReason": {
+        "type": "string",
+        "enum": ["noBargeIn", "bargeInByDTMF", "bargeInByEnergy"]
+      },
+      "TranscribeTermReason": {
+        "type": "string",
+        "enum": ["error", "completed"]
+      },
+      "TranscribeReason": {
+        "type": "string",
+        "enum": ["internalError", "hangup", "maxLength", "digit", "noInput"]
       },
       "RequestType": {
         "type": "string",
@@ -380,57 +317,123 @@
           "conferenceCallControl",
           "messageDelivery",
           "messageStatus"
-        ],
-        "x-enum-varnames": [
-          "INBOUND_CALL",
-          "RECORD",
-          "GET_DIGITS",
-          "GET_SPEECH",
-          "REDIRECT",
-          "PAUSE",
-          "OUT_DIAL_START",
-          "OUT_DIAL_CONNECT",
-          "OUT_DIAL_API_CONNECT",
-          "MACHINE_DETECTED",
-          "DEQUEUE",
-          "QUEUE_WAIT",
-          "ADD_TO_QUEUE_NOTIFICATION",
-          "REMOVE_FROM_QUEUE_NOTIFICATION",
-          "CALL_STATUS",
-          "CREATE_CONFERENCE",
-          "CONFERENCE_STATUS",
-          "LEAVE_CONFERENCE",
-          "ADD_TO_CONFERENCE_NOTIFICATION",
-          "CONFERENCE_RECORDING_STATUS",
-          "CONFERENCE_CALL_CONTROL",
-          "MESSAGE_DELIVERY",
-          "MESSAGE_STATUS"
-        ],
-        "x-enum": true
+        ]
       },
       "UpdateCallRequestStatus": {
         "type": "string",
         "enum": ["canceled", "completed"],
-        "x-enum-varnames": ["CANCELED", "COMPLETED"],
-        "x-enum": true,
         "description": "Either `canceled` or `completed`.  Specifying `canceled` attempts to hang up calls that are queued without affecting calls already in progress. Specifying `completed` attempts to hang up a call already in progress."
       },
       "UpdateConferenceRequestStatus": {
         "type": "string",
         "enum": ["empty", "terminated"],
-        "x-enum-varnames": ["EMPTY", "TERMINATED"],
-        "x-enum": true,
         "description": "New status of the conference. Valid values: `empty` or `terminated`. For more information, see **Status Parameter** below.**"
+      },
+      "SMSTollFreeCampaignRegistrationStatus": {
+        "type": "string",
+        "description": "Current toll-free campaign registration status.Possible values: UNREGISTERED,INITIATED,PENDING,DECLINED,REGISTERED. A newly created campaign defaults to INITIATED status. ",
+        "enum": [
+          "UNREGISTERED",
+          "INITIATED",
+          "PENDING",
+          "DECLINED",
+          "REGISTERED"
+        ]
+      },
+      "SMSTenDLCCampaignStatus": {
+        "type": "string",
+        "description": "Current campaign status. Possible values: ACTIVE, EXPIRED. A newly created campaign defaults to ACTIVE status. ",
+        "enum": ["ACTIVE", "EXPIRED"]
+      },
+      "SMSTenDLCPartnerCampaignStatus": {
+        "type": "string",
+        "description": "Current campaign status. Possible values: ACTIVE, EXPIRED. A newly created campaign defaults to ACTIVE status. ",
+        "enum": ["ACTIVE", "EXPIRED"]
+      },
+      "SMSTenDLCBrandEntityType": {
+        "maxLength": 20,
+        "type": "string",
+        "description": "Entity type behind the brand. This is the form of business establishment.",
+        "enum": [
+          "PRIVATE_PROFIT",
+          "PUBLIC_PROFIT",
+          "NON_PROFIT",
+          "GOVERNMENT",
+          "SOLE_PROPRIETOR"
+        ]
+      },
+      "SMSTenDLCBrandRelationship": {
+        "type": "string",
+        "description": "Brand relationship to the CSP",
+        "enum": [
+          "BASIC_ACCOUNT",
+          "SMALL_ACCOUNT",
+          "MEDIUM_ACCOUNT",
+          "LARGE_ACCOUNT",
+          "KEY_ACCOUNT"
+        ]
+      },
+      "SMSTenDLCBrandStockExchange": {
+        "type": "string",
+        "description": "(Required for public company) stock exchange.",
+        "example": "NASDAQ",
+        "enum": [
+          "NONE",
+          "NASDAQ",
+          "NYSE",
+          "AMEX",
+          "AMX",
+          "ASX",
+          "B3",
+          "BME",
+          "BSE",
+          "FRA",
+          "ICEX",
+          "JPX",
+          "JSE",
+          "KRX",
+          "LON",
+          "NSE",
+          "OMX",
+          "SEHK",
+          "SGX",
+          "SSE",
+          "STO",
+          "SWX",
+          "SZSE",
+          "TSX",
+          "TWSE",
+          "VSE",
+          "OTHER"
+        ]
+      },
+      "SMSTenDLCBrandAltBusinessIdType": {
+        "type": "string",
+        "enum": ["NONE", "DUNS", "GIIN", "LEI"],
+        "description": "The type of the Alternative business identifier"
+      },
+      "SMSTenDLCBrandIdentityStatus": {
+        "type": "string",
+        "description": "TCR assessment of the brand identification status.",
+        "enum": ["SELF_DECLARED", "UNVERIFIED", "VERIFIED", "VETTED_VERIFIED"]
+      },
+      "CompletionResultStatus": {
+        "type": "string",
+        "description": "Completion result status. Possible values: success, no_context",
+        "enum": ["success", "no_context"]
+      },
+      "SMSTenDLCOptionalAttributes": {
+        "type": "object",
+        "description": "Optional brand attributes. Please refer to GET /enum/optionalAttributeNames for dictionary of optional attribute names.",
+        "additionalProperties": true
       },
       "PerclScript": {
         "type": "object",
         "description": "A PerCL script to be returned to the FreeClimb servers in FreeClimb applications",
-        "x-percl-script": true,
         "properties": {
           "commands": {
             "type": "array",
             "description": "A JSON array of PerCL commands",
-            "x-is-list": true,
             "items": {
               "$ref": "#/components/schemas/PerclCommand"
             }
@@ -440,7 +443,6 @@
       "PerclCommand": {
         "type": "object",
         "description": "An individual command used in a PerCLScript.",
-        "x-percl-command-base": true,
         "discriminator": {
           "propertyName": "command",
           "mapping": {
@@ -474,26 +476,1426 @@
         },
         "properties": {
           "command": {
-            "x-is-no-property": true,
             "type": "string",
             "description": "Name of PerCL Command (this is automatically derived from mapping configuration and should not be manually supplied in any arguments)"
           }
         }
       },
+      "Webhook": {
+        "type": "object",
+        "discriminator": {
+          "propertyName": "requestType",
+          "mapping": {
+            "addToConferenceNotification": "#/components/schemas/AddToConferenceNotificationWebhook",
+            "addToQueueNotification": "#/components/schemas/AddToQueueNotificationWebhook",
+            "callControl": "#/components/schemas/CallControlWebhook",
+            "callStatus": "#/components/schemas/CallStatusWebhook",
+            "conferenceRecordingStatus": "#/components/schemas/ConferenceRecordingStatusWebhook",
+            "conferenceStatus": "#/components/schemas/ConferenceStatusWebhook",
+            "createConference": "#/components/schemas/CreateConferenceWebhook",
+            "dequeue": "#/components/schemas/DequeueWebhook",
+            "getDigits": "#/components/schemas/GetDigitsWebhook",
+            "getSpeech": "#/components/schemas/GetSpeechWebhook",
+            "inboundCall": "#/components/schemas/InboundCallWebhook",
+            "leaveConference": "#/components/schemas/LeaveConferenceWebhook",
+            "machineDetected": "#/components/schemas/MachineDetectedWebhook",
+            "messageDelivery": "#/components/schemas/MessageDeliveryWebhook",
+            "messageStatus": "#/components/schemas/MessageStatusWebhook",
+            "outDialApiConnect": "#/components/schemas/OutDialApiConnectWebhook",
+            "outDialConnect": "#/components/schemas/OutDialConnectWebhook",
+            "outDialStart": "#/components/schemas/OutDialStartWebhook",
+            "queueWait": "#/components/schemas/QueueWaitWebhook",
+            "record": "#/components/schemas/RecordWebhook",
+            "redirect": "#/components/schemas/RedirectWebhook",
+            "removeFromQueueNotification": "#/components/schemas/RemoveFromQueueNotificationWebhook",
+            "transcribe": "#/components/schemas/TranscribeWebhook"
+          }
+        },
+        "properties": {
+          "requestType": {
+            "type": "string",
+            "description": "Type of webhook request"
+          }
+        }
+      },
+      "AddToConferenceNotificationWebhook": {
+        "description": "A Call has been bridged to a Conference and the AddToConference command’s notificationUrl is being invoked. This is a notification only; any PerCL returned will be ignored.",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Webhook"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "requestType": {
+                "type": "string",
+                "description": "Context or reason why this request is being made. Will be addToConferenceNotification - A Call has been bridged to a conference and the addToConference command’s notificationUrl is being invoked."
+              },
+              "callId": {
+                "type": "string",
+                "description": "Unique ID for this Call, generated by FreeClimb."
+              },
+              "accountId": {
+                "type": "string",
+                "description": "Account ID associated with your account."
+              },
+              "from": {
+                "type": "string",
+                "description": "Phone number of the party that initiated the Call (in E.164 format)."
+              },
+              "to": {
+                "type": "string",
+                "description": "Phone number provisioned to you and to which this Call is directed (in E.164 format)."
+              },
+              "callStatus": {
+                "$ref": "#/components/schemas/CallStatus"
+              },
+              "direction": {
+                "$ref": "#/components/schemas/CallDirection"
+              },
+              "conferenceId": {
+                "type": "string",
+                "description": "Unique ID of the Conference."
+              },
+              "queueId": {
+                "type": "string",
+                "description": "This is only populated if the request pertains to a Queue. Otherwise, it is set to null.",
+                "nullable": true
+              },
+              "status": {
+                "$ref": "#/components/schemas/ConferenceStatus"
+              },
+              "recordingUrl": {
+                "type": "string",
+                "description": "URL of the Conference’s recorded audio. Populated only if a Recording exists and the Conference was emptied.",
+                "format": "uri"
+              },
+              "recordingId": {
+                "type": "string",
+                "description": "Unique ID of the Recording from this Conference. Populated only if a recording exists and the Conference was emptied."
+              },
+              "recordingDurationSec": {
+                "type": "integer",
+                "description": "Duration of the recorded audio (in seconds), rounded up to the nearest second. Populated only if a Recording exists and the Conference was emptied."
+              }
+            }
+          }
+        ]
+      },
+      "AddToQueueNotificationWebhook": {
+        "description": "A Call has been added to a Queue and the Enqueue command’s notificationUrl is being invoked. This is a notification only; any PerCL returned will be ignored.",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Webhook"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "requestType": {
+                "type": "string",
+                "description": "Context or reason why this request is being made. Will be addToQueueNotification - A call has been added to a queue and the Enqueue command’s notificationUrl is being invoked."
+              },
+              "callId": {
+                "type": "string",
+                "description": "Unique ID for this Call, generated by FreeClimb."
+              },
+              "accountId": {
+                "type": "string",
+                "description": "Account ID associated with your account."
+              },
+              "from": {
+                "type": "string",
+                "description": "Phone number of the party that initiated the Call (in E.164 format)."
+              },
+              "to": {
+                "type": "string",
+                "description": "Phone number provisioned to you and to which this Call is directed (in E.164 format)."
+              },
+              "callStatus": {
+                "$ref": "#/components/schemas/CallStatus"
+              },
+              "direction": {
+                "$ref": "#/components/schemas/CallDirection"
+              },
+              "conferenceId": {
+                "type": "string",
+                "description": "Unique ID of the Conference."
+              },
+              "queueId": {
+                "type": "string",
+                "description": "This is only populated if the request pertains to a Queue. Otherwise, it is set to null.",
+                "nullable": true
+              }
+            }
+          }
+        ]
+      },
+      "CallControlWebhook": {
+        "description": "The digit sequence defined in the callControlSequence attribute of the AddToConference PerCL command has been entered by the Conference participant. A PerCL response is expected. If invalid PerCL is provided, the call leg which triggered this webhook will terminate.",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Webhook"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "requestType": {
+                "type": "string",
+                "description": "Context or reason why this request is being made. Will be callControl."
+              },
+              "callId": {
+                "type": "string",
+                "description": "Unique ID for this Call, generated by FreeClimb."
+              },
+              "accountId": {
+                "type": "string",
+                "description": "Account ID associated with your account."
+              },
+              "conferenceId": {
+                "type": "string",
+                "description": "Unique ID of the Conference."
+              },
+              "digits": {
+                "type": "string",
+                "description": "String of digits entered by the participant."
+              }
+            }
+          }
+        ]
+      },
+      "CallStatusWebhook": {
+        "description": "A Call has ended and the statusCallbackUrl is being invoked. This is a notification only; All PerCL commands will be ignored.",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Webhook"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "requestType": {
+                "type": "string",
+                "description": "Context or reason why this request is being made. Will be callStatus - A Call has ended and the statusCallbackUrl is being invoked."
+              },
+              "callId": {
+                "type": "string",
+                "description": "Unique ID for this Call, generated by FreeClimb."
+              },
+              "accountId": {
+                "type": "string",
+                "description": "Account ID associated with your account."
+              },
+              "from": {
+                "type": "string",
+                "description": "Phone number of the party that initiated the Call (in E.164 format)."
+              },
+              "to": {
+                "type": "string",
+                "description": "Phone number provisioned to you and to which this Call is directed (in E.164 format)."
+              },
+              "callStatus": {
+                "$ref": "#/components/schemas/CallStatus"
+              },
+              "callEndedReason": {
+                "$ref": "#/components/schemas/CallEndedReason"
+              },
+              "direction": {
+                "$ref": "#/components/schemas/CallDirection"
+              },
+              "conferenceId": {
+                "type": "string",
+                "description": "Unique ID of the Conference."
+              },
+              "queueId": {
+                "type": "string",
+                "description": "This is only populated if the request pertains to a Queue. Otherwise, it is set to null.",
+                "nullable": true
+              }
+            }
+          }
+        ]
+      },
+      "ConferenceRecordingStatusWebhook": {
+        "description": "The statusCallbackUrl request includes Recording information for a Conference that ended. This is a notification only; any PerCL returned will be ignored.",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Webhook"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "requestType": {
+                "type": "string",
+                "description": "Context or reason why this request is being made. Will be conferenceRecordingStatus - The statusCallbackUrl request includes Recording information for a Conference that ended."
+              },
+              "callId": {
+                "type": "string",
+                "description": "Unique ID for this Call, generated by FreeClimb."
+              },
+              "accountId": {
+                "type": "string",
+                "description": "Account ID associated with your account."
+              },
+              "from": {
+                "type": "string",
+                "description": "Phone number of the party that initiated the Call (in E.164 format)."
+              },
+              "to": {
+                "type": "string",
+                "description": "Phone number provisioned to you and to which this Call is directed (in E.164 format)."
+              },
+              "callStatus": {
+                "$ref": "#/components/schemas/CallStatus"
+              },
+              "direction": {
+                "$ref": "#/components/schemas/CallDirection"
+              },
+              "conferenceId": {
+                "type": "string",
+                "description": "Unique ID of the Conference."
+              },
+              "queueId": {
+                "type": "string",
+                "description": "This is only populated if the request pertains to a Queue. Otherwise, it is set to null.",
+                "nullable": true
+              },
+              "status": {
+                "$ref": "#/components/schemas/ConferenceStatus"
+              },
+              "recordingUrl": {
+                "type": "string",
+                "description": "URL of the Conference’s recorded audio. Populated only if a Recording exists and the Conference was emptied.",
+                "format": "uri"
+              },
+              "recordingId": {
+                "type": "string",
+                "description": "Unique ID of the Recording from this Conference. Populated only if a recording exists and the Conference was emptied."
+              },
+              "recordingDurationSec": {
+                "type": "integer",
+                "description": "Duration of the recorded audio (in seconds), rounded up to the nearest second. Populated only if a Recording exists and the Conference was emptied."
+              }
+            }
+          }
+        ]
+      },
+      "ConferenceStatusWebhook": {
+        "description": "The context or reason why this request is being made. Will be conferenceStatus - A Conference's status changed and its statusCallbackUrl is being invoked.",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Webhook"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "requestType": {
+                "type": "string",
+                "description": "Context or reason why this request is being made. Will be conferenceRecordingStatus - The statusCallbackUrl request includes Recording information for a Conference that ended."
+              },
+              "callId": {
+                "type": "string",
+                "description": "Unique ID for this Call, generated by FreeClimb."
+              },
+              "accountId": {
+                "type": "string",
+                "description": "Account ID associated with your account."
+              },
+              "from": {
+                "type": "string",
+                "description": "Phone number of the party that initiated the Call (in E.164 format)."
+              },
+              "to": {
+                "type": "string",
+                "description": "Phone number provisioned to you and to which this Call is directed (in E.164 format)."
+              },
+              "callStatus": {
+                "$ref": "#/components/schemas/CallStatus"
+              },
+              "direction": {
+                "$ref": "#/components/schemas/CallDirection"
+              },
+              "conferenceId": {
+                "type": "string",
+                "description": "Unique ID of the Conference."
+              },
+              "queueId": {
+                "type": "string",
+                "description": "This is only populated if the request pertains to a Queue. Otherwise, it is set to null.",
+                "nullable": true
+              },
+              "status": {
+                "$ref": "#/components/schemas/ConferenceStatus"
+              },
+              "recordingUrl": {
+                "type": "string",
+                "description": "The URL of the Conference’s recorded audio. Populated only if a Recording exists and the Conference was emptied. Present only if statusCallbackUrl is being invoked.",
+                "format": "uri",
+                "nullable": true
+              },
+              "recordingId": {
+                "type": "string",
+                "description": "The unique ID of the Recording from this Conference. Populated only if a Recording exists and the Conference was emptied. Present only if statusCallbackUrl is being invoked.",
+                "nullable": true
+              },
+              "recordingDurationSec": {
+                "type": "integer",
+                "description": "The duration of the recorded audio rounded up to the nearest second (in seconds). Populated only if a Recording exists and the Conference was emptied. Present only if statusCallbackUrl is being invoked.",
+                "nullable": true
+              }
+            }
+          }
+        ]
+      },
+      "CreateConferenceWebhook": {
+        "description": "A Conference has been created and its statusCallbackUrl or actionUrl is being invoked. A PerCL response is expected if the actionUrl is being invoked.",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Webhook"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "requestType": {
+                "type": "string",
+                "description": "Context or reason why this request is being made. Will be createConference - A Conference has been created and its statusCallbackUrl or actionUrl is being invoked."
+              },
+              "callId": {
+                "type": "string",
+                "description": "Unique ID for this Call, generated by FreeClimb."
+              },
+              "accountId": {
+                "type": "string",
+                "description": "Account ID associated with your account."
+              },
+              "from": {
+                "type": "string",
+                "description": "Phone number of the party that initiated the Call (in E.164 format)."
+              },
+              "to": {
+                "type": "string",
+                "description": "Phone number provisioned to you and to which this Call is directed (in E.164 format)."
+              },
+              "callStatus": {
+                "$ref": "#/components/schemas/CallStatus"
+              },
+              "direction": {
+                "$ref": "#/components/schemas/CallDirection"
+              },
+              "conferenceId": {
+                "type": "string",
+                "description": "Unique ID of the Conference."
+              },
+              "queueId": {
+                "type": "string",
+                "description": "This is only populated if the request pertains to a Queue. Otherwise, it is set to null.",
+                "nullable": true
+              },
+              "status": {
+                "$ref": "#/components/schemas/ConferenceStatus"
+              },
+              "recordingUrl": {
+                "type": "string",
+                "description": "The URL of the Conference’s recorded audio. Populated only if a Recording exists and the Conference was emptied. Present only if statusCallbackUrl is being invoked.",
+                "format": "uri",
+                "nullable": true
+              },
+              "recordingId": {
+                "type": "string",
+                "description": "The unique ID of the Recording from this Conference. Populated only if a Recording exists and the Conference was emptied. Present only if statusCallbackUrl is being invoked.",
+                "nullable": true
+              },
+              "recordingDurationSec": {
+                "type": "integer",
+                "description": "The duration of the recorded audio rounded up to the nearest second (in seconds). Populated only if a Recording exists and the Conference was emptied. Present only if statusCallbackUrl is being invoked.",
+                "nullable": true
+              }
+            }
+          }
+        ]
+      },
+      "DequeueWebhook": {
+        "description": "A queued call has been dequeued and the actionUrl of the corresponding Enqueue action is being invoked. A PerCL response is expected.",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Webhook"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "requestType": {
+                "type": "string",
+                "description": "Context or reason why this request is being made. Will be dequeue - A queued call has been dequeued and the actionUrl of the corresponding Enqueue action is being invoked."
+              },
+              "callId": {
+                "type": "string",
+                "description": "Unique ID for this Call, generated by FreeClimb."
+              },
+              "accountId": {
+                "type": "string",
+                "description": "Account ID associated with your account."
+              },
+              "from": {
+                "type": "string",
+                "description": "Phone number of the party that initiated the Call (in E.164 format)."
+              },
+              "to": {
+                "type": "string",
+                "description": "Phone number provisioned to you and to which this Call is directed (in E.164 format)."
+              },
+              "callStatus": {
+                "$ref": "#/components/schemas/CallStatus"
+              },
+              "direction": {
+                "$ref": "#/components/schemas/CallDirection"
+              },
+              "conferenceId": {
+                "type": "string",
+                "description": "Unique ID of the Conference."
+              },
+              "queueId": {
+                "type": "string",
+                "description": "This is only populated if the request pertains to a Queue. Otherwise, it is set to null.",
+                "nullable": true
+              },
+              "queueResult": {
+                "type": "string",
+                "description": "The final result of the enqueued Call. Valid values are: •dequeued - Enqueued caller exited the Queue via a Dequeue action (Dequeue command or Queue Members POST REST API)."
+              },
+              "queueTime": {
+                "type": "integer",
+                "description": "Time (in seconds) the call spent in the Queue. This is only available if the Call was actually enqueued.",
+                "nullable": true
+              }
+            }
+          }
+        ]
+      },
+      "GetDigitsWebhook": {
+        "description": "A POST request with the following fields will be sent to the actionUrl provided in your GetDigits command.",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Webhook"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "requestType": {
+                "type": "string",
+                "description": "Context or reason why this request is being made. Will be getDigits - The GetDigits command has completed and its actionUrl is being invoked."
+              },
+              "callId": {
+                "type": "string",
+                "description": "Unique ID for this Call, generated by FreeClimb."
+              },
+              "accountId": {
+                "type": "string",
+                "description": "Account ID associated with your account."
+              },
+              "from": {
+                "type": "string",
+                "description": "Phone number of the party that initiated the Call (in E.164 format)."
+              },
+              "to": {
+                "type": "string",
+                "description": "Phone number provisioned to you and to which this Call is directed (in E.164 format)."
+              },
+              "callStatus": {
+                "$ref": "#/components/schemas/CallStatus"
+              },
+              "direction": {
+                "$ref": "#/components/schemas/CallDirection"
+              },
+              "conferenceId": {
+                "type": "string",
+                "description": "Unique ID of the Conference."
+              },
+              "queueId": {
+                "type": "string",
+                "description": "This is only populated if the request pertains to a Queue. Otherwise, it is set to null.",
+                "nullable": true
+              },
+              "digits": {
+                "type": "string",
+                "description": "tring of digits entered by the Caller, excluding the terminating digit (if used). The string of digits will be replaced by 'xxxxx' when privacyMode is set to true"
+              },
+              "reason": {
+                "$ref": "#/components/schemas/GetDigitsReason"
+              },
+              "parentCallId": {
+                "type": "string",
+                "description": "ID of the Call that created this leg (child call)."
+              }
+            }
+          }
+        ]
+      },
+      "GetSpeechWebhook": {
+        "description": "The GetSpeech command has completed and its actionUrl is being invoked. A PerCL response is expected, unless reason is hangup.",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Webhook"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "requestType": {
+                "type": "string",
+                "description": "Context or reason why this request is being made. Will be getSpeech - The GetSpeech command has completed and its actionUrl is being invoked."
+              },
+              "callId": {
+                "type": "string",
+                "description": "Unique ID for this Call, generated by FreeClimb."
+              },
+              "accountId": {
+                "type": "string",
+                "description": "Account ID associated with your account."
+              },
+              "from": {
+                "type": "string",
+                "description": "Phone number of the party that initiated the Call (in E.164 format)."
+              },
+              "to": {
+                "type": "string",
+                "description": "Phone number provisioned to you and to which this Call is directed (in E.164 format)."
+              },
+              "callStatus": {
+                "$ref": "#/components/schemas/CallStatus"
+              },
+              "direction": {
+                "$ref": "#/components/schemas/CallDirection"
+              },
+              "conferenceId": {
+                "type": "string",
+                "description": "Unique ID of the Conference."
+              },
+              "queueId": {
+                "type": "string",
+                "description": "This is only populated if the request pertains to a Queue. Otherwise, it is set to null.",
+                "nullable": true
+              },
+              "reason": {
+                "$ref": "#/components/schemas/GetSpeechReason"
+              },
+              "recognitionResult": {
+                "type": "string",
+                "description": "Semantic content (either a string if speech was recognized or a digit if a digit was input instead of speech) returned from the entry or tag that was recognized within the grammar. The content will be replaced by 'xxxxx' when privacyMode is set to true. This field is populated only if the reason field is set to recognition or digit."
+              },
+              "confidence": {
+                "type": "integer",
+                "description": "Level of confidence in the obtained result. This is a value in the range 0 to 100 – with 0 being total lack of confidence and 100 being absolute certainty in the recognition. This field is populated only if the reason field is set to recognition."
+              },
+              "parentCallId": {
+                "type": "string",
+                "description": "ID of the Call that created this leg (child call)."
+              },
+              "completionReason": {
+                "type": "string",
+                "description": "Advanced diagnostic information if reason was error. See RFC 6787 section 9.4.12 - speech recognition."
+              },
+              "completionCause": {
+                "type": "string",
+                "description": "Advanced diagnostic information if reason was error. See RFC 6787 section 9.4.11 - speech recognition."
+              },
+              "mrcpCode": {
+                "type": "integer",
+                "description": "Advanced diagnostic information if reason was error. See RFC 6787 section 5.4 - MRCPv2 specification."
+              },
+              "mrcpDiagnostic": {
+                "type": "string",
+                "description": "Advanced diagnostic information if reason was error. See RFC 6787 section 5.4 - MRCPv2 specification."
+              }
+            }
+          }
+        ]
+      },
+      "InboundCallWebhook": {
+        "description": "An inbound Call to a number registered on FreeClimb will trigger a request to the voiceUrl of the application the number is assigned to. FreeClimb expects to receive PerCL in response to this request in order to process the Call. The following parameters are sent as the POST body.",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Webhook"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "requestType": {
+                "type": "string",
+                "description": "Context or reason why this request is being made. Will be inboundCall - An inbound call was received and the voiceUrl is being invoked."
+              },
+              "callId": {
+                "type": "string",
+                "description": "Unique ID for this Call, generated by FreeClimb."
+              },
+              "accountId": {
+                "type": "string",
+                "description": "Account ID associated with your account."
+              },
+              "from": {
+                "type": "string",
+                "description": "Phone number of the party that initiated the Call (in E.164 format)."
+              },
+              "to": {
+                "type": "string",
+                "description": "Phone number provisioned to you and to which this Call is directed (in E.164 format)."
+              },
+              "callStatus": {
+                "$ref": "#/components/schemas/CallStatus"
+              },
+              "direction": {
+                "$ref": "#/components/schemas/CallDirection"
+              },
+              "conferenceId": {
+                "type": "string",
+                "description": "This is only populated if request pertains to a Conference. Otherwise, it is set to null.",
+                "nullable": true
+              },
+              "queueId": {
+                "type": "string",
+                "description": "This is only populated if the request pertains to a Queue. Otherwise, it is set to null.",
+                "nullable": true
+              },
+              "parentCallId": {
+                "type": "string",
+                "nullable": true
+              }
+            }
+          }
+        ]
+      },
+      "LeaveConferenceWebhook": {
+        "description": "A Call has been unbridged from a Conference and its leaveConferenceUrl is being invoked. A PerCL response is expected — unless the URL is invoked due to the participant hanging up.",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Webhook"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "requestType": {
+                "type": "string",
+                "description": "Context or reason why this request is being made. Will be leaveConference - Call has been unbridged from a Conference and its leaveConferenceUrl is being invoked."
+              },
+              "callId": {
+                "type": "string",
+                "description": "Unique ID for this Call, generated by FreeClimb. This is the call leg which has left the Conference"
+              },
+              "accountId": {
+                "type": "string",
+                "description": "Account ID associated with your account."
+              },
+              "from": {
+                "type": "string",
+                "description": "Phone number of the party that initiated the Call (in E.164 format)."
+              },
+              "to": {
+                "type": "string",
+                "description": "Phone number provisioned to you and to which this Call is directed (in E.164 format)."
+              },
+              "callStatus": {
+                "$ref": "#/components/schemas/CallStatus"
+              },
+              "direction": {
+                "$ref": "#/components/schemas/CallDirection"
+              },
+              "conferenceId": {
+                "type": "string",
+                "description": "This is only populated if request pertains to a Conference. Otherwise, it is set to null.",
+                "nullable": true
+              },
+              "queueId": {
+                "type": "string",
+                "description": "This is only populated if the request pertains to a Queue. Otherwise, it is set to null.",
+                "nullable": true
+              }
+            }
+          }
+        ]
+      },
+      "MachineDetectedWebhook": {
+        "description": "An outbound call spawned by OutDial detected an answer by a machine (answering machine or fax/modem machine) and ifMachineUrl is being invoked. A PerCL response is expected.",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Webhook"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "requestType": {
+                "type": "string",
+                "description": "Context or reason why this request is being made. Will be machineDetected - An outbound call spawned by OutDial was answered by a machine and the ifMachineUrl is being invoked."
+              },
+              "callId": {
+                "type": "string",
+                "description": "Unique ID for this Call, generated by FreeClimb."
+              },
+              "accountId": {
+                "type": "string",
+                "description": "Account ID associated with your account."
+              },
+              "from": {
+                "type": "string",
+                "description": "Phone number of the party that initiated the Call (in E.164 format)."
+              },
+              "to": {
+                "type": "string",
+                "description": "Phone number provisioned to you and to which this Call is directed (in E.164 format)."
+              },
+              "callStatus": {
+                "$ref": "#/components/schemas/CallStatus"
+              },
+              "direction": {
+                "$ref": "#/components/schemas/CallDirection"
+              },
+              "conferenceId": {
+                "type": "string",
+                "description": "This is only populated if request pertains to a Conference. Otherwise, it is set to null.",
+                "nullable": true
+              },
+              "queueId": {
+                "type": "string",
+                "description": "This is only populated if the request pertains to a Queue. Otherwise, it is set to null.",
+                "nullable": true
+              },
+              "parentCallId": {
+                "type": "string",
+                "description": "Call ID of the leg which initiated the OutDial."
+              },
+              "machineType": {
+                "$ref": "#/components/schemas/MachineType"
+              }
+            }
+          }
+        ]
+      },
+      "MessageDeliveryWebhook": {
+        "description": "An SMS has been received by the platform and is being delivered to the smsUrl of the customer application that is associated with the destination number. A PerCL response will be ignored.",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Webhook"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "requestType": {
+                "type": "string",
+                "description": "Value will be messageDelivery - An SMS message has been received by the platform and is being delivered to the customer application associated with the destination number."
+              },
+              "accountId": {
+                "type": "string",
+                "description": "Account ID associated with your account."
+              },
+              "from": {
+                "type": "string",
+                "description": "Phone number of the party that initiated the Call (in E.164 format)."
+              },
+              "to": {
+                "type": "string",
+                "description": "Phone number provisioned to you and to which this Call is directed (in E.164 format)."
+              },
+              "text": {
+                "type": "string",
+                "description": "Body of the SMS message."
+              },
+              "direction": {
+                "type": "string",
+                "description": "Value will be inbound to indicate the receipt of a message into the FreeClimb platform."
+              },
+              "applicationId": {
+                "type": "string",
+                "description": "ID of the application to which the destination number is assigned."
+              },
+              "status": {
+                "type": "string",
+                "description": "Value will be received to indicate that the platform has successfully received the incoming message."
+              },
+              "phoneNumberId": {
+                "type": "string",
+                "description": "ID of the destination phone number."
+              },
+              "uri": {
+                "type": "string",
+                "description": "The URI for this resource, relative to the API base URL"
+              }
+            }
+          }
+        ]
+      },
+      "MessageStatusWebhook": {
+        "description": "An outbound SMS has changed status and the notificationUrl from the Sms command or Send an SMS request is being invoked. A PerCL response will be ignored.",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Webhook"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "requestType": {
+                "type": "string",
+                "description": "Value will be messageStatus - An outbound SMS has changed status and the Sms command's notificationUrl is being invoked."
+              },
+              "accountId": {
+                "type": "string",
+                "description": "Account ID associated with your account."
+              },
+              "messageId": {
+                "type": "string",
+                "description": "Unique ID for this message, generated by FreeClimb."
+              },
+              "callId": {
+                "type": "string",
+                "description": "Unique ID for the Call in the context of which the Sms PerCL command was issued."
+              },
+              "from": {
+                "type": "string",
+                "description": "aPhone number used to initiate the SMS message (in E.164 format)."
+              },
+              "to": {
+                "type": "string",
+                "description": "Destination number of the SMS message (in E.164 format)."
+              },
+              "text": {
+                "type": "string",
+                "description": "Body of the SMS message."
+              },
+              "direction": {
+                "type": "string",
+                "description": "Value will be outbound to indicate an outgoing SMS from FreeClimb."
+              },
+              "applicationId": {
+                "type": "string",
+                "description": "ID of the application to which the destination number is assigned. May be null if the originating number is invalid in some way or is not registered to an application."
+              },
+              "status": {
+                "$ref": "#/components/schemas/MessageStatus"
+              },
+              "phoneNumberId": {
+                "type": "string",
+                "description": "ID of the destination phone number."
+              }
+            }
+          }
+        ]
+      },
+      "OutDialApiConnectWebhook": {
+        "description": "An outbound call initiated by the REST API has connected and the callConnectUrl specified in the API request is being invoked. A PerCL response is expected if the call was successfully connected (with status of inProgress).",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Webhook"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "requestType": {
+                "type": "string",
+                "description": "Context or reason why this request is being made. Will be outDialApiConnect - An outbound call spawned by the REST API has connected and the callConnectUrl specified in the API request is being invoked."
+              },
+              "accountId": {
+                "type": "string",
+                "description": "Account ID associated with your account."
+              },
+              "callId": {
+                "type": "string",
+                "description": "Unique identifier for this Call, generated by FreeClimb"
+              },
+              "from": {
+                "type": "string",
+                "description": "Phone number of the party that initiated the Call (in E.164 format)."
+              },
+              "to": {
+                "type": "string",
+                "description": "Phone number or SIP URL of the party that is receiving the call (phone number in E.164 format)."
+              },
+              "callStatus": {
+                "$ref": "#/components/schemas/CallStatus"
+              },
+              "direction": {
+                "$ref": "#/components/schemas/CallDirection"
+              },
+              "conferenceId": {
+                "type": "string",
+                "description": "This is only populated if request pertains to a conference. Otherwise, it is set to null.",
+                "nullable": true
+              },
+              "queueId": {
+                "type": "string",
+                "description": "This is only populated if the request pertains to a queue. Otherwise, it is set to null.",
+                "nullable": true
+              },
+              "parentCallId": {
+                "type": "string",
+                "description": "ID of the Call that created this leg (child call)."
+              }
+            }
+          }
+        ]
+      },
+      "OutDialConnectWebhook": {
+        "description": "A Call generated by OutDial has connected and the callConnectUrl is being invoked. This request is made in the context of the Call leg that was generated using OutDial and not the parent (the OutDialStart webhook is invoked on the parent call to continue that call context). A PerCL response is expected if the call was successfully connected (as indicated by status of inProgress) and begins the execution context for this (child) call.",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Webhook"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "requestType": {
+                "type": "string",
+                "description": "Context or reason why this request is being made. Will be outDialConnect - A Call generated by OutDial has connected and the callConnectUrl is being invoked."
+              },
+              "accountId": {
+                "type": "string",
+                "description": "Account ID associated with your account."
+              },
+              "callId": {
+                "type": "string",
+                "description": "Unique identifier for this Call, generated by FreeClimb"
+              },
+              "from": {
+                "type": "string",
+                "description": "Phone number of the party that initiated the Call (in E.164 format)."
+              },
+              "to": {
+                "type": "string",
+                "description": "Phone number or SIP URL of the party that is receiving the call (phone number in E.164 format)."
+              },
+              "callStatus": {
+                "$ref": "#/components/schemas/CallStatus"
+              },
+              "direction": {
+                "$ref": "#/components/schemas/CallDirection"
+              },
+              "conferenceId": {
+                "type": "string",
+                "description": "This is only populated if request pertains to a conference. Otherwise, it is set to null.",
+                "nullable": true
+              },
+              "queueId": {
+                "type": "string",
+                "description": "This is only populated if the request pertains to a queue. Otherwise, it is set to null.",
+                "nullable": true
+              },
+              "parentCallId": {
+                "type": "string",
+                "description": "ID of the Call that created this leg (child call)."
+              }
+            }
+          }
+        ]
+      },
+      "OutDialStartWebhook": {
+        "description": "The OutDial command has started and the actionUrl is being invoked. This request is made in the context of the parent call (Call leg that invoked). A PerCL response is expected.",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Webhook"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "requestType": {
+                "type": "string",
+                "description": "Context or reason why this request is being made. Will be outDialStart - The OutDial command has started and the actionUrl is being invoked."
+              },
+              "accountId": {
+                "type": "string",
+                "description": "Account ID associated with your account."
+              },
+              "callId": {
+                "type": "string",
+                "description": "Unique identifier for this Call, generated by FreeClimb"
+              },
+              "from": {
+                "type": "string",
+                "description": "Phone number of the party that initiated the Call (in E.164 format)."
+              },
+              "to": {
+                "type": "string",
+                "description": "Phone number provisioned to the customer and to which this Call is directed (in E.164 format)."
+              },
+              "callStatus": {
+                "$ref": "#/components/schemas/CallStatus"
+              },
+              "direction": {
+                "$ref": "#/components/schemas/CallDirection"
+              },
+              "conferenceId": {
+                "type": "string",
+                "description": "This is only populated if request pertains to a conference. Otherwise, it is set to null.",
+                "nullable": true
+              },
+              "queueId": {
+                "type": "string",
+                "description": "This is only populated if the request pertains to a queue. Otherwise, it is set to null.",
+                "nullable": true
+              },
+              "dialCallId": {
+                "type": "string",
+                "description": "ID of the child call that was generated as a result of the Outdial."
+              },
+              "parentCallId": {
+                "type": "string",
+                "description": "ID of the Call that created this leg (child call). If this was an inbound call or call created via REST API with no parent, this field will be null.",
+                "nullable": true
+              }
+            }
+          }
+        ]
+      },
+      "QueueWaitWebhook": {
+        "description": "A queued Call is requesting instructions to execute during the wait in the Queue and the corresponding waitUrl is being invoked. A PerCL response is expected. The following are the only PerCL commands supported in the PerCL script response to a request to the waitUrl: Play,Say,Pause,GetDigits,Dequeue,Hangup",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Webhook"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "requestType": {
+                "type": "string",
+                "description": "Context or reason why this request is being made. Will be queueWait - A queued call is requesting instructions to execute during the wait in the queue and the corresponding waitUrl is being invoked."
+              },
+              "accountId": {
+                "type": "string",
+                "description": "Account ID associated with your account."
+              },
+              "callId": {
+                "type": "string",
+                "description": "Unique identifier for this Call, generated by FreeClimb"
+              },
+              "from": {
+                "type": "string",
+                "description": "Phone number of the party that initiated the Call (in E.164 format)."
+              },
+              "to": {
+                "type": "string",
+                "description": "Phone number provisioned to the customer and to which this Call is directed (in E.164 format)."
+              },
+              "callStatus": {
+                "$ref": "#/components/schemas/CallStatus"
+              },
+              "direction": {
+                "$ref": "#/components/schemas/CallDirection"
+              },
+              "conferenceId": {
+                "type": "string",
+                "description": "This is only populated if request pertains to a conference. Otherwise, it is set to null.",
+                "nullable": true
+              },
+              "queueId": {
+                "type": "string",
+                "description": "This is only populated if the request pertains to a queue. Otherwise, it is set to null.",
+                "nullable": true
+              },
+              "queuePosition": {
+                "type": "string",
+                "description": "Current queue position of the enqueued Call."
+              },
+              "queueTime": {
+                "type": "integer",
+                "description": "Time (in seconds) the Call spent in the Queue. This is only available if the Call was actually enqueued."
+              },
+              "currentQueueSize": {
+                "type": "integer",
+                "description": "Current number of enqueued Calls in this Queue."
+              }
+            }
+          }
+        ]
+      },
+      "RecordWebhook": {
+        "description": "The RecordUtterance command has completed and its actionUrl is being invoked.",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Webhook"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "requestType": {
+                "type": "string",
+                "description": "The context or reason why this request is being made. Will be record - The RecordUtterance command has completed and its actionUrl is being invoked."
+              },
+              "accountId": {
+                "type": "string",
+                "description": "Account ID associated with your account."
+              },
+              "callId": {
+                "type": "string",
+                "description": "Unique identifier for this Call, generated by FreeClimb"
+              },
+              "from": {
+                "type": "string",
+                "description": "Phone number of the party that initiated the Call (in E.164 format)."
+              },
+              "to": {
+                "type": "string",
+                "description": "Phone number provisioned to the customer and to which this Call is directed (in E.164 format)."
+              },
+              "callStatus": {
+                "$ref": "#/components/schemas/CallStatus"
+              },
+              "direction": {
+                "$ref": "#/components/schemas/CallDirection"
+              },
+              "conferenceId": {
+                "type": "string",
+                "description": "This is only populated if request pertains to a conference. Otherwise, it is set to null.",
+                "nullable": true
+              },
+              "queueId": {
+                "type": "string",
+                "description": "This is only populated if the request pertains to a queue. Otherwise, it is set to null.",
+                "nullable": true
+              },
+              "recordingId": {
+                "type": "string",
+                "description": "ID of the recording."
+              },
+              "recordingUrl": {
+                "type": "string",
+                "description": "URL of the recorded audio file. This URL can be used as is in a Play command to play the recording (no authentication needed). It can also be used to download a recording file via the REST API.",
+                "format": "uri"
+              },
+              "recordingSize": {
+                "type": "string",
+                "description": "Size of the recording in bytes"
+              },
+              "recordingFormat": {
+                "type": "string",
+                "description": "File type of the recording (audio/wav)"
+              },
+              "recordingDurationSec": {
+                "type": "integer",
+                "description": "Duration of the recorded audio rounded up to the nearest second (in seconds)"
+              },
+              "termReason": {
+                "$ref": "#/components/schemas/RecordUtteranceTermReason"
+              },
+              "parentCallId": {
+                "type": "string",
+                "description": "ID of Call that created this leg (child call)."
+              },
+              "privacyMode": {
+                "type": "boolean",
+                "description": "If true then it indicates the recording will only be available for download for two minutes prior to it being deleted. This is to minimize risk of anyone else getting access to the url and attempting to access it."
+              }
+            }
+          }
+        ]
+      },
+      "RedirectWebhook": {
+        "description": "The Redirect command is executing and its actionUrl is being invoked. A PerCL response is expected.",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Webhook"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "requestType": {
+                "type": "string",
+                "description": "Context or reason why this request is being made. Will be redirect - The Redirect command is executing and its actionUrl is being invoked."
+              },
+              "accountId": {
+                "type": "string",
+                "description": "Account ID associated with your account."
+              },
+              "callId": {
+                "type": "string",
+                "description": "Unique identifier for this Call, generated by FreeClimb"
+              },
+              "from": {
+                "type": "string",
+                "description": "Phone number of the party that initiated the Call (in E.164 format)."
+              },
+              "to": {
+                "type": "string",
+                "description": "Phone number provisioned to the customer and to which this Call is directed (in E.164 format)."
+              },
+              "callStatus": {
+                "$ref": "#/components/schemas/CallStatus"
+              },
+              "direction": {
+                "$ref": "#/components/schemas/CallDirection"
+              },
+              "conferenceId": {
+                "type": "string",
+                "description": "This is only populated if request pertains to a conference. Otherwise, it is set to null.",
+                "nullable": true
+              },
+              "queueId": {
+                "type": "string",
+                "description": "This is only populated if the request pertains to a queue. Otherwise, it is set to null.",
+                "nullable": true
+              },
+              "parentCallId": {
+                "type": "string",
+                "description": "ID of Call that created this leg (child call)."
+              }
+            }
+          }
+        ]
+      },
+      "RemoveFromQueueNotificationWebhook": {
+        "description": "A call has been removed from a queue and the Enqueue command’s actionUrl is being invoked. A PerCL response is expected except if reason is hangup.",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Webhook"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "requestType": {
+                "type": "string",
+                "description": "Context or reason why this request is being made. Will be removeFromQueueNotification - A Call has been removed from a Queue and the Enqueue command’s actionUrl is being invoked."
+              },
+              "accountId": {
+                "type": "string",
+                "description": "Account ID associated with your account."
+              },
+              "callId": {
+                "type": "string",
+                "description": "Unique identifier for this Call, generated by FreeClimb"
+              },
+              "from": {
+                "type": "string",
+                "description": "Phone number of the party that initiated the Call (in E.164 format)."
+              },
+              "to": {
+                "type": "string",
+                "description": "Phone number provisioned to the customer and to which this Call is directed (in E.164 format)."
+              },
+              "callStatus": {
+                "$ref": "#/components/schemas/CallStatus"
+              },
+              "direction": {
+                "$ref": "#/components/schemas/CallDirection"
+              },
+              "conferenceId": {
+                "type": "string",
+                "description": "This is only populated if request pertains to a conference. Otherwise, it is set to null.",
+                "nullable": true
+              },
+              "queueId": {
+                "type": "string",
+                "description": "This is only populated if the request pertains to a queue. Otherwise, it is set to null.",
+                "nullable": true
+              },
+              "queueResult": {
+                "$ref": "#/components/schemas/QueueResultStatus"
+              },
+              "queueTime": {
+                "type": "integer",
+                "description": "Time (in seconds) the Call spent in the Queue. This is only available if the Call was actually enqueued."
+              }
+            }
+          }
+        ]
+      },
+      "TranscribeWebhook": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Webhook"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "requestType": {
+                "type": "string",
+                "description": "The context or reason why this request is being made. Will be transcribe - The TranscribeUtterance command has completed and its actionUrl is being invoked."
+              },
+              "accountId": {
+                "type": "string",
+                "description": "Account ID associated with your account."
+              },
+              "callId": {
+                "type": "string",
+                "description": "Unique identifier for this Call, generated by FreeClimb"
+              },
+              "from": {
+                "type": "string",
+                "description": "Phone number of the party that initiated the Call (in E.164 format)."
+              },
+              "to": {
+                "type": "string",
+                "description": "Phone number provisioned to the customer and to which this Call is directed (in E.164 format)."
+              },
+              "recordingId": {
+                "type": "string",
+                "description": "The ID of the recording. If no recording was made due to errors or the 'saveRecording' flag being disabled this field will be set to null.",
+                "nullable": true
+              },
+              "recordingUrl": {
+                "type": "string",
+                "description": "The URL of the recorded audio file. This URL can be used as is in a Play command to play the recording (no authentication needed). It can also be used to download the recording file via the REST API.",
+                "format": "uri",
+                "nullable": true
+              },
+              "recordingSize": {
+                "type": "integer",
+                "description": "The size of the recording in bytes."
+              },
+              "recordingFormat": {
+                "type": "string",
+                "description": "The media type of the recording.",
+                "nullable": true
+              },
+              "recordingDurationMs": {
+                "type": "integer",
+                "description": "The duration of the recorded audio in milliseconds."
+              },
+              "termReason": {
+                "$ref": "#/components/schemas/TranscribeTermReason"
+              },
+              "recordTermReason": {
+                "$ref": "#/components/schemas/RecordUtteranceTermReason"
+              },
+              "digit": {
+                "type": "string",
+                "description": "If recordTermReason is digit, this will be the digit that was pressed. Otherwise it will be null.",
+                "nullable": true
+              },
+              "privacyForLogging": {
+                "type": "boolean",
+                "description": "Echo back of the privacyForLogging flag as specified in the transcribe utterance command – confirmation of logging protection has been applied. Can be used by application to know it should also apply protection when handling this request."
+              },
+              "privacyForRecording": {
+                "type": "boolean",
+                "description": "Echo back of the privacyForRecording flag as specified in the transcribe utterance command – confirmation of logging protection has been applied. Can be used by application to know it should also apply protection when handling this request."
+              },
+              "bargeInReason": {
+                "$ref": "#/components/schemas/BargeInReason"
+              },
+              "bargedInPromptNo": {
+                "type": "integer"
+              },
+              "bargedInPromptMs": {
+                "type": "integer",
+                "description": "duration in ms bargedInPromptNo prompt was executing until barge-in occurred."
+              },
+              "bargedInPromptLoopNo": {
+                "type": "integer"
+              },
+              "bargeInTimeMs": {
+                "type": "integer",
+                "description": "epoch time in ms"
+              },
+              "transcript": {
+                "type": "string",
+                "description": "Transcribed text of the recording. Can be empty or null. null means there was a failure in transcribing the audio, refer to transcribeReason for detailed failure reason.",
+                "nullable": true
+              },
+              "transcribeReason": {
+                "$ref": "#/components/schemas/TranscribeReason"
+              },
+              "transcriptionDurationMs": {
+                "type": "integer",
+                "description": "The duration of the audio being transcribed in milliseconds"
+              }
+            }
+          }
+        ]
+      },
       "AddToConference": {
         "description": "The `AddToConference` command adds a Participant to a Conference. Two Call legs can be bridged together by creating a Conference and adding both Call legs to it via `AddToConference`.",
-        "x-percl-command": true,
-        "x-ref-properties": [
-          "false",
-          "\"TEST_STRING\"",
-          "\"TEST_STRING\"",
-          "\"TEST_STRING\"",
-          "\"TEST_STRING\"",
-          "false",
-          "\"TEST_STRING\"",
-          "false",
-          "false"
-        ],
+        "required": ["conferenceId"],
         "allOf": [
           {
             "$ref": "#/components/schemas/PerclCommand"
@@ -512,7 +1914,8 @@
               },
               "callControlUrl": {
                 "description": "URL to be invoked when this Participant enters the digit sequence defined in the `callControlSequence` attribute.",
-                "type": "string"
+                "type": "string",
+                "format": "uri"
               },
               "conferenceId": {
                 "description": "ID of the Conference to which to add the Participant (Call leg). Conference must exist or an error will result.",
@@ -520,6 +1923,7 @@
               },
               "leaveConferenceUrl": {
                 "description": "URL to be invoked when the Participant leaves the Conference. ",
+                "format": "uri",
                 "type": "string"
               },
               "listen": {
@@ -528,6 +1932,7 @@
               },
               "notificationUrl": {
                 "description": "When the Participant enters the Conference, this URL will be invoked using an HTTP POST request with the standard request parameters.",
+                "format": "uri",
                 "type": "string"
               },
               "startConfOnEnter": {
@@ -548,16 +1953,6 @@
       },
       "CreateConference": {
         "description": "The `CreateConference` command does exactly what its name implies — it creates an unpopulated Conference (one without any Participants). Once created, a Conference remains in FreeClimb until explicitly terminated by a customer. Once a Conference has been terminated, it can no longer be used.",
-        "x-percl-command": true,
-        "x-ref-properties": [
-          "\"TEST_STRING\"",
-          "false",
-          "PlayBeep.ALWAYS",
-          "false",
-          "\"https://a.com\"",
-          "\"https://a.com\"",
-          "\"TEST_STRING\""
-        ],
         "allOf": [
           {
             "$ref": "#/components/schemas/PerclCommand"
@@ -568,8 +1963,8 @@
             "properties": {
               "actionUrl": {
                 "description": " This URL is invoked once the Conference is successfully created. Actions on the Conference, such as adding Participants, can be performed via the PerCL script returned in the response. ",
-                "type": "string",
-                "x-is-uri": true
+                "format": "uri",
+                "type": "string"
               },
               "alias": {
                 "description": "Descriptive name for the Conference. ",
@@ -584,10 +1979,12 @@
               },
               "statusCallbackUrl": {
                 "description": "This URL is invoked when the status of the Conference changes or when a recording of the Conference has become available.",
+                "format": "uri",
                 "type": "string"
               },
               "waitUrl": {
                 "description": "If specified, this URL provides the custom hold music for the Conference when it is in the populated state. This attribute is always fetched using HTTP GET and is fetched just once – when the Conference is created. The URL must be an audio file that is reachable and readable by FreeClimb.",
+                "format": "uri",
                 "type": "string"
               }
             }
@@ -596,8 +1993,6 @@
       },
       "Dequeue": {
         "description": "The `Dequeue` command transfers control of a Call that is in a Queue so that the waiting caller exits the Queue. Execution continues with the first command in the PerCL script returned by the `actionUrl` specified in the `Enqueue` command.",
-        "x-percl-command": true,
-        "x-no-properties": true,
         "allOf": [
           {
             "$ref": "#/components/schemas/PerclCommand"
@@ -609,18 +2004,10 @@
       },
       "Enqueue": {
         "description": "The `Enqueue` command adds the current Call to a call Queue. If the specified Queue does not exist, it is created and then the Call is added to it. The default maximum length of the queue is 100. This can be modified using the REST API.",
-        "x-percl-command": true,
-        "x-ref-properties": [
-          "\"TEST_STRING\"",
-          "\"TEST_STRING\"",
-          "\"TEST_STRING\"",
-          "\"TEST_STRING\"",
-          "\"TEST_STRING\""
-        ],
+        "required": ["queueId", "waitUrl", "actionUrl"],
         "allOf": [
           {
-            "$ref": "#/components/schemas/PerclCommand",
-            "x-is-uri": true
+            "$ref": "#/components/schemas/PerclCommand"
           },
           {
             "type": "object",
@@ -629,12 +2016,12 @@
               "actionUrl": {
                 "description": "A request is made to this URL when the Call leaves the Queue, which can occur if enqueue of the Call fails or when the call is dequeued via the `Dequeue` command, the REST API (POST to Queue Member resource), or the caller hangs up.",
                 "type": "string",
-                "x-is-uri": true
+                "format": "uri"
               },
               "notificationUrl": {
                 "description": "URL to be invoked when the call enters the queue. The request to the URL contains the standard request parameters.This is a notification only; any PerCL returned will be ignored.",
                 "type": "string",
-                "x-is-uri": true
+                "format": "uri"
               },
               "queueId": {
                 "description": "ID of the Queue to which to add the Call. If the Queue does not exist, it will be created. The ID must start with QU followed by 40 hex characters.",
@@ -642,7 +2029,8 @@
               },
               "waitUrl": {
                 "description": "A request is made to this URL when the Call leaves the Queue, which can occur if enqueue of the Call fails or when the call is dequeued via the `Dequeue` command, the REST API (POST to Queue Member resource), or the caller hangs up.",
-                "type": "string"
+                "type": "string",
+                "format": "uri"
               }
             }
           }
@@ -650,23 +2038,9 @@
       },
       "GetDigits": {
         "description": "The `GetDigits` command collects DTMF inputs from the caller. It is only supported only when there is a single party on the Call. `GetDigits` is a Terminal Command — any actions following it are never executed. When the Caller is done entering the digits, FreeClimb submits that data to the provided `actionUrl` using an HTTP POST request. Your server will be required to respond to the FreeClimb Webhook with PerCL to continue handling the call.",
-        "x-percl-command": true,
-        "x-ref-properties": [
-          "\"https://a.com\"",
-          "1",
-          "\"TEST_STRING\"",
-          "false",
-          "300",
-          "1",
-          "1",
-          "new List<PerclCommand>()",
-          "false",
-          "\"TEST_STRING\""
-        ],
         "allOf": [
           {
-            "$ref": "#/components/schemas/PerclCommand",
-            "x-is-uri": true
+            "$ref": "#/components/schemas/PerclCommand"
           },
           {
             "type": "object",
@@ -675,7 +2049,7 @@
               "actionUrl": {
                 "description": "When the Caller has finished entering digits, FreeClimb will make an HTTP POST request to this URL. A PerCL response is expected to continue handling the Call. Make sure to keep “http://“ in the URL.",
                 "type": "string",
-                "x-is-uri": true
+                "format": "uri"
               },
               "digitTimeoutMs": {
                 "description": " Maximum time in milliseconds that FreeClimb will wait for the Caller to press any digit after the last digit entered, before making a determination that a `timeout` has occurred and moving on to make the request to the actionUrl to submit the results of the `GetDigits` command. This timeout interval begins and resets after each digit entered.",
@@ -704,7 +2078,6 @@
               "prompts": {
                 "description": "JSON array of PerCL commands to nest within the `GetDigits` command. The `Say`, `Play`, and `Pause` commands can be used. The nested actions are executed while FreeClimb is waiting for input from the Caller.",
                 "type": "array",
-                "x-is-list": true,
                 "items": {
                   "$ref": "#/components/schemas/PerclCommand"
                 }
@@ -719,23 +2092,6 @@
       },
       "GetSpeech": {
         "description": "The `GetSpeech` command enables the Caller to respond to the application using a supported language. Unlike DTMF entry, which implicitly restricts the user to using the available buttons on the phone key pad, speech input allows for flexible audio inputs based on grammar. FreeClimb supports grammars written using GRXML compatible with the Microsoft Speech Platform. `GetSpeech` is only supported on a single call leg. It is not supported when there are two or more call legs connected (as in within a Conference).",
-        "x-percl-command": true,
-        "x-ref-properties": [
-          "\"https://a.com\"",
-          "GrammarType.URL",
-          "\"TEST_STRING\"",
-          "\"TEST_STRING\"",
-          "false",
-          "new List<PerclCommand>()",
-          "1",
-          "1",
-          "1",
-          "1",
-          "1",
-          "1",
-          "false",
-          "\"TEST_STRING\""
-        ],
         "allOf": [
           {
             "$ref": "#/components/schemas/PerclCommand"
@@ -747,9 +2103,7 @@
               "actionUrl": {
                 "description": "When the caller has finished speaking or the command has timed out, FreeClimb will make a POST request to this URL. A PerCL response is expected to continue handling the call.",
                 "type": "string",
-                "format": "uri",
-                "x-is-uri": true,
-                "x-is-url": true
+                "format": "uri"
               },
               "grammarType": {
                 "$ref": "#/components/schemas/GrammarType"
@@ -771,8 +2125,7 @@
                 "type": "array",
                 "items": {
                   "$ref": "#/components/schemas/PerclCommand"
-                },
-                "x-is-list": true
+                }
               },
               "noInputTimeoutMs": {
                 "description": "When recognition is started and there is no speech detected for `noInputTimeoutMs` milliseconds, the recognizer will terminate the recognition operation.",
@@ -808,7 +2161,6 @@
       },
       "Hangup": {
         "description": "The `Hangup` command terminates a Call. If `Hangup` is used as the first action in a PerCL response, it does not prevent FreeClimb from answering the Call and billing your account. See the `Reject` command to hang up at no charge.",
-        "x-percl-command": true,
         "allOf": [
           {
             "$ref": "#/components/schemas/PerclCommand"
@@ -826,24 +2178,9 @@
       },
       "OutDial": {
         "description": "The OutDial command is used to call a phone number",
-        "x-percl-command": true,
-        "x-ref-properties": [
-          "\"https://a.com\"",
-          "\"https://a.com\"",
-          "\"TEST_STRING\"",
-          "\"TEST_STRING\"",
-          "IfMachine.REDIRECT",
-          "\"https://a.com\"",
-          "\"TEST_STRING\"",
-          "\"TEST_STRING\"",
-          "1",
-          "false",
-          "\"TEST_STRING\""
-        ],
         "allOf": [
           {
-            "$ref": "#/components/schemas/PerclCommand",
-            "x-is-uri": true
+            "$ref": "#/components/schemas/PerclCommand"
           },
           {
             "required": [
@@ -857,12 +2194,12 @@
               "actionUrl": {
                 "description": "URL to which FreeClimb sends an HTTP POST request. ",
                 "type": "string",
-                "x-is-uri": true
+                "format": "uri"
               },
               "callConnectUrl": {
                 "description": "URL to which FreeClimb makes an HTTP POST request informing the result of the OutDial.",
                 "type": "string",
-                "x-is-uri": true
+                "format": "uri"
               },
               "callingNumber": {
                 "description": "he caller ID to show to the called party when FreeClimb calls. This can be one of the following: The To or From number provided in the first Webhook to your webserver. Any phone number you have purchased from FreeClimb.",
@@ -877,6 +2214,7 @@
               },
               "ifMachineUrl": {
                 "description": "When the `ifMachine` flag is set to `redirect`, this attribute specifies a URL to which FreeClimb makes a POST request when an answering machine or a fax machine is detected. This URL is required if the `ifMachine` flag is set to `redirect`. Otherwise, it should not be included.",
+                "format": "uri",
                 "type": "string"
               },
               "sendDigits": {
@@ -885,6 +2223,7 @@
               },
               "statusCallbackUrl": {
                 "description": "When the outdialed Call leg terminates, FreeClimb sends a `callStatus` Webhook to the `statusCallbackUrl`. This is a notification only; any PerCL command returned is ignored.",
+                "format": "uri",
                 "type": "string"
               },
               "timeout": {
@@ -901,17 +2240,9 @@
       },
       "Park": {
         "description": "The `Park` command allows a caller to be put on hold.  You can provide hold music,messages,etc until ready to resume the call. Park is a terminal command.  Actions performed on the Call while on hold are provided in a PerCL script in response to the waitUrl property. Actions performed on the Call after it has been unparked (resumed) will be provided in a PerCL script in response to the actionUrl provided. A Call can be resumed in two ways -- REST API invocation or the Unpark percl command. No actions can be nested within Park and Park cannot be nested in any other actions. ",
-        "x-percl-command": true,
-        "x-ref-properties": [
-          "\"https://a.com\"",
-          "\"https://a.com\"",
-          "\"TEST_STRING\"",
-          "\"TEST_STRING\""
-        ],
         "allOf": [
           {
-            "$ref": "#/components/schemas/PerclCommand",
-            "x-is-uri": true
+            "$ref": "#/components/schemas/PerclCommand"
           },
           {
             "type": "object",
@@ -920,16 +2251,17 @@
               "waitUrl": {
                 "description": "Specifies a URL pointing to a PerCL script containing actions to be executed while the caller is Parked. Once the script returned by the waitUrl runs out of commands to execute, FreeClimb will re-request the waitUrl and start over, essentially looping the script requests indefinitely.",
                 "type": "string",
-                "x-is-uri": true
+                "format": "uri"
               },
               "actionUrl": {
                 "description": "A request is made to this URL when the Call is resumed, which can occur if the Call is resumed via the Unpark command, the REST API (POST to Call resource), or the caller hangs up. The PerCL script returned in response to the actionUrl will be executed on the resumed call.",
                 "type": "string",
-                "x-is-uri": true
+                "format": "uri"
               },
               "notificationUrl": {
                 "description": "URL to be invoked when the Call is parked. The request to the URL contains the standard request parameters.",
-                "type": "string"
+                "type": "string",
+                "format": "uri"
               }
             }
           }
@@ -937,8 +2269,6 @@
       },
       "Pause": {
         "description": "The `Pause` command halts execution of the current PerCL script for a specified number of milliseconds. If `Pause` is the first command in a PerCL document, FreeClimb will wait for the specified time to elapse before picking up the call.",
-        "x-percl-command": true,
-        "x-ref-properties": ["1"],
         "allOf": [
           {
             "$ref": "#/components/schemas/PerclCommand"
@@ -957,8 +2287,6 @@
       },
       "Play": {
         "description": "The `Play` command plays an audio file back to the caller. The audio file may be located at any location accessible via a URL. `Play` can exist as a stand-alone command or as a nested command. It does not allow barge-in unless nested within a `GetSpeech` command. The file will always be played to completion unless nested.",
-        "x-percl-command": true,
-        "x-ref-properties": ["\"TEST_STRING\"", "1", "false"],
         "allOf": [
           {
             "$ref": "#/components/schemas/PerclCommand"
@@ -985,8 +2313,6 @@
       },
       "PlayEarlyMedia": {
         "description": "`PlayEarlyMedia` is relevant only when present as the very first command in the PerCL script returned for an incoming Call. In such cases, the command is executed before FreeClimb attempts to connect the call. The audio file it uses can be stored in any location that is accessible via URL.",
-        "x-percl-command": true,
-        "x-ref-properties": ["\"TEST_STRING\""],
         "allOf": [
           {
             "$ref": "#/components/schemas/PerclCommand"
@@ -1005,20 +2331,9 @@
       },
       "RecordUtterance": {
         "description": "The `RecordUtterance` command records the caller's voice and returns the URL of a file containing the audio recording. `RecordUtterance` is blocking and is a terminal command. As such, the `actionUrl` property is required, and control of the Call picks up using the PerCL returned in response to the `actionUrl`. Recording information is returned in the `actionUrl` request.",
-        "x-percl-command": true,
-        "x-ref-properties": [
-          "\"https://a.com\"",
-          "1",
-          "\"TEST_STRING\"",
-          "1",
-          "false",
-          "false",
-          "false"
-        ],
         "allOf": [
           {
-            "$ref": "#/components/schemas/PerclCommand",
-            "x-is-uri": true
+            "$ref": "#/components/schemas/PerclCommand"
           },
           {
             "required": ["actionUrl"],
@@ -1027,7 +2342,7 @@
               "actionUrl": {
                 "description": "URL to which information on the completed recording is submitted. The PerCL received in response is then used to continue with Call processing.",
                 "type": "string",
-                "x-is-uri": true
+                "format": "uri"
               },
               "silenceTimeoutMs": {
                 "description": "Interval of silence that should elapse before ending the recording.",
@@ -1059,12 +2374,9 @@
       },
       "Redirect": {
         "description": "The `Redirect` command transfers control of a Call to the PerCL at a different URL. `Redirect` is a terminal command, so any actions following it are never executed. The maximum number of redirections allowed during the life time of a Call is 256. This is intended to prevent a Call from possibly looping infinitely due to errors in PerCL being generated.",
-        "x-percl-command": true,
-        "x-ref-properties": ["\"https://a.com\""],
         "allOf": [
           {
-            "$ref": "#/components/schemas/PerclCommand",
-            "x-is-uri": true
+            "$ref": "#/components/schemas/PerclCommand"
           },
           {
             "required": ["actionUrl"],
@@ -1073,7 +2385,7 @@
               "actionUrl": {
                 "description": "URL to request a new PerCL script to continue with the current Call's processing. When `Redirect` invokes the `actionUrl`, an `inbound` Webhook is sent. This request therefore looks identical to the initial request (made to the `voiceUrl` of the number that was called) for an inbound Call.",
                 "type": "string",
-                "x-is-uri": true
+                "format": "uri"
               }
             }
           }
@@ -1081,8 +2393,6 @@
       },
       "Reject": {
         "description": "The `Reject` command blocks an incoming Call. Using `Reject` is the only way to prevent FreeClimb from answering a Call. Any other response will result in an answered Call and your account will be billed.",
-        "x-percl-command": true,
-        "x-ref-properties": ["\"TEST_STRING\""],
         "allOf": [
           {
             "$ref": "#/components/schemas/PerclCommand"
@@ -1100,8 +2410,6 @@
       },
       "RemoveFromConference": {
         "description": "The `RemoveFromConference` command removes a Participant from a Conference but does not hang up. Instead, the Call is simply unbridged and what happens next with the Call is determined by the PerCL returned in response to the `leaveConferenceUrl` attribute.",
-        "x-percl-command": true,
-        "x-no-properties": true,
         "allOf": [
           {
             "$ref": "#/components/schemas/PerclCommand"
@@ -1115,13 +2423,6 @@
       },
       "Say": {
         "description": "The `Say` command provides Text-To-Speech (TTS) support. It converts text to speech and then renders it in a female voice back to the caller. `Say` is useful in cases where it's difficult to pre-record a prompt for any reason. `Say` does not allow barge-in unless nested within a `GetSpeech` command. The file will always be played to completion unless nested.",
-        "x-percl-command": true,
-        "x-ref-properties": [
-          "\"TEST_STRING\"",
-          "\"TEST_STRING\"",
-          "1",
-          "false"
-        ],
         "allOf": [
           {
             "$ref": "#/components/schemas/PerclCommand"
@@ -1153,8 +2454,6 @@
       },
       "SendDigits": {
         "description": "The `SendDigits` command plays DTMF tones on a live Call. This is useful for navigating through IVR menus or dialing extensions.",
-        "x-percl-command": true,
-        "x-ref-properties": ["\"TEST_STRING\"", "1", "false"],
         "allOf": [
           {
             "$ref": "#/components/schemas/PerclCommand"
@@ -1181,8 +2480,6 @@
       },
       "SetListen": {
         "description": "The `SetListen` command enables or disables the listen privilege for this Conference Participant. The Participant can hear what the other participants are saying only if this privilege is enabled.",
-        "x-percl-command": true,
-        "x-ref-properties": ["false"],
         "allOf": [
           {
             "$ref": "#/components/schemas/PerclCommand"
@@ -1201,8 +2498,6 @@
       },
       "SetTalk": {
         "description": "The `SetTalk` command enables or disables the talk privilege for this Conference Participant. If 'true', no audio from that Participant is shared with the other Participants of the Conference.",
-        "x-percl-command": true,
-        "x-ref-properties": ["false"],
         "allOf": [
           {
             "$ref": "#/components/schemas/PerclCommand"
@@ -1221,8 +2516,6 @@
       },
       "SetDTMFPassThrough": {
         "description": "The `SetDTMFPassThrough` command enables or disables the dtmfPassThrough privilege for this Conference Participant. If 'true', DTMFs will be passed through from this Participant to all other Participants in the Conference",
-        "x-percl-command": true,
-        "x-ref-properties": ["false"],
         "allOf": [
           {
             "$ref": "#/components/schemas/PerclCommand"
@@ -1241,12 +2534,6 @@
       },
       "Sms": {
         "description": "The `Sms` command can be used to send an SMS message to a phone number during a phone call. International SMS is disabled by default.",
-        "x-percl-command": true,
-        "x-ref-properties": [
-          "\"TEST_STRING\"",
-          "\"TEST_STRING\"",
-          "\"TEST_STRING\""
-        ],
         "allOf": [
           {
             "$ref": "#/components/schemas/PerclCommand"
@@ -1269,7 +2556,8 @@
               },
               "notificationUrl": {
                 "description": "When the message changes status, this URL will be invoked using HTTP POST with the messageStatus parameters. This is a notification only; any PerCL returned will be ignored.",
-                "type": "string"
+                "type": "string",
+                "format": "uri"
               }
             }
           }
@@ -1277,8 +2565,6 @@
       },
       "StartRecordCall": {
         "description": "The `StartRecordCall` command records the current call and returns the URL of a file containing the audio recording when recording completes. `StartRecordCall` is non-blocking. After recording of the current call begins, control of the call moves to the PerCL command that follows `StartRecordCall` in the current PerCL script.",
-        "x-percl-command": true,
-        "x-no-properties": true,
         "allOf": [
           {
             "$ref": "#/components/schemas/PerclCommand"
@@ -1290,8 +2576,6 @@
       },
       "TerminateConference": {
         "description": "The `TerminateConference` command terminates an existing Conference. Any active participants are hung up on by FreeClimb. If this is not the desired behavior, use the `RemoveFromConference` command to unbridge Calls that should not be hung up. Note: The Call requesting TerminateConference must be on the same Conference for this command to execute.",
-        "x-percl-command": true,
-        "x-no-properties": true,
         "allOf": [
           {
             "$ref": "#/components/schemas/PerclCommand"
@@ -1305,8 +2589,6 @@
       },
       "Unpark": {
         "description": "The `Unpark` command resumes a parked call.  Execution continues with the first command in the PerCL scripted returned by the actionUrl specified in the Park command as long as the call is still in progress.  If the call is no longer in progress, any returned PerCL will not be executed. Unpark is a terminal command -- any commands following it in the same script are not executed.",
-        "x-percl-command": true,
-        "x-no-properties": true,
         "allOf": [
           {
             "$ref": "#/components/schemas/PerclCommand"
@@ -1381,8 +2663,6 @@
         "description": "Details for which features this number may be used.",
         "type": "object",
         "required": ["voice", "sms", "tollFree", "tenDLC", "shortCode"],
-        "x-is-object": true,
-        "x-ref-properties": [false, false, false, false, false],
         "properties": {
           "voice": {
             "description": "Indicates whether a number can be used for voice calls. Replaces voiceEnabled.",
@@ -1415,8 +2695,6 @@
         "description": "TollFree Campaign details for this number",
         "type": "object",
         "required": ["campaignId"],
-        "x-is-object": true,
-        "x-ref-properties": ["\"TEST_STRING\""],
         "properties": {
           "campaignId": {
             "description": "alphanumeric identifier for the TollFree campaign associated with this number",
@@ -1506,31 +2784,37 @@
               "voiceUrl": {
                 "type": "string",
                 "description": "The URL FreeClimb will request when a phone number assigned to this Application receives a Call. Used for inbound calls only.",
+                "format": "uri",
                 "nullable": true
               },
               "voiceFallbackUrl": {
                 "type": "string",
                 "description": "The URL that FreeClimb will request if it times out waiting for a response from the voiceUrl. Used for inbound calls only.",
+                "format": "uri",
                 "nullable": true
               },
               "callConnectUrl": {
                 "type": "string",
                 "description": "The URL to which FreeClimb will make a POST request informing the result of the outbound Call request. The status property of the request message specifies if the Call was connected or not.",
+                "format": "uri",
                 "nullable": true
               },
               "statusCallbackUrl": {
                 "type": "string",
                 "description": "A URL to which FreeClimb will make a POST request when the Call ends to notify this app.",
+                "format": "uri",
                 "nullable": true
               },
               "smsUrl": {
                 "type": "string",
                 "description": "The URL FreeClimb will request when a phone number assigned to this Application receives an incoming SMS message. Used for inbound SMS only.",
+                "format": "uri",
                 "nullable": true
               },
               "smsFallbackUrl": {
                 "type": "string",
                 "description": "The URL that FreeClimb will request if it times out waiting for a response from the smsUrl. Used for inbound SMS only.",
+                "format": "uri",
                 "nullable": true
               }
             }
@@ -1547,37 +2831,42 @@
           "voiceUrl": {
             "type": "string",
             "description": "The URL that FreeClimb will request when an inbound call arrives on a phone number assigned to this application. Used only for inbound calls.",
+            "format": "uri",
             "nullable": true
           },
           "voiceFallbackUrl": {
             "type": "string",
             "description": "The URL that FreeClimb will request if it times out waiting for a response from the voiceUrl. Used for inbound calls only. Note: A PerCL response is expected to control the inbound call.",
+            "format": "uri",
             "nullable": true
           },
           "callConnectUrl": {
             "type": "string",
             "description": "The URL that FreeClimb will request when an outbound call request is complete. Used for outbound calls only.  Note: A PerCL response is expected if the outbound call is connected (status=InProgress) to control the call.",
+            "format": "uri",
             "nullable": true
           },
           "statusCallbackUrl": {
             "type": "string",
             "description": "The URL that FreeClimb will request to pass call status (such as call ended) to the application.  Note: This is a notification only; any PerCL returned will be ignored.",
+            "format": "uri",
             "nullable": true
           },
           "smsUrl": {
             "type": "string",
             "description": "The URL that FreeClimb will request when a phone number assigned to this application receives an incoming SMS message. Used for inbound SMS only.  Note: Any PerCL returned will be ignored.",
+            "format": "uri",
             "nullable": true
           },
           "smsFallbackUrl": {
             "type": "string",
             "description": "The URL that FreeClimb will request if it times out waiting for a response from the smsUrl. Used for inbound SMS only.  Note: Any PerCL returned will be ignored.",
+            "format": "uri",
             "nullable": true
           }
         }
       },
       "ApplicationList": {
-        "x-implements": "Pagination",
         "allOf": [
           {
             "$ref": "#/components/schemas/PaginationModel"
@@ -1590,8 +2879,7 @@
                 "items": {
                   "$ref": "#/components/schemas/ApplicationResult"
                 },
-                "nullable": true,
-                "x-is-list": true
+                "nullable": true
               }
             }
           }
@@ -1638,7 +2926,6 @@
         }
       },
       "AvailableNumberList": {
-        "x-implements": "Pagination",
         "allOf": [
           {
             "$ref": "#/components/schemas/PaginationModel"
@@ -1651,8 +2938,7 @@
                 "items": {
                   "$ref": "#/components/schemas/AvailableNumber"
                 },
-                "nullable": true,
-                "x-is-list": true
+                "nullable": true
               }
             }
           }
@@ -1753,7 +3039,6 @@
         }
       },
       "IncomingNumberList": {
-        "x-implements": "Pagination",
         "allOf": [
           {
             "$ref": "#/components/schemas/PaginationModel"
@@ -1766,8 +3051,7 @@
                 "items": {
                   "$ref": "#/components/schemas/IncomingNumberResult"
                 },
-                "nullable": true,
-                "x-is-list": true
+                "nullable": true
               }
             }
           }
@@ -1912,7 +3196,8 @@
           },
           "ifMachineUrl": {
             "type": "string",
-            "description": "This attribute specifies a URL to which FreeClimb will make a POST request when an answering machine or a fax machine is detected. This URL is required if the ifMachine flag is set to redirect. When ifMachine is set to hangup, ifMachineUrl must not be included in the request. For more information, see **ifMachineUrl example** below."
+            "description": "This attribute specifies a URL to which FreeClimb will make a POST request when an answering machine or a fax machine is detected. This URL is required if the ifMachine flag is set to redirect. When ifMachine is set to hangup, ifMachineUrl must not be included in the request. For more information, see **ifMachineUrl example** below.",
+            "format": "uri"
           },
           "timeout": {
             "type": "integer",
@@ -1930,12 +3215,12 @@
           },
           "callConnectUrl": {
             "type": "string",
-            "description": "The URL that FreeClimb should use to handle this phone call. If an applicationId or parentCallId have already been provided, this callConnectUrl attribute will be used as a replacement of the callConnectUrl originally assigned in the application or parent call."
+            "description": "The URL that FreeClimb should use to handle this phone call. If an applicationId or parentCallId have already been provided, this callConnectUrl attribute will be used as a replacement of the callConnectUrl originally assigned in the application or parent call.",
+            "format": "uri"
           }
         }
       },
       "CallList": {
-        "x-implements": "Pagination",
         "allOf": [
           {
             "$ref": "#/components/schemas/PaginationModel"
@@ -1948,8 +3233,7 @@
                 "items": {
                   "$ref": "#/components/schemas/CallResult"
                 },
-                "nullable": true,
-                "x-is-list": true
+                "nullable": true
               }
             }
           }
@@ -1993,7 +3277,6 @@
         ]
       },
       "RecordingList": {
-        "x-implements": "Pagination",
         "allOf": [
           {
             "$ref": "#/components/schemas/PaginationModel"
@@ -2006,8 +3289,7 @@
                 "items": {
                   "$ref": "#/components/schemas/RecordingResult"
                 },
-                "nullable": true,
-                "x-is-list": true
+                "nullable": true
               }
             }
           }
@@ -2052,7 +3334,6 @@
         }
       },
       "LogList": {
-        "x-implements": "Pagination",
         "allOf": [
           {
             "$ref": "#/components/schemas/PaginationModel"
@@ -2065,8 +3346,7 @@
                 "items": {
                   "$ref": "#/components/schemas/LogResult"
                 },
-                "nullable": true,
-                "x-is-list": true
+                "nullable": true
               }
             }
           }
@@ -2110,16 +3390,19 @@
               "waitUrl": {
                 "type": "string",
                 "description": "URL referencing the audio file to be used as default wait music for the Conference when it is in the populated state.",
+                "format": "uri",
                 "nullable": true
               },
               "actionUrl": {
                 "type": "string",
                 "description": "URL invoked once the Conference is successfully created.",
+                "format": "uri",
                 "nullable": true
               },
               "statusCallbackUrl": {
                 "type": "string",
                 "description": "URL to inform that the Conference status has changed.",
+                "format": "uri",
                 "nullable": true
               },
               "subresourceUris": {
@@ -2132,7 +3415,6 @@
         ]
       },
       "MessagesList": {
-        "x-implements": "Pagination",
         "allOf": [
           {
             "$ref": "#/components/schemas/PaginationModel"
@@ -2146,8 +3428,7 @@
                 "items": {
                   "$ref": "#/components/schemas/MessageResult"
                 },
-                "nullable": true,
-                "x-is-list": true
+                "nullable": true
               }
             }
           }
@@ -2176,12 +3457,12 @@
               },
               "notificationUrl": {
                 "type": "string",
-                "description": "When the Message changes status, this URL is invoked using HTTP POST with the messageStatus parameters.  **Note:** This is a notification only; any PerCL returned is ignored."
+                "description": "When the Message changes status, this URL is invoked using HTTP POST with the messageStatus parameters.  **Note:** This is a notification only; any PerCL returned is ignored.",
+                "format": "uri"
               },
               "mediaUrls": {
                 "type": "array",
                 "description": "an array of HTTP URLs which are to be used as attachments to the message. This will force the message into being an MMS message and must be done using a from number which is MMS capabile.",
-                "x-is-list": true,
                 "items": {
                   "type": "string",
                   "format": "uri"
@@ -2206,26 +3487,17 @@
       "CompletionResult": {
         "type": "object",
         "required": ["response", "status"],
-        "x-completion-result": true,
         "properties": {
           "response": {
             "type": "string",
             "description": "The generative response from the KnowledgeBase"
           },
           "status": {
-            "type": "string",
-            "x-has-writer": true,
-            "description": "Completion result status. Possible values: success, no_context",
-            "x-enum-type": "CompletionResultStatusEnum",
-            "x-enum-type-c-sharp": "StatusEnum",
-            "enum": ["success", "no_context"],
-            "x-enum-varnames": ["SUCCESS", "NO_CONTEXT"],
-            "x-enum-varnames-values": ["success", "no_context"]
+            "$ref": "#/components/schemas/CompletionResultStatus"
           }
         }
       },
       "ConferenceList": {
-        "x-implements": "Pagination",
         "allOf": [
           {
             "$ref": "#/components/schemas/PaginationModel"
@@ -2238,8 +3510,7 @@
                 "items": {
                   "$ref": "#/components/schemas/ConferenceResult"
                 },
-                "nullable": true,
-                "x-is-list": true
+                "nullable": true
               }
             }
           }
@@ -2289,6 +3560,7 @@
               "notificationUrl": {
                 "type": "string",
                 "description": "URL invoked when message sent",
+                "format": "uri",
                 "nullable": true
               },
               "brandId": {
@@ -2309,7 +3581,6 @@
               "mediaUrls": {
                 "type": "array",
                 "description": "an array of HTTP URLs which were attached this this message",
-                "x-is-list": true,
                 "items": {
                   "type": "string",
                   "format": "uri"
@@ -2336,11 +3607,13 @@
           },
           "waitUrl": {
             "type": "string",
-            "description": "If specified, a URL for the audio file that provides custom hold music for the Conference when it is in the populated state. Otherwise, FreeClimb uses a system default audio file. This is always fetched using HTTP GET and is fetched just once &mdash; when the Conference is created."
+            "description": "If specified, a URL for the audio file that provides custom hold music for the Conference when it is in the populated state. Otherwise, FreeClimb uses a system default audio file. This is always fetched using HTTP GET and is fetched just once &mdash; when the Conference is created.",
+            "format": "uri"
           },
           "statusCallbackUrl": {
             "type": "string",
-            "description": "This URL is invoked when the status of the Conference changes. For more information, see **statusCallbackUrl** (below)."
+            "description": "This URL is invoked when the status of the Conference changes. For more information, see **statusCallbackUrl** (below).",
+            "format": "uri"
           }
         }
       },
@@ -2424,7 +3697,6 @@
         }
       },
       "ConferenceParticipantList": {
-        "x-implements": "Pagination",
         "allOf": [
           {
             "$ref": "#/components/schemas/PaginationModel"
@@ -2437,8 +3709,7 @@
                 "items": {
                   "$ref": "#/components/schemas/ConferenceParticipantResult"
                 },
-                "nullable": true,
-                "x-is-list": true
+                "nullable": true
               }
             }
           }
@@ -2507,7 +3778,6 @@
         }
       },
       "QueueList": {
-        "x-implements": "Pagination",
         "allOf": [
           {
             "$ref": "#/components/schemas/PaginationModel"
@@ -2520,8 +3790,7 @@
                 "items": {
                   "$ref": "#/components/schemas/QueueResult"
                 },
-                "nullable": true,
-                "x-is-list": true
+                "nullable": true
               }
             }
           }
@@ -2558,7 +3827,6 @@
         }
       },
       "QueueMemberList": {
-        "x-implements": "Pagination",
         "allOf": [
           {
             "$ref": "#/components/schemas/PaginationModel"
@@ -2571,8 +3839,7 @@
                 "items": {
                   "$ref": "#/components/schemas/QueueMember"
                 },
-                "nullable": true,
-                "x-is-list": true
+                "nullable": true
               }
             }
           }
@@ -2589,7 +3856,6 @@
         }
       },
       "SMSTenDLCCampaignsListResult": {
-        "x-implements": "Pagination",
         "allOf": [
           {
             "$ref": "#/components/schemas/PaginationModel"
@@ -2602,8 +3868,7 @@
                 "items": {
                   "$ref": "#/components/schemas/SMSTenDLCCampaign"
                 },
-                "nullable": true,
-                "x-is-list": true
+                "nullable": true
               }
             }
           }
@@ -2641,19 +3906,12 @@
             "description": "Alphanumeric identifier of the reseller that you want to associate with this campaign."
           },
           "status": {
-            "type": "string",
-            "x-has-writer": true,
-            "description": "Current campaign status. Possible values: ACTIVE, EXPIRED. A newly created campaign defaults to ACTIVE status. ",
-            "x-enum-type": "SMSTenDLCCampaignStatusEnum",
-            "x-enum-type-c-sharp": "StatusEnum",
-            "enum": ["ACTIVE", "EXPIRED"],
-            "x-enum-varnames": ["ACTIVE", "EXPIRED"]
+            "$ref": "#/components/schemas/SMSTenDLCCampaignStatus"
           },
           "createDate": {
             "type": "string",
             "description": "Unix timestamp when campaign was created.",
-            "format": "date-time",
-            "x-is-date-time": true
+            "format": "date-time"
           },
           "autoRenewal": {
             "type": "boolean",
@@ -2663,7 +3921,6 @@
             "type": "string",
             "description": "Campaign recent billed date.",
             "format": "date-time",
-            "x-is-date-time": true,
             "nullable": true
           },
           "brandId": {
@@ -2678,7 +3935,6 @@
           },
           "subUsecases": {
             "uniqueItems": true,
-            "x-is-set": true,
             "type": "array",
             "description": "Campaign sub-usecases. Must be of defined valid sub-usecase types. Use `/registry/enum/usecase` operation to retrieve list of valid sub-usecases",
             "items": {
@@ -2813,7 +4069,6 @@
             "nullable": true,
             "description": "When the campaign would be due for its next renew/bill date.",
             "format": "date",
-            "x-is-date": true,
             "example": "2000-01-01"
           }
         },
@@ -2852,7 +4107,6 @@
         }
       },
       "SMSTenDLCPartnerCampaignsListResult": {
-        "x-implements": "Pagination",
         "allOf": [
           {
             "$ref": "#/components/schemas/PaginationModel"
@@ -2865,8 +4119,7 @@
                 "items": {
                   "$ref": "#/components/schemas/SMSTenDLCPartnerCampaign"
                 },
-                "nullable": true,
-                "x-is-list": true
+                "nullable": true
               }
             }
           }
@@ -2886,19 +4139,12 @@
             "description": "Alphanumeric identifier assigned by the registry for a campaign. This identifier is required by the NetNumber OSR SMS enabling process of 10DLC."
           },
           "status": {
-            "type": "string",
-            "x-has-writer": true,
-            "description": "Current campaign status. Possible values: ACTIVE, EXPIRED. A newly created campaign defaults to ACTIVE status. ",
-            "x-enum-type": "SMSTenDLCPartnerCampaignStatusEnum",
-            "x-enum-type-c-sharp": "StatusEnum",
-            "enum": ["ACTIVE", "EXPIRED"],
-            "x-enum-varnames": ["ACTIVE", "EXPIRED"]
+            "$ref": "#/components/schemas/SMSTenDLCPartnerCampaignStatus"
           },
           "createDate": {
             "type": "string",
             "description": "Unix timestamp when campaign was created.",
-            "format": "date-time",
-            "x-is-date-time": true
+            "format": "date-time"
           },
           "brandId": {
             "maxLength": 8,
@@ -3023,8 +4269,7 @@
             "description": "Subscriber opt-out message."
           },
           "brand": {
-            "$ref": "#/components/schemas/SMSTenDLCPartnerCampaignBrand",
-            "x-partner-campaign-brand": true
+            "$ref": "#/components/schemas/SMSTenDLCPartnerCampaignBrand"
           }
         },
         "example": {
@@ -3073,20 +4318,6 @@
       "SMSTenDLCPartnerCampaignBrand": {
         "required": ["email", "phone"],
         "type": "object",
-        "x-is-object": true,
-        "x-sms-ten-dlc-partner-campaign-brand": true,
-        "x-ref-properties": [
-          "\"TEST_STRING\"",
-          "\"TEST_STRING\"",
-          "\"TEST_STRING\"",
-          "\"TEST_STRING\"",
-          "\"TEST_STRING\"",
-          "\"TEST_STRING\"",
-          "\"TEST_STRING\"",
-          "\"TEST_STRING\"",
-          "new Dictionary<string, object>()",
-          "1"
-        ],
         "properties": {
           "accountId": {
             "type": "string",
@@ -3140,14 +4371,7 @@
             "example": "http://www.abcmobile.com"
           },
           "optionalAttributes": {
-            "x-is-map": true,
-            "type": "object",
-            "x-is-hash": true,
-            "additionalProperties": {
-              "type": "object",
-              "description": "Optional brand attributes. Please refer to GET /enum/optionalAttributeNames for dictionary of optional attribute names."
-            },
-            "description": "Optional brand attributes. Please refer to GET /enum/optionalAttributeNames for dictionary of optional attribute names."
+            "$ref": "#/components/schemas/SMSTenDLCOptionalAttributes"
           },
           "evpVettingScore": {
             "type": "integer",
@@ -3156,7 +4380,6 @@
         }
       },
       "SMSTenDLCBrandsListResult": {
-        "x-implements": "Pagination",
         "allOf": [
           {
             "$ref": "#/components/schemas/PaginationModel"
@@ -3169,8 +4392,7 @@
                 "items": {
                   "$ref": "#/components/schemas/SMSTenDLCBrand"
                 },
-                "nullable": true,
-                "x-is-list": true
+                "nullable": true
               }
             }
           }
@@ -3189,7 +4411,6 @@
           "vertical"
         ],
         "type": "object",
-        "x-sms-ten-dlc-brand": true,
         "properties": {
           "accountId": {
             "type": "string",
@@ -3197,26 +4418,7 @@
             "nullable": true
           },
           "entityType": {
-            "maxLength": 20,
-            "type": "string",
-            "x-has-writer": true,
-            "description": "Entity type behind the brand. This is the form of business establishment.",
-            "x-enum-type": "SMSTenDLCBrandEntityTypeEnum",
-            "x-enum-type-c-sharp": "EntityTypeEnum",
-            "enum": [
-              "PRIVATE_PROFIT",
-              "PUBLIC_PROFIT",
-              "NON_PROFIT",
-              "GOVERNMENT",
-              "SOLE_PROPRIETOR"
-            ],
-            "x-enum-varnames": [
-              "PRIVATE_PROFIT",
-              "PUBLIC_PROFIT",
-              "NON_PROFIT",
-              "GOVERNMENT",
-              "SOLE_PROPRIETOR"
-            ]
+            "$ref": "#/components/schemas/SMSTenDLCBrandEntityType"
           },
           "cspId": {
             "type": "string",
@@ -3312,70 +4514,7 @@
             "example": "ABC"
           },
           "stockExchange": {
-            "type": "string",
-            "x-has-writer": true,
-            "description": "(Required for public company) stock exchange.",
-            "example": "NASDAQ",
-            "x-enum-type": "SMSTenDLCBrandStockExchangeEnum",
-            "x-enum-type-c-sharp": "StockExchangeEnum",
-            "enum": [
-              "NONE",
-              "NASDAQ",
-              "NYSE",
-              "AMEX",
-              "AMX",
-              "ASX",
-              "B3",
-              "BME",
-              "BSE",
-              "FRA",
-              "ICEX",
-              "JPX",
-              "JSE",
-              "KRX",
-              "LON",
-              "NSE",
-              "OMX",
-              "SEHK",
-              "SGX",
-              "SSE",
-              "STO",
-              "SWX",
-              "SZSE",
-              "TSX",
-              "TWSE",
-              "VSE",
-              "OTHER"
-            ],
-            "x-enum-varnames": [
-              "NONE",
-              "NASDAQ",
-              "NYSE",
-              "AMEX",
-              "AMX",
-              "ASX",
-              "B3",
-              "BME",
-              "BSE",
-              "FRA",
-              "ICEX",
-              "JPX",
-              "JSE",
-              "KRX",
-              "LON",
-              "NSE",
-              "OMX",
-              "SEHK",
-              "SGX",
-              "SSE",
-              "STO",
-              "SWX",
-              "SZSE",
-              "TSX",
-              "TWSE",
-              "VSE",
-              "OTHER"
-            ]
+            "$ref": "#/components/schemas/SMSTenDLCBrandStockExchange"
           },
           "ipAddress": {
             "maxLength": 50,
@@ -3389,25 +4528,7 @@
             "example": "http://www.abcmobile.com"
           },
           "brandRelationship": {
-            "type": "string",
-            "x-has-writer": true,
-            "description": "Brand relationship to the CSP",
-            "x-enum-type": "SMSTenDLCBrandBrandRelationshipEnum",
-            "x-enum-type-c-sharp": "BrandRelationshipEnum",
-            "enum": [
-              "BASIC_ACCOUNT",
-              "SMALL_ACCOUNT",
-              "MEDIUM_ACCOUNT",
-              "LARGE_ACCOUNT",
-              "KEY_ACCOUNT"
-            ],
-            "x-enum-varnames": [
-              "BASIC_ACCOUNT",
-              "SMALL_ACCOUNT",
-              "MEDIUM_ACCOUNT",
-              "LARGE_ACCOUNT",
-              "KEY_ACCOUNT"
-            ]
+            "$ref": "#/components/schemas/SMSTenDLCBrandRelationship"
           },
           "vertical": {
             "maxLength": 50,
@@ -3420,13 +4541,7 @@
             "description": "Alternate business identifier such as DUNS, LEI, or GIIN"
           },
           "altBusinessIdType": {
-            "type": "string",
-            "x-has-writer": true,
-            "x-enum-type": "SMSTenDLCBrandAltBusinessIdTypeEnum",
-            "x-enum-type-c-sharp": "AltBusinessIdTypeEnum",
-            "enum": ["NONE", "DUNS", "GIIN", "LEI"],
-            "x-enum-varnames": ["NONE", "DUNS", "GIIN", "LEI"],
-            "description": "The type of the Alternative business identifier"
+            "$ref": "#/components/schemas/SMSTenDLCBrandAltBusinessIdType"
           },
           "universalEin": {
             "type": "string",
@@ -3439,43 +4554,19 @@
             "description": "Caller supplied brand reference ID. If supplied, the value must be unique across all submitted brands. Can be used to prevent duplicate brand registrations."
           },
           "optionalAttributes": {
-            "x-is-map": true,
-            "type": "object",
-            "x-is-hash": true,
-            "additionalProperties": {
-              "type": "object",
-              "description": "Optional brand attributes. Please refer to GET /enum/optionalAttributeNames for dictionary of optional attribute names."
-            },
-            "description": "Optional brand attributes. Please refer to GET /enum/optionalAttributeNames for dictionary of optional attribute names."
+            "$ref": "#/components/schemas/SMSTenDLCOptionalAttributes"
           },
           "mock": {
             "type": "boolean",
             "description": "Test brand."
           },
           "identityStatus": {
-            "type": "string",
-            "x-has-writer": true,
-            "description": "TCR assessment of the brand identification status.",
-            "x-enum-type": "SMSTenDLCBrandIdentityStatusEnum",
-            "x-enum-type-c-sharp": "IdentityStatusEnum",
-            "enum": [
-              "SELF_DECLARED",
-              "UNVERIFIED",
-              "VERIFIED",
-              "VETTED_VERIFIED"
-            ],
-            "x-enum-varnames": [
-              "SELF_DECLARED",
-              "UNVERIFIED",
-              "VERIFIED",
-              "VETTED_VERIFIED"
-            ]
+            "$ref": "#/components/schemas/SMSTenDLCBrandIdentityStatus"
           },
           "createDate": {
             "type": "string",
             "description": "Unix timestamp when brand was created.",
-            "format": "date-time",
-            "x-is-date-time": true
+            "format": "date-time"
           }
         },
         "description": "A brand is a business identity behind the campaign.",
@@ -3512,7 +4603,6 @@
         }
       },
       "SMSTollFreeCampaignsListResult": {
-        "x-implements": "Pagination",
         "allOf": [
           {
             "$ref": "#/components/schemas/PaginationModel"
@@ -3525,8 +4615,7 @@
                 "items": {
                   "$ref": "#/components/schemas/SMSTollFreeCampaign"
                 },
-                "nullable": true,
-                "x-is-list": true
+                "nullable": true
               }
             }
           }
@@ -3543,7 +4632,6 @@
           "dateUpdated",
           "revision"
         ],
-        "x-sms-toll-free-campaign": true,
         "properties": {
           "accountId": {
             "type": "string",
@@ -3558,25 +4646,7 @@
             "type": "string"
           },
           "registrationStatus": {
-            "type": "string",
-            "x-has-writer": true,
-            "description": "Current toll-free campaign registration status.Possible values: UNREGISTERED,INITIATED,PENDING,DECLINED,REGISTERED. A newly created campaign defaults to INITIATED status. ",
-            "x-enum-type": "SMSTollFreeCampaignRegistrationStatusEnum",
-            "x-enum-type-c-sharp": "RegistrationStatusEnum",
-            "enum": [
-              "UNREGISTERED",
-              "INITIATED",
-              "PENDING",
-              "DECLINED",
-              "REGISTERED"
-            ],
-            "x-enum-varnames": [
-              "UNREGISTERED",
-              "INITIATED",
-              "PENDING",
-              "DECLINED",
-              "REGISTERED"
-            ]
+            "$ref": "#/components/schemas/SMSTollFreeCampaignRegistrationStatus"
           },
           "dateCreated": {
             "type": "string"
@@ -3589,22 +4659,32 @@
           }
         }
       },
+      "TranscribeUtteranceRecord": {
+        "type": "object",
+        "properties": {
+          "saveRecording": {
+            "type": "boolean",
+            "default": false
+          },
+          "maxLengthSec": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 60,
+            "default": 60
+          },
+          "rcrdTerminationSilenceTimeMs": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 3000
+          }
+        }
+      },
       "TranscribeUtterance": {
         "title": "TranscribeUtterance",
         "x-stoplight": {
           "id": "u509r3zqc38ze"
         },
         "description": "The `TranscribeUtterance` command transcribes the caller’s voice and returns transcription of the audio and optionally returns the recording of the audio transcribed.\n\n`TranscribeUtterance` is blocking and is a terminal command. As such, the actionUrl property is required, and control of the Call picks up using the `PerCL` returned in response of the `actionUrl`. Recording and Transcription information is returned in the actionUrl request. If the reason this command ended was due to the call hanging up, any PerCL returned will not execute.",
-        "x-percl-command": true,
-        "x-ref-properties": [
-          "\"TEST_STRING\"",
-          "false",
-          "new TranscribeUtteranceAllOfRecord()",
-          "false",
-          "false",
-          "new List<Object>()",
-          "\"TEST_STRING\""
-        ],
         "allOf": [
           {
             "$ref": "#/components/schemas/PerclCommand"
@@ -3615,33 +4695,15 @@
             "description": "The `TranscribeUtterance` command transcribes the caller’s voice and returns transcription of the audio and optionally returns the recording of the audio transcribed.\n\n`TranscribeUtterance` is blocking and is a terminal command. As such, the actionUrl property is required, and control of the Call picks up using the `PerCL` returned in response of the `actionUrl`. Recording and Transcription information is returned in the actionUrl request. If the reason this command ended was due to the call hanging up, any PerCL returned will not execute.",
             "properties": {
               "actionUrl": {
-                "type": "string"
+                "type": "string",
+                "format": "uri"
               },
               "playBeep": {
                 "type": "boolean",
                 "default": false
               },
               "record": {
-                "type": "object",
-                "x-is-object": true,
-                "properties": {
-                  "saveRecording": {
-                    "type": "boolean",
-                    "default": false
-                  },
-                  "maxLengthSec": {
-                    "type": "integer",
-                    "minimum": 1,
-                    "maximum": 60,
-                    "default": 60
-                  },
-                  "rcrdTerminationSilenceTimeMs": {
-                    "type": "integer",
-                    "exclusiveMinimum": true,
-                    "minimum": 0,
-                    "maximum": 3000
-                  }
-                }
+                "$ref": "#/components/schemas/TranscribeUtteranceRecord"
               },
               "privacyForLogging": {
                 "type": "boolean",
@@ -3653,8 +4715,9 @@
               },
               "prompts": {
                 "type": "array",
-                "x-is-list": true,
-                "items": {}
+                "items": {
+                  "$ref": "#/components/schemas/PerclCommand"
+                }
               }
             }
           }
@@ -3683,7 +4746,6 @@
       "CreateWebRTCToken": {
         "type": "object",
         "required": ["to", "from", "uses"],
-        "x-web-rtc": true,
         "additionalProperties": false,
         "properties": {
           "to": {
@@ -3865,7 +4927,6 @@
         "tags": [],
         "summary": "List applications",
         "operationId": "list-applications",
-        "x-is-paginated": true,
         "parameters": [
           {
             "name": "alias",
@@ -3933,7 +4994,6 @@
         "tags": [],
         "summary": "List available numbers",
         "operationId": "list-available-numbers",
-        "x-is-paginated": true,
         "parameters": [
           {
             "name": "phoneNumber",
@@ -4119,7 +5179,6 @@
         "tags": [],
         "summary": "List Incoming Numbers",
         "operationId": "list-incoming-numbers",
-        "x-is-paginated": true,
         "parameters": [
           {
             "$ref": "#/components/parameters/AccountId"
@@ -4445,7 +5504,6 @@
         "tags": [],
         "summary": "List Calls",
         "operationId": "list-calls",
-        "x-is-paginated": true,
         "parameters": [
           {
             "name": "active",
@@ -4550,7 +5608,6 @@
         "tags": [],
         "summary": "List Call Recordings",
         "operationId": "list-call-recordings",
-        "x-is-paginated": true,
         "parameters": [
           {
             "name": "dateCreated",
@@ -4594,7 +5651,6 @@
         "tags": [],
         "summary": "List Call Logs",
         "operationId": "list-call-logs",
-        "x-is-paginated": true,
         "parameters": [
           {
             "$ref": "#/components/parameters/AccountId"
@@ -4628,7 +5684,6 @@
       "post": {
         "summary": "Make a JWT for WebRTC calling",
         "operationId": "make-a-webrtc-jwt",
-        "x-web-rtc": true,
         "parameters": [
           {
             "$ref": "#/components/parameters/AccountId"
@@ -4698,7 +5753,6 @@
         "tags": [],
         "summary": "List Conferences",
         "operationId": "list-conferences",
-        "x-is-paginated": true,
         "parameters": [
           {
             "name": "status",
@@ -4957,7 +6011,6 @@
         "tags": [],
         "summary": "List Participants",
         "operationId": "list-participants",
-        "x-is-paginated": true,
         "parameters": [
           {
             "name": "talk",
@@ -5019,7 +6072,6 @@
         "tags": [],
         "summary": "List Conference Recordings",
         "operationId": "list-conference-recordings",
-        "x-is-paginated": true,
         "parameters": [
           {
             "name": "callId",
@@ -5148,7 +6200,6 @@
         "tags": [],
         "summary": "List Active Queues",
         "operationId": "list-active-queues",
-        "x-is-paginated": true,
         "parameters": [
           {
             "name": "alias",
@@ -5282,7 +6333,6 @@
         "tags": [],
         "summary": "List Members",
         "operationId": "list-members",
-        "x-is-paginated": true,
         "parameters": [
           {
             "$ref": "#/components/parameters/AccountId"
@@ -5401,7 +6451,6 @@
         "tags": [],
         "summary": "List All Account Logs",
         "operationId": "list-all-account-logs",
-        "x-is-paginated": true,
         "parameters": [
           {
             "$ref": "#/components/parameters/AccountId"
@@ -5461,7 +6510,6 @@
         "tags": [],
         "summary": "List Recordings",
         "operationId": "list-recordings",
-        "x-is-paginated": true,
         "parameters": [
           {
             "name": "callId",
@@ -5643,7 +6691,6 @@
         "tags": [],
         "summary": "List SMS Messages",
         "operationId": "list-sms-messages",
-        "x-is-paginated": true,
         "parameters": [
           {
             "$ref": "#/components/parameters/AccountId"
@@ -5808,8 +6855,7 @@
       "get": {
         "tags": [],
         "summary": "Get list of SMS 10DLC Campaigns",
-        "operationId": "get-tenDLC-sms-Campaigns",
-        "x-is-paginated": true,
+        "operationId": "get-tenDLC-sms-campaigns",
         "parameters": [
           {
             "$ref": "#/components/parameters/AccountId"
@@ -5922,7 +6968,6 @@
         "tags": [],
         "summary": "Get list of SMS 10DLC Partner Campaigns",
         "operationId": "get-tenDLC-sms-partnerCampaigns",
-        "x-is-paginated": true,
         "parameters": [
           {
             "$ref": "#/components/parameters/AccountId"
@@ -6044,7 +7089,6 @@
         "tags": [],
         "summary": "Get list of SMS 10DLC Brands",
         "operationId": "get-tenDLC-sms-brands",
-        "x-is-paginated": true,
         "parameters": [
           {
             "$ref": "#/components/parameters/AccountId"
@@ -6146,7 +7190,6 @@
         "tags": [],
         "summary": "Get list of TollFree Campaigns",
         "operationId": "get-tollFree-sms-campaigns",
-        "x-is-paginated": true,
         "parameters": [
           {
             "$ref": "#/components/parameters/AccountId"

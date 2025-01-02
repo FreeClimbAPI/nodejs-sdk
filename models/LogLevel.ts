@@ -10,16 +10,13 @@
  * Do not edit the class manually.
  */
 
-import { HttpFile } from '../http/http';
+import { HttpFile } from "../http/http";
 
 /**
-* Level of the log. Possible values are info, warning, and error.
-*/
+ * Level of the log. Possible values are info, warning, and error.
+ */
 export enum LogLevel {
-
-    INFO = 'info',
-    WARNING = 'warning',
-    ERROR = 'error'
+  INFO = "info",
+  WARNING = "warning",
+  ERROR = "error",
 }
-
-

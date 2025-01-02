@@ -10,193 +10,211 @@
  * Do not edit the class manually.
  */
 
-import { HttpFile } from '../http/http';
-
+import { HttpFile } from "../http/http";
 
 interface AttributeType {
-    name: string
-    baseName: string
-    type: string
-    format: string
-    defaultValue: any
+  name: string;
+  baseName: string;
+  type: string;
+  format: string;
+  defaultValue: any;
 }
 interface ArgumentsType {
-    'accountId'?: string;
-    'brandId'?: string;
-    'firstName'?: string;
-    'lastName'?: string;
-    'displayName'?: string;
-    'companyName'?: string;
-    'phone': string;
-    'email': string;
-    'website'?: string;
-    'optionalAttributes'?: { [key: string]: any; };
-    'evpVettingScore'?: number;
+  accountId?: string;
+  brandId?: string;
+  firstName?: string;
+  lastName?: string;
+  displayName?: string;
+  companyName?: string;
+  phone: string;
+  email: string;
+  website?: string;
+  optionalAttributes?: { [key: string]: any };
+  evpVettingScore?: number;
 }
 export class SMSTenDLCPartnerCampaignBrand {
-    /**
-    * ID of the account that created this Queue.
-    */
-    'accountId'?: string;
-    /**
-    * Unique identifier assigned to the brand by the registry.
-    */
-    'brandId'?: string;
-    /**
-    * First or given name. 
-    */
-    'firstName'?: string;
-    /**
-    * Last or Surname.
-    */
-    'lastName'?: string;
-    /**
-    * Display or marketing name of the brand.
-    */
-    'displayName'?: string;
-    /**
-    * (Required for Non-profit/private/public) Legal company name.
-    */
-    'companyName'?: string;
-    /**
-    * Valid phone number in e.164 international format.
-    */
-    'phone': string;
-    /**
-    * Valid email address of brand support contact.
-    */
-    'email': string;
-    /**
-    * Brand website URL.
-    */
-    'website'?: string;
-    /**
-    * Optional brand attributes. Please refer to GET /enum/optionalAttributeNames for dictionary of optional attribute names.
-    */
-    'optionalAttributes'?: { [key: string]: any; };
-    /**
-    * External vetting score.
-    */
-    'evpVettingScore'?: number;
+  /**
+   * ID of the account that created this Queue.
+   */
+  "accountId"?: string;
+  /**
+   * Unique identifier assigned to the brand by the registry.
+   */
+  "brandId"?: string;
+  /**
+   * First or given name.
+   */
+  "firstName"?: string;
+  /**
+   * Last or Surname.
+   */
+  "lastName"?: string;
+  /**
+   * Display or marketing name of the brand.
+   */
+  "displayName"?: string;
+  /**
+   * (Required for Non-profit/private/public) Legal company name.
+   */
+  "companyName"?: string;
+  /**
+   * Valid phone number in e.164 international format.
+   */
+  "phone": string;
+  /**
+   * Valid email address of brand support contact.
+   */
+  "email": string;
+  /**
+   * Brand website URL.
+   */
+  "website"?: string;
+  /**
+   * Optional brand attributes. Please refer to GET /enum/optionalAttributeNames for dictionary of optional attribute names.
+   */
+  "optionalAttributes"?: { [key: string]: any };
+  /**
+   * External vetting score.
+   */
+  "evpVettingScore"?: number;
 
-    static readonly discriminator: string | undefined = undefined;
+  static readonly discriminator: string | undefined = undefined;
 
-    static readonly attributeTypeMap: AttributeType[] = [
-        {
-            "name": "accountId",
-            "baseName": "accountId",
-            "type": "string",
-            "format": "",
+  static readonly attributeTypeMap: AttributeType[] = [
+    {
+      name: "accountId",
+      baseName: "accountId",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "brandId",
-            "baseName": "brandId",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "brandId",
+      baseName: "brandId",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "firstName",
-            "baseName": "firstName",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "firstName",
+      baseName: "firstName",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "lastName",
-            "baseName": "lastName",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "lastName",
+      baseName: "lastName",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "displayName",
-            "baseName": "displayName",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "displayName",
+      baseName: "displayName",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "companyName",
-            "baseName": "companyName",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "companyName",
+      baseName: "companyName",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "phone",
-            "baseName": "phone",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "phone",
+      baseName: "phone",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "email",
-            "baseName": "email",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "email",
+      baseName: "email",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "website",
-            "baseName": "website",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "website",
+      baseName: "website",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "optionalAttributes",
-            "baseName": "optionalAttributes",
-            "type": "{ [key: string]: any; }",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "optionalAttributes",
+      baseName: "optionalAttributes",
+      type: "{ [key: string]: any; }",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "evpVettingScore",
-            "baseName": "evpVettingScore",
-            "type": "number",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "evpVettingScore",
+      baseName: "evpVettingScore",
+      type: "number",
+      format: "",
 
-            
-            "defaultValue": undefined
-        }    ];
+      defaultValue: undefined,
+    },
+  ];
 
-    static getAttributeTypeMap(): AttributeType[] {
-        return SMSTenDLCPartnerCampaignBrand.attributeTypeMap;
+  static getAttributeTypeMap(): AttributeType[] {
+    return SMSTenDLCPartnerCampaignBrand.attributeTypeMap;
+  }
+  public constructor(args: ArgumentsType) {
+    const assign = <T>(attribute: keyof ArgumentsType): T => {
+      return (args[attribute] ??
+        SMSTenDLCPartnerCampaignBrand.attributeTypeMap.find(
+          (attr) => attr.name === attribute,
+        )?.defaultValue) as T;
+    };
+    if (args["accountId"]) {
+      this["accountId"] = assign<string>("accountId");
     }
-
-    public constructor(args: ArgumentsType) {
-        const preparedArgs = SMSTenDLCPartnerCampaignBrand.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
-            
-            const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
-            
-            if (val !== undefined) {
-                acc[attr.name as keyof ArgumentsType] = val
-            }
-            return acc
-        }, {})
-        Object.assign(this, preparedArgs)
+    if (args["brandId"]) {
+      this["brandId"] = assign<string>("brandId");
     }
+    if (args["firstName"]) {
+      this["firstName"] = assign<string>("firstName");
+    }
+    if (args["lastName"]) {
+      this["lastName"] = assign<string>("lastName");
+    }
+    if (args["displayName"]) {
+      this["displayName"] = assign<string>("displayName");
+    }
+    if (args["companyName"]) {
+      this["companyName"] = assign<string>("companyName");
+    }
+    if (args["phone"]) {
+      this["phone"] = assign<string>("phone");
+    }
+    if (args["email"]) {
+      this["email"] = assign<string>("email");
+    }
+    if (args["website"]) {
+      this["website"] = assign<string>("website");
+    }
+    if (args["optionalAttributes"]) {
+      this["optionalAttributes"] = assign<{ [key: string]: any }>(
+        "optionalAttributes",
+      );
+    }
+    if (args["evpVettingScore"]) {
+      this["evpVettingScore"] = assign<number>("evpVettingScore");
+    }
+  }
 }
-

@@ -10,168 +10,176 @@
  * Do not edit the class manually.
  */
 
-import { MessageRequestAllOf } from './MessageRequestAllOf';
-import { MutableResourceModel } from './MutableResourceModel';
-import { URI } from './URI';
-import { HttpFile } from '../http/http';
-
+import { HttpFile } from "../http/http";
 
 interface AttributeType {
-    name: string
-    baseName: string
-    type: string
-    format: string
-    defaultValue: any
+  name: string;
+  baseName: string;
+  type: string;
+  format: string;
+  defaultValue: any;
 }
 interface ArgumentsType {
-    'uri'?: string;
-    'dateCreated'?: string;
-    'dateUpdated'?: string;
-    'revision'?: number;
-    'from': string;
-    'to': string;
-    'text': string;
-    'notificationUrl'?: string;
-    'mediaUrls'?: Array<URI>;
+  uri?: string;
+  dateCreated?: string;
+  dateUpdated?: string;
+  revision?: number;
+  from: string;
+  to: string;
+  text: string;
+  notificationUrl?: string;
+  mediaUrls?: Array<string>;
 }
 export class MessageRequest {
-    /**
-    * The URI for this resource, relative to /apiserver.
-    */
-    'uri'?: string;
-    /**
-    * The date that this resource was created (GMT) in RFC 1123 format (e.g., Mon, 15 Jun 2009 20:45:30 GMT).
-    */
-    'dateCreated'?: string;
-    /**
-    * The date that this resource was last updated (GMT) in RFC 1123 format (e.g., Mon, 15 Jun 2009 20:45:30 GMT).
-    */
-    'dateUpdated'?: string;
-    /**
-    * Revision count for the resource. This count is set to 1 on creation and is incremented every time it is updated.
-    */
-    'revision'?: number;
-    /**
-    * Phone number to use as the sender. This must be an incoming phone number that you have purchased from FreeClimb.
-    */
-    'from': string;
-    /**
-    * Phone number to receive the message. Must be within FreeClimb's service area.
-    */
-    'to': string;
-    /**
-    * Text contained in the message (maximum 160 characters).   **Note:** For text, only ASCII characters are supported.
-    */
-    'text': string;
-    /**
-    * When the Message changes status, this URL is invoked using HTTP POST with the messageStatus parameters.  **Note:** This is a notification only; any PerCL returned is ignored.
-    */
-    'notificationUrl'?: string;
-    /**
-    * an array of HTTP URLs which are to be used as attachments to the message. This will force the message into being an MMS message and must be done using a from number which is MMS capabile.
-    */
-    'mediaUrls'?: Array<URI>;
+  /**
+   * The URI for this resource, relative to /apiserver.
+   */
+  "uri"?: string;
+  /**
+   * The date that this resource was created (GMT) in RFC 1123 format (e.g., Mon, 15 Jun 2009 20:45:30 GMT).
+   */
+  "dateCreated"?: string;
+  /**
+   * The date that this resource was last updated (GMT) in RFC 1123 format (e.g., Mon, 15 Jun 2009 20:45:30 GMT).
+   */
+  "dateUpdated"?: string;
+  /**
+   * Revision count for the resource. This count is set to 1 on creation and is incremented every time it is updated.
+   */
+  "revision"?: number;
+  /**
+   * Phone number to use as the sender. This must be an incoming phone number that you have purchased from FreeClimb.
+   */
+  "from": string;
+  /**
+   * Phone number to receive the message. Must be within FreeClimb\'s service area.
+   */
+  "to": string;
+  /**
+   * Text contained in the message (maximum 160 characters).   **Note:** For text, only ASCII characters are supported.
+   */
+  "text": string;
+  /**
+   * When the Message changes status, this URL is invoked using HTTP POST with the messageStatus parameters.  **Note:** This is a notification only; any PerCL returned is ignored.
+   */
+  "notificationUrl"?: string;
+  /**
+   * an array of HTTP URLs which are to be used as attachments to the message. This will force the message into being an MMS message and must be done using a from number which is MMS capabile.
+   */
+  "mediaUrls"?: Array<string>;
 
-    static readonly discriminator: string | undefined = undefined;
+  static readonly discriminator: string | undefined = undefined;
 
-    static readonly attributeTypeMap: AttributeType[] = [
-        {
-            "name": "uri",
-            "baseName": "uri",
-            "type": "string",
-            "format": "",
+  static readonly attributeTypeMap: AttributeType[] = [
+    {
+      name: "uri",
+      baseName: "uri",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "dateCreated",
-            "baseName": "dateCreated",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "dateCreated",
+      baseName: "dateCreated",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "dateUpdated",
-            "baseName": "dateUpdated",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "dateUpdated",
+      baseName: "dateUpdated",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "revision",
-            "baseName": "revision",
-            "type": "number",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "revision",
+      baseName: "revision",
+      type: "number",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "from",
-            "baseName": "from",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "from",
+      baseName: "from",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "to",
-            "baseName": "to",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "to",
+      baseName: "to",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "text",
-            "baseName": "text",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "text",
+      baseName: "text",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "notificationUrl",
-            "baseName": "notificationUrl",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "notificationUrl",
+      baseName: "notificationUrl",
+      type: "string",
+      format: "uri",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "mediaUrls",
-            "baseName": "mediaUrls",
-            "type": "Array<URI>",
-            "format": "uri",
+      defaultValue: undefined,
+    },
+    {
+      name: "mediaUrls",
+      baseName: "mediaUrls",
+      type: "Array<string>",
+      format: "uri",
 
-            
-            "defaultValue": undefined
-        }    ];
+      defaultValue: undefined,
+    },
+  ];
 
-    static getAttributeTypeMap(): AttributeType[] {
-        return MessageRequest.attributeTypeMap;
+  static getAttributeTypeMap(): AttributeType[] {
+    return MessageRequest.attributeTypeMap;
+  }
+  public constructor(args: ArgumentsType) {
+    const assign = <T>(attribute: keyof ArgumentsType): T => {
+      return (args[attribute] ??
+        MessageRequest.attributeTypeMap.find((attr) => attr.name === attribute)
+          ?.defaultValue) as T;
+    };
+    if (args["uri"]) {
+      this["uri"] = assign<string>("uri");
     }
-
-    public constructor(args: ArgumentsType) {
-        const preparedArgs = MessageRequest.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
-            
-            const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
-            
-            if (val !== undefined) {
-                acc[attr.name as keyof ArgumentsType] = val
-            }
-            return acc
-        }, {})
-        Object.assign(this, preparedArgs)
+    if (args["dateCreated"]) {
+      this["dateCreated"] = assign<string>("dateCreated");
     }
+    if (args["dateUpdated"]) {
+      this["dateUpdated"] = assign<string>("dateUpdated");
+    }
+    if (args["revision"]) {
+      this["revision"] = assign<number>("revision");
+    }
+    if (args["from"]) {
+      this["from"] = assign<string>("from");
+    }
+    if (args["to"]) {
+      this["to"] = assign<string>("to");
+    }
+    if (args["text"]) {
+      this["text"] = assign<string>("text");
+    }
+    if (args["notificationUrl"]) {
+      this["notificationUrl"] = assign<string>("notificationUrl");
+    }
+    if (args["mediaUrls"]) {
+      this["mediaUrls"] = assign<Array<string>>("mediaUrls");
+    }
+  }
 }
-

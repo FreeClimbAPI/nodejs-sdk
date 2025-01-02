@@ -10,16 +10,13 @@
  * Do not edit the class manually.
  */
 
-import { HttpFile } from '../http/http';
+import { HttpFile } from "../http/http";
 
 /**
-* Direction of the Call. `inbound` for Calls into FreeClimb, `outboundAPI` for Calls initiated via the REST API,  `outboundDial` for Calls initiated by the `OutDial` PerCL command.
-*/
+ * Direction of the Call. `inbound` for Calls into FreeClimb, `outboundAPI` for Calls initiated via the REST API,  `outboundDial` for Calls initiated by the `OutDial` PerCL command.
+ */
 export enum CallDirection {
-
-    INBOUND = 'inbound',
-    OUTBOUND_API = 'outboundAPI',
-    OUTBOUND_DIAL = 'outboundDial'
+  INBOUND = "inbound",
+  OUTBOUND_API = "outboundAPI",
+  OUTBOUND_DIAL = "outboundDial",
 }
-
-

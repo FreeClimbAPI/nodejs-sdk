@@ -10,15 +10,12 @@
  * Do not edit the class manually.
  */
 
-import { HttpFile } from '../http/http';
+import { HttpFile } from "../http/http";
 
 /**
-* New status of the conference. Valid values: `empty` or `terminated`. For more information, see **Status Parameter** below.**
-*/
+ * New status of the conference. Valid values: `empty` or `terminated`. For more information, see **Status Parameter** below.**
+ */
 export enum UpdateConferenceRequestStatus {
-
-    EMPTY = 'empty',
-    TERMINATED = 'terminated'
+  EMPTY = "empty",
+  TERMINATED = "terminated",
 }
-
-

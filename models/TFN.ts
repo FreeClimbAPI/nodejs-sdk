@@ -10,56 +10,52 @@
  * Do not edit the class manually.
  */
 
-import { HttpFile } from '../http/http';
+import { HttpFile } from "../http/http";
 
 /**
-* TollFree Campaign details for this number
-*/
+ * TollFree Campaign details for this number
+ */
 
 interface AttributeType {
-    name: string
-    baseName: string
-    type: string
-    format: string
-    defaultValue: any
+  name: string;
+  baseName: string;
+  type: string;
+  format: string;
+  defaultValue: any;
 }
 interface ArgumentsType {
-    'campaignId': string;
+  campaignId: string;
 }
 export class TFN {
-    /**
-    * alphanumeric identifier for the TollFree campaign associated with this number
-    */
-    'campaignId': string;
+  /**
+   * alphanumeric identifier for the TollFree campaign associated with this number
+   */
+  "campaignId": string;
 
-    static readonly discriminator: string | undefined = undefined;
+  static readonly discriminator: string | undefined = undefined;
 
-    static readonly attributeTypeMap: AttributeType[] = [
-        {
-            "name": "campaignId",
-            "baseName": "campaignId",
-            "type": "string",
-            "format": "",
+  static readonly attributeTypeMap: AttributeType[] = [
+    {
+      name: "campaignId",
+      baseName: "campaignId",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        }    ];
+      defaultValue: undefined,
+    },
+  ];
 
-    static getAttributeTypeMap(): AttributeType[] {
-        return TFN.attributeTypeMap;
+  static getAttributeTypeMap(): AttributeType[] {
+    return TFN.attributeTypeMap;
+  }
+  public constructor(args: ArgumentsType) {
+    const assign = <T>(attribute: keyof ArgumentsType): T => {
+      return (args[attribute] ??
+        TFN.attributeTypeMap.find((attr) => attr.name === attribute)
+          ?.defaultValue) as T;
+    };
+    if (args["campaignId"]) {
+      this["campaignId"] = assign<string>("campaignId");
     }
-
-    public constructor(args: ArgumentsType) {
-        const preparedArgs = TFN.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
-            
-            const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
-            
-            if (val !== undefined) {
-                acc[attr.name as keyof ArgumentsType] = val
-            }
-            return acc
-        }, {})
-        Object.assign(this, preparedArgs)
-    }
+  }
 }
-

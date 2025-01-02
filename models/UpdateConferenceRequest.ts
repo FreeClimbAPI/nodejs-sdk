@@ -10,77 +10,77 @@
  * Do not edit the class manually.
  */
 
-import { PlayBeep } from './PlayBeep';
-import { UpdateConferenceRequestStatus } from './UpdateConferenceRequestStatus';
-import { HttpFile } from '../http/http';
-
+import { PlayBeep } from "./../models/PlayBeep";
+import { UpdateConferenceRequestStatus } from "./../models/UpdateConferenceRequestStatus";
+import { HttpFile } from "../http/http";
 
 interface AttributeType {
-    name: string
-    baseName: string
-    type: string
-    format: string
-    defaultValue: any
+  name: string;
+  baseName: string;
+  type: string;
+  format: string;
+  defaultValue: any;
 }
 interface ArgumentsType {
-    'alias'?: string;
-    'playBeep'?: PlayBeep;
-    'status'?: UpdateConferenceRequestStatus;
+  alias?: string;
+  playBeep?: PlayBeep;
+  status?: UpdateConferenceRequestStatus;
 }
 export class UpdateConferenceRequest {
-    /**
-    * Description for this conference. Maximum 64 characters.
-    */
-    'alias'?: string;
-    'playBeep'?: PlayBeep;
-    'status'?: UpdateConferenceRequestStatus;
+  /**
+   * Description for this conference. Maximum 64 characters.
+   */
+  "alias"?: string;
+  "playBeep"?: PlayBeep;
+  "status"?: UpdateConferenceRequestStatus;
 
-    static readonly discriminator: string | undefined = undefined;
+  static readonly discriminator: string | undefined = undefined;
 
-    static readonly attributeTypeMap: AttributeType[] = [
-        {
-            "name": "alias",
-            "baseName": "alias",
-            "type": "string",
-            "format": "",
+  static readonly attributeTypeMap: AttributeType[] = [
+    {
+      name: "alias",
+      baseName: "alias",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "playBeep",
-            "baseName": "playBeep",
-            "type": "PlayBeep",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "playBeep",
+      baseName: "playBeep",
+      type: "PlayBeep",
+      format: "",
 
-            
-            "defaultValue": PlayBeep.ALWAYS
-        },
-        {
-            "name": "status",
-            "baseName": "status",
-            "type": "UpdateConferenceRequestStatus",
-            "format": "",
+      defaultValue: PlayBeep.ALWAYS,
+    },
+    {
+      name: "status",
+      baseName: "status",
+      type: "UpdateConferenceRequestStatus",
+      format: "",
 
-            
-            "defaultValue": undefined
-        }    ];
+      defaultValue: undefined,
+    },
+  ];
 
-    static getAttributeTypeMap(): AttributeType[] {
-        return UpdateConferenceRequest.attributeTypeMap;
+  static getAttributeTypeMap(): AttributeType[] {
+    return UpdateConferenceRequest.attributeTypeMap;
+  }
+  public constructor(args: ArgumentsType) {
+    const assign = <T>(attribute: keyof ArgumentsType): T => {
+      return (args[attribute] ??
+        UpdateConferenceRequest.attributeTypeMap.find(
+          (attr) => attr.name === attribute,
+        )?.defaultValue) as T;
+    };
+    if (args["alias"]) {
+      this["alias"] = assign<string>("alias");
     }
-
-    public constructor(args: ArgumentsType) {
-        const preparedArgs = UpdateConferenceRequest.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
-            
-            const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
-            
-            if (val !== undefined) {
-                acc[attr.name as keyof ArgumentsType] = val
-            }
-            return acc
-        }, {})
-        Object.assign(this, preparedArgs)
+    if (args["playBeep"]) {
+      this["playBeep"] = assign<PlayBeep>("playBeep");
     }
+    if (args["status"]) {
+      this["status"] = assign<UpdateConferenceRequestStatus>("status");
+    }
+  }
 }
-

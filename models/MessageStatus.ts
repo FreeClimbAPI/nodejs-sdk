@@ -10,24 +10,21 @@
  * Do not edit the class manually.
  */
 
-import { HttpFile } from '../http/http';
+import { HttpFile } from "../http/http";
 
 /**
-* Indicates the state of the message through the message lifecycle including: new, queued, rejected, sending, sent, failed, received, undelivered, expired, deleted, and unknown
-*/
+ * Indicates the state of the message through the message lifecycle including: new, queued, rejected, sending, sent, failed, received, undelivered, expired, deleted, and unknown
+ */
 export enum MessageStatus {
-
-    NEW = 'new',
-    QUEUED = 'queued',
-    REJECTED = 'rejected',
-    SENDING = 'sending',
-    SENT = 'sent',
-    FAILED = 'failed',
-    RECEIVED = 'received',
-    UNDELIVERED = 'undelivered',
-    EXPIRED = 'expired',
-    DELETED = 'deleted',
-    UNKNOWN = 'unknown'
+  NEW = "new",
+  QUEUED = "queued",
+  REJECTED = "rejected",
+  SENDING = "sending",
+  SENT = "sent",
+  FAILED = "failed",
+  RECEIVED = "received",
+  UNDELIVERED = "undelivered",
+  EXPIRED = "expired",
+  DELETED = "deleted",
+  UNKNOWN = "unknown",
 }
-
-

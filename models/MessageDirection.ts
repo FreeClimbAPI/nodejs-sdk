@@ -10,12 +10,9 @@
  * Do not edit the class manually.
  */
 
-import { HttpFile } from '../http/http';
+import { HttpFile } from "../http/http";
 
 export enum MessageDirection {
-
-    INBOUND = 'inbound',
-    OUTBOUND = 'outbound'
+  INBOUND = "inbound",
+  OUTBOUND = "outbound",
 }
-
-

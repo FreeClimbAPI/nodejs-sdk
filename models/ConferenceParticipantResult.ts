@@ -10,195 +10,209 @@
  * Do not edit the class manually.
  */
 
-import { ConferenceParticipantResultAllOf } from './ConferenceParticipantResultAllOf';
-import { MutableResourceModel } from './MutableResourceModel';
-import { HttpFile } from '../http/http';
-
+import { HttpFile } from "../http/http";
 
 interface AttributeType {
-    name: string
-    baseName: string
-    type: string
-    format: string
-    defaultValue: any
+  name: string;
+  baseName: string;
+  type: string;
+  format: string;
+  defaultValue: any;
 }
 interface ArgumentsType {
-    'uri'?: string;
-    'dateCreated'?: string;
-    'dateUpdated'?: string;
-    'revision'?: number;
-    'accountId'?: string;
-    'conferenceId'?: string;
-    'callId'?: string;
-    'talk'?: boolean;
-    'listen'?: boolean;
-    'dtmfPassThrough'?: boolean;
-    'startConfOnEnter'?: boolean;
+  uri?: string;
+  dateCreated?: string;
+  dateUpdated?: string;
+  revision?: number;
+  accountId?: string;
+  conferenceId?: string;
+  callId?: string;
+  talk?: boolean;
+  listen?: boolean;
+  dtmfPassThrough?: boolean;
+  startConfOnEnter?: boolean;
 }
 export class ConferenceParticipantResult {
-    /**
-    * The URI for this resource, relative to /apiserver.
-    */
-    'uri'?: string;
-    /**
-    * The date that this resource was created (GMT) in RFC 1123 format (e.g., Mon, 15 Jun 2009 20:45:30 GMT).
-    */
-    'dateCreated'?: string;
-    /**
-    * The date that this resource was last updated (GMT) in RFC 1123 format (e.g., Mon, 15 Jun 2009 20:45:30 GMT).
-    */
-    'dateUpdated'?: string;
-    /**
-    * Revision count for the resource. This count is set to 1 on creation and is incremented every time it is updated.
-    */
-    'revision'?: number;
-    /**
-    * ID of the account that created this participant.
-    */
-    'accountId'?: string;
-    /**
-    * ID of the conference this participant is in.
-    */
-    'conferenceId'?: string;
-    /**
-    * ID of the Call associated with this Participant.
-    */
-    'callId'?: string;
-    /**
-    * True if this Participant has talk privileges in the Conference. False otherwise.
-    */
-    'talk'?: boolean;
-    /**
-    * True if this Participant has listen privileges in the Conference. False otherwise.
-    */
-    'listen'?: boolean;
-    /**
-    * True if this Participant had dtmfPassThrough privileges in the Conference. False otherwise.
-    */
-    'dtmfPassThrough'?: boolean;
-    /**
-    * True if this Participant joining the Conference caused the Conference to start (status = inProgress). False otherwise.
-    */
-    'startConfOnEnter'?: boolean;
+  /**
+   * The URI for this resource, relative to /apiserver.
+   */
+  "uri"?: string;
+  /**
+   * The date that this resource was created (GMT) in RFC 1123 format (e.g., Mon, 15 Jun 2009 20:45:30 GMT).
+   */
+  "dateCreated"?: string;
+  /**
+   * The date that this resource was last updated (GMT) in RFC 1123 format (e.g., Mon, 15 Jun 2009 20:45:30 GMT).
+   */
+  "dateUpdated"?: string;
+  /**
+   * Revision count for the resource. This count is set to 1 on creation and is incremented every time it is updated.
+   */
+  "revision"?: number;
+  /**
+   * ID of the account that created this participant.
+   */
+  "accountId"?: string;
+  /**
+   * ID of the conference this participant is in.
+   */
+  "conferenceId"?: string;
+  /**
+   * ID of the Call associated with this Participant.
+   */
+  "callId"?: string;
+  /**
+   * True if this Participant has talk privileges in the Conference. False otherwise.
+   */
+  "talk"?: boolean;
+  /**
+   * True if this Participant has listen privileges in the Conference. False otherwise.
+   */
+  "listen"?: boolean;
+  /**
+   * True if this Participant had dtmfPassThrough privileges in the Conference. False otherwise.
+   */
+  "dtmfPassThrough"?: boolean;
+  /**
+   * True if this Participant joining the Conference caused the Conference to start (status = inProgress). False otherwise.
+   */
+  "startConfOnEnter"?: boolean;
 
-    static readonly discriminator: string | undefined = undefined;
+  static readonly discriminator: string | undefined = undefined;
 
-    static readonly attributeTypeMap: AttributeType[] = [
-        {
-            "name": "uri",
-            "baseName": "uri",
-            "type": "string",
-            "format": "",
+  static readonly attributeTypeMap: AttributeType[] = [
+    {
+      name: "uri",
+      baseName: "uri",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "dateCreated",
-            "baseName": "dateCreated",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "dateCreated",
+      baseName: "dateCreated",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "dateUpdated",
-            "baseName": "dateUpdated",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "dateUpdated",
+      baseName: "dateUpdated",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "revision",
-            "baseName": "revision",
-            "type": "number",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "revision",
+      baseName: "revision",
+      type: "number",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "accountId",
-            "baseName": "accountId",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "accountId",
+      baseName: "accountId",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "conferenceId",
-            "baseName": "conferenceId",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "conferenceId",
+      baseName: "conferenceId",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "callId",
-            "baseName": "callId",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "callId",
+      baseName: "callId",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "talk",
-            "baseName": "talk",
-            "type": "boolean",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "talk",
+      baseName: "talk",
+      type: "boolean",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "listen",
-            "baseName": "listen",
-            "type": "boolean",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "listen",
+      baseName: "listen",
+      type: "boolean",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "dtmfPassThrough",
-            "baseName": "dtmfPassThrough",
-            "type": "boolean",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "dtmfPassThrough",
+      baseName: "dtmfPassThrough",
+      type: "boolean",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "startConfOnEnter",
-            "baseName": "startConfOnEnter",
-            "type": "boolean",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "startConfOnEnter",
+      baseName: "startConfOnEnter",
+      type: "boolean",
+      format: "",
 
-            
-            "defaultValue": undefined
-        }    ];
+      defaultValue: undefined,
+    },
+  ];
 
-    static getAttributeTypeMap(): AttributeType[] {
-        return ConferenceParticipantResult.attributeTypeMap;
+  static getAttributeTypeMap(): AttributeType[] {
+    return ConferenceParticipantResult.attributeTypeMap;
+  }
+  public constructor(args: ArgumentsType) {
+    const assign = <T>(attribute: keyof ArgumentsType): T => {
+      return (args[attribute] ??
+        ConferenceParticipantResult.attributeTypeMap.find(
+          (attr) => attr.name === attribute,
+        )?.defaultValue) as T;
+    };
+    if (args["uri"]) {
+      this["uri"] = assign<string>("uri");
     }
-
-    public constructor(args: ArgumentsType) {
-        const preparedArgs = ConferenceParticipantResult.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
-            
-            const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
-            
-            if (val !== undefined) {
-                acc[attr.name as keyof ArgumentsType] = val
-            }
-            return acc
-        }, {})
-        Object.assign(this, preparedArgs)
+    if (args["dateCreated"]) {
+      this["dateCreated"] = assign<string>("dateCreated");
     }
+    if (args["dateUpdated"]) {
+      this["dateUpdated"] = assign<string>("dateUpdated");
+    }
+    if (args["revision"]) {
+      this["revision"] = assign<number>("revision");
+    }
+    if (args["accountId"]) {
+      this["accountId"] = assign<string>("accountId");
+    }
+    if (args["conferenceId"]) {
+      this["conferenceId"] = assign<string>("conferenceId");
+    }
+    if (args["callId"]) {
+      this["callId"] = assign<string>("callId");
+    }
+    if (args["talk"]) {
+      this["talk"] = assign<boolean>("talk");
+    }
+    if (args["listen"]) {
+      this["listen"] = assign<boolean>("listen");
+    }
+    if (args["dtmfPassThrough"]) {
+      this["dtmfPassThrough"] = assign<boolean>("dtmfPassThrough");
+    }
+    if (args["startConfOnEnter"]) {
+      this["startConfOnEnter"] = assign<boolean>("startConfOnEnter");
+    }
+  }
 }
-

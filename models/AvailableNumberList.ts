@@ -10,151 +10,161 @@
  * Do not edit the class manually.
  */
 
-import { AvailableNumber } from './AvailableNumber';
-import { AvailableNumberListAllOf } from './AvailableNumberListAllOf';
-import { PaginationModel } from './PaginationModel';
-import { HttpFile } from '../http/http';
-
+import { AvailableNumber } from "./../models/AvailableNumber";
+import { HttpFile } from "../http/http";
 
 interface AttributeType {
-    name: string
-    baseName: string
-    type: string
-    format: string
-    defaultValue: any
+  name: string;
+  baseName: string;
+  type: string;
+  format: string;
+  defaultValue: any;
 }
 interface ArgumentsType {
-    'total'?: number;
-    'start'?: number;
-    'end'?: number;
-    'page'?: number;
-    'numPages'?: number;
-    'pageSize'?: number;
-    'nextPageUri'?: string;
-    'availablePhoneNumbers'?: Array<AvailableNumber>;
+  total?: number;
+  start?: number;
+  end?: number;
+  page?: number;
+  numPages?: number;
+  pageSize?: number;
+  nextPageUri?: string;
+  availablePhoneNumbers?: Array<AvailableNumber>;
 }
 export class AvailableNumberList {
-    /**
-    * Total amount of requested resource.
-    */
-    'total'?: number;
-    /**
-    * Resource index at start of current page
-    */
-    'start'?: number;
-    /**
-    * Resource index at end of current page
-    */
-    'end'?: number;
-    /**
-    * Current page
-    */
-    'page'?: number;
-    /**
-    * Total number of pages
-    */
-    'numPages'?: number;
-    /**
-    * Number of items per page
-    */
-    'pageSize'?: number;
-    /**
-    * Uri to retrieve the next page of items
-    */
-    'nextPageUri'?: string;
-    'availablePhoneNumbers'?: Array<AvailableNumber>;
+  /**
+   * Total amount of requested resource.
+   */
+  "total"?: number;
+  /**
+   * Resource index at start of current page
+   */
+  "start"?: number;
+  /**
+   * Resource index at end of current page
+   */
+  "end"?: number;
+  /**
+   * Current page
+   */
+  "page"?: number;
+  /**
+   * Total number of pages
+   */
+  "numPages"?: number;
+  /**
+   * Number of items per page
+   */
+  "pageSize"?: number;
+  /**
+   * Uri to retrieve the next page of items
+   */
+  "nextPageUri"?: string;
+  "availablePhoneNumbers"?: Array<AvailableNumber>;
 
-    static readonly discriminator: string | undefined = undefined;
+  static readonly discriminator: string | undefined = undefined;
 
-    static readonly attributeTypeMap: AttributeType[] = [
-        {
-            "name": "total",
-            "baseName": "total",
-            "type": "number",
-            "format": "",
+  static readonly attributeTypeMap: AttributeType[] = [
+    {
+      name: "total",
+      baseName: "total",
+      type: "number",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "start",
-            "baseName": "start",
-            "type": "number",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "start",
+      baseName: "start",
+      type: "number",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "end",
-            "baseName": "end",
-            "type": "number",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "end",
+      baseName: "end",
+      type: "number",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "page",
-            "baseName": "page",
-            "type": "number",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "page",
+      baseName: "page",
+      type: "number",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "numPages",
-            "baseName": "numPages",
-            "type": "number",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "numPages",
+      baseName: "numPages",
+      type: "number",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "pageSize",
-            "baseName": "pageSize",
-            "type": "number",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "pageSize",
+      baseName: "pageSize",
+      type: "number",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "nextPageUri",
-            "baseName": "nextPageUri",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "nextPageUri",
+      baseName: "nextPageUri",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "availablePhoneNumbers",
-            "baseName": "availablePhoneNumbers",
-            "type": "Array<AvailableNumber>",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "availablePhoneNumbers",
+      baseName: "availablePhoneNumbers",
+      type: "Array<AvailableNumber>",
+      format: "",
 
-            
-            "defaultValue": undefined
-        }    ];
+      defaultValue: undefined,
+    },
+  ];
 
-    static getAttributeTypeMap(): AttributeType[] {
-        return AvailableNumberList.attributeTypeMap;
+  static getAttributeTypeMap(): AttributeType[] {
+    return AvailableNumberList.attributeTypeMap;
+  }
+  public constructor(args: ArgumentsType) {
+    const assign = <T>(attribute: keyof ArgumentsType): T => {
+      return (args[attribute] ??
+        AvailableNumberList.attributeTypeMap.find(
+          (attr) => attr.name === attribute,
+        )?.defaultValue) as T;
+    };
+    if (args["total"]) {
+      this["total"] = assign<number>("total");
     }
-
-    public constructor(args: ArgumentsType) {
-        const preparedArgs = AvailableNumberList.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
-            
-            const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
-            
-            if (val !== undefined) {
-                acc[attr.name as keyof ArgumentsType] = val
-            }
-            return acc
-        }, {})
-        Object.assign(this, preparedArgs)
+    if (args["start"]) {
+      this["start"] = assign<number>("start");
     }
+    if (args["end"]) {
+      this["end"] = assign<number>("end");
+    }
+    if (args["page"]) {
+      this["page"] = assign<number>("page");
+    }
+    if (args["numPages"]) {
+      this["numPages"] = assign<number>("numPages");
+    }
+    if (args["pageSize"]) {
+      this["pageSize"] = assign<number>("pageSize");
+    }
+    if (args["nextPageUri"]) {
+      this["nextPageUri"] = assign<string>("nextPageUri");
+    }
+    if (args["availablePhoneNumbers"]) {
+      this["availablePhoneNumbers"] = assign<Array<AvailableNumber>>(
+        "availablePhoneNumbers",
+      );
+    }
+  }
 }
-

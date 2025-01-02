@@ -10,223 +10,241 @@
  * Do not edit the class manually.
  */
 
-import { ApplicationResultAllOf } from './ApplicationResultAllOf';
-import { MutableResourceModel } from './MutableResourceModel';
-import { HttpFile } from '../http/http';
-
+import { HttpFile } from "../http/http";
 
 interface AttributeType {
-    name: string
-    baseName: string
-    type: string
-    format: string
-    defaultValue: any
+  name: string;
+  baseName: string;
+  type: string;
+  format: string;
+  defaultValue: any;
 }
 interface ArgumentsType {
-    'uri'?: string;
-    'dateCreated'?: string;
-    'dateUpdated'?: string;
-    'revision'?: number;
-    'accountId'?: string;
-    'applicationId'?: string;
-    'alias'?: string;
-    'voiceUrl'?: string;
-    'voiceFallbackUrl'?: string;
-    'callConnectUrl'?: string;
-    'statusCallbackUrl'?: string;
-    'smsUrl'?: string;
-    'smsFallbackUrl'?: string;
+  uri?: string;
+  dateCreated?: string;
+  dateUpdated?: string;
+  revision?: number;
+  accountId?: string;
+  applicationId?: string;
+  alias?: string;
+  voiceUrl?: string;
+  voiceFallbackUrl?: string;
+  callConnectUrl?: string;
+  statusCallbackUrl?: string;
+  smsUrl?: string;
+  smsFallbackUrl?: string;
 }
 export class ApplicationResult {
-    /**
-    * The URI for this resource, relative to /apiserver.
-    */
-    'uri'?: string;
-    /**
-    * The date that this resource was created (GMT) in RFC 1123 format (e.g., Mon, 15 Jun 2009 20:45:30 GMT).
-    */
-    'dateCreated'?: string;
-    /**
-    * The date that this resource was last updated (GMT) in RFC 1123 format (e.g., Mon, 15 Jun 2009 20:45:30 GMT).
-    */
-    'dateUpdated'?: string;
-    /**
-    * Revision count for the resource. This count is set to 1 on creation and is incremented every time it is updated.
-    */
-    'revision'?: number;
-    /**
-    * ID of the account that owns this phone number.
-    */
-    'accountId'?: string;
-    /**
-    * ID of the Application that FreeClimb should contact if a Call or SMS arrives for this phone number or a Call from this number is placed. An incoming phone number is not useful until associated with an applicationId.
-    */
-    'applicationId'?: string;
-    /**
-    * Description for this phone number. Typically the conventionally-formatted version of the phone number.
-    */
-    'alias'?: string;
-    /**
-    * The URL FreeClimb will request when a phone number assigned to this Application receives a Call. Used for inbound calls only.
-    */
-    'voiceUrl'?: string;
-    /**
-    * The URL that FreeClimb will request if it times out waiting for a response from the voiceUrl. Used for inbound calls only.
-    */
-    'voiceFallbackUrl'?: string;
-    /**
-    * The URL to which FreeClimb will make a POST request informing the result of the outbound Call request. The status property of the request message specifies if the Call was connected or not.
-    */
-    'callConnectUrl'?: string;
-    /**
-    * A URL to which FreeClimb will make a POST request when the Call ends to notify this app.
-    */
-    'statusCallbackUrl'?: string;
-    /**
-    * The URL FreeClimb will request when a phone number assigned to this Application receives an incoming SMS message. Used for inbound SMS only.
-    */
-    'smsUrl'?: string;
-    /**
-    * The URL that FreeClimb will request if it times out waiting for a response from the smsUrl. Used for inbound SMS only.
-    */
-    'smsFallbackUrl'?: string;
+  /**
+   * The URI for this resource, relative to /apiserver.
+   */
+  "uri"?: string;
+  /**
+   * The date that this resource was created (GMT) in RFC 1123 format (e.g., Mon, 15 Jun 2009 20:45:30 GMT).
+   */
+  "dateCreated"?: string;
+  /**
+   * The date that this resource was last updated (GMT) in RFC 1123 format (e.g., Mon, 15 Jun 2009 20:45:30 GMT).
+   */
+  "dateUpdated"?: string;
+  /**
+   * Revision count for the resource. This count is set to 1 on creation and is incremented every time it is updated.
+   */
+  "revision"?: number;
+  /**
+   * ID of the account that owns this phone number.
+   */
+  "accountId"?: string;
+  /**
+   * ID of the Application that FreeClimb should contact if a Call or SMS arrives for this phone number or a Call from this number is placed. An incoming phone number is not useful until associated with an applicationId.
+   */
+  "applicationId"?: string;
+  /**
+   * Description for this phone number. Typically the conventionally-formatted version of the phone number.
+   */
+  "alias"?: string;
+  /**
+   * The URL FreeClimb will request when a phone number assigned to this Application receives a Call. Used for inbound calls only.
+   */
+  "voiceUrl"?: string;
+  /**
+   * The URL that FreeClimb will request if it times out waiting for a response from the voiceUrl. Used for inbound calls only.
+   */
+  "voiceFallbackUrl"?: string;
+  /**
+   * The URL to which FreeClimb will make a POST request informing the result of the outbound Call request. The status property of the request message specifies if the Call was connected or not.
+   */
+  "callConnectUrl"?: string;
+  /**
+   * A URL to which FreeClimb will make a POST request when the Call ends to notify this app.
+   */
+  "statusCallbackUrl"?: string;
+  /**
+   * The URL FreeClimb will request when a phone number assigned to this Application receives an incoming SMS message. Used for inbound SMS only.
+   */
+  "smsUrl"?: string;
+  /**
+   * The URL that FreeClimb will request if it times out waiting for a response from the smsUrl. Used for inbound SMS only.
+   */
+  "smsFallbackUrl"?: string;
 
-    static readonly discriminator: string | undefined = undefined;
+  static readonly discriminator: string | undefined = undefined;
 
-    static readonly attributeTypeMap: AttributeType[] = [
-        {
-            "name": "uri",
-            "baseName": "uri",
-            "type": "string",
-            "format": "",
+  static readonly attributeTypeMap: AttributeType[] = [
+    {
+      name: "uri",
+      baseName: "uri",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "dateCreated",
-            "baseName": "dateCreated",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "dateCreated",
+      baseName: "dateCreated",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "dateUpdated",
-            "baseName": "dateUpdated",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "dateUpdated",
+      baseName: "dateUpdated",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "revision",
-            "baseName": "revision",
-            "type": "number",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "revision",
+      baseName: "revision",
+      type: "number",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "accountId",
-            "baseName": "accountId",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "accountId",
+      baseName: "accountId",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "applicationId",
-            "baseName": "applicationId",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "applicationId",
+      baseName: "applicationId",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "alias",
-            "baseName": "alias",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "alias",
+      baseName: "alias",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "voiceUrl",
-            "baseName": "voiceUrl",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "voiceUrl",
+      baseName: "voiceUrl",
+      type: "string",
+      format: "uri",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "voiceFallbackUrl",
-            "baseName": "voiceFallbackUrl",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "voiceFallbackUrl",
+      baseName: "voiceFallbackUrl",
+      type: "string",
+      format: "uri",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "callConnectUrl",
-            "baseName": "callConnectUrl",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "callConnectUrl",
+      baseName: "callConnectUrl",
+      type: "string",
+      format: "uri",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "statusCallbackUrl",
-            "baseName": "statusCallbackUrl",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "statusCallbackUrl",
+      baseName: "statusCallbackUrl",
+      type: "string",
+      format: "uri",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "smsUrl",
-            "baseName": "smsUrl",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "smsUrl",
+      baseName: "smsUrl",
+      type: "string",
+      format: "uri",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "smsFallbackUrl",
-            "baseName": "smsFallbackUrl",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "smsFallbackUrl",
+      baseName: "smsFallbackUrl",
+      type: "string",
+      format: "uri",
 
-            
-            "defaultValue": undefined
-        }    ];
+      defaultValue: undefined,
+    },
+  ];
 
-    static getAttributeTypeMap(): AttributeType[] {
-        return ApplicationResult.attributeTypeMap;
+  static getAttributeTypeMap(): AttributeType[] {
+    return ApplicationResult.attributeTypeMap;
+  }
+  public constructor(args: ArgumentsType) {
+    const assign = <T>(attribute: keyof ArgumentsType): T => {
+      return (args[attribute] ??
+        ApplicationResult.attributeTypeMap.find(
+          (attr) => attr.name === attribute,
+        )?.defaultValue) as T;
+    };
+    if (args["uri"]) {
+      this["uri"] = assign<string>("uri");
     }
-
-    public constructor(args: ArgumentsType) {
-        const preparedArgs = ApplicationResult.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
-            
-            const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
-            
-            if (val !== undefined) {
-                acc[attr.name as keyof ArgumentsType] = val
-            }
-            return acc
-        }, {})
-        Object.assign(this, preparedArgs)
+    if (args["dateCreated"]) {
+      this["dateCreated"] = assign<string>("dateCreated");
     }
+    if (args["dateUpdated"]) {
+      this["dateUpdated"] = assign<string>("dateUpdated");
+    }
+    if (args["revision"]) {
+      this["revision"] = assign<number>("revision");
+    }
+    if (args["accountId"]) {
+      this["accountId"] = assign<string>("accountId");
+    }
+    if (args["applicationId"]) {
+      this["applicationId"] = assign<string>("applicationId");
+    }
+    if (args["alias"]) {
+      this["alias"] = assign<string>("alias");
+    }
+    if (args["voiceUrl"]) {
+      this["voiceUrl"] = assign<string>("voiceUrl");
+    }
+    if (args["voiceFallbackUrl"]) {
+      this["voiceFallbackUrl"] = assign<string>("voiceFallbackUrl");
+    }
+    if (args["callConnectUrl"]) {
+      this["callConnectUrl"] = assign<string>("callConnectUrl");
+    }
+    if (args["statusCallbackUrl"]) {
+      this["statusCallbackUrl"] = assign<string>("statusCallbackUrl");
+    }
+    if (args["smsUrl"]) {
+      this["smsUrl"] = assign<string>("smsUrl");
+    }
+    if (args["smsFallbackUrl"]) {
+      this["smsFallbackUrl"] = assign<string>("smsFallbackUrl");
+    }
+  }
 }
-

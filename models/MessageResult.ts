@@ -10,264 +10,286 @@
  * Do not edit the class manually.
  */
 
-import { MessageResultAllOf } from './MessageResultAllOf';
-import { MessageStatus } from './MessageStatus';
-import { MutableResourceModel } from './MutableResourceModel';
-import { URI } from './URI';
-import { HttpFile } from '../http/http';
-
+import { MessageStatus } from "./../models/MessageStatus";
+import { HttpFile } from "../http/http";
 
 interface AttributeType {
-    name: string
-    baseName: string
-    type: string
-    format: string
-    defaultValue: any
+  name: string;
+  baseName: string;
+  type: string;
+  format: string;
+  defaultValue: any;
 }
 interface ArgumentsType {
-    'uri'?: string;
-    'dateCreated'?: string;
-    'dateUpdated'?: string;
-    'revision'?: number;
-    'accountId'?: string;
-    'messageId'?: string;
-    'status'?: MessageStatus;
-    'from'?: string;
-    'to'?: string;
-    'text'?: string;
-    'direction'?: string;
-    'notificationUrl'?: string;
-    'brandId'?: string;
-    'campaignId'?: string;
-    'segmentCount'?: number;
-    'mediaUrls'?: Array<URI>;
+  uri?: string;
+  dateCreated?: string;
+  dateUpdated?: string;
+  revision?: number;
+  accountId?: string;
+  messageId?: string;
+  status?: MessageStatus;
+  from?: string;
+  to?: string;
+  text?: string;
+  direction?: string;
+  notificationUrl?: string;
+  brandId?: string;
+  campaignId?: string;
+  segmentCount?: number;
+  mediaUrls?: Array<string>;
 }
 export class MessageResult {
-    /**
-    * The URI for this resource, relative to /apiserver.
-    */
-    'uri'?: string;
-    /**
-    * The date that this resource was created (GMT) in RFC 1123 format (e.g., Mon, 15 Jun 2009 20:45:30 GMT).
-    */
-    'dateCreated'?: string;
-    /**
-    * The date that this resource was last updated (GMT) in RFC 1123 format (e.g., Mon, 15 Jun 2009 20:45:30 GMT).
-    */
-    'dateUpdated'?: string;
-    /**
-    * Revision count for the resource. This count is set to 1 on creation and is incremented every time it is updated.
-    */
-    'revision'?: number;
-    /**
-    * String that uniquely identifies this account resource.
-    */
-    'accountId'?: string;
-    /**
-    * String that uniquely identifies this message resource
-    */
-    'messageId'?: string;
-    'status'?: MessageStatus;
-    /**
-    * Phone number in E.164 format that sent the message.
-    */
-    'from'?: string;
-    /**
-    * Phone number in E.164 format that received the message.
-    */
-    'to'?: string;
-    /**
-    * Message contents
-    */
-    'text'?: string;
-    /**
-    * Noting whether the message was inbound or outbound
-    */
-    'direction'?: string;
-    /**
-    * URL invoked when message sent
-    */
-    'notificationUrl'?: string;
-    /**
-    * The unique identifier for the brand associated with the message
-    */
-    'brandId'?: string;
-    /**
-    * The unique identifier for the campaign associated with the message
-    */
-    'campaignId'?: string;
-    /**
-    * The number of segments into which the message was split
-    */
-    'segmentCount'?: number;
-    /**
-    * an array of HTTP URLs which were attached this this message
-    */
-    'mediaUrls'?: Array<URI>;
+  /**
+   * The URI for this resource, relative to /apiserver.
+   */
+  "uri"?: string;
+  /**
+   * The date that this resource was created (GMT) in RFC 1123 format (e.g., Mon, 15 Jun 2009 20:45:30 GMT).
+   */
+  "dateCreated"?: string;
+  /**
+   * The date that this resource was last updated (GMT) in RFC 1123 format (e.g., Mon, 15 Jun 2009 20:45:30 GMT).
+   */
+  "dateUpdated"?: string;
+  /**
+   * Revision count for the resource. This count is set to 1 on creation and is incremented every time it is updated.
+   */
+  "revision"?: number;
+  /**
+   * String that uniquely identifies this account resource.
+   */
+  "accountId"?: string;
+  /**
+   * String that uniquely identifies this message resource
+   */
+  "messageId"?: string;
+  "status"?: MessageStatus;
+  /**
+   * Phone number in E.164 format that sent the message.
+   */
+  "from"?: string;
+  /**
+   * Phone number in E.164 format that received the message.
+   */
+  "to"?: string;
+  /**
+   * Message contents
+   */
+  "text"?: string;
+  /**
+   * Noting whether the message was inbound or outbound
+   */
+  "direction"?: string;
+  /**
+   * URL invoked when message sent
+   */
+  "notificationUrl"?: string;
+  /**
+   * The unique identifier for the brand associated with the message
+   */
+  "brandId"?: string;
+  /**
+   * The unique identifier for the campaign associated with the message
+   */
+  "campaignId"?: string;
+  /**
+   * The number of segments into which the message was split
+   */
+  "segmentCount"?: number;
+  /**
+   * an array of HTTP URLs which were attached this this message
+   */
+  "mediaUrls"?: Array<string>;
 
-    static readonly discriminator: string | undefined = undefined;
+  static readonly discriminator: string | undefined = undefined;
 
-    static readonly attributeTypeMap: AttributeType[] = [
-        {
-            "name": "uri",
-            "baseName": "uri",
-            "type": "string",
-            "format": "",
+  static readonly attributeTypeMap: AttributeType[] = [
+    {
+      name: "uri",
+      baseName: "uri",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "dateCreated",
-            "baseName": "dateCreated",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "dateCreated",
+      baseName: "dateCreated",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "dateUpdated",
-            "baseName": "dateUpdated",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "dateUpdated",
+      baseName: "dateUpdated",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "revision",
-            "baseName": "revision",
-            "type": "number",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "revision",
+      baseName: "revision",
+      type: "number",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "accountId",
-            "baseName": "accountId",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "accountId",
+      baseName: "accountId",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "messageId",
-            "baseName": "messageId",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "messageId",
+      baseName: "messageId",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "status",
-            "baseName": "status",
-            "type": "MessageStatus",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "status",
+      baseName: "status",
+      type: "MessageStatus",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "from",
-            "baseName": "from",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "from",
+      baseName: "from",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "to",
-            "baseName": "to",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "to",
+      baseName: "to",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "text",
-            "baseName": "text",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "text",
+      baseName: "text",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "direction",
-            "baseName": "direction",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "direction",
+      baseName: "direction",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "notificationUrl",
-            "baseName": "notificationUrl",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "notificationUrl",
+      baseName: "notificationUrl",
+      type: "string",
+      format: "uri",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "brandId",
-            "baseName": "brandId",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "brandId",
+      baseName: "brandId",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "campaignId",
-            "baseName": "campaignId",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "campaignId",
+      baseName: "campaignId",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "segmentCount",
-            "baseName": "segmentCount",
-            "type": "number",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "segmentCount",
+      baseName: "segmentCount",
+      type: "number",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "mediaUrls",
-            "baseName": "mediaUrls",
-            "type": "Array<URI>",
-            "format": "uri",
+      defaultValue: undefined,
+    },
+    {
+      name: "mediaUrls",
+      baseName: "mediaUrls",
+      type: "Array<string>",
+      format: "uri",
 
-            
-            "defaultValue": undefined
-        }    ];
+      defaultValue: undefined,
+    },
+  ];
 
-    static getAttributeTypeMap(): AttributeType[] {
-        return MessageResult.attributeTypeMap;
+  static getAttributeTypeMap(): AttributeType[] {
+    return MessageResult.attributeTypeMap;
+  }
+  public constructor(args: ArgumentsType) {
+    const assign = <T>(attribute: keyof ArgumentsType): T => {
+      return (args[attribute] ??
+        MessageResult.attributeTypeMap.find((attr) => attr.name === attribute)
+          ?.defaultValue) as T;
+    };
+    if (args["uri"]) {
+      this["uri"] = assign<string>("uri");
     }
-
-    public constructor(args: ArgumentsType) {
-        const preparedArgs = MessageResult.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
-            
-            const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
-            
-            if (val !== undefined) {
-                acc[attr.name as keyof ArgumentsType] = val
-            }
-            return acc
-        }, {})
-        Object.assign(this, preparedArgs)
+    if (args["dateCreated"]) {
+      this["dateCreated"] = assign<string>("dateCreated");
     }
+    if (args["dateUpdated"]) {
+      this["dateUpdated"] = assign<string>("dateUpdated");
+    }
+    if (args["revision"]) {
+      this["revision"] = assign<number>("revision");
+    }
+    if (args["accountId"]) {
+      this["accountId"] = assign<string>("accountId");
+    }
+    if (args["messageId"]) {
+      this["messageId"] = assign<string>("messageId");
+    }
+    if (args["status"]) {
+      this["status"] = assign<MessageStatus>("status");
+    }
+    if (args["from"]) {
+      this["from"] = assign<string>("from");
+    }
+    if (args["to"]) {
+      this["to"] = assign<string>("to");
+    }
+    if (args["text"]) {
+      this["text"] = assign<string>("text");
+    }
+    if (args["direction"]) {
+      this["direction"] = assign<string>("direction");
+    }
+    if (args["notificationUrl"]) {
+      this["notificationUrl"] = assign<string>("notificationUrl");
+    }
+    if (args["brandId"]) {
+      this["brandId"] = assign<string>("brandId");
+    }
+    if (args["campaignId"]) {
+      this["campaignId"] = assign<string>("campaignId");
+    }
+    if (args["segmentCount"]) {
+      this["segmentCount"] = assign<number>("segmentCount");
+    }
+    if (args["mediaUrls"]) {
+      this["mediaUrls"] = assign<Array<string>>("mediaUrls");
+    }
+  }
 }
-

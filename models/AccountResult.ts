@@ -10,191 +10,204 @@
  * Do not edit the class manually.
  */
 
-import { AccountResultAllOf } from './AccountResultAllOf';
-import { AccountStatus } from './AccountStatus';
-import { AccountType } from './AccountType';
-import { MutableResourceModel } from './MutableResourceModel';
-import { HttpFile } from '../http/http';
-
+import { AccountStatus } from "./../models/AccountStatus";
+import { AccountType } from "./../models/AccountType";
+import { HttpFile } from "../http/http";
 
 interface AttributeType {
-    name: string
-    baseName: string
-    type: string
-    format: string
-    defaultValue: any
+  name: string;
+  baseName: string;
+  type: string;
+  format: string;
+  defaultValue: any;
 }
 interface ArgumentsType {
-    'uri'?: string;
-    'dateCreated'?: string;
-    'dateUpdated'?: string;
-    'revision'?: number;
-    'accountId'?: string;
-    'apiKey'?: string;
-    'alias'?: string;
-    'label'?: string;
-    'type'?: AccountType;
-    'status'?: AccountStatus;
-    'subresourceUris'?: any;
+  uri?: string;
+  dateCreated?: string;
+  dateUpdated?: string;
+  revision?: number;
+  accountId?: string;
+  apiKey?: string;
+  alias?: string;
+  label?: string;
+  type?: AccountType;
+  status?: AccountStatus;
+  subresourceUris?: any;
 }
 export class AccountResult {
-    /**
-    * The URI for this resource, relative to /apiserver.
-    */
-    'uri'?: string;
-    /**
-    * The date that this resource was created (GMT) in RFC 1123 format (e.g., Mon, 15 Jun 2009 20:45:30 GMT).
-    */
-    'dateCreated'?: string;
-    /**
-    * The date that this resource was last updated (GMT) in RFC 1123 format (e.g., Mon, 15 Jun 2009 20:45:30 GMT).
-    */
-    'dateUpdated'?: string;
-    /**
-    * Revision count for the resource. This count is set to 1 on creation and is incremented every time it is updated.
-    */
-    'revision'?: number;
-    /**
-    * String that uniquely identifies this account resource.
-    */
-    'accountId'?: string;
-    /**
-    * The API key assigned to this account. This key must be kept a secret by the customer.
-    */
-    'apiKey'?: string;
-    /**
-    * A description for this account.
-    */
-    'alias'?: string;
-    /**
-    * A string that identifies a category or group to which the account belongs.
-    */
-    'label'?: string;
-    'type'?: AccountType;
-    'status'?: AccountStatus;
-    /**
-    * The list of subresources for this account.
-    */
-    'subresourceUris'?: any;
+  /**
+   * The URI for this resource, relative to /apiserver.
+   */
+  "uri"?: string;
+  /**
+   * The date that this resource was created (GMT) in RFC 1123 format (e.g., Mon, 15 Jun 2009 20:45:30 GMT).
+   */
+  "dateCreated"?: string;
+  /**
+   * The date that this resource was last updated (GMT) in RFC 1123 format (e.g., Mon, 15 Jun 2009 20:45:30 GMT).
+   */
+  "dateUpdated"?: string;
+  /**
+   * Revision count for the resource. This count is set to 1 on creation and is incremented every time it is updated.
+   */
+  "revision"?: number;
+  /**
+   * String that uniquely identifies this account resource.
+   */
+  "accountId"?: string;
+  /**
+   * The API key assigned to this account. This key must be kept a secret by the customer.
+   */
+  "apiKey"?: string;
+  /**
+   * A description for this account.
+   */
+  "alias"?: string;
+  /**
+   * A string that identifies a category or group to which the account belongs.
+   */
+  "label"?: string;
+  "type"?: AccountType;
+  "status"?: AccountStatus;
+  /**
+   * The list of subresources for this account.
+   */
+  "subresourceUris"?: any;
 
-    static readonly discriminator: string | undefined = undefined;
+  static readonly discriminator: string | undefined = undefined;
 
-    static readonly attributeTypeMap: AttributeType[] = [
-        {
-            "name": "uri",
-            "baseName": "uri",
-            "type": "string",
-            "format": "",
+  static readonly attributeTypeMap: AttributeType[] = [
+    {
+      name: "uri",
+      baseName: "uri",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "dateCreated",
-            "baseName": "dateCreated",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "dateCreated",
+      baseName: "dateCreated",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "dateUpdated",
-            "baseName": "dateUpdated",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "dateUpdated",
+      baseName: "dateUpdated",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "revision",
-            "baseName": "revision",
-            "type": "number",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "revision",
+      baseName: "revision",
+      type: "number",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "accountId",
-            "baseName": "accountId",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "accountId",
+      baseName: "accountId",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "apiKey",
-            "baseName": "apiKey",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "apiKey",
+      baseName: "apiKey",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "alias",
-            "baseName": "alias",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "alias",
+      baseName: "alias",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "label",
-            "baseName": "label",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "label",
+      baseName: "label",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "type",
-            "baseName": "type",
-            "type": "AccountType",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "type",
+      baseName: "type",
+      type: "AccountType",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "status",
-            "baseName": "status",
-            "type": "AccountStatus",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "status",
+      baseName: "status",
+      type: "AccountStatus",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "subresourceUris",
-            "baseName": "subresourceUris",
-            "type": "any",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "subresourceUris",
+      baseName: "subresourceUris",
+      type: "any",
+      format: "",
 
-            
-            "defaultValue": undefined
-        }    ];
+      defaultValue: undefined,
+    },
+  ];
 
-    static getAttributeTypeMap(): AttributeType[] {
-        return AccountResult.attributeTypeMap;
+  static getAttributeTypeMap(): AttributeType[] {
+    return AccountResult.attributeTypeMap;
+  }
+  public constructor(args: ArgumentsType) {
+    const assign = <T>(attribute: keyof ArgumentsType): T => {
+      return (args[attribute] ??
+        AccountResult.attributeTypeMap.find((attr) => attr.name === attribute)
+          ?.defaultValue) as T;
+    };
+    if (args["uri"]) {
+      this["uri"] = assign<string>("uri");
     }
-
-    public constructor(args: ArgumentsType) {
-        const preparedArgs = AccountResult.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
-            
-            const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
-            
-            if (val !== undefined) {
-                acc[attr.name as keyof ArgumentsType] = val
-            }
-            return acc
-        }, {})
-        Object.assign(this, preparedArgs)
+    if (args["dateCreated"]) {
+      this["dateCreated"] = assign<string>("dateCreated");
     }
+    if (args["dateUpdated"]) {
+      this["dateUpdated"] = assign<string>("dateUpdated");
+    }
+    if (args["revision"]) {
+      this["revision"] = assign<number>("revision");
+    }
+    if (args["accountId"]) {
+      this["accountId"] = assign<string>("accountId");
+    }
+    if (args["apiKey"]) {
+      this["apiKey"] = assign<string>("apiKey");
+    }
+    if (args["alias"]) {
+      this["alias"] = assign<string>("alias");
+    }
+    if (args["label"]) {
+      this["label"] = assign<string>("label");
+    }
+    if (args["type"]) {
+      this["type"] = assign<AccountType>("type");
+    }
+    if (args["status"]) {
+      this["status"] = assign<AccountStatus>("status");
+    }
+    if (args["subresourceUris"]) {
+      this["subresourceUris"] = assign<any>("subresourceUris");
+    }
+  }
 }
-

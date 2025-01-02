@@ -10,81 +10,81 @@
  * Do not edit the class manually.
  */
 
-import { HttpFile } from '../http/http';
-
+import { HttpFile } from "../http/http";
 
 interface AttributeType {
-    name: string
-    baseName: string
-    type: string
-    format: string
-    defaultValue: any
+  name: string;
+  baseName: string;
+  type: string;
+  format: string;
+  defaultValue: any;
 }
 interface ArgumentsType {
-    'talk'?: boolean;
-    'listen'?: boolean;
-    'dtmfPassThrough'?: boolean;
+  talk?: boolean;
+  listen?: boolean;
+  dtmfPassThrough?: boolean;
 }
 export class UpdateConferenceParticipantRequest {
-    /**
-    * (Optional) Default is `true`. Setting to `false` mutes the Participant. FreeClimb returns an error and ignores any other value.
-    */
-    'talk'?: boolean;
-    /**
-    * (Optional) Default is `true`. Setting to `false` silences the Conference for this Participant. FreeClimb returns an error and ignores any other value.
-    */
-    'listen'?: boolean;
-    /**
-    * (Optional) Default is `true`. Setting to `false` mutes dtmf audio for this Participant. FreeClimb returns an error and ignores any other value.
-    */
-    'dtmfPassThrough'?: boolean;
+  /**
+   * (Optional) Default is `true`. Setting to `false` mutes the Participant. FreeClimb returns an error and ignores any other value.
+   */
+  "talk"?: boolean;
+  /**
+   * (Optional) Default is `true`. Setting to `false` silences the Conference for this Participant. FreeClimb returns an error and ignores any other value.
+   */
+  "listen"?: boolean;
+  /**
+   * (Optional) Default is `true`. Setting to `false` mutes dtmf audio for this Participant. FreeClimb returns an error and ignores any other value.
+   */
+  "dtmfPassThrough"?: boolean;
 
-    static readonly discriminator: string | undefined = undefined;
+  static readonly discriminator: string | undefined = undefined;
 
-    static readonly attributeTypeMap: AttributeType[] = [
-        {
-            "name": "talk",
-            "baseName": "talk",
-            "type": "boolean",
-            "format": "",
+  static readonly attributeTypeMap: AttributeType[] = [
+    {
+      name: "talk",
+      baseName: "talk",
+      type: "boolean",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "listen",
-            "baseName": "listen",
-            "type": "boolean",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "listen",
+      baseName: "listen",
+      type: "boolean",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "dtmfPassThrough",
-            "baseName": "dtmfPassThrough",
-            "type": "boolean",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "dtmfPassThrough",
+      baseName: "dtmfPassThrough",
+      type: "boolean",
+      format: "",
 
-            
-            "defaultValue": undefined
-        }    ];
+      defaultValue: undefined,
+    },
+  ];
 
-    static getAttributeTypeMap(): AttributeType[] {
-        return UpdateConferenceParticipantRequest.attributeTypeMap;
+  static getAttributeTypeMap(): AttributeType[] {
+    return UpdateConferenceParticipantRequest.attributeTypeMap;
+  }
+  public constructor(args: ArgumentsType) {
+    const assign = <T>(attribute: keyof ArgumentsType): T => {
+      return (args[attribute] ??
+        UpdateConferenceParticipantRequest.attributeTypeMap.find(
+          (attr) => attr.name === attribute,
+        )?.defaultValue) as T;
+    };
+    if (args["talk"]) {
+      this["talk"] = assign<boolean>("talk");
     }
-
-    public constructor(args: ArgumentsType) {
-        const preparedArgs = UpdateConferenceParticipantRequest.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
-            
-            const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
-            
-            if (val !== undefined) {
-                acc[attr.name as keyof ArgumentsType] = val
-            }
-            return acc
-        }, {})
-        Object.assign(this, preparedArgs)
+    if (args["listen"]) {
+      this["listen"] = assign<boolean>("listen");
     }
+    if (args["dtmfPassThrough"]) {
+      this["dtmfPassThrough"] = assign<boolean>("dtmfPassThrough");
+    }
+  }
 }
-

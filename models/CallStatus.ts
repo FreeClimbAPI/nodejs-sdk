@@ -10,21 +10,18 @@
  * Do not edit the class manually.
  */
 
-import { HttpFile } from '../http/http';
+import { HttpFile } from "../http/http";
 
 /**
-* * `queued` &ndash; Call is ready and waiting in line before going out. * `ringing` &ndash; Call is currently ringing. * `inProgress` &ndash; Call was answered and is currently in progress. * `canceled` &ndash; Call was hung up while it was queued or ringing. * `completed` &ndash; Call was answered and has ended normally. * `busy` &ndash; Caller received a busy signal. * `failed` &ndash; Call could not be completed as dialed, most likely because the phone number was non-existent. * `noAnswer` &ndash; Call ended without being answered.
-*/
+ * * `queued` &ndash; Call is ready and waiting in line before going out. * `ringing` &ndash; Call is currently ringing. * `inProgress` &ndash; Call was answered and is currently in progress. * `canceled` &ndash; Call was hung up while it was queued or ringing. * `completed` &ndash; Call was answered and has ended normally. * `busy` &ndash; Caller received a busy signal. * `failed` &ndash; Call could not be completed as dialed, most likely because the phone number was non-existent. * `noAnswer` &ndash; Call ended without being answered.
+ */
 export enum CallStatus {
-
-    QUEUED = 'queued',
-    RINGING = 'ringing',
-    IN_PROGRESS = 'inProgress',
-    CANCELED = 'canceled',
-    COMPLETED = 'completed',
-    FAILED = 'failed',
-    BUSY = 'busy',
-    NO_ANSWER = 'noAnswer'
+  QUEUED = "queued",
+  RINGING = "ringing",
+  IN_PROGRESS = "inProgress",
+  CANCELED = "canceled",
+  COMPLETED = "completed",
+  FAILED = "failed",
+  BUSY = "busy",
+  NO_ANSWER = "noAnswer",
 }
-
-

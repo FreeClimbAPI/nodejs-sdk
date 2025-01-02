@@ -10,151 +10,158 @@
  * Do not edit the class manually.
  */
 
-import { LogListAllOf } from './LogListAllOf';
-import { LogResult } from './LogResult';
-import { PaginationModel } from './PaginationModel';
-import { HttpFile } from '../http/http';
-
+import { LogResult } from "./../models/LogResult";
+import { HttpFile } from "../http/http";
 
 interface AttributeType {
-    name: string
-    baseName: string
-    type: string
-    format: string
-    defaultValue: any
+  name: string;
+  baseName: string;
+  type: string;
+  format: string;
+  defaultValue: any;
 }
 interface ArgumentsType {
-    'total'?: number;
-    'start'?: number;
-    'end'?: number;
-    'page'?: number;
-    'numPages'?: number;
-    'pageSize'?: number;
-    'nextPageUri'?: string;
-    'logs'?: Array<LogResult>;
+  total?: number;
+  start?: number;
+  end?: number;
+  page?: number;
+  numPages?: number;
+  pageSize?: number;
+  nextPageUri?: string;
+  logs?: Array<LogResult>;
 }
 export class LogList {
-    /**
-    * Total amount of requested resource.
-    */
-    'total'?: number;
-    /**
-    * Resource index at start of current page
-    */
-    'start'?: number;
-    /**
-    * Resource index at end of current page
-    */
-    'end'?: number;
-    /**
-    * Current page
-    */
-    'page'?: number;
-    /**
-    * Total number of pages
-    */
-    'numPages'?: number;
-    /**
-    * Number of items per page
-    */
-    'pageSize'?: number;
-    /**
-    * Uri to retrieve the next page of items
-    */
-    'nextPageUri'?: string;
-    'logs'?: Array<LogResult>;
+  /**
+   * Total amount of requested resource.
+   */
+  "total"?: number;
+  /**
+   * Resource index at start of current page
+   */
+  "start"?: number;
+  /**
+   * Resource index at end of current page
+   */
+  "end"?: number;
+  /**
+   * Current page
+   */
+  "page"?: number;
+  /**
+   * Total number of pages
+   */
+  "numPages"?: number;
+  /**
+   * Number of items per page
+   */
+  "pageSize"?: number;
+  /**
+   * Uri to retrieve the next page of items
+   */
+  "nextPageUri"?: string;
+  "logs"?: Array<LogResult>;
 
-    static readonly discriminator: string | undefined = undefined;
+  static readonly discriminator: string | undefined = undefined;
 
-    static readonly attributeTypeMap: AttributeType[] = [
-        {
-            "name": "total",
-            "baseName": "total",
-            "type": "number",
-            "format": "",
+  static readonly attributeTypeMap: AttributeType[] = [
+    {
+      name: "total",
+      baseName: "total",
+      type: "number",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "start",
-            "baseName": "start",
-            "type": "number",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "start",
+      baseName: "start",
+      type: "number",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "end",
-            "baseName": "end",
-            "type": "number",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "end",
+      baseName: "end",
+      type: "number",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "page",
-            "baseName": "page",
-            "type": "number",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "page",
+      baseName: "page",
+      type: "number",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "numPages",
-            "baseName": "numPages",
-            "type": "number",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "numPages",
+      baseName: "numPages",
+      type: "number",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "pageSize",
-            "baseName": "pageSize",
-            "type": "number",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "pageSize",
+      baseName: "pageSize",
+      type: "number",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "nextPageUri",
-            "baseName": "nextPageUri",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "nextPageUri",
+      baseName: "nextPageUri",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "logs",
-            "baseName": "logs",
-            "type": "Array<LogResult>",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "logs",
+      baseName: "logs",
+      type: "Array<LogResult>",
+      format: "",
 
-            
-            "defaultValue": undefined
-        }    ];
+      defaultValue: undefined,
+    },
+  ];
 
-    static getAttributeTypeMap(): AttributeType[] {
-        return LogList.attributeTypeMap;
+  static getAttributeTypeMap(): AttributeType[] {
+    return LogList.attributeTypeMap;
+  }
+  public constructor(args: ArgumentsType) {
+    const assign = <T>(attribute: keyof ArgumentsType): T => {
+      return (args[attribute] ??
+        LogList.attributeTypeMap.find((attr) => attr.name === attribute)
+          ?.defaultValue) as T;
+    };
+    if (args["total"]) {
+      this["total"] = assign<number>("total");
     }
-
-    public constructor(args: ArgumentsType) {
-        const preparedArgs = LogList.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
-            
-            const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
-            
-            if (val !== undefined) {
-                acc[attr.name as keyof ArgumentsType] = val
-            }
-            return acc
-        }, {})
-        Object.assign(this, preparedArgs)
+    if (args["start"]) {
+      this["start"] = assign<number>("start");
     }
+    if (args["end"]) {
+      this["end"] = assign<number>("end");
+    }
+    if (args["page"]) {
+      this["page"] = assign<number>("page");
+    }
+    if (args["numPages"]) {
+      this["numPages"] = assign<number>("numPages");
+    }
+    if (args["pageSize"]) {
+      this["pageSize"] = assign<number>("pageSize");
+    }
+    if (args["nextPageUri"]) {
+      this["nextPageUri"] = assign<string>("nextPageUri");
+    }
+    if (args["logs"]) {
+      this["logs"] = assign<Array<LogResult>>("logs");
+    }
+  }
 }
-
