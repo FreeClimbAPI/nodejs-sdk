@@ -1,5 +1,5 @@
 import { describe, expect, test, beforeAll } from "@jest/globals";
-import { SignatureInformation } from "../utils/SignatureInformation";
+import { SignatureInformation } from "../../utils/SignatureInformation";
 import * as moment from "moment";
 
 describe("SignatureInformation", () => {

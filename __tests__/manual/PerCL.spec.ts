@@ -1,5 +1,5 @@
 import { describe, expect, test } from "@jest/globals";
-import { Say, GetDigits, PerclScript, Pause, Redirect } from "../";
+import { Say, GetDigits, PerclScript, Pause, Redirect } from "../../dist";
 
 describe("PerCL Smoke Test", () => {
   test("generates valid percl", () => {

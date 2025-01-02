@@ -1,6 +1,6 @@
 import { describe, expect, test, beforeAll } from "@jest/globals";
 import * as moment from "moment";
-import { RequestVerifier } from "../utils/RequestVerifier";
+import { RequestVerifier } from "../../utils/RequestVerifier";
 
 describe("RequestVerifier", () => {
   describe("#checkRequestBody", () => {
