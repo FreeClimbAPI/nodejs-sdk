@@ -6,6 +6,6 @@ const config = {
     "^.+\\.tsx?$": "ts-jest",
   },
   testPathIgnorePatterns: ["/node_modules/", "dist"],
-  testMatch: ["**/__tests__/**/*.(spec|test).[jt]s?(x)"]
+  testMatch: ["**/__tests__/**/*.(spec|test).[jt]s?(x)"],
 };
 module.exports = config;

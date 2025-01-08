@@ -34,8 +34,10 @@
     "btoa": "^1.2.1",
     "crypto": "^1.0.1",
     "es6-promise": "^4.2.4",
+    "fast-xml-parser": "^4.5.0",
     "form-data": "^2.5.0",
     "json5": "^2.2.3",
+    "jsonpath-plus": "^10.0.0",
     "moment": "^2.29.4",
     "node-fetch": "^2.6.0",
     "qs": "^6.11.1",
@@ -54,8 +56,6 @@
   },
   "resolutions": {
     "@stoplight/json": "3.20.0",
-    "jsonpath-plus": "^10.0.0",
-    "fast-xml-parser": "^4.5.0",
     "braces": "^3.0.3",
     "micromatch": "^4.0.8"
   }
