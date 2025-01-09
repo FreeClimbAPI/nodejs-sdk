@@ -10,315 +10,346 @@
  * Do not edit the class manually.
  */
 
-import { AnsweredBy } from './AnsweredBy';
-import { CallDirection } from './CallDirection';
-import { CallResultAllOf } from './CallResultAllOf';
-import { CallStatus } from './CallStatus';
-import { MutableResourceModel } from './MutableResourceModel';
-import { HttpFile } from '../http/http';
-
+import { AnsweredBy } from "./../models/AnsweredBy";
+import { CallDirection } from "./../models/CallDirection";
+import { CallStatus } from "./../models/CallStatus";
+import { HttpFile } from "../http/http";
 
 interface AttributeType {
-    name: string
-    baseName: string
-    type: string
-    format: string
-    defaultValue: any
+  name: string;
+  baseName: string;
+  type: string;
+  format: string;
+  defaultValue: any;
 }
 interface ArgumentsType {
-    'uri'?: string;
-    'dateCreated'?: string;
-    'dateUpdated'?: string;
-    'revision'?: number;
-    'callId'?: string;
-    'parentCallId'?: string;
-    'accountId'?: string;
-    'from'?: string;
-    'to'?: string;
-    'phoneNumberId'?: string;
-    'callStatus'?: CallStatus;
-    'startTime'?: string;
-    'connectTime'?: string;
-    'endTime'?: string;
-    'duration'?: number;
-    'connectDuration'?: number;
-    'direction'?: CallDirection;
-    'answeredBy'?: AnsweredBy;
-    'subresourceUris'?: any;
-    'applicationId'?: string;
+  uri?: string;
+  dateCreated?: string;
+  dateUpdated?: string;
+  revision?: number;
+  callId?: string;
+  parentCallId?: string;
+  accountId?: string;
+  from?: string;
+  to?: string;
+  phoneNumberId?: string;
+  callStatus?: CallStatus;
+  startTime?: string;
+  connectTime?: string;
+  endTime?: string;
+  duration?: number;
+  connectDuration?: number;
+  direction?: CallDirection;
+  answeredBy?: AnsweredBy;
+  subresourceUris?: any;
+  applicationId?: string;
 }
 export class CallResult {
-    /**
-    * The URI for this resource, relative to /apiserver.
-    */
-    'uri'?: string;
-    /**
-    * The date that this resource was created (GMT) in RFC 1123 format (e.g., Mon, 15 Jun 2009 20:45:30 GMT).
-    */
-    'dateCreated'?: string;
-    /**
-    * The date that this resource was last updated (GMT) in RFC 1123 format (e.g., Mon, 15 Jun 2009 20:45:30 GMT).
-    */
-    'dateUpdated'?: string;
-    /**
-    * Revision count for the resource. This count is set to 1 on creation and is incremented every time it is updated.
-    */
-    'revision'?: number;
-    /**
-    * String that uniquely identifies this Call resource.
-    */
-    'callId'?: string;
-    /**
-    * ID of the Call that created this leg (child Call).
-    */
-    'parentCallId'?: string;
-    /**
-    * ID of the account that owns this Call.
-    */
-    'accountId'?: string;
-    /**
-    * Phone number that initiated this Call.
-    */
-    'from'?: string;
-    /**
-    * Phone number that received this Call.
-    */
-    'to'?: string;
-    /**
-    * If the Call was inbound, this is the ID of the IncomingPhoneNumber that received the Call (DNIS). If the Call was outbound, this is the ID of the phone number from which the Call was placed (ANI).
-    */
-    'phoneNumberId'?: string;
-    'callStatus'?: CallStatus;
-    /**
-    * Start time of the Call (GMT) in RFC 1123 format (e.g., Mon, 15 Jun 2009 20:45:30 GMT). Empty if the Call has not yet been dialed.
-    */
-    'startTime'?: string;
-    /**
-    * Time the Call was answered (GMT) in RFC 1123 format (e.g., Mon, 15 Jun 2009 20:45:30 GMT). Empty if the Call has not yet been dialed.
-    */
-    'connectTime'?: string;
-    /**
-    * End time of the Call (GMT) in RFC 1123 format (e.g., Mon, 15 Jun 2009 20:45:30 GMT). Empty if the Call did not complete successfully.
-    */
-    'endTime'?: string;
-    /**
-    * Total length of the Call in seconds. Measures time between startTime and endTime. This value is empty for busy, failed, unanswered or ongoing Calls.
-    */
-    'duration'?: number;
-    /**
-    * Length of time that the Call was connected in seconds. Measures time between connectTime and endTime. This value is empty for busy, failed, unanswered or ongoing Calls.
-    */
-    'connectDuration'?: number;
-    'direction'?: CallDirection;
-    'answeredBy'?: AnsweredBy;
-    /**
-    * The list of subresources for this Call. These include things like logs and recordings associated with the Call.
-    */
-    'subresourceUris'?: any;
-    /**
-    * ApplicationId associated with the Call.
-    */
-    'applicationId'?: string;
+  /**
+   * The URI for this resource, relative to /apiserver.
+   */
+  "uri"?: string;
+  /**
+   * The date that this resource was created (GMT) in RFC 1123 format (e.g., Mon, 15 Jun 2009 20:45:30 GMT).
+   */
+  "dateCreated"?: string;
+  /**
+   * The date that this resource was last updated (GMT) in RFC 1123 format (e.g., Mon, 15 Jun 2009 20:45:30 GMT).
+   */
+  "dateUpdated"?: string;
+  /**
+   * Revision count for the resource. This count is set to 1 on creation and is incremented every time it is updated.
+   */
+  "revision"?: number;
+  /**
+   * String that uniquely identifies this Call resource.
+   */
+  "callId"?: string;
+  /**
+   * ID of the Call that created this leg (child Call).
+   */
+  "parentCallId"?: string;
+  /**
+   * ID of the account that owns this Call.
+   */
+  "accountId"?: string;
+  /**
+   * Phone number that initiated this Call.
+   */
+  "from"?: string;
+  /**
+   * Phone number that received this Call.
+   */
+  "to"?: string;
+  /**
+   * If the Call was inbound, this is the ID of the IncomingPhoneNumber that received the Call (DNIS). If the Call was outbound, this is the ID of the phone number from which the Call was placed (ANI).
+   */
+  "phoneNumberId"?: string;
+  "callStatus"?: CallStatus;
+  /**
+   * Start time of the Call (GMT) in RFC 1123 format (e.g., Mon, 15 Jun 2009 20:45:30 GMT). Empty if the Call has not yet been dialed.
+   */
+  "startTime"?: string;
+  /**
+   * Time the Call was answered (GMT) in RFC 1123 format (e.g., Mon, 15 Jun 2009 20:45:30 GMT). Empty if the Call has not yet been dialed.
+   */
+  "connectTime"?: string;
+  /**
+   * End time of the Call (GMT) in RFC 1123 format (e.g., Mon, 15 Jun 2009 20:45:30 GMT). Empty if the Call did not complete successfully.
+   */
+  "endTime"?: string;
+  /**
+   * Total length of the Call in seconds. Measures time between startTime and endTime. This value is empty for busy, failed, unanswered or ongoing Calls.
+   */
+  "duration"?: number;
+  /**
+   * Length of time that the Call was connected in seconds. Measures time between connectTime and endTime. This value is empty for busy, failed, unanswered or ongoing Calls.
+   */
+  "connectDuration"?: number;
+  "direction"?: CallDirection;
+  "answeredBy"?: AnsweredBy;
+  /**
+   * The list of subresources for this Call. These include things like logs and recordings associated with the Call.
+   */
+  "subresourceUris"?: any;
+  /**
+   * ApplicationId associated with the Call.
+   */
+  "applicationId"?: string;
 
-    static readonly discriminator: string | undefined = undefined;
+  static readonly discriminator: string | undefined = undefined;
 
-    static readonly attributeTypeMap: AttributeType[] = [
-        {
-            "name": "uri",
-            "baseName": "uri",
-            "type": "string",
-            "format": "",
+  static readonly attributeTypeMap: AttributeType[] = [
+    {
+      name: "uri",
+      baseName: "uri",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "dateCreated",
-            "baseName": "dateCreated",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "dateCreated",
+      baseName: "dateCreated",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "dateUpdated",
-            "baseName": "dateUpdated",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "dateUpdated",
+      baseName: "dateUpdated",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "revision",
-            "baseName": "revision",
-            "type": "number",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "revision",
+      baseName: "revision",
+      type: "number",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "callId",
-            "baseName": "callId",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "callId",
+      baseName: "callId",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "parentCallId",
-            "baseName": "parentCallId",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "parentCallId",
+      baseName: "parentCallId",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "accountId",
-            "baseName": "accountId",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "accountId",
+      baseName: "accountId",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "from",
-            "baseName": "from",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "from",
+      baseName: "from",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "to",
-            "baseName": "to",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "to",
+      baseName: "to",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "phoneNumberId",
-            "baseName": "phoneNumberId",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "phoneNumberId",
+      baseName: "phoneNumberId",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "callStatus",
-            "baseName": "callStatus",
-            "type": "CallStatus",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "callStatus",
+      baseName: "callStatus",
+      type: "CallStatus",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "startTime",
-            "baseName": "startTime",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "startTime",
+      baseName: "startTime",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "connectTime",
-            "baseName": "connectTime",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "connectTime",
+      baseName: "connectTime",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "endTime",
-            "baseName": "endTime",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "endTime",
+      baseName: "endTime",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "duration",
-            "baseName": "duration",
-            "type": "number",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "duration",
+      baseName: "duration",
+      type: "number",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "connectDuration",
-            "baseName": "connectDuration",
-            "type": "number",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "connectDuration",
+      baseName: "connectDuration",
+      type: "number",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "direction",
-            "baseName": "direction",
-            "type": "CallDirection",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "direction",
+      baseName: "direction",
+      type: "CallDirection",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "answeredBy",
-            "baseName": "answeredBy",
-            "type": "AnsweredBy",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "answeredBy",
+      baseName: "answeredBy",
+      type: "AnsweredBy",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "subresourceUris",
-            "baseName": "subresourceUris",
-            "type": "any",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "subresourceUris",
+      baseName: "subresourceUris",
+      type: "any",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "applicationId",
-            "baseName": "applicationId",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "applicationId",
+      baseName: "applicationId",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        }    ];
+      defaultValue: undefined,
+    },
+  ];
 
-    static getAttributeTypeMap(): AttributeType[] {
-        return CallResult.attributeTypeMap;
+  static getAttributeTypeMap(): AttributeType[] {
+    return CallResult.attributeTypeMap;
+  }
+  public constructor(args: ArgumentsType) {
+    const assign = <T>(attribute: keyof ArgumentsType): T => {
+      return (args[attribute] ??
+        CallResult.attributeTypeMap.find((attr) => attr.name === attribute)
+          ?.defaultValue) as T;
+    };
+    if (args["uri"]) {
+      this["uri"] = assign<string>("uri");
     }
-
-    public constructor(args: ArgumentsType) {
-        const preparedArgs = CallResult.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
-            
-            const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
-            
-            if (val !== undefined) {
-                acc[attr.name as keyof ArgumentsType] = val
-            }
-            return acc
-        }, {})
-        Object.assign(this, preparedArgs)
+    if (args["dateCreated"]) {
+      this["dateCreated"] = assign<string>("dateCreated");
     }
+    if (args["dateUpdated"]) {
+      this["dateUpdated"] = assign<string>("dateUpdated");
+    }
+    if (args["revision"]) {
+      this["revision"] = assign<number>("revision");
+    }
+    if (args["callId"]) {
+      this["callId"] = assign<string>("callId");
+    }
+    if (args["parentCallId"]) {
+      this["parentCallId"] = assign<string>("parentCallId");
+    }
+    if (args["accountId"]) {
+      this["accountId"] = assign<string>("accountId");
+    }
+    if (args["from"]) {
+      this["from"] = assign<string>("from");
+    }
+    if (args["to"]) {
+      this["to"] = assign<string>("to");
+    }
+    if (args["phoneNumberId"]) {
+      this["phoneNumberId"] = assign<string>("phoneNumberId");
+    }
+    if (args["callStatus"]) {
+      this["callStatus"] = assign<CallStatus>("callStatus");
+    }
+    if (args["startTime"]) {
+      this["startTime"] = assign<string>("startTime");
+    }
+    if (args["connectTime"]) {
+      this["connectTime"] = assign<string>("connectTime");
+    }
+    if (args["endTime"]) {
+      this["endTime"] = assign<string>("endTime");
+    }
+    if (args["duration"]) {
+      this["duration"] = assign<number>("duration");
+    }
+    if (args["connectDuration"]) {
+      this["connectDuration"] = assign<number>("connectDuration");
+    }
+    if (args["direction"]) {
+      this["direction"] = assign<CallDirection>("direction");
+    }
+    if (args["answeredBy"]) {
+      this["answeredBy"] = assign<AnsweredBy>("answeredBy");
+    }
+    if (args["subresourceUris"]) {
+      this["subresourceUris"] = assign<any>("subresourceUris");
+    }
+    if (args["applicationId"]) {
+      this["applicationId"] = assign<string>("applicationId");
+    }
+  }
 }
-

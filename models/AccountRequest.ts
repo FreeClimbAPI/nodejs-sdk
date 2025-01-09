@@ -10,67 +10,64 @@
  * Do not edit the class manually.
  */
 
-import { HttpFile } from '../http/http';
-
+import { HttpFile } from "../http/http";
 
 interface AttributeType {
-    name: string
-    baseName: string
-    type: string
-    format: string
-    defaultValue: any
+  name: string;
+  baseName: string;
+  type: string;
+  format: string;
+  defaultValue: any;
 }
 interface ArgumentsType {
-    'alias'?: string;
-    'label'?: string;
+  alias?: string;
+  label?: string;
 }
 export class AccountRequest {
-    /**
-    * Description for this account.
-    */
-    'alias'?: string;
-    /**
-    * Group to which this account belongs.
-    */
-    'label'?: string;
+  /**
+   * Description for this account.
+   */
+  "alias"?: string;
+  /**
+   * Group to which this account belongs.
+   */
+  "label"?: string;
 
-    static readonly discriminator: string | undefined = undefined;
+  static readonly discriminator: string | undefined = undefined;
 
-    static readonly attributeTypeMap: AttributeType[] = [
-        {
-            "name": "alias",
-            "baseName": "alias",
-            "type": "string",
-            "format": "",
+  static readonly attributeTypeMap: AttributeType[] = [
+    {
+      name: "alias",
+      baseName: "alias",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "label",
-            "baseName": "label",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "label",
+      baseName: "label",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        }    ];
+      defaultValue: undefined,
+    },
+  ];
 
-    static getAttributeTypeMap(): AttributeType[] {
-        return AccountRequest.attributeTypeMap;
+  static getAttributeTypeMap(): AttributeType[] {
+    return AccountRequest.attributeTypeMap;
+  }
+  public constructor(args: ArgumentsType) {
+    const assign = <T>(attribute: keyof ArgumentsType): T => {
+      return (args[attribute] ??
+        AccountRequest.attributeTypeMap.find((attr) => attr.name === attribute)
+          ?.defaultValue) as T;
+    };
+    if (args["alias"]) {
+      this["alias"] = assign<string>("alias");
     }
-
-    public constructor(args: ArgumentsType) {
-        const preparedArgs = AccountRequest.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
-            
-            const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
-            
-            if (val !== undefined) {
-                acc[attr.name as keyof ArgumentsType] = val
-            }
-            return acc
-        }, {})
-        Object.assign(this, preparedArgs)
+    if (args["label"]) {
+      this["label"] = assign<string>("label");
     }
+  }
 }
-

@@ -10,251 +10,248 @@
  * Do not edit the class manually.
  */
 
-import { AddToConference } from './AddToConference';
-import { CreateConference } from './CreateConference';
-import { Dequeue } from './Dequeue';
-import { Enqueue } from './Enqueue';
-import { GetDigits } from './GetDigits';
-import { GetSpeechAllOf } from './GetSpeechAllOf';
-import { GrammarType } from './GrammarType';
-import { Hangup } from './Hangup';
-import { OutDial } from './OutDial';
-import { Park } from './Park';
-import { Pause } from './Pause';
-import { PerclCommand } from './PerclCommand';
-import { Play } from './Play';
-import { PlayEarlyMedia } from './PlayEarlyMedia';
-import { RecordUtterance } from './RecordUtterance';
-import { Redirect } from './Redirect';
-import { Reject } from './Reject';
-import { RemoveFromConference } from './RemoveFromConference';
-import { Say } from './Say';
-import { SendDigits } from './SendDigits';
-import { SetDTMFPassThrough } from './SetDTMFPassThrough';
-import { SetListen } from './SetListen';
-import { SetTalk } from './SetTalk';
-import { Sms } from './Sms';
-import { StartRecordCall } from './StartRecordCall';
-import { TerminateConference } from './TerminateConference';
-import { TranscribeUtterance } from './TranscribeUtterance';
-import { URI } from './URI';
-import { Unpark } from './Unpark';
-import { HttpFile } from '../http/http';
+import { GrammarType } from "./../models/GrammarType";
+import { PerclCommand } from "./../models/PerclCommand";
+import { HttpFile } from "../http/http";
 
 /**
-* The `GetSpeech` command enables the Caller to respond to the application using a supported language. Unlike DTMF entry, which implicitly restricts the user to using the available buttons on the phone key pad, speech input allows for flexible audio inputs based on grammar. FreeClimb supports grammars written using GRXML compatible with the Microsoft Speech Platform. `GetSpeech` is only supported on a single call leg. It is not supported when there are two or more call legs connected (as in within a Conference).
-*/
+ * The `GetSpeech` command enables the Caller to respond to the application using a supported language. Unlike DTMF entry, which implicitly restricts the user to using the available buttons on the phone key pad, speech input allows for flexible audio inputs based on grammar. FreeClimb supports grammars written using GRXML compatible with the Microsoft Speech Platform. `GetSpeech` is only supported on a single call leg. It is not supported when there are two or more call legs connected (as in within a Conference).
+ */
 
 interface AttributeType {
-    name: string
-    baseName: string
-    type: string
-    format: string
-    defaultValue: any
+  name: string;
+  baseName: string;
+  type: string;
+  format: string;
+  defaultValue: any;
 }
 interface ArgumentsType {
-    'actionUrl': URI;
-    'grammarType'?: GrammarType;
-    'grammarFile': string;
-    'grammarRule'?: string;
-    'playBeep'?: boolean;
-    'prompts'?: Array<PerclCommand>;
-    'noInputTimeoutMs'?: number;
-    'recognitionTimeoutMs'?: number;
-    'confidenceThreshold'?: number;
-    'sensitivityLevel'?: number;
-    'speechCompleteTimeoutMs'?: number;
-    'speechIncompleteTimeoutMs'?: number;
-    'privacyMode'?: boolean;
+  actionUrl: string;
+  grammarType?: GrammarType;
+  grammarFile: string;
+  grammarRule?: string;
+  playBeep?: boolean;
+  prompts?: Array<PerclCommand>;
+  noInputTimeoutMs?: number;
+  recognitionTimeoutMs?: number;
+  confidenceThreshold?: number;
+  sensitivityLevel?: number;
+  speechCompleteTimeoutMs?: number;
+  speechIncompleteTimeoutMs?: number;
+  privacyMode?: boolean;
 }
 export class GetSpeech extends PerclCommand {
-    /**
-    * When the caller has finished speaking or the command has timed out, FreeClimb will make a POST request to this URL. A PerCL response is expected to continue handling the call.
-    */
-    'actionUrl': URI;
-    'grammarType'?: GrammarType;
-    /**
-    * The grammar file to use for speech recognition. If grammarType is set to URL, this attribute is specified as a download URL.
-    */
-    'grammarFile': string;
-    /**
-    * The grammar rule within the specified grammar file to use for speech recognition. This attribute is optional if `grammarType` is `URL` and ignored if `grammarType` is `BUILTIN`.
-    */
-    'grammarRule'?: string;
-    /**
-    * Indicates whether a beep should be played just before speech recognition is initiated so that the speaker can start to speak.
-    */
-    'playBeep'?: boolean;
-    /**
-    * The JSON array of PerCL commands to nest within the `GetSpeech` command. The `Say`, `Play`, and `Pause` commands can be used. The nested actions are executed while FreeClimb is waiting for input from the caller. This allows for playing menu options to the caller and to prompt for the expected input. These commands stop executing when the caller begins to input speech.
-    */
-    'prompts'?: Array<PerclCommand>;
-    /**
-    * When recognition is started and there is no speech detected for `noInputTimeoutMs` milliseconds, the recognizer will terminate the recognition operation.
-    */
-    'noInputTimeoutMs'?: number;
-    /**
-    * When playback of prompts ends and there is no match for `recognitionTimeoutMs` milliseconds, the recognizer will terminate the recognition operation.
-    */
-    'recognitionTimeoutMs'?: number;
-    /**
-    * When a recognition resource recognizes a spoken phrase, it associates a confidence level with that match. Parameter `confidenceThreshold` specifies what confidence level is considered a successful match. Values are between 0.0 and 1.0.
-    */
-    'confidenceThreshold'?: number;
-    /**
-    * The speech recognizer supports a variable level of sound sensitivity. The sensitivityLevel attribute allows for filtering out background noise, so it is not mistaken for speech. Values are between 0.0 and 1.0 
-    */
-    'sensitivityLevel'?: number;
-    /**
-    * Parameter `speechCompleteTimeoutMs` specifies the length of silence required following user speech before the speech recognizer finalizes a result. This timeout applies when the recognizer currently has a complete match against an active grammar. Reasonable speech complete timeout values are typically in the range of 0.3 seconds to 1.0 seconds.
-    */
-    'speechCompleteTimeoutMs'?: number;
-    /**
-    * Parameter `speechIncompleteTimeoutMs` specifies the length of silence following user speech after which a recognizer finalizes a result. This timeout applies when the speech prior to the silence is an incomplete match of all active grammars. Timeout `speechIncompleteTimeoutMs` is usually longer than `speechCompleteTimeoutMs` to allow users to pause mid-utterance.
-    */
-    'speechIncompleteTimeoutMs'?: number;
-    /**
-    * Parameter privacyMode will not log the `text` as required by PCI compliance.
-    */
-    'privacyMode'?: boolean;
+  /**
+   * When the caller has finished speaking or the command has timed out, FreeClimb will make a POST request to this URL. A PerCL response is expected to continue handling the call.
+   */
+  "actionUrl": string;
+  "grammarType"?: GrammarType;
+  /**
+   * The grammar file to use for speech recognition. If grammarType is set to URL, this attribute is specified as a download URL.
+   */
+  "grammarFile": string;
+  /**
+   * The grammar rule within the specified grammar file to use for speech recognition. This attribute is optional if `grammarType` is `URL` and ignored if `grammarType` is `BUILTIN`.
+   */
+  "grammarRule"?: string;
+  /**
+   * Indicates whether a beep should be played just before speech recognition is initiated so that the speaker can start to speak.
+   */
+  "playBeep"?: boolean;
+  /**
+   * The JSON array of PerCL commands to nest within the `GetSpeech` command. The `Say`, `Play`, and `Pause` commands can be used. The nested actions are executed while FreeClimb is waiting for input from the caller. This allows for playing menu options to the caller and to prompt for the expected input. These commands stop executing when the caller begins to input speech.
+   */
+  "prompts"?: Array<PerclCommand>;
+  /**
+   * When recognition is started and there is no speech detected for `noInputTimeoutMs` milliseconds, the recognizer will terminate the recognition operation.
+   */
+  "noInputTimeoutMs"?: number;
+  /**
+   * When playback of prompts ends and there is no match for `recognitionTimeoutMs` milliseconds, the recognizer will terminate the recognition operation.
+   */
+  "recognitionTimeoutMs"?: number;
+  /**
+   * When a recognition resource recognizes a spoken phrase, it associates a confidence level with that match. Parameter `confidenceThreshold` specifies what confidence level is considered a successful match. Values are between 0.0 and 1.0.
+   */
+  "confidenceThreshold"?: number;
+  /**
+   * The speech recognizer supports a variable level of sound sensitivity. The sensitivityLevel attribute allows for filtering out background noise, so it is not mistaken for speech. Values are between 0.0 and 1.0
+   */
+  "sensitivityLevel"?: number;
+  /**
+   * Parameter `speechCompleteTimeoutMs` specifies the length of silence required following user speech before the speech recognizer finalizes a result. This timeout applies when the recognizer currently has a complete match against an active grammar. Reasonable speech complete timeout values are typically in the range of 0.3 seconds to 1.0 seconds.
+   */
+  "speechCompleteTimeoutMs"?: number;
+  /**
+   * Parameter `speechIncompleteTimeoutMs` specifies the length of silence following user speech after which a recognizer finalizes a result. This timeout applies when the speech prior to the silence is an incomplete match of all active grammars. Timeout `speechIncompleteTimeoutMs` is usually longer than `speechCompleteTimeoutMs` to allow users to pause mid-utterance.
+   */
+  "speechIncompleteTimeoutMs"?: number;
+  /**
+   * Parameter privacyMode will not log the `text` as required by PCI compliance.
+   */
+  "privacyMode"?: boolean;
 
-    static readonly discriminator: string | undefined = "command";
+  static readonly discriminator: string | undefined = "command";
 
-    static readonly attributeTypeMap: AttributeType[] = [
-        {
-            "name": "actionUrl",
-            "baseName": "actionUrl",
-            "type": "URI",
-            "format": "uri",
+  static readonly attributeTypeMap: AttributeType[] = [
+    {
+      name: "actionUrl",
+      baseName: "actionUrl",
+      type: "string",
+      format: "uri",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "grammarType",
-            "baseName": "grammarType",
-            "type": "GrammarType",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "grammarType",
+      baseName: "grammarType",
+      type: "GrammarType",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "grammarFile",
-            "baseName": "grammarFile",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "grammarFile",
+      baseName: "grammarFile",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "grammarRule",
-            "baseName": "grammarRule",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "grammarRule",
+      baseName: "grammarRule",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "playBeep",
-            "baseName": "playBeep",
-            "type": "boolean",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "playBeep",
+      baseName: "playBeep",
+      type: "boolean",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "prompts",
-            "baseName": "prompts",
-            "type": "Array<PerclCommand>",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "prompts",
+      baseName: "prompts",
+      type: "Array<PerclCommand>",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "noInputTimeoutMs",
-            "baseName": "noInputTimeoutMs",
-            "type": "number",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "noInputTimeoutMs",
+      baseName: "noInputTimeoutMs",
+      type: "number",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "recognitionTimeoutMs",
-            "baseName": "recognitionTimeoutMs",
-            "type": "number",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "recognitionTimeoutMs",
+      baseName: "recognitionTimeoutMs",
+      type: "number",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "confidenceThreshold",
-            "baseName": "confidenceThreshold",
-            "type": "number",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "confidenceThreshold",
+      baseName: "confidenceThreshold",
+      type: "number",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "sensitivityLevel",
-            "baseName": "sensitivityLevel",
-            "type": "number",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "sensitivityLevel",
+      baseName: "sensitivityLevel",
+      type: "number",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "speechCompleteTimeoutMs",
-            "baseName": "speechCompleteTimeoutMs",
-            "type": "number",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "speechCompleteTimeoutMs",
+      baseName: "speechCompleteTimeoutMs",
+      type: "number",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "speechIncompleteTimeoutMs",
-            "baseName": "speechIncompleteTimeoutMs",
-            "type": "number",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "speechIncompleteTimeoutMs",
+      baseName: "speechIncompleteTimeoutMs",
+      type: "number",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "privacyMode",
-            "baseName": "privacyMode",
-            "type": "boolean",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "privacyMode",
+      baseName: "privacyMode",
+      type: "boolean",
+      format: "",
 
-            
-            "defaultValue": undefined
-        }    ];
+      defaultValue: undefined,
+    },
+  ];
 
-    static getAttributeTypeMap(): AttributeType[] {
-        return super.getAttributeTypeMap().concat(GetSpeech.attributeTypeMap);
+  static getAttributeTypeMap(): AttributeType[] {
+    return super.getAttributeTypeMap().concat(GetSpeech.attributeTypeMap);
+  }
+  public constructor(args: ArgumentsType) {
+    super({ command: "GetSpeech" });
+    const assign = <T>(attribute: keyof ArgumentsType): T => {
+      return (args[attribute] ??
+        GetSpeech.attributeTypeMap.find((attr) => attr.name === attribute)
+          ?.defaultValue) as T;
+    };
+    if (args["actionUrl"]) {
+      this["actionUrl"] = assign<string>("actionUrl");
     }
-
-    public constructor(args: ArgumentsType) {
-        super({ command: "GetSpeech" });
-        const preparedArgs = GetSpeech.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
-            
-            const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
-            
-            if (val !== undefined) {
-                acc[attr.name as keyof ArgumentsType] = val
-            }
-            return acc
-        }, {})
-        Object.assign(this, preparedArgs)
+    if (args["grammarType"]) {
+      this["grammarType"] = assign<GrammarType>("grammarType");
     }
+    if (args["grammarFile"]) {
+      this["grammarFile"] = assign<string>("grammarFile");
+    }
+    if (args["grammarRule"]) {
+      this["grammarRule"] = assign<string>("grammarRule");
+    }
+    if (args["playBeep"]) {
+      this["playBeep"] = assign<boolean>("playBeep");
+    }
+    if (args["prompts"]) {
+      this["prompts"] = assign<Array<PerclCommand>>("prompts");
+    }
+    if (args["noInputTimeoutMs"]) {
+      this["noInputTimeoutMs"] = assign<number>("noInputTimeoutMs");
+    }
+    if (args["recognitionTimeoutMs"]) {
+      this["recognitionTimeoutMs"] = assign<number>("recognitionTimeoutMs");
+    }
+    if (args["confidenceThreshold"]) {
+      this["confidenceThreshold"] = assign<number>("confidenceThreshold");
+    }
+    if (args["sensitivityLevel"]) {
+      this["sensitivityLevel"] = assign<number>("sensitivityLevel");
+    }
+    if (args["speechCompleteTimeoutMs"]) {
+      this["speechCompleteTimeoutMs"] = assign<number>(
+        "speechCompleteTimeoutMs",
+      );
+    }
+    if (args["speechIncompleteTimeoutMs"]) {
+      this["speechIncompleteTimeoutMs"] = assign<number>(
+        "speechIncompleteTimeoutMs",
+      );
+    }
+    if (args["privacyMode"]) {
+      this["privacyMode"] = assign<boolean>("privacyMode");
+    }
+  }
 }
-

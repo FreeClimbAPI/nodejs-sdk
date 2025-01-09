@@ -10,15 +10,12 @@
  * Do not edit the class manually.
  */
 
-import { HttpFile } from '../http/http';
+import { HttpFile } from "../http/http";
 
 /**
-* Specifies how FreeClimb should handle this OutDial if an answering machine answers the Call. Valid values: `redirect` invokes the ifMachineUrl for instructions. `hangup` hangs up the Call. The ifMachineUrl will not be invoked.
-*/
+ * Specifies how FreeClimb should handle this OutDial if an answering machine answers the Call. Valid values: `redirect` invokes the ifMachineUrl for instructions. `hangup` hangs up the Call. The ifMachineUrl will not be invoked.
+ */
 export enum IfMachine {
-
-    REDIRECT = 'redirect',
-    HANGUP = 'hangup'
+  REDIRECT = "redirect",
+  HANGUP = "hangup",
 }
-
-

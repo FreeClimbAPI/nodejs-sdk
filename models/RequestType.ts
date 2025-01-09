@@ -10,33 +10,30 @@
  * Do not edit the class manually.
  */
 
-import { HttpFile } from '../http/http';
+import { HttpFile } from "../http/http";
 
 export enum RequestType {
-
-    INBOUND_CALL = 'inboundCall',
-    RECORD = 'record',
-    GET_DIGITS = 'getDigits',
-    GET_SPEECH = 'getSpeech',
-    REDIRECT = 'redirect',
-    PAUSE = 'pause',
-    OUT_DIAL_START = 'outDialStart',
-    OUT_DIAL_CONNECT = 'outDialConnect',
-    OUT_DIAL_API_CONNECT = 'outDialApiConnect',
-    MACHINE_DETECTED = 'machineDetected',
-    DEQUEUE = 'dequeue',
-    QUEUE_WAIT = 'queueWait',
-    ADD_TO_QUEUE_NOTIFICATION = 'addToQueueNotification',
-    REMOVE_FROM_QUEUE_NOTIFICATION = 'removeFromQueueNotification',
-    CALL_STATUS = 'callStatus',
-    CREATE_CONFERENCE = 'createConference',
-    CONFERENCE_STATUS = 'conferenceStatus',
-    LEAVE_CONFERENCE = 'leaveConference',
-    ADD_TO_CONFERENCE_NOTIFICATION = 'addToConferenceNotification',
-    CONFERENCE_RECORDING_STATUS = 'conferenceRecordingStatus',
-    CONFERENCE_CALL_CONTROL = 'conferenceCallControl',
-    MESSAGE_DELIVERY = 'messageDelivery',
-    MESSAGE_STATUS = 'messageStatus'
+  INBOUND_CALL = "inboundCall",
+  RECORD = "record",
+  GET_DIGITS = "getDigits",
+  GET_SPEECH = "getSpeech",
+  REDIRECT = "redirect",
+  PAUSE = "pause",
+  OUT_DIAL_START = "outDialStart",
+  OUT_DIAL_CONNECT = "outDialConnect",
+  OUT_DIAL_API_CONNECT = "outDialApiConnect",
+  MACHINE_DETECTED = "machineDetected",
+  DEQUEUE = "dequeue",
+  QUEUE_WAIT = "queueWait",
+  ADD_TO_QUEUE_NOTIFICATION = "addToQueueNotification",
+  REMOVE_FROM_QUEUE_NOTIFICATION = "removeFromQueueNotification",
+  CALL_STATUS = "callStatus",
+  CREATE_CONFERENCE = "createConference",
+  CONFERENCE_STATUS = "conferenceStatus",
+  LEAVE_CONFERENCE = "leaveConference",
+  ADD_TO_CONFERENCE_NOTIFICATION = "addToConferenceNotification",
+  CONFERENCE_RECORDING_STATUS = "conferenceRecordingStatus",
+  CONFERENCE_CALL_CONTROL = "conferenceCallControl",
+  MESSAGE_DELIVERY = "messageDelivery",
+  MESSAGE_STATUS = "messageStatus",
 }
-
-

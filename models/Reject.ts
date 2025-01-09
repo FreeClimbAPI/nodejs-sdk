@@ -10,84 +10,54 @@
  * Do not edit the class manually.
  */
 
-import { AddToConference } from './AddToConference';
-import { CreateConference } from './CreateConference';
-import { Dequeue } from './Dequeue';
-import { Enqueue } from './Enqueue';
-import { GetDigits } from './GetDigits';
-import { GetSpeech } from './GetSpeech';
-import { Hangup } from './Hangup';
-import { OutDial } from './OutDial';
-import { Park } from './Park';
-import { Pause } from './Pause';
-import { PerclCommand } from './PerclCommand';
-import { Play } from './Play';
-import { PlayEarlyMedia } from './PlayEarlyMedia';
-import { RecordUtterance } from './RecordUtterance';
-import { Redirect } from './Redirect';
-import { RejectAllOf } from './RejectAllOf';
-import { RemoveFromConference } from './RemoveFromConference';
-import { Say } from './Say';
-import { SendDigits } from './SendDigits';
-import { SetDTMFPassThrough } from './SetDTMFPassThrough';
-import { SetListen } from './SetListen';
-import { SetTalk } from './SetTalk';
-import { Sms } from './Sms';
-import { StartRecordCall } from './StartRecordCall';
-import { TerminateConference } from './TerminateConference';
-import { TranscribeUtterance } from './TranscribeUtterance';
-import { Unpark } from './Unpark';
-import { HttpFile } from '../http/http';
+import { PerclCommand } from "./../models/PerclCommand";
+import { HttpFile } from "../http/http";
 
 /**
-* The `Reject` command blocks an incoming Call. Using `Reject` is the only way to prevent FreeClimb from answering a Call. Any other response will result in an answered Call and your account will be billed.
-*/
+ * The `Reject` command blocks an incoming Call. Using `Reject` is the only way to prevent FreeClimb from answering a Call. Any other response will result in an answered Call and your account will be billed.
+ */
 
 interface AttributeType {
-    name: string
-    baseName: string
-    type: string
-    format: string
-    defaultValue: any
+  name: string;
+  baseName: string;
+  type: string;
+  format: string;
+  defaultValue: any;
 }
 interface ArgumentsType {
-    'reason'?: string;
+  reason?: string;
 }
 export class Reject extends PerclCommand {
-    /**
-    * Reason for the rejection. This can be any string value. In general, applications should use a set of enumerated values that are predefined to cover all exit points of the call flows for the given application.
-    */
-    'reason'?: string;
+  /**
+   * Reason for the rejection. This can be any string value. In general, applications should use a set of enumerated values that are predefined to cover all exit points of the call flows for the given application.
+   */
+  "reason"?: string;
 
-    static readonly discriminator: string | undefined = "command";
+  static readonly discriminator: string | undefined = "command";
 
-    static readonly attributeTypeMap: AttributeType[] = [
-        {
-            "name": "reason",
-            "baseName": "reason",
-            "type": "string",
-            "format": "",
+  static readonly attributeTypeMap: AttributeType[] = [
+    {
+      name: "reason",
+      baseName: "reason",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        }    ];
+      defaultValue: undefined,
+    },
+  ];
 
-    static getAttributeTypeMap(): AttributeType[] {
-        return super.getAttributeTypeMap().concat(Reject.attributeTypeMap);
+  static getAttributeTypeMap(): AttributeType[] {
+    return super.getAttributeTypeMap().concat(Reject.attributeTypeMap);
+  }
+  public constructor(args: ArgumentsType) {
+    super({ command: "Reject" });
+    const assign = <T>(attribute: keyof ArgumentsType): T => {
+      return (args[attribute] ??
+        Reject.attributeTypeMap.find((attr) => attr.name === attribute)
+          ?.defaultValue) as T;
+    };
+    if (args["reason"]) {
+      this["reason"] = assign<string>("reason");
     }
-
-    public constructor(args: ArgumentsType) {
-        super({ command: "Reject" });
-        const preparedArgs = Reject.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
-            
-            const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
-            
-            if (val !== undefined) {
-                acc[attr.name as keyof ArgumentsType] = val
-            }
-            return acc
-        }, {})
-        Object.assign(this, preparedArgs)
-    }
+  }
 }
-

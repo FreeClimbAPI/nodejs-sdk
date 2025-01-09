@@ -10,109 +10,112 @@
  * Do not edit the class manually.
  */
 
-import { HttpFile } from '../http/http';
-
+import { HttpFile } from "../http/http";
 
 interface AttributeType {
-    name: string
-    baseName: string
-    type: string
-    format: string
-    defaultValue: any
+  name: string;
+  baseName: string;
+  type: string;
+  format: string;
+  defaultValue: any;
 }
 interface ArgumentsType {
-    'uri'?: string;
-    'callId'?: string;
-    'waitTime'?: number;
-    'position'?: number;
-    'dateEnqueued'?: string;
+  uri?: string;
+  callId?: string;
+  waitTime?: number;
+  position?: number;
+  dateEnqueued?: string;
 }
 export class QueueMember {
-    /**
-    * URI for this Queue Member resource, relative to the API base URL.
-    */
-    'uri'?: string;
-    /**
-    * ID of the Call associated with this Queue Member.
-    */
-    'callId'?: string;
-    /**
-    * Number of seconds the Member has been in the queue.
-    */
-    'waitTime'?: number;
-    /**
-    * Member's current position in the Queue, 1 indexed.
-    */
-    'position'?: number;
-    /**
-    * Date that the Member was enqueued (GMT), given in RFC 1123 format (e.g., Mon, 15 Jun 2009 20:45:30 GMT).
-    */
-    'dateEnqueued'?: string;
+  /**
+   * URI for this Queue Member resource, relative to the API base URL.
+   */
+  "uri"?: string;
+  /**
+   * ID of the Call associated with this Queue Member.
+   */
+  "callId"?: string;
+  /**
+   * Number of seconds the Member has been in the queue.
+   */
+  "waitTime"?: number;
+  /**
+   * Member\'s current position in the Queue, 1 indexed.
+   */
+  "position"?: number;
+  /**
+   * Date that the Member was enqueued (GMT), given in RFC 1123 format (e.g., Mon, 15 Jun 2009 20:45:30 GMT).
+   */
+  "dateEnqueued"?: string;
 
-    static readonly discriminator: string | undefined = undefined;
+  static readonly discriminator: string | undefined = undefined;
 
-    static readonly attributeTypeMap: AttributeType[] = [
-        {
-            "name": "uri",
-            "baseName": "uri",
-            "type": "string",
-            "format": "",
+  static readonly attributeTypeMap: AttributeType[] = [
+    {
+      name: "uri",
+      baseName: "uri",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "callId",
-            "baseName": "callId",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "callId",
+      baseName: "callId",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "waitTime",
-            "baseName": "waitTime",
-            "type": "number",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "waitTime",
+      baseName: "waitTime",
+      type: "number",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "position",
-            "baseName": "position",
-            "type": "number",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "position",
+      baseName: "position",
+      type: "number",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "dateEnqueued",
-            "baseName": "dateEnqueued",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "dateEnqueued",
+      baseName: "dateEnqueued",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        }    ];
+      defaultValue: undefined,
+    },
+  ];
 
-    static getAttributeTypeMap(): AttributeType[] {
-        return QueueMember.attributeTypeMap;
+  static getAttributeTypeMap(): AttributeType[] {
+    return QueueMember.attributeTypeMap;
+  }
+  public constructor(args: ArgumentsType) {
+    const assign = <T>(attribute: keyof ArgumentsType): T => {
+      return (args[attribute] ??
+        QueueMember.attributeTypeMap.find((attr) => attr.name === attribute)
+          ?.defaultValue) as T;
+    };
+    if (args["uri"]) {
+      this["uri"] = assign<string>("uri");
     }
-
-    public constructor(args: ArgumentsType) {
-        const preparedArgs = QueueMember.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
-            
-            const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
-            
-            if (val !== undefined) {
-                acc[attr.name as keyof ArgumentsType] = val
-            }
-            return acc
-        }, {})
-        Object.assign(this, preparedArgs)
+    if (args["callId"]) {
+      this["callId"] = assign<string>("callId");
     }
+    if (args["waitTime"]) {
+      this["waitTime"] = assign<number>("waitTime");
+    }
+    if (args["position"]) {
+      this["position"] = assign<number>("position");
+    }
+    if (args["dateEnqueued"]) {
+      this["dateEnqueued"] = assign<string>("dateEnqueued");
+    }
+  }
 }
-

@@ -10,137 +10,145 @@
  * Do not edit the class manually.
  */
 
-import { HttpFile } from '../http/http';
-
+import { HttpFile } from "../http/http";
 
 interface AttributeType {
-    name: string
-    baseName: string
-    type: string
-    format: string
-    defaultValue: any
+  name: string;
+  baseName: string;
+  type: string;
+  format: string;
+  defaultValue: any;
 }
 interface ArgumentsType {
-    'alias'?: string;
-    'voiceUrl'?: string;
-    'voiceFallbackUrl'?: string;
-    'callConnectUrl'?: string;
-    'statusCallbackUrl'?: string;
-    'smsUrl'?: string;
-    'smsFallbackUrl'?: string;
+  alias?: string;
+  voiceUrl?: string;
+  voiceFallbackUrl?: string;
+  callConnectUrl?: string;
+  statusCallbackUrl?: string;
+  smsUrl?: string;
+  smsFallbackUrl?: string;
 }
 export class ApplicationRequest {
-    /**
-    * A human readable description of the application, with maximum length 64 characters.
-    */
-    'alias'?: string;
-    /**
-    * The URL that FreeClimb will request when an inbound call arrives on a phone number assigned to this application. Used only for inbound calls.
-    */
-    'voiceUrl'?: string;
-    /**
-    * The URL that FreeClimb will request if it times out waiting for a response from the voiceUrl. Used for inbound calls only. Note: A PerCL response is expected to control the inbound call.
-    */
-    'voiceFallbackUrl'?: string;
-    /**
-    * The URL that FreeClimb will request when an outbound call request is complete. Used for outbound calls only.  Note: A PerCL response is expected if the outbound call is connected (status=InProgress) to control the call.
-    */
-    'callConnectUrl'?: string;
-    /**
-    * The URL that FreeClimb will request to pass call status (such as call ended) to the application.  Note: This is a notification only; any PerCL returned will be ignored.
-    */
-    'statusCallbackUrl'?: string;
-    /**
-    * The URL that FreeClimb will request when a phone number assigned to this application receives an incoming SMS message. Used for inbound SMS only.  Note: Any PerCL returned will be ignored.
-    */
-    'smsUrl'?: string;
-    /**
-    * The URL that FreeClimb will request if it times out waiting for a response from the smsUrl. Used for inbound SMS only.  Note: Any PerCL returned will be ignored.
-    */
-    'smsFallbackUrl'?: string;
+  /**
+   * A human readable description of the application, with maximum length 64 characters.
+   */
+  "alias"?: string;
+  /**
+   * The URL that FreeClimb will request when an inbound call arrives on a phone number assigned to this application. Used only for inbound calls.
+   */
+  "voiceUrl"?: string;
+  /**
+   * The URL that FreeClimb will request if it times out waiting for a response from the voiceUrl. Used for inbound calls only. Note: A PerCL response is expected to control the inbound call.
+   */
+  "voiceFallbackUrl"?: string;
+  /**
+   * The URL that FreeClimb will request when an outbound call request is complete. Used for outbound calls only.  Note: A PerCL response is expected if the outbound call is connected (status=InProgress) to control the call.
+   */
+  "callConnectUrl"?: string;
+  /**
+   * The URL that FreeClimb will request to pass call status (such as call ended) to the application.  Note: This is a notification only; any PerCL returned will be ignored.
+   */
+  "statusCallbackUrl"?: string;
+  /**
+   * The URL that FreeClimb will request when a phone number assigned to this application receives an incoming SMS message. Used for inbound SMS only.  Note: Any PerCL returned will be ignored.
+   */
+  "smsUrl"?: string;
+  /**
+   * The URL that FreeClimb will request if it times out waiting for a response from the smsUrl. Used for inbound SMS only.  Note: Any PerCL returned will be ignored.
+   */
+  "smsFallbackUrl"?: string;
 
-    static readonly discriminator: string | undefined = undefined;
+  static readonly discriminator: string | undefined = undefined;
 
-    static readonly attributeTypeMap: AttributeType[] = [
-        {
-            "name": "alias",
-            "baseName": "alias",
-            "type": "string",
-            "format": "",
+  static readonly attributeTypeMap: AttributeType[] = [
+    {
+      name: "alias",
+      baseName: "alias",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "voiceUrl",
-            "baseName": "voiceUrl",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "voiceUrl",
+      baseName: "voiceUrl",
+      type: "string",
+      format: "uri",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "voiceFallbackUrl",
-            "baseName": "voiceFallbackUrl",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "voiceFallbackUrl",
+      baseName: "voiceFallbackUrl",
+      type: "string",
+      format: "uri",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "callConnectUrl",
-            "baseName": "callConnectUrl",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "callConnectUrl",
+      baseName: "callConnectUrl",
+      type: "string",
+      format: "uri",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "statusCallbackUrl",
-            "baseName": "statusCallbackUrl",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "statusCallbackUrl",
+      baseName: "statusCallbackUrl",
+      type: "string",
+      format: "uri",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "smsUrl",
-            "baseName": "smsUrl",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "smsUrl",
+      baseName: "smsUrl",
+      type: "string",
+      format: "uri",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "smsFallbackUrl",
-            "baseName": "smsFallbackUrl",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "smsFallbackUrl",
+      baseName: "smsFallbackUrl",
+      type: "string",
+      format: "uri",
 
-            
-            "defaultValue": undefined
-        }    ];
+      defaultValue: undefined,
+    },
+  ];
 
-    static getAttributeTypeMap(): AttributeType[] {
-        return ApplicationRequest.attributeTypeMap;
+  static getAttributeTypeMap(): AttributeType[] {
+    return ApplicationRequest.attributeTypeMap;
+  }
+  public constructor(args: ArgumentsType) {
+    const assign = <T>(attribute: keyof ArgumentsType): T => {
+      return (args[attribute] ??
+        ApplicationRequest.attributeTypeMap.find(
+          (attr) => attr.name === attribute,
+        )?.defaultValue) as T;
+    };
+    if (args["alias"]) {
+      this["alias"] = assign<string>("alias");
     }
-
-    public constructor(args: ArgumentsType) {
-        const preparedArgs = ApplicationRequest.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
-            
-            const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
-            
-            if (val !== undefined) {
-                acc[attr.name as keyof ArgumentsType] = val
-            }
-            return acc
-        }, {})
-        Object.assign(this, preparedArgs)
+    if (args["voiceUrl"]) {
+      this["voiceUrl"] = assign<string>("voiceUrl");
     }
+    if (args["voiceFallbackUrl"]) {
+      this["voiceFallbackUrl"] = assign<string>("voiceFallbackUrl");
+    }
+    if (args["callConnectUrl"]) {
+      this["callConnectUrl"] = assign<string>("callConnectUrl");
+    }
+    if (args["statusCallbackUrl"]) {
+      this["statusCallbackUrl"] = assign<string>("statusCallbackUrl");
+    }
+    if (args["smsUrl"]) {
+      this["smsUrl"] = assign<string>("smsUrl");
+    }
+    if (args["smsFallbackUrl"]) {
+      this["smsFallbackUrl"] = assign<string>("smsFallbackUrl");
+    }
+  }
 }
-

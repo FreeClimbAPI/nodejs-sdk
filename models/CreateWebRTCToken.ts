@@ -10,80 +10,81 @@
  * Do not edit the class manually.
  */
 
-import { HttpFile } from '../http/http';
-
+import { HttpFile } from "../http/http";
 
 interface AttributeType {
-    name: string
-    baseName: string
-    type: string
-    format: string
-    defaultValue: any
+  name: string;
+  baseName: string;
+  type: string;
+  format: string;
+  defaultValue: any;
 }
 interface ArgumentsType {
-    'to': string;
-    'from': string;
-    'uses': number;
+  to: string;
+  from: string;
+  uses: number;
 }
 export class CreateWebRTCToken {
-    /**
-    * E.164 formatted phone number to which calls using this token will be made.
-    */
-    'to': string;
-    /**
-    * E.164 formatted phone number owned by the reqeusting account from which calls using this token will be made.
-    */
-    'from': string;
-    /**
-    * number of times this token may be used for a WebRTC call
-    */
-    'uses': number;
+  /**
+   * E.164 formatted phone number to which calls using this token will be made.
+   */
+  "to": string;
+  /**
+   * E.164 formatted phone number owned by the reqeusting account from which calls using this token will be made.
+   */
+  "from": string;
+  /**
+   * number of times this token may be used for a WebRTC call
+   */
+  "uses": number;
 
-    static readonly discriminator: string | undefined = undefined;
+  static readonly discriminator: string | undefined = undefined;
 
-    static readonly attributeTypeMap: AttributeType[] = [
-        {
-            "name": "to",
-            "baseName": "to",
-            "type": "string",
-            "format": "",
+  static readonly attributeTypeMap: AttributeType[] = [
+    {
+      name: "to",
+      baseName: "to",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "from",
-            "baseName": "from",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "from",
+      baseName: "from",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "uses",
-            "baseName": "uses",
-            "type": "number",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "uses",
+      baseName: "uses",
+      type: "number",
+      format: "",
 
-            
-            "defaultValue": undefined
-        }    ];
+      defaultValue: undefined,
+    },
+  ];
 
-    static getAttributeTypeMap(): AttributeType[] {
-        return CreateWebRTCToken.attributeTypeMap;
+  static getAttributeTypeMap(): AttributeType[] {
+    return CreateWebRTCToken.attributeTypeMap;
+  }
+  public constructor(args: ArgumentsType) {
+    const assign = <T>(attribute: keyof ArgumentsType): T => {
+      return (args[attribute] ??
+        CreateWebRTCToken.attributeTypeMap.find(
+          (attr) => attr.name === attribute,
+        )?.defaultValue) as T;
+    };
+    if (args["to"]) {
+      this["to"] = assign<string>("to");
     }
-
-    public constructor(args: ArgumentsType) {
-        const preparedArgs = CreateWebRTCToken.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
-            const val:any = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
-            
-            if (val !== undefined) {
-                acc[attr.name as keyof ArgumentsType] = val
-            }
-            return acc
-        }, {})
-        Object.assign(this, preparedArgs)
+    if (args["from"]) {
+      this["from"] = assign<string>("from");
     }
+    if (args["uses"]) {
+      this["uses"] = assign<number>("uses");
+    }
+  }
 }
-

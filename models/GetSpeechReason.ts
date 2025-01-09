@@ -10,16 +10,13 @@
  * Do not edit the class manually.
  */
 
-import { HttpFile } from '../http/http';
+import { HttpFile } from "../http/http";
 
 export enum GetSpeechReason {
-
-    ERROR = 'error',
-    HANGUP = 'hangup',
-    DIGIT = 'digit',
-    NO_INPUT = 'noInput',
-    NO_MATCH = 'noMatch',
-    RECOGNITION = 'recognition'
+  ERROR = "error",
+  HANGUP = "hangup",
+  DIGIT = "digit",
+  NO_INPUT = "noInput",
+  NO_MATCH = "noMatch",
+  RECOGNITION = "recognition",
 }
-
-

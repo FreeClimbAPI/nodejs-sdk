@@ -10,63 +10,59 @@
  * Do not edit the class manually.
  */
 
-import { PerclCommand } from './PerclCommand';
-import { HttpFile } from '../http/http';
+import { PerclCommand } from "./../models/PerclCommand";
+import { HttpFile } from "../http/http";
 
 /**
-* A PerCL script to be returned to the FreeClimb servers in FreeClimb applications
-*/
+ * A PerCL script to be returned to the FreeClimb servers in FreeClimb applications
+ */
 
 interface AttributeType {
-    name: string
-    baseName: string
-    type: string
-    format: string
-    defaultValue: any
+  name: string;
+  baseName: string;
+  type: string;
+  format: string;
+  defaultValue: any;
 }
 interface ArgumentsType {
-    'commands'?: Array<PerclCommand>;
+  commands?: Array<PerclCommand>;
 }
 export class PerclScript {
-    /**
-    * A JSON array of PerCL commands
-    */
-    'commands'?: Array<PerclCommand>;
+  /**
+   * A JSON array of PerCL commands
+   */
+  "commands"?: Array<PerclCommand>;
 
-    static readonly discriminator: string | undefined = undefined;
+  static readonly discriminator: string | undefined = undefined;
 
-    static readonly attributeTypeMap: AttributeType[] = [
-        {
-            "name": "commands",
-            "baseName": "commands",
-            "type": "Array<PerclCommand>",
-            "format": "",
+  static readonly attributeTypeMap: AttributeType[] = [
+    {
+      name: "commands",
+      baseName: "commands",
+      type: "Array<PerclCommand>",
+      format: "",
 
-            
-            "defaultValue": undefined
-        }    ];
+      defaultValue: undefined,
+    },
+  ];
 
-    static getAttributeTypeMap(): AttributeType[] {
-        return PerclScript.attributeTypeMap;
+  static getAttributeTypeMap(): AttributeType[] {
+    return PerclScript.attributeTypeMap;
+  }
+  public constructor(args: ArgumentsType) {
+    const assign = <T>(attribute: keyof ArgumentsType): T => {
+      return (args[attribute] ??
+        PerclScript.attributeTypeMap.find((attr) => attr.name === attribute)
+          ?.defaultValue) as T;
+    };
+    if (args["commands"]) {
+      this["commands"] = assign<Array<PerclCommand>>("commands");
     }
-
-    public constructor(args: ArgumentsType) {
-        const preparedArgs = PerclScript.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
-            
-            const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
-            
-            if (val !== undefined) {
-                acc[attr.name as keyof ArgumentsType] = val
-            }
-            return acc
-        }, {})
-        Object.assign(this, preparedArgs)
-    }
-    public build() {
-        return this.commands?.map(command => command.toPerclObject()) ?? []
-    }
-    public toJSON() {
-        return JSON.stringify(this.build())
-    }
+  }
+  public build() {
+    return this.commands?.map((command) => command.toPerclObject()) ?? [];
+  }
+  public toJSON() {
+    return JSON.stringify(this.build());
+  }
 }
-

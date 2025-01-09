@@ -10,14 +10,11 @@
  * Do not edit the class manually.
  */
 
-import { HttpFile } from '../http/http';
+import { HttpFile } from "../http/http";
 
 export enum QueueResultStatus {
-
-    QUEUE_FULL = 'queueFull',
-    DEQUEUED = 'dequeued',
-    HANGUP = 'hangup',
-    SYSTEM_ERROR = 'systemError'
+  QUEUE_FULL = "queueFull",
+  DEQUEUED = "dequeued",
+  HANGUP = "hangup",
+  SYSTEM_ERROR = "systemError",
 }
-
-

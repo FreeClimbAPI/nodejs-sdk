@@ -10,152 +10,135 @@
  * Do not edit the class manually.
  */
 
-import { AddToConference } from './AddToConference';
-import { CreateConferenceAllOf } from './CreateConferenceAllOf';
-import { Dequeue } from './Dequeue';
-import { Enqueue } from './Enqueue';
-import { GetDigits } from './GetDigits';
-import { GetSpeech } from './GetSpeech';
-import { Hangup } from './Hangup';
-import { OutDial } from './OutDial';
-import { Park } from './Park';
-import { Pause } from './Pause';
-import { PerclCommand } from './PerclCommand';
-import { Play } from './Play';
-import { PlayBeep } from './PlayBeep';
-import { PlayEarlyMedia } from './PlayEarlyMedia';
-import { RecordUtterance } from './RecordUtterance';
-import { Redirect } from './Redirect';
-import { Reject } from './Reject';
-import { RemoveFromConference } from './RemoveFromConference';
-import { Say } from './Say';
-import { SendDigits } from './SendDigits';
-import { SetDTMFPassThrough } from './SetDTMFPassThrough';
-import { SetListen } from './SetListen';
-import { SetTalk } from './SetTalk';
-import { Sms } from './Sms';
-import { StartRecordCall } from './StartRecordCall';
-import { TerminateConference } from './TerminateConference';
-import { TranscribeUtterance } from './TranscribeUtterance';
-import { Unpark } from './Unpark';
-import { HttpFile } from '../http/http';
+import { PerclCommand } from "./../models/PerclCommand";
+import { PlayBeep } from "./../models/PlayBeep";
+import { HttpFile } from "../http/http";
 
 /**
-* The `CreateConference` command does exactly what its name implies — it creates an unpopulated Conference (one without any Participants). Once created, a Conference remains in FreeClimb until explicitly terminated by a customer. Once a Conference has been terminated, it can no longer be used.
-*/
+ * The `CreateConference` command does exactly what its name implies — it creates an unpopulated Conference (one without any Participants). Once created, a Conference remains in FreeClimb until explicitly terminated by a customer. Once a Conference has been terminated, it can no longer be used.
+ */
 
 interface AttributeType {
-    name: string
-    baseName: string
-    type: string
-    format: string
-    defaultValue: any
+  name: string;
+  baseName: string;
+  type: string;
+  format: string;
+  defaultValue: any;
 }
 interface ArgumentsType {
-    'actionUrl': string;
-    'alias'?: boolean;
-    'playBeep'?: PlayBeep;
-    'record'?: boolean;
-    'statusCallbackUrl'?: string;
-    'waitUrl'?: string;
+  actionUrl: string;
+  alias?: boolean;
+  playBeep?: PlayBeep;
+  record?: boolean;
+  statusCallbackUrl?: string;
+  waitUrl?: string;
 }
 export class CreateConference extends PerclCommand {
-    /**
-    *  This URL is invoked once the Conference is successfully created. Actions on the Conference, such as adding Participants, can be performed via the PerCL script returned in the response. 
-    */
-    'actionUrl': string;
-    /**
-    * Descriptive name for the Conference. 
-    */
-    'alias'?: boolean;
-    'playBeep'?: PlayBeep;
-    /**
-    * When set to `true`, the entire Conference is recorded. The `statusCallbackUrl` of the Conference will receive a `conferenceRecordingEnded` Webhook when the Conference transitions from the `inProgress` to empty state.
-    */
-    'record'?: boolean;
-    /**
-    * This URL is invoked when the status of the Conference changes or when a recording of the Conference has become available.
-    */
-    'statusCallbackUrl'?: string;
-    /**
-    * If specified, this URL provides the custom hold music for the Conference when it is in the populated state. This attribute is always fetched using HTTP GET and is fetched just once – when the Conference is created. The URL must be an audio file that is reachable and readable by FreeClimb.
-    */
-    'waitUrl'?: string;
+  /**
+   *  This URL is invoked once the Conference is successfully created. Actions on the Conference, such as adding Participants, can be performed via the PerCL script returned in the response.
+   */
+  "actionUrl": string;
+  /**
+   * Descriptive name for the Conference.
+   */
+  "alias"?: boolean;
+  "playBeep"?: PlayBeep;
+  /**
+   * When set to `true`, the entire Conference is recorded. The `statusCallbackUrl` of the Conference will receive a `conferenceRecordingEnded` Webhook when the Conference transitions from the `inProgress` to empty state.
+   */
+  "record"?: boolean;
+  /**
+   * This URL is invoked when the status of the Conference changes or when a recording of the Conference has become available.
+   */
+  "statusCallbackUrl"?: string;
+  /**
+   * If specified, this URL provides the custom hold music for the Conference when it is in the populated state. This attribute is always fetched using HTTP GET and is fetched just once – when the Conference is created. The URL must be an audio file that is reachable and readable by FreeClimb.
+   */
+  "waitUrl"?: string;
 
-    static readonly discriminator: string | undefined = "command";
+  static readonly discriminator: string | undefined = "command";
 
-    static readonly attributeTypeMap: AttributeType[] = [
-        {
-            "name": "actionUrl",
-            "baseName": "actionUrl",
-            "type": "string",
-            "format": "",
+  static readonly attributeTypeMap: AttributeType[] = [
+    {
+      name: "actionUrl",
+      baseName: "actionUrl",
+      type: "string",
+      format: "uri",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "alias",
-            "baseName": "alias",
-            "type": "boolean",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "alias",
+      baseName: "alias",
+      type: "boolean",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "playBeep",
-            "baseName": "playBeep",
-            "type": "PlayBeep",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "playBeep",
+      baseName: "playBeep",
+      type: "PlayBeep",
+      format: "",
 
-            
-            "defaultValue": PlayBeep.ALWAYS
-        },
-        {
-            "name": "record",
-            "baseName": "record",
-            "type": "boolean",
-            "format": "",
+      defaultValue: PlayBeep.ALWAYS,
+    },
+    {
+      name: "record",
+      baseName: "record",
+      type: "boolean",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "statusCallbackUrl",
-            "baseName": "statusCallbackUrl",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "statusCallbackUrl",
+      baseName: "statusCallbackUrl",
+      type: "string",
+      format: "uri",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "waitUrl",
-            "baseName": "waitUrl",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "waitUrl",
+      baseName: "waitUrl",
+      type: "string",
+      format: "uri",
 
-            
-            "defaultValue": undefined
-        }    ];
+      defaultValue: undefined,
+    },
+  ];
 
-    static getAttributeTypeMap(): AttributeType[] {
-        return super.getAttributeTypeMap().concat(CreateConference.attributeTypeMap);
+  static getAttributeTypeMap(): AttributeType[] {
+    return super
+      .getAttributeTypeMap()
+      .concat(CreateConference.attributeTypeMap);
+  }
+  public constructor(args: ArgumentsType) {
+    super({ command: "CreateConference" });
+    const assign = <T>(attribute: keyof ArgumentsType): T => {
+      return (args[attribute] ??
+        CreateConference.attributeTypeMap.find(
+          (attr) => attr.name === attribute,
+        )?.defaultValue) as T;
+    };
+    if (args["actionUrl"]) {
+      this["actionUrl"] = assign<string>("actionUrl");
     }
-
-    public constructor(args: ArgumentsType) {
-        super({ command: "CreateConference" });
-        const preparedArgs = CreateConference.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
-            
-            const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
-            
-            if (val !== undefined) {
-                acc[attr.name as keyof ArgumentsType] = val
-            }
-            return acc
-        }, {})
-        Object.assign(this, preparedArgs)
+    if (args["alias"]) {
+      this["alias"] = assign<boolean>("alias");
     }
+    if (args["playBeep"]) {
+      this["playBeep"] = assign<PlayBeep>("playBeep");
+    }
+    if (args["record"]) {
+      this["record"] = assign<boolean>("record");
+    }
+    if (args["statusCallbackUrl"]) {
+      this["statusCallbackUrl"] = assign<string>("statusCallbackUrl");
+    }
+    if (args["waitUrl"]) {
+      this["waitUrl"] = assign<string>("waitUrl");
+    }
+  }
 }
-

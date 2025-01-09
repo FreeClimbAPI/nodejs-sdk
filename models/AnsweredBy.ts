@@ -10,15 +10,12 @@
  * Do not edit the class manually.
  */
 
-import { HttpFile } from '../http/http';
+import { HttpFile } from "../http/http";
 
 /**
-* If this Call was initiated with answering machine detection, either `human` or `machine`. Empty otherwise.
-*/
+ * If this Call was initiated with answering machine detection, either `human` or `machine`. Empty otherwise.
+ */
 export enum AnsweredBy {
-
-    HUMAN = 'human',
-    MACHINE = 'machine'
+  HUMAN = "human",
+  MACHINE = "machine",
 }
-
-

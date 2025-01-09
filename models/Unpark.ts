@@ -10,70 +10,35 @@
  * Do not edit the class manually.
  */
 
-import { AddToConference } from './AddToConference';
-import { CreateConference } from './CreateConference';
-import { Dequeue } from './Dequeue';
-import { Enqueue } from './Enqueue';
-import { GetDigits } from './GetDigits';
-import { GetSpeech } from './GetSpeech';
-import { Hangup } from './Hangup';
-import { OutDial } from './OutDial';
-import { Park } from './Park';
-import { Pause } from './Pause';
-import { PerclCommand } from './PerclCommand';
-import { Play } from './Play';
-import { PlayEarlyMedia } from './PlayEarlyMedia';
-import { RecordUtterance } from './RecordUtterance';
-import { Redirect } from './Redirect';
-import { Reject } from './Reject';
-import { RemoveFromConference } from './RemoveFromConference';
-import { Say } from './Say';
-import { SendDigits } from './SendDigits';
-import { SetDTMFPassThrough } from './SetDTMFPassThrough';
-import { SetListen } from './SetListen';
-import { SetTalk } from './SetTalk';
-import { Sms } from './Sms';
-import { StartRecordCall } from './StartRecordCall';
-import { TerminateConference } from './TerminateConference';
-import { TranscribeUtterance } from './TranscribeUtterance';
-import { HttpFile } from '../http/http';
+import { PerclCommand } from "./../models/PerclCommand";
+import { HttpFile } from "../http/http";
 
 /**
-* The `Unpark` command resumes a parked call.  Execution continues with the first command in the PerCL scripted returned by the actionUrl specified in the Park command as long as the call is still in progress.  If the call is no longer in progress, any returned PerCL will not be executed. Unpark is a terminal command -- any commands following it in the same script are not executed.
-*/
+ * The `Unpark` command resumes a parked call.  Execution continues with the first command in the PerCL scripted returned by the actionUrl specified in the Park command as long as the call is still in progress.  If the call is no longer in progress, any returned PerCL will not be executed. Unpark is a terminal command -- any commands following it in the same script are not executed.
+ */
 
 interface AttributeType {
-    name: string
-    baseName: string
-    type: string
-    format: string
-    defaultValue: any
+  name: string;
+  baseName: string;
+  type: string;
+  format: string;
+  defaultValue: any;
 }
-interface ArgumentsType {
-}
+interface ArgumentsType {}
 export class Unpark extends PerclCommand {
+  static readonly discriminator: string | undefined = "command";
 
-    static readonly discriminator: string | undefined = "command";
+  static readonly attributeTypeMap: AttributeType[] = [];
 
-    static readonly attributeTypeMap: AttributeType[] = [
-    ];
-
-    static getAttributeTypeMap(): AttributeType[] {
-        return super.getAttributeTypeMap().concat(Unpark.attributeTypeMap);
-    }
-
-    public constructor(args: ArgumentsType) {
-        super({ command: "Unpark" });
-        const preparedArgs = Unpark.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
-            
-            const val = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
-            
-            if (val !== undefined) {
-                acc[attr.name as keyof ArgumentsType] = val
-            }
-            return acc
-        }, {})
-        Object.assign(this, preparedArgs)
-    }
+  static getAttributeTypeMap(): AttributeType[] {
+    return super.getAttributeTypeMap().concat(Unpark.attributeTypeMap);
+  }
+  public constructor(args: ArgumentsType) {
+    super({ command: "Unpark" });
+    const assign = <T>(attribute: keyof ArgumentsType): T => {
+      return (args[attribute] ??
+        Unpark.attributeTypeMap.find((attr) => attr.name === attribute)
+          ?.defaultValue) as T;
+    };
+  }
 }
-

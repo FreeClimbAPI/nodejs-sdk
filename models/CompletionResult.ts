@@ -10,71 +10,63 @@
  * Do not edit the class manually.
  */
 
-import { HttpFile } from '../http/http';
-
-export enum CompletionResultStatusEnum {
-
-    SUCCESS = 'success',
-    NO_CONTEXT = 'no_context'
-}
+import { CompletionResultStatus } from "./../models/CompletionResultStatus";
+import { HttpFile } from "../http/http";
 
 interface AttributeType {
-    name: string
-    baseName: string
-    type: string
-    format: string
-    defaultValue: any
+  name: string;
+  baseName: string;
+  type: string;
+  format: string;
+  defaultValue: any;
 }
 interface ArgumentsType {
-    'response': string;
-    'status': CompletionResultStatusEnum;
+  response: string;
+  status: CompletionResultStatus;
 }
 export class CompletionResult {
-    /**
-    * The generative response from the KnowledgeBase
-    */
-    'response': string;
-    /**
-    * Completion result status. Possible values: success, no_context
-    */
-    'status': CompletionResultStatusEnum;
+  /**
+   * The generative response from the KnowledgeBase
+   */
+  "response": string;
+  "status": CompletionResultStatus;
 
-    static readonly discriminator: string | undefined = undefined;
+  static readonly discriminator: string | undefined = undefined;
 
-    static readonly attributeTypeMap: AttributeType[] = [
-        {
-            "name": "response",
-            "baseName": "response",
-            "type": "string",
-            "format": "",
+  static readonly attributeTypeMap: AttributeType[] = [
+    {
+      name: "response",
+      baseName: "response",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "status",
-            "baseName": "status",
-            "type": "CompletionResultStatusEnum",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "status",
+      baseName: "status",
+      type: "CompletionResultStatus",
+      format: "",
 
-            
-            "defaultValue": undefined
-        }    ];
+      defaultValue: undefined,
+    },
+  ];
 
-    static getAttributeTypeMap(): AttributeType[] {
-        return CompletionResult.attributeTypeMap;
+  static getAttributeTypeMap(): AttributeType[] {
+    return CompletionResult.attributeTypeMap;
+  }
+  public constructor(args: ArgumentsType) {
+    const assign = <T>(attribute: keyof ArgumentsType): T => {
+      return (args[attribute] ??
+        CompletionResult.attributeTypeMap.find(
+          (attr) => attr.name === attribute,
+        )?.defaultValue) as T;
+    };
+    if (args["response"]) {
+      this["response"] = assign<string>("response");
     }
-
-    public constructor(args: ArgumentsType) {
-        const preparedArgs = CompletionResult.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
-            const val:any = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
-            
-            if (val !== undefined) {
-                acc[attr.name as keyof ArgumentsType] = val
-            }
-            return acc
-        }, {})
-        Object.assign(this, preparedArgs)
+    if (args["status"]) {
+      this["status"] = assign<CompletionResultStatus>("status");
     }
+  }
 }
-

@@ -10,15 +10,12 @@
  * Do not edit the class manually.
  */
 
-import { HttpFile } from '../http/http';
+import { HttpFile } from "../http/http";
 
 /**
-* The type of this account. It is one of: trial or full.
-*/
+ * The type of this account. It is one of: trial or full.
+ */
 export enum AccountType {
-
-    TRIAL = 'trial',
-    FULL = 'full'
+  TRIAL = "trial",
+  FULL = "full",
 }
-
-

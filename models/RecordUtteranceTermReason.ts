@@ -10,14 +10,11 @@
  * Do not edit the class manually.
  */
 
-import { HttpFile } from '../http/http';
+import { HttpFile } from "../http/http";
 
 export enum RecordUtteranceTermReason {
-
-    FINISH_KEY = 'finishKey',
-    TIMEOUT = 'timeout',
-    HANGUP = 'hangup',
-    MAX_LENGTH = 'maxLength'
+  FINISH_KEY = "finishKey",
+  TIMEOUT = "timeout",
+  HANGUP = "hangup",
+  MAX_LENGTH = "maxLength",
 }
-
-

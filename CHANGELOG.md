@@ -9,6 +9,20 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 None
 
+<a name="4.0.0"></a>
+
+## [4.0.0] - 2025-01-08
+
+### Added
+- Webhook classes
+- More idiomated Enum management
+
+### Changed
+- Use upgraded openapi generator
+
+### Removed
+- *AllOf model files
+
 <a name="3.10.0"></a>
 
 ## [3.10.0] - 2024-12-17

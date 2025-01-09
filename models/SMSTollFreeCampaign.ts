@@ -10,132 +10,132 @@
  * Do not edit the class manually.
  */
 
-import { HttpFile } from '../http/http';
-
-export enum SMSTollFreeCampaignRegistrationStatusEnum {
-
-    UNREGISTERED = 'UNREGISTERED',
-    INITIATED = 'INITIATED',
-    PENDING = 'PENDING',
-    DECLINED = 'DECLINED',
-    REGISTERED = 'REGISTERED'
-}
+import { SMSTollFreeCampaignRegistrationStatus } from "./../models/SMSTollFreeCampaignRegistrationStatus";
+import { HttpFile } from "../http/http";
 
 interface AttributeType {
-    name: string
-    baseName: string
-    type: string
-    format: string
-    defaultValue: any
+  name: string;
+  baseName: string;
+  type: string;
+  format: string;
+  defaultValue: any;
 }
 interface ArgumentsType {
-    'accountId': string;
-    'campaignId': string;
-    'useCase': string;
-    'registrationStatus': SMSTollFreeCampaignRegistrationStatusEnum;
-    'dateCreated': string;
-    'dateUpdated': string;
-    'revision': number;
+  accountId: string;
+  campaignId: string;
+  useCase: string;
+  registrationStatus: SMSTollFreeCampaignRegistrationStatus;
+  dateCreated: string;
+  dateUpdated: string;
+  revision: number;
 }
 export class SMSTollFreeCampaign {
-    /**
-    * ID of the account that created this toll-free campaign
-    */
-    'accountId': string;
-    /**
-    * Alphanumeric identifier used by the platform to identify this toll-free campaign
-    */
-    'campaignId': string;
-    'useCase': string;
-    /**
-    * Current toll-free campaign registration status.Possible values: UNREGISTERED,INITIATED,PENDING,DECLINED,REGISTERED. A newly created campaign defaults to INITIATED status. 
-    */
-    'registrationStatus': SMSTollFreeCampaignRegistrationStatusEnum;
-    'dateCreated': string;
-    'dateUpdated': string;
-    'revision': number;
+  /**
+   * ID of the account that created this toll-free campaign
+   */
+  "accountId": string;
+  /**
+   * Alphanumeric identifier used by the platform to identify this toll-free campaign
+   */
+  "campaignId": string;
+  "useCase": string;
+  "registrationStatus": SMSTollFreeCampaignRegistrationStatus;
+  "dateCreated": string;
+  "dateUpdated": string;
+  "revision": number;
 
-    static readonly discriminator: string | undefined = undefined;
+  static readonly discriminator: string | undefined = undefined;
 
-    static readonly attributeTypeMap: AttributeType[] = [
-        {
-            "name": "accountId",
-            "baseName": "accountId",
-            "type": "string",
-            "format": "",
+  static readonly attributeTypeMap: AttributeType[] = [
+    {
+      name: "accountId",
+      baseName: "accountId",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "campaignId",
-            "baseName": "campaignId",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "campaignId",
+      baseName: "campaignId",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "useCase",
-            "baseName": "useCase",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "useCase",
+      baseName: "useCase",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "registrationStatus",
-            "baseName": "registrationStatus",
-            "type": "SMSTollFreeCampaignRegistrationStatusEnum",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "registrationStatus",
+      baseName: "registrationStatus",
+      type: "SMSTollFreeCampaignRegistrationStatus",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "dateCreated",
-            "baseName": "dateCreated",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "dateCreated",
+      baseName: "dateCreated",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "dateUpdated",
-            "baseName": "dateUpdated",
-            "type": "string",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "dateUpdated",
+      baseName: "dateUpdated",
+      type: "string",
+      format: "",
 
-            
-            "defaultValue": undefined
-        },
-        {
-            "name": "revision",
-            "baseName": "revision",
-            "type": "number",
-            "format": "",
+      defaultValue: undefined,
+    },
+    {
+      name: "revision",
+      baseName: "revision",
+      type: "number",
+      format: "",
 
-            
-            "defaultValue": undefined
-        }    ];
+      defaultValue: undefined,
+    },
+  ];
 
-    static getAttributeTypeMap(): AttributeType[] {
-        return SMSTollFreeCampaign.attributeTypeMap;
+  static getAttributeTypeMap(): AttributeType[] {
+    return SMSTollFreeCampaign.attributeTypeMap;
+  }
+  public constructor(args: ArgumentsType) {
+    const assign = <T>(attribute: keyof ArgumentsType): T => {
+      return (args[attribute] ??
+        SMSTollFreeCampaign.attributeTypeMap.find(
+          (attr) => attr.name === attribute,
+        )?.defaultValue) as T;
+    };
+    if (args["accountId"]) {
+      this["accountId"] = assign<string>("accountId");
     }
-
-    public constructor(args: ArgumentsType) {
-        const preparedArgs = SMSTollFreeCampaign.attributeTypeMap.reduce((acc: Partial<ArgumentsType>, attr: AttributeType) => {
-            const val:any = args[attr.name as keyof ArgumentsType] ?? attr.defaultValue
-            
-            if (val !== undefined) {
-                acc[attr.name as keyof ArgumentsType] = val
-            }
-            return acc
-        }, {})
-        Object.assign(this, preparedArgs)
+    if (args["campaignId"]) {
+      this["campaignId"] = assign<string>("campaignId");
     }
+    if (args["useCase"]) {
+      this["useCase"] = assign<string>("useCase");
+    }
+    if (args["registrationStatus"]) {
+      this["registrationStatus"] =
+        assign<SMSTollFreeCampaignRegistrationStatus>("registrationStatus");
+    }
+    if (args["dateCreated"]) {
+      this["dateCreated"] = assign<string>("dateCreated");
+    }
+    if (args["dateUpdated"]) {
+      this["dateUpdated"] = assign<string>("dateUpdated");
+    }
+    if (args["revision"]) {
+      this["revision"] = assign<number>("revision");
+    }
+  }
 }
-
