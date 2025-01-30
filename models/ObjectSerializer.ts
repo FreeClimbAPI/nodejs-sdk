@@ -65,6 +65,7 @@ export * from "./MessageDeliveryWebhook";
 export * from "./MessageDirection";
 export * from "./MessageRequest";
 export * from "./MessageResult";
+export * from "./MessageResultAllOfTfn";
 export * from "./MessageStatus";
 export * from "./MessageStatusWebhook";
 export * from "./MessagesList";
@@ -124,6 +125,7 @@ export * from "./SetTalk";
 export * from "./Sms";
 export * from "./StartRecordCall";
 export * from "./TFN";
+export * from "./TFNCampaign";
 export * from "./TerminateConference";
 export * from "./TranscribeReason";
 export * from "./TranscribeTermReason";
@@ -205,6 +207,7 @@ import { MessageDeliveryWebhook } from "./MessageDeliveryWebhook";
 import { MessageDirection } from "./MessageDirection";
 import { MessageRequest } from "./MessageRequest";
 import { MessageResult } from "./MessageResult";
+import { MessageResultAllOfTfn } from "./MessageResultAllOfTfn";
 import { MessageStatus } from "./MessageStatus";
 import { MessageStatusWebhook } from "./MessageStatusWebhook";
 import { MessagesList } from "./MessagesList";
@@ -264,6 +267,7 @@ import { SetTalk } from "./SetTalk";
 import { Sms } from "./Sms";
 import { StartRecordCall } from "./StartRecordCall";
 import { TFN } from "./TFN";
+import { TFNCampaign } from "./TFNCampaign";
 import { TerminateConference } from "./TerminateConference";
 import { TranscribeReason } from "./TranscribeReason";
 import { TranscribeTermReason } from "./TranscribeTermReason";
@@ -384,6 +388,7 @@ let typeMap: { [index: string]: any } = {
   MessageDeliveryWebhook: MessageDeliveryWebhook,
   MessageRequest: MessageRequest,
   MessageResult: MessageResult,
+  MessageResultAllOfTfn: MessageResultAllOfTfn,
   MessageStatusWebhook: MessageStatusWebhook,
   MessagesList: MessagesList,
   MutableResourceModel: MutableResourceModel,
@@ -430,6 +435,7 @@ let typeMap: { [index: string]: any } = {
   Sms: Sms,
   StartRecordCall: StartRecordCall,
   TFN: TFN,
+  TFNCampaign: TFNCampaign,
   TerminateConference: TerminateConference,
   TranscribeUtterance: TranscribeUtterance,
   TranscribeUtteranceRecord: TranscribeUtteranceRecord,
