@@ -70,7 +70,6 @@ import { MessageDeliveryWebhook } from "../models/MessageDeliveryWebhook";
 import { MessageDirection } from "../models/MessageDirection";
 import { MessageRequest } from "../models/MessageRequest";
 import { MessageResult } from "../models/MessageResult";
-import { MessageResultAllOfTfn } from "../models/MessageResultAllOfTfn";
 import { MessageStatus } from "../models/MessageStatus";
 import { MessageStatusWebhook } from "../models/MessageStatusWebhook";
 import { MessagesList } from "../models/MessagesList";

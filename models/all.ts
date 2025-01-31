@@ -65,7 +65,6 @@ export * from "./MessageDeliveryWebhook";
 export * from "./MessageDirection";
 export * from "./MessageRequest";
 export * from "./MessageResult";
-export * from "./MessageResultAllOfTfn";
 export * from "./MessageStatus";
 export * from "./MessageStatusWebhook";
 export * from "./MessagesList";

@@ -79,7 +79,6 @@ models/MessageDeliveryWebhook.ts
 models/MessageDirection.ts
 models/MessageRequest.ts
 models/MessageResult.ts
-models/MessageResultAllOfTfn.ts
 models/MessageStatus.ts
 models/MessageStatusWebhook.ts
 models/MessagesList.ts

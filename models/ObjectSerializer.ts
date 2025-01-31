@@ -65,7 +65,6 @@ export * from "./MessageDeliveryWebhook";
 export * from "./MessageDirection";
 export * from "./MessageRequest";
 export * from "./MessageResult";
-export * from "./MessageResultAllOfTfn";
 export * from "./MessageStatus";
 export * from "./MessageStatusWebhook";
 export * from "./MessagesList";
@@ -207,7 +206,6 @@ import { MessageDeliveryWebhook } from "./MessageDeliveryWebhook";
 import { MessageDirection } from "./MessageDirection";
 import { MessageRequest } from "./MessageRequest";
 import { MessageResult } from "./MessageResult";
-import { MessageResultAllOfTfn } from "./MessageResultAllOfTfn";
 import { MessageStatus } from "./MessageStatus";
 import { MessageStatusWebhook } from "./MessageStatusWebhook";
 import { MessagesList } from "./MessagesList";
@@ -388,7 +386,6 @@ let typeMap: { [index: string]: any } = {
   MessageDeliveryWebhook: MessageDeliveryWebhook,
   MessageRequest: MessageRequest,
   MessageResult: MessageResult,
-  MessageResultAllOfTfn: MessageResultAllOfTfn,
   MessageStatusWebhook: MessageStatusWebhook,
   MessagesList: MessagesList,
   MutableResourceModel: MutableResourceModel,

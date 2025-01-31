@@ -10,8 +10,8 @@
  * Do not edit the class manually.
  */
 
-import { MessageResultAllOfTfn } from "./../models/MessageResultAllOfTfn";
 import { MessageStatus } from "./../models/MessageStatus";
+import { TFN } from "./../models/TFN";
 import { HttpFile } from "../http/http";
 
 interface AttributeType {
@@ -38,7 +38,7 @@ interface ArgumentsType {
   campaignId?: string;
   segmentCount?: number;
   mediaUrls?: Array<string>;
-  tfn?: MessageResultAllOfTfn;
+  tfn?: TFN;
   phoneNumberId?: string;
   applicationId?: string;
 }
@@ -104,7 +104,7 @@ export class MessageResult {
    * an array of HTTP URLs which were attached this this message
    */
   "mediaUrls"?: Array<string>;
-  "tfn"?: MessageResultAllOfTfn;
+  "tfn"?: TFN;
   /**
    * String that uniquely identifies the phoneNumber resource used to send this Message
    */
@@ -248,7 +248,7 @@ export class MessageResult {
     {
       name: "tfn",
       baseName: "tfn",
-      type: "MessageResultAllOfTfn",
+      type: "TFN",
       format: "",
 
       defaultValue: undefined,
@@ -329,7 +329,7 @@ export class MessageResult {
       this["mediaUrls"] = assign<Array<string>>("mediaUrls");
     }
     if (args["tfn"]) {
-      this["tfn"] = assign<MessageResultAllOfTfn>("tfn");
+      this["tfn"] = assign<TFN>("tfn");
     }
     if (args["phoneNumberId"]) {
       this["phoneNumberId"] = assign<string>("phoneNumberId");

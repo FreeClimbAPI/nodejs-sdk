@@ -20,10 +20,10 @@ describe("MessageResult", () => {
     campaignId: "test_campaignId",
     segmentCount: 1.0,
     mediaUrls: [],
-    tfn: {
-      campaignId: "cmptfn_387ec3f6e03b340553f35f29c8f118cdf3eae08a",
-    },
 
+    tfn: new freeclimb.TFN({
+      campaignId: null as any,
+    }),
     phoneNumberId: "test_phoneNumberId",
     applicationId: "test_applicationId",
   });
@@ -130,11 +130,10 @@ describe("MessageResult", () => {
   });
   describe(".tfn", () => {
     it("resolves to particular value on initialization", () => {
-      const value = {
-        campaignId: "cmptfn_387ec3f6e03b340553f35f29c8f118cdf3eae08a",
-      };
-      const receivedValue: any = model.tfn;
-      expect(receivedValue).toStrictEqual(value);
+      const value = new freeclimb.TFN({
+        campaignId: null as any,
+      });
+      expect(model.tfn).toStrictEqual(value);
     });
   });
   describe(".phoneNumberId", () => {
