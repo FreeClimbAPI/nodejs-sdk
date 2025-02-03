@@ -9,6 +9,14 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 None
 
+<a name="4.1.0"></a>
+
+## [4.1.0] - 2025-01-08
+
+### Added
+
+- CampaignTFN and MessageResultsAllOfTfn models
+
 <a name="4.0.0"></a>
 
 ## [4.0.0] - 2025-01-08
