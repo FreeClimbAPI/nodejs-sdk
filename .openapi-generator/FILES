@@ -139,6 +139,7 @@ models/SetTalk.ts
 models/Sms.ts
 models/StartRecordCall.ts
 models/TFN.ts
+models/TFNCampaign.ts
 models/TerminateConference.ts
 models/TranscribeReason.ts
 models/TranscribeTermReason.ts

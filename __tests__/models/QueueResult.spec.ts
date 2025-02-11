@@ -83,7 +83,8 @@ describe("QueueResult", () => {
   describe(".subresourceUris", () => {
     it("resolves to particular value on initialization", () => {
       const value = {};
-      expect(model.subresourceUris).toStrictEqual(value);
+      const receivedValue: any = model.subresourceUris;
+      expect(receivedValue).toStrictEqual(value);
     });
   });
 });

@@ -25,6 +25,7 @@ describe("CallResult", () => {
 
     answeredBy: freeclimb.AnsweredBy.HUMAN,
     subresourceUris: {},
+
     applicationId: "test_applicationId",
   });
   describe("CallResult class test", () => {
@@ -143,7 +144,8 @@ describe("CallResult", () => {
   describe(".subresourceUris", () => {
     it("resolves to particular value on initialization", () => {
       const value = {};
-      expect(model.subresourceUris).toStrictEqual(value);
+      const receivedValue: any = model.subresourceUris;
+      expect(receivedValue).toStrictEqual(value);
     });
   });
   describe(".applicationId", () => {

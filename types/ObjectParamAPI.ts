@@ -128,6 +128,7 @@ import { SetTalk } from "../models/SetTalk";
 import { Sms } from "../models/Sms";
 import { StartRecordCall } from "../models/StartRecordCall";
 import { TFN } from "../models/TFN";
+import { TFNCampaign } from "../models/TFNCampaign";
 import { TerminateConference } from "../models/TerminateConference";
 import { TranscribeReason } from "../models/TranscribeReason";
 import { TranscribeTermReason } from "../models/TranscribeTermReason";

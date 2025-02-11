@@ -124,6 +124,7 @@ export * from "./SetTalk";
 export * from "./Sms";
 export * from "./StartRecordCall";
 export * from "./TFN";
+export * from "./TFNCampaign";
 export * from "./TerminateConference";
 export * from "./TranscribeReason";
 export * from "./TranscribeTermReason";

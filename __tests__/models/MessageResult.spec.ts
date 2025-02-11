@@ -20,6 +20,12 @@ describe("MessageResult", () => {
     campaignId: "test_campaignId",
     segmentCount: 1.0,
     mediaUrls: [],
+
+    tfn: new freeclimb.TFN({
+      campaignId: null as any,
+    }),
+    phoneNumberId: "test_phoneNumberId",
+    applicationId: "test_applicationId",
   });
   describe("MessageResult class test", () => {
     it("resolves to the class type upon initialization", () => {
@@ -120,6 +126,26 @@ describe("MessageResult", () => {
     it("resolves to particular value on initialization", () => {
       const value: any[] = [];
       expect(model.mediaUrls).toStrictEqual(value);
+    });
+  });
+  describe(".tfn", () => {
+    it("resolves to particular value on initialization", () => {
+      const value = new freeclimb.TFN({
+        campaignId: null as any,
+      });
+      expect(model.tfn).toStrictEqual(value);
+    });
+  });
+  describe(".phoneNumberId", () => {
+    it("resolves to particular value on initialization", () => {
+      const value = "test_phoneNumberId";
+      expect(model.phoneNumberId).toBe(value);
+    });
+  });
+  describe(".applicationId", () => {
+    it("resolves to particular value on initialization", () => {
+      const value = "test_applicationId";
+      expect(model.applicationId).toBe(value);
     });
   });
 });

@@ -3586,10 +3586,75 @@
                   "format": "uri"
                 },
                 "nullable": true
+              },
+              "tfn": {
+                "$ref": "#/components/schemas/TFN",
+                "nullable": true
+              },
+              "phoneNumberId": {
+                "type": "string",
+                "description": "String that uniquely identifies the phoneNumber resource used to send this Message",
+                "nullable": true
+              },
+              "applicationId": {
+                "type": "string",
+                "description": "String that uniquely identifies the Application resource used to send this Message",
+                "nullable": true
               }
             }
           }
         ]
+      },
+      "TFNCampaign": {
+        "type": "object",
+        "required": [
+          "accountId",
+          "campaignId",
+          "useCase",
+          "registrationStatus",
+          "dateCreated",
+          "dateUpdated",
+          "dateCreatedISO",
+          "dateUpdatedISO",
+          "revision"
+        ],
+        "properties": {
+          "accountId": {
+            "type": "string",
+            "description": "ID of the account that created this participant.",
+            "nullable": true
+          },
+          "campaignId": {
+            "$ref": "#/components/schemas/TFNCampaignId"
+          },
+          "useCase": {
+            "type": "string"
+          },
+          "registrationStatus": {
+            "$ref": "#/components/schemas/SMSTollFreeCampaignRegistrationStatus"
+          },
+          "dateCreated": {
+            "type": "string"
+          },
+          "dateUpdated": {
+            "type": "string"
+          },
+          "dateCreatedISO": {
+            "type": "string"
+          },
+          "dateUpdatedISO": {
+            "type": "string"
+          },
+          "revision": {
+            "type": "integer"
+          }
+        }
+      },
+      "TFNCampaignId": {
+        "type": "string",
+        "description": "TFNCampaignId",
+        "pattern": "cmptfn_[a-fA-F0-9]{40}",
+        "example": "cmptfn_387ec3f6e03b340553f35f29c8f118cdf3eae08a"
       },
       "CreateConferenceRequest": {
         "type": "object",

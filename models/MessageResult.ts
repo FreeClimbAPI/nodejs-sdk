@@ -11,6 +11,7 @@
  */
 
 import { MessageStatus } from "./../models/MessageStatus";
+import { TFN } from "./../models/TFN";
 import { HttpFile } from "../http/http";
 
 interface AttributeType {
@@ -37,6 +38,9 @@ interface ArgumentsType {
   campaignId?: string;
   segmentCount?: number;
   mediaUrls?: Array<string>;
+  tfn?: TFN;
+  phoneNumberId?: string;
+  applicationId?: string;
 }
 export class MessageResult {
   /**
@@ -100,6 +104,15 @@ export class MessageResult {
    * an array of HTTP URLs which were attached this this message
    */
   "mediaUrls"?: Array<string>;
+  "tfn"?: TFN;
+  /**
+   * String that uniquely identifies the phoneNumber resource used to send this Message
+   */
+  "phoneNumberId"?: string;
+  /**
+   * String that uniquely identifies the Application resource used to send this Message
+   */
+  "applicationId"?: string;
 
   static readonly discriminator: string | undefined = undefined;
 
@@ -232,6 +245,30 @@ export class MessageResult {
 
       defaultValue: undefined,
     },
+    {
+      name: "tfn",
+      baseName: "tfn",
+      type: "TFN",
+      format: "",
+
+      defaultValue: undefined,
+    },
+    {
+      name: "phoneNumberId",
+      baseName: "phoneNumberId",
+      type: "string",
+      format: "",
+
+      defaultValue: undefined,
+    },
+    {
+      name: "applicationId",
+      baseName: "applicationId",
+      type: "string",
+      format: "",
+
+      defaultValue: undefined,
+    },
   ];
 
   static getAttributeTypeMap(): AttributeType[] {
@@ -290,6 +327,15 @@ export class MessageResult {
     }
     if (args["mediaUrls"]) {
       this["mediaUrls"] = assign<Array<string>>("mediaUrls");
+    }
+    if (args["tfn"]) {
+      this["tfn"] = assign<TFN>("tfn");
+    }
+    if (args["phoneNumberId"]) {
+      this["phoneNumberId"] = assign<string>("phoneNumberId");
+    }
+    if (args["applicationId"]) {
+      this["applicationId"] = assign<string>("applicationId");
     }
   }
 }

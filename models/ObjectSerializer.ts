@@ -124,6 +124,7 @@ export * from "./SetTalk";
 export * from "./Sms";
 export * from "./StartRecordCall";
 export * from "./TFN";
+export * from "./TFNCampaign";
 export * from "./TerminateConference";
 export * from "./TranscribeReason";
 export * from "./TranscribeTermReason";
@@ -264,6 +265,7 @@ import { SetTalk } from "./SetTalk";
 import { Sms } from "./Sms";
 import { StartRecordCall } from "./StartRecordCall";
 import { TFN } from "./TFN";
+import { TFNCampaign } from "./TFNCampaign";
 import { TerminateConference } from "./TerminateConference";
 import { TranscribeReason } from "./TranscribeReason";
 import { TranscribeTermReason } from "./TranscribeTermReason";
@@ -430,6 +432,7 @@ let typeMap: { [index: string]: any } = {
   Sms: Sms,
   StartRecordCall: StartRecordCall,
   TFN: TFN,
+  TFNCampaign: TFNCampaign,
   TerminateConference: TerminateConference,
   TranscribeUtterance: TranscribeUtterance,
   TranscribeUtteranceRecord: TranscribeUtteranceRecord,
