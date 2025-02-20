@@ -214,7 +214,7 @@ export const requestBody = {
   }),
   createAConference: new CreateConferenceRequest({
     alias: "TEST_CONFERENCE",
-    statusCallbackUrl: "https://test.com"
+    statusCallbackUrl: "https://test.com",
   }),
   filterLogs: new FilterLogsRequest({
     pql: "TEST_PQL",
