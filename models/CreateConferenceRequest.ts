@@ -25,7 +25,7 @@ interface ArgumentsType {
   playBeep?: PlayBeep;
   record?: boolean;
   waitUrl?: string;
-  statusCallbackUrl?: string;
+  statusCallbackUrl: string;
 }
 export class CreateConferenceRequest {
   /**
@@ -44,7 +44,7 @@ export class CreateConferenceRequest {
   /**
    * This URL is invoked when the status of the Conference changes. For more information, see **statusCallbackUrl** (below).
    */
-  "statusCallbackUrl"?: string;
+  "statusCallbackUrl": string;
 
   static readonly discriminator: string | undefined = undefined;
 
