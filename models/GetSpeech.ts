@@ -206,52 +206,27 @@ export class GetSpeech extends PerclCommand {
   public constructor(args: ArgumentsType) {
     super({ command: "GetSpeech" });
     const assign = <T>(attribute: keyof ArgumentsType): T => {
-      return (args[attribute] ??
-        GetSpeech.attributeTypeMap.find((attr) => attr.name === attribute)
-          ?.defaultValue) as T;
+      return (
+        args.hasOwnProperty(attribute)
+          ? args[attribute]
+          : GetSpeech.attributeTypeMap.find((attr) => attr.name === attribute)
+              ?.defaultValue
+      ) as T;
     };
-    if (args.hasOwnProperty("actionUrl")) {
-      this["actionUrl"] = assign<string>("actionUrl");
-    }
-    if (args.hasOwnProperty("grammarType")) {
-      this["grammarType"] = assign<GrammarType>("grammarType");
-    }
-    if (args.hasOwnProperty("grammarFile")) {
-      this["grammarFile"] = assign<string>("grammarFile");
-    }
-    if (args.hasOwnProperty("grammarRule")) {
-      this["grammarRule"] = assign<string>("grammarRule");
-    }
-    if (args.hasOwnProperty("playBeep")) {
-      this["playBeep"] = assign<boolean>("playBeep");
-    }
-    if (args.hasOwnProperty("prompts")) {
-      this["prompts"] = assign<Array<PerclCommand>>("prompts");
-    }
-    if (args.hasOwnProperty("noInputTimeoutMs")) {
-      this["noInputTimeoutMs"] = assign<number>("noInputTimeoutMs");
-    }
-    if (args.hasOwnProperty("recognitionTimeoutMs")) {
-      this["recognitionTimeoutMs"] = assign<number>("recognitionTimeoutMs");
-    }
-    if (args.hasOwnProperty("confidenceThreshold")) {
-      this["confidenceThreshold"] = assign<number>("confidenceThreshold");
-    }
-    if (args.hasOwnProperty("sensitivityLevel")) {
-      this["sensitivityLevel"] = assign<number>("sensitivityLevel");
-    }
-    if (args.hasOwnProperty("speechCompleteTimeoutMs")) {
-      this["speechCompleteTimeoutMs"] = assign<number>(
-        "speechCompleteTimeoutMs",
-      );
-    }
-    if (args.hasOwnProperty("speechIncompleteTimeoutMs")) {
-      this["speechIncompleteTimeoutMs"] = assign<number>(
-        "speechIncompleteTimeoutMs",
-      );
-    }
-    if (args.hasOwnProperty("privacyMode")) {
-      this["privacyMode"] = assign<boolean>("privacyMode");
-    }
+    this["actionUrl"] = assign<string>("actionUrl");
+    this["grammarType"] = assign<GrammarType>("grammarType");
+    this["grammarFile"] = assign<string>("grammarFile");
+    this["grammarRule"] = assign<string>("grammarRule");
+    this["playBeep"] = assign<boolean>("playBeep");
+    this["prompts"] = assign<Array<PerclCommand>>("prompts");
+    this["noInputTimeoutMs"] = assign<number>("noInputTimeoutMs");
+    this["recognitionTimeoutMs"] = assign<number>("recognitionTimeoutMs");
+    this["confidenceThreshold"] = assign<number>("confidenceThreshold");
+    this["sensitivityLevel"] = assign<number>("sensitivityLevel");
+    this["speechCompleteTimeoutMs"] = assign<number>("speechCompleteTimeoutMs");
+    this["speechIncompleteTimeoutMs"] = assign<number>(
+      "speechIncompleteTimeoutMs",
+    );
+    this["privacyMode"] = assign<boolean>("privacyMode");
   }
 }

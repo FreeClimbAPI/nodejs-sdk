@@ -430,108 +430,50 @@ export class SMSTenDLCBrand {
   }
   public constructor(args: ArgumentsType) {
     const assign = <T>(attribute: keyof ArgumentsType): T => {
-      return (args[attribute] ??
-        SMSTenDLCBrand.attributeTypeMap.find((attr) => attr.name === attribute)
-          ?.defaultValue) as T;
+      return (
+        args.hasOwnProperty(attribute)
+          ? args[attribute]
+          : SMSTenDLCBrand.attributeTypeMap.find(
+              (attr) => attr.name === attribute,
+            )?.defaultValue
+      ) as T;
     };
-    if (args.hasOwnProperty("accountId")) {
-      this["accountId"] = assign<string>("accountId");
-    }
-    if (args.hasOwnProperty("entityType")) {
-      this["entityType"] = assign<SMSTenDLCBrandEntityType>("entityType");
-    }
-    if (args.hasOwnProperty("cspId")) {
-      this["cspId"] = assign<string>("cspId");
-    }
-    if (args.hasOwnProperty("brandId")) {
-      this["brandId"] = assign<string>("brandId");
-    }
-    if (args.hasOwnProperty("firstName")) {
-      this["firstName"] = assign<string>("firstName");
-    }
-    if (args.hasOwnProperty("lastName")) {
-      this["lastName"] = assign<string>("lastName");
-    }
-    if (args.hasOwnProperty("displayName")) {
-      this["displayName"] = assign<string>("displayName");
-    }
-    if (args.hasOwnProperty("companyName")) {
-      this["companyName"] = assign<string>("companyName");
-    }
-    if (args.hasOwnProperty("ein")) {
-      this["ein"] = assign<string>("ein");
-    }
-    if (args.hasOwnProperty("einIssuingCountry")) {
-      this["einIssuingCountry"] = assign<string>("einIssuingCountry");
-    }
-    if (args.hasOwnProperty("phone")) {
-      this["phone"] = assign<string>("phone");
-    }
-    if (args.hasOwnProperty("street")) {
-      this["street"] = assign<string>("street");
-    }
-    if (args.hasOwnProperty("city")) {
-      this["city"] = assign<string>("city");
-    }
-    if (args.hasOwnProperty("state")) {
-      this["state"] = assign<string>("state");
-    }
-    if (args.hasOwnProperty("postalCode")) {
-      this["postalCode"] = assign<string>("postalCode");
-    }
-    if (args.hasOwnProperty("country")) {
-      this["country"] = assign<string>("country");
-    }
-    if (args.hasOwnProperty("email")) {
-      this["email"] = assign<string>("email");
-    }
-    if (args.hasOwnProperty("stockSymbol")) {
-      this["stockSymbol"] = assign<string>("stockSymbol");
-    }
-    if (args.hasOwnProperty("stockExchange")) {
-      this["stockExchange"] =
-        assign<SMSTenDLCBrandStockExchange>("stockExchange");
-    }
-    if (args.hasOwnProperty("ipAddress")) {
-      this["ipAddress"] = assign<string>("ipAddress");
-    }
-    if (args.hasOwnProperty("website")) {
-      this["website"] = assign<string>("website");
-    }
-    if (args.hasOwnProperty("brandRelationship")) {
-      this["brandRelationship"] =
-        assign<SMSTenDLCBrandRelationship>("brandRelationship");
-    }
-    if (args.hasOwnProperty("vertical")) {
-      this["vertical"] = assign<string>("vertical");
-    }
-    if (args.hasOwnProperty("altBusinessId")) {
-      this["altBusinessId"] = assign<string>("altBusinessId");
-    }
-    if (args.hasOwnProperty("altBusinessIdType")) {
-      this["altBusinessIdType"] =
-        assign<SMSTenDLCBrandAltBusinessIdType>("altBusinessIdType");
-    }
-    if (args.hasOwnProperty("universalEin")) {
-      this["universalEin"] = assign<string>("universalEin");
-    }
-    if (args.hasOwnProperty("referenceId")) {
-      this["referenceId"] = assign<string>("referenceId");
-    }
-    if (args.hasOwnProperty("optionalAttributes")) {
-      this["optionalAttributes"] = assign<{ [key: string]: any }>(
-        "optionalAttributes",
-      );
-    }
-    if (args.hasOwnProperty("mock")) {
-      this["mock"] = assign<boolean>("mock");
-    }
-    if (args.hasOwnProperty("identityStatus")) {
-      this["identityStatus"] =
-        assign<SMSTenDLCBrandIdentityStatus>("identityStatus");
-    }
-    if (args.hasOwnProperty("createDate")) {
-      this["createDate"] = assign<Date>("createDate");
-    }
+    this["accountId"] = assign<string>("accountId");
+    this["entityType"] = assign<SMSTenDLCBrandEntityType>("entityType");
+    this["cspId"] = assign<string>("cspId");
+    this["brandId"] = assign<string>("brandId");
+    this["firstName"] = assign<string>("firstName");
+    this["lastName"] = assign<string>("lastName");
+    this["displayName"] = assign<string>("displayName");
+    this["companyName"] = assign<string>("companyName");
+    this["ein"] = assign<string>("ein");
+    this["einIssuingCountry"] = assign<string>("einIssuingCountry");
+    this["phone"] = assign<string>("phone");
+    this["street"] = assign<string>("street");
+    this["city"] = assign<string>("city");
+    this["state"] = assign<string>("state");
+    this["postalCode"] = assign<string>("postalCode");
+    this["country"] = assign<string>("country");
+    this["email"] = assign<string>("email");
+    this["stockSymbol"] = assign<string>("stockSymbol");
+    this["stockExchange"] =
+      assign<SMSTenDLCBrandStockExchange>("stockExchange");
+    this["ipAddress"] = assign<string>("ipAddress");
+    this["website"] = assign<string>("website");
+    this["brandRelationship"] =
+      assign<SMSTenDLCBrandRelationship>("brandRelationship");
+    this["vertical"] = assign<string>("vertical");
+    this["altBusinessId"] = assign<string>("altBusinessId");
+    this["altBusinessIdType"] =
+      assign<SMSTenDLCBrandAltBusinessIdType>("altBusinessIdType");
+    this["universalEin"] = assign<string>("universalEin");
+    this["referenceId"] = assign<string>("referenceId");
+    this["optionalAttributes"] = assign<{ [key: string]: any }>(
+      "optionalAttributes",
+    );
+    this["mock"] = assign<boolean>("mock");
+    this["identityStatus"] =
+      assign<SMSTenDLCBrandIdentityStatus>("identityStatus");
+    this["createDate"] = assign<Date>("createDate");
   }
 }

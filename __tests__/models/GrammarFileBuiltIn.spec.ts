@@ -2,7 +2,7 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("GrammarFileBuiltIn", () => {
-  describe("Test with true values", () => {
+  describe("Test with truthy values", () => {
     describe(".ALPHNUM6", () => {
       it("resolves to correct value for ALPHNUM6 enum property", () => {
         expect(freeclimb.GrammarFileBuiltIn.ALPHNUM6).toBe("ALPHNUM6");

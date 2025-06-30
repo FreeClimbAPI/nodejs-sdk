@@ -130,30 +130,20 @@ export class RecordUtterance extends PerclCommand {
   public constructor(args: ArgumentsType) {
     super({ command: "RecordUtterance" });
     const assign = <T>(attribute: keyof ArgumentsType): T => {
-      return (args[attribute] ??
-        RecordUtterance.attributeTypeMap.find((attr) => attr.name === attribute)
-          ?.defaultValue) as T;
+      return (
+        args.hasOwnProperty(attribute)
+          ? args[attribute]
+          : RecordUtterance.attributeTypeMap.find(
+              (attr) => attr.name === attribute,
+            )?.defaultValue
+      ) as T;
     };
-    if (args.hasOwnProperty("actionUrl")) {
-      this["actionUrl"] = assign<string>("actionUrl");
-    }
-    if (args.hasOwnProperty("silenceTimeoutMs")) {
-      this["silenceTimeoutMs"] = assign<number>("silenceTimeoutMs");
-    }
-    if (args.hasOwnProperty("finishOnKey")) {
-      this["finishOnKey"] = assign<string>("finishOnKey");
-    }
-    if (args.hasOwnProperty("maxLengthSec")) {
-      this["maxLengthSec"] = assign<number>("maxLengthSec");
-    }
-    if (args.hasOwnProperty("playBeep")) {
-      this["playBeep"] = assign<boolean>("playBeep");
-    }
-    if (args.hasOwnProperty("autoStart")) {
-      this["autoStart"] = assign<boolean>("autoStart");
-    }
-    if (args.hasOwnProperty("privacyMode")) {
-      this["privacyMode"] = assign<boolean>("privacyMode");
-    }
+    this["actionUrl"] = assign<string>("actionUrl");
+    this["silenceTimeoutMs"] = assign<number>("silenceTimeoutMs");
+    this["finishOnKey"] = assign<string>("finishOnKey");
+    this["maxLengthSec"] = assign<number>("maxLengthSec");
+    this["playBeep"] = assign<boolean>("playBeep");
+    this["autoStart"] = assign<boolean>("autoStart");
+    this["privacyMode"] = assign<boolean>("privacyMode");
   }
 }

@@ -44,13 +44,14 @@ export class UpdateCallRequest {
   }
   public constructor(args: ArgumentsType) {
     const assign = <T>(attribute: keyof ArgumentsType): T => {
-      return (args[attribute] ??
-        UpdateCallRequest.attributeTypeMap.find(
-          (attr) => attr.name === attribute,
-        )?.defaultValue) as T;
+      return (
+        args.hasOwnProperty(attribute)
+          ? args[attribute]
+          : UpdateCallRequest.attributeTypeMap.find(
+              (attr) => attr.name === attribute,
+            )?.defaultValue
+      ) as T;
     };
-    if (args.hasOwnProperty("status")) {
-      this["status"] = assign<UpdateCallRequestStatus>("status");
-    }
+    this["status"] = assign<UpdateCallRequestStatus>("status");
   }
 }

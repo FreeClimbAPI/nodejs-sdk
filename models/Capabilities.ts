@@ -102,24 +102,18 @@ export class Capabilities {
   }
   public constructor(args: ArgumentsType) {
     const assign = <T>(attribute: keyof ArgumentsType): T => {
-      return (args[attribute] ??
-        Capabilities.attributeTypeMap.find((attr) => attr.name === attribute)
-          ?.defaultValue) as T;
+      return (
+        args.hasOwnProperty(attribute)
+          ? args[attribute]
+          : Capabilities.attributeTypeMap.find(
+              (attr) => attr.name === attribute,
+            )?.defaultValue
+      ) as T;
     };
-    if (args.hasOwnProperty("voice")) {
-      this["voice"] = assign<boolean>("voice");
-    }
-    if (args.hasOwnProperty("sms")) {
-      this["sms"] = assign<boolean>("sms");
-    }
-    if (args.hasOwnProperty("tollFree")) {
-      this["tollFree"] = assign<boolean>("tollFree");
-    }
-    if (args.hasOwnProperty("tenDLC")) {
-      this["tenDLC"] = assign<boolean>("tenDLC");
-    }
-    if (args.hasOwnProperty("shortCode")) {
-      this["shortCode"] = assign<boolean>("shortCode");
-    }
+    this["voice"] = assign<boolean>("voice");
+    this["sms"] = assign<boolean>("sms");
+    this["tollFree"] = assign<boolean>("tollFree");
+    this["tenDLC"] = assign<boolean>("tenDLC");
+    this["shortCode"] = assign<boolean>("shortCode");
   }
 }

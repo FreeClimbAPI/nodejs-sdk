@@ -193,47 +193,26 @@ export class QueueWaitWebhook extends Webhook {
   public constructor(args: ArgumentsType) {
     super({ requestType: "queueWait" });
     const assign = <T>(attribute: keyof ArgumentsType): T => {
-      return (args[attribute] ??
-        QueueWaitWebhook.attributeTypeMap.find(
-          (attr) => attr.name === attribute,
-        )?.defaultValue) as T;
+      return (
+        args.hasOwnProperty(attribute)
+          ? args[attribute]
+          : QueueWaitWebhook.attributeTypeMap.find(
+              (attr) => attr.name === attribute,
+            )?.defaultValue
+      ) as T;
     };
-    if (args.hasOwnProperty("requestType")) {
-      this["requestType"] = assign<string>("requestType");
-    }
-    if (args.hasOwnProperty("accountId")) {
-      this["accountId"] = assign<string>("accountId");
-    }
-    if (args.hasOwnProperty("callId")) {
-      this["callId"] = assign<string>("callId");
-    }
-    if (args.hasOwnProperty("from")) {
-      this["from"] = assign<string>("from");
-    }
-    if (args.hasOwnProperty("to")) {
-      this["to"] = assign<string>("to");
-    }
-    if (args.hasOwnProperty("callStatus")) {
-      this["callStatus"] = assign<CallStatus>("callStatus");
-    }
-    if (args.hasOwnProperty("direction")) {
-      this["direction"] = assign<CallDirection>("direction");
-    }
-    if (args.hasOwnProperty("conferenceId")) {
-      this["conferenceId"] = assign<string>("conferenceId");
-    }
-    if (args.hasOwnProperty("queueId")) {
-      this["queueId"] = assign<string>("queueId");
-    }
-    if (args.hasOwnProperty("queuePosition")) {
-      this["queuePosition"] = assign<string>("queuePosition");
-    }
-    if (args.hasOwnProperty("queueTime")) {
-      this["queueTime"] = assign<number>("queueTime");
-    }
-    if (args.hasOwnProperty("currentQueueSize")) {
-      this["currentQueueSize"] = assign<number>("currentQueueSize");
-    }
+    this["requestType"] = assign<string>("requestType");
+    this["accountId"] = assign<string>("accountId");
+    this["callId"] = assign<string>("callId");
+    this["from"] = assign<string>("from");
+    this["to"] = assign<string>("to");
+    this["callStatus"] = assign<CallStatus>("callStatus");
+    this["direction"] = assign<CallDirection>("direction");
+    this["conferenceId"] = assign<string>("conferenceId");
+    this["queueId"] = assign<string>("queueId");
+    this["queuePosition"] = assign<string>("queuePosition");
+    this["queueTime"] = assign<number>("queueTime");
+    this["currentQueueSize"] = assign<number>("currentQueueSize");
   }
   public static deserialize(payload: string): QueueWaitWebhook {
     return new QueueWaitWebhook(JSON.parse(payload));

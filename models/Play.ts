@@ -78,18 +78,15 @@ export class Play extends PerclCommand {
   public constructor(args: ArgumentsType) {
     super({ command: "Play" });
     const assign = <T>(attribute: keyof ArgumentsType): T => {
-      return (args[attribute] ??
-        Play.attributeTypeMap.find((attr) => attr.name === attribute)
-          ?.defaultValue) as T;
+      return (
+        args.hasOwnProperty(attribute)
+          ? args[attribute]
+          : Play.attributeTypeMap.find((attr) => attr.name === attribute)
+              ?.defaultValue
+      ) as T;
     };
-    if (args.hasOwnProperty("file")) {
-      this["file"] = assign<string>("file");
-    }
-    if (args.hasOwnProperty("loop")) {
-      this["loop"] = assign<number>("loop");
-    }
-    if (args.hasOwnProperty("privacyMode")) {
-      this["privacyMode"] = assign<boolean>("privacyMode");
-    }
+    this["file"] = assign<string>("file");
+    this["loop"] = assign<number>("loop");
+    this["privacyMode"] = assign<boolean>("privacyMode");
   }
 }

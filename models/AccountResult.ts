@@ -172,42 +172,24 @@ export class AccountResult {
   }
   public constructor(args: ArgumentsType) {
     const assign = <T>(attribute: keyof ArgumentsType): T => {
-      return (args[attribute] ??
-        AccountResult.attributeTypeMap.find((attr) => attr.name === attribute)
-          ?.defaultValue) as T;
+      return (
+        args.hasOwnProperty(attribute)
+          ? args[attribute]
+          : AccountResult.attributeTypeMap.find(
+              (attr) => attr.name === attribute,
+            )?.defaultValue
+      ) as T;
     };
-    if (args.hasOwnProperty("uri")) {
-      this["uri"] = assign<string>("uri");
-    }
-    if (args.hasOwnProperty("dateCreated")) {
-      this["dateCreated"] = assign<string>("dateCreated");
-    }
-    if (args.hasOwnProperty("dateUpdated")) {
-      this["dateUpdated"] = assign<string>("dateUpdated");
-    }
-    if (args.hasOwnProperty("revision")) {
-      this["revision"] = assign<number>("revision");
-    }
-    if (args.hasOwnProperty("accountId")) {
-      this["accountId"] = assign<string>("accountId");
-    }
-    if (args.hasOwnProperty("apiKey")) {
-      this["apiKey"] = assign<string>("apiKey");
-    }
-    if (args.hasOwnProperty("alias")) {
-      this["alias"] = assign<string>("alias");
-    }
-    if (args.hasOwnProperty("label")) {
-      this["label"] = assign<string>("label");
-    }
-    if (args.hasOwnProperty("type")) {
-      this["type"] = assign<AccountType>("type");
-    }
-    if (args.hasOwnProperty("status")) {
-      this["status"] = assign<AccountStatus>("status");
-    }
-    if (args.hasOwnProperty("subresourceUris")) {
-      this["subresourceUris"] = assign<any>("subresourceUris");
-    }
+    this["uri"] = assign<string>("uri");
+    this["dateCreated"] = assign<string>("dateCreated");
+    this["dateUpdated"] = assign<string>("dateUpdated");
+    this["revision"] = assign<number>("revision");
+    this["accountId"] = assign<string>("accountId");
+    this["apiKey"] = assign<string>("apiKey");
+    this["alias"] = assign<string>("alias");
+    this["label"] = assign<string>("label");
+    this["type"] = assign<AccountType>("type");
+    this["status"] = assign<AccountStatus>("status");
+    this["subresourceUris"] = assign<any>("subresourceUris");
   }
 }

@@ -68,19 +68,16 @@ export class UpdateConferenceRequest {
   }
   public constructor(args: ArgumentsType) {
     const assign = <T>(attribute: keyof ArgumentsType): T => {
-      return (args[attribute] ??
-        UpdateConferenceRequest.attributeTypeMap.find(
-          (attr) => attr.name === attribute,
-        )?.defaultValue) as T;
+      return (
+        args.hasOwnProperty(attribute)
+          ? args[attribute]
+          : UpdateConferenceRequest.attributeTypeMap.find(
+              (attr) => attr.name === attribute,
+            )?.defaultValue
+      ) as T;
     };
-    if (args.hasOwnProperty("alias")) {
-      this["alias"] = assign<string>("alias");
-    }
-    if (args.hasOwnProperty("playBeep")) {
-      this["playBeep"] = assign<PlayBeep>("playBeep");
-    }
-    if (args.hasOwnProperty("status")) {
-      this["status"] = assign<UpdateConferenceRequestStatus>("status");
-    }
+    this["alias"] = assign<string>("alias");
+    this["playBeep"] = assign<PlayBeep>("playBeep");
+    this["status"] = assign<UpdateConferenceRequestStatus>("status");
   }
 }

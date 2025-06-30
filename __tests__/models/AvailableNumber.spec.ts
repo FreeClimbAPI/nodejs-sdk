@@ -2,7 +2,7 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("AvailableNumber", () => {
-  describe("Test with true values", () => {
+  describe("Test with truthy values", () => {
     let model: freeclimb.AvailableNumber = new freeclimb.AvailableNumber({
       capabilities: new freeclimb.Capabilities({
         voice: null as any,

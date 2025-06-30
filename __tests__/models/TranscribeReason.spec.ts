@@ -2,7 +2,7 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("TranscribeReason", () => {
-  describe("Test with true values", () => {
+  describe("Test with truthy values", () => {
     describe(".INTERNAL_ERROR", () => {
       it("resolves to correct value for INTERNAL_ERROR enum property", () => {
         expect(freeclimb.TranscribeReason.INTERNAL_ERROR).toBe("internalError");

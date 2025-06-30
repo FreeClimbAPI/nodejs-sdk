@@ -176,43 +176,24 @@ export class ConferenceParticipantResult {
   }
   public constructor(args: ArgumentsType) {
     const assign = <T>(attribute: keyof ArgumentsType): T => {
-      return (args[attribute] ??
-        ConferenceParticipantResult.attributeTypeMap.find(
-          (attr) => attr.name === attribute,
-        )?.defaultValue) as T;
+      return (
+        args.hasOwnProperty(attribute)
+          ? args[attribute]
+          : ConferenceParticipantResult.attributeTypeMap.find(
+              (attr) => attr.name === attribute,
+            )?.defaultValue
+      ) as T;
     };
-    if (args.hasOwnProperty("uri")) {
-      this["uri"] = assign<string>("uri");
-    }
-    if (args.hasOwnProperty("dateCreated")) {
-      this["dateCreated"] = assign<string>("dateCreated");
-    }
-    if (args.hasOwnProperty("dateUpdated")) {
-      this["dateUpdated"] = assign<string>("dateUpdated");
-    }
-    if (args.hasOwnProperty("revision")) {
-      this["revision"] = assign<number>("revision");
-    }
-    if (args.hasOwnProperty("accountId")) {
-      this["accountId"] = assign<string>("accountId");
-    }
-    if (args.hasOwnProperty("conferenceId")) {
-      this["conferenceId"] = assign<string>("conferenceId");
-    }
-    if (args.hasOwnProperty("callId")) {
-      this["callId"] = assign<string>("callId");
-    }
-    if (args.hasOwnProperty("talk")) {
-      this["talk"] = assign<boolean>("talk");
-    }
-    if (args.hasOwnProperty("listen")) {
-      this["listen"] = assign<boolean>("listen");
-    }
-    if (args.hasOwnProperty("dtmfPassThrough")) {
-      this["dtmfPassThrough"] = assign<boolean>("dtmfPassThrough");
-    }
-    if (args.hasOwnProperty("startConfOnEnter")) {
-      this["startConfOnEnter"] = assign<boolean>("startConfOnEnter");
-    }
+    this["uri"] = assign<string>("uri");
+    this["dateCreated"] = assign<string>("dateCreated");
+    this["dateUpdated"] = assign<string>("dateUpdated");
+    this["revision"] = assign<number>("revision");
+    this["accountId"] = assign<string>("accountId");
+    this["conferenceId"] = assign<string>("conferenceId");
+    this["callId"] = assign<string>("callId");
+    this["talk"] = assign<boolean>("talk");
+    this["listen"] = assign<boolean>("listen");
+    this["dtmfPassThrough"] = assign<boolean>("dtmfPassThrough");
+    this["startConfOnEnter"] = assign<boolean>("startConfOnEnter");
   }
 }

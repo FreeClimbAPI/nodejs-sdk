@@ -2,7 +2,7 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("QueueResult", () => {
-  describe("Test with true values", () => {
+  describe("Test with truthy values", () => {
     let model: freeclimb.QueueResult = new freeclimb.QueueResult({
       uri: "test_uri",
       dateCreated: "test_dateCreated",

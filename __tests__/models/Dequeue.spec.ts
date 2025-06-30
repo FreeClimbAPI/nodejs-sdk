@@ -2,7 +2,7 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("Dequeue", () => {
-  describe("Test with true values", () => {
+  describe("Test with truthy values", () => {
     let model: freeclimb.Dequeue = new freeclimb.Dequeue({});
     describe("Dequeue class test", () => {
       it("resolves to the class type upon initialization", () => {

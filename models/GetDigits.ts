@@ -156,36 +156,21 @@ export class GetDigits extends PerclCommand {
   public constructor(args: ArgumentsType) {
     super({ command: "GetDigits" });
     const assign = <T>(attribute: keyof ArgumentsType): T => {
-      return (args[attribute] ??
-        GetDigits.attributeTypeMap.find((attr) => attr.name === attribute)
-          ?.defaultValue) as T;
+      return (
+        args.hasOwnProperty(attribute)
+          ? args[attribute]
+          : GetDigits.attributeTypeMap.find((attr) => attr.name === attribute)
+              ?.defaultValue
+      ) as T;
     };
-    if (args.hasOwnProperty("actionUrl")) {
-      this["actionUrl"] = assign<string>("actionUrl");
-    }
-    if (args.hasOwnProperty("digitTimeoutMs")) {
-      this["digitTimeoutMs"] = assign<number>("digitTimeoutMs");
-    }
-    if (args.hasOwnProperty("finishOnKey")) {
-      this["finishOnKey"] = assign<string>("finishOnKey");
-    }
-    if (args.hasOwnProperty("flushBuffer")) {
-      this["flushBuffer"] = assign<boolean>("flushBuffer");
-    }
-    if (args.hasOwnProperty("initialTimeoutMs")) {
-      this["initialTimeoutMs"] = assign<number>("initialTimeoutMs");
-    }
-    if (args.hasOwnProperty("maxDigits")) {
-      this["maxDigits"] = assign<number>("maxDigits");
-    }
-    if (args.hasOwnProperty("minDigits")) {
-      this["minDigits"] = assign<number>("minDigits");
-    }
-    if (args.hasOwnProperty("prompts")) {
-      this["prompts"] = assign<Array<PerclCommand>>("prompts");
-    }
-    if (args.hasOwnProperty("privacyMode")) {
-      this["privacyMode"] = assign<boolean>("privacyMode");
-    }
+    this["actionUrl"] = assign<string>("actionUrl");
+    this["digitTimeoutMs"] = assign<number>("digitTimeoutMs");
+    this["finishOnKey"] = assign<string>("finishOnKey");
+    this["flushBuffer"] = assign<boolean>("flushBuffer");
+    this["initialTimeoutMs"] = assign<number>("initialTimeoutMs");
+    this["maxDigits"] = assign<number>("maxDigits");
+    this["minDigits"] = assign<number>("minDigits");
+    this["prompts"] = assign<Array<PerclCommand>>("prompts");
+    this["privacyMode"] = assign<boolean>("privacyMode");
   }
 }

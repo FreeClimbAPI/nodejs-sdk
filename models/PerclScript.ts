@@ -51,13 +51,14 @@ export class PerclScript {
   }
   public constructor(args: ArgumentsType) {
     const assign = <T>(attribute: keyof ArgumentsType): T => {
-      return (args[attribute] ??
-        PerclScript.attributeTypeMap.find((attr) => attr.name === attribute)
-          ?.defaultValue) as T;
+      return (
+        args.hasOwnProperty(attribute)
+          ? args[attribute]
+          : PerclScript.attributeTypeMap.find((attr) => attr.name === attribute)
+              ?.defaultValue
+      ) as T;
     };
-    if (args.hasOwnProperty("commands")) {
-      this["commands"] = assign<Array<PerclCommand>>("commands");
-    }
+    this["commands"] = assign<Array<PerclCommand>>("commands");
   }
   public build() {
     return this.commands?.map((command) => command.toPerclObject()) ?? [];

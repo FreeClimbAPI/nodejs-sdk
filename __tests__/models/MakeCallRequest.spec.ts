@@ -2,7 +2,7 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("MakeCallRequest", () => {
-  describe("Test with true values", () => {
+  describe("Test with truthy values", () => {
     let model: freeclimb.MakeCallRequest = new freeclimb.MakeCallRequest({
       from: "test_from",
       to: "test_to",

@@ -78,18 +78,15 @@ export class Park extends PerclCommand {
   public constructor(args: ArgumentsType) {
     super({ command: "Park" });
     const assign = <T>(attribute: keyof ArgumentsType): T => {
-      return (args[attribute] ??
-        Park.attributeTypeMap.find((attr) => attr.name === attribute)
-          ?.defaultValue) as T;
+      return (
+        args.hasOwnProperty(attribute)
+          ? args[attribute]
+          : Park.attributeTypeMap.find((attr) => attr.name === attribute)
+              ?.defaultValue
+      ) as T;
     };
-    if (args.hasOwnProperty("waitUrl")) {
-      this["waitUrl"] = assign<string>("waitUrl");
-    }
-    if (args.hasOwnProperty("actionUrl")) {
-      this["actionUrl"] = assign<string>("actionUrl");
-    }
-    if (args.hasOwnProperty("notificationUrl")) {
-      this["notificationUrl"] = assign<string>("notificationUrl");
-    }
+    this["waitUrl"] = assign<string>("waitUrl");
+    this["actionUrl"] = assign<string>("actionUrl");
+    this["notificationUrl"] = assign<string>("notificationUrl");
   }
 }

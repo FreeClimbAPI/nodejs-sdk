@@ -135,35 +135,22 @@ export class SMSTenDLCPartnerCampaignsListResult {
   }
   public constructor(args: ArgumentsType) {
     const assign = <T>(attribute: keyof ArgumentsType): T => {
-      return (args[attribute] ??
-        SMSTenDLCPartnerCampaignsListResult.attributeTypeMap.find(
-          (attr) => attr.name === attribute,
-        )?.defaultValue) as T;
+      return (
+        args.hasOwnProperty(attribute)
+          ? args[attribute]
+          : SMSTenDLCPartnerCampaignsListResult.attributeTypeMap.find(
+              (attr) => attr.name === attribute,
+            )?.defaultValue
+      ) as T;
     };
-    if (args.hasOwnProperty("total")) {
-      this["total"] = assign<number>("total");
-    }
-    if (args.hasOwnProperty("start")) {
-      this["start"] = assign<number>("start");
-    }
-    if (args.hasOwnProperty("end")) {
-      this["end"] = assign<number>("end");
-    }
-    if (args.hasOwnProperty("page")) {
-      this["page"] = assign<number>("page");
-    }
-    if (args.hasOwnProperty("numPages")) {
-      this["numPages"] = assign<number>("numPages");
-    }
-    if (args.hasOwnProperty("pageSize")) {
-      this["pageSize"] = assign<number>("pageSize");
-    }
-    if (args.hasOwnProperty("nextPageUri")) {
-      this["nextPageUri"] = assign<string>("nextPageUri");
-    }
-    if (args.hasOwnProperty("partnerCampaigns")) {
-      this["partnerCampaigns"] =
-        assign<Array<SMSTenDLCPartnerCampaign>>("partnerCampaigns");
-    }
+    this["total"] = assign<number>("total");
+    this["start"] = assign<number>("start");
+    this["end"] = assign<number>("end");
+    this["page"] = assign<number>("page");
+    this["numPages"] = assign<number>("numPages");
+    this["pageSize"] = assign<number>("pageSize");
+    this["nextPageUri"] = assign<string>("nextPageUri");
+    this["partnerCampaigns"] =
+      assign<Array<SMSTenDLCPartnerCampaign>>("partnerCampaigns");
   }
 }

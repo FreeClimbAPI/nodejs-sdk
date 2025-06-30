@@ -2,7 +2,7 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("IfMachine", () => {
-  describe("Test with true values", () => {
+  describe("Test with truthy values", () => {
     describe(".REDIRECT", () => {
       it("resolves to correct value for REDIRECT enum property", () => {
         expect(freeclimb.IfMachine.REDIRECT).toBe("redirect");

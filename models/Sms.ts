@@ -91,21 +91,16 @@ export class Sms extends PerclCommand {
   public constructor(args: ArgumentsType) {
     super({ command: "Sms" });
     const assign = <T>(attribute: keyof ArgumentsType): T => {
-      return (args[attribute] ??
-        Sms.attributeTypeMap.find((attr) => attr.name === attribute)
-          ?.defaultValue) as T;
+      return (
+        args.hasOwnProperty(attribute)
+          ? args[attribute]
+          : Sms.attributeTypeMap.find((attr) => attr.name === attribute)
+              ?.defaultValue
+      ) as T;
     };
-    if (args.hasOwnProperty("to")) {
-      this["to"] = assign<string>("to");
-    }
-    if (args.hasOwnProperty("from")) {
-      this["from"] = assign<string>("from");
-    }
-    if (args.hasOwnProperty("text")) {
-      this["text"] = assign<string>("text");
-    }
-    if (args.hasOwnProperty("notificationUrl")) {
-      this["notificationUrl"] = assign<string>("notificationUrl");
-    }
+    this["to"] = assign<string>("to");
+    this["from"] = assign<string>("from");
+    this["text"] = assign<string>("text");
+    this["notificationUrl"] = assign<string>("notificationUrl");
   }
 }

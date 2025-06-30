@@ -50,13 +50,15 @@ export class PerclCommand {
   }
   public constructor(args: ArgumentsType) {
     const assign = <T>(attribute: keyof ArgumentsType): T => {
-      return (args[attribute] ??
-        PerclCommand.attributeTypeMap.find((attr) => attr.name === attribute)
-          ?.defaultValue) as T;
+      return (
+        args.hasOwnProperty(attribute)
+          ? args[attribute]
+          : PerclCommand.attributeTypeMap.find(
+              (attr) => attr.name === attribute,
+            )?.defaultValue
+      ) as T;
     };
-    if (args.hasOwnProperty("command")) {
-      this["command"] = assign<string>("command");
-    }
+    this["command"] = assign<string>("command");
   }
   public toPerclObject() {
     const reduce = (acc: any, attr: AttributeType) => {

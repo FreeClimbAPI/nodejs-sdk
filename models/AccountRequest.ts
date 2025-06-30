@@ -59,15 +59,15 @@ export class AccountRequest {
   }
   public constructor(args: ArgumentsType) {
     const assign = <T>(attribute: keyof ArgumentsType): T => {
-      return (args[attribute] ??
-        AccountRequest.attributeTypeMap.find((attr) => attr.name === attribute)
-          ?.defaultValue) as T;
+      return (
+        args.hasOwnProperty(attribute)
+          ? args[attribute]
+          : AccountRequest.attributeTypeMap.find(
+              (attr) => attr.name === attribute,
+            )?.defaultValue
+      ) as T;
     };
-    if (args.hasOwnProperty("alias")) {
-      this["alias"] = assign<string>("alias");
-    }
-    if (args.hasOwnProperty("label")) {
-      this["label"] = assign<string>("label");
-    }
+    this["alias"] = assign<string>("alias");
+    this["label"] = assign<string>("label");
   }
 }

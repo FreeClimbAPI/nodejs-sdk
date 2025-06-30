@@ -130,37 +130,22 @@ export class TFNCampaign {
   }
   public constructor(args: ArgumentsType) {
     const assign = <T>(attribute: keyof ArgumentsType): T => {
-      return (args[attribute] ??
-        TFNCampaign.attributeTypeMap.find((attr) => attr.name === attribute)
-          ?.defaultValue) as T;
+      return (
+        args.hasOwnProperty(attribute)
+          ? args[attribute]
+          : TFNCampaign.attributeTypeMap.find((attr) => attr.name === attribute)
+              ?.defaultValue
+      ) as T;
     };
-    if (args.hasOwnProperty("accountId")) {
-      this["accountId"] = assign<string>("accountId");
-    }
-    if (args.hasOwnProperty("campaignId")) {
-      this["campaignId"] = assign<string>("campaignId");
-    }
-    if (args.hasOwnProperty("useCase")) {
-      this["useCase"] = assign<string>("useCase");
-    }
-    if (args.hasOwnProperty("registrationStatus")) {
-      this["registrationStatus"] =
-        assign<SMSTollFreeCampaignRegistrationStatus>("registrationStatus");
-    }
-    if (args.hasOwnProperty("dateCreated")) {
-      this["dateCreated"] = assign<string>("dateCreated");
-    }
-    if (args.hasOwnProperty("dateUpdated")) {
-      this["dateUpdated"] = assign<string>("dateUpdated");
-    }
-    if (args.hasOwnProperty("dateCreatedISO")) {
-      this["dateCreatedISO"] = assign<string>("dateCreatedISO");
-    }
-    if (args.hasOwnProperty("dateUpdatedISO")) {
-      this["dateUpdatedISO"] = assign<string>("dateUpdatedISO");
-    }
-    if (args.hasOwnProperty("revision")) {
-      this["revision"] = assign<number>("revision");
-    }
+    this["accountId"] = assign<string>("accountId");
+    this["campaignId"] = assign<string>("campaignId");
+    this["useCase"] = assign<string>("useCase");
+    this["registrationStatus"] =
+      assign<SMSTollFreeCampaignRegistrationStatus>("registrationStatus");
+    this["dateCreated"] = assign<string>("dateCreated");
+    this["dateUpdated"] = assign<string>("dateUpdated");
+    this["dateCreatedISO"] = assign<string>("dateCreatedISO");
+    this["dateUpdatedISO"] = assign<string>("dateUpdatedISO");
+    this["revision"] = assign<number>("revision");
   }
 }

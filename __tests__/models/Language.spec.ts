@@ -2,7 +2,7 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("Language", () => {
-  describe("Test with true values", () => {
+  describe("Test with truthy values", () => {
     describe(".CATALAN", () => {
       it("resolves to correct value for CATALAN enum property", () => {
         expect(freeclimb.Language.CATALAN).toBe("ca-ES");

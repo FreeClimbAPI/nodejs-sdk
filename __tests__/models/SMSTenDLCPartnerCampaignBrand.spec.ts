@@ -2,7 +2,7 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("SMSTenDLCPartnerCampaignBrand", () => {
-  describe("Test with true values", () => {
+  describe("Test with truthy values", () => {
     let model: freeclimb.SMSTenDLCPartnerCampaignBrand =
       new freeclimb.SMSTenDLCPartnerCampaignBrand({
         accountId: "test_accountId",

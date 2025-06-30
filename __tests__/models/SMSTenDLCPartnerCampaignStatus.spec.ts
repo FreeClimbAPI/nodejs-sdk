@@ -2,7 +2,7 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("SMSTenDLCPartnerCampaignStatus", () => {
-  describe("Test with true values", () => {
+  describe("Test with truthy values", () => {
     describe(".ACTIVE", () => {
       it("resolves to correct value for ACTIVE enum property", () => {
         expect(freeclimb.SMSTenDLCPartnerCampaignStatus.ACTIVE).toBe("ACTIVE");

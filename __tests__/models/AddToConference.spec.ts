@@ -2,7 +2,7 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("AddToConference", () => {
-  describe("Test with true values", () => {
+  describe("Test with truthy values", () => {
     let model: freeclimb.AddToConference = new freeclimb.AddToConference({
       allowCallControl: true,
       callControlSequence: "test_callControlSequence",

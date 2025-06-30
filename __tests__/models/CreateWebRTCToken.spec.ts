@@ -2,7 +2,7 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("CreateWebRTCToken", () => {
-  describe("Test with true values", () => {
+  describe("Test with truthy values", () => {
     let model: freeclimb.CreateWebRTCToken = new freeclimb.CreateWebRTCToken({
       to: "test_to",
       from: "test_from",

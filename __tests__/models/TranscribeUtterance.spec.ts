@@ -2,7 +2,7 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("TranscribeUtterance", () => {
-  describe("Test with true values", () => {
+  describe("Test with truthy values", () => {
     let model: freeclimb.TranscribeUtterance =
       new freeclimb.TranscribeUtterance({
         actionUrl: "https://123.abc",

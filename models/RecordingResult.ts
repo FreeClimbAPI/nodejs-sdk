@@ -150,36 +150,22 @@ export class RecordingResult {
   }
   public constructor(args: ArgumentsType) {
     const assign = <T>(attribute: keyof ArgumentsType): T => {
-      return (args[attribute] ??
-        RecordingResult.attributeTypeMap.find((attr) => attr.name === attribute)
-          ?.defaultValue) as T;
+      return (
+        args.hasOwnProperty(attribute)
+          ? args[attribute]
+          : RecordingResult.attributeTypeMap.find(
+              (attr) => attr.name === attribute,
+            )?.defaultValue
+      ) as T;
     };
-    if (args.hasOwnProperty("uri")) {
-      this["uri"] = assign<string>("uri");
-    }
-    if (args.hasOwnProperty("dateCreated")) {
-      this["dateCreated"] = assign<string>("dateCreated");
-    }
-    if (args.hasOwnProperty("dateUpdated")) {
-      this["dateUpdated"] = assign<string>("dateUpdated");
-    }
-    if (args.hasOwnProperty("revision")) {
-      this["revision"] = assign<number>("revision");
-    }
-    if (args.hasOwnProperty("recordingId")) {
-      this["recordingId"] = assign<string>("recordingId");
-    }
-    if (args.hasOwnProperty("accountId")) {
-      this["accountId"] = assign<string>("accountId");
-    }
-    if (args.hasOwnProperty("callId")) {
-      this["callId"] = assign<string>("callId");
-    }
-    if (args.hasOwnProperty("durationSec")) {
-      this["durationSec"] = assign<number>("durationSec");
-    }
-    if (args.hasOwnProperty("conferenceId")) {
-      this["conferenceId"] = assign<string>("conferenceId");
-    }
+    this["uri"] = assign<string>("uri");
+    this["dateCreated"] = assign<string>("dateCreated");
+    this["dateUpdated"] = assign<string>("dateUpdated");
+    this["revision"] = assign<number>("revision");
+    this["recordingId"] = assign<string>("recordingId");
+    this["accountId"] = assign<string>("accountId");
+    this["callId"] = assign<string>("callId");
+    this["durationSec"] = assign<number>("durationSec");
+    this["conferenceId"] = assign<string>("conferenceId");
   }
 }

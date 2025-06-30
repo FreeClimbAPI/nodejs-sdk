@@ -2,7 +2,7 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("PlayBeep", () => {
-  describe("Test with true values", () => {
+  describe("Test with truthy values", () => {
     describe(".ALWAYS", () => {
       it("resolves to correct value for ALWAYS enum property", () => {
         expect(freeclimb.PlayBeep.ALWAYS).toBe("always");

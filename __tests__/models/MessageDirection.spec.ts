@@ -2,7 +2,7 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("MessageDirection", () => {
-  describe("Test with true values", () => {
+  describe("Test with truthy values", () => {
     describe(".INBOUND", () => {
       it("resolves to correct value for INBOUND enum property", () => {
         expect(freeclimb.MessageDirection.INBOUND).toBe("inbound");

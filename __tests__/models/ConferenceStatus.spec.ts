@@ -2,7 +2,7 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("ConferenceStatus", () => {
-  describe("Test with true values", () => {
+  describe("Test with truthy values", () => {
     describe(".EMPTY", () => {
       it("resolves to correct value for EMPTY enum property", () => {
         expect(freeclimb.ConferenceStatus.EMPTY).toBe("empty");

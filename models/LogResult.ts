@@ -122,30 +122,19 @@ export class LogResult {
   }
   public constructor(args: ArgumentsType) {
     const assign = <T>(attribute: keyof ArgumentsType): T => {
-      return (args[attribute] ??
-        LogResult.attributeTypeMap.find((attr) => attr.name === attribute)
-          ?.defaultValue) as T;
+      return (
+        args.hasOwnProperty(attribute)
+          ? args[attribute]
+          : LogResult.attributeTypeMap.find((attr) => attr.name === attribute)
+              ?.defaultValue
+      ) as T;
     };
-    if (args.hasOwnProperty("timestamp")) {
-      this["timestamp"] = assign<number>("timestamp");
-    }
-    if (args.hasOwnProperty("level")) {
-      this["level"] = assign<LogLevel>("level");
-    }
-    if (args.hasOwnProperty("requestId")) {
-      this["requestId"] = assign<string>("requestId");
-    }
-    if (args.hasOwnProperty("accountId")) {
-      this["accountId"] = assign<string>("accountId");
-    }
-    if (args.hasOwnProperty("callId")) {
-      this["callId"] = assign<string>("callId");
-    }
-    if (args.hasOwnProperty("message")) {
-      this["message"] = assign<string>("message");
-    }
-    if (args.hasOwnProperty("metadata")) {
-      this["metadata"] = assign<any>("metadata");
-    }
+    this["timestamp"] = assign<number>("timestamp");
+    this["level"] = assign<LogLevel>("level");
+    this["requestId"] = assign<string>("requestId");
+    this["accountId"] = assign<string>("accountId");
+    this["callId"] = assign<string>("callId");
+    this["message"] = assign<string>("message");
+    this["metadata"] = assign<any>("metadata");
   }
 }

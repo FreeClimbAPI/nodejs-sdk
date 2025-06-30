@@ -2,7 +2,7 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("MessageStatusWebhook", () => {
-  describe("Test with true values", () => {
+  describe("Test with truthy values", () => {
     let model: freeclimb.MessageStatusWebhook =
       new freeclimb.MessageStatusWebhook({
         requestType: "test_requestType",

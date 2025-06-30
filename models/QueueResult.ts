@@ -176,44 +176,23 @@ export class QueueResult {
   }
   public constructor(args: ArgumentsType) {
     const assign = <T>(attribute: keyof ArgumentsType): T => {
-      return (args[attribute] ??
-        QueueResult.attributeTypeMap.find((attr) => attr.name === attribute)
-          ?.defaultValue) as T;
+      return (
+        args.hasOwnProperty(attribute)
+          ? args[attribute]
+          : QueueResult.attributeTypeMap.find((attr) => attr.name === attribute)
+              ?.defaultValue
+      ) as T;
     };
-    if (args.hasOwnProperty("uri")) {
-      this["uri"] = assign<string>("uri");
-    }
-    if (args.hasOwnProperty("dateCreated")) {
-      this["dateCreated"] = assign<string>("dateCreated");
-    }
-    if (args.hasOwnProperty("dateUpdated")) {
-      this["dateUpdated"] = assign<string>("dateUpdated");
-    }
-    if (args.hasOwnProperty("revision")) {
-      this["revision"] = assign<number>("revision");
-    }
-    if (args.hasOwnProperty("accountId")) {
-      this["accountId"] = assign<string>("accountId");
-    }
-    if (args.hasOwnProperty("queueId")) {
-      this["queueId"] = assign<string>("queueId");
-    }
-    if (args.hasOwnProperty("alias")) {
-      this["alias"] = assign<string>("alias");
-    }
-    if (args.hasOwnProperty("maxSize")) {
-      this["maxSize"] = assign<number>("maxSize");
-    }
-    if (args.hasOwnProperty("currentSize")) {
-      this["currentSize"] = assign<number>("currentSize");
-    }
-    if (args.hasOwnProperty("averageQueueRemovalTime")) {
-      this["averageQueueRemovalTime"] = assign<number>(
-        "averageQueueRemovalTime",
-      );
-    }
-    if (args.hasOwnProperty("subresourceUris")) {
-      this["subresourceUris"] = assign<any>("subresourceUris");
-    }
+    this["uri"] = assign<string>("uri");
+    this["dateCreated"] = assign<string>("dateCreated");
+    this["dateUpdated"] = assign<string>("dateUpdated");
+    this["revision"] = assign<number>("revision");
+    this["accountId"] = assign<string>("accountId");
+    this["queueId"] = assign<string>("queueId");
+    this["alias"] = assign<string>("alias");
+    this["maxSize"] = assign<number>("maxSize");
+    this["currentSize"] = assign<number>("currentSize");
+    this["averageQueueRemovalTime"] = assign<number>("averageQueueRemovalTime");
+    this["subresourceUris"] = assign<any>("subresourceUris");
   }
 }

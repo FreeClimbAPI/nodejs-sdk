@@ -2,7 +2,7 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("MachineType", () => {
-  describe("Test with true values", () => {
+  describe("Test with truthy values", () => {
     describe(".ANSWERING_MACHINE", () => {
       it("resolves to correct value for ANSWERING_MACHINE enum property", () => {
         expect(freeclimb.MachineType.ANSWERING_MACHINE).toBe(

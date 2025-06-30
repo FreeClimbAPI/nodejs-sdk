@@ -256,62 +256,31 @@ export class GetSpeechWebhook extends Webhook {
   public constructor(args: ArgumentsType) {
     super({ requestType: "getSpeech" });
     const assign = <T>(attribute: keyof ArgumentsType): T => {
-      return (args[attribute] ??
-        GetSpeechWebhook.attributeTypeMap.find(
-          (attr) => attr.name === attribute,
-        )?.defaultValue) as T;
+      return (
+        args.hasOwnProperty(attribute)
+          ? args[attribute]
+          : GetSpeechWebhook.attributeTypeMap.find(
+              (attr) => attr.name === attribute,
+            )?.defaultValue
+      ) as T;
     };
-    if (args.hasOwnProperty("requestType")) {
-      this["requestType"] = assign<string>("requestType");
-    }
-    if (args.hasOwnProperty("callId")) {
-      this["callId"] = assign<string>("callId");
-    }
-    if (args.hasOwnProperty("accountId")) {
-      this["accountId"] = assign<string>("accountId");
-    }
-    if (args.hasOwnProperty("from")) {
-      this["from"] = assign<string>("from");
-    }
-    if (args.hasOwnProperty("to")) {
-      this["to"] = assign<string>("to");
-    }
-    if (args.hasOwnProperty("callStatus")) {
-      this["callStatus"] = assign<CallStatus>("callStatus");
-    }
-    if (args.hasOwnProperty("direction")) {
-      this["direction"] = assign<CallDirection>("direction");
-    }
-    if (args.hasOwnProperty("conferenceId")) {
-      this["conferenceId"] = assign<string>("conferenceId");
-    }
-    if (args.hasOwnProperty("queueId")) {
-      this["queueId"] = assign<string>("queueId");
-    }
-    if (args.hasOwnProperty("reason")) {
-      this["reason"] = assign<GetSpeechReason>("reason");
-    }
-    if (args.hasOwnProperty("recognitionResult")) {
-      this["recognitionResult"] = assign<string>("recognitionResult");
-    }
-    if (args.hasOwnProperty("confidence")) {
-      this["confidence"] = assign<number>("confidence");
-    }
-    if (args.hasOwnProperty("parentCallId")) {
-      this["parentCallId"] = assign<string>("parentCallId");
-    }
-    if (args.hasOwnProperty("completionReason")) {
-      this["completionReason"] = assign<string>("completionReason");
-    }
-    if (args.hasOwnProperty("completionCause")) {
-      this["completionCause"] = assign<string>("completionCause");
-    }
-    if (args.hasOwnProperty("mrcpCode")) {
-      this["mrcpCode"] = assign<number>("mrcpCode");
-    }
-    if (args.hasOwnProperty("mrcpDiagnostic")) {
-      this["mrcpDiagnostic"] = assign<string>("mrcpDiagnostic");
-    }
+    this["requestType"] = assign<string>("requestType");
+    this["callId"] = assign<string>("callId");
+    this["accountId"] = assign<string>("accountId");
+    this["from"] = assign<string>("from");
+    this["to"] = assign<string>("to");
+    this["callStatus"] = assign<CallStatus>("callStatus");
+    this["direction"] = assign<CallDirection>("direction");
+    this["conferenceId"] = assign<string>("conferenceId");
+    this["queueId"] = assign<string>("queueId");
+    this["reason"] = assign<GetSpeechReason>("reason");
+    this["recognitionResult"] = assign<string>("recognitionResult");
+    this["confidence"] = assign<number>("confidence");
+    this["parentCallId"] = assign<string>("parentCallId");
+    this["completionReason"] = assign<string>("completionReason");
+    this["completionCause"] = assign<string>("completionCause");
+    this["mrcpCode"] = assign<number>("mrcpCode");
+    this["mrcpDiagnostic"] = assign<string>("mrcpDiagnostic");
   }
   public static deserialize(payload: string): GetSpeechWebhook {
     return new GetSpeechWebhook(JSON.parse(payload));

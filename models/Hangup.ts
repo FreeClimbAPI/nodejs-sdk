@@ -52,12 +52,13 @@ export class Hangup extends PerclCommand {
   public constructor(args: ArgumentsType) {
     super({ command: "Hangup" });
     const assign = <T>(attribute: keyof ArgumentsType): T => {
-      return (args[attribute] ??
-        Hangup.attributeTypeMap.find((attr) => attr.name === attribute)
-          ?.defaultValue) as T;
+      return (
+        args.hasOwnProperty(attribute)
+          ? args[attribute]
+          : Hangup.attributeTypeMap.find((attr) => attr.name === attribute)
+              ?.defaultValue
+      ) as T;
     };
-    if (args.hasOwnProperty("reason")) {
-      this["reason"] = assign<string>("reason");
-    }
+    this["reason"] = assign<string>("reason");
   }
 }

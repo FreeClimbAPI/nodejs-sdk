@@ -2,7 +2,7 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("AnsweredBy", () => {
-  describe("Test with true values", () => {
+  describe("Test with truthy values", () => {
     describe(".HUMAN", () => {
       it("resolves to correct value for HUMAN enum property", () => {
         expect(freeclimb.AnsweredBy.HUMAN).toBe("human");

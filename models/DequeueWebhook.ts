@@ -178,43 +178,25 @@ export class DequeueWebhook extends Webhook {
   public constructor(args: ArgumentsType) {
     super({ requestType: "dequeue" });
     const assign = <T>(attribute: keyof ArgumentsType): T => {
-      return (args[attribute] ??
-        DequeueWebhook.attributeTypeMap.find((attr) => attr.name === attribute)
-          ?.defaultValue) as T;
+      return (
+        args.hasOwnProperty(attribute)
+          ? args[attribute]
+          : DequeueWebhook.attributeTypeMap.find(
+              (attr) => attr.name === attribute,
+            )?.defaultValue
+      ) as T;
     };
-    if (args.hasOwnProperty("requestType")) {
-      this["requestType"] = assign<string>("requestType");
-    }
-    if (args.hasOwnProperty("callId")) {
-      this["callId"] = assign<string>("callId");
-    }
-    if (args.hasOwnProperty("accountId")) {
-      this["accountId"] = assign<string>("accountId");
-    }
-    if (args.hasOwnProperty("from")) {
-      this["from"] = assign<string>("from");
-    }
-    if (args.hasOwnProperty("to")) {
-      this["to"] = assign<string>("to");
-    }
-    if (args.hasOwnProperty("callStatus")) {
-      this["callStatus"] = assign<CallStatus>("callStatus");
-    }
-    if (args.hasOwnProperty("direction")) {
-      this["direction"] = assign<CallDirection>("direction");
-    }
-    if (args.hasOwnProperty("conferenceId")) {
-      this["conferenceId"] = assign<string>("conferenceId");
-    }
-    if (args.hasOwnProperty("queueId")) {
-      this["queueId"] = assign<string>("queueId");
-    }
-    if (args.hasOwnProperty("queueResult")) {
-      this["queueResult"] = assign<string>("queueResult");
-    }
-    if (args.hasOwnProperty("queueTime")) {
-      this["queueTime"] = assign<number>("queueTime");
-    }
+    this["requestType"] = assign<string>("requestType");
+    this["callId"] = assign<string>("callId");
+    this["accountId"] = assign<string>("accountId");
+    this["from"] = assign<string>("from");
+    this["to"] = assign<string>("to");
+    this["callStatus"] = assign<CallStatus>("callStatus");
+    this["direction"] = assign<CallDirection>("direction");
+    this["conferenceId"] = assign<string>("conferenceId");
+    this["queueId"] = assign<string>("queueId");
+    this["queueResult"] = assign<string>("queueResult");
+    this["queueTime"] = assign<number>("queueTime");
   }
   public static deserialize(payload: string): DequeueWebhook {
     return new DequeueWebhook(JSON.parse(payload));

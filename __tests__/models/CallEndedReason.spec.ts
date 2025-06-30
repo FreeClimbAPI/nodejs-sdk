@@ -2,7 +2,7 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("CallEndedReason", () => {
-  describe("Test with true values", () => {
+  describe("Test with truthy values", () => {
     describe(".BUSY", () => {
       it("resolves to correct value for BUSY enum property", () => {
         expect(freeclimb.CallEndedReason.BUSY).toBe("busy");

@@ -202,49 +202,26 @@ export class ApplicationResult {
   }
   public constructor(args: ArgumentsType) {
     const assign = <T>(attribute: keyof ArgumentsType): T => {
-      return (args[attribute] ??
-        ApplicationResult.attributeTypeMap.find(
-          (attr) => attr.name === attribute,
-        )?.defaultValue) as T;
+      return (
+        args.hasOwnProperty(attribute)
+          ? args[attribute]
+          : ApplicationResult.attributeTypeMap.find(
+              (attr) => attr.name === attribute,
+            )?.defaultValue
+      ) as T;
     };
-    if (args.hasOwnProperty("uri")) {
-      this["uri"] = assign<string>("uri");
-    }
-    if (args.hasOwnProperty("dateCreated")) {
-      this["dateCreated"] = assign<string>("dateCreated");
-    }
-    if (args.hasOwnProperty("dateUpdated")) {
-      this["dateUpdated"] = assign<string>("dateUpdated");
-    }
-    if (args.hasOwnProperty("revision")) {
-      this["revision"] = assign<number>("revision");
-    }
-    if (args.hasOwnProperty("accountId")) {
-      this["accountId"] = assign<string>("accountId");
-    }
-    if (args.hasOwnProperty("applicationId")) {
-      this["applicationId"] = assign<string>("applicationId");
-    }
-    if (args.hasOwnProperty("alias")) {
-      this["alias"] = assign<string>("alias");
-    }
-    if (args.hasOwnProperty("voiceUrl")) {
-      this["voiceUrl"] = assign<string>("voiceUrl");
-    }
-    if (args.hasOwnProperty("voiceFallbackUrl")) {
-      this["voiceFallbackUrl"] = assign<string>("voiceFallbackUrl");
-    }
-    if (args.hasOwnProperty("callConnectUrl")) {
-      this["callConnectUrl"] = assign<string>("callConnectUrl");
-    }
-    if (args.hasOwnProperty("statusCallbackUrl")) {
-      this["statusCallbackUrl"] = assign<string>("statusCallbackUrl");
-    }
-    if (args.hasOwnProperty("smsUrl")) {
-      this["smsUrl"] = assign<string>("smsUrl");
-    }
-    if (args.hasOwnProperty("smsFallbackUrl")) {
-      this["smsFallbackUrl"] = assign<string>("smsFallbackUrl");
-    }
+    this["uri"] = assign<string>("uri");
+    this["dateCreated"] = assign<string>("dateCreated");
+    this["dateUpdated"] = assign<string>("dateUpdated");
+    this["revision"] = assign<number>("revision");
+    this["accountId"] = assign<string>("accountId");
+    this["applicationId"] = assign<string>("applicationId");
+    this["alias"] = assign<string>("alias");
+    this["voiceUrl"] = assign<string>("voiceUrl");
+    this["voiceFallbackUrl"] = assign<string>("voiceFallbackUrl");
+    this["callConnectUrl"] = assign<string>("callConnectUrl");
+    this["statusCallbackUrl"] = assign<string>("statusCallbackUrl");
+    this["smsUrl"] = assign<string>("smsUrl");
+    this["smsFallbackUrl"] = assign<string>("smsFallbackUrl");
   }
 }

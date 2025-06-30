@@ -2,7 +2,7 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("GetSpeechReason", () => {
-  describe("Test with true values", () => {
+  describe("Test with truthy values", () => {
     describe(".ERROR", () => {
       it("resolves to correct value for ERROR enum property", () => {
         expect(freeclimb.GetSpeechReason.ERROR).toBe("error");

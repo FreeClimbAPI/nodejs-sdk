@@ -36,9 +36,12 @@ export class Dequeue extends PerclCommand {
   public constructor(args: ArgumentsType) {
     super({ command: "Dequeue" });
     const assign = <T>(attribute: keyof ArgumentsType): T => {
-      return (args[attribute] ??
-        Dequeue.attributeTypeMap.find((attr) => attr.name === attribute)
-          ?.defaultValue) as T;
+      return (
+        args.hasOwnProperty(attribute)
+          ? args[attribute]
+          : Dequeue.attributeTypeMap.find((attr) => attr.name === attribute)
+              ?.defaultValue
+      ) as T;
     };
   }
 }

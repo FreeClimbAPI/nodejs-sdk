@@ -182,44 +182,25 @@ export class MessageStatusWebhook extends Webhook {
   public constructor(args: ArgumentsType) {
     super({ requestType: "messageStatus" });
     const assign = <T>(attribute: keyof ArgumentsType): T => {
-      return (args[attribute] ??
-        MessageStatusWebhook.attributeTypeMap.find(
-          (attr) => attr.name === attribute,
-        )?.defaultValue) as T;
+      return (
+        args.hasOwnProperty(attribute)
+          ? args[attribute]
+          : MessageStatusWebhook.attributeTypeMap.find(
+              (attr) => attr.name === attribute,
+            )?.defaultValue
+      ) as T;
     };
-    if (args.hasOwnProperty("requestType")) {
-      this["requestType"] = assign<string>("requestType");
-    }
-    if (args.hasOwnProperty("accountId")) {
-      this["accountId"] = assign<string>("accountId");
-    }
-    if (args.hasOwnProperty("messageId")) {
-      this["messageId"] = assign<string>("messageId");
-    }
-    if (args.hasOwnProperty("callId")) {
-      this["callId"] = assign<string>("callId");
-    }
-    if (args.hasOwnProperty("from")) {
-      this["from"] = assign<string>("from");
-    }
-    if (args.hasOwnProperty("to")) {
-      this["to"] = assign<string>("to");
-    }
-    if (args.hasOwnProperty("text")) {
-      this["text"] = assign<string>("text");
-    }
-    if (args.hasOwnProperty("direction")) {
-      this["direction"] = assign<string>("direction");
-    }
-    if (args.hasOwnProperty("applicationId")) {
-      this["applicationId"] = assign<string>("applicationId");
-    }
-    if (args.hasOwnProperty("status")) {
-      this["status"] = assign<MessageStatus>("status");
-    }
-    if (args.hasOwnProperty("phoneNumberId")) {
-      this["phoneNumberId"] = assign<string>("phoneNumberId");
-    }
+    this["requestType"] = assign<string>("requestType");
+    this["accountId"] = assign<string>("accountId");
+    this["messageId"] = assign<string>("messageId");
+    this["callId"] = assign<string>("callId");
+    this["from"] = assign<string>("from");
+    this["to"] = assign<string>("to");
+    this["text"] = assign<string>("text");
+    this["direction"] = assign<string>("direction");
+    this["applicationId"] = assign<string>("applicationId");
+    this["status"] = assign<MessageStatus>("status");
+    this["phoneNumberId"] = assign<string>("phoneNumberId");
   }
   public static deserialize(payload: string): MessageStatusWebhook {
     return new MessageStatusWebhook(JSON.parse(payload));

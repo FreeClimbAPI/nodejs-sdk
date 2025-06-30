@@ -2,7 +2,7 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("SMSTenDLCBrandStockExchange", () => {
-  describe("Test with true values", () => {
+  describe("Test with truthy values", () => {
     describe(".NONE", () => {
       it("resolves to correct value for NONE enum property", () => {
         expect(freeclimb.SMSTenDLCBrandStockExchange.NONE).toBe("NONE");
