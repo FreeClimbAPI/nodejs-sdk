@@ -2,35 +2,70 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("UpdateConferenceParticipantRequest", () => {
-  let model: freeclimb.UpdateConferenceParticipantRequest =
-    new freeclimb.UpdateConferenceParticipantRequest({
-      talk: true,
-      listen: true,
-      dtmfPassThrough: true,
+  describe("Test with true values", () => {
+    let model: freeclimb.UpdateConferenceParticipantRequest =
+      new freeclimb.UpdateConferenceParticipantRequest({
+        talk: true,
+        listen: true,
+        dtmfPassThrough: true,
+      });
+    describe("UpdateConferenceParticipantRequest class test", () => {
+      it("resolves to the class type upon initialization", () => {
+        expect(model).toBeInstanceOf(
+          freeclimb.UpdateConferenceParticipantRequest,
+        );
+      });
     });
-  describe("UpdateConferenceParticipantRequest class test", () => {
-    it("resolves to the class type upon initialization", () => {
-      expect(model).toBeInstanceOf(
-        freeclimb.UpdateConferenceParticipantRequest,
-      );
+    describe(".talk", () => {
+      it("resolves to particular value on initialization", () => {
+        const value = true;
+        expect(model.talk).toBe(value);
+      });
+    });
+    describe(".listen", () => {
+      it("resolves to particular value on initialization", () => {
+        const value = true;
+        expect(model.listen).toBe(value);
+      });
+    });
+    describe(".dtmfPassThrough", () => {
+      it("resolves to particular value on initialization", () => {
+        const value = true;
+        expect(model.dtmfPassThrough).toBe(value);
+      });
     });
   });
-  describe(".talk", () => {
-    it("resolves to particular value on initialization", () => {
-      const value = true;
-      expect(model.talk).toBe(value);
+  describe("Test with falsy values", () => {
+    let model: freeclimb.UpdateConferenceParticipantRequest =
+      new freeclimb.UpdateConferenceParticipantRequest({
+        talk: false,
+        listen: false,
+        dtmfPassThrough: false,
+      });
+    describe("UpdateConferenceParticipantRequest class test", () => {
+      it("resolves to the class type upon initialization", () => {
+        expect(model).toBeInstanceOf(
+          freeclimb.UpdateConferenceParticipantRequest,
+        );
+      });
     });
-  });
-  describe(".listen", () => {
-    it("resolves to particular value on initialization", () => {
-      const value = true;
-      expect(model.listen).toBe(value);
+    describe(".talk", () => {
+      it("resolves to particular value on initialization", () => {
+        const value = false;
+        expect(model.talk).toBe(value);
+      });
     });
-  });
-  describe(".dtmfPassThrough", () => {
-    it("resolves to particular value on initialization", () => {
-      const value = true;
-      expect(model.dtmfPassThrough).toBe(value);
+    describe(".listen", () => {
+      it("resolves to particular value on initialization", () => {
+        const value = false;
+        expect(model.listen).toBe(value);
+      });
+    });
+    describe(".dtmfPassThrough", () => {
+      it("resolves to particular value on initialization", () => {
+        const value = false;
+        expect(model.dtmfPassThrough).toBe(value);
+      });
     });
   });
 });
