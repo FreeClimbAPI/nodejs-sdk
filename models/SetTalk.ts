@@ -56,7 +56,7 @@ export class SetTalk extends PerclCommand {
         SetTalk.attributeTypeMap.find((attr) => attr.name === attribute)
           ?.defaultValue) as T;
     };
-    if (args["talk"]) {
+    if (args.hasOwnProperty("talk")) {
       this["talk"] = assign<boolean>("talk");
     }
   }

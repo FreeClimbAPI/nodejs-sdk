@@ -73,13 +73,13 @@ export class UpdateConferenceRequest {
           (attr) => attr.name === attribute,
         )?.defaultValue) as T;
     };
-    if (args["alias"]) {
+    if (args.hasOwnProperty("alias")) {
       this["alias"] = assign<string>("alias");
     }
-    if (args["playBeep"]) {
+    if (args.hasOwnProperty("playBeep")) {
       this["playBeep"] = assign<PlayBeep>("playBeep");
     }
-    if (args["status"]) {
+    if (args.hasOwnProperty("status")) {
       this["status"] = assign<UpdateConferenceRequestStatus>("status");
     }
   }

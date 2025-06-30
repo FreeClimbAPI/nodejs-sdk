@@ -160,31 +160,31 @@ export class GetDigits extends PerclCommand {
         GetDigits.attributeTypeMap.find((attr) => attr.name === attribute)
           ?.defaultValue) as T;
     };
-    if (args["actionUrl"]) {
+    if (args.hasOwnProperty("actionUrl")) {
       this["actionUrl"] = assign<string>("actionUrl");
     }
-    if (args["digitTimeoutMs"]) {
+    if (args.hasOwnProperty("digitTimeoutMs")) {
       this["digitTimeoutMs"] = assign<number>("digitTimeoutMs");
     }
-    if (args["finishOnKey"]) {
+    if (args.hasOwnProperty("finishOnKey")) {
       this["finishOnKey"] = assign<string>("finishOnKey");
     }
-    if (args["flushBuffer"]) {
+    if (args.hasOwnProperty("flushBuffer")) {
       this["flushBuffer"] = assign<boolean>("flushBuffer");
     }
-    if (args["initialTimeoutMs"]) {
+    if (args.hasOwnProperty("initialTimeoutMs")) {
       this["initialTimeoutMs"] = assign<number>("initialTimeoutMs");
     }
-    if (args["maxDigits"]) {
+    if (args.hasOwnProperty("maxDigits")) {
       this["maxDigits"] = assign<number>("maxDigits");
     }
-    if (args["minDigits"]) {
+    if (args.hasOwnProperty("minDigits")) {
       this["minDigits"] = assign<number>("minDigits");
     }
-    if (args["prompts"]) {
+    if (args.hasOwnProperty("prompts")) {
       this["prompts"] = assign<Array<PerclCommand>>("prompts");
     }
-    if (args["privacyMode"]) {
+    if (args.hasOwnProperty("privacyMode")) {
       this["privacyMode"] = assign<boolean>("privacyMode");
     }
   }

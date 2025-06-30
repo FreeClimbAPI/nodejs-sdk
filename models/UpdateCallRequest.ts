@@ -49,7 +49,7 @@ export class UpdateCallRequest {
           (attr) => attr.name === attribute,
         )?.defaultValue) as T;
     };
-    if (args["status"]) {
+    if (args.hasOwnProperty("status")) {
       this["status"] = assign<UpdateCallRequestStatus>("status");
     }
   }

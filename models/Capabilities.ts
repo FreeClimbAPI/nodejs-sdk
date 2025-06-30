@@ -106,19 +106,19 @@ export class Capabilities {
         Capabilities.attributeTypeMap.find((attr) => attr.name === attribute)
           ?.defaultValue) as T;
     };
-    if (args["voice"]) {
+    if (args.hasOwnProperty("voice")) {
       this["voice"] = assign<boolean>("voice");
     }
-    if (args["sms"]) {
+    if (args.hasOwnProperty("sms")) {
       this["sms"] = assign<boolean>("sms");
     }
-    if (args["tollFree"]) {
+    if (args.hasOwnProperty("tollFree")) {
       this["tollFree"] = assign<boolean>("tollFree");
     }
-    if (args["tenDLC"]) {
+    if (args.hasOwnProperty("tenDLC")) {
       this["tenDLC"] = assign<boolean>("tenDLC");
     }
-    if (args["shortCode"]) {
+    if (args.hasOwnProperty("shortCode")) {
       this["shortCode"] = assign<boolean>("shortCode");
     }
   }

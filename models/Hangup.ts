@@ -56,7 +56,7 @@ export class Hangup extends PerclCommand {
         Hangup.attributeTypeMap.find((attr) => attr.name === attribute)
           ?.defaultValue) as T;
     };
-    if (args["reason"]) {
+    if (args.hasOwnProperty("reason")) {
       this["reason"] = assign<string>("reason");
     }
   }

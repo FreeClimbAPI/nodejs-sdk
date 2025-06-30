@@ -77,13 +77,13 @@ export class CreateWebRTCToken {
           (attr) => attr.name === attribute,
         )?.defaultValue) as T;
     };
-    if (args["to"]) {
+    if (args.hasOwnProperty("to")) {
       this["to"] = assign<string>("to");
     }
-    if (args["from"]) {
+    if (args.hasOwnProperty("from")) {
       this["from"] = assign<string>("from");
     }
-    if (args["uses"]) {
+    if (args.hasOwnProperty("uses")) {
       this["uses"] = assign<number>("uses");
     }
   }

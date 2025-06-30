@@ -55,7 +55,7 @@ export class PerclScript {
         PerclScript.attributeTypeMap.find((attr) => attr.name === attribute)
           ?.defaultValue) as T;
     };
-    if (args["commands"]) {
+    if (args.hasOwnProperty("commands")) {
       this["commands"] = assign<Array<PerclCommand>>("commands");
     }
   }

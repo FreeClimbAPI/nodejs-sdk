@@ -291,64 +291,64 @@ export class CallResult {
         CallResult.attributeTypeMap.find((attr) => attr.name === attribute)
           ?.defaultValue) as T;
     };
-    if (args["uri"]) {
+    if (args.hasOwnProperty("uri")) {
       this["uri"] = assign<string>("uri");
     }
-    if (args["dateCreated"]) {
+    if (args.hasOwnProperty("dateCreated")) {
       this["dateCreated"] = assign<string>("dateCreated");
     }
-    if (args["dateUpdated"]) {
+    if (args.hasOwnProperty("dateUpdated")) {
       this["dateUpdated"] = assign<string>("dateUpdated");
     }
-    if (args["revision"]) {
+    if (args.hasOwnProperty("revision")) {
       this["revision"] = assign<number>("revision");
     }
-    if (args["callId"]) {
+    if (args.hasOwnProperty("callId")) {
       this["callId"] = assign<string>("callId");
     }
-    if (args["parentCallId"]) {
+    if (args.hasOwnProperty("parentCallId")) {
       this["parentCallId"] = assign<string>("parentCallId");
     }
-    if (args["accountId"]) {
+    if (args.hasOwnProperty("accountId")) {
       this["accountId"] = assign<string>("accountId");
     }
-    if (args["from"]) {
+    if (args.hasOwnProperty("from")) {
       this["from"] = assign<string>("from");
     }
-    if (args["to"]) {
+    if (args.hasOwnProperty("to")) {
       this["to"] = assign<string>("to");
     }
-    if (args["phoneNumberId"]) {
+    if (args.hasOwnProperty("phoneNumberId")) {
       this["phoneNumberId"] = assign<string>("phoneNumberId");
     }
-    if (args["callStatus"]) {
+    if (args.hasOwnProperty("callStatus")) {
       this["callStatus"] = assign<CallStatus>("callStatus");
     }
-    if (args["startTime"]) {
+    if (args.hasOwnProperty("startTime")) {
       this["startTime"] = assign<string>("startTime");
     }
-    if (args["connectTime"]) {
+    if (args.hasOwnProperty("connectTime")) {
       this["connectTime"] = assign<string>("connectTime");
     }
-    if (args["endTime"]) {
+    if (args.hasOwnProperty("endTime")) {
       this["endTime"] = assign<string>("endTime");
     }
-    if (args["duration"]) {
+    if (args.hasOwnProperty("duration")) {
       this["duration"] = assign<number>("duration");
     }
-    if (args["connectDuration"]) {
+    if (args.hasOwnProperty("connectDuration")) {
       this["connectDuration"] = assign<number>("connectDuration");
     }
-    if (args["direction"]) {
+    if (args.hasOwnProperty("direction")) {
       this["direction"] = assign<CallDirection>("direction");
     }
-    if (args["answeredBy"]) {
+    if (args.hasOwnProperty("answeredBy")) {
       this["answeredBy"] = assign<AnsweredBy>("answeredBy");
     }
-    if (args["subresourceUris"]) {
+    if (args.hasOwnProperty("subresourceUris")) {
       this["subresourceUris"] = assign<any>("subresourceUris");
     }
-    if (args["applicationId"]) {
+    if (args.hasOwnProperty("applicationId")) {
       this["applicationId"] = assign<string>("applicationId");
     }
   }

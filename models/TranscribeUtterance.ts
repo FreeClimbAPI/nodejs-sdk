@@ -107,22 +107,22 @@ export class TranscribeUtterance extends PerclCommand {
           (attr) => attr.name === attribute,
         )?.defaultValue) as T;
     };
-    if (args["actionUrl"]) {
+    if (args.hasOwnProperty("actionUrl")) {
       this["actionUrl"] = assign<string>("actionUrl");
     }
-    if (args["playBeep"]) {
+    if (args.hasOwnProperty("playBeep")) {
       this["playBeep"] = assign<boolean>("playBeep");
     }
-    if (args["record"]) {
+    if (args.hasOwnProperty("record")) {
       this["record"] = assign<TranscribeUtteranceRecord>("record");
     }
-    if (args["privacyForLogging"]) {
+    if (args.hasOwnProperty("privacyForLogging")) {
       this["privacyForLogging"] = assign<boolean>("privacyForLogging");
     }
-    if (args["privacyForRecording"]) {
+    if (args.hasOwnProperty("privacyForRecording")) {
       this["privacyForRecording"] = assign<boolean>("privacyForRecording");
     }
-    if (args["prompts"]) {
+    if (args.hasOwnProperty("prompts")) {
       this["prompts"] = assign<Array<PerclCommand>>("prompts");
     }
   }

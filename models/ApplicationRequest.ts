@@ -129,25 +129,25 @@ export class ApplicationRequest {
           (attr) => attr.name === attribute,
         )?.defaultValue) as T;
     };
-    if (args["alias"]) {
+    if (args.hasOwnProperty("alias")) {
       this["alias"] = assign<string>("alias");
     }
-    if (args["voiceUrl"]) {
+    if (args.hasOwnProperty("voiceUrl")) {
       this["voiceUrl"] = assign<string>("voiceUrl");
     }
-    if (args["voiceFallbackUrl"]) {
+    if (args.hasOwnProperty("voiceFallbackUrl")) {
       this["voiceFallbackUrl"] = assign<string>("voiceFallbackUrl");
     }
-    if (args["callConnectUrl"]) {
+    if (args.hasOwnProperty("callConnectUrl")) {
       this["callConnectUrl"] = assign<string>("callConnectUrl");
     }
-    if (args["statusCallbackUrl"]) {
+    if (args.hasOwnProperty("statusCallbackUrl")) {
       this["statusCallbackUrl"] = assign<string>("statusCallbackUrl");
     }
-    if (args["smsUrl"]) {
+    if (args.hasOwnProperty("smsUrl")) {
       this["smsUrl"] = assign<string>("smsUrl");
     }
-    if (args["smsFallbackUrl"]) {
+    if (args.hasOwnProperty("smsFallbackUrl")) {
       this["smsFallbackUrl"] = assign<string>("smsFallbackUrl");
     }
   }

@@ -90,16 +90,16 @@ export class MutableResourceModel {
           (attr) => attr.name === attribute,
         )?.defaultValue) as T;
     };
-    if (args["uri"]) {
+    if (args.hasOwnProperty("uri")) {
       this["uri"] = assign<string>("uri");
     }
-    if (args["dateCreated"]) {
+    if (args.hasOwnProperty("dateCreated")) {
       this["dateCreated"] = assign<string>("dateCreated");
     }
-    if (args["dateUpdated"]) {
+    if (args.hasOwnProperty("dateUpdated")) {
       this["dateUpdated"] = assign<string>("dateUpdated");
     }
-    if (args["revision"]) {
+    if (args.hasOwnProperty("revision")) {
       this["revision"] = assign<number>("revision");
     }
   }

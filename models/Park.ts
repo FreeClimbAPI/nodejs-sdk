@@ -82,13 +82,13 @@ export class Park extends PerclCommand {
         Park.attributeTypeMap.find((attr) => attr.name === attribute)
           ?.defaultValue) as T;
     };
-    if (args["waitUrl"]) {
+    if (args.hasOwnProperty("waitUrl")) {
       this["waitUrl"] = assign<string>("waitUrl");
     }
-    if (args["actionUrl"]) {
+    if (args.hasOwnProperty("actionUrl")) {
       this["actionUrl"] = assign<string>("actionUrl");
     }
-    if (args["notificationUrl"]) {
+    if (args.hasOwnProperty("notificationUrl")) {
       this["notificationUrl"] = assign<string>("notificationUrl");
     }
   }

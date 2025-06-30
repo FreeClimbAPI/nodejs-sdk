@@ -51,7 +51,7 @@ export class CompletionRequest {
           (attr) => attr.name === attribute,
         )?.defaultValue) as T;
     };
-    if (args["query"]) {
+    if (args.hasOwnProperty("query")) {
       this["query"] = assign<string>("query");
     }
   }

@@ -56,7 +56,7 @@ export class Pause extends PerclCommand {
         Pause.attributeTypeMap.find((attr) => attr.name === attribute)
           ?.defaultValue) as T;
     };
-    if (args["length"]) {
+    if (args.hasOwnProperty("length")) {
       this["length"] = assign<number>("length");
     }
   }

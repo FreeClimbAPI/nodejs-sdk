@@ -327,74 +327,74 @@ export class TranscribeWebhook extends Webhook {
           (attr) => attr.name === attribute,
         )?.defaultValue) as T;
     };
-    if (args["requestType"]) {
+    if (args.hasOwnProperty("requestType")) {
       this["requestType"] = assign<string>("requestType");
     }
-    if (args["accountId"]) {
+    if (args.hasOwnProperty("accountId")) {
       this["accountId"] = assign<string>("accountId");
     }
-    if (args["callId"]) {
+    if (args.hasOwnProperty("callId")) {
       this["callId"] = assign<string>("callId");
     }
-    if (args["from"]) {
+    if (args.hasOwnProperty("from")) {
       this["from"] = assign<string>("from");
     }
-    if (args["to"]) {
+    if (args.hasOwnProperty("to")) {
       this["to"] = assign<string>("to");
     }
-    if (args["recordingId"]) {
+    if (args.hasOwnProperty("recordingId")) {
       this["recordingId"] = assign<string>("recordingId");
     }
-    if (args["recordingUrl"]) {
+    if (args.hasOwnProperty("recordingUrl")) {
       this["recordingUrl"] = assign<string>("recordingUrl");
     }
-    if (args["recordingSize"]) {
+    if (args.hasOwnProperty("recordingSize")) {
       this["recordingSize"] = assign<number>("recordingSize");
     }
-    if (args["recordingFormat"]) {
+    if (args.hasOwnProperty("recordingFormat")) {
       this["recordingFormat"] = assign<string>("recordingFormat");
     }
-    if (args["recordingDurationMs"]) {
+    if (args.hasOwnProperty("recordingDurationMs")) {
       this["recordingDurationMs"] = assign<number>("recordingDurationMs");
     }
-    if (args["termReason"]) {
+    if (args.hasOwnProperty("termReason")) {
       this["termReason"] = assign<TranscribeTermReason>("termReason");
     }
-    if (args["recordTermReason"]) {
+    if (args.hasOwnProperty("recordTermReason")) {
       this["recordTermReason"] =
         assign<RecordUtteranceTermReason>("recordTermReason");
     }
-    if (args["digit"]) {
+    if (args.hasOwnProperty("digit")) {
       this["digit"] = assign<string>("digit");
     }
-    if (args["privacyForLogging"]) {
+    if (args.hasOwnProperty("privacyForLogging")) {
       this["privacyForLogging"] = assign<boolean>("privacyForLogging");
     }
-    if (args["privacyForRecording"]) {
+    if (args.hasOwnProperty("privacyForRecording")) {
       this["privacyForRecording"] = assign<boolean>("privacyForRecording");
     }
-    if (args["bargeInReason"]) {
+    if (args.hasOwnProperty("bargeInReason")) {
       this["bargeInReason"] = assign<BargeInReason>("bargeInReason");
     }
-    if (args["bargedInPromptNo"]) {
+    if (args.hasOwnProperty("bargedInPromptNo")) {
       this["bargedInPromptNo"] = assign<number>("bargedInPromptNo");
     }
-    if (args["bargedInPromptMs"]) {
+    if (args.hasOwnProperty("bargedInPromptMs")) {
       this["bargedInPromptMs"] = assign<number>("bargedInPromptMs");
     }
-    if (args["bargedInPromptLoopNo"]) {
+    if (args.hasOwnProperty("bargedInPromptLoopNo")) {
       this["bargedInPromptLoopNo"] = assign<number>("bargedInPromptLoopNo");
     }
-    if (args["bargeInTimeMs"]) {
+    if (args.hasOwnProperty("bargeInTimeMs")) {
       this["bargeInTimeMs"] = assign<number>("bargeInTimeMs");
     }
-    if (args["transcript"]) {
+    if (args.hasOwnProperty("transcript")) {
       this["transcript"] = assign<string>("transcript");
     }
-    if (args["transcribeReason"]) {
+    if (args.hasOwnProperty("transcribeReason")) {
       this["transcribeReason"] = assign<TranscribeReason>("transcribeReason");
     }
-    if (args["transcriptionDurationMs"]) {
+    if (args.hasOwnProperty("transcriptionDurationMs")) {
       this["transcriptionDurationMs"] = assign<number>(
         "transcriptionDurationMs",
       );

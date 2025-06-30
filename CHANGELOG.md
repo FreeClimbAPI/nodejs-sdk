@@ -9,6 +9,14 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 None
 
+<a name="4.1.2"></a>
+
+## [4.1.2] - 2025-06-30
+
+### Changed
+
+- Change all model constructors to check for user provided values and assign the values accordingly
+
 <a name="4.1.1"></a>
 
 ## [4.1.1] - 2025-02-18

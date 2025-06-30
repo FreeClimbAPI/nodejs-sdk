@@ -173,34 +173,34 @@ export class AddToConference extends PerclCommand {
         AddToConference.attributeTypeMap.find((attr) => attr.name === attribute)
           ?.defaultValue) as T;
     };
-    if (args["allowCallControl"]) {
+    if (args.hasOwnProperty("allowCallControl")) {
       this["allowCallControl"] = assign<boolean>("allowCallControl");
     }
-    if (args["callControlSequence"]) {
+    if (args.hasOwnProperty("callControlSequence")) {
       this["callControlSequence"] = assign<string>("callControlSequence");
     }
-    if (args["callControlUrl"]) {
+    if (args.hasOwnProperty("callControlUrl")) {
       this["callControlUrl"] = assign<string>("callControlUrl");
     }
-    if (args["conferenceId"]) {
+    if (args.hasOwnProperty("conferenceId")) {
       this["conferenceId"] = assign<string>("conferenceId");
     }
-    if (args["leaveConferenceUrl"]) {
+    if (args.hasOwnProperty("leaveConferenceUrl")) {
       this["leaveConferenceUrl"] = assign<string>("leaveConferenceUrl");
     }
-    if (args["listen"]) {
+    if (args.hasOwnProperty("listen")) {
       this["listen"] = assign<boolean>("listen");
     }
-    if (args["notificationUrl"]) {
+    if (args.hasOwnProperty("notificationUrl")) {
       this["notificationUrl"] = assign<string>("notificationUrl");
     }
-    if (args["startConfOnEnter"]) {
+    if (args.hasOwnProperty("startConfOnEnter")) {
       this["startConfOnEnter"] = assign<boolean>("startConfOnEnter");
     }
-    if (args["talk"]) {
+    if (args.hasOwnProperty("talk")) {
       this["talk"] = assign<boolean>("talk");
     }
-    if (args["dtmfPassThrough"]) {
+    if (args.hasOwnProperty("dtmfPassThrough")) {
       this["dtmfPassThrough"] = assign<boolean>("dtmfPassThrough");
     }
   }

@@ -255,55 +255,55 @@ export class IncomingNumberResult {
           (attr) => attr.name === attribute,
         )?.defaultValue) as T;
     };
-    if (args["uri"]) {
+    if (args.hasOwnProperty("uri")) {
       this["uri"] = assign<string>("uri");
     }
-    if (args["dateCreated"]) {
+    if (args.hasOwnProperty("dateCreated")) {
       this["dateCreated"] = assign<string>("dateCreated");
     }
-    if (args["dateUpdated"]) {
+    if (args.hasOwnProperty("dateUpdated")) {
       this["dateUpdated"] = assign<string>("dateUpdated");
     }
-    if (args["revision"]) {
+    if (args.hasOwnProperty("revision")) {
       this["revision"] = assign<number>("revision");
     }
-    if (args["capabilities"]) {
+    if (args.hasOwnProperty("capabilities")) {
       this["capabilities"] = assign<Capabilities>("capabilities");
     }
-    if (args["campaignId"]) {
+    if (args.hasOwnProperty("campaignId")) {
       this["campaignId"] = assign<string>("campaignId");
     }
-    if (args["phoneNumberId"]) {
+    if (args.hasOwnProperty("phoneNumberId")) {
       this["phoneNumberId"] = assign<string>("phoneNumberId");
     }
-    if (args["accountId"]) {
+    if (args.hasOwnProperty("accountId")) {
       this["accountId"] = assign<string>("accountId");
     }
-    if (args["applicationId"]) {
+    if (args.hasOwnProperty("applicationId")) {
       this["applicationId"] = assign<string>("applicationId");
     }
-    if (args["phoneNumber"]) {
+    if (args.hasOwnProperty("phoneNumber")) {
       this["phoneNumber"] = assign<string>("phoneNumber");
     }
-    if (args["alias"]) {
+    if (args.hasOwnProperty("alias")) {
       this["alias"] = assign<string>("alias");
     }
-    if (args["region"]) {
+    if (args.hasOwnProperty("region")) {
       this["region"] = assign<string>("region");
     }
-    if (args["country"]) {
+    if (args.hasOwnProperty("country")) {
       this["country"] = assign<string>("country");
     }
-    if (args["voiceEnabled"]) {
+    if (args.hasOwnProperty("voiceEnabled")) {
       this["voiceEnabled"] = assign<boolean>("voiceEnabled");
     }
-    if (args["smsEnabled"]) {
+    if (args.hasOwnProperty("smsEnabled")) {
       this["smsEnabled"] = assign<boolean>("smsEnabled");
     }
-    if (args["offnet"]) {
+    if (args.hasOwnProperty("offnet")) {
       this["offnet"] = assign<boolean>("offnet");
     }
-    if (args["tfn"]) {
+    if (args.hasOwnProperty("tfn")) {
       this["tfn"] = assign<TFN>("tfn");
     }
   }

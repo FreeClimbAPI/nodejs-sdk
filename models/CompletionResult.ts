@@ -62,10 +62,10 @@ export class CompletionResult {
           (attr) => attr.name === attribute,
         )?.defaultValue) as T;
     };
-    if (args["response"]) {
+    if (args.hasOwnProperty("response")) {
       this["response"] = assign<string>("response");
     }
-    if (args["status"]) {
+    if (args.hasOwnProperty("status")) {
       this["status"] = assign<CompletionResultStatus>("status");
     }
   }

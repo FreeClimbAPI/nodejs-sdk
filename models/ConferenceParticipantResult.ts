@@ -181,37 +181,37 @@ export class ConferenceParticipantResult {
           (attr) => attr.name === attribute,
         )?.defaultValue) as T;
     };
-    if (args["uri"]) {
+    if (args.hasOwnProperty("uri")) {
       this["uri"] = assign<string>("uri");
     }
-    if (args["dateCreated"]) {
+    if (args.hasOwnProperty("dateCreated")) {
       this["dateCreated"] = assign<string>("dateCreated");
     }
-    if (args["dateUpdated"]) {
+    if (args.hasOwnProperty("dateUpdated")) {
       this["dateUpdated"] = assign<string>("dateUpdated");
     }
-    if (args["revision"]) {
+    if (args.hasOwnProperty("revision")) {
       this["revision"] = assign<number>("revision");
     }
-    if (args["accountId"]) {
+    if (args.hasOwnProperty("accountId")) {
       this["accountId"] = assign<string>("accountId");
     }
-    if (args["conferenceId"]) {
+    if (args.hasOwnProperty("conferenceId")) {
       this["conferenceId"] = assign<string>("conferenceId");
     }
-    if (args["callId"]) {
+    if (args.hasOwnProperty("callId")) {
       this["callId"] = assign<string>("callId");
     }
-    if (args["talk"]) {
+    if (args.hasOwnProperty("talk")) {
       this["talk"] = assign<boolean>("talk");
     }
-    if (args["listen"]) {
+    if (args.hasOwnProperty("listen")) {
       this["listen"] = assign<boolean>("listen");
     }
-    if (args["dtmfPassThrough"]) {
+    if (args.hasOwnProperty("dtmfPassThrough")) {
       this["dtmfPassThrough"] = assign<boolean>("dtmfPassThrough");
     }
-    if (args["startConfOnEnter"]) {
+    if (args.hasOwnProperty("startConfOnEnter")) {
       this["startConfOnEnter"] = assign<boolean>("startConfOnEnter");
     }
   }

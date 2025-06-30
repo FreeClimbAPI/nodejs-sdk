@@ -167,34 +167,34 @@ export class MakeCallRequest {
         MakeCallRequest.attributeTypeMap.find((attr) => attr.name === attribute)
           ?.defaultValue) as T;
     };
-    if (args["from"]) {
+    if (args.hasOwnProperty("from")) {
       this["from"] = assign<string>("from");
     }
-    if (args["to"]) {
+    if (args.hasOwnProperty("to")) {
       this["to"] = assign<string>("to");
     }
-    if (args["applicationId"]) {
+    if (args.hasOwnProperty("applicationId")) {
       this["applicationId"] = assign<string>("applicationId");
     }
-    if (args["sendDigits"]) {
+    if (args.hasOwnProperty("sendDigits")) {
       this["sendDigits"] = assign<string>("sendDigits");
     }
-    if (args["ifMachine"]) {
+    if (args.hasOwnProperty("ifMachine")) {
       this["ifMachine"] = assign<string>("ifMachine");
     }
-    if (args["ifMachineUrl"]) {
+    if (args.hasOwnProperty("ifMachineUrl")) {
       this["ifMachineUrl"] = assign<string>("ifMachineUrl");
     }
-    if (args["timeout"]) {
+    if (args.hasOwnProperty("timeout")) {
       this["timeout"] = assign<number>("timeout");
     }
-    if (args["parentCallId"]) {
+    if (args.hasOwnProperty("parentCallId")) {
       this["parentCallId"] = assign<string>("parentCallId");
     }
-    if (args["privacyMode"]) {
+    if (args.hasOwnProperty("privacyMode")) {
       this["privacyMode"] = assign<boolean>("privacyMode");
     }
-    if (args["callConnectUrl"]) {
+    if (args.hasOwnProperty("callConnectUrl")) {
       this["callConnectUrl"] = assign<string>("callConnectUrl");
     }
   }

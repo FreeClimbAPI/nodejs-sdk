@@ -154,31 +154,31 @@ export class MessageRequest {
         MessageRequest.attributeTypeMap.find((attr) => attr.name === attribute)
           ?.defaultValue) as T;
     };
-    if (args["uri"]) {
+    if (args.hasOwnProperty("uri")) {
       this["uri"] = assign<string>("uri");
     }
-    if (args["dateCreated"]) {
+    if (args.hasOwnProperty("dateCreated")) {
       this["dateCreated"] = assign<string>("dateCreated");
     }
-    if (args["dateUpdated"]) {
+    if (args.hasOwnProperty("dateUpdated")) {
       this["dateUpdated"] = assign<string>("dateUpdated");
     }
-    if (args["revision"]) {
+    if (args.hasOwnProperty("revision")) {
       this["revision"] = assign<number>("revision");
     }
-    if (args["from"]) {
+    if (args.hasOwnProperty("from")) {
       this["from"] = assign<string>("from");
     }
-    if (args["to"]) {
+    if (args.hasOwnProperty("to")) {
       this["to"] = assign<string>("to");
     }
-    if (args["text"]) {
+    if (args.hasOwnProperty("text")) {
       this["text"] = assign<string>("text");
     }
-    if (args["notificationUrl"]) {
+    if (args.hasOwnProperty("notificationUrl")) {
       this["notificationUrl"] = assign<string>("notificationUrl");
     }
-    if (args["mediaUrls"]) {
+    if (args.hasOwnProperty("mediaUrls")) {
       this["mediaUrls"] = assign<Array<string>>("mediaUrls");
     }
   }

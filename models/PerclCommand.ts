@@ -54,7 +54,7 @@ export class PerclCommand {
         PerclCommand.attributeTypeMap.find((attr) => attr.name === attribute)
           ?.defaultValue) as T;
     };
-    if (args["command"]) {
+    if (args.hasOwnProperty("command")) {
       this["command"] = assign<string>("command");
     }
   }

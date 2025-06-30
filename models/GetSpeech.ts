@@ -210,47 +210,47 @@ export class GetSpeech extends PerclCommand {
         GetSpeech.attributeTypeMap.find((attr) => attr.name === attribute)
           ?.defaultValue) as T;
     };
-    if (args["actionUrl"]) {
+    if (args.hasOwnProperty("actionUrl")) {
       this["actionUrl"] = assign<string>("actionUrl");
     }
-    if (args["grammarType"]) {
+    if (args.hasOwnProperty("grammarType")) {
       this["grammarType"] = assign<GrammarType>("grammarType");
     }
-    if (args["grammarFile"]) {
+    if (args.hasOwnProperty("grammarFile")) {
       this["grammarFile"] = assign<string>("grammarFile");
     }
-    if (args["grammarRule"]) {
+    if (args.hasOwnProperty("grammarRule")) {
       this["grammarRule"] = assign<string>("grammarRule");
     }
-    if (args["playBeep"]) {
+    if (args.hasOwnProperty("playBeep")) {
       this["playBeep"] = assign<boolean>("playBeep");
     }
-    if (args["prompts"]) {
+    if (args.hasOwnProperty("prompts")) {
       this["prompts"] = assign<Array<PerclCommand>>("prompts");
     }
-    if (args["noInputTimeoutMs"]) {
+    if (args.hasOwnProperty("noInputTimeoutMs")) {
       this["noInputTimeoutMs"] = assign<number>("noInputTimeoutMs");
     }
-    if (args["recognitionTimeoutMs"]) {
+    if (args.hasOwnProperty("recognitionTimeoutMs")) {
       this["recognitionTimeoutMs"] = assign<number>("recognitionTimeoutMs");
     }
-    if (args["confidenceThreshold"]) {
+    if (args.hasOwnProperty("confidenceThreshold")) {
       this["confidenceThreshold"] = assign<number>("confidenceThreshold");
     }
-    if (args["sensitivityLevel"]) {
+    if (args.hasOwnProperty("sensitivityLevel")) {
       this["sensitivityLevel"] = assign<number>("sensitivityLevel");
     }
-    if (args["speechCompleteTimeoutMs"]) {
+    if (args.hasOwnProperty("speechCompleteTimeoutMs")) {
       this["speechCompleteTimeoutMs"] = assign<number>(
         "speechCompleteTimeoutMs",
       );
     }
-    if (args["speechIncompleteTimeoutMs"]) {
+    if (args.hasOwnProperty("speechIncompleteTimeoutMs")) {
       this["speechIncompleteTimeoutMs"] = assign<number>(
         "speechIncompleteTimeoutMs",
       );
     }
-    if (args["privacyMode"]) {
+    if (args.hasOwnProperty("privacyMode")) {
       this["privacyMode"] = assign<boolean>("privacyMode");
     }
   }

@@ -68,13 +68,13 @@ export class TranscribeUtteranceRecord {
           (attr) => attr.name === attribute,
         )?.defaultValue) as T;
     };
-    if (args["saveRecording"]) {
+    if (args.hasOwnProperty("saveRecording")) {
       this["saveRecording"] = assign<boolean>("saveRecording");
     }
-    if (args["maxLengthSec"]) {
+    if (args.hasOwnProperty("maxLengthSec")) {
       this["maxLengthSec"] = assign<number>("maxLengthSec");
     }
-    if (args["rcrdTerminationSilenceTimeMs"]) {
+    if (args.hasOwnProperty("rcrdTerminationSilenceTimeMs")) {
       this["rcrdTerminationSilenceTimeMs"] = assign<number>(
         "rcrdTerminationSilenceTimeMs",
       );

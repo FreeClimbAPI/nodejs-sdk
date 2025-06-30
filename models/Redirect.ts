@@ -56,7 +56,7 @@ export class Redirect extends PerclCommand {
         Redirect.attributeTypeMap.find((attr) => attr.name === attribute)
           ?.defaultValue) as T;
     };
-    if (args["actionUrl"]) {
+    if (args.hasOwnProperty("actionUrl")) {
       this["actionUrl"] = assign<string>("actionUrl");
     }
   }

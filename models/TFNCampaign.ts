@@ -134,32 +134,32 @@ export class TFNCampaign {
         TFNCampaign.attributeTypeMap.find((attr) => attr.name === attribute)
           ?.defaultValue) as T;
     };
-    if (args["accountId"]) {
+    if (args.hasOwnProperty("accountId")) {
       this["accountId"] = assign<string>("accountId");
     }
-    if (args["campaignId"]) {
+    if (args.hasOwnProperty("campaignId")) {
       this["campaignId"] = assign<string>("campaignId");
     }
-    if (args["useCase"]) {
+    if (args.hasOwnProperty("useCase")) {
       this["useCase"] = assign<string>("useCase");
     }
-    if (args["registrationStatus"]) {
+    if (args.hasOwnProperty("registrationStatus")) {
       this["registrationStatus"] =
         assign<SMSTollFreeCampaignRegistrationStatus>("registrationStatus");
     }
-    if (args["dateCreated"]) {
+    if (args.hasOwnProperty("dateCreated")) {
       this["dateCreated"] = assign<string>("dateCreated");
     }
-    if (args["dateUpdated"]) {
+    if (args.hasOwnProperty("dateUpdated")) {
       this["dateUpdated"] = assign<string>("dateUpdated");
     }
-    if (args["dateCreatedISO"]) {
+    if (args.hasOwnProperty("dateCreatedISO")) {
       this["dateCreatedISO"] = assign<string>("dateCreatedISO");
     }
-    if (args["dateUpdatedISO"]) {
+    if (args.hasOwnProperty("dateUpdatedISO")) {
       this["dateUpdatedISO"] = assign<string>("dateUpdatedISO");
     }
-    if (args["revision"]) {
+    if (args.hasOwnProperty("revision")) {
       this["revision"] = assign<number>("revision");
     }
   }

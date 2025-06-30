@@ -77,13 +77,13 @@ export class BuyIncomingNumberRequest {
           (attr) => attr.name === attribute,
         )?.defaultValue) as T;
     };
-    if (args["phoneNumber"]) {
+    if (args.hasOwnProperty("phoneNumber")) {
       this["phoneNumber"] = assign<string>("phoneNumber");
     }
-    if (args["alias"]) {
+    if (args.hasOwnProperty("alias")) {
       this["alias"] = assign<string>("alias");
     }
-    if (args["applicationId"]) {
+    if (args.hasOwnProperty("applicationId")) {
       this["applicationId"] = assign<string>("applicationId");
     }
   }

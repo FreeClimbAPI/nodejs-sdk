@@ -51,7 +51,7 @@ export class FilterLogsRequest {
           (attr) => attr.name === attribute,
         )?.defaultValue) as T;
     };
-    if (args["pql"]) {
+    if (args.hasOwnProperty("pql")) {
       this["pql"] = assign<string>("pql");
     }
   }

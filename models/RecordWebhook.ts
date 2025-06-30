@@ -258,55 +258,55 @@ export class RecordWebhook extends Webhook {
         RecordWebhook.attributeTypeMap.find((attr) => attr.name === attribute)
           ?.defaultValue) as T;
     };
-    if (args["requestType"]) {
+    if (args.hasOwnProperty("requestType")) {
       this["requestType"] = assign<string>("requestType");
     }
-    if (args["accountId"]) {
+    if (args.hasOwnProperty("accountId")) {
       this["accountId"] = assign<string>("accountId");
     }
-    if (args["callId"]) {
+    if (args.hasOwnProperty("callId")) {
       this["callId"] = assign<string>("callId");
     }
-    if (args["from"]) {
+    if (args.hasOwnProperty("from")) {
       this["from"] = assign<string>("from");
     }
-    if (args["to"]) {
+    if (args.hasOwnProperty("to")) {
       this["to"] = assign<string>("to");
     }
-    if (args["callStatus"]) {
+    if (args.hasOwnProperty("callStatus")) {
       this["callStatus"] = assign<CallStatus>("callStatus");
     }
-    if (args["direction"]) {
+    if (args.hasOwnProperty("direction")) {
       this["direction"] = assign<CallDirection>("direction");
     }
-    if (args["conferenceId"]) {
+    if (args.hasOwnProperty("conferenceId")) {
       this["conferenceId"] = assign<string>("conferenceId");
     }
-    if (args["queueId"]) {
+    if (args.hasOwnProperty("queueId")) {
       this["queueId"] = assign<string>("queueId");
     }
-    if (args["recordingId"]) {
+    if (args.hasOwnProperty("recordingId")) {
       this["recordingId"] = assign<string>("recordingId");
     }
-    if (args["recordingUrl"]) {
+    if (args.hasOwnProperty("recordingUrl")) {
       this["recordingUrl"] = assign<string>("recordingUrl");
     }
-    if (args["recordingSize"]) {
+    if (args.hasOwnProperty("recordingSize")) {
       this["recordingSize"] = assign<string>("recordingSize");
     }
-    if (args["recordingFormat"]) {
+    if (args.hasOwnProperty("recordingFormat")) {
       this["recordingFormat"] = assign<string>("recordingFormat");
     }
-    if (args["recordingDurationSec"]) {
+    if (args.hasOwnProperty("recordingDurationSec")) {
       this["recordingDurationSec"] = assign<number>("recordingDurationSec");
     }
-    if (args["termReason"]) {
+    if (args.hasOwnProperty("termReason")) {
       this["termReason"] = assign<RecordUtteranceTermReason>("termReason");
     }
-    if (args["parentCallId"]) {
+    if (args.hasOwnProperty("parentCallId")) {
       this["parentCallId"] = assign<string>("parentCallId");
     }
-    if (args["privacyMode"]) {
+    if (args.hasOwnProperty("privacyMode")) {
       this["privacyMode"] = assign<boolean>("privacyMode");
     }
   }

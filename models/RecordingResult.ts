@@ -154,31 +154,31 @@ export class RecordingResult {
         RecordingResult.attributeTypeMap.find((attr) => attr.name === attribute)
           ?.defaultValue) as T;
     };
-    if (args["uri"]) {
+    if (args.hasOwnProperty("uri")) {
       this["uri"] = assign<string>("uri");
     }
-    if (args["dateCreated"]) {
+    if (args.hasOwnProperty("dateCreated")) {
       this["dateCreated"] = assign<string>("dateCreated");
     }
-    if (args["dateUpdated"]) {
+    if (args.hasOwnProperty("dateUpdated")) {
       this["dateUpdated"] = assign<string>("dateUpdated");
     }
-    if (args["revision"]) {
+    if (args.hasOwnProperty("revision")) {
       this["revision"] = assign<number>("revision");
     }
-    if (args["recordingId"]) {
+    if (args.hasOwnProperty("recordingId")) {
       this["recordingId"] = assign<string>("recordingId");
     }
-    if (args["accountId"]) {
+    if (args.hasOwnProperty("accountId")) {
       this["accountId"] = assign<string>("accountId");
     }
-    if (args["callId"]) {
+    if (args.hasOwnProperty("callId")) {
       this["callId"] = assign<string>("callId");
     }
-    if (args["durationSec"]) {
+    if (args.hasOwnProperty("durationSec")) {
       this["durationSec"] = assign<number>("durationSec");
     }
-    if (args["conferenceId"]) {
+    if (args.hasOwnProperty("conferenceId")) {
       this["conferenceId"] = assign<string>("conferenceId");
     }
   }

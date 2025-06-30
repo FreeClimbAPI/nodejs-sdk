@@ -171,34 +171,34 @@ export class OutDial extends PerclCommand {
         OutDial.attributeTypeMap.find((attr) => attr.name === attribute)
           ?.defaultValue) as T;
     };
-    if (args["actionUrl"]) {
+    if (args.hasOwnProperty("actionUrl")) {
       this["actionUrl"] = assign<string>("actionUrl");
     }
-    if (args["callConnectUrl"]) {
+    if (args.hasOwnProperty("callConnectUrl")) {
       this["callConnectUrl"] = assign<string>("callConnectUrl");
     }
-    if (args["callingNumber"]) {
+    if (args.hasOwnProperty("callingNumber")) {
       this["callingNumber"] = assign<string>("callingNumber");
     }
-    if (args["destination"]) {
+    if (args.hasOwnProperty("destination")) {
       this["destination"] = assign<string>("destination");
     }
-    if (args["ifMachine"]) {
+    if (args.hasOwnProperty("ifMachine")) {
       this["ifMachine"] = assign<IfMachine>("ifMachine");
     }
-    if (args["ifMachineUrl"]) {
+    if (args.hasOwnProperty("ifMachineUrl")) {
       this["ifMachineUrl"] = assign<string>("ifMachineUrl");
     }
-    if (args["sendDigits"]) {
+    if (args.hasOwnProperty("sendDigits")) {
       this["sendDigits"] = assign<string>("sendDigits");
     }
-    if (args["statusCallbackUrl"]) {
+    if (args.hasOwnProperty("statusCallbackUrl")) {
       this["statusCallbackUrl"] = assign<string>("statusCallbackUrl");
     }
-    if (args["timeout"]) {
+    if (args.hasOwnProperty("timeout")) {
       this["timeout"] = assign<number>("timeout");
     }
-    if (args["privacyMode"]) {
+    if (args.hasOwnProperty("privacyMode")) {
       this["privacyMode"] = assign<boolean>("privacyMode");
     }
   }

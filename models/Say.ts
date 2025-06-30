@@ -95,16 +95,16 @@ export class Say extends PerclCommand {
         Say.attributeTypeMap.find((attr) => attr.name === attribute)
           ?.defaultValue) as T;
     };
-    if (args["text"]) {
+    if (args.hasOwnProperty("text")) {
       this["text"] = assign<string>("text");
     }
-    if (args["language"]) {
+    if (args.hasOwnProperty("language")) {
       this["language"] = assign<string>("language");
     }
-    if (args["loop"]) {
+    if (args.hasOwnProperty("loop")) {
       this["loop"] = assign<number>("loop");
     }
-    if (args["privacyMode"]) {
+    if (args.hasOwnProperty("privacyMode")) {
       this["privacyMode"] = assign<boolean>("privacyMode");
     }
   }

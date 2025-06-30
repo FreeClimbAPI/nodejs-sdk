@@ -280,61 +280,61 @@ export class MessageResult {
         MessageResult.attributeTypeMap.find((attr) => attr.name === attribute)
           ?.defaultValue) as T;
     };
-    if (args["uri"]) {
+    if (args.hasOwnProperty("uri")) {
       this["uri"] = assign<string>("uri");
     }
-    if (args["dateCreated"]) {
+    if (args.hasOwnProperty("dateCreated")) {
       this["dateCreated"] = assign<string>("dateCreated");
     }
-    if (args["dateUpdated"]) {
+    if (args.hasOwnProperty("dateUpdated")) {
       this["dateUpdated"] = assign<string>("dateUpdated");
     }
-    if (args["revision"]) {
+    if (args.hasOwnProperty("revision")) {
       this["revision"] = assign<number>("revision");
     }
-    if (args["accountId"]) {
+    if (args.hasOwnProperty("accountId")) {
       this["accountId"] = assign<string>("accountId");
     }
-    if (args["messageId"]) {
+    if (args.hasOwnProperty("messageId")) {
       this["messageId"] = assign<string>("messageId");
     }
-    if (args["status"]) {
+    if (args.hasOwnProperty("status")) {
       this["status"] = assign<MessageStatus>("status");
     }
-    if (args["from"]) {
+    if (args.hasOwnProperty("from")) {
       this["from"] = assign<string>("from");
     }
-    if (args["to"]) {
+    if (args.hasOwnProperty("to")) {
       this["to"] = assign<string>("to");
     }
-    if (args["text"]) {
+    if (args.hasOwnProperty("text")) {
       this["text"] = assign<string>("text");
     }
-    if (args["direction"]) {
+    if (args.hasOwnProperty("direction")) {
       this["direction"] = assign<string>("direction");
     }
-    if (args["notificationUrl"]) {
+    if (args.hasOwnProperty("notificationUrl")) {
       this["notificationUrl"] = assign<string>("notificationUrl");
     }
-    if (args["brandId"]) {
+    if (args.hasOwnProperty("brandId")) {
       this["brandId"] = assign<string>("brandId");
     }
-    if (args["campaignId"]) {
+    if (args.hasOwnProperty("campaignId")) {
       this["campaignId"] = assign<string>("campaignId");
     }
-    if (args["segmentCount"]) {
+    if (args.hasOwnProperty("segmentCount")) {
       this["segmentCount"] = assign<number>("segmentCount");
     }
-    if (args["mediaUrls"]) {
+    if (args.hasOwnProperty("mediaUrls")) {
       this["mediaUrls"] = assign<Array<string>>("mediaUrls");
     }
-    if (args["tfn"]) {
+    if (args.hasOwnProperty("tfn")) {
       this["tfn"] = assign<TFN>("tfn");
     }
-    if (args["phoneNumberId"]) {
+    if (args.hasOwnProperty("phoneNumberId")) {
       this["phoneNumberId"] = assign<string>("phoneNumberId");
     }
-    if (args["applicationId"]) {
+    if (args.hasOwnProperty("applicationId")) {
       this["applicationId"] = assign<string>("applicationId");
     }
   }

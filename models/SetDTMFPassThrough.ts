@@ -59,7 +59,7 @@ export class SetDTMFPassThrough extends PerclCommand {
           (attr) => attr.name === attribute,
         )?.defaultValue) as T;
     };
-    if (args["dtmfPassThrough"]) {
+    if (args.hasOwnProperty("dtmfPassThrough")) {
       this["dtmfPassThrough"] = assign<boolean>("dtmfPassThrough");
     }
   }

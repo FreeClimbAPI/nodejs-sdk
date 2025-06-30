@@ -180,39 +180,39 @@ export class QueueResult {
         QueueResult.attributeTypeMap.find((attr) => attr.name === attribute)
           ?.defaultValue) as T;
     };
-    if (args["uri"]) {
+    if (args.hasOwnProperty("uri")) {
       this["uri"] = assign<string>("uri");
     }
-    if (args["dateCreated"]) {
+    if (args.hasOwnProperty("dateCreated")) {
       this["dateCreated"] = assign<string>("dateCreated");
     }
-    if (args["dateUpdated"]) {
+    if (args.hasOwnProperty("dateUpdated")) {
       this["dateUpdated"] = assign<string>("dateUpdated");
     }
-    if (args["revision"]) {
+    if (args.hasOwnProperty("revision")) {
       this["revision"] = assign<number>("revision");
     }
-    if (args["accountId"]) {
+    if (args.hasOwnProperty("accountId")) {
       this["accountId"] = assign<string>("accountId");
     }
-    if (args["queueId"]) {
+    if (args.hasOwnProperty("queueId")) {
       this["queueId"] = assign<string>("queueId");
     }
-    if (args["alias"]) {
+    if (args.hasOwnProperty("alias")) {
       this["alias"] = assign<string>("alias");
     }
-    if (args["maxSize"]) {
+    if (args.hasOwnProperty("maxSize")) {
       this["maxSize"] = assign<number>("maxSize");
     }
-    if (args["currentSize"]) {
+    if (args.hasOwnProperty("currentSize")) {
       this["currentSize"] = assign<number>("currentSize");
     }
-    if (args["averageQueueRemovalTime"]) {
+    if (args.hasOwnProperty("averageQueueRemovalTime")) {
       this["averageQueueRemovalTime"] = assign<number>(
         "averageQueueRemovalTime",
       );
     }
-    if (args["subresourceUris"]) {
+    if (args.hasOwnProperty("subresourceUris")) {
       this["subresourceUris"] = assign<any>("subresourceUris");
     }
   }

@@ -82,13 +82,13 @@ export class SendDigits extends PerclCommand {
         SendDigits.attributeTypeMap.find((attr) => attr.name === attribute)
           ?.defaultValue) as T;
     };
-    if (args["digits"]) {
+    if (args.hasOwnProperty("digits")) {
       this["digits"] = assign<string>("digits");
     }
-    if (args["pauseMs"]) {
+    if (args.hasOwnProperty("pauseMs")) {
       this["pauseMs"] = assign<number>("pauseMs");
     }
-    if (args["privacyMode"]) {
+    if (args.hasOwnProperty("privacyMode")) {
       this["privacyMode"] = assign<boolean>("privacyMode");
     }
   }

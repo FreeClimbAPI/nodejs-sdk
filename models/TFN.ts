@@ -54,7 +54,7 @@ export class TFN {
         TFN.attributeTypeMap.find((attr) => attr.name === attribute)
           ?.defaultValue) as T;
     };
-    if (args["campaignId"]) {
+    if (args.hasOwnProperty("campaignId")) {
       this["campaignId"] = assign<string>("campaignId");
     }
   }

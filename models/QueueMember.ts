@@ -102,19 +102,19 @@ export class QueueMember {
         QueueMember.attributeTypeMap.find((attr) => attr.name === attribute)
           ?.defaultValue) as T;
     };
-    if (args["uri"]) {
+    if (args.hasOwnProperty("uri")) {
       this["uri"] = assign<string>("uri");
     }
-    if (args["callId"]) {
+    if (args.hasOwnProperty("callId")) {
       this["callId"] = assign<string>("callId");
     }
-    if (args["waitTime"]) {
+    if (args.hasOwnProperty("waitTime")) {
       this["waitTime"] = assign<number>("waitTime");
     }
-    if (args["position"]) {
+    if (args.hasOwnProperty("position")) {
       this["position"] = assign<number>("position");
     }
-    if (args["dateEnqueued"]) {
+    if (args.hasOwnProperty("dateEnqueued")) {
       this["dateEnqueued"] = assign<string>("dateEnqueued");
     }
   }

@@ -122,22 +122,22 @@ export class CreateConference extends PerclCommand {
           (attr) => attr.name === attribute,
         )?.defaultValue) as T;
     };
-    if (args["actionUrl"]) {
+    if (args.hasOwnProperty("actionUrl")) {
       this["actionUrl"] = assign<string>("actionUrl");
     }
-    if (args["alias"]) {
+    if (args.hasOwnProperty("alias")) {
       this["alias"] = assign<boolean>("alias");
     }
-    if (args["playBeep"]) {
+    if (args.hasOwnProperty("playBeep")) {
       this["playBeep"] = assign<PlayBeep>("playBeep");
     }
-    if (args["record"]) {
+    if (args.hasOwnProperty("record")) {
       this["record"] = assign<boolean>("record");
     }
-    if (args["statusCallbackUrl"]) {
+    if (args.hasOwnProperty("statusCallbackUrl")) {
       this["statusCallbackUrl"] = assign<string>("statusCallbackUrl");
     }
-    if (args["waitUrl"]) {
+    if (args.hasOwnProperty("waitUrl")) {
       this["waitUrl"] = assign<string>("waitUrl");
     }
   }

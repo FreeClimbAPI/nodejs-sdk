@@ -216,46 +216,46 @@ export class ConferenceResult {
           (attr) => attr.name === attribute,
         )?.defaultValue) as T;
     };
-    if (args["uri"]) {
+    if (args.hasOwnProperty("uri")) {
       this["uri"] = assign<string>("uri");
     }
-    if (args["dateCreated"]) {
+    if (args.hasOwnProperty("dateCreated")) {
       this["dateCreated"] = assign<string>("dateCreated");
     }
-    if (args["dateUpdated"]) {
+    if (args.hasOwnProperty("dateUpdated")) {
       this["dateUpdated"] = assign<string>("dateUpdated");
     }
-    if (args["revision"]) {
+    if (args.hasOwnProperty("revision")) {
       this["revision"] = assign<number>("revision");
     }
-    if (args["conferenceId"]) {
+    if (args.hasOwnProperty("conferenceId")) {
       this["conferenceId"] = assign<string>("conferenceId");
     }
-    if (args["accountId"]) {
+    if (args.hasOwnProperty("accountId")) {
       this["accountId"] = assign<string>("accountId");
     }
-    if (args["alias"]) {
+    if (args.hasOwnProperty("alias")) {
       this["alias"] = assign<string>("alias");
     }
-    if (args["playBeep"]) {
+    if (args.hasOwnProperty("playBeep")) {
       this["playBeep"] = assign<PlayBeep>("playBeep");
     }
-    if (args["record"]) {
+    if (args.hasOwnProperty("record")) {
       this["record"] = assign<boolean>("record");
     }
-    if (args["status"]) {
+    if (args.hasOwnProperty("status")) {
       this["status"] = assign<ConferenceStatus>("status");
     }
-    if (args["waitUrl"]) {
+    if (args.hasOwnProperty("waitUrl")) {
       this["waitUrl"] = assign<string>("waitUrl");
     }
-    if (args["actionUrl"]) {
+    if (args.hasOwnProperty("actionUrl")) {
       this["actionUrl"] = assign<string>("actionUrl");
     }
-    if (args["statusCallbackUrl"]) {
+    if (args.hasOwnProperty("statusCallbackUrl")) {
       this["statusCallbackUrl"] = assign<string>("statusCallbackUrl");
     }
-    if (args["subresourceUris"]) {
+    if (args.hasOwnProperty("subresourceUris")) {
       this["subresourceUris"] = assign<any>("subresourceUris");
     }
   }

@@ -63,10 +63,10 @@ export class AccountRequest {
         AccountRequest.attributeTypeMap.find((attr) => attr.name === attribute)
           ?.defaultValue) as T;
     };
-    if (args["alias"]) {
+    if (args.hasOwnProperty("alias")) {
       this["alias"] = assign<string>("alias");
     }
-    if (args["label"]) {
+    if (args.hasOwnProperty("label")) {
       this["label"] = assign<string>("label");
     }
   }

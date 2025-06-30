@@ -176,37 +176,37 @@ export class AccountResult {
         AccountResult.attributeTypeMap.find((attr) => attr.name === attribute)
           ?.defaultValue) as T;
     };
-    if (args["uri"]) {
+    if (args.hasOwnProperty("uri")) {
       this["uri"] = assign<string>("uri");
     }
-    if (args["dateCreated"]) {
+    if (args.hasOwnProperty("dateCreated")) {
       this["dateCreated"] = assign<string>("dateCreated");
     }
-    if (args["dateUpdated"]) {
+    if (args.hasOwnProperty("dateUpdated")) {
       this["dateUpdated"] = assign<string>("dateUpdated");
     }
-    if (args["revision"]) {
+    if (args.hasOwnProperty("revision")) {
       this["revision"] = assign<number>("revision");
     }
-    if (args["accountId"]) {
+    if (args.hasOwnProperty("accountId")) {
       this["accountId"] = assign<string>("accountId");
     }
-    if (args["apiKey"]) {
+    if (args.hasOwnProperty("apiKey")) {
       this["apiKey"] = assign<string>("apiKey");
     }
-    if (args["alias"]) {
+    if (args.hasOwnProperty("alias")) {
       this["alias"] = assign<string>("alias");
     }
-    if (args["label"]) {
+    if (args.hasOwnProperty("label")) {
       this["label"] = assign<string>("label");
     }
-    if (args["type"]) {
+    if (args.hasOwnProperty("type")) {
       this["type"] = assign<AccountType>("type");
     }
-    if (args["status"]) {
+    if (args.hasOwnProperty("status")) {
       this["status"] = assign<AccountStatus>("status");
     }
-    if (args["subresourceUris"]) {
+    if (args.hasOwnProperty("subresourceUris")) {
       this["subresourceUris"] = assign<any>("subresourceUris");
     }
   }

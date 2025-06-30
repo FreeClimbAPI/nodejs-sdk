@@ -82,13 +82,13 @@ export class Play extends PerclCommand {
         Play.attributeTypeMap.find((attr) => attr.name === attribute)
           ?.defaultValue) as T;
     };
-    if (args["file"]) {
+    if (args.hasOwnProperty("file")) {
       this["file"] = assign<string>("file");
     }
-    if (args["loop"]) {
+    if (args.hasOwnProperty("loop")) {
       this["loop"] = assign<number>("loop");
     }
-    if (args["privacyMode"]) {
+    if (args.hasOwnProperty("privacyMode")) {
       this["privacyMode"] = assign<boolean>("privacyMode");
     }
   }

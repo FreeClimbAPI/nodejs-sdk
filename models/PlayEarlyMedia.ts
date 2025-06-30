@@ -56,7 +56,7 @@ export class PlayEarlyMedia extends PerclCommand {
         PlayEarlyMedia.attributeTypeMap.find((attr) => attr.name === attribute)
           ?.defaultValue) as T;
     };
-    if (args["file"]) {
+    if (args.hasOwnProperty("file")) {
       this["file"] = assign<string>("file");
     }
   }

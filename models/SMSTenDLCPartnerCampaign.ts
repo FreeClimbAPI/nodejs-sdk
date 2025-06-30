@@ -408,91 +408,91 @@ export class SMSTenDLCPartnerCampaign {
           (attr) => attr.name === attribute,
         )?.defaultValue) as T;
     };
-    if (args["accountId"]) {
+    if (args.hasOwnProperty("accountId")) {
       this["accountId"] = assign<string>("accountId");
     }
-    if (args["campaignId"]) {
+    if (args.hasOwnProperty("campaignId")) {
       this["campaignId"] = assign<string>("campaignId");
     }
-    if (args["status"]) {
+    if (args.hasOwnProperty("status")) {
       this["status"] = assign<SMSTenDLCPartnerCampaignStatus>("status");
     }
-    if (args["createDate"]) {
+    if (args.hasOwnProperty("createDate")) {
       this["createDate"] = assign<Date>("createDate");
     }
-    if (args["brandId"]) {
+    if (args.hasOwnProperty("brandId")) {
       this["brandId"] = assign<string>("brandId");
     }
-    if (args["usecase"]) {
+    if (args.hasOwnProperty("usecase")) {
       this["usecase"] = assign<string>("usecase");
     }
-    if (args["description"]) {
+    if (args.hasOwnProperty("description")) {
       this["description"] = assign<string>("description");
     }
-    if (args["embeddedLink"]) {
+    if (args.hasOwnProperty("embeddedLink")) {
       this["embeddedLink"] = assign<boolean>("embeddedLink");
     }
-    if (args["embeddedPhone"]) {
+    if (args.hasOwnProperty("embeddedPhone")) {
       this["embeddedPhone"] = assign<boolean>("embeddedPhone");
     }
-    if (args["affiliateMarketing"]) {
+    if (args.hasOwnProperty("affiliateMarketing")) {
       this["affiliateMarketing"] = assign<boolean>("affiliateMarketing");
     }
-    if (args["numberPool"]) {
+    if (args.hasOwnProperty("numberPool")) {
       this["numberPool"] = assign<boolean>("numberPool");
     }
-    if (args["ageGated"]) {
+    if (args.hasOwnProperty("ageGated")) {
       this["ageGated"] = assign<boolean>("ageGated");
     }
-    if (args["directLending"]) {
+    if (args.hasOwnProperty("directLending")) {
       this["directLending"] = assign<boolean>("directLending");
     }
-    if (args["subscriberOptin"]) {
+    if (args.hasOwnProperty("subscriberOptin")) {
       this["subscriberOptin"] = assign<boolean>("subscriberOptin");
     }
-    if (args["subscriberOptout"]) {
+    if (args.hasOwnProperty("subscriberOptout")) {
       this["subscriberOptout"] = assign<boolean>("subscriberOptout");
     }
-    if (args["subscriberHelp"]) {
+    if (args.hasOwnProperty("subscriberHelp")) {
       this["subscriberHelp"] = assign<boolean>("subscriberHelp");
     }
-    if (args["sample1"]) {
+    if (args.hasOwnProperty("sample1")) {
       this["sample1"] = assign<string>("sample1");
     }
-    if (args["sample2"]) {
+    if (args.hasOwnProperty("sample2")) {
       this["sample2"] = assign<string>("sample2");
     }
-    if (args["sample3"]) {
+    if (args.hasOwnProperty("sample3")) {
       this["sample3"] = assign<string>("sample3");
     }
-    if (args["sample4"]) {
+    if (args.hasOwnProperty("sample4")) {
       this["sample4"] = assign<string>("sample4");
     }
-    if (args["sample5"]) {
+    if (args.hasOwnProperty("sample5")) {
       this["sample5"] = assign<string>("sample5");
     }
-    if (args["messageFlow"]) {
+    if (args.hasOwnProperty("messageFlow")) {
       this["messageFlow"] = assign<string>("messageFlow");
     }
-    if (args["helpMessage"]) {
+    if (args.hasOwnProperty("helpMessage")) {
       this["helpMessage"] = assign<string>("helpMessage");
     }
-    if (args["optinKeywords"]) {
+    if (args.hasOwnProperty("optinKeywords")) {
       this["optinKeywords"] = assign<string>("optinKeywords");
     }
-    if (args["optoutKeywords"]) {
+    if (args.hasOwnProperty("optoutKeywords")) {
       this["optoutKeywords"] = assign<string>("optoutKeywords");
     }
-    if (args["helpKeywords"]) {
+    if (args.hasOwnProperty("helpKeywords")) {
       this["helpKeywords"] = assign<string>("helpKeywords");
     }
-    if (args["optinMessage"]) {
+    if (args.hasOwnProperty("optinMessage")) {
       this["optinMessage"] = assign<string>("optinMessage");
     }
-    if (args["optoutMessage"]) {
+    if (args.hasOwnProperty("optoutMessage")) {
       this["optoutMessage"] = assign<string>("optoutMessage");
     }
-    if (args["brand"]) {
+    if (args.hasOwnProperty("brand")) {
       this["brand"] = assign<SMSTenDLCPartnerCampaignBrand>("brand");
     }
   }

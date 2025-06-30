@@ -77,13 +77,13 @@ export class UpdateConferenceParticipantRequest {
           (attr) => attr.name === attribute,
         )?.defaultValue) as T;
     };
-    if (args["talk"]) {
+    if (args.hasOwnProperty("talk")) {
       this["talk"] = assign<boolean>("talk");
     }
-    if (args["listen"]) {
+    if (args.hasOwnProperty("listen")) {
       this["listen"] = assign<boolean>("listen");
     }
-    if (args["dtmfPassThrough"]) {
+    if (args.hasOwnProperty("dtmfPassThrough")) {
       this["dtmfPassThrough"] = assign<boolean>("dtmfPassThrough");
     }
   }

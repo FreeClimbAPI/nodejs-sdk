@@ -50,7 +50,7 @@ export class Webhook {
         Webhook.attributeTypeMap.find((attr) => attr.name === attribute)
           ?.defaultValue) as T;
     };
-    if (args["requestType"]) {
+    if (args.hasOwnProperty("requestType")) {
       this["requestType"] = assign<string>("requestType");
     }
   }

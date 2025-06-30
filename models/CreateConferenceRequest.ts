@@ -101,19 +101,19 @@ export class CreateConferenceRequest {
           (attr) => attr.name === attribute,
         )?.defaultValue) as T;
     };
-    if (args["alias"]) {
+    if (args.hasOwnProperty("alias")) {
       this["alias"] = assign<string>("alias");
     }
-    if (args["playBeep"]) {
+    if (args.hasOwnProperty("playBeep")) {
       this["playBeep"] = assign<PlayBeep>("playBeep");
     }
-    if (args["record"]) {
+    if (args.hasOwnProperty("record")) {
       this["record"] = assign<boolean>("record");
     }
-    if (args["waitUrl"]) {
+    if (args.hasOwnProperty("waitUrl")) {
       this["waitUrl"] = assign<string>("waitUrl");
     }
-    if (args["statusCallbackUrl"]) {
+    if (args.hasOwnProperty("statusCallbackUrl")) {
       this["statusCallbackUrl"] = assign<string>("statusCallbackUrl");
     }
   }

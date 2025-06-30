@@ -176,34 +176,34 @@ export class MessageDeliveryWebhook extends Webhook {
           (attr) => attr.name === attribute,
         )?.defaultValue) as T;
     };
-    if (args["requestType"]) {
+    if (args.hasOwnProperty("requestType")) {
       this["requestType"] = assign<string>("requestType");
     }
-    if (args["accountId"]) {
+    if (args.hasOwnProperty("accountId")) {
       this["accountId"] = assign<string>("accountId");
     }
-    if (args["from"]) {
+    if (args.hasOwnProperty("from")) {
       this["from"] = assign<string>("from");
     }
-    if (args["to"]) {
+    if (args.hasOwnProperty("to")) {
       this["to"] = assign<string>("to");
     }
-    if (args["text"]) {
+    if (args.hasOwnProperty("text")) {
       this["text"] = assign<string>("text");
     }
-    if (args["direction"]) {
+    if (args.hasOwnProperty("direction")) {
       this["direction"] = assign<string>("direction");
     }
-    if (args["applicationId"]) {
+    if (args.hasOwnProperty("applicationId")) {
       this["applicationId"] = assign<string>("applicationId");
     }
-    if (args["status"]) {
+    if (args.hasOwnProperty("status")) {
       this["status"] = assign<string>("status");
     }
-    if (args["phoneNumberId"]) {
+    if (args.hasOwnProperty("phoneNumberId")) {
       this["phoneNumberId"] = assign<string>("phoneNumberId");
     }
-    if (args["uri"]) {
+    if (args.hasOwnProperty("uri")) {
       this["uri"] = assign<string>("uri");
     }
   }

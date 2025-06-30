@@ -56,7 +56,7 @@ export class SetListen extends PerclCommand {
         SetListen.attributeTypeMap.find((attr) => attr.name === attribute)
           ?.defaultValue) as T;
     };
-    if (args["listen"]) {
+    if (args.hasOwnProperty("listen")) {
       this["listen"] = assign<boolean>("listen");
     }
   }

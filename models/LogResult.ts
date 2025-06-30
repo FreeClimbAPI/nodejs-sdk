@@ -126,25 +126,25 @@ export class LogResult {
         LogResult.attributeTypeMap.find((attr) => attr.name === attribute)
           ?.defaultValue) as T;
     };
-    if (args["timestamp"]) {
+    if (args.hasOwnProperty("timestamp")) {
       this["timestamp"] = assign<number>("timestamp");
     }
-    if (args["level"]) {
+    if (args.hasOwnProperty("level")) {
       this["level"] = assign<LogLevel>("level");
     }
-    if (args["requestId"]) {
+    if (args.hasOwnProperty("requestId")) {
       this["requestId"] = assign<string>("requestId");
     }
-    if (args["accountId"]) {
+    if (args.hasOwnProperty("accountId")) {
       this["accountId"] = assign<string>("accountId");
     }
-    if (args["callId"]) {
+    if (args.hasOwnProperty("callId")) {
       this["callId"] = assign<string>("callId");
     }
-    if (args["message"]) {
+    if (args.hasOwnProperty("message")) {
       this["message"] = assign<string>("message");
     }
-    if (args["metadata"]) {
+    if (args.hasOwnProperty("metadata")) {
       this["metadata"] = assign<any>("metadata");
     }
   }

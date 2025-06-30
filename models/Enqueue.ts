@@ -95,16 +95,16 @@ export class Enqueue extends PerclCommand {
         Enqueue.attributeTypeMap.find((attr) => attr.name === attribute)
           ?.defaultValue) as T;
     };
-    if (args["actionUrl"]) {
+    if (args.hasOwnProperty("actionUrl")) {
       this["actionUrl"] = assign<string>("actionUrl");
     }
-    if (args["notificationUrl"]) {
+    if (args.hasOwnProperty("notificationUrl")) {
       this["notificationUrl"] = assign<string>("notificationUrl");
     }
-    if (args["queueId"]) {
+    if (args.hasOwnProperty("queueId")) {
       this["queueId"] = assign<string>("queueId");
     }
-    if (args["waitUrl"]) {
+    if (args.hasOwnProperty("waitUrl")) {
       this["waitUrl"] = assign<string>("waitUrl");
     }
   }

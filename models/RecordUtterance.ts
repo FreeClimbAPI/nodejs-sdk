@@ -134,25 +134,25 @@ export class RecordUtterance extends PerclCommand {
         RecordUtterance.attributeTypeMap.find((attr) => attr.name === attribute)
           ?.defaultValue) as T;
     };
-    if (args["actionUrl"]) {
+    if (args.hasOwnProperty("actionUrl")) {
       this["actionUrl"] = assign<string>("actionUrl");
     }
-    if (args["silenceTimeoutMs"]) {
+    if (args.hasOwnProperty("silenceTimeoutMs")) {
       this["silenceTimeoutMs"] = assign<number>("silenceTimeoutMs");
     }
-    if (args["finishOnKey"]) {
+    if (args.hasOwnProperty("finishOnKey")) {
       this["finishOnKey"] = assign<string>("finishOnKey");
     }
-    if (args["maxLengthSec"]) {
+    if (args.hasOwnProperty("maxLengthSec")) {
       this["maxLengthSec"] = assign<number>("maxLengthSec");
     }
-    if (args["playBeep"]) {
+    if (args.hasOwnProperty("playBeep")) {
       this["playBeep"] = assign<boolean>("playBeep");
     }
-    if (args["autoStart"]) {
+    if (args.hasOwnProperty("autoStart")) {
       this["autoStart"] = assign<boolean>("autoStart");
     }
-    if (args["privacyMode"]) {
+    if (args.hasOwnProperty("privacyMode")) {
       this["privacyMode"] = assign<boolean>("privacyMode");
     }
   }

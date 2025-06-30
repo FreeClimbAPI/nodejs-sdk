@@ -111,19 +111,19 @@ export class CallControlWebhook extends Webhook {
           (attr) => attr.name === attribute,
         )?.defaultValue) as T;
     };
-    if (args["requestType"]) {
+    if (args.hasOwnProperty("requestType")) {
       this["requestType"] = assign<string>("requestType");
     }
-    if (args["callId"]) {
+    if (args.hasOwnProperty("callId")) {
       this["callId"] = assign<string>("callId");
     }
-    if (args["accountId"]) {
+    if (args.hasOwnProperty("accountId")) {
       this["accountId"] = assign<string>("accountId");
     }
-    if (args["conferenceId"]) {
+    if (args.hasOwnProperty("conferenceId")) {
       this["conferenceId"] = assign<string>("conferenceId");
     }
-    if (args["digits"]) {
+    if (args.hasOwnProperty("digits")) {
       this["digits"] = assign<string>("digits");
     }
   }

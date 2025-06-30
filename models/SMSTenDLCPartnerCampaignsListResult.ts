@@ -140,28 +140,28 @@ export class SMSTenDLCPartnerCampaignsListResult {
           (attr) => attr.name === attribute,
         )?.defaultValue) as T;
     };
-    if (args["total"]) {
+    if (args.hasOwnProperty("total")) {
       this["total"] = assign<number>("total");
     }
-    if (args["start"]) {
+    if (args.hasOwnProperty("start")) {
       this["start"] = assign<number>("start");
     }
-    if (args["end"]) {
+    if (args.hasOwnProperty("end")) {
       this["end"] = assign<number>("end");
     }
-    if (args["page"]) {
+    if (args.hasOwnProperty("page")) {
       this["page"] = assign<number>("page");
     }
-    if (args["numPages"]) {
+    if (args.hasOwnProperty("numPages")) {
       this["numPages"] = assign<number>("numPages");
     }
-    if (args["pageSize"]) {
+    if (args.hasOwnProperty("pageSize")) {
       this["pageSize"] = assign<number>("pageSize");
     }
-    if (args["nextPageUri"]) {
+    if (args.hasOwnProperty("nextPageUri")) {
       this["nextPageUri"] = assign<string>("nextPageUri");
     }
-    if (args["partnerCampaigns"]) {
+    if (args.hasOwnProperty("partnerCampaigns")) {
       this["partnerCampaigns"] =
         assign<Array<SMSTenDLCPartnerCampaign>>("partnerCampaigns");
     }

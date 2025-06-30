@@ -126,25 +126,25 @@ export class AvailableNumber {
         AvailableNumber.attributeTypeMap.find((attr) => attr.name === attribute)
           ?.defaultValue) as T;
     };
-    if (args["capabilities"]) {
+    if (args.hasOwnProperty("capabilities")) {
       this["capabilities"] = assign<Capabilities>("capabilities");
     }
-    if (args["campaignId"]) {
+    if (args.hasOwnProperty("campaignId")) {
       this["campaignId"] = assign<string>("campaignId");
     }
-    if (args["phoneNumber"]) {
+    if (args.hasOwnProperty("phoneNumber")) {
       this["phoneNumber"] = assign<string>("phoneNumber");
     }
-    if (args["voiceEnabled"]) {
+    if (args.hasOwnProperty("voiceEnabled")) {
       this["voiceEnabled"] = assign<boolean>("voiceEnabled");
     }
-    if (args["smsEnabled"]) {
+    if (args.hasOwnProperty("smsEnabled")) {
       this["smsEnabled"] = assign<boolean>("smsEnabled");
     }
-    if (args["region"]) {
+    if (args.hasOwnProperty("region")) {
       this["region"] = assign<string>("region");
     }
-    if (args["country"]) {
+    if (args.hasOwnProperty("country")) {
       this["country"] = assign<string>("country");
     }
   }

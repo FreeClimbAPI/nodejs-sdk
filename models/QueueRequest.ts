@@ -63,10 +63,10 @@ export class QueueRequest {
         QueueRequest.attributeTypeMap.find((attr) => attr.name === attribute)
           ?.defaultValue) as T;
     };
-    if (args["alias"]) {
+    if (args.hasOwnProperty("alias")) {
       this["alias"] = assign<string>("alias");
     }
-    if (args["maxSize"]) {
+    if (args.hasOwnProperty("maxSize")) {
       this["maxSize"] = assign<number>("maxSize");
     }
   }
