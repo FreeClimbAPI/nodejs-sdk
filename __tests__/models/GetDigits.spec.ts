@@ -2,6 +2,7 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("GetDigits", () => {
+  const Klass = freeclimb.GetDigits;
   describe("Test with truthy values", () => {
     let model: freeclimb.GetDigits = new freeclimb.GetDigits({
       actionUrl: "https://123.abc",
@@ -144,6 +145,84 @@ describe("GetDigits", () => {
     describe(".privacyMode", () => {
       it("resolves to particular value on initialization", () => {
         const value = false;
+        expect(model.privacyMode).toBe(value);
+      });
+    });
+  });
+  describe("Test with only required values", () => {
+    let constructorArguments = {
+      actionUrl: "https://123.abc",
+    };
+    let model: freeclimb.GetDigits = new freeclimb.GetDigits(
+      constructorArguments,
+    );
+
+    describe("#actionUrl", () => {
+      it("resolves to initialization value", () => {
+        expect(model.actionUrl).toBe(constructorArguments["actionUrl"]);
+      });
+    });
+    describe("#digitTimeoutMs", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "digitTimeoutMs",
+        )?.defaultValue;
+        expect(model.digitTimeoutMs).toBe(value);
+      });
+    });
+    describe("#finishOnKey", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "finishOnKey",
+        )?.defaultValue;
+        expect(model.finishOnKey).toBe(value);
+      });
+    });
+    describe("#flushBuffer", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "flushBuffer",
+        )?.defaultValue;
+        expect(model.flushBuffer).toBe(value);
+      });
+    });
+    describe("#initialTimeoutMs", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "initialTimeoutMs",
+        )?.defaultValue;
+        expect(model.initialTimeoutMs).toBe(value);
+      });
+    });
+    describe("#maxDigits", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "maxDigits",
+        )?.defaultValue;
+        expect(model.maxDigits).toBe(value);
+      });
+    });
+    describe("#minDigits", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "minDigits",
+        )?.defaultValue;
+        expect(model.minDigits).toBe(value);
+      });
+    });
+    describe("#prompts", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "prompts",
+        )?.defaultValue;
+        expect(model.prompts).toBe(value);
+      });
+    });
+    describe("#privacyMode", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "privacyMode",
+        )?.defaultValue;
         expect(model.privacyMode).toBe(value);
       });
     });

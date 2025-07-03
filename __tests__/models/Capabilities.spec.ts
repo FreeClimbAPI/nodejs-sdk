@@ -2,6 +2,7 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("Capabilities", () => {
+  const Klass = freeclimb.Capabilities;
   describe("Test with truthy values", () => {
     let model: freeclimb.Capabilities = new freeclimb.Capabilities({
       voice: true,
@@ -87,6 +88,44 @@ describe("Capabilities", () => {
       it("resolves to particular value on initialization", () => {
         const value = false;
         expect(model.shortCode).toBe(value);
+      });
+    });
+  });
+  describe("Test with only required values", () => {
+    let constructorArguments = {
+      voice: true,
+      sms: true,
+      tollFree: true,
+      tenDLC: true,
+      shortCode: true,
+    };
+    let model: freeclimb.Capabilities = new freeclimb.Capabilities(
+      constructorArguments,
+    );
+
+    describe("#voice", () => {
+      it("resolves to initialization value", () => {
+        expect(model.voice).toBe(constructorArguments["voice"]);
+      });
+    });
+    describe("#sms", () => {
+      it("resolves to initialization value", () => {
+        expect(model.sms).toBe(constructorArguments["sms"]);
+      });
+    });
+    describe("#tollFree", () => {
+      it("resolves to initialization value", () => {
+        expect(model.tollFree).toBe(constructorArguments["tollFree"]);
+      });
+    });
+    describe("#tenDLC", () => {
+      it("resolves to initialization value", () => {
+        expect(model.tenDLC).toBe(constructorArguments["tenDLC"]);
+      });
+    });
+    describe("#shortCode", () => {
+      it("resolves to initialization value", () => {
+        expect(model.shortCode).toBe(constructorArguments["shortCode"]);
       });
     });
   });

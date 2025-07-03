@@ -2,6 +2,7 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("GrammarType", () => {
+  const Klass = freeclimb.GrammarType;
   describe("Test with truthy values", () => {
     describe(".URL", () => {
       it("resolves to correct value for URL enum property", () => {

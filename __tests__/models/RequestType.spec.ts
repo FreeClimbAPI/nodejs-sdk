@@ -2,6 +2,7 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("RequestType", () => {
+  const Klass = freeclimb.RequestType;
   describe("Test with truthy values", () => {
     describe(".INBOUND_CALL", () => {
       it("resolves to correct value for INBOUND_CALL enum property", () => {

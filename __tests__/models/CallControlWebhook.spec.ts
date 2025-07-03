@@ -2,6 +2,7 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("CallControlWebhook", () => {
+  const Klass = freeclimb.CallControlWebhook;
   describe("Test with truthy values", () => {
     let model: freeclimb.CallControlWebhook = new freeclimb.CallControlWebhook({
       requestType: "test_requestType",
@@ -107,6 +108,53 @@ describe("CallControlWebhook", () => {
             '{ "requestType": "callControl"}',
           ),
         ).toBeInstanceOf(freeclimb.CallControlWebhook);
+      });
+    });
+  });
+  describe("Test with only required values", () => {
+    let constructorArguments = {};
+    let model: freeclimb.CallControlWebhook = new freeclimb.CallControlWebhook(
+      constructorArguments,
+    );
+
+    describe("#requestType", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "requestType",
+        )?.defaultValue;
+        expect(model.requestType).toBe(value);
+      });
+    });
+    describe("#callId", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "callId",
+        )?.defaultValue;
+        expect(model.callId).toBe(value);
+      });
+    });
+    describe("#accountId", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "accountId",
+        )?.defaultValue;
+        expect(model.accountId).toBe(value);
+      });
+    });
+    describe("#conferenceId", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "conferenceId",
+        )?.defaultValue;
+        expect(model.conferenceId).toBe(value);
+      });
+    });
+    describe("#digits", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "digits",
+        )?.defaultValue;
+        expect(model.digits).toBe(value);
       });
     });
   });

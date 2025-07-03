@@ -2,6 +2,7 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("LogList", () => {
+  const Klass = freeclimb.LogList;
   describe("Test with truthy values", () => {
     let model: freeclimb.LogList = new freeclimb.LogList({
       total: 1,
@@ -129,6 +130,27 @@ describe("LogList", () => {
       it("resolves to particular value on initialization", () => {
         const value: freeclimb.LogResult[] = [];
         expect(model.logs).toStrictEqual(value);
+      });
+    });
+  });
+  describe("Test with only required values", () => {
+    let constructorArguments = {
+      total: 1,
+      start: 1,
+      end: 1,
+      page: 1,
+      numPages: 1,
+      pageSize: 1,
+      nextPageUri: "test_nextPageUri",
+    };
+    let model: freeclimb.LogList = new freeclimb.LogList(constructorArguments);
+
+    describe("#logs", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "logs",
+        )?.defaultValue;
+        expect(model.logs).toBe(value);
       });
     });
   });

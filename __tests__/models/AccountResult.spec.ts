@@ -2,6 +2,7 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("AccountResult", () => {
+  const Klass = freeclimb.AccountResult;
   describe("Test with truthy values", () => {
     let model: freeclimb.AccountResult = new freeclimb.AccountResult({
       uri: "test_uri",
@@ -177,6 +178,74 @@ describe("AccountResult", () => {
         const value = {};
         const receivedValue: any = model.subresourceUris;
         expect(receivedValue).toStrictEqual(value);
+      });
+    });
+  });
+  describe("Test with only required values", () => {
+    let constructorArguments = {
+      uri: "test_uri",
+      dateCreated: "test_dateCreated",
+      dateUpdated: "test_dateUpdated",
+      revision: 1,
+    };
+    let model: freeclimb.AccountResult = new freeclimb.AccountResult(
+      constructorArguments,
+    );
+
+    describe("#accountId", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "accountId",
+        )?.defaultValue;
+        expect(model.accountId).toBe(value);
+      });
+    });
+    describe("#apiKey", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "apiKey",
+        )?.defaultValue;
+        expect(model.apiKey).toBe(value);
+      });
+    });
+    describe("#alias", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "alias",
+        )?.defaultValue;
+        expect(model.alias).toBe(value);
+      });
+    });
+    describe("#label", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "label",
+        )?.defaultValue;
+        expect(model.label).toBe(value);
+      });
+    });
+    describe("#type", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "type",
+        )?.defaultValue;
+        expect(model.type).toBe(value);
+      });
+    });
+    describe("#status", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "status",
+        )?.defaultValue;
+        expect(model.status).toBe(value);
+      });
+    });
+    describe("#subresourceUris", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "subresourceUris",
+        )?.defaultValue;
+        expect(model.subresourceUris).toBe(value);
       });
     });
   });

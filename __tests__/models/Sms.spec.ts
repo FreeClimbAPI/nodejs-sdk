@@ -2,6 +2,7 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("Sms", () => {
+  const Klass = freeclimb.Sms;
   describe("Test with truthy values", () => {
     let model: freeclimb.Sms = new freeclimb.Sms({
       to: "test_to",
@@ -74,6 +75,38 @@ describe("Sms", () => {
     describe(".notificationUrl", () => {
       it("resolves to particular value on initialization", () => {
         const value = "";
+        expect(model.notificationUrl).toBe(value);
+      });
+    });
+  });
+  describe("Test with only required values", () => {
+    let constructorArguments = {
+      to: "test_to",
+      from: "test_from",
+      text: "test_text",
+    };
+    let model: freeclimb.Sms = new freeclimb.Sms(constructorArguments);
+
+    describe("#to", () => {
+      it("resolves to initialization value", () => {
+        expect(model.to).toBe(constructorArguments["to"]);
+      });
+    });
+    describe("#from", () => {
+      it("resolves to initialization value", () => {
+        expect(model.from).toBe(constructorArguments["from"]);
+      });
+    });
+    describe("#text", () => {
+      it("resolves to initialization value", () => {
+        expect(model.text).toBe(constructorArguments["text"]);
+      });
+    });
+    describe("#notificationUrl", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "notificationUrl",
+        )?.defaultValue;
         expect(model.notificationUrl).toBe(value);
       });
     });

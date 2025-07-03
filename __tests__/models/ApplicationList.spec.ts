@@ -2,6 +2,7 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("ApplicationList", () => {
+  const Klass = freeclimb.ApplicationList;
   describe("Test with truthy values", () => {
     let model: freeclimb.ApplicationList = new freeclimb.ApplicationList({
       total: 1,
@@ -129,6 +130,29 @@ describe("ApplicationList", () => {
       it("resolves to particular value on initialization", () => {
         const value: freeclimb.ApplicationResult[] = [];
         expect(model.applications).toStrictEqual(value);
+      });
+    });
+  });
+  describe("Test with only required values", () => {
+    let constructorArguments = {
+      total: 1,
+      start: 1,
+      end: 1,
+      page: 1,
+      numPages: 1,
+      pageSize: 1,
+      nextPageUri: "test_nextPageUri",
+    };
+    let model: freeclimb.ApplicationList = new freeclimb.ApplicationList(
+      constructorArguments,
+    );
+
+    describe("#applications", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "applications",
+        )?.defaultValue;
+        expect(model.applications).toBe(value);
       });
     });
   });

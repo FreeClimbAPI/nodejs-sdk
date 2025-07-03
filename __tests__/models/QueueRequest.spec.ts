@@ -2,6 +2,7 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("QueueRequest", () => {
+  const Klass = freeclimb.QueueRequest;
   describe("Test with truthy values", () => {
     let model: freeclimb.QueueRequest = new freeclimb.QueueRequest({
       alias: "test_alias",
@@ -44,6 +45,29 @@ describe("QueueRequest", () => {
     describe(".maxSize", () => {
       it("resolves to particular value on initialization", () => {
         const value = 0;
+        expect(model.maxSize).toBe(value);
+      });
+    });
+  });
+  describe("Test with only required values", () => {
+    let constructorArguments = {};
+    let model: freeclimb.QueueRequest = new freeclimb.QueueRequest(
+      constructorArguments,
+    );
+
+    describe("#alias", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "alias",
+        )?.defaultValue;
+        expect(model.alias).toBe(value);
+      });
+    });
+    describe("#maxSize", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "maxSize",
+        )?.defaultValue;
         expect(model.maxSize).toBe(value);
       });
     });

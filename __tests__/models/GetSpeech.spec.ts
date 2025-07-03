@@ -2,6 +2,7 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("GetSpeech", () => {
+  const Klass = freeclimb.GetSpeech;
   describe("Test with truthy values", () => {
     let model: freeclimb.GetSpeech = new freeclimb.GetSpeech({
       actionUrl: "https://123.abc",
@@ -202,6 +203,114 @@ describe("GetSpeech", () => {
     describe(".privacyMode", () => {
       it("resolves to particular value on initialization", () => {
         const value = false;
+        expect(model.privacyMode).toBe(value);
+      });
+    });
+  });
+  describe("Test with only required values", () => {
+    let constructorArguments = {
+      actionUrl: "https://123.abc",
+      grammarFile: "test_grammarFile",
+    };
+    let model: freeclimb.GetSpeech = new freeclimb.GetSpeech(
+      constructorArguments,
+    );
+
+    describe("#actionUrl", () => {
+      it("resolves to initialization value", () => {
+        expect(model.actionUrl).toBe(constructorArguments["actionUrl"]);
+      });
+    });
+    describe("#grammarType", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "grammarType",
+        )?.defaultValue;
+        expect(model.grammarType).toBe(value);
+      });
+    });
+    describe("#grammarFile", () => {
+      it("resolves to initialization value", () => {
+        expect(model.grammarFile).toBe(constructorArguments["grammarFile"]);
+      });
+    });
+    describe("#grammarRule", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "grammarRule",
+        )?.defaultValue;
+        expect(model.grammarRule).toBe(value);
+      });
+    });
+    describe("#playBeep", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "playBeep",
+        )?.defaultValue;
+        expect(model.playBeep).toBe(value);
+      });
+    });
+    describe("#prompts", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "prompts",
+        )?.defaultValue;
+        expect(model.prompts).toBe(value);
+      });
+    });
+    describe("#noInputTimeoutMs", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "noInputTimeoutMs",
+        )?.defaultValue;
+        expect(model.noInputTimeoutMs).toBe(value);
+      });
+    });
+    describe("#recognitionTimeoutMs", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "recognitionTimeoutMs",
+        )?.defaultValue;
+        expect(model.recognitionTimeoutMs).toBe(value);
+      });
+    });
+    describe("#confidenceThreshold", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "confidenceThreshold",
+        )?.defaultValue;
+        expect(model.confidenceThreshold).toBe(value);
+      });
+    });
+    describe("#sensitivityLevel", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "sensitivityLevel",
+        )?.defaultValue;
+        expect(model.sensitivityLevel).toBe(value);
+      });
+    });
+    describe("#speechCompleteTimeoutMs", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "speechCompleteTimeoutMs",
+        )?.defaultValue;
+        expect(model.speechCompleteTimeoutMs).toBe(value);
+      });
+    });
+    describe("#speechIncompleteTimeoutMs", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "speechIncompleteTimeoutMs",
+        )?.defaultValue;
+        expect(model.speechIncompleteTimeoutMs).toBe(value);
+      });
+    });
+    describe("#privacyMode", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "privacyMode",
+        )?.defaultValue;
         expect(model.privacyMode).toBe(value);
       });
     });

@@ -2,6 +2,7 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("Say", () => {
+  const Klass = freeclimb.Say;
   describe("Test with truthy values", () => {
     let model: freeclimb.Say = new freeclimb.Say({
       text: "test_text",
@@ -74,6 +75,42 @@ describe("Say", () => {
     describe(".privacyMode", () => {
       it("resolves to particular value on initialization", () => {
         const value = false;
+        expect(model.privacyMode).toBe(value);
+      });
+    });
+  });
+  describe("Test with only required values", () => {
+    let constructorArguments = {
+      text: "test_text",
+    };
+    let model: freeclimb.Say = new freeclimb.Say(constructorArguments);
+
+    describe("#text", () => {
+      it("resolves to initialization value", () => {
+        expect(model.text).toBe(constructorArguments["text"]);
+      });
+    });
+    describe("#language", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "language",
+        )?.defaultValue;
+        expect(model.language).toBe(value);
+      });
+    });
+    describe("#loop", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "loop",
+        )?.defaultValue;
+        expect(model.loop).toBe(value);
+      });
+    });
+    describe("#privacyMode", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "privacyMode",
+        )?.defaultValue;
         expect(model.privacyMode).toBe(value);
       });
     });

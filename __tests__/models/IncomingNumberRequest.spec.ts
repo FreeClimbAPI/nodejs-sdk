@@ -2,6 +2,7 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("IncomingNumberRequest", () => {
+  const Klass = freeclimb.IncomingNumberRequest;
   describe("Test with truthy values", () => {
     let model: freeclimb.IncomingNumberRequest =
       new freeclimb.IncomingNumberRequest({
@@ -60,6 +61,36 @@ describe("IncomingNumberRequest", () => {
     describe(".campaignId", () => {
       it("resolves to particular value on initialization", () => {
         const value = "";
+        expect(model.campaignId).toBe(value);
+      });
+    });
+  });
+  describe("Test with only required values", () => {
+    let constructorArguments = {};
+    let model: freeclimb.IncomingNumberRequest =
+      new freeclimb.IncomingNumberRequest(constructorArguments);
+
+    describe("#applicationId", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "applicationId",
+        )?.defaultValue;
+        expect(model.applicationId).toBe(value);
+      });
+    });
+    describe("#alias", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "alias",
+        )?.defaultValue;
+        expect(model.alias).toBe(value);
+      });
+    });
+    describe("#campaignId", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "campaignId",
+        )?.defaultValue;
         expect(model.campaignId).toBe(value);
       });
     });

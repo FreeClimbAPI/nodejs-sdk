@@ -2,6 +2,7 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("PlayBeep", () => {
+  const Klass = freeclimb.PlayBeep;
   describe("Test with truthy values", () => {
     describe(".ALWAYS", () => {
       it("resolves to correct value for ALWAYS enum property", () => {

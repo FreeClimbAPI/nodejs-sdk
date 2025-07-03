@@ -2,6 +2,7 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("SMSTenDLCBrandRelationship", () => {
+  const Klass = freeclimb.SMSTenDLCBrandRelationship;
   describe("Test with truthy values", () => {
     describe(".BASIC_ACCOUNT", () => {
       it("resolves to correct value for BASIC_ACCOUNT enum property", () => {

@@ -2,6 +2,7 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("CompletionRequest", () => {
+  const Klass = freeclimb.CompletionRequest;
   describe("Test with truthy values", () => {
     let model: freeclimb.CompletionRequest = new freeclimb.CompletionRequest({
       query: "test_query",
@@ -31,6 +32,20 @@ describe("CompletionRequest", () => {
       it("resolves to particular value on initialization", () => {
         const value = "";
         expect(model.query).toBe(value);
+      });
+    });
+  });
+  describe("Test with only required values", () => {
+    let constructorArguments = {
+      query: "test_query",
+    };
+    let model: freeclimb.CompletionRequest = new freeclimb.CompletionRequest(
+      constructorArguments,
+    );
+
+    describe("#query", () => {
+      it("resolves to initialization value", () => {
+        expect(model.query).toBe(constructorArguments["query"]);
       });
     });
   });

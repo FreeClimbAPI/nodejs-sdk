@@ -2,6 +2,7 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("QueueMemberList", () => {
+  const Klass = freeclimb.QueueMemberList;
   describe("Test with truthy values", () => {
     let model: freeclimb.QueueMemberList = new freeclimb.QueueMemberList({
       total: 1,
@@ -129,6 +130,29 @@ describe("QueueMemberList", () => {
       it("resolves to particular value on initialization", () => {
         const value: freeclimb.QueueMember[] = [];
         expect(model.queueMembers).toStrictEqual(value);
+      });
+    });
+  });
+  describe("Test with only required values", () => {
+    let constructorArguments = {
+      total: 1,
+      start: 1,
+      end: 1,
+      page: 1,
+      numPages: 1,
+      pageSize: 1,
+      nextPageUri: "test_nextPageUri",
+    };
+    let model: freeclimb.QueueMemberList = new freeclimb.QueueMemberList(
+      constructorArguments,
+    );
+
+    describe("#queueMembers", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "queueMembers",
+        )?.defaultValue;
+        expect(model.queueMembers).toBe(value);
       });
     });
   });

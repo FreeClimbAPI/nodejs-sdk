@@ -2,6 +2,7 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("UpdateConferenceParticipantRequest", () => {
+  const Klass = freeclimb.UpdateConferenceParticipantRequest;
   describe("Test with truthy values", () => {
     let model: freeclimb.UpdateConferenceParticipantRequest =
       new freeclimb.UpdateConferenceParticipantRequest({
@@ -64,6 +65,36 @@ describe("UpdateConferenceParticipantRequest", () => {
     describe(".dtmfPassThrough", () => {
       it("resolves to particular value on initialization", () => {
         const value = false;
+        expect(model.dtmfPassThrough).toBe(value);
+      });
+    });
+  });
+  describe("Test with only required values", () => {
+    let constructorArguments = {};
+    let model: freeclimb.UpdateConferenceParticipantRequest =
+      new freeclimb.UpdateConferenceParticipantRequest(constructorArguments);
+
+    describe("#talk", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "talk",
+        )?.defaultValue;
+        expect(model.talk).toBe(value);
+      });
+    });
+    describe("#listen", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "listen",
+        )?.defaultValue;
+        expect(model.listen).toBe(value);
+      });
+    });
+    describe("#dtmfPassThrough", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "dtmfPassThrough",
+        )?.defaultValue;
         expect(model.dtmfPassThrough).toBe(value);
       });
     });

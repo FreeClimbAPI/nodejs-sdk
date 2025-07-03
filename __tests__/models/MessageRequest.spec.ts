@@ -2,6 +2,7 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("MessageRequest", () => {
+  const Klass = freeclimb.MessageRequest;
   describe("Test with truthy values", () => {
     let model: freeclimb.MessageRequest = new freeclimb.MessageRequest({
       uri: "test_uri",
@@ -143,6 +144,52 @@ describe("MessageRequest", () => {
       it("resolves to particular value on initialization", () => {
         const value: any[] = [];
         expect(model.mediaUrls).toStrictEqual(value);
+      });
+    });
+  });
+  describe("Test with only required values", () => {
+    let constructorArguments = {
+      uri: "test_uri",
+      dateCreated: "test_dateCreated",
+      dateUpdated: "test_dateUpdated",
+      revision: 1,
+      from: "test_from",
+      to: "test_to",
+      text: "test_text",
+    };
+    let model: freeclimb.MessageRequest = new freeclimb.MessageRequest(
+      constructorArguments,
+    );
+
+    describe("#from", () => {
+      it("resolves to initialization value", () => {
+        expect(model.from).toBe(constructorArguments["from"]);
+      });
+    });
+    describe("#to", () => {
+      it("resolves to initialization value", () => {
+        expect(model.to).toBe(constructorArguments["to"]);
+      });
+    });
+    describe("#text", () => {
+      it("resolves to initialization value", () => {
+        expect(model.text).toBe(constructorArguments["text"]);
+      });
+    });
+    describe("#notificationUrl", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "notificationUrl",
+        )?.defaultValue;
+        expect(model.notificationUrl).toBe(value);
+      });
+    });
+    describe("#mediaUrls", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "mediaUrls",
+        )?.defaultValue;
+        expect(model.mediaUrls).toBe(value);
       });
     });
   });

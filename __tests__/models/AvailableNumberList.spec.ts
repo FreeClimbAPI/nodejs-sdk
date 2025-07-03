@@ -2,6 +2,7 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("AvailableNumberList", () => {
+  const Klass = freeclimb.AvailableNumberList;
   describe("Test with truthy values", () => {
     let model: freeclimb.AvailableNumberList =
       new freeclimb.AvailableNumberList({
@@ -131,6 +132,28 @@ describe("AvailableNumberList", () => {
       it("resolves to particular value on initialization", () => {
         const value: freeclimb.AvailableNumber[] = [];
         expect(model.availablePhoneNumbers).toStrictEqual(value);
+      });
+    });
+  });
+  describe("Test with only required values", () => {
+    let constructorArguments = {
+      total: 1,
+      start: 1,
+      end: 1,
+      page: 1,
+      numPages: 1,
+      pageSize: 1,
+      nextPageUri: "test_nextPageUri",
+    };
+    let model: freeclimb.AvailableNumberList =
+      new freeclimb.AvailableNumberList(constructorArguments);
+
+    describe("#availablePhoneNumbers", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "availablePhoneNumbers",
+        )?.defaultValue;
+        expect(model.availablePhoneNumbers).toBe(value);
       });
     });
   });

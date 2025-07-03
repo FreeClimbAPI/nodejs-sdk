@@ -2,6 +2,7 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("PaginationModel", () => {
+  const Klass = freeclimb.PaginationModel;
   describe("Test with truthy values", () => {
     let model: freeclimb.PaginationModel = new freeclimb.PaginationModel({
       total: 1,
@@ -114,6 +115,69 @@ describe("PaginationModel", () => {
     describe(".nextPageUri", () => {
       it("resolves to particular value on initialization", () => {
         const value = "";
+        expect(model.nextPageUri).toBe(value);
+      });
+    });
+  });
+  describe("Test with only required values", () => {
+    let constructorArguments = {};
+    let model: freeclimb.PaginationModel = new freeclimb.PaginationModel(
+      constructorArguments,
+    );
+
+    describe("#total", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "total",
+        )?.defaultValue;
+        expect(model.total).toBe(value);
+      });
+    });
+    describe("#start", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "start",
+        )?.defaultValue;
+        expect(model.start).toBe(value);
+      });
+    });
+    describe("#end", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "end",
+        )?.defaultValue;
+        expect(model.end).toBe(value);
+      });
+    });
+    describe("#page", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "page",
+        )?.defaultValue;
+        expect(model.page).toBe(value);
+      });
+    });
+    describe("#numPages", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "numPages",
+        )?.defaultValue;
+        expect(model.numPages).toBe(value);
+      });
+    });
+    describe("#pageSize", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "pageSize",
+        )?.defaultValue;
+        expect(model.pageSize).toBe(value);
+      });
+    });
+    describe("#nextPageUri", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "nextPageUri",
+        )?.defaultValue;
         expect(model.nextPageUri).toBe(value);
       });
     });

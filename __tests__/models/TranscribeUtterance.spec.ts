@@ -2,6 +2,7 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("TranscribeUtterance", () => {
+  const Klass = freeclimb.TranscribeUtterance;
   describe("Test with truthy values", () => {
     let model: freeclimb.TranscribeUtterance =
       new freeclimb.TranscribeUtterance({
@@ -99,6 +100,59 @@ describe("TranscribeUtterance", () => {
       it("resolves to particular value on initialization", () => {
         const value: freeclimb.PerclCommand[] = [];
         expect(model.prompts).toStrictEqual(value);
+      });
+    });
+  });
+  describe("Test with only required values", () => {
+    let constructorArguments = {
+      actionUrl: "https://123.abc",
+    };
+    let model: freeclimb.TranscribeUtterance =
+      new freeclimb.TranscribeUtterance(constructorArguments);
+
+    describe("#actionUrl", () => {
+      it("resolves to initialization value", () => {
+        expect(model.actionUrl).toBe(constructorArguments["actionUrl"]);
+      });
+    });
+    describe("#playBeep", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "playBeep",
+        )?.defaultValue;
+        expect(model.playBeep).toBe(value);
+      });
+    });
+    describe("#record", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "record",
+        )?.defaultValue;
+        expect(model.record).toBe(value);
+      });
+    });
+    describe("#privacyForLogging", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "privacyForLogging",
+        )?.defaultValue;
+        expect(model.privacyForLogging).toBe(value);
+      });
+    });
+    describe("#privacyForRecording", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "privacyForRecording",
+        )?.defaultValue;
+        expect(model.privacyForRecording).toBe(value);
+      });
+    });
+    describe("#prompts", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "prompts",
+        )?.defaultValue;
+        expect(model.prompts).toBe(value);
       });
     });
   });

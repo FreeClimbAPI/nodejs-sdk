@@ -2,6 +2,7 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("TranscribeWebhook", () => {
+  const Klass = freeclimb.TranscribeWebhook;
   describe("Test with truthy values", () => {
     let model: freeclimb.TranscribeWebhook = new freeclimb.TranscribeWebhook({
       requestType: "test_requestType",
@@ -367,6 +368,197 @@ describe("TranscribeWebhook", () => {
             '{ "requestType": "transcribe"}',
           ),
         ).toBeInstanceOf(freeclimb.TranscribeWebhook);
+      });
+    });
+  });
+  describe("Test with only required values", () => {
+    let constructorArguments = {};
+    let model: freeclimb.TranscribeWebhook = new freeclimb.TranscribeWebhook(
+      constructorArguments,
+    );
+
+    describe("#requestType", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "requestType",
+        )?.defaultValue;
+        expect(model.requestType).toBe(value);
+      });
+    });
+    describe("#accountId", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "accountId",
+        )?.defaultValue;
+        expect(model.accountId).toBe(value);
+      });
+    });
+    describe("#callId", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "callId",
+        )?.defaultValue;
+        expect(model.callId).toBe(value);
+      });
+    });
+    describe("#from", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "from",
+        )?.defaultValue;
+        expect(model.from).toBe(value);
+      });
+    });
+    describe("#to", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "to",
+        )?.defaultValue;
+        expect(model.to).toBe(value);
+      });
+    });
+    describe("#recordingId", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "recordingId",
+        )?.defaultValue;
+        expect(model.recordingId).toBe(value);
+      });
+    });
+    describe("#recordingUrl", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "recordingUrl",
+        )?.defaultValue;
+        expect(model.recordingUrl).toBe(value);
+      });
+    });
+    describe("#recordingSize", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "recordingSize",
+        )?.defaultValue;
+        expect(model.recordingSize).toBe(value);
+      });
+    });
+    describe("#recordingFormat", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "recordingFormat",
+        )?.defaultValue;
+        expect(model.recordingFormat).toBe(value);
+      });
+    });
+    describe("#recordingDurationMs", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "recordingDurationMs",
+        )?.defaultValue;
+        expect(model.recordingDurationMs).toBe(value);
+      });
+    });
+    describe("#termReason", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "termReason",
+        )?.defaultValue;
+        expect(model.termReason).toBe(value);
+      });
+    });
+    describe("#recordTermReason", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "recordTermReason",
+        )?.defaultValue;
+        expect(model.recordTermReason).toBe(value);
+      });
+    });
+    describe("#digit", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "digit",
+        )?.defaultValue;
+        expect(model.digit).toBe(value);
+      });
+    });
+    describe("#privacyForLogging", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "privacyForLogging",
+        )?.defaultValue;
+        expect(model.privacyForLogging).toBe(value);
+      });
+    });
+    describe("#privacyForRecording", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "privacyForRecording",
+        )?.defaultValue;
+        expect(model.privacyForRecording).toBe(value);
+      });
+    });
+    describe("#bargeInReason", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "bargeInReason",
+        )?.defaultValue;
+        expect(model.bargeInReason).toBe(value);
+      });
+    });
+    describe("#bargedInPromptNo", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "bargedInPromptNo",
+        )?.defaultValue;
+        expect(model.bargedInPromptNo).toBe(value);
+      });
+    });
+    describe("#bargedInPromptMs", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "bargedInPromptMs",
+        )?.defaultValue;
+        expect(model.bargedInPromptMs).toBe(value);
+      });
+    });
+    describe("#bargedInPromptLoopNo", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "bargedInPromptLoopNo",
+        )?.defaultValue;
+        expect(model.bargedInPromptLoopNo).toBe(value);
+      });
+    });
+    describe("#bargeInTimeMs", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "bargeInTimeMs",
+        )?.defaultValue;
+        expect(model.bargeInTimeMs).toBe(value);
+      });
+    });
+    describe("#transcript", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "transcript",
+        )?.defaultValue;
+        expect(model.transcript).toBe(value);
+      });
+    });
+    describe("#transcribeReason", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "transcribeReason",
+        )?.defaultValue;
+        expect(model.transcribeReason).toBe(value);
+      });
+    });
+    describe("#transcriptionDurationMs", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "transcriptionDurationMs",
+        )?.defaultValue;
+        expect(model.transcriptionDurationMs).toBe(value);
       });
     });
   });

@@ -2,6 +2,7 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("GetDigitsReason", () => {
+  const Klass = freeclimb.GetDigitsReason;
   describe("Test with truthy values", () => {
     describe(".FINISH_KEY", () => {
       it("resolves to correct value for FINISH_KEY enum property", () => {

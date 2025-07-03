@@ -2,6 +2,7 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("ConferenceStatusWebhook", () => {
+  const Klass = freeclimb.ConferenceStatusWebhook;
   describe("Test with truthy values", () => {
     let model: freeclimb.ConferenceStatusWebhook =
       new freeclimb.ConferenceStatusWebhook({
@@ -227,6 +228,116 @@ describe("ConferenceStatusWebhook", () => {
             '{ "requestType": "conferenceStatus"}',
           ),
         ).toBeInstanceOf(freeclimb.ConferenceStatusWebhook);
+      });
+    });
+  });
+  describe("Test with only required values", () => {
+    let constructorArguments = {};
+    let model: freeclimb.ConferenceStatusWebhook =
+      new freeclimb.ConferenceStatusWebhook(constructorArguments);
+
+    describe("#requestType", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "requestType",
+        )?.defaultValue;
+        expect(model.requestType).toBe(value);
+      });
+    });
+    describe("#callId", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "callId",
+        )?.defaultValue;
+        expect(model.callId).toBe(value);
+      });
+    });
+    describe("#accountId", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "accountId",
+        )?.defaultValue;
+        expect(model.accountId).toBe(value);
+      });
+    });
+    describe("#from", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "from",
+        )?.defaultValue;
+        expect(model.from).toBe(value);
+      });
+    });
+    describe("#to", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "to",
+        )?.defaultValue;
+        expect(model.to).toBe(value);
+      });
+    });
+    describe("#callStatus", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "callStatus",
+        )?.defaultValue;
+        expect(model.callStatus).toBe(value);
+      });
+    });
+    describe("#direction", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "direction",
+        )?.defaultValue;
+        expect(model.direction).toBe(value);
+      });
+    });
+    describe("#conferenceId", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "conferenceId",
+        )?.defaultValue;
+        expect(model.conferenceId).toBe(value);
+      });
+    });
+    describe("#queueId", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "queueId",
+        )?.defaultValue;
+        expect(model.queueId).toBe(value);
+      });
+    });
+    describe("#status", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "status",
+        )?.defaultValue;
+        expect(model.status).toBe(value);
+      });
+    });
+    describe("#recordingUrl", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "recordingUrl",
+        )?.defaultValue;
+        expect(model.recordingUrl).toBe(value);
+      });
+    });
+    describe("#recordingId", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "recordingId",
+        )?.defaultValue;
+        expect(model.recordingId).toBe(value);
+      });
+    });
+    describe("#recordingDurationSec", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "recordingDurationSec",
+        )?.defaultValue;
+        expect(model.recordingDurationSec).toBe(value);
       });
     });
   });

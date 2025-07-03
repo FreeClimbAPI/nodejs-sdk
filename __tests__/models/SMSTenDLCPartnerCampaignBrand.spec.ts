@@ -2,6 +2,7 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("SMSTenDLCPartnerCampaignBrand", () => {
+  const Klass = freeclimb.SMSTenDLCPartnerCampaignBrand;
   describe("Test with truthy values", () => {
     let model: freeclimb.SMSTenDLCPartnerCampaignBrand =
       new freeclimb.SMSTenDLCPartnerCampaignBrand({
@@ -166,6 +167,97 @@ describe("SMSTenDLCPartnerCampaignBrand", () => {
     describe(".evpVettingScore", () => {
       it("resolves to particular value on initialization", () => {
         const value = 0;
+        expect(model.evpVettingScore).toBe(value);
+      });
+    });
+  });
+  describe("Test with only required values", () => {
+    let constructorArguments = {
+      phone: "test_phone",
+      email: "test_email",
+    };
+    let model: freeclimb.SMSTenDLCPartnerCampaignBrand =
+      new freeclimb.SMSTenDLCPartnerCampaignBrand(constructorArguments);
+
+    describe("#accountId", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "accountId",
+        )?.defaultValue;
+        expect(model.accountId).toBe(value);
+      });
+    });
+    describe("#brandId", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "brandId",
+        )?.defaultValue;
+        expect(model.brandId).toBe(value);
+      });
+    });
+    describe("#firstName", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "firstName",
+        )?.defaultValue;
+        expect(model.firstName).toBe(value);
+      });
+    });
+    describe("#lastName", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "lastName",
+        )?.defaultValue;
+        expect(model.lastName).toBe(value);
+      });
+    });
+    describe("#displayName", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "displayName",
+        )?.defaultValue;
+        expect(model.displayName).toBe(value);
+      });
+    });
+    describe("#companyName", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "companyName",
+        )?.defaultValue;
+        expect(model.companyName).toBe(value);
+      });
+    });
+    describe("#phone", () => {
+      it("resolves to initialization value", () => {
+        expect(model.phone).toBe(constructorArguments["phone"]);
+      });
+    });
+    describe("#email", () => {
+      it("resolves to initialization value", () => {
+        expect(model.email).toBe(constructorArguments["email"]);
+      });
+    });
+    describe("#website", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "website",
+        )?.defaultValue;
+        expect(model.website).toBe(value);
+      });
+    });
+    describe("#optionalAttributes", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "optionalAttributes",
+        )?.defaultValue;
+        expect(model.optionalAttributes).toBe(value);
+      });
+    });
+    describe("#evpVettingScore", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "evpVettingScore",
+        )?.defaultValue;
         expect(model.evpVettingScore).toBe(value);
       });
     });

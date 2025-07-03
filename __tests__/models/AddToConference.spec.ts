@@ -2,6 +2,7 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("AddToConference", () => {
+  const Klass = freeclimb.AddToConference;
   describe("Test with truthy values", () => {
     let model: freeclimb.AddToConference = new freeclimb.AddToConference({
       allowCallControl: true,
@@ -158,6 +159,92 @@ describe("AddToConference", () => {
     describe(".dtmfPassThrough", () => {
       it("resolves to particular value on initialization", () => {
         const value = false;
+        expect(model.dtmfPassThrough).toBe(value);
+      });
+    });
+  });
+  describe("Test with only required values", () => {
+    let constructorArguments = {
+      conferenceId: "test_conferenceId",
+    };
+    let model: freeclimb.AddToConference = new freeclimb.AddToConference(
+      constructorArguments,
+    );
+
+    describe("#allowCallControl", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "allowCallControl",
+        )?.defaultValue;
+        expect(model.allowCallControl).toBe(value);
+      });
+    });
+    describe("#callControlSequence", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "callControlSequence",
+        )?.defaultValue;
+        expect(model.callControlSequence).toBe(value);
+      });
+    });
+    describe("#callControlUrl", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "callControlUrl",
+        )?.defaultValue;
+        expect(model.callControlUrl).toBe(value);
+      });
+    });
+    describe("#conferenceId", () => {
+      it("resolves to initialization value", () => {
+        expect(model.conferenceId).toBe(constructorArguments["conferenceId"]);
+      });
+    });
+    describe("#leaveConferenceUrl", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "leaveConferenceUrl",
+        )?.defaultValue;
+        expect(model.leaveConferenceUrl).toBe(value);
+      });
+    });
+    describe("#listen", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "listen",
+        )?.defaultValue;
+        expect(model.listen).toBe(value);
+      });
+    });
+    describe("#notificationUrl", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "notificationUrl",
+        )?.defaultValue;
+        expect(model.notificationUrl).toBe(value);
+      });
+    });
+    describe("#startConfOnEnter", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "startConfOnEnter",
+        )?.defaultValue;
+        expect(model.startConfOnEnter).toBe(value);
+      });
+    });
+    describe("#talk", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "talk",
+        )?.defaultValue;
+        expect(model.talk).toBe(value);
+      });
+    });
+    describe("#dtmfPassThrough", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "dtmfPassThrough",
+        )?.defaultValue;
         expect(model.dtmfPassThrough).toBe(value);
       });
     });

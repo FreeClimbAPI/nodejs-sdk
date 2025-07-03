@@ -2,6 +2,7 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("Language", () => {
+  const Klass = freeclimb.Language;
   describe("Test with truthy values", () => {
     describe(".CATALAN", () => {
       it("resolves to correct value for CATALAN enum property", () => {

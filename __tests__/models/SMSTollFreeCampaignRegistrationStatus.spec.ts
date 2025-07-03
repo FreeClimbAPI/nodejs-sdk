@@ -2,6 +2,7 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("SMSTollFreeCampaignRegistrationStatus", () => {
+  const Klass = freeclimb.SMSTollFreeCampaignRegistrationStatus;
   describe("Test with truthy values", () => {
     describe(".UNREGISTERED", () => {
       it("resolves to correct value for UNREGISTERED enum property", () => {

@@ -2,6 +2,7 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("QueueResultStatus", () => {
+  const Klass = freeclimb.QueueResultStatus;
   describe("Test with truthy values", () => {
     describe(".QUEUE_FULL", () => {
       it("resolves to correct value for QUEUE_FULL enum property", () => {

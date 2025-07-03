@@ -2,6 +2,7 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("SMSTenDLCBrand", () => {
+  const Klass = freeclimb.SMSTenDLCBrand;
   describe("Test with truthy values", () => {
     let model: freeclimb.SMSTenDLCBrand = new freeclimb.SMSTenDLCBrand({
       accountId: "test_accountId",
@@ -455,6 +456,250 @@ describe("SMSTenDLCBrand", () => {
       it("resolves to particular value on initialization", () => {
         const value = undefined;
         expect(model.createDate).toStrictEqual(value);
+      });
+    });
+  });
+  describe("Test with only required values", () => {
+    let constructorArguments = {
+      entityType: freeclimb.SMSTenDLCBrandEntityType.PRIVATE_PROFIT,
+      displayName: "test_displayName",
+      phone: "test_phone",
+      country: "test_country",
+      email: "test_email",
+
+      brandRelationship: freeclimb.SMSTenDLCBrandRelationship.BASIC_ACCOUNT,
+      vertical: "test_vertical",
+      mock: true,
+
+      identityStatus: freeclimb.SMSTenDLCBrandIdentityStatus.SELF_DECLARED,
+    };
+    let model: freeclimb.SMSTenDLCBrand = new freeclimb.SMSTenDLCBrand(
+      constructorArguments,
+    );
+
+    describe("#accountId", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "accountId",
+        )?.defaultValue;
+        expect(model.accountId).toBe(value);
+      });
+    });
+    describe("#entityType", () => {
+      it("resolves to initialization value", () => {
+        expect(model.entityType).toBe(constructorArguments["entityType"]);
+      });
+    });
+    describe("#cspId", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "cspId",
+        )?.defaultValue;
+        expect(model.cspId).toBe(value);
+      });
+    });
+    describe("#brandId", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "brandId",
+        )?.defaultValue;
+        expect(model.brandId).toBe(value);
+      });
+    });
+    describe("#firstName", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "firstName",
+        )?.defaultValue;
+        expect(model.firstName).toBe(value);
+      });
+    });
+    describe("#lastName", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "lastName",
+        )?.defaultValue;
+        expect(model.lastName).toBe(value);
+      });
+    });
+    describe("#displayName", () => {
+      it("resolves to initialization value", () => {
+        expect(model.displayName).toBe(constructorArguments["displayName"]);
+      });
+    });
+    describe("#companyName", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "companyName",
+        )?.defaultValue;
+        expect(model.companyName).toBe(value);
+      });
+    });
+    describe("#ein", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "ein",
+        )?.defaultValue;
+        expect(model.ein).toBe(value);
+      });
+    });
+    describe("#einIssuingCountry", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "einIssuingCountry",
+        )?.defaultValue;
+        expect(model.einIssuingCountry).toBe(value);
+      });
+    });
+    describe("#phone", () => {
+      it("resolves to initialization value", () => {
+        expect(model.phone).toBe(constructorArguments["phone"]);
+      });
+    });
+    describe("#street", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "street",
+        )?.defaultValue;
+        expect(model.street).toBe(value);
+      });
+    });
+    describe("#city", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "city",
+        )?.defaultValue;
+        expect(model.city).toBe(value);
+      });
+    });
+    describe("#state", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "state",
+        )?.defaultValue;
+        expect(model.state).toBe(value);
+      });
+    });
+    describe("#postalCode", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "postalCode",
+        )?.defaultValue;
+        expect(model.postalCode).toBe(value);
+      });
+    });
+    describe("#country", () => {
+      it("resolves to initialization value", () => {
+        expect(model.country).toBe(constructorArguments["country"]);
+      });
+    });
+    describe("#email", () => {
+      it("resolves to initialization value", () => {
+        expect(model.email).toBe(constructorArguments["email"]);
+      });
+    });
+    describe("#stockSymbol", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "stockSymbol",
+        )?.defaultValue;
+        expect(model.stockSymbol).toBe(value);
+      });
+    });
+    describe("#stockExchange", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "stockExchange",
+        )?.defaultValue;
+        expect(model.stockExchange).toBe(value);
+      });
+    });
+    describe("#ipAddress", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "ipAddress",
+        )?.defaultValue;
+        expect(model.ipAddress).toBe(value);
+      });
+    });
+    describe("#website", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "website",
+        )?.defaultValue;
+        expect(model.website).toBe(value);
+      });
+    });
+    describe("#brandRelationship", () => {
+      it("resolves to initialization value", () => {
+        expect(model.brandRelationship).toBe(
+          constructorArguments["brandRelationship"],
+        );
+      });
+    });
+    describe("#vertical", () => {
+      it("resolves to initialization value", () => {
+        expect(model.vertical).toBe(constructorArguments["vertical"]);
+      });
+    });
+    describe("#altBusinessId", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "altBusinessId",
+        )?.defaultValue;
+        expect(model.altBusinessId).toBe(value);
+      });
+    });
+    describe("#altBusinessIdType", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "altBusinessIdType",
+        )?.defaultValue;
+        expect(model.altBusinessIdType).toBe(value);
+      });
+    });
+    describe("#universalEin", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "universalEin",
+        )?.defaultValue;
+        expect(model.universalEin).toBe(value);
+      });
+    });
+    describe("#referenceId", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "referenceId",
+        )?.defaultValue;
+        expect(model.referenceId).toBe(value);
+      });
+    });
+    describe("#optionalAttributes", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "optionalAttributes",
+        )?.defaultValue;
+        expect(model.optionalAttributes).toBe(value);
+      });
+    });
+    describe("#mock", () => {
+      it("resolves to initialization value", () => {
+        expect(model.mock).toBe(constructorArguments["mock"]);
+      });
+    });
+    describe("#identityStatus", () => {
+      it("resolves to initialization value", () => {
+        expect(model.identityStatus).toBe(
+          constructorArguments["identityStatus"],
+        );
+      });
+    });
+    describe("#createDate", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "createDate",
+        )?.defaultValue;
+        expect(model.createDate).toBe(value);
       });
     });
   });

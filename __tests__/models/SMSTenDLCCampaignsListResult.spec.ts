@@ -2,6 +2,7 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("SMSTenDLCCampaignsListResult", () => {
+  const Klass = freeclimb.SMSTenDLCCampaignsListResult;
   describe("Test with truthy values", () => {
     let model: freeclimb.SMSTenDLCCampaignsListResult =
       new freeclimb.SMSTenDLCCampaignsListResult({
@@ -131,6 +132,28 @@ describe("SMSTenDLCCampaignsListResult", () => {
       it("resolves to particular value on initialization", () => {
         const value: freeclimb.SMSTenDLCCampaign[] = [];
         expect(model.campaigns).toStrictEqual(value);
+      });
+    });
+  });
+  describe("Test with only required values", () => {
+    let constructorArguments = {
+      total: 1,
+      start: 1,
+      end: 1,
+      page: 1,
+      numPages: 1,
+      pageSize: 1,
+      nextPageUri: "test_nextPageUri",
+    };
+    let model: freeclimb.SMSTenDLCCampaignsListResult =
+      new freeclimb.SMSTenDLCCampaignsListResult(constructorArguments);
+
+    describe("#campaigns", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "campaigns",
+        )?.defaultValue;
+        expect(model.campaigns).toBe(value);
       });
     });
   });

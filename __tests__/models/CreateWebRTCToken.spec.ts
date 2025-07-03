@@ -2,6 +2,7 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("CreateWebRTCToken", () => {
+  const Klass = freeclimb.CreateWebRTCToken;
   describe("Test with truthy values", () => {
     let model: freeclimb.CreateWebRTCToken = new freeclimb.CreateWebRTCToken({
       to: "test_to",
@@ -59,6 +60,32 @@ describe("CreateWebRTCToken", () => {
       it("resolves to particular value on initialization", () => {
         const value = 0;
         expect(model.uses).toBe(value);
+      });
+    });
+  });
+  describe("Test with only required values", () => {
+    let constructorArguments = {
+      to: "test_to",
+      from: "test_from",
+      uses: 1,
+    };
+    let model: freeclimb.CreateWebRTCToken = new freeclimb.CreateWebRTCToken(
+      constructorArguments,
+    );
+
+    describe("#to", () => {
+      it("resolves to initialization value", () => {
+        expect(model.to).toBe(constructorArguments["to"]);
+      });
+    });
+    describe("#from", () => {
+      it("resolves to initialization value", () => {
+        expect(model.from).toBe(constructorArguments["from"]);
+      });
+    });
+    describe("#uses", () => {
+      it("resolves to initialization value", () => {
+        expect(model.uses).toBe(constructorArguments["uses"]);
       });
     });
   });

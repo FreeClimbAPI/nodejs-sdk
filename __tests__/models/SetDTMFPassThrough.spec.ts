@@ -2,6 +2,7 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("SetDTMFPassThrough", () => {
+  const Klass = freeclimb.SetDTMFPassThrough;
   describe("Test with truthy values", () => {
     let model: freeclimb.SetDTMFPassThrough = new freeclimb.SetDTMFPassThrough({
       dtmfPassThrough: true,
@@ -32,6 +33,21 @@ describe("SetDTMFPassThrough", () => {
     describe(".dtmfPassThrough", () => {
       it("resolves to particular value on initialization", () => {
         const value = false;
+        expect(model.dtmfPassThrough).toBe(value);
+      });
+    });
+  });
+  describe("Test with only required values", () => {
+    let constructorArguments = {};
+    let model: freeclimb.SetDTMFPassThrough = new freeclimb.SetDTMFPassThrough(
+      constructorArguments,
+    );
+
+    describe("#dtmfPassThrough", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "dtmfPassThrough",
+        )?.defaultValue;
         expect(model.dtmfPassThrough).toBe(value);
       });
     });

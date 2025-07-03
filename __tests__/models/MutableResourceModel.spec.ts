@@ -2,6 +2,7 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("MutableResourceModel", () => {
+  const Klass = freeclimb.MutableResourceModel;
   describe("Test with truthy values", () => {
     let model: freeclimb.MutableResourceModel =
       new freeclimb.MutableResourceModel({
@@ -74,6 +75,44 @@ describe("MutableResourceModel", () => {
     describe(".revision", () => {
       it("resolves to particular value on initialization", () => {
         const value = 0;
+        expect(model.revision).toBe(value);
+      });
+    });
+  });
+  describe("Test with only required values", () => {
+    let constructorArguments = {};
+    let model: freeclimb.MutableResourceModel =
+      new freeclimb.MutableResourceModel(constructorArguments);
+
+    describe("#uri", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "uri",
+        )?.defaultValue;
+        expect(model.uri).toBe(value);
+      });
+    });
+    describe("#dateCreated", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "dateCreated",
+        )?.defaultValue;
+        expect(model.dateCreated).toBe(value);
+      });
+    });
+    describe("#dateUpdated", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "dateUpdated",
+        )?.defaultValue;
+        expect(model.dateUpdated).toBe(value);
+      });
+    });
+    describe("#revision", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "revision",
+        )?.defaultValue;
         expect(model.revision).toBe(value);
       });
     });

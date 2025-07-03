@@ -2,6 +2,7 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("ConferenceList", () => {
+  const Klass = freeclimb.ConferenceList;
   describe("Test with truthy values", () => {
     let model: freeclimb.ConferenceList = new freeclimb.ConferenceList({
       total: 1,
@@ -129,6 +130,29 @@ describe("ConferenceList", () => {
       it("resolves to particular value on initialization", () => {
         const value: freeclimb.ConferenceResult[] = [];
         expect(model.conferences).toStrictEqual(value);
+      });
+    });
+  });
+  describe("Test with only required values", () => {
+    let constructorArguments = {
+      total: 1,
+      start: 1,
+      end: 1,
+      page: 1,
+      numPages: 1,
+      pageSize: 1,
+      nextPageUri: "test_nextPageUri",
+    };
+    let model: freeclimb.ConferenceList = new freeclimb.ConferenceList(
+      constructorArguments,
+    );
+
+    describe("#conferences", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "conferences",
+        )?.defaultValue;
+        expect(model.conferences).toBe(value);
       });
     });
   });

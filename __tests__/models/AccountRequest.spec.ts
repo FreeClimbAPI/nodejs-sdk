@@ -2,6 +2,7 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("AccountRequest", () => {
+  const Klass = freeclimb.AccountRequest;
   describe("Test with truthy values", () => {
     let model: freeclimb.AccountRequest = new freeclimb.AccountRequest({
       alias: "test_alias",
@@ -44,6 +45,29 @@ describe("AccountRequest", () => {
     describe(".label", () => {
       it("resolves to particular value on initialization", () => {
         const value = "";
+        expect(model.label).toBe(value);
+      });
+    });
+  });
+  describe("Test with only required values", () => {
+    let constructorArguments = {};
+    let model: freeclimb.AccountRequest = new freeclimb.AccountRequest(
+      constructorArguments,
+    );
+
+    describe("#alias", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "alias",
+        )?.defaultValue;
+        expect(model.alias).toBe(value);
+      });
+    });
+    describe("#label", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "label",
+        )?.defaultValue;
         expect(model.label).toBe(value);
       });
     });

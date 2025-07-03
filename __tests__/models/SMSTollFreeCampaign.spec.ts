@@ -2,6 +2,7 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("SMSTollFreeCampaign", () => {
+  const Klass = freeclimb.SMSTollFreeCampaign;
   describe("Test with truthy values", () => {
     let model: freeclimb.SMSTollFreeCampaign =
       new freeclimb.SMSTollFreeCampaign({
@@ -121,6 +122,59 @@ describe("SMSTollFreeCampaign", () => {
       it("resolves to particular value on initialization", () => {
         const value = 0;
         expect(model.revision).toBe(value);
+      });
+    });
+  });
+  describe("Test with only required values", () => {
+    let constructorArguments = {
+      accountId: "test_accountId",
+      campaignId: "test_campaignId",
+      useCase: "test_useCase",
+
+      registrationStatus:
+        freeclimb.SMSTollFreeCampaignRegistrationStatus.UNREGISTERED,
+      dateCreated: "test_dateCreated",
+      dateUpdated: "test_dateUpdated",
+      revision: 1,
+    };
+    let model: freeclimb.SMSTollFreeCampaign =
+      new freeclimb.SMSTollFreeCampaign(constructorArguments);
+
+    describe("#accountId", () => {
+      it("resolves to initialization value", () => {
+        expect(model.accountId).toBe(constructorArguments["accountId"]);
+      });
+    });
+    describe("#campaignId", () => {
+      it("resolves to initialization value", () => {
+        expect(model.campaignId).toBe(constructorArguments["campaignId"]);
+      });
+    });
+    describe("#useCase", () => {
+      it("resolves to initialization value", () => {
+        expect(model.useCase).toBe(constructorArguments["useCase"]);
+      });
+    });
+    describe("#registrationStatus", () => {
+      it("resolves to initialization value", () => {
+        expect(model.registrationStatus).toBe(
+          constructorArguments["registrationStatus"],
+        );
+      });
+    });
+    describe("#dateCreated", () => {
+      it("resolves to initialization value", () => {
+        expect(model.dateCreated).toBe(constructorArguments["dateCreated"]);
+      });
+    });
+    describe("#dateUpdated", () => {
+      it("resolves to initialization value", () => {
+        expect(model.dateUpdated).toBe(constructorArguments["dateUpdated"]);
+      });
+    });
+    describe("#revision", () => {
+      it("resolves to initialization value", () => {
+        expect(model.revision).toBe(constructorArguments["revision"]);
       });
     });
   });

@@ -2,6 +2,7 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("MakeCallRequest", () => {
+  const Klass = freeclimb.MakeCallRequest;
   describe("Test with truthy values", () => {
     let model: freeclimb.MakeCallRequest = new freeclimb.MakeCallRequest({
       from: "test_from",
@@ -156,6 +157,90 @@ describe("MakeCallRequest", () => {
     describe(".callConnectUrl", () => {
       it("resolves to particular value on initialization", () => {
         const value = "";
+        expect(model.callConnectUrl).toBe(value);
+      });
+    });
+  });
+  describe("Test with only required values", () => {
+    let constructorArguments = {
+      from: "test_from",
+      to: "test_to",
+    };
+    let model: freeclimb.MakeCallRequest = new freeclimb.MakeCallRequest(
+      constructorArguments,
+    );
+
+    describe("#from", () => {
+      it("resolves to initialization value", () => {
+        expect(model.from).toBe(constructorArguments["from"]);
+      });
+    });
+    describe("#to", () => {
+      it("resolves to initialization value", () => {
+        expect(model.to).toBe(constructorArguments["to"]);
+      });
+    });
+    describe("#applicationId", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "applicationId",
+        )?.defaultValue;
+        expect(model.applicationId).toBe(value);
+      });
+    });
+    describe("#sendDigits", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "sendDigits",
+        )?.defaultValue;
+        expect(model.sendDigits).toBe(value);
+      });
+    });
+    describe("#ifMachine", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "ifMachine",
+        )?.defaultValue;
+        expect(model.ifMachine).toBe(value);
+      });
+    });
+    describe("#ifMachineUrl", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "ifMachineUrl",
+        )?.defaultValue;
+        expect(model.ifMachineUrl).toBe(value);
+      });
+    });
+    describe("#timeout", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "timeout",
+        )?.defaultValue;
+        expect(model.timeout).toBe(value);
+      });
+    });
+    describe("#parentCallId", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "parentCallId",
+        )?.defaultValue;
+        expect(model.parentCallId).toBe(value);
+      });
+    });
+    describe("#privacyMode", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "privacyMode",
+        )?.defaultValue;
+        expect(model.privacyMode).toBe(value);
+      });
+    });
+    describe("#callConnectUrl", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "callConnectUrl",
+        )?.defaultValue;
         expect(model.callConnectUrl).toBe(value);
       });
     });

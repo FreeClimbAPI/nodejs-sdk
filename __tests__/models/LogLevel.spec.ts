@@ -2,6 +2,7 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("LogLevel", () => {
+  const Klass = freeclimb.LogLevel;
   describe("Test with truthy values", () => {
     describe(".INFO", () => {
       it("resolves to correct value for INFO enum property", () => {

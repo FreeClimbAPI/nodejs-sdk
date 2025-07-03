@@ -2,6 +2,7 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("CallResult", () => {
+  const Klass = freeclimb.CallResult;
   describe("Test with truthy values", () => {
     let model: freeclimb.CallResult = new freeclimb.CallResult({
       uri: "test_uri",
@@ -306,6 +307,146 @@ describe("CallResult", () => {
     describe(".applicationId", () => {
       it("resolves to particular value on initialization", () => {
         const value = "";
+        expect(model.applicationId).toBe(value);
+      });
+    });
+  });
+  describe("Test with only required values", () => {
+    let constructorArguments = {
+      uri: "test_uri",
+      dateCreated: "test_dateCreated",
+      dateUpdated: "test_dateUpdated",
+      revision: 1,
+    };
+    let model: freeclimb.CallResult = new freeclimb.CallResult(
+      constructorArguments,
+    );
+
+    describe("#callId", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "callId",
+        )?.defaultValue;
+        expect(model.callId).toBe(value);
+      });
+    });
+    describe("#parentCallId", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "parentCallId",
+        )?.defaultValue;
+        expect(model.parentCallId).toBe(value);
+      });
+    });
+    describe("#accountId", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "accountId",
+        )?.defaultValue;
+        expect(model.accountId).toBe(value);
+      });
+    });
+    describe("#from", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "from",
+        )?.defaultValue;
+        expect(model.from).toBe(value);
+      });
+    });
+    describe("#to", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "to",
+        )?.defaultValue;
+        expect(model.to).toBe(value);
+      });
+    });
+    describe("#phoneNumberId", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "phoneNumberId",
+        )?.defaultValue;
+        expect(model.phoneNumberId).toBe(value);
+      });
+    });
+    describe("#callStatus", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "callStatus",
+        )?.defaultValue;
+        expect(model.callStatus).toBe(value);
+      });
+    });
+    describe("#startTime", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "startTime",
+        )?.defaultValue;
+        expect(model.startTime).toBe(value);
+      });
+    });
+    describe("#connectTime", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "connectTime",
+        )?.defaultValue;
+        expect(model.connectTime).toBe(value);
+      });
+    });
+    describe("#endTime", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "endTime",
+        )?.defaultValue;
+        expect(model.endTime).toBe(value);
+      });
+    });
+    describe("#duration", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "duration",
+        )?.defaultValue;
+        expect(model.duration).toBe(value);
+      });
+    });
+    describe("#connectDuration", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "connectDuration",
+        )?.defaultValue;
+        expect(model.connectDuration).toBe(value);
+      });
+    });
+    describe("#direction", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "direction",
+        )?.defaultValue;
+        expect(model.direction).toBe(value);
+      });
+    });
+    describe("#answeredBy", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "answeredBy",
+        )?.defaultValue;
+        expect(model.answeredBy).toBe(value);
+      });
+    });
+    describe("#subresourceUris", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "subresourceUris",
+        )?.defaultValue;
+        expect(model.subresourceUris).toBe(value);
+      });
+    });
+    describe("#applicationId", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "applicationId",
+        )?.defaultValue;
         expect(model.applicationId).toBe(value);
       });
     });

@@ -2,6 +2,7 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("FilterLogsRequest", () => {
+  const Klass = freeclimb.FilterLogsRequest;
   describe("Test with truthy values", () => {
     let model: freeclimb.FilterLogsRequest = new freeclimb.FilterLogsRequest({
       pql: "test_pql",
@@ -31,6 +32,20 @@ describe("FilterLogsRequest", () => {
       it("resolves to particular value on initialization", () => {
         const value = "";
         expect(model.pql).toBe(value);
+      });
+    });
+  });
+  describe("Test with only required values", () => {
+    let constructorArguments = {
+      pql: "test_pql",
+    };
+    let model: freeclimb.FilterLogsRequest = new freeclimb.FilterLogsRequest(
+      constructorArguments,
+    );
+
+    describe("#pql", () => {
+      it("resolves to initialization value", () => {
+        expect(model.pql).toBe(constructorArguments["pql"]);
       });
     });
   });
