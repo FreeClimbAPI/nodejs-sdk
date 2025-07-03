@@ -46,7 +46,7 @@
   },
   "devDependencies": {
     "@babel/preset-env": "^7.19.3",
-    "@stoplight/prism-cli": "5.6.0",
+    "@stoplight/prism-cli": "5.14.2",
     "@types/jest": "^29.0.3",
     "@types/qs": "^6.9.7",
     "jest": "^29.0.0",
