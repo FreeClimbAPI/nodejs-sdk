@@ -2,8 +2,8 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("MutableResourceModel", () => {
-  const Klass = freeclimb.MutableResourceModel;
   describe("Test with truthy values", () => {
+    const Klass = freeclimb.MutableResourceModel;
     let model: freeclimb.MutableResourceModel =
       new freeclimb.MutableResourceModel({
         uri: "test_uri",
@@ -42,6 +42,7 @@ describe("MutableResourceModel", () => {
     });
   });
   describe("Test with falsy values", () => {
+    const Klass = freeclimb.MutableResourceModel;
     let model: freeclimb.MutableResourceModel =
       new freeclimb.MutableResourceModel({
         uri: "",

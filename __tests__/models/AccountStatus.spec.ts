@@ -2,7 +2,6 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("AccountStatus", () => {
-  const Klass = freeclimb.AccountStatus;
   describe("Test with truthy values", () => {
     describe(".CLOSED", () => {
       it("resolves to correct value for CLOSED enum property", () => {

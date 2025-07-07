@@ -2,8 +2,8 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("SetDTMFPassThrough", () => {
-  const Klass = freeclimb.SetDTMFPassThrough;
   describe("Test with truthy values", () => {
+    const Klass = freeclimb.SetDTMFPassThrough;
     let model: freeclimb.SetDTMFPassThrough = new freeclimb.SetDTMFPassThrough({
       dtmfPassThrough: true,
     });
@@ -21,6 +21,7 @@ describe("SetDTMFPassThrough", () => {
     });
   });
   describe("Test with falsy values", () => {
+    const Klass = freeclimb.SetDTMFPassThrough;
     let model: freeclimb.SetDTMFPassThrough = new freeclimb.SetDTMFPassThrough({
       dtmfPassThrough: false,
     });

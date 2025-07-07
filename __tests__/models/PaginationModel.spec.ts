@@ -2,8 +2,8 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("PaginationModel", () => {
-  const Klass = freeclimb.PaginationModel;
   describe("Test with truthy values", () => {
+    const Klass = freeclimb.PaginationModel;
     let model: freeclimb.PaginationModel = new freeclimb.PaginationModel({
       total: 1,
       start: 1,
@@ -62,6 +62,7 @@ describe("PaginationModel", () => {
     });
   });
   describe("Test with falsy values", () => {
+    const Klass = freeclimb.PaginationModel;
     let model: freeclimb.PaginationModel = new freeclimb.PaginationModel({
       total: 0,
       start: 0,

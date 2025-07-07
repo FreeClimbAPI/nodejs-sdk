@@ -2,8 +2,8 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("PerclScript", () => {
-  const Klass = freeclimb.PerclScript;
   describe("Test with truthy values", () => {
+    const Klass = freeclimb.PerclScript;
     let model: freeclimb.PerclScript = new freeclimb.PerclScript({
       commands: [],
     });
@@ -20,6 +20,7 @@ describe("PerclScript", () => {
     });
   });
   describe("Test with falsy values", () => {
+    const Klass = freeclimb.PerclScript;
     let model: freeclimb.PerclScript = new freeclimb.PerclScript({
       commands: [],
     });

@@ -2,8 +2,8 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("RemoveFromQueueNotificationWebhook", () => {
-  const Klass = freeclimb.RemoveFromQueueNotificationWebhook;
   describe("Test with truthy values", () => {
+    const Klass = freeclimb.RemoveFromQueueNotificationWebhook;
     let model: freeclimb.RemoveFromQueueNotificationWebhook =
       new freeclimb.RemoveFromQueueNotificationWebhook({
         requestType: "test_requestType",
@@ -106,6 +106,7 @@ describe("RemoveFromQueueNotificationWebhook", () => {
     });
   });
   describe("Test with falsy values", () => {
+    const Klass = freeclimb.RemoveFromQueueNotificationWebhook;
     let model: freeclimb.RemoveFromQueueNotificationWebhook =
       new freeclimb.RemoveFromQueueNotificationWebhook({
         requestType: "",

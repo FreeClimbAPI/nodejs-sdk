@@ -2,8 +2,8 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("ApplicationList", () => {
-  const Klass = freeclimb.ApplicationList;
   describe("Test with truthy values", () => {
+    const Klass = freeclimb.ApplicationList;
     let model: freeclimb.ApplicationList = new freeclimb.ApplicationList({
       total: 1,
       start: 1,
@@ -69,6 +69,7 @@ describe("ApplicationList", () => {
     });
   });
   describe("Test with falsy values", () => {
+    const Klass = freeclimb.ApplicationList;
     let model: freeclimb.ApplicationList = new freeclimb.ApplicationList({
       total: 0,
       start: 0,

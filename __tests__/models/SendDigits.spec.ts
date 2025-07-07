@@ -2,8 +2,8 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("SendDigits", () => {
-  const Klass = freeclimb.SendDigits;
   describe("Test with truthy values", () => {
+    const Klass = freeclimb.SendDigits;
     let model: freeclimb.SendDigits = new freeclimb.SendDigits({
       digits: "test_digits",
       pauseMs: 1,
@@ -35,6 +35,7 @@ describe("SendDigits", () => {
     });
   });
   describe("Test with falsy values", () => {
+    const Klass = freeclimb.SendDigits;
     let model: freeclimb.SendDigits = new freeclimb.SendDigits({
       digits: "",
       pauseMs: 0,

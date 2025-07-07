@@ -2,7 +2,6 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("SMSTenDLCBrandEntityType", () => {
-  const Klass = freeclimb.SMSTenDLCBrandEntityType;
   describe("Test with truthy values", () => {
     describe(".PRIVATE_PROFIT", () => {
       it("resolves to correct value for PRIVATE_PROFIT enum property", () => {

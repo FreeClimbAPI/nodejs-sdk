@@ -2,8 +2,8 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("TranscribeWebhook", () => {
-  const Klass = freeclimb.TranscribeWebhook;
   describe("Test with truthy values", () => {
+    const Klass = freeclimb.TranscribeWebhook;
     let model: freeclimb.TranscribeWebhook = new freeclimb.TranscribeWebhook({
       requestType: "test_requestType",
       accountId: "test_accountId",
@@ -188,6 +188,7 @@ describe("TranscribeWebhook", () => {
     });
   });
   describe("Test with falsy values", () => {
+    const Klass = freeclimb.TranscribeWebhook;
     let model: freeclimb.TranscribeWebhook = new freeclimb.TranscribeWebhook({
       requestType: "",
       accountId: "",

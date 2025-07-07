@@ -2,8 +2,8 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("CompletionResult", () => {
-  const Klass = freeclimb.CompletionResult;
   describe("Test with truthy values", () => {
+    const Klass = freeclimb.CompletionResult;
     let model: freeclimb.CompletionResult = new freeclimb.CompletionResult({
       response: "test_response",
 
@@ -28,6 +28,7 @@ describe("CompletionResult", () => {
     });
   });
   describe("Test with falsy values", () => {
+    const Klass = freeclimb.CompletionResult;
     let model: freeclimb.CompletionResult = new freeclimb.CompletionResult({
       response: "",
 

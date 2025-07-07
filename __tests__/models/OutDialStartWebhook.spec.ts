@@ -2,8 +2,8 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("OutDialStartWebhook", () => {
-  const Klass = freeclimb.OutDialStartWebhook;
   describe("Test with truthy values", () => {
+    const Klass = freeclimb.OutDialStartWebhook;
     let model: freeclimb.OutDialStartWebhook =
       new freeclimb.OutDialStartWebhook({
         requestType: "test_requestType",
@@ -103,6 +103,7 @@ describe("OutDialStartWebhook", () => {
     });
   });
   describe("Test with falsy values", () => {
+    const Klass = freeclimb.OutDialStartWebhook;
     let model: freeclimb.OutDialStartWebhook =
       new freeclimb.OutDialStartWebhook({
         requestType: "",

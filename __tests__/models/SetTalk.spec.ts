@@ -2,8 +2,8 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("SetTalk", () => {
-  const Klass = freeclimb.SetTalk;
   describe("Test with truthy values", () => {
+    const Klass = freeclimb.SetTalk;
     let model: freeclimb.SetTalk = new freeclimb.SetTalk({
       talk: true,
     });
@@ -21,6 +21,7 @@ describe("SetTalk", () => {
     });
   });
   describe("Test with falsy values", () => {
+    const Klass = freeclimb.SetTalk;
     let model: freeclimb.SetTalk = new freeclimb.SetTalk({
       talk: false,
     });

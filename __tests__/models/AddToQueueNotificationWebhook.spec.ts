@@ -2,8 +2,8 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("AddToQueueNotificationWebhook", () => {
-  const Klass = freeclimb.AddToQueueNotificationWebhook;
   describe("Test with truthy values", () => {
+    const Klass = freeclimb.AddToQueueNotificationWebhook;
     let model: freeclimb.AddToQueueNotificationWebhook =
       new freeclimb.AddToQueueNotificationWebhook({
         requestType: "test_requestType",
@@ -89,6 +89,7 @@ describe("AddToQueueNotificationWebhook", () => {
     });
   });
   describe("Test with falsy values", () => {
+    const Klass = freeclimb.AddToQueueNotificationWebhook;
     let model: freeclimb.AddToQueueNotificationWebhook =
       new freeclimb.AddToQueueNotificationWebhook({
         requestType: "",

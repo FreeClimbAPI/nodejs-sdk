@@ -2,8 +2,8 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("FilterLogsRequest", () => {
-  const Klass = freeclimb.FilterLogsRequest;
   describe("Test with truthy values", () => {
+    const Klass = freeclimb.FilterLogsRequest;
     let model: freeclimb.FilterLogsRequest = new freeclimb.FilterLogsRequest({
       pql: "test_pql",
     });
@@ -20,6 +20,7 @@ describe("FilterLogsRequest", () => {
     });
   });
   describe("Test with falsy values", () => {
+    const Klass = freeclimb.FilterLogsRequest;
     let model: freeclimb.FilterLogsRequest = new freeclimb.FilterLogsRequest({
       pql: "",
     });

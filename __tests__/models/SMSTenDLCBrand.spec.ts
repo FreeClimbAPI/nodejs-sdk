@@ -2,8 +2,8 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("SMSTenDLCBrand", () => {
-  const Klass = freeclimb.SMSTenDLCBrand;
   describe("Test with truthy values", () => {
+    const Klass = freeclimb.SMSTenDLCBrand;
     let model: freeclimb.SMSTenDLCBrand = new freeclimb.SMSTenDLCBrand({
       accountId: "test_accountId",
 
@@ -232,6 +232,7 @@ describe("SMSTenDLCBrand", () => {
     });
   });
   describe("Test with falsy values", () => {
+    const Klass = freeclimb.SMSTenDLCBrand;
     let model: freeclimb.SMSTenDLCBrand = new freeclimb.SMSTenDLCBrand({
       accountId: "",
 

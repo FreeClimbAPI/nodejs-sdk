@@ -2,8 +2,8 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("AccountRequest", () => {
-  const Klass = freeclimb.AccountRequest;
   describe("Test with truthy values", () => {
+    const Klass = freeclimb.AccountRequest;
     let model: freeclimb.AccountRequest = new freeclimb.AccountRequest({
       alias: "test_alias",
       label: "test_label",
@@ -27,6 +27,7 @@ describe("AccountRequest", () => {
     });
   });
   describe("Test with falsy values", () => {
+    const Klass = freeclimb.AccountRequest;
     let model: freeclimb.AccountRequest = new freeclimb.AccountRequest({
       alias: "",
       label: "",

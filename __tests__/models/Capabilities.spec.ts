@@ -2,8 +2,8 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("Capabilities", () => {
-  const Klass = freeclimb.Capabilities;
   describe("Test with truthy values", () => {
+    const Klass = freeclimb.Capabilities;
     let model: freeclimb.Capabilities = new freeclimb.Capabilities({
       voice: true,
       sms: true,
@@ -48,6 +48,7 @@ describe("Capabilities", () => {
     });
   });
   describe("Test with falsy values", () => {
+    const Klass = freeclimb.Capabilities;
     let model: freeclimb.Capabilities = new freeclimb.Capabilities({
       voice: false,
       sms: false,

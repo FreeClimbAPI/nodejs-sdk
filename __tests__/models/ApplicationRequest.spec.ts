@@ -2,8 +2,8 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("ApplicationRequest", () => {
-  const Klass = freeclimb.ApplicationRequest;
   describe("Test with truthy values", () => {
+    const Klass = freeclimb.ApplicationRequest;
     let model: freeclimb.ApplicationRequest = new freeclimb.ApplicationRequest({
       alias: "test_alias",
       voiceUrl: "https://123.abc",
@@ -62,6 +62,7 @@ describe("ApplicationRequest", () => {
     });
   });
   describe("Test with falsy values", () => {
+    const Klass = freeclimb.ApplicationRequest;
     let model: freeclimb.ApplicationRequest = new freeclimb.ApplicationRequest({
       alias: "",
       voiceUrl: "",

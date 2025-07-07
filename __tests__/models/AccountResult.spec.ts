@@ -2,8 +2,8 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("AccountResult", () => {
-  const Klass = freeclimb.AccountResult;
   describe("Test with truthy values", () => {
+    const Klass = freeclimb.AccountResult;
     let model: freeclimb.AccountResult = new freeclimb.AccountResult({
       uri: "test_uri",
       dateCreated: "test_dateCreated",
@@ -93,6 +93,7 @@ describe("AccountResult", () => {
     });
   });
   describe("Test with falsy values", () => {
+    const Klass = freeclimb.AccountResult;
     let model: freeclimb.AccountResult = new freeclimb.AccountResult({
       uri: "",
       dateCreated: "",

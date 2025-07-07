@@ -2,7 +2,6 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("BargeInReason", () => {
-  const Klass = freeclimb.BargeInReason;
   describe("Test with truthy values", () => {
     describe(".NO_BARGE_IN", () => {
       it("resolves to correct value for NO_BARGE_IN enum property", () => {

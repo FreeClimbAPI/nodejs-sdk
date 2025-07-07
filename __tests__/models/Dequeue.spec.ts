@@ -2,8 +2,8 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("Dequeue", () => {
-  const Klass = freeclimb.Dequeue;
   describe("Test with truthy values", () => {
+    const Klass = freeclimb.Dequeue;
     let model: freeclimb.Dequeue = new freeclimb.Dequeue({});
     describe("Dequeue class test", () => {
       it("resolves to the class type upon initialization", () => {
@@ -12,6 +12,7 @@ describe("Dequeue", () => {
     });
   });
   describe("Test with falsy values", () => {
+    const Klass = freeclimb.Dequeue;
     let model: freeclimb.Dequeue = new freeclimb.Dequeue({});
     describe("Dequeue class test", () => {
       it("resolves to the class type upon initialization", () => {

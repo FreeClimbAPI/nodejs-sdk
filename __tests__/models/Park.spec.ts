@@ -2,8 +2,8 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("Park", () => {
-  const Klass = freeclimb.Park;
   describe("Test with truthy values", () => {
+    const Klass = freeclimb.Park;
     let model: freeclimb.Park = new freeclimb.Park({
       waitUrl: "https://123.abc",
       actionUrl: "https://123.abc",
@@ -35,6 +35,7 @@ describe("Park", () => {
     });
   });
   describe("Test with falsy values", () => {
+    const Klass = freeclimb.Park;
     let model: freeclimb.Park = new freeclimb.Park({
       waitUrl: "",
       actionUrl: "",

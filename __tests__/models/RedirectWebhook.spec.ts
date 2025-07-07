@@ -2,8 +2,8 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("RedirectWebhook", () => {
-  const Klass = freeclimb.RedirectWebhook;
   describe("Test with truthy values", () => {
+    const Klass = freeclimb.RedirectWebhook;
     let model: freeclimb.RedirectWebhook = new freeclimb.RedirectWebhook({
       requestType: "test_requestType",
       accountId: "test_accountId",
@@ -93,6 +93,7 @@ describe("RedirectWebhook", () => {
     });
   });
   describe("Test with falsy values", () => {
+    const Klass = freeclimb.RedirectWebhook;
     let model: freeclimb.RedirectWebhook = new freeclimb.RedirectWebhook({
       requestType: "",
       accountId: "",

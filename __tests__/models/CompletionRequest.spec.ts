@@ -2,8 +2,8 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("CompletionRequest", () => {
-  const Klass = freeclimb.CompletionRequest;
   describe("Test with truthy values", () => {
+    const Klass = freeclimb.CompletionRequest;
     let model: freeclimb.CompletionRequest = new freeclimb.CompletionRequest({
       query: "test_query",
     });
@@ -20,6 +20,7 @@ describe("CompletionRequest", () => {
     });
   });
   describe("Test with falsy values", () => {
+    const Klass = freeclimb.CompletionRequest;
     let model: freeclimb.CompletionRequest = new freeclimb.CompletionRequest({
       query: "",
     });

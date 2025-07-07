@@ -2,8 +2,8 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("MachineDetectedWebhook", () => {
-  const Klass = freeclimb.MachineDetectedWebhook;
   describe("Test with truthy values", () => {
+    const Klass = freeclimb.MachineDetectedWebhook;
     let model: freeclimb.MachineDetectedWebhook =
       new freeclimb.MachineDetectedWebhook({
         requestType: "test_requestType",
@@ -104,6 +104,7 @@ describe("MachineDetectedWebhook", () => {
     });
   });
   describe("Test with falsy values", () => {
+    const Klass = freeclimb.MachineDetectedWebhook;
     let model: freeclimb.MachineDetectedWebhook =
       new freeclimb.MachineDetectedWebhook({
         requestType: "",

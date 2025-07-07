@@ -2,8 +2,8 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("TFNCampaign", () => {
-  const Klass = freeclimb.TFNCampaign;
   describe("Test with truthy values", () => {
+    const Klass = freeclimb.TFNCampaign;
     let model: freeclimb.TFNCampaign = new freeclimb.TFNCampaign({
       accountId: "test_accountId",
       campaignId: "test_campaignId",
@@ -79,6 +79,7 @@ describe("TFNCampaign", () => {
     });
   });
   describe("Test with falsy values", () => {
+    const Klass = freeclimb.TFNCampaign;
     let model: freeclimb.TFNCampaign = new freeclimb.TFNCampaign({
       accountId: "",
       campaignId: "",

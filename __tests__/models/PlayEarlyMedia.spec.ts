@@ -2,8 +2,8 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("PlayEarlyMedia", () => {
-  const Klass = freeclimb.PlayEarlyMedia;
   describe("Test with truthy values", () => {
+    const Klass = freeclimb.PlayEarlyMedia;
     let model: freeclimb.PlayEarlyMedia = new freeclimb.PlayEarlyMedia({
       file: "test_file",
     });
@@ -21,6 +21,7 @@ describe("PlayEarlyMedia", () => {
     });
   });
   describe("Test with falsy values", () => {
+    const Klass = freeclimb.PlayEarlyMedia;
     let model: freeclimb.PlayEarlyMedia = new freeclimb.PlayEarlyMedia({
       file: "",
     });

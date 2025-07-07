@@ -2,8 +2,8 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("GetDigits", () => {
-  const Klass = freeclimb.GetDigits;
   describe("Test with truthy values", () => {
+    const Klass = freeclimb.GetDigits;
     let model: freeclimb.GetDigits = new freeclimb.GetDigits({
       actionUrl: "https://123.abc",
       digitTimeoutMs: 1,
@@ -77,6 +77,7 @@ describe("GetDigits", () => {
     });
   });
   describe("Test with falsy values", () => {
+    const Klass = freeclimb.GetDigits;
     let model: freeclimb.GetDigits = new freeclimb.GetDigits({
       actionUrl: "",
       digitTimeoutMs: 0,

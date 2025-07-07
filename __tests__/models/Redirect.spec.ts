@@ -2,8 +2,8 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("Redirect", () => {
-  const Klass = freeclimb.Redirect;
   describe("Test with truthy values", () => {
+    const Klass = freeclimb.Redirect;
     let model: freeclimb.Redirect = new freeclimb.Redirect({
       actionUrl: "https://123.abc",
     });
@@ -21,6 +21,7 @@ describe("Redirect", () => {
     });
   });
   describe("Test with falsy values", () => {
+    const Klass = freeclimb.Redirect;
     let model: freeclimb.Redirect = new freeclimb.Redirect({
       actionUrl: "",
     });

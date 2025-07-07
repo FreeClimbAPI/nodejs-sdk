@@ -2,8 +2,8 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("Webhook", () => {
-  const Klass = freeclimb.Webhook;
   describe("Test with truthy values", () => {
+    const Klass = freeclimb.Webhook;
     let model: freeclimb.Webhook = new freeclimb.Webhook({});
     describe("Webhook class test", () => {
       it("resolves to the class type upon initialization", () => {
@@ -12,6 +12,7 @@ describe("Webhook", () => {
     });
   });
   describe("Test with falsy values", () => {
+    const Klass = freeclimb.Webhook;
     let model: freeclimb.Webhook = new freeclimb.Webhook({});
     describe("Webhook class test", () => {
       it("resolves to the class type upon initialization", () => {

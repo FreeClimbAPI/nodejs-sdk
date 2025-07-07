@@ -2,8 +2,8 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("TerminateConference", () => {
-  const Klass = freeclimb.TerminateConference;
   describe("Test with truthy values", () => {
+    const Klass = freeclimb.TerminateConference;
     let model: freeclimb.TerminateConference =
       new freeclimb.TerminateConference({});
     describe("TerminateConference class test", () => {
@@ -13,6 +13,7 @@ describe("TerminateConference", () => {
     });
   });
   describe("Test with falsy values", () => {
+    const Klass = freeclimb.TerminateConference;
     let model: freeclimb.TerminateConference =
       new freeclimb.TerminateConference({});
     describe("TerminateConference class test", () => {

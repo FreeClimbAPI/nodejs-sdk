@@ -2,8 +2,8 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("Reject", () => {
-  const Klass = freeclimb.Reject;
   describe("Test with truthy values", () => {
+    const Klass = freeclimb.Reject;
     let model: freeclimb.Reject = new freeclimb.Reject({
       reason: "test_reason",
     });
@@ -21,6 +21,7 @@ describe("Reject", () => {
     });
   });
   describe("Test with falsy values", () => {
+    const Klass = freeclimb.Reject;
     let model: freeclimb.Reject = new freeclimb.Reject({
       reason: "",
     });

@@ -2,8 +2,8 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("OutDial", () => {
-  const Klass = freeclimb.OutDial;
   describe("Test with truthy values", () => {
+    const Klass = freeclimb.OutDial;
     let model: freeclimb.OutDial = new freeclimb.OutDial({
       actionUrl: "https://123.abc",
       callConnectUrl: "https://123.abc",
@@ -85,6 +85,7 @@ describe("OutDial", () => {
     });
   });
   describe("Test with falsy values", () => {
+    const Klass = freeclimb.OutDial;
     let model: freeclimb.OutDial = new freeclimb.OutDial({
       actionUrl: "",
       callConnectUrl: "",

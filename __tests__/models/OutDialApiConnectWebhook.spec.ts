@@ -2,8 +2,8 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("OutDialApiConnectWebhook", () => {
-  const Klass = freeclimb.OutDialApiConnectWebhook;
   describe("Test with truthy values", () => {
+    const Klass = freeclimb.OutDialApiConnectWebhook;
     let model: freeclimb.OutDialApiConnectWebhook =
       new freeclimb.OutDialApiConnectWebhook({
         requestType: "test_requestType",
@@ -96,6 +96,7 @@ describe("OutDialApiConnectWebhook", () => {
     });
   });
   describe("Test with falsy values", () => {
+    const Klass = freeclimb.OutDialApiConnectWebhook;
     let model: freeclimb.OutDialApiConnectWebhook =
       new freeclimb.OutDialApiConnectWebhook({
         requestType: "",

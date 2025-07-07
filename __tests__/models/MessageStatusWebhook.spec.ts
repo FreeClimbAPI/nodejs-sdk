@@ -2,8 +2,8 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("MessageStatusWebhook", () => {
-  const Klass = freeclimb.MessageStatusWebhook;
   describe("Test with truthy values", () => {
+    const Klass = freeclimb.MessageStatusWebhook;
     let model: freeclimb.MessageStatusWebhook =
       new freeclimb.MessageStatusWebhook({
         requestType: "test_requestType",
@@ -102,6 +102,7 @@ describe("MessageStatusWebhook", () => {
     });
   });
   describe("Test with falsy values", () => {
+    const Klass = freeclimb.MessageStatusWebhook;
     let model: freeclimb.MessageStatusWebhook =
       new freeclimb.MessageStatusWebhook({
         requestType: "",

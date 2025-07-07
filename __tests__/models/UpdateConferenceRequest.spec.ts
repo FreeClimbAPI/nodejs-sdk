@@ -2,8 +2,8 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("UpdateConferenceRequest", () => {
-  const Klass = freeclimb.UpdateConferenceRequest;
   describe("Test with truthy values", () => {
+    const Klass = freeclimb.UpdateConferenceRequest;
     let model: freeclimb.UpdateConferenceRequest =
       new freeclimb.UpdateConferenceRequest({
         alias: "test_alias",
@@ -37,6 +37,7 @@ describe("UpdateConferenceRequest", () => {
     });
   });
   describe("Test with falsy values", () => {
+    const Klass = freeclimb.UpdateConferenceRequest;
     let model: freeclimb.UpdateConferenceRequest =
       new freeclimb.UpdateConferenceRequest({
         alias: "",

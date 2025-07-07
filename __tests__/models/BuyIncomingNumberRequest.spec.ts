@@ -2,8 +2,8 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("BuyIncomingNumberRequest", () => {
-  const Klass = freeclimb.BuyIncomingNumberRequest;
   describe("Test with truthy values", () => {
+    const Klass = freeclimb.BuyIncomingNumberRequest;
     let model: freeclimb.BuyIncomingNumberRequest =
       new freeclimb.BuyIncomingNumberRequest({
         phoneNumber: "test_phoneNumber",
@@ -35,6 +35,7 @@ describe("BuyIncomingNumberRequest", () => {
     });
   });
   describe("Test with falsy values", () => {
+    const Klass = freeclimb.BuyIncomingNumberRequest;
     let model: freeclimb.BuyIncomingNumberRequest =
       new freeclimb.BuyIncomingNumberRequest({
         phoneNumber: "",

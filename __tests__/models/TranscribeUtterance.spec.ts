@@ -2,8 +2,8 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("TranscribeUtterance", () => {
-  const Klass = freeclimb.TranscribeUtterance;
   describe("Test with truthy values", () => {
+    const Klass = freeclimb.TranscribeUtterance;
     let model: freeclimb.TranscribeUtterance =
       new freeclimb.TranscribeUtterance({
         actionUrl: "https://123.abc",
@@ -54,6 +54,7 @@ describe("TranscribeUtterance", () => {
     });
   });
   describe("Test with falsy values", () => {
+    const Klass = freeclimb.TranscribeUtterance;
     let model: freeclimb.TranscribeUtterance =
       new freeclimb.TranscribeUtterance({
         actionUrl: "",

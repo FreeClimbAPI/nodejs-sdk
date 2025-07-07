@@ -2,8 +2,8 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("MakeCallRequest", () => {
-  const Klass = freeclimb.MakeCallRequest;
   describe("Test with truthy values", () => {
+    const Klass = freeclimb.MakeCallRequest;
     let model: freeclimb.MakeCallRequest = new freeclimb.MakeCallRequest({
       from: "test_from",
       to: "test_to",
@@ -83,6 +83,7 @@ describe("MakeCallRequest", () => {
     });
   });
   describe("Test with falsy values", () => {
+    const Klass = freeclimb.MakeCallRequest;
     let model: freeclimb.MakeCallRequest = new freeclimb.MakeCallRequest({
       from: "",
       to: "",

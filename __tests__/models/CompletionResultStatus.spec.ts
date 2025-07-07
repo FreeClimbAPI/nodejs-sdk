@@ -2,7 +2,6 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("CompletionResultStatus", () => {
-  const Klass = freeclimb.CompletionResultStatus;
   describe("Test with truthy values", () => {
     describe(".SUCCESS", () => {
       it("resolves to correct value for SUCCESS enum property", () => {

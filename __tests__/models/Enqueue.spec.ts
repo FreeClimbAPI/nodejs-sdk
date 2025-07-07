@@ -2,8 +2,8 @@ import * as freeclimb from "../../index";
 import { describe, expect, it } from "@jest/globals";
 
 describe("Enqueue", () => {
-  const Klass = freeclimb.Enqueue;
   describe("Test with truthy values", () => {
+    const Klass = freeclimb.Enqueue;
     let model: freeclimb.Enqueue = new freeclimb.Enqueue({
       actionUrl: "https://123.abc",
       notificationUrl: "https://123.abc",
@@ -42,6 +42,7 @@ describe("Enqueue", () => {
     });
   });
   describe("Test with falsy values", () => {
+    const Klass = freeclimb.Enqueue;
     let model: freeclimb.Enqueue = new freeclimb.Enqueue({
       actionUrl: "",
       notificationUrl: "",
