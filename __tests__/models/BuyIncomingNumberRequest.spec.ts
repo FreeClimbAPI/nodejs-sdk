@@ -67,6 +67,7 @@ describe("BuyIncomingNumberRequest", () => {
     });
   });
   describe("Test with only required values", () => {
+    const Klass = freeclimb.BuyIncomingNumberRequest;
     let constructorArguments = {
       phoneNumber: "test_phoneNumber",
     };

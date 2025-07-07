@@ -205,6 +205,7 @@ describe("MachineDetectedWebhook", () => {
     });
   });
   describe("Test with only required values", () => {
+    const Klass = freeclimb.MachineDetectedWebhook;
     let constructorArguments = {};
     let model: freeclimb.MachineDetectedWebhook =
       new freeclimb.MachineDetectedWebhook(constructorArguments);

@@ -51,6 +51,7 @@ describe("AccountRequest", () => {
     });
   });
   describe("Test with only required values", () => {
+    const Klass = freeclimb.AccountRequest;
     let constructorArguments = {};
     let model: freeclimb.AccountRequest = new freeclimb.AccountRequest(
       constructorArguments,

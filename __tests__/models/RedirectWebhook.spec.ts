@@ -183,6 +183,7 @@ describe("RedirectWebhook", () => {
     });
   });
   describe("Test with only required values", () => {
+    const Klass = freeclimb.RedirectWebhook;
     let constructorArguments = {};
     let model: freeclimb.RedirectWebhook = new freeclimb.RedirectWebhook(
       constructorArguments,

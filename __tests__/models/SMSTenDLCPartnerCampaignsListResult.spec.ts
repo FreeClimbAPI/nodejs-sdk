@@ -141,6 +141,7 @@ describe("SMSTenDLCPartnerCampaignsListResult", () => {
     });
   });
   describe("Test with only required values", () => {
+    const Klass = freeclimb.SMSTenDLCPartnerCampaignsListResult;
     let constructorArguments = {
       total: 1,
       start: 1,

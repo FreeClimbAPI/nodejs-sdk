@@ -37,6 +37,7 @@ describe("CompletionRequest", () => {
     });
   });
   describe("Test with only required values", () => {
+    const Klass = freeclimb.CompletionRequest;
     let constructorArguments = {
       query: "test_query",
     };

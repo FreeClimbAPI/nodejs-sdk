@@ -65,6 +65,7 @@ describe("CreateWebRTCToken", () => {
     });
   });
   describe("Test with only required values", () => {
+    const Klass = freeclimb.CreateWebRTCToken;
     let constructorArguments = {
       to: "test_to",
       from: "test_from",

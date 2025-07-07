@@ -67,6 +67,7 @@ describe("Play", () => {
     });
   });
   describe("Test with only required values", () => {
+    const Klass = freeclimb.Play;
     let constructorArguments = {
       file: "test_file",
     };

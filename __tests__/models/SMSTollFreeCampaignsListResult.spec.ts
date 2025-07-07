@@ -137,6 +137,7 @@ describe("SMSTollFreeCampaignsListResult", () => {
     });
   });
   describe("Test with only required values", () => {
+    const Klass = freeclimb.SMSTollFreeCampaignsListResult;
     let constructorArguments = {
       total: 1,
       start: 1,

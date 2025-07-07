@@ -145,6 +145,7 @@ describe("AvailableNumber", () => {
     });
   });
   describe("Test with only required values", () => {
+    const Klass = freeclimb.AvailableNumber;
     let constructorArguments = {};
     let model: freeclimb.AvailableNumber = new freeclimb.AvailableNumber(
       constructorArguments,

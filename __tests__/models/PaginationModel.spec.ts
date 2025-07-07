@@ -121,6 +121,7 @@ describe("PaginationModel", () => {
     });
   });
   describe("Test with only required values", () => {
+    const Klass = freeclimb.PaginationModel;
     let constructorArguments = {};
     let model: freeclimb.PaginationModel = new freeclimb.PaginationModel(
       constructorArguments,

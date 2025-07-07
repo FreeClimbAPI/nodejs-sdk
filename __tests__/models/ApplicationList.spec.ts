@@ -135,6 +135,7 @@ describe("ApplicationList", () => {
     });
   });
   describe("Test with only required values", () => {
+    const Klass = freeclimb.ApplicationList;
     let constructorArguments = {
       total: 1,
       start: 1,

@@ -209,6 +209,7 @@ describe("RemoveFromQueueNotificationWebhook", () => {
     });
   });
   describe("Test with only required values", () => {
+    const Klass = freeclimb.RemoveFromQueueNotificationWebhook;
     let constructorArguments = {};
     let model: freeclimb.RemoveFromQueueNotificationWebhook =
       new freeclimb.RemoveFromQueueNotificationWebhook(constructorArguments);

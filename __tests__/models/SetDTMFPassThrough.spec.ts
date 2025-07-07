@@ -39,6 +39,7 @@ describe("SetDTMFPassThrough", () => {
     });
   });
   describe("Test with only required values", () => {
+    const Klass = freeclimb.SetDTMFPassThrough;
     let constructorArguments = {};
     let model: freeclimb.SetDTMFPassThrough = new freeclimb.SetDTMFPassThrough(
       constructorArguments,

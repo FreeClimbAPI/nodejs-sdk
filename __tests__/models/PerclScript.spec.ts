@@ -37,6 +37,7 @@ describe("PerclScript", () => {
     });
   });
   describe("Test with only required values", () => {
+    const Klass = freeclimb.PerclScript;
     let constructorArguments = {};
     let model: freeclimb.PerclScript = new freeclimb.PerclScript(
       constructorArguments,

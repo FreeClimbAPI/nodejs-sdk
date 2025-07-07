@@ -461,6 +461,7 @@ describe("SMSTenDLCBrand", () => {
     });
   });
   describe("Test with only required values", () => {
+    const Klass = freeclimb.SMSTenDLCBrand;
     let constructorArguments = {
       entityType: freeclimb.SMSTenDLCBrandEntityType.PRIVATE_PROFIT,
       displayName: "test_displayName",

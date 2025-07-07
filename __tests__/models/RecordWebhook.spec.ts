@@ -283,6 +283,7 @@ describe("RecordWebhook", () => {
     });
   });
   describe("Test with only required values", () => {
+    const Klass = freeclimb.RecordWebhook;
     let constructorArguments = {};
     let model: freeclimb.RecordWebhook = new freeclimb.RecordWebhook(
       constructorArguments,

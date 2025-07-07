@@ -67,6 +67,7 @@ describe("Park", () => {
     });
   });
   describe("Test with only required values", () => {
+    const Klass = freeclimb.Park;
     let constructorArguments = {
       waitUrl: "https://123.abc",
       actionUrl: "https://123.abc",

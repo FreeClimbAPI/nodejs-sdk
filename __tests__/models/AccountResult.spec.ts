@@ -183,6 +183,7 @@ describe("AccountResult", () => {
     });
   });
   describe("Test with only required values", () => {
+    const Klass = freeclimb.AccountResult;
     let constructorArguments = {
       uri: "test_uri",
       dateCreated: "test_dateCreated",

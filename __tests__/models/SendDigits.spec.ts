@@ -67,6 +67,7 @@ describe("SendDigits", () => {
     });
   });
   describe("Test with only required values", () => {
+    const Klass = freeclimb.SendDigits;
     let constructorArguments = {
       digits: "test_digits",
     };

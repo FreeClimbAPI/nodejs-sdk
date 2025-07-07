@@ -529,6 +529,7 @@ describe("SMSTenDLCCampaign", () => {
     });
   });
   describe("Test with only required values", () => {
+    const Klass = freeclimb.SMSTenDLCCampaign;
     let constructorArguments = {
       campaignId: "test_campaignId",
       cspId: "test_cspId",

@@ -149,6 +149,7 @@ describe("RecordingResult", () => {
     });
   });
   describe("Test with only required values", () => {
+    const Klass = freeclimb.RecordingResult;
     let constructorArguments = {
       uri: "test_uri",
       dateCreated: "test_dateCreated",

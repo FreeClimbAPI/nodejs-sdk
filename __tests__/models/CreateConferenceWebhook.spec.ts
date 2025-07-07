@@ -233,6 +233,7 @@ describe("CreateConferenceWebhook", () => {
     });
   });
   describe("Test with only required values", () => {
+    const Klass = freeclimb.CreateConferenceWebhook;
     let constructorArguments = {};
     let model: freeclimb.CreateConferenceWebhook =
       new freeclimb.CreateConferenceWebhook(constructorArguments);

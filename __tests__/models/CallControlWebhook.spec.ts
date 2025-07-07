@@ -113,6 +113,7 @@ describe("CallControlWebhook", () => {
     });
   });
   describe("Test with only required values", () => {
+    const Klass = freeclimb.CallControlWebhook;
     let constructorArguments = {};
     let model: freeclimb.CallControlWebhook = new freeclimb.CallControlWebhook(
       constructorArguments,

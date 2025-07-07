@@ -287,6 +287,7 @@ describe("GetSpeechWebhook", () => {
     });
   });
   describe("Test with only required values", () => {
+    const Klass = freeclimb.GetSpeechWebhook;
     let constructorArguments = {};
     let model: freeclimb.GetSpeechWebhook = new freeclimb.GetSpeechWebhook(
       constructorArguments,

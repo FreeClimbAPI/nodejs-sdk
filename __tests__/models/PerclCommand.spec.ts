@@ -21,6 +21,7 @@ describe("PerclCommand", () => {
     });
   });
   describe("Test with only required values", () => {
+    const Klass = freeclimb.PerclCommand;
     let constructorArguments = {};
     let model: freeclimb.PerclCommand = new freeclimb.PerclCommand(
       constructorArguments,

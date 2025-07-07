@@ -23,6 +23,7 @@ describe("TerminateConference", () => {
     });
   });
   describe("Test with only required values", () => {
+    const Klass = freeclimb.TerminateConference;
     let constructorArguments = {};
     let model: freeclimb.TerminateConference =
       new freeclimb.TerminateConference(constructorArguments);

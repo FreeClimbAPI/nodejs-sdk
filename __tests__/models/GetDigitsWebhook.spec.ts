@@ -217,6 +217,7 @@ describe("GetDigitsWebhook", () => {
     });
   });
   describe("Test with only required values", () => {
+    const Klass = freeclimb.GetDigitsWebhook;
     let constructorArguments = {};
     let model: freeclimb.GetDigitsWebhook = new freeclimb.GetDigitsWebhook(
       constructorArguments,

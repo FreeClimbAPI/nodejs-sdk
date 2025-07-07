@@ -67,6 +67,7 @@ describe("IncomingNumberRequest", () => {
     });
   });
   describe("Test with only required values", () => {
+    const Klass = freeclimb.IncomingNumberRequest;
     let constructorArguments = {};
     let model: freeclimb.IncomingNumberRequest =
       new freeclimb.IncomingNumberRequest(constructorArguments);

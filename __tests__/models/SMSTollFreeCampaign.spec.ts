@@ -127,6 +127,7 @@ describe("SMSTollFreeCampaign", () => {
     });
   });
   describe("Test with only required values", () => {
+    const Klass = freeclimb.SMSTollFreeCampaign;
     let constructorArguments = {
       accountId: "test_accountId",
       campaignId: "test_campaignId",

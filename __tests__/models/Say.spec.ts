@@ -81,6 +81,7 @@ describe("Say", () => {
     });
   });
   describe("Test with only required values", () => {
+    const Klass = freeclimb.Say;
     let constructorArguments = {
       text: "test_text",
     };

@@ -173,6 +173,7 @@ describe("SMSTenDLCPartnerCampaignBrand", () => {
     });
   });
   describe("Test with only required values", () => {
+    const Klass = freeclimb.SMSTenDLCPartnerCampaignBrand;
     let constructorArguments = {
       phone: "test_phone",
       email: "test_email",

@@ -21,6 +21,7 @@ describe("StartRecordCall", () => {
     });
   });
   describe("Test with only required values", () => {
+    const Klass = freeclimb.StartRecordCall;
     let constructorArguments = {};
     let model: freeclimb.StartRecordCall = new freeclimb.StartRecordCall(
       constructorArguments,

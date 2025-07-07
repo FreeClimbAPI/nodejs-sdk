@@ -167,6 +167,7 @@ describe("OutDial", () => {
     });
   });
   describe("Test with only required values", () => {
+    const Klass = freeclimb.OutDial;
     let constructorArguments = {
       actionUrl: "https://123.abc",
       callConnectUrl: "https://123.abc",

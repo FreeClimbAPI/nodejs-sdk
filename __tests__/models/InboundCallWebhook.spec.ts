@@ -187,6 +187,7 @@ describe("InboundCallWebhook", () => {
     });
   });
   describe("Test with only required values", () => {
+    const Klass = freeclimb.InboundCallWebhook;
     let constructorArguments = {};
     let model: freeclimb.InboundCallWebhook = new freeclimb.InboundCallWebhook(
       constructorArguments,

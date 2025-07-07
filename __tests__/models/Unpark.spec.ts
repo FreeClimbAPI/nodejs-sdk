@@ -21,6 +21,7 @@ describe("Unpark", () => {
     });
   });
   describe("Test with only required values", () => {
+    const Klass = freeclimb.Unpark;
     let constructorArguments = {};
     let model: freeclimb.Unpark = new freeclimb.Unpark(constructorArguments);
   });

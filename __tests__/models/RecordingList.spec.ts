@@ -135,6 +135,7 @@ describe("RecordingList", () => {
     });
   });
   describe("Test with only required values", () => {
+    const Klass = freeclimb.RecordingList;
     let constructorArguments = {
       total: 1,
       start: 1,

@@ -175,6 +175,7 @@ describe("LeaveConferenceWebhook", () => {
     });
   });
   describe("Test with only required values", () => {
+    const Klass = freeclimb.LeaveConferenceWebhook;
     let constructorArguments = {};
     let model: freeclimb.LeaveConferenceWebhook =
       new freeclimb.LeaveConferenceWebhook(constructorArguments);

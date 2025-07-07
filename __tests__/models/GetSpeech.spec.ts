@@ -209,6 +209,7 @@ describe("GetSpeech", () => {
     });
   });
   describe("Test with only required values", () => {
+    const Klass = freeclimb.GetSpeech;
     let constructorArguments = {
       actionUrl: "https://123.abc",
       grammarFile: "test_grammarFile",

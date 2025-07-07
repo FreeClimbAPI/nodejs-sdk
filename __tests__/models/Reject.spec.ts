@@ -39,6 +39,7 @@ describe("Reject", () => {
     });
   });
   describe("Test with only required values", () => {
+    const Klass = freeclimb.Reject;
     let constructorArguments = {};
     let model: freeclimb.Reject = new freeclimb.Reject(constructorArguments);
 

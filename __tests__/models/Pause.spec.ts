@@ -39,6 +39,7 @@ describe("Pause", () => {
     });
   });
   describe("Test with only required values", () => {
+    const Klass = freeclimb.Pause;
     let constructorArguments = {
       length: 1,
     };

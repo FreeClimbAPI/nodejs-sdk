@@ -81,6 +81,7 @@ describe("MutableResourceModel", () => {
     });
   });
   describe("Test with only required values", () => {
+    const Klass = freeclimb.MutableResourceModel;
     let constructorArguments = {};
     let model: freeclimb.MutableResourceModel =
       new freeclimb.MutableResourceModel(constructorArguments);

@@ -313,6 +313,7 @@ describe("CallResult", () => {
     });
   });
   describe("Test with only required values", () => {
+    const Klass = freeclimb.CallResult;
     let constructorArguments = {
       uri: "test_uri",
       dateCreated: "test_dateCreated",

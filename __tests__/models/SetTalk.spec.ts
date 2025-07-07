@@ -39,6 +39,7 @@ describe("SetTalk", () => {
     });
   });
   describe("Test with only required values", () => {
+    const Klass = freeclimb.SetTalk;
     let constructorArguments = {};
     let model: freeclimb.SetTalk = new freeclimb.SetTalk(constructorArguments);
 

@@ -121,6 +121,7 @@ describe("ApplicationRequest", () => {
     });
   });
   describe("Test with only required values", () => {
+    const Klass = freeclimb.ApplicationRequest;
     let constructorArguments = {};
     let model: freeclimb.ApplicationRequest = new freeclimb.ApplicationRequest(
       constructorArguments,

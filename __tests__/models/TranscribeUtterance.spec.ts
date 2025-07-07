@@ -105,6 +105,7 @@ describe("TranscribeUtterance", () => {
     });
   });
   describe("Test with only required values", () => {
+    const Klass = freeclimb.TranscribeUtterance;
     let constructorArguments = {
       actionUrl: "https://123.abc",
     };

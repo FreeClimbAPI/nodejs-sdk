@@ -111,6 +111,7 @@ describe("CreateConference", () => {
     });
   });
   describe("Test with only required values", () => {
+    const Klass = freeclimb.CreateConference;
     let constructorArguments = {
       actionUrl: "https://123.abc",
     };

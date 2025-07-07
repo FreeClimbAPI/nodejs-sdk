@@ -81,6 +81,7 @@ describe("Sms", () => {
     });
   });
   describe("Test with only required values", () => {
+    const Klass = freeclimb.Sms;
     let constructorArguments = {
       to: "test_to",
       from: "test_from",

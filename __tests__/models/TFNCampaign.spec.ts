@@ -155,6 +155,7 @@ describe("TFNCampaign", () => {
     });
   });
   describe("Test with only required values", () => {
+    const Klass = freeclimb.TFNCampaign;
     let constructorArguments = {
       accountId: "test_accountId",
       campaignId: "test_campaignId",

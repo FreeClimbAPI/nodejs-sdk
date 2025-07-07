@@ -81,6 +81,7 @@ describe("Enqueue", () => {
     });
   });
   describe("Test with only required values", () => {
+    const Klass = freeclimb.Enqueue;
     let constructorArguments = {
       actionUrl: "https://123.abc",
       queueId: "test_queueId",

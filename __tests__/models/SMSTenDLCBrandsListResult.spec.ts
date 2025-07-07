@@ -137,6 +137,7 @@ describe("SMSTenDLCBrandsListResult", () => {
     });
   });
   describe("Test with only required values", () => {
+    const Klass = freeclimb.SMSTenDLCBrandsListResult;
     let constructorArguments = {
       total: 1,
       start: 1,

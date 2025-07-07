@@ -151,6 +151,7 @@ describe("GetDigits", () => {
     });
   });
   describe("Test with only required values", () => {
+    const Klass = freeclimb.GetDigits;
     let constructorArguments = {
       actionUrl: "https://123.abc",
     };

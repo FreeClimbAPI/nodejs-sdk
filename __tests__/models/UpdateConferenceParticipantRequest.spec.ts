@@ -71,6 +71,7 @@ describe("UpdateConferenceParticipantRequest", () => {
     });
   });
   describe("Test with only required values", () => {
+    const Klass = freeclimb.UpdateConferenceParticipantRequest;
     let constructorArguments = {};
     let model: freeclimb.UpdateConferenceParticipantRequest =
       new freeclimb.UpdateConferenceParticipantRequest(constructorArguments);

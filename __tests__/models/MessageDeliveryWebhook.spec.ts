@@ -185,6 +185,7 @@ describe("MessageDeliveryWebhook", () => {
     });
   });
   describe("Test with only required values", () => {
+    const Klass = freeclimb.MessageDeliveryWebhook;
     let constructorArguments = {};
     let model: freeclimb.MessageDeliveryWebhook =
       new freeclimb.MessageDeliveryWebhook(constructorArguments);

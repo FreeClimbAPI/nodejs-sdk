@@ -21,6 +21,7 @@ describe("Dequeue", () => {
     });
   });
   describe("Test with only required values", () => {
+    const Klass = freeclimb.Dequeue;
     let constructorArguments = {};
     let model: freeclimb.Dequeue = new freeclimb.Dequeue(constructorArguments);
   });

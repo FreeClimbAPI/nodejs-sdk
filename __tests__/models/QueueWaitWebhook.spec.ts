@@ -215,6 +215,7 @@ describe("QueueWaitWebhook", () => {
     });
   });
   describe("Test with only required values", () => {
+    const Klass = freeclimb.QueueWaitWebhook;
     let constructorArguments = {};
     let model: freeclimb.QueueWaitWebhook = new freeclimb.QueueWaitWebhook(
       constructorArguments,

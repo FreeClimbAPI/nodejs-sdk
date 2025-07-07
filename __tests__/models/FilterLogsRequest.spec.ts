@@ -37,6 +37,7 @@ describe("FilterLogsRequest", () => {
     });
   });
   describe("Test with only required values", () => {
+    const Klass = freeclimb.FilterLogsRequest;
     let constructorArguments = {
       pql: "test_pql",
     };

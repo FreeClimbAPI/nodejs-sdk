@@ -179,6 +179,7 @@ describe("QueueResult", () => {
     });
   });
   describe("Test with only required values", () => {
+    const Klass = freeclimb.QueueResult;
     let constructorArguments = {
       uri: "test_uri",
       dateCreated: "test_dateCreated",

@@ -135,6 +135,7 @@ describe("QueueList", () => {
     });
   });
   describe("Test with only required values", () => {
+    const Klass = freeclimb.QueueList;
     let constructorArguments = {
       total: 1,
       start: 1,

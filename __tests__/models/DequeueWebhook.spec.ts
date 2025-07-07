@@ -197,6 +197,7 @@ describe("DequeueWebhook", () => {
     });
   });
   describe("Test with only required values", () => {
+    const Klass = freeclimb.DequeueWebhook;
     let constructorArguments = {};
     let model: freeclimb.DequeueWebhook = new freeclimb.DequeueWebhook(
       constructorArguments,

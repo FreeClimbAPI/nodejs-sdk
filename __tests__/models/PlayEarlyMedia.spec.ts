@@ -39,6 +39,7 @@ describe("PlayEarlyMedia", () => {
     });
   });
   describe("Test with only required values", () => {
+    const Klass = freeclimb.PlayEarlyMedia;
     let constructorArguments = {
       file: "test_file",
     };

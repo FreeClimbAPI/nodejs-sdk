@@ -37,6 +37,7 @@ describe("UpdateCallRequest", () => {
     });
   });
   describe("Test with only required values", () => {
+    const Klass = freeclimb.UpdateCallRequest;
     let constructorArguments = {
       status: freeclimb.UpdateCallRequestStatus.CANCELED,
     };

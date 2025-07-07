@@ -237,6 +237,7 @@ describe("AddToConferenceNotificationWebhook", () => {
     });
   });
   describe("Test with only required values", () => {
+    const Klass = freeclimb.AddToConferenceNotificationWebhook;
     let constructorArguments = {};
     let model: freeclimb.AddToConferenceNotificationWebhook =
       new freeclimb.AddToConferenceNotificationWebhook(constructorArguments);

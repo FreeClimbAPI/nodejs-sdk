@@ -97,6 +97,7 @@ describe("CreateConferenceRequest", () => {
     });
   });
   describe("Test with only required values", () => {
+    const Klass = freeclimb.CreateConferenceRequest;
     let constructorArguments = {
       statusCallbackUrl: "https://123.abc",
     };

@@ -123,6 +123,7 @@ describe("LogResult", () => {
     });
   });
   describe("Test with only required values", () => {
+    const Klass = freeclimb.LogResult;
     let constructorArguments = {};
     let model: freeclimb.LogResult = new freeclimb.LogResult(
       constructorArguments,

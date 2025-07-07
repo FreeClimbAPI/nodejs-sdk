@@ -53,6 +53,7 @@ describe("CompletionResult", () => {
     });
   });
   describe("Test with only required values", () => {
+    const Klass = freeclimb.CompletionResult;
     let constructorArguments = {
       response: "test_response",
 

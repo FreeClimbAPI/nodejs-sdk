@@ -373,6 +373,7 @@ describe("TranscribeWebhook", () => {
     });
   });
   describe("Test with only required values", () => {
+    const Klass = freeclimb.TranscribeWebhook;
     let constructorArguments = {};
     let model: freeclimb.TranscribeWebhook = new freeclimb.TranscribeWebhook(
       constructorArguments,

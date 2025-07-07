@@ -51,6 +51,7 @@ describe("QueueRequest", () => {
     });
   });
   describe("Test with only required values", () => {
+    const Klass = freeclimb.QueueRequest;
     let constructorArguments = {};
     let model: freeclimb.QueueRequest = new freeclimb.QueueRequest(
       constructorArguments,

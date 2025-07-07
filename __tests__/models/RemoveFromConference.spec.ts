@@ -23,6 +23,7 @@ describe("RemoveFromConference", () => {
     });
   });
   describe("Test with only required values", () => {
+    const Klass = freeclimb.RemoveFromConference;
     let constructorArguments = {};
     let model: freeclimb.RemoveFromConference =
       new freeclimb.RemoveFromConference(constructorArguments);

@@ -123,6 +123,7 @@ describe("RecordUtterance", () => {
     });
   });
   describe("Test with only required values", () => {
+    const Klass = freeclimb.RecordUtterance;
     let constructorArguments = {
       actionUrl: "https://123.abc",
     };

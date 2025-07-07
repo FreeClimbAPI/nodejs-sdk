@@ -39,6 +39,7 @@ describe("Redirect", () => {
     });
   });
   describe("Test with only required values", () => {
+    const Klass = freeclimb.Redirect;
     let constructorArguments = {
       actionUrl: "https://123.abc",
     };

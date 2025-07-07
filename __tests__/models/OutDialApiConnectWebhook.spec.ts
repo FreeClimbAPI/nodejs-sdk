@@ -189,6 +189,7 @@ describe("OutDialApiConnectWebhook", () => {
     });
   });
   describe("Test with only required values", () => {
+    const Klass = freeclimb.OutDialApiConnectWebhook;
     let constructorArguments = {};
     let model: freeclimb.OutDialApiConnectWebhook =
       new freeclimb.OutDialApiConnectWebhook(constructorArguments);

@@ -21,6 +21,7 @@ describe("Webhook", () => {
     });
   });
   describe("Test with only required values", () => {
+    const Klass = freeclimb.Webhook;
     let constructorArguments = {};
     let model: freeclimb.Webhook = new freeclimb.Webhook(constructorArguments);
 

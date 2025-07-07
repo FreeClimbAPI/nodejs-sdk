@@ -39,6 +39,7 @@ describe("Hangup", () => {
     });
   });
   describe("Test with only required values", () => {
+    const Klass = freeclimb.Hangup;
     let constructorArguments = {};
     let model: freeclimb.Hangup = new freeclimb.Hangup(constructorArguments);
 

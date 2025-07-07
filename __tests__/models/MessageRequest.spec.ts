@@ -149,6 +149,7 @@ describe("MessageRequest", () => {
     });
   });
   describe("Test with only required values", () => {
+    const Klass = freeclimb.MessageRequest;
     let constructorArguments = {
       uri: "test_uri",
       dateCreated: "test_dateCreated",
