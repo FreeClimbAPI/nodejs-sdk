@@ -287,69 +287,32 @@ export class CallResult {
   }
   public constructor(args: ArgumentsType) {
     const assign = <T>(attribute: keyof ArgumentsType): T => {
-      return (args[attribute] ??
-        CallResult.attributeTypeMap.find((attr) => attr.name === attribute)
-          ?.defaultValue) as T;
+      return (
+        args.hasOwnProperty(attribute)
+          ? args[attribute]
+          : CallResult.attributeTypeMap.find((attr) => attr.name === attribute)
+              ?.defaultValue
+      ) as T;
     };
-    if (args["uri"]) {
-      this["uri"] = assign<string>("uri");
-    }
-    if (args["dateCreated"]) {
-      this["dateCreated"] = assign<string>("dateCreated");
-    }
-    if (args["dateUpdated"]) {
-      this["dateUpdated"] = assign<string>("dateUpdated");
-    }
-    if (args["revision"]) {
-      this["revision"] = assign<number>("revision");
-    }
-    if (args["callId"]) {
-      this["callId"] = assign<string>("callId");
-    }
-    if (args["parentCallId"]) {
-      this["parentCallId"] = assign<string>("parentCallId");
-    }
-    if (args["accountId"]) {
-      this["accountId"] = assign<string>("accountId");
-    }
-    if (args["from"]) {
-      this["from"] = assign<string>("from");
-    }
-    if (args["to"]) {
-      this["to"] = assign<string>("to");
-    }
-    if (args["phoneNumberId"]) {
-      this["phoneNumberId"] = assign<string>("phoneNumberId");
-    }
-    if (args["callStatus"]) {
-      this["callStatus"] = assign<CallStatus>("callStatus");
-    }
-    if (args["startTime"]) {
-      this["startTime"] = assign<string>("startTime");
-    }
-    if (args["connectTime"]) {
-      this["connectTime"] = assign<string>("connectTime");
-    }
-    if (args["endTime"]) {
-      this["endTime"] = assign<string>("endTime");
-    }
-    if (args["duration"]) {
-      this["duration"] = assign<number>("duration");
-    }
-    if (args["connectDuration"]) {
-      this["connectDuration"] = assign<number>("connectDuration");
-    }
-    if (args["direction"]) {
-      this["direction"] = assign<CallDirection>("direction");
-    }
-    if (args["answeredBy"]) {
-      this["answeredBy"] = assign<AnsweredBy>("answeredBy");
-    }
-    if (args["subresourceUris"]) {
-      this["subresourceUris"] = assign<any>("subresourceUris");
-    }
-    if (args["applicationId"]) {
-      this["applicationId"] = assign<string>("applicationId");
-    }
+    this["uri"] = assign<string>("uri");
+    this["dateCreated"] = assign<string>("dateCreated");
+    this["dateUpdated"] = assign<string>("dateUpdated");
+    this["revision"] = assign<number>("revision");
+    this["callId"] = assign<string>("callId");
+    this["parentCallId"] = assign<string>("parentCallId");
+    this["accountId"] = assign<string>("accountId");
+    this["from"] = assign<string>("from");
+    this["to"] = assign<string>("to");
+    this["phoneNumberId"] = assign<string>("phoneNumberId");
+    this["callStatus"] = assign<CallStatus>("callStatus");
+    this["startTime"] = assign<string>("startTime");
+    this["connectTime"] = assign<string>("connectTime");
+    this["endTime"] = assign<string>("endTime");
+    this["duration"] = assign<number>("duration");
+    this["connectDuration"] = assign<number>("connectDuration");
+    this["direction"] = assign<CallDirection>("direction");
+    this["answeredBy"] = assign<AnsweredBy>("answeredBy");
+    this["subresourceUris"] = assign<any>("subresourceUris");
+    this["applicationId"] = assign<string>("applicationId");
   }
 }

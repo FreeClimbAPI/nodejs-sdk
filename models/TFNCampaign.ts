@@ -130,37 +130,22 @@ export class TFNCampaign {
   }
   public constructor(args: ArgumentsType) {
     const assign = <T>(attribute: keyof ArgumentsType): T => {
-      return (args[attribute] ??
-        TFNCampaign.attributeTypeMap.find((attr) => attr.name === attribute)
-          ?.defaultValue) as T;
+      return (
+        args.hasOwnProperty(attribute)
+          ? args[attribute]
+          : TFNCampaign.attributeTypeMap.find((attr) => attr.name === attribute)
+              ?.defaultValue
+      ) as T;
     };
-    if (args["accountId"]) {
-      this["accountId"] = assign<string>("accountId");
-    }
-    if (args["campaignId"]) {
-      this["campaignId"] = assign<string>("campaignId");
-    }
-    if (args["useCase"]) {
-      this["useCase"] = assign<string>("useCase");
-    }
-    if (args["registrationStatus"]) {
-      this["registrationStatus"] =
-        assign<SMSTollFreeCampaignRegistrationStatus>("registrationStatus");
-    }
-    if (args["dateCreated"]) {
-      this["dateCreated"] = assign<string>("dateCreated");
-    }
-    if (args["dateUpdated"]) {
-      this["dateUpdated"] = assign<string>("dateUpdated");
-    }
-    if (args["dateCreatedISO"]) {
-      this["dateCreatedISO"] = assign<string>("dateCreatedISO");
-    }
-    if (args["dateUpdatedISO"]) {
-      this["dateUpdatedISO"] = assign<string>("dateUpdatedISO");
-    }
-    if (args["revision"]) {
-      this["revision"] = assign<number>("revision");
-    }
+    this["accountId"] = assign<string>("accountId");
+    this["campaignId"] = assign<string>("campaignId");
+    this["useCase"] = assign<string>("useCase");
+    this["registrationStatus"] =
+      assign<SMSTollFreeCampaignRegistrationStatus>("registrationStatus");
+    this["dateCreated"] = assign<string>("dateCreated");
+    this["dateUpdated"] = assign<string>("dateUpdated");
+    this["dateCreatedISO"] = assign<string>("dateCreatedISO");
+    this["dateUpdatedISO"] = assign<string>("dateUpdatedISO");
+    this["revision"] = assign<number>("revision");
   }
 }

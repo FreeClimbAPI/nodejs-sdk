@@ -52,12 +52,13 @@ export class Reject extends PerclCommand {
   public constructor(args: ArgumentsType) {
     super({ command: "Reject" });
     const assign = <T>(attribute: keyof ArgumentsType): T => {
-      return (args[attribute] ??
-        Reject.attributeTypeMap.find((attr) => attr.name === attribute)
-          ?.defaultValue) as T;
+      return (
+        args.hasOwnProperty(attribute)
+          ? args[attribute]
+          : Reject.attributeTypeMap.find((attr) => attr.name === attribute)
+              ?.defaultValue
+      ) as T;
     };
-    if (args["reason"]) {
-      this["reason"] = assign<string>("reason");
-    }
+    this["reason"] = assign<string>("reason");
   }
 }

@@ -102,28 +102,19 @@ export class TranscribeUtterance extends PerclCommand {
   public constructor(args: ArgumentsType) {
     super({ command: "TranscribeUtterance" });
     const assign = <T>(attribute: keyof ArgumentsType): T => {
-      return (args[attribute] ??
-        TranscribeUtterance.attributeTypeMap.find(
-          (attr) => attr.name === attribute,
-        )?.defaultValue) as T;
+      return (
+        args.hasOwnProperty(attribute)
+          ? args[attribute]
+          : TranscribeUtterance.attributeTypeMap.find(
+              (attr) => attr.name === attribute,
+            )?.defaultValue
+      ) as T;
     };
-    if (args["actionUrl"]) {
-      this["actionUrl"] = assign<string>("actionUrl");
-    }
-    if (args["playBeep"]) {
-      this["playBeep"] = assign<boolean>("playBeep");
-    }
-    if (args["record"]) {
-      this["record"] = assign<TranscribeUtteranceRecord>("record");
-    }
-    if (args["privacyForLogging"]) {
-      this["privacyForLogging"] = assign<boolean>("privacyForLogging");
-    }
-    if (args["privacyForRecording"]) {
-      this["privacyForRecording"] = assign<boolean>("privacyForRecording");
-    }
-    if (args["prompts"]) {
-      this["prompts"] = assign<Array<PerclCommand>>("prompts");
-    }
+    this["actionUrl"] = assign<string>("actionUrl");
+    this["playBeep"] = assign<boolean>("playBeep");
+    this["record"] = assign<TranscribeUtteranceRecord>("record");
+    this["privacyForLogging"] = assign<boolean>("privacyForLogging");
+    this["privacyForRecording"] = assign<boolean>("privacyForRecording");
+    this["prompts"] = assign<Array<PerclCommand>>("prompts");
   }
 }

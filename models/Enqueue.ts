@@ -91,21 +91,16 @@ export class Enqueue extends PerclCommand {
   public constructor(args: ArgumentsType) {
     super({ command: "Enqueue" });
     const assign = <T>(attribute: keyof ArgumentsType): T => {
-      return (args[attribute] ??
-        Enqueue.attributeTypeMap.find((attr) => attr.name === attribute)
-          ?.defaultValue) as T;
+      return (
+        args.hasOwnProperty(attribute)
+          ? args[attribute]
+          : Enqueue.attributeTypeMap.find((attr) => attr.name === attribute)
+              ?.defaultValue
+      ) as T;
     };
-    if (args["actionUrl"]) {
-      this["actionUrl"] = assign<string>("actionUrl");
-    }
-    if (args["notificationUrl"]) {
-      this["notificationUrl"] = assign<string>("notificationUrl");
-    }
-    if (args["queueId"]) {
-      this["queueId"] = assign<string>("queueId");
-    }
-    if (args["waitUrl"]) {
-      this["waitUrl"] = assign<string>("waitUrl");
-    }
+    this["actionUrl"] = assign<string>("actionUrl");
+    this["notificationUrl"] = assign<string>("notificationUrl");
+    this["queueId"] = assign<string>("queueId");
+    this["waitUrl"] = assign<string>("waitUrl");
   }
 }

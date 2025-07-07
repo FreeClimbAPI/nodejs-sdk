@@ -163,39 +163,23 @@ export class MakeCallRequest {
   }
   public constructor(args: ArgumentsType) {
     const assign = <T>(attribute: keyof ArgumentsType): T => {
-      return (args[attribute] ??
-        MakeCallRequest.attributeTypeMap.find((attr) => attr.name === attribute)
-          ?.defaultValue) as T;
+      return (
+        args.hasOwnProperty(attribute)
+          ? args[attribute]
+          : MakeCallRequest.attributeTypeMap.find(
+              (attr) => attr.name === attribute,
+            )?.defaultValue
+      ) as T;
     };
-    if (args["from"]) {
-      this["from"] = assign<string>("from");
-    }
-    if (args["to"]) {
-      this["to"] = assign<string>("to");
-    }
-    if (args["applicationId"]) {
-      this["applicationId"] = assign<string>("applicationId");
-    }
-    if (args["sendDigits"]) {
-      this["sendDigits"] = assign<string>("sendDigits");
-    }
-    if (args["ifMachine"]) {
-      this["ifMachine"] = assign<string>("ifMachine");
-    }
-    if (args["ifMachineUrl"]) {
-      this["ifMachineUrl"] = assign<string>("ifMachineUrl");
-    }
-    if (args["timeout"]) {
-      this["timeout"] = assign<number>("timeout");
-    }
-    if (args["parentCallId"]) {
-      this["parentCallId"] = assign<string>("parentCallId");
-    }
-    if (args["privacyMode"]) {
-      this["privacyMode"] = assign<boolean>("privacyMode");
-    }
-    if (args["callConnectUrl"]) {
-      this["callConnectUrl"] = assign<string>("callConnectUrl");
-    }
+    this["from"] = assign<string>("from");
+    this["to"] = assign<string>("to");
+    this["applicationId"] = assign<string>("applicationId");
+    this["sendDigits"] = assign<string>("sendDigits");
+    this["ifMachine"] = assign<string>("ifMachine");
+    this["ifMachineUrl"] = assign<string>("ifMachineUrl");
+    this["timeout"] = assign<number>("timeout");
+    this["parentCallId"] = assign<string>("parentCallId");
+    this["privacyMode"] = assign<boolean>("privacyMode");
+    this["callConnectUrl"] = assign<string>("callConnectUrl");
   }
 }

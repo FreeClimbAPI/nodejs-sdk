@@ -52,12 +52,13 @@ export class Redirect extends PerclCommand {
   public constructor(args: ArgumentsType) {
     super({ command: "Redirect" });
     const assign = <T>(attribute: keyof ArgumentsType): T => {
-      return (args[attribute] ??
-        Redirect.attributeTypeMap.find((attr) => attr.name === attribute)
-          ?.defaultValue) as T;
+      return (
+        args.hasOwnProperty(attribute)
+          ? args[attribute]
+          : Redirect.attributeTypeMap.find((attr) => attr.name === attribute)
+              ?.defaultValue
+      ) as T;
     };
-    if (args["actionUrl"]) {
-      this["actionUrl"] = assign<string>("actionUrl");
-    }
+    this["actionUrl"] = assign<string>("actionUrl");
   }
 }

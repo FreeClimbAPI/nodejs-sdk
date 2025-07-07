@@ -38,10 +38,13 @@ export class TerminateConference extends PerclCommand {
   public constructor(args: ArgumentsType) {
     super({ command: "TerminateConference" });
     const assign = <T>(attribute: keyof ArgumentsType): T => {
-      return (args[attribute] ??
-        TerminateConference.attributeTypeMap.find(
-          (attr) => attr.name === attribute,
-        )?.defaultValue) as T;
+      return (
+        args.hasOwnProperty(attribute)
+          ? args[attribute]
+          : TerminateConference.attributeTypeMap.find(
+              (attr) => attr.name === attribute,
+            )?.defaultValue
+      ) as T;
     };
   }
 }

@@ -57,16 +57,15 @@ export class CompletionResult {
   }
   public constructor(args: ArgumentsType) {
     const assign = <T>(attribute: keyof ArgumentsType): T => {
-      return (args[attribute] ??
-        CompletionResult.attributeTypeMap.find(
-          (attr) => attr.name === attribute,
-        )?.defaultValue) as T;
+      return (
+        args.hasOwnProperty(attribute)
+          ? args[attribute]
+          : CompletionResult.attributeTypeMap.find(
+              (attr) => attr.name === attribute,
+            )?.defaultValue
+      ) as T;
     };
-    if (args["response"]) {
-      this["response"] = assign<string>("response");
-    }
-    if (args["status"]) {
-      this["status"] = assign<CompletionResultStatus>("status");
-    }
+    this["response"] = assign<string>("response");
+    this["status"] = assign<CompletionResultStatus>("status");
   }
 }

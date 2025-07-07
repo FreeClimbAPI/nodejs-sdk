@@ -250,61 +250,30 @@ export class IncomingNumberResult {
   }
   public constructor(args: ArgumentsType) {
     const assign = <T>(attribute: keyof ArgumentsType): T => {
-      return (args[attribute] ??
-        IncomingNumberResult.attributeTypeMap.find(
-          (attr) => attr.name === attribute,
-        )?.defaultValue) as T;
+      return (
+        args.hasOwnProperty(attribute)
+          ? args[attribute]
+          : IncomingNumberResult.attributeTypeMap.find(
+              (attr) => attr.name === attribute,
+            )?.defaultValue
+      ) as T;
     };
-    if (args["uri"]) {
-      this["uri"] = assign<string>("uri");
-    }
-    if (args["dateCreated"]) {
-      this["dateCreated"] = assign<string>("dateCreated");
-    }
-    if (args["dateUpdated"]) {
-      this["dateUpdated"] = assign<string>("dateUpdated");
-    }
-    if (args["revision"]) {
-      this["revision"] = assign<number>("revision");
-    }
-    if (args["capabilities"]) {
-      this["capabilities"] = assign<Capabilities>("capabilities");
-    }
-    if (args["campaignId"]) {
-      this["campaignId"] = assign<string>("campaignId");
-    }
-    if (args["phoneNumberId"]) {
-      this["phoneNumberId"] = assign<string>("phoneNumberId");
-    }
-    if (args["accountId"]) {
-      this["accountId"] = assign<string>("accountId");
-    }
-    if (args["applicationId"]) {
-      this["applicationId"] = assign<string>("applicationId");
-    }
-    if (args["phoneNumber"]) {
-      this["phoneNumber"] = assign<string>("phoneNumber");
-    }
-    if (args["alias"]) {
-      this["alias"] = assign<string>("alias");
-    }
-    if (args["region"]) {
-      this["region"] = assign<string>("region");
-    }
-    if (args["country"]) {
-      this["country"] = assign<string>("country");
-    }
-    if (args["voiceEnabled"]) {
-      this["voiceEnabled"] = assign<boolean>("voiceEnabled");
-    }
-    if (args["smsEnabled"]) {
-      this["smsEnabled"] = assign<boolean>("smsEnabled");
-    }
-    if (args["offnet"]) {
-      this["offnet"] = assign<boolean>("offnet");
-    }
-    if (args["tfn"]) {
-      this["tfn"] = assign<TFN>("tfn");
-    }
+    this["uri"] = assign<string>("uri");
+    this["dateCreated"] = assign<string>("dateCreated");
+    this["dateUpdated"] = assign<string>("dateUpdated");
+    this["revision"] = assign<number>("revision");
+    this["capabilities"] = assign<Capabilities>("capabilities");
+    this["campaignId"] = assign<string>("campaignId");
+    this["phoneNumberId"] = assign<string>("phoneNumberId");
+    this["accountId"] = assign<string>("accountId");
+    this["applicationId"] = assign<string>("applicationId");
+    this["phoneNumber"] = assign<string>("phoneNumber");
+    this["alias"] = assign<string>("alias");
+    this["region"] = assign<string>("region");
+    this["country"] = assign<string>("country");
+    this["voiceEnabled"] = assign<boolean>("voiceEnabled");
+    this["smsEnabled"] = assign<boolean>("smsEnabled");
+    this["offnet"] = assign<boolean>("offnet");
+    this["tfn"] = assign<TFN>("tfn");
   }
 }

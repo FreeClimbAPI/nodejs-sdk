@@ -46,13 +46,14 @@ export class FilterLogsRequest {
   }
   public constructor(args: ArgumentsType) {
     const assign = <T>(attribute: keyof ArgumentsType): T => {
-      return (args[attribute] ??
-        FilterLogsRequest.attributeTypeMap.find(
-          (attr) => attr.name === attribute,
-        )?.defaultValue) as T;
+      return (
+        args.hasOwnProperty(attribute)
+          ? args[attribute]
+          : FilterLogsRequest.attributeTypeMap.find(
+              (attr) => attr.name === attribute,
+            )?.defaultValue
+      ) as T;
     };
-    if (args["pql"]) {
-      this["pql"] = assign<string>("pql");
-    }
+    this["pql"] = assign<string>("pql");
   }
 }

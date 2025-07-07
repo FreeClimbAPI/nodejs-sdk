@@ -52,12 +52,14 @@ export class PlayEarlyMedia extends PerclCommand {
   public constructor(args: ArgumentsType) {
     super({ command: "PlayEarlyMedia" });
     const assign = <T>(attribute: keyof ArgumentsType): T => {
-      return (args[attribute] ??
-        PlayEarlyMedia.attributeTypeMap.find((attr) => attr.name === attribute)
-          ?.defaultValue) as T;
+      return (
+        args.hasOwnProperty(attribute)
+          ? args[attribute]
+          : PlayEarlyMedia.attributeTypeMap.find(
+              (attr) => attr.name === attribute,
+            )?.defaultValue
+      ) as T;
     };
-    if (args["file"]) {
-      this["file"] = assign<string>("file");
-    }
+    this["file"] = assign<string>("file");
   }
 }

@@ -91,21 +91,16 @@ export class Say extends PerclCommand {
   public constructor(args: ArgumentsType) {
     super({ command: "Say" });
     const assign = <T>(attribute: keyof ArgumentsType): T => {
-      return (args[attribute] ??
-        Say.attributeTypeMap.find((attr) => attr.name === attribute)
-          ?.defaultValue) as T;
+      return (
+        args.hasOwnProperty(attribute)
+          ? args[attribute]
+          : Say.attributeTypeMap.find((attr) => attr.name === attribute)
+              ?.defaultValue
+      ) as T;
     };
-    if (args["text"]) {
-      this["text"] = assign<string>("text");
-    }
-    if (args["language"]) {
-      this["language"] = assign<string>("language");
-    }
-    if (args["loop"]) {
-      this["loop"] = assign<number>("loop");
-    }
-    if (args["privacyMode"]) {
-      this["privacyMode"] = assign<boolean>("privacyMode");
-    }
+    this["text"] = assign<string>("text");
+    this["language"] = assign<string>("language");
+    this["loop"] = assign<number>("loop");
+    this["privacyMode"] = assign<boolean>("privacyMode");
   }
 }

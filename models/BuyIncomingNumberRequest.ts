@@ -72,19 +72,16 @@ export class BuyIncomingNumberRequest {
   }
   public constructor(args: ArgumentsType) {
     const assign = <T>(attribute: keyof ArgumentsType): T => {
-      return (args[attribute] ??
-        BuyIncomingNumberRequest.attributeTypeMap.find(
-          (attr) => attr.name === attribute,
-        )?.defaultValue) as T;
+      return (
+        args.hasOwnProperty(attribute)
+          ? args[attribute]
+          : BuyIncomingNumberRequest.attributeTypeMap.find(
+              (attr) => attr.name === attribute,
+            )?.defaultValue
+      ) as T;
     };
-    if (args["phoneNumber"]) {
-      this["phoneNumber"] = assign<string>("phoneNumber");
-    }
-    if (args["alias"]) {
-      this["alias"] = assign<string>("alias");
-    }
-    if (args["applicationId"]) {
-      this["applicationId"] = assign<string>("applicationId");
-    }
+    this["phoneNumber"] = assign<string>("phoneNumber");
+    this["alias"] = assign<string>("alias");
+    this["applicationId"] = assign<string>("applicationId");
   }
 }

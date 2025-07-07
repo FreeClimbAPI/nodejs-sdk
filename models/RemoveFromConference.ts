@@ -38,10 +38,13 @@ export class RemoveFromConference extends PerclCommand {
   public constructor(args: ArgumentsType) {
     super({ command: "RemoveFromConference" });
     const assign = <T>(attribute: keyof ArgumentsType): T => {
-      return (args[attribute] ??
-        RemoveFromConference.attributeTypeMap.find(
-          (attr) => attr.name === attribute,
-        )?.defaultValue) as T;
+      return (
+        args.hasOwnProperty(attribute)
+          ? args[attribute]
+          : RemoveFromConference.attributeTypeMap.find(
+              (attr) => attr.name === attribute,
+            )?.defaultValue
+      ) as T;
     };
   }
 }

@@ -63,21 +63,18 @@ export class TranscribeUtteranceRecord {
   }
   public constructor(args: ArgumentsType) {
     const assign = <T>(attribute: keyof ArgumentsType): T => {
-      return (args[attribute] ??
-        TranscribeUtteranceRecord.attributeTypeMap.find(
-          (attr) => attr.name === attribute,
-        )?.defaultValue) as T;
+      return (
+        args.hasOwnProperty(attribute)
+          ? args[attribute]
+          : TranscribeUtteranceRecord.attributeTypeMap.find(
+              (attr) => attr.name === attribute,
+            )?.defaultValue
+      ) as T;
     };
-    if (args["saveRecording"]) {
-      this["saveRecording"] = assign<boolean>("saveRecording");
-    }
-    if (args["maxLengthSec"]) {
-      this["maxLengthSec"] = assign<number>("maxLengthSec");
-    }
-    if (args["rcrdTerminationSilenceTimeMs"]) {
-      this["rcrdTerminationSilenceTimeMs"] = assign<number>(
-        "rcrdTerminationSilenceTimeMs",
-      );
-    }
+    this["saveRecording"] = assign<boolean>("saveRecording");
+    this["maxLengthSec"] = assign<number>("maxLengthSec");
+    this["rcrdTerminationSilenceTimeMs"] = assign<number>(
+      "rcrdTerminationSilenceTimeMs",
+    );
   }
 }

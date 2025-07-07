@@ -403,97 +403,42 @@ export class SMSTenDLCPartnerCampaign {
   }
   public constructor(args: ArgumentsType) {
     const assign = <T>(attribute: keyof ArgumentsType): T => {
-      return (args[attribute] ??
-        SMSTenDLCPartnerCampaign.attributeTypeMap.find(
-          (attr) => attr.name === attribute,
-        )?.defaultValue) as T;
+      return (
+        args.hasOwnProperty(attribute)
+          ? args[attribute]
+          : SMSTenDLCPartnerCampaign.attributeTypeMap.find(
+              (attr) => attr.name === attribute,
+            )?.defaultValue
+      ) as T;
     };
-    if (args["accountId"]) {
-      this["accountId"] = assign<string>("accountId");
-    }
-    if (args["campaignId"]) {
-      this["campaignId"] = assign<string>("campaignId");
-    }
-    if (args["status"]) {
-      this["status"] = assign<SMSTenDLCPartnerCampaignStatus>("status");
-    }
-    if (args["createDate"]) {
-      this["createDate"] = assign<Date>("createDate");
-    }
-    if (args["brandId"]) {
-      this["brandId"] = assign<string>("brandId");
-    }
-    if (args["usecase"]) {
-      this["usecase"] = assign<string>("usecase");
-    }
-    if (args["description"]) {
-      this["description"] = assign<string>("description");
-    }
-    if (args["embeddedLink"]) {
-      this["embeddedLink"] = assign<boolean>("embeddedLink");
-    }
-    if (args["embeddedPhone"]) {
-      this["embeddedPhone"] = assign<boolean>("embeddedPhone");
-    }
-    if (args["affiliateMarketing"]) {
-      this["affiliateMarketing"] = assign<boolean>("affiliateMarketing");
-    }
-    if (args["numberPool"]) {
-      this["numberPool"] = assign<boolean>("numberPool");
-    }
-    if (args["ageGated"]) {
-      this["ageGated"] = assign<boolean>("ageGated");
-    }
-    if (args["directLending"]) {
-      this["directLending"] = assign<boolean>("directLending");
-    }
-    if (args["subscriberOptin"]) {
-      this["subscriberOptin"] = assign<boolean>("subscriberOptin");
-    }
-    if (args["subscriberOptout"]) {
-      this["subscriberOptout"] = assign<boolean>("subscriberOptout");
-    }
-    if (args["subscriberHelp"]) {
-      this["subscriberHelp"] = assign<boolean>("subscriberHelp");
-    }
-    if (args["sample1"]) {
-      this["sample1"] = assign<string>("sample1");
-    }
-    if (args["sample2"]) {
-      this["sample2"] = assign<string>("sample2");
-    }
-    if (args["sample3"]) {
-      this["sample3"] = assign<string>("sample3");
-    }
-    if (args["sample4"]) {
-      this["sample4"] = assign<string>("sample4");
-    }
-    if (args["sample5"]) {
-      this["sample5"] = assign<string>("sample5");
-    }
-    if (args["messageFlow"]) {
-      this["messageFlow"] = assign<string>("messageFlow");
-    }
-    if (args["helpMessage"]) {
-      this["helpMessage"] = assign<string>("helpMessage");
-    }
-    if (args["optinKeywords"]) {
-      this["optinKeywords"] = assign<string>("optinKeywords");
-    }
-    if (args["optoutKeywords"]) {
-      this["optoutKeywords"] = assign<string>("optoutKeywords");
-    }
-    if (args["helpKeywords"]) {
-      this["helpKeywords"] = assign<string>("helpKeywords");
-    }
-    if (args["optinMessage"]) {
-      this["optinMessage"] = assign<string>("optinMessage");
-    }
-    if (args["optoutMessage"]) {
-      this["optoutMessage"] = assign<string>("optoutMessage");
-    }
-    if (args["brand"]) {
-      this["brand"] = assign<SMSTenDLCPartnerCampaignBrand>("brand");
-    }
+    this["accountId"] = assign<string>("accountId");
+    this["campaignId"] = assign<string>("campaignId");
+    this["status"] = assign<SMSTenDLCPartnerCampaignStatus>("status");
+    this["createDate"] = assign<Date>("createDate");
+    this["brandId"] = assign<string>("brandId");
+    this["usecase"] = assign<string>("usecase");
+    this["description"] = assign<string>("description");
+    this["embeddedLink"] = assign<boolean>("embeddedLink");
+    this["embeddedPhone"] = assign<boolean>("embeddedPhone");
+    this["affiliateMarketing"] = assign<boolean>("affiliateMarketing");
+    this["numberPool"] = assign<boolean>("numberPool");
+    this["ageGated"] = assign<boolean>("ageGated");
+    this["directLending"] = assign<boolean>("directLending");
+    this["subscriberOptin"] = assign<boolean>("subscriberOptin");
+    this["subscriberOptout"] = assign<boolean>("subscriberOptout");
+    this["subscriberHelp"] = assign<boolean>("subscriberHelp");
+    this["sample1"] = assign<string>("sample1");
+    this["sample2"] = assign<string>("sample2");
+    this["sample3"] = assign<string>("sample3");
+    this["sample4"] = assign<string>("sample4");
+    this["sample5"] = assign<string>("sample5");
+    this["messageFlow"] = assign<string>("messageFlow");
+    this["helpMessage"] = assign<string>("helpMessage");
+    this["optinKeywords"] = assign<string>("optinKeywords");
+    this["optoutKeywords"] = assign<string>("optoutKeywords");
+    this["helpKeywords"] = assign<string>("helpKeywords");
+    this["optinMessage"] = assign<string>("optinMessage");
+    this["optoutMessage"] = assign<string>("optoutMessage");
+    this["brand"] = assign<SMSTenDLCPartnerCampaignBrand>("brand");
   }
 }

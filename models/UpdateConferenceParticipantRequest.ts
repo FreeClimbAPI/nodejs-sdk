@@ -72,19 +72,16 @@ export class UpdateConferenceParticipantRequest {
   }
   public constructor(args: ArgumentsType) {
     const assign = <T>(attribute: keyof ArgumentsType): T => {
-      return (args[attribute] ??
-        UpdateConferenceParticipantRequest.attributeTypeMap.find(
-          (attr) => attr.name === attribute,
-        )?.defaultValue) as T;
+      return (
+        args.hasOwnProperty(attribute)
+          ? args[attribute]
+          : UpdateConferenceParticipantRequest.attributeTypeMap.find(
+              (attr) => attr.name === attribute,
+            )?.defaultValue
+      ) as T;
     };
-    if (args["talk"]) {
-      this["talk"] = assign<boolean>("talk");
-    }
-    if (args["listen"]) {
-      this["listen"] = assign<boolean>("listen");
-    }
-    if (args["dtmfPassThrough"]) {
-      this["dtmfPassThrough"] = assign<boolean>("dtmfPassThrough");
-    }
+    this["talk"] = assign<boolean>("talk");
+    this["listen"] = assign<boolean>("listen");
+    this["dtmfPassThrough"] = assign<boolean>("dtmfPassThrough");
   }
 }

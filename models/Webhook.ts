@@ -46,12 +46,13 @@ export class Webhook {
   }
   public constructor(args: ArgumentsType) {
     const assign = <T>(attribute: keyof ArgumentsType): T => {
-      return (args[attribute] ??
-        Webhook.attributeTypeMap.find((attr) => attr.name === attribute)
-          ?.defaultValue) as T;
+      return (
+        args.hasOwnProperty(attribute)
+          ? args[attribute]
+          : Webhook.attributeTypeMap.find((attr) => attr.name === attribute)
+              ?.defaultValue
+      ) as T;
     };
-    if (args["requestType"]) {
-      this["requestType"] = assign<string>("requestType");
-    }
+    this["requestType"] = assign<string>("requestType");
   }
 }

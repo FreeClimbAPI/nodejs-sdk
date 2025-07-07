@@ -98,24 +98,17 @@ export class QueueMember {
   }
   public constructor(args: ArgumentsType) {
     const assign = <T>(attribute: keyof ArgumentsType): T => {
-      return (args[attribute] ??
-        QueueMember.attributeTypeMap.find((attr) => attr.name === attribute)
-          ?.defaultValue) as T;
+      return (
+        args.hasOwnProperty(attribute)
+          ? args[attribute]
+          : QueueMember.attributeTypeMap.find((attr) => attr.name === attribute)
+              ?.defaultValue
+      ) as T;
     };
-    if (args["uri"]) {
-      this["uri"] = assign<string>("uri");
-    }
-    if (args["callId"]) {
-      this["callId"] = assign<string>("callId");
-    }
-    if (args["waitTime"]) {
-      this["waitTime"] = assign<number>("waitTime");
-    }
-    if (args["position"]) {
-      this["position"] = assign<number>("position");
-    }
-    if (args["dateEnqueued"]) {
-      this["dateEnqueued"] = assign<string>("dateEnqueued");
-    }
+    this["uri"] = assign<string>("uri");
+    this["callId"] = assign<string>("callId");
+    this["waitTime"] = assign<number>("waitTime");
+    this["position"] = assign<number>("position");
+    this["dateEnqueued"] = assign<string>("dateEnqueued");
   }
 }

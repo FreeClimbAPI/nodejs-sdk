@@ -176,45 +176,26 @@ export class SMSTenDLCPartnerCampaignBrand {
   }
   public constructor(args: ArgumentsType) {
     const assign = <T>(attribute: keyof ArgumentsType): T => {
-      return (args[attribute] ??
-        SMSTenDLCPartnerCampaignBrand.attributeTypeMap.find(
-          (attr) => attr.name === attribute,
-        )?.defaultValue) as T;
+      return (
+        args.hasOwnProperty(attribute)
+          ? args[attribute]
+          : SMSTenDLCPartnerCampaignBrand.attributeTypeMap.find(
+              (attr) => attr.name === attribute,
+            )?.defaultValue
+      ) as T;
     };
-    if (args["accountId"]) {
-      this["accountId"] = assign<string>("accountId");
-    }
-    if (args["brandId"]) {
-      this["brandId"] = assign<string>("brandId");
-    }
-    if (args["firstName"]) {
-      this["firstName"] = assign<string>("firstName");
-    }
-    if (args["lastName"]) {
-      this["lastName"] = assign<string>("lastName");
-    }
-    if (args["displayName"]) {
-      this["displayName"] = assign<string>("displayName");
-    }
-    if (args["companyName"]) {
-      this["companyName"] = assign<string>("companyName");
-    }
-    if (args["phone"]) {
-      this["phone"] = assign<string>("phone");
-    }
-    if (args["email"]) {
-      this["email"] = assign<string>("email");
-    }
-    if (args["website"]) {
-      this["website"] = assign<string>("website");
-    }
-    if (args["optionalAttributes"]) {
-      this["optionalAttributes"] = assign<{ [key: string]: any }>(
-        "optionalAttributes",
-      );
-    }
-    if (args["evpVettingScore"]) {
-      this["evpVettingScore"] = assign<number>("evpVettingScore");
-    }
+    this["accountId"] = assign<string>("accountId");
+    this["brandId"] = assign<string>("brandId");
+    this["firstName"] = assign<string>("firstName");
+    this["lastName"] = assign<string>("lastName");
+    this["displayName"] = assign<string>("displayName");
+    this["companyName"] = assign<string>("companyName");
+    this["phone"] = assign<string>("phone");
+    this["email"] = assign<string>("email");
+    this["website"] = assign<string>("website");
+    this["optionalAttributes"] = assign<{ [key: string]: any }>(
+      "optionalAttributes",
+    );
+    this["evpVettingScore"] = assign<number>("evpVettingScore");
   }
 }

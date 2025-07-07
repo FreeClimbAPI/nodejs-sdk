@@ -154,38 +154,23 @@ export class AddToQueueNotificationWebhook extends Webhook {
   public constructor(args: ArgumentsType) {
     super({ requestType: "addToQueueNotification" });
     const assign = <T>(attribute: keyof ArgumentsType): T => {
-      return (args[attribute] ??
-        AddToQueueNotificationWebhook.attributeTypeMap.find(
-          (attr) => attr.name === attribute,
-        )?.defaultValue) as T;
+      return (
+        args.hasOwnProperty(attribute)
+          ? args[attribute]
+          : AddToQueueNotificationWebhook.attributeTypeMap.find(
+              (attr) => attr.name === attribute,
+            )?.defaultValue
+      ) as T;
     };
-    if (args["requestType"]) {
-      this["requestType"] = assign<string>("requestType");
-    }
-    if (args["callId"]) {
-      this["callId"] = assign<string>("callId");
-    }
-    if (args["accountId"]) {
-      this["accountId"] = assign<string>("accountId");
-    }
-    if (args["from"]) {
-      this["from"] = assign<string>("from");
-    }
-    if (args["to"]) {
-      this["to"] = assign<string>("to");
-    }
-    if (args["callStatus"]) {
-      this["callStatus"] = assign<CallStatus>("callStatus");
-    }
-    if (args["direction"]) {
-      this["direction"] = assign<CallDirection>("direction");
-    }
-    if (args["conferenceId"]) {
-      this["conferenceId"] = assign<string>("conferenceId");
-    }
-    if (args["queueId"]) {
-      this["queueId"] = assign<string>("queueId");
-    }
+    this["requestType"] = assign<string>("requestType");
+    this["callId"] = assign<string>("callId");
+    this["accountId"] = assign<string>("accountId");
+    this["from"] = assign<string>("from");
+    this["to"] = assign<string>("to");
+    this["callStatus"] = assign<CallStatus>("callStatus");
+    this["direction"] = assign<CallDirection>("direction");
+    this["conferenceId"] = assign<string>("conferenceId");
+    this["queueId"] = assign<string>("queueId");
   }
   public static deserialize(payload: string): AddToQueueNotificationWebhook {
     return new AddToQueueNotificationWebhook(JSON.parse(payload));

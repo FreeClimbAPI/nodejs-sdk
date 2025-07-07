@@ -124,31 +124,20 @@ export class ApplicationRequest {
   }
   public constructor(args: ArgumentsType) {
     const assign = <T>(attribute: keyof ArgumentsType): T => {
-      return (args[attribute] ??
-        ApplicationRequest.attributeTypeMap.find(
-          (attr) => attr.name === attribute,
-        )?.defaultValue) as T;
+      return (
+        args.hasOwnProperty(attribute)
+          ? args[attribute]
+          : ApplicationRequest.attributeTypeMap.find(
+              (attr) => attr.name === attribute,
+            )?.defaultValue
+      ) as T;
     };
-    if (args["alias"]) {
-      this["alias"] = assign<string>("alias");
-    }
-    if (args["voiceUrl"]) {
-      this["voiceUrl"] = assign<string>("voiceUrl");
-    }
-    if (args["voiceFallbackUrl"]) {
-      this["voiceFallbackUrl"] = assign<string>("voiceFallbackUrl");
-    }
-    if (args["callConnectUrl"]) {
-      this["callConnectUrl"] = assign<string>("callConnectUrl");
-    }
-    if (args["statusCallbackUrl"]) {
-      this["statusCallbackUrl"] = assign<string>("statusCallbackUrl");
-    }
-    if (args["smsUrl"]) {
-      this["smsUrl"] = assign<string>("smsUrl");
-    }
-    if (args["smsFallbackUrl"]) {
-      this["smsFallbackUrl"] = assign<string>("smsFallbackUrl");
-    }
+    this["alias"] = assign<string>("alias");
+    this["voiceUrl"] = assign<string>("voiceUrl");
+    this["voiceFallbackUrl"] = assign<string>("voiceFallbackUrl");
+    this["callConnectUrl"] = assign<string>("callConnectUrl");
+    this["statusCallbackUrl"] = assign<string>("statusCallbackUrl");
+    this["smsUrl"] = assign<string>("smsUrl");
+    this["smsFallbackUrl"] = assign<string>("smsFallbackUrl");
   }
 }

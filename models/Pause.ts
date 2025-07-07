@@ -52,12 +52,13 @@ export class Pause extends PerclCommand {
   public constructor(args: ArgumentsType) {
     super({ command: "Pause" });
     const assign = <T>(attribute: keyof ArgumentsType): T => {
-      return (args[attribute] ??
-        Pause.attributeTypeMap.find((attr) => attr.name === attribute)
-          ?.defaultValue) as T;
+      return (
+        args.hasOwnProperty(attribute)
+          ? args[attribute]
+          : Pause.attributeTypeMap.find((attr) => attr.name === attribute)
+              ?.defaultValue
+      ) as T;
     };
-    if (args["length"]) {
-      this["length"] = assign<number>("length");
-    }
+    this["length"] = assign<number>("length");
   }
 }

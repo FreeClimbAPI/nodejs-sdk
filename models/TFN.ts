@@ -50,12 +50,13 @@ export class TFN {
   }
   public constructor(args: ArgumentsType) {
     const assign = <T>(attribute: keyof ArgumentsType): T => {
-      return (args[attribute] ??
-        TFN.attributeTypeMap.find((attr) => attr.name === attribute)
-          ?.defaultValue) as T;
+      return (
+        args.hasOwnProperty(attribute)
+          ? args[attribute]
+          : TFN.attributeTypeMap.find((attr) => attr.name === attribute)
+              ?.defaultValue
+      ) as T;
     };
-    if (args["campaignId"]) {
-      this["campaignId"] = assign<string>("campaignId");
-    }
+    this["campaignId"] = assign<string>("campaignId");
   }
 }

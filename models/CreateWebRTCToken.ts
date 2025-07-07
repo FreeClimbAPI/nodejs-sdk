@@ -72,19 +72,16 @@ export class CreateWebRTCToken {
   }
   public constructor(args: ArgumentsType) {
     const assign = <T>(attribute: keyof ArgumentsType): T => {
-      return (args[attribute] ??
-        CreateWebRTCToken.attributeTypeMap.find(
-          (attr) => attr.name === attribute,
-        )?.defaultValue) as T;
+      return (
+        args.hasOwnProperty(attribute)
+          ? args[attribute]
+          : CreateWebRTCToken.attributeTypeMap.find(
+              (attr) => attr.name === attribute,
+            )?.defaultValue
+      ) as T;
     };
-    if (args["to"]) {
-      this["to"] = assign<string>("to");
-    }
-    if (args["from"]) {
-      this["from"] = assign<string>("from");
-    }
-    if (args["uses"]) {
-      this["uses"] = assign<number>("uses");
-    }
+    this["to"] = assign<string>("to");
+    this["from"] = assign<string>("from");
+    this["uses"] = assign<number>("uses");
   }
 }

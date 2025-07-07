@@ -78,18 +78,15 @@ export class SendDigits extends PerclCommand {
   public constructor(args: ArgumentsType) {
     super({ command: "SendDigits" });
     const assign = <T>(attribute: keyof ArgumentsType): T => {
-      return (args[attribute] ??
-        SendDigits.attributeTypeMap.find((attr) => attr.name === attribute)
-          ?.defaultValue) as T;
+      return (
+        args.hasOwnProperty(attribute)
+          ? args[attribute]
+          : SendDigits.attributeTypeMap.find((attr) => attr.name === attribute)
+              ?.defaultValue
+      ) as T;
     };
-    if (args["digits"]) {
-      this["digits"] = assign<string>("digits");
-    }
-    if (args["pauseMs"]) {
-      this["pauseMs"] = assign<number>("pauseMs");
-    }
-    if (args["privacyMode"]) {
-      this["privacyMode"] = assign<boolean>("privacyMode");
-    }
+    this["digits"] = assign<string>("digits");
+    this["pauseMs"] = assign<number>("pauseMs");
+    this["privacyMode"] = assign<boolean>("privacyMode");
   }
 }

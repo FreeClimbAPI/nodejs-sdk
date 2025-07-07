@@ -167,39 +167,22 @@ export class OutDial extends PerclCommand {
   public constructor(args: ArgumentsType) {
     super({ command: "OutDial" });
     const assign = <T>(attribute: keyof ArgumentsType): T => {
-      return (args[attribute] ??
-        OutDial.attributeTypeMap.find((attr) => attr.name === attribute)
-          ?.defaultValue) as T;
+      return (
+        args.hasOwnProperty(attribute)
+          ? args[attribute]
+          : OutDial.attributeTypeMap.find((attr) => attr.name === attribute)
+              ?.defaultValue
+      ) as T;
     };
-    if (args["actionUrl"]) {
-      this["actionUrl"] = assign<string>("actionUrl");
-    }
-    if (args["callConnectUrl"]) {
-      this["callConnectUrl"] = assign<string>("callConnectUrl");
-    }
-    if (args["callingNumber"]) {
-      this["callingNumber"] = assign<string>("callingNumber");
-    }
-    if (args["destination"]) {
-      this["destination"] = assign<string>("destination");
-    }
-    if (args["ifMachine"]) {
-      this["ifMachine"] = assign<IfMachine>("ifMachine");
-    }
-    if (args["ifMachineUrl"]) {
-      this["ifMachineUrl"] = assign<string>("ifMachineUrl");
-    }
-    if (args["sendDigits"]) {
-      this["sendDigits"] = assign<string>("sendDigits");
-    }
-    if (args["statusCallbackUrl"]) {
-      this["statusCallbackUrl"] = assign<string>("statusCallbackUrl");
-    }
-    if (args["timeout"]) {
-      this["timeout"] = assign<number>("timeout");
-    }
-    if (args["privacyMode"]) {
-      this["privacyMode"] = assign<boolean>("privacyMode");
-    }
+    this["actionUrl"] = assign<string>("actionUrl");
+    this["callConnectUrl"] = assign<string>("callConnectUrl");
+    this["callingNumber"] = assign<string>("callingNumber");
+    this["destination"] = assign<string>("destination");
+    this["ifMachine"] = assign<IfMachine>("ifMachine");
+    this["ifMachineUrl"] = assign<string>("ifMachineUrl");
+    this["sendDigits"] = assign<string>("sendDigits");
+    this["statusCallbackUrl"] = assign<string>("statusCallbackUrl");
+    this["timeout"] = assign<number>("timeout");
+    this["privacyMode"] = assign<boolean>("privacyMode");
   }
 }

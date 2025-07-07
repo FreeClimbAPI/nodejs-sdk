@@ -206,52 +206,27 @@ export class GetSpeech extends PerclCommand {
   public constructor(args: ArgumentsType) {
     super({ command: "GetSpeech" });
     const assign = <T>(attribute: keyof ArgumentsType): T => {
-      return (args[attribute] ??
-        GetSpeech.attributeTypeMap.find((attr) => attr.name === attribute)
-          ?.defaultValue) as T;
+      return (
+        args.hasOwnProperty(attribute)
+          ? args[attribute]
+          : GetSpeech.attributeTypeMap.find((attr) => attr.name === attribute)
+              ?.defaultValue
+      ) as T;
     };
-    if (args["actionUrl"]) {
-      this["actionUrl"] = assign<string>("actionUrl");
-    }
-    if (args["grammarType"]) {
-      this["grammarType"] = assign<GrammarType>("grammarType");
-    }
-    if (args["grammarFile"]) {
-      this["grammarFile"] = assign<string>("grammarFile");
-    }
-    if (args["grammarRule"]) {
-      this["grammarRule"] = assign<string>("grammarRule");
-    }
-    if (args["playBeep"]) {
-      this["playBeep"] = assign<boolean>("playBeep");
-    }
-    if (args["prompts"]) {
-      this["prompts"] = assign<Array<PerclCommand>>("prompts");
-    }
-    if (args["noInputTimeoutMs"]) {
-      this["noInputTimeoutMs"] = assign<number>("noInputTimeoutMs");
-    }
-    if (args["recognitionTimeoutMs"]) {
-      this["recognitionTimeoutMs"] = assign<number>("recognitionTimeoutMs");
-    }
-    if (args["confidenceThreshold"]) {
-      this["confidenceThreshold"] = assign<number>("confidenceThreshold");
-    }
-    if (args["sensitivityLevel"]) {
-      this["sensitivityLevel"] = assign<number>("sensitivityLevel");
-    }
-    if (args["speechCompleteTimeoutMs"]) {
-      this["speechCompleteTimeoutMs"] = assign<number>(
-        "speechCompleteTimeoutMs",
-      );
-    }
-    if (args["speechIncompleteTimeoutMs"]) {
-      this["speechIncompleteTimeoutMs"] = assign<number>(
-        "speechIncompleteTimeoutMs",
-      );
-    }
-    if (args["privacyMode"]) {
-      this["privacyMode"] = assign<boolean>("privacyMode");
-    }
+    this["actionUrl"] = assign<string>("actionUrl");
+    this["grammarType"] = assign<GrammarType>("grammarType");
+    this["grammarFile"] = assign<string>("grammarFile");
+    this["grammarRule"] = assign<string>("grammarRule");
+    this["playBeep"] = assign<boolean>("playBeep");
+    this["prompts"] = assign<Array<PerclCommand>>("prompts");
+    this["noInputTimeoutMs"] = assign<number>("noInputTimeoutMs");
+    this["recognitionTimeoutMs"] = assign<number>("recognitionTimeoutMs");
+    this["confidenceThreshold"] = assign<number>("confidenceThreshold");
+    this["sensitivityLevel"] = assign<number>("sensitivityLevel");
+    this["speechCompleteTimeoutMs"] = assign<number>("speechCompleteTimeoutMs");
+    this["speechIncompleteTimeoutMs"] = assign<number>(
+      "speechIncompleteTimeoutMs",
+    );
+    this["privacyMode"] = assign<boolean>("privacyMode");
   }
 }

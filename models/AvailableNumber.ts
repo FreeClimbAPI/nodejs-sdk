@@ -122,30 +122,20 @@ export class AvailableNumber {
   }
   public constructor(args: ArgumentsType) {
     const assign = <T>(attribute: keyof ArgumentsType): T => {
-      return (args[attribute] ??
-        AvailableNumber.attributeTypeMap.find((attr) => attr.name === attribute)
-          ?.defaultValue) as T;
+      return (
+        args.hasOwnProperty(attribute)
+          ? args[attribute]
+          : AvailableNumber.attributeTypeMap.find(
+              (attr) => attr.name === attribute,
+            )?.defaultValue
+      ) as T;
     };
-    if (args["capabilities"]) {
-      this["capabilities"] = assign<Capabilities>("capabilities");
-    }
-    if (args["campaignId"]) {
-      this["campaignId"] = assign<string>("campaignId");
-    }
-    if (args["phoneNumber"]) {
-      this["phoneNumber"] = assign<string>("phoneNumber");
-    }
-    if (args["voiceEnabled"]) {
-      this["voiceEnabled"] = assign<boolean>("voiceEnabled");
-    }
-    if (args["smsEnabled"]) {
-      this["smsEnabled"] = assign<boolean>("smsEnabled");
-    }
-    if (args["region"]) {
-      this["region"] = assign<string>("region");
-    }
-    if (args["country"]) {
-      this["country"] = assign<string>("country");
-    }
+    this["capabilities"] = assign<Capabilities>("capabilities");
+    this["campaignId"] = assign<string>("campaignId");
+    this["phoneNumber"] = assign<string>("phoneNumber");
+    this["voiceEnabled"] = assign<boolean>("voiceEnabled");
+    this["smsEnabled"] = assign<boolean>("smsEnabled");
+    this["region"] = assign<string>("region");
+    this["country"] = assign<string>("country");
   }
 }

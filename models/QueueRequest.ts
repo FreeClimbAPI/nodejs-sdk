@@ -59,15 +59,15 @@ export class QueueRequest {
   }
   public constructor(args: ArgumentsType) {
     const assign = <T>(attribute: keyof ArgumentsType): T => {
-      return (args[attribute] ??
-        QueueRequest.attributeTypeMap.find((attr) => attr.name === attribute)
-          ?.defaultValue) as T;
+      return (
+        args.hasOwnProperty(attribute)
+          ? args[attribute]
+          : QueueRequest.attributeTypeMap.find(
+              (attr) => attr.name === attribute,
+            )?.defaultValue
+      ) as T;
     };
-    if (args["alias"]) {
-      this["alias"] = assign<string>("alias");
-    }
-    if (args["maxSize"]) {
-      this["maxSize"] = assign<number>("maxSize");
-    }
+    this["alias"] = assign<string>("alias");
+    this["maxSize"] = assign<number>("maxSize");
   }
 }

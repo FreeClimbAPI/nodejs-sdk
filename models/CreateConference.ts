@@ -117,28 +117,19 @@ export class CreateConference extends PerclCommand {
   public constructor(args: ArgumentsType) {
     super({ command: "CreateConference" });
     const assign = <T>(attribute: keyof ArgumentsType): T => {
-      return (args[attribute] ??
-        CreateConference.attributeTypeMap.find(
-          (attr) => attr.name === attribute,
-        )?.defaultValue) as T;
+      return (
+        args.hasOwnProperty(attribute)
+          ? args[attribute]
+          : CreateConference.attributeTypeMap.find(
+              (attr) => attr.name === attribute,
+            )?.defaultValue
+      ) as T;
     };
-    if (args["actionUrl"]) {
-      this["actionUrl"] = assign<string>("actionUrl");
-    }
-    if (args["alias"]) {
-      this["alias"] = assign<boolean>("alias");
-    }
-    if (args["playBeep"]) {
-      this["playBeep"] = assign<PlayBeep>("playBeep");
-    }
-    if (args["record"]) {
-      this["record"] = assign<boolean>("record");
-    }
-    if (args["statusCallbackUrl"]) {
-      this["statusCallbackUrl"] = assign<string>("statusCallbackUrl");
-    }
-    if (args["waitUrl"]) {
-      this["waitUrl"] = assign<string>("waitUrl");
-    }
+    this["actionUrl"] = assign<string>("actionUrl");
+    this["alias"] = assign<boolean>("alias");
+    this["playBeep"] = assign<PlayBeep>("playBeep");
+    this["record"] = assign<boolean>("record");
+    this["statusCallbackUrl"] = assign<string>("statusCallbackUrl");
+    this["waitUrl"] = assign<string>("waitUrl");
   }
 }

@@ -110,32 +110,21 @@ export class SMSTollFreeCampaign {
   }
   public constructor(args: ArgumentsType) {
     const assign = <T>(attribute: keyof ArgumentsType): T => {
-      return (args[attribute] ??
-        SMSTollFreeCampaign.attributeTypeMap.find(
-          (attr) => attr.name === attribute,
-        )?.defaultValue) as T;
+      return (
+        args.hasOwnProperty(attribute)
+          ? args[attribute]
+          : SMSTollFreeCampaign.attributeTypeMap.find(
+              (attr) => attr.name === attribute,
+            )?.defaultValue
+      ) as T;
     };
-    if (args["accountId"]) {
-      this["accountId"] = assign<string>("accountId");
-    }
-    if (args["campaignId"]) {
-      this["campaignId"] = assign<string>("campaignId");
-    }
-    if (args["useCase"]) {
-      this["useCase"] = assign<string>("useCase");
-    }
-    if (args["registrationStatus"]) {
-      this["registrationStatus"] =
-        assign<SMSTollFreeCampaignRegistrationStatus>("registrationStatus");
-    }
-    if (args["dateCreated"]) {
-      this["dateCreated"] = assign<string>("dateCreated");
-    }
-    if (args["dateUpdated"]) {
-      this["dateUpdated"] = assign<string>("dateUpdated");
-    }
-    if (args["revision"]) {
-      this["revision"] = assign<number>("revision");
-    }
+    this["accountId"] = assign<string>("accountId");
+    this["campaignId"] = assign<string>("campaignId");
+    this["useCase"] = assign<string>("useCase");
+    this["registrationStatus"] =
+      assign<SMSTollFreeCampaignRegistrationStatus>("registrationStatus");
+    this["dateCreated"] = assign<string>("dateCreated");
+    this["dateUpdated"] = assign<string>("dateUpdated");
+    this["revision"] = assign<number>("revision");
   }
 }

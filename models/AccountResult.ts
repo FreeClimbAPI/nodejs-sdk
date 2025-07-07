@@ -172,42 +172,24 @@ export class AccountResult {
   }
   public constructor(args: ArgumentsType) {
     const assign = <T>(attribute: keyof ArgumentsType): T => {
-      return (args[attribute] ??
-        AccountResult.attributeTypeMap.find((attr) => attr.name === attribute)
-          ?.defaultValue) as T;
+      return (
+        args.hasOwnProperty(attribute)
+          ? args[attribute]
+          : AccountResult.attributeTypeMap.find(
+              (attr) => attr.name === attribute,
+            )?.defaultValue
+      ) as T;
     };
-    if (args["uri"]) {
-      this["uri"] = assign<string>("uri");
-    }
-    if (args["dateCreated"]) {
-      this["dateCreated"] = assign<string>("dateCreated");
-    }
-    if (args["dateUpdated"]) {
-      this["dateUpdated"] = assign<string>("dateUpdated");
-    }
-    if (args["revision"]) {
-      this["revision"] = assign<number>("revision");
-    }
-    if (args["accountId"]) {
-      this["accountId"] = assign<string>("accountId");
-    }
-    if (args["apiKey"]) {
-      this["apiKey"] = assign<string>("apiKey");
-    }
-    if (args["alias"]) {
-      this["alias"] = assign<string>("alias");
-    }
-    if (args["label"]) {
-      this["label"] = assign<string>("label");
-    }
-    if (args["type"]) {
-      this["type"] = assign<AccountType>("type");
-    }
-    if (args["status"]) {
-      this["status"] = assign<AccountStatus>("status");
-    }
-    if (args["subresourceUris"]) {
-      this["subresourceUris"] = assign<any>("subresourceUris");
-    }
+    this["uri"] = assign<string>("uri");
+    this["dateCreated"] = assign<string>("dateCreated");
+    this["dateUpdated"] = assign<string>("dateUpdated");
+    this["revision"] = assign<number>("revision");
+    this["accountId"] = assign<string>("accountId");
+    this["apiKey"] = assign<string>("apiKey");
+    this["alias"] = assign<string>("alias");
+    this["label"] = assign<string>("label");
+    this["type"] = assign<AccountType>("type");
+    this["status"] = assign<AccountStatus>("status");
+    this["subresourceUris"] = assign<any>("subresourceUris");
   }
 }

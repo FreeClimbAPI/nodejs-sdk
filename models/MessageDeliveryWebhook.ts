@@ -171,41 +171,24 @@ export class MessageDeliveryWebhook extends Webhook {
   public constructor(args: ArgumentsType) {
     super({ requestType: "messageDelivery" });
     const assign = <T>(attribute: keyof ArgumentsType): T => {
-      return (args[attribute] ??
-        MessageDeliveryWebhook.attributeTypeMap.find(
-          (attr) => attr.name === attribute,
-        )?.defaultValue) as T;
+      return (
+        args.hasOwnProperty(attribute)
+          ? args[attribute]
+          : MessageDeliveryWebhook.attributeTypeMap.find(
+              (attr) => attr.name === attribute,
+            )?.defaultValue
+      ) as T;
     };
-    if (args["requestType"]) {
-      this["requestType"] = assign<string>("requestType");
-    }
-    if (args["accountId"]) {
-      this["accountId"] = assign<string>("accountId");
-    }
-    if (args["from"]) {
-      this["from"] = assign<string>("from");
-    }
-    if (args["to"]) {
-      this["to"] = assign<string>("to");
-    }
-    if (args["text"]) {
-      this["text"] = assign<string>("text");
-    }
-    if (args["direction"]) {
-      this["direction"] = assign<string>("direction");
-    }
-    if (args["applicationId"]) {
-      this["applicationId"] = assign<string>("applicationId");
-    }
-    if (args["status"]) {
-      this["status"] = assign<string>("status");
-    }
-    if (args["phoneNumberId"]) {
-      this["phoneNumberId"] = assign<string>("phoneNumberId");
-    }
-    if (args["uri"]) {
-      this["uri"] = assign<string>("uri");
-    }
+    this["requestType"] = assign<string>("requestType");
+    this["accountId"] = assign<string>("accountId");
+    this["from"] = assign<string>("from");
+    this["to"] = assign<string>("to");
+    this["text"] = assign<string>("text");
+    this["direction"] = assign<string>("direction");
+    this["applicationId"] = assign<string>("applicationId");
+    this["status"] = assign<string>("status");
+    this["phoneNumberId"] = assign<string>("phoneNumberId");
+    this["uri"] = assign<string>("uri");
   }
   public static deserialize(payload: string): MessageDeliveryWebhook {
     return new MessageDeliveryWebhook(JSON.parse(payload));

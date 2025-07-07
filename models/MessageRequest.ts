@@ -150,36 +150,22 @@ export class MessageRequest {
   }
   public constructor(args: ArgumentsType) {
     const assign = <T>(attribute: keyof ArgumentsType): T => {
-      return (args[attribute] ??
-        MessageRequest.attributeTypeMap.find((attr) => attr.name === attribute)
-          ?.defaultValue) as T;
+      return (
+        args.hasOwnProperty(attribute)
+          ? args[attribute]
+          : MessageRequest.attributeTypeMap.find(
+              (attr) => attr.name === attribute,
+            )?.defaultValue
+      ) as T;
     };
-    if (args["uri"]) {
-      this["uri"] = assign<string>("uri");
-    }
-    if (args["dateCreated"]) {
-      this["dateCreated"] = assign<string>("dateCreated");
-    }
-    if (args["dateUpdated"]) {
-      this["dateUpdated"] = assign<string>("dateUpdated");
-    }
-    if (args["revision"]) {
-      this["revision"] = assign<number>("revision");
-    }
-    if (args["from"]) {
-      this["from"] = assign<string>("from");
-    }
-    if (args["to"]) {
-      this["to"] = assign<string>("to");
-    }
-    if (args["text"]) {
-      this["text"] = assign<string>("text");
-    }
-    if (args["notificationUrl"]) {
-      this["notificationUrl"] = assign<string>("notificationUrl");
-    }
-    if (args["mediaUrls"]) {
-      this["mediaUrls"] = assign<Array<string>>("mediaUrls");
-    }
+    this["uri"] = assign<string>("uri");
+    this["dateCreated"] = assign<string>("dateCreated");
+    this["dateUpdated"] = assign<string>("dateUpdated");
+    this["revision"] = assign<number>("revision");
+    this["from"] = assign<string>("from");
+    this["to"] = assign<string>("to");
+    this["text"] = assign<string>("text");
+    this["notificationUrl"] = assign<string>("notificationUrl");
+    this["mediaUrls"] = assign<Array<string>>("mediaUrls");
   }
 }

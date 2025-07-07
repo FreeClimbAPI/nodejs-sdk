@@ -106,26 +106,19 @@ export class CallControlWebhook extends Webhook {
   public constructor(args: ArgumentsType) {
     super({ requestType: "callControl" });
     const assign = <T>(attribute: keyof ArgumentsType): T => {
-      return (args[attribute] ??
-        CallControlWebhook.attributeTypeMap.find(
-          (attr) => attr.name === attribute,
-        )?.defaultValue) as T;
+      return (
+        args.hasOwnProperty(attribute)
+          ? args[attribute]
+          : CallControlWebhook.attributeTypeMap.find(
+              (attr) => attr.name === attribute,
+            )?.defaultValue
+      ) as T;
     };
-    if (args["requestType"]) {
-      this["requestType"] = assign<string>("requestType");
-    }
-    if (args["callId"]) {
-      this["callId"] = assign<string>("callId");
-    }
-    if (args["accountId"]) {
-      this["accountId"] = assign<string>("accountId");
-    }
-    if (args["conferenceId"]) {
-      this["conferenceId"] = assign<string>("conferenceId");
-    }
-    if (args["digits"]) {
-      this["digits"] = assign<string>("digits");
-    }
+    this["requestType"] = assign<string>("requestType");
+    this["callId"] = assign<string>("callId");
+    this["accountId"] = assign<string>("accountId");
+    this["conferenceId"] = assign<string>("conferenceId");
+    this["digits"] = assign<string>("digits");
   }
   public static deserialize(payload: string): CallControlWebhook {
     return new CallControlWebhook(JSON.parse(payload));

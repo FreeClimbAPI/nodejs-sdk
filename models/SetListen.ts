@@ -52,12 +52,13 @@ export class SetListen extends PerclCommand {
   public constructor(args: ArgumentsType) {
     super({ command: "SetListen" });
     const assign = <T>(attribute: keyof ArgumentsType): T => {
-      return (args[attribute] ??
-        SetListen.attributeTypeMap.find((attr) => attr.name === attribute)
-          ?.defaultValue) as T;
+      return (
+        args.hasOwnProperty(attribute)
+          ? args[attribute]
+          : SetListen.attributeTypeMap.find((attr) => attr.name === attribute)
+              ?.defaultValue
+      ) as T;
     };
-    if (args["listen"]) {
-      this["listen"] = assign<boolean>("listen");
-    }
+    this["listen"] = assign<boolean>("listen");
   }
 }

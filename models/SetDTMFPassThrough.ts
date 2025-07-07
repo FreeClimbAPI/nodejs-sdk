@@ -54,13 +54,14 @@ export class SetDTMFPassThrough extends PerclCommand {
   public constructor(args: ArgumentsType) {
     super({ command: "SetDTMFPassThrough" });
     const assign = <T>(attribute: keyof ArgumentsType): T => {
-      return (args[attribute] ??
-        SetDTMFPassThrough.attributeTypeMap.find(
-          (attr) => attr.name === attribute,
-        )?.defaultValue) as T;
+      return (
+        args.hasOwnProperty(attribute)
+          ? args[attribute]
+          : SetDTMFPassThrough.attributeTypeMap.find(
+              (attr) => attr.name === attribute,
+            )?.defaultValue
+      ) as T;
     };
-    if (args["dtmfPassThrough"]) {
-      this["dtmfPassThrough"] = assign<boolean>("dtmfPassThrough");
-    }
+    this["dtmfPassThrough"] = assign<boolean>("dtmfPassThrough");
   }
 }

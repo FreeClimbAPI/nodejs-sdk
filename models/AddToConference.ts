@@ -169,39 +169,23 @@ export class AddToConference extends PerclCommand {
   public constructor(args: ArgumentsType) {
     super({ command: "AddToConference" });
     const assign = <T>(attribute: keyof ArgumentsType): T => {
-      return (args[attribute] ??
-        AddToConference.attributeTypeMap.find((attr) => attr.name === attribute)
-          ?.defaultValue) as T;
+      return (
+        args.hasOwnProperty(attribute)
+          ? args[attribute]
+          : AddToConference.attributeTypeMap.find(
+              (attr) => attr.name === attribute,
+            )?.defaultValue
+      ) as T;
     };
-    if (args["allowCallControl"]) {
-      this["allowCallControl"] = assign<boolean>("allowCallControl");
-    }
-    if (args["callControlSequence"]) {
-      this["callControlSequence"] = assign<string>("callControlSequence");
-    }
-    if (args["callControlUrl"]) {
-      this["callControlUrl"] = assign<string>("callControlUrl");
-    }
-    if (args["conferenceId"]) {
-      this["conferenceId"] = assign<string>("conferenceId");
-    }
-    if (args["leaveConferenceUrl"]) {
-      this["leaveConferenceUrl"] = assign<string>("leaveConferenceUrl");
-    }
-    if (args["listen"]) {
-      this["listen"] = assign<boolean>("listen");
-    }
-    if (args["notificationUrl"]) {
-      this["notificationUrl"] = assign<string>("notificationUrl");
-    }
-    if (args["startConfOnEnter"]) {
-      this["startConfOnEnter"] = assign<boolean>("startConfOnEnter");
-    }
-    if (args["talk"]) {
-      this["talk"] = assign<boolean>("talk");
-    }
-    if (args["dtmfPassThrough"]) {
-      this["dtmfPassThrough"] = assign<boolean>("dtmfPassThrough");
-    }
+    this["allowCallControl"] = assign<boolean>("allowCallControl");
+    this["callControlSequence"] = assign<string>("callControlSequence");
+    this["callControlUrl"] = assign<string>("callControlUrl");
+    this["conferenceId"] = assign<string>("conferenceId");
+    this["leaveConferenceUrl"] = assign<string>("leaveConferenceUrl");
+    this["listen"] = assign<boolean>("listen");
+    this["notificationUrl"] = assign<string>("notificationUrl");
+    this["startConfOnEnter"] = assign<boolean>("startConfOnEnter");
+    this["talk"] = assign<boolean>("talk");
+    this["dtmfPassThrough"] = assign<boolean>("dtmfPassThrough");
   }
 }

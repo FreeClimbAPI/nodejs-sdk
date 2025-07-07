@@ -52,12 +52,13 @@ export class SetTalk extends PerclCommand {
   public constructor(args: ArgumentsType) {
     super({ command: "SetTalk" });
     const assign = <T>(attribute: keyof ArgumentsType): T => {
-      return (args[attribute] ??
-        SetTalk.attributeTypeMap.find((attr) => attr.name === attribute)
-          ?.defaultValue) as T;
+      return (
+        args.hasOwnProperty(attribute)
+          ? args[attribute]
+          : SetTalk.attributeTypeMap.find((attr) => attr.name === attribute)
+              ?.defaultValue
+      ) as T;
     };
-    if (args["talk"]) {
-      this["talk"] = assign<boolean>("talk");
-    }
+    this["talk"] = assign<boolean>("talk");
   }
 }

@@ -496,120 +496,51 @@ export class SMSTenDLCCampaign {
   }
   public constructor(args: ArgumentsType) {
     const assign = <T>(attribute: keyof ArgumentsType): T => {
-      return (args[attribute] ??
-        SMSTenDLCCampaign.attributeTypeMap.find(
-          (attr) => attr.name === attribute,
-        )?.defaultValue) as T;
+      return (
+        args.hasOwnProperty(attribute)
+          ? args[attribute]
+          : SMSTenDLCCampaign.attributeTypeMap.find(
+              (attr) => attr.name === attribute,
+            )?.defaultValue
+      ) as T;
     };
-    if (args["accountId"]) {
-      this["accountId"] = assign<string>("accountId");
-    }
-    if (args["campaignId"]) {
-      this["campaignId"] = assign<string>("campaignId");
-    }
-    if (args["cspId"]) {
-      this["cspId"] = assign<string>("cspId");
-    }
-    if (args["resellerId"]) {
-      this["resellerId"] = assign<string>("resellerId");
-    }
-    if (args["status"]) {
-      this["status"] = assign<SMSTenDLCCampaignStatus>("status");
-    }
-    if (args["createDate"]) {
-      this["createDate"] = assign<Date>("createDate");
-    }
-    if (args["autoRenewal"]) {
-      this["autoRenewal"] = assign<boolean>("autoRenewal");
-    }
-    if (args["billedDate"]) {
-      this["billedDate"] = assign<Date>("billedDate");
-    }
-    if (args["brandId"]) {
-      this["brandId"] = assign<string>("brandId");
-    }
-    if (args["usecase"]) {
-      this["usecase"] = assign<string>("usecase");
-    }
-    if (args["subUsecases"]) {
-      this["subUsecases"] = assign<Set<string>>("subUsecases");
-    }
-    if (args["description"]) {
-      this["description"] = assign<string>("description");
-    }
-    if (args["embeddedLink"]) {
-      this["embeddedLink"] = assign<boolean>("embeddedLink");
-    }
-    if (args["embeddedPhone"]) {
-      this["embeddedPhone"] = assign<boolean>("embeddedPhone");
-    }
-    if (args["affiliateMarketing"]) {
-      this["affiliateMarketing"] = assign<boolean>("affiliateMarketing");
-    }
-    if (args["numberPool"]) {
-      this["numberPool"] = assign<boolean>("numberPool");
-    }
-    if (args["ageGated"]) {
-      this["ageGated"] = assign<boolean>("ageGated");
-    }
-    if (args["directLending"]) {
-      this["directLending"] = assign<boolean>("directLending");
-    }
-    if (args["subscriberOptin"]) {
-      this["subscriberOptin"] = assign<boolean>("subscriberOptin");
-    }
-    if (args["subscriberOptout"]) {
-      this["subscriberOptout"] = assign<boolean>("subscriberOptout");
-    }
-    if (args["subscriberHelp"]) {
-      this["subscriberHelp"] = assign<boolean>("subscriberHelp");
-    }
-    if (args["sample1"]) {
-      this["sample1"] = assign<string>("sample1");
-    }
-    if (args["sample2"]) {
-      this["sample2"] = assign<string>("sample2");
-    }
-    if (args["sample3"]) {
-      this["sample3"] = assign<string>("sample3");
-    }
-    if (args["sample4"]) {
-      this["sample4"] = assign<string>("sample4");
-    }
-    if (args["sample5"]) {
-      this["sample5"] = assign<string>("sample5");
-    }
-    if (args["messageFlow"]) {
-      this["messageFlow"] = assign<string>("messageFlow");
-    }
-    if (args["helpMessage"]) {
-      this["helpMessage"] = assign<string>("helpMessage");
-    }
-    if (args["optinKeywords"]) {
-      this["optinKeywords"] = assign<string>("optinKeywords");
-    }
-    if (args["optoutKeywords"]) {
-      this["optoutKeywords"] = assign<string>("optoutKeywords");
-    }
-    if (args["helpKeywords"]) {
-      this["helpKeywords"] = assign<string>("helpKeywords");
-    }
-    if (args["optinMessage"]) {
-      this["optinMessage"] = assign<string>("optinMessage");
-    }
-    if (args["optoutMessage"]) {
-      this["optoutMessage"] = assign<string>("optoutMessage");
-    }
-    if (args["referenceId"]) {
-      this["referenceId"] = assign<string>("referenceId");
-    }
-    if (args["mock"]) {
-      this["mock"] = assign<boolean>("mock");
-    }
-    if (args["nextRenewalOrExpirationDate"]) {
-      this["nextRenewalOrExpirationDate"] = assign<string>(
-        "nextRenewalOrExpirationDate",
-      );
-    }
+    this["accountId"] = assign<string>("accountId");
+    this["campaignId"] = assign<string>("campaignId");
+    this["cspId"] = assign<string>("cspId");
+    this["resellerId"] = assign<string>("resellerId");
+    this["status"] = assign<SMSTenDLCCampaignStatus>("status");
+    this["createDate"] = assign<Date>("createDate");
+    this["autoRenewal"] = assign<boolean>("autoRenewal");
+    this["billedDate"] = assign<Date>("billedDate");
+    this["brandId"] = assign<string>("brandId");
+    this["usecase"] = assign<string>("usecase");
+    this["subUsecases"] = assign<Set<string>>("subUsecases");
+    this["description"] = assign<string>("description");
+    this["embeddedLink"] = assign<boolean>("embeddedLink");
+    this["embeddedPhone"] = assign<boolean>("embeddedPhone");
+    this["affiliateMarketing"] = assign<boolean>("affiliateMarketing");
+    this["numberPool"] = assign<boolean>("numberPool");
+    this["ageGated"] = assign<boolean>("ageGated");
+    this["directLending"] = assign<boolean>("directLending");
+    this["subscriberOptin"] = assign<boolean>("subscriberOptin");
+    this["subscriberOptout"] = assign<boolean>("subscriberOptout");
+    this["subscriberHelp"] = assign<boolean>("subscriberHelp");
+    this["sample1"] = assign<string>("sample1");
+    this["sample2"] = assign<string>("sample2");
+    this["sample3"] = assign<string>("sample3");
+    this["sample4"] = assign<string>("sample4");
+    this["sample5"] = assign<string>("sample5");
+    this["messageFlow"] = assign<string>("messageFlow");
+    this["helpMessage"] = assign<string>("helpMessage");
+    this["optinKeywords"] = assign<string>("optinKeywords");
+    this["optoutKeywords"] = assign<string>("optoutKeywords");
+    this["helpKeywords"] = assign<string>("helpKeywords");
+    this["optinMessage"] = assign<string>("optinMessage");
+    this["optoutMessage"] = assign<string>("optoutMessage");
+    this["referenceId"] = assign<string>("referenceId");
+    this["mock"] = assign<boolean>("mock");
+    this["nextRenewalOrExpirationDate"] = assign<string>(
+      "nextRenewalOrExpirationDate",
+    );
   }
 }

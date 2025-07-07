@@ -135,33 +135,21 @@ export class ConferenceList {
   }
   public constructor(args: ArgumentsType) {
     const assign = <T>(attribute: keyof ArgumentsType): T => {
-      return (args[attribute] ??
-        ConferenceList.attributeTypeMap.find((attr) => attr.name === attribute)
-          ?.defaultValue) as T;
+      return (
+        args.hasOwnProperty(attribute)
+          ? args[attribute]
+          : ConferenceList.attributeTypeMap.find(
+              (attr) => attr.name === attribute,
+            )?.defaultValue
+      ) as T;
     };
-    if (args["total"]) {
-      this["total"] = assign<number>("total");
-    }
-    if (args["start"]) {
-      this["start"] = assign<number>("start");
-    }
-    if (args["end"]) {
-      this["end"] = assign<number>("end");
-    }
-    if (args["page"]) {
-      this["page"] = assign<number>("page");
-    }
-    if (args["numPages"]) {
-      this["numPages"] = assign<number>("numPages");
-    }
-    if (args["pageSize"]) {
-      this["pageSize"] = assign<number>("pageSize");
-    }
-    if (args["nextPageUri"]) {
-      this["nextPageUri"] = assign<string>("nextPageUri");
-    }
-    if (args["conferences"]) {
-      this["conferences"] = assign<Array<ConferenceResult>>("conferences");
-    }
+    this["total"] = assign<number>("total");
+    this["start"] = assign<number>("start");
+    this["end"] = assign<number>("end");
+    this["page"] = assign<number>("page");
+    this["numPages"] = assign<number>("numPages");
+    this["pageSize"] = assign<number>("pageSize");
+    this["nextPageUri"] = assign<string>("nextPageUri");
+    this["conferences"] = assign<Array<ConferenceResult>>("conferences");
   }
 }

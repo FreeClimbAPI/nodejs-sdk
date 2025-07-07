@@ -156,36 +156,21 @@ export class GetDigits extends PerclCommand {
   public constructor(args: ArgumentsType) {
     super({ command: "GetDigits" });
     const assign = <T>(attribute: keyof ArgumentsType): T => {
-      return (args[attribute] ??
-        GetDigits.attributeTypeMap.find((attr) => attr.name === attribute)
-          ?.defaultValue) as T;
+      return (
+        args.hasOwnProperty(attribute)
+          ? args[attribute]
+          : GetDigits.attributeTypeMap.find((attr) => attr.name === attribute)
+              ?.defaultValue
+      ) as T;
     };
-    if (args["actionUrl"]) {
-      this["actionUrl"] = assign<string>("actionUrl");
-    }
-    if (args["digitTimeoutMs"]) {
-      this["digitTimeoutMs"] = assign<number>("digitTimeoutMs");
-    }
-    if (args["finishOnKey"]) {
-      this["finishOnKey"] = assign<string>("finishOnKey");
-    }
-    if (args["flushBuffer"]) {
-      this["flushBuffer"] = assign<boolean>("flushBuffer");
-    }
-    if (args["initialTimeoutMs"]) {
-      this["initialTimeoutMs"] = assign<number>("initialTimeoutMs");
-    }
-    if (args["maxDigits"]) {
-      this["maxDigits"] = assign<number>("maxDigits");
-    }
-    if (args["minDigits"]) {
-      this["minDigits"] = assign<number>("minDigits");
-    }
-    if (args["prompts"]) {
-      this["prompts"] = assign<Array<PerclCommand>>("prompts");
-    }
-    if (args["privacyMode"]) {
-      this["privacyMode"] = assign<boolean>("privacyMode");
-    }
+    this["actionUrl"] = assign<string>("actionUrl");
+    this["digitTimeoutMs"] = assign<number>("digitTimeoutMs");
+    this["finishOnKey"] = assign<string>("finishOnKey");
+    this["flushBuffer"] = assign<boolean>("flushBuffer");
+    this["initialTimeoutMs"] = assign<number>("initialTimeoutMs");
+    this["maxDigits"] = assign<number>("maxDigits");
+    this["minDigits"] = assign<number>("minDigits");
+    this["prompts"] = assign<Array<PerclCommand>>("prompts");
+    this["privacyMode"] = assign<boolean>("privacyMode");
   }
 }

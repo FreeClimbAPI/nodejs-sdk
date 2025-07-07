@@ -191,47 +191,26 @@ export class GetDigitsWebhook extends Webhook {
   public constructor(args: ArgumentsType) {
     super({ requestType: "getDigits" });
     const assign = <T>(attribute: keyof ArgumentsType): T => {
-      return (args[attribute] ??
-        GetDigitsWebhook.attributeTypeMap.find(
-          (attr) => attr.name === attribute,
-        )?.defaultValue) as T;
+      return (
+        args.hasOwnProperty(attribute)
+          ? args[attribute]
+          : GetDigitsWebhook.attributeTypeMap.find(
+              (attr) => attr.name === attribute,
+            )?.defaultValue
+      ) as T;
     };
-    if (args["requestType"]) {
-      this["requestType"] = assign<string>("requestType");
-    }
-    if (args["callId"]) {
-      this["callId"] = assign<string>("callId");
-    }
-    if (args["accountId"]) {
-      this["accountId"] = assign<string>("accountId");
-    }
-    if (args["from"]) {
-      this["from"] = assign<string>("from");
-    }
-    if (args["to"]) {
-      this["to"] = assign<string>("to");
-    }
-    if (args["callStatus"]) {
-      this["callStatus"] = assign<CallStatus>("callStatus");
-    }
-    if (args["direction"]) {
-      this["direction"] = assign<CallDirection>("direction");
-    }
-    if (args["conferenceId"]) {
-      this["conferenceId"] = assign<string>("conferenceId");
-    }
-    if (args["queueId"]) {
-      this["queueId"] = assign<string>("queueId");
-    }
-    if (args["digits"]) {
-      this["digits"] = assign<string>("digits");
-    }
-    if (args["reason"]) {
-      this["reason"] = assign<GetDigitsReason>("reason");
-    }
-    if (args["parentCallId"]) {
-      this["parentCallId"] = assign<string>("parentCallId");
-    }
+    this["requestType"] = assign<string>("requestType");
+    this["callId"] = assign<string>("callId");
+    this["accountId"] = assign<string>("accountId");
+    this["from"] = assign<string>("from");
+    this["to"] = assign<string>("to");
+    this["callStatus"] = assign<CallStatus>("callStatus");
+    this["direction"] = assign<CallDirection>("direction");
+    this["conferenceId"] = assign<string>("conferenceId");
+    this["queueId"] = assign<string>("queueId");
+    this["digits"] = assign<string>("digits");
+    this["reason"] = assign<GetDigitsReason>("reason");
+    this["parentCallId"] = assign<string>("parentCallId");
   }
   public static deserialize(payload: string): GetDigitsWebhook {
     return new GetDigitsWebhook(JSON.parse(payload));

@@ -211,52 +211,27 @@ export class ConferenceResult {
   }
   public constructor(args: ArgumentsType) {
     const assign = <T>(attribute: keyof ArgumentsType): T => {
-      return (args[attribute] ??
-        ConferenceResult.attributeTypeMap.find(
-          (attr) => attr.name === attribute,
-        )?.defaultValue) as T;
+      return (
+        args.hasOwnProperty(attribute)
+          ? args[attribute]
+          : ConferenceResult.attributeTypeMap.find(
+              (attr) => attr.name === attribute,
+            )?.defaultValue
+      ) as T;
     };
-    if (args["uri"]) {
-      this["uri"] = assign<string>("uri");
-    }
-    if (args["dateCreated"]) {
-      this["dateCreated"] = assign<string>("dateCreated");
-    }
-    if (args["dateUpdated"]) {
-      this["dateUpdated"] = assign<string>("dateUpdated");
-    }
-    if (args["revision"]) {
-      this["revision"] = assign<number>("revision");
-    }
-    if (args["conferenceId"]) {
-      this["conferenceId"] = assign<string>("conferenceId");
-    }
-    if (args["accountId"]) {
-      this["accountId"] = assign<string>("accountId");
-    }
-    if (args["alias"]) {
-      this["alias"] = assign<string>("alias");
-    }
-    if (args["playBeep"]) {
-      this["playBeep"] = assign<PlayBeep>("playBeep");
-    }
-    if (args["record"]) {
-      this["record"] = assign<boolean>("record");
-    }
-    if (args["status"]) {
-      this["status"] = assign<ConferenceStatus>("status");
-    }
-    if (args["waitUrl"]) {
-      this["waitUrl"] = assign<string>("waitUrl");
-    }
-    if (args["actionUrl"]) {
-      this["actionUrl"] = assign<string>("actionUrl");
-    }
-    if (args["statusCallbackUrl"]) {
-      this["statusCallbackUrl"] = assign<string>("statusCallbackUrl");
-    }
-    if (args["subresourceUris"]) {
-      this["subresourceUris"] = assign<any>("subresourceUris");
-    }
+    this["uri"] = assign<string>("uri");
+    this["dateCreated"] = assign<string>("dateCreated");
+    this["dateUpdated"] = assign<string>("dateUpdated");
+    this["revision"] = assign<number>("revision");
+    this["conferenceId"] = assign<string>("conferenceId");
+    this["accountId"] = assign<string>("accountId");
+    this["alias"] = assign<string>("alias");
+    this["playBeep"] = assign<PlayBeep>("playBeep");
+    this["record"] = assign<boolean>("record");
+    this["status"] = assign<ConferenceStatus>("status");
+    this["waitUrl"] = assign<string>("waitUrl");
+    this["actionUrl"] = assign<string>("actionUrl");
+    this["statusCallbackUrl"] = assign<string>("statusCallbackUrl");
+    this["subresourceUris"] = assign<any>("subresourceUris");
   }
 }
