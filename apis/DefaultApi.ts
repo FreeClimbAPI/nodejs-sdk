@@ -32,6 +32,10 @@ import { ConferenceParticipantResult } from "../models/ConferenceParticipantResu
 import { ConferenceResult } from "../models/ConferenceResult";
 import { CreateConferenceRequest } from "../models/CreateConferenceRequest";
 import { CreateWebRTCToken } from "../models/CreateWebRTCToken";
+import { ExportList } from "../models/ExportList";
+import { ExportRequest } from "../models/ExportRequest";
+import { ExportResult } from "../models/ExportResult";
+import { ExportStatus } from "../models/ExportStatus";
 import { FilterLogsRequest } from "../models/FilterLogsRequest";
 import { IncomingNumberList } from "../models/IncomingNumberList";
 import { IncomingNumberRequest } from "../models/IncomingNumberRequest";
@@ -285,6 +289,56 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
   }
 
   /**
+     * Create an Export
+     
+     * @param exportRequest A JSON object containing export creation parameters
+     */
+  public async createExport(
+    exportRequest?: ExportRequest,
+    _options?: Configuration,
+  ): Promise<RequestContext> {
+    const _config = _options || this.configuration;
+    const { accountId } = this.configuration;
+
+    // Path Params
+    const localVarPath = "/Accounts/{accountId}/Exports".replace(
+      "{" + "accountId" + "}",
+      encodeURIComponent(String(accountId)),
+    );
+
+    // Make Request Context
+    const requestContext = _config.baseServer.makeRequestContext(
+      localVarPath,
+      HttpMethod.POST,
+    );
+    requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8");
+
+    // Body Params
+    const contentType = ObjectSerializer.getPreferredMediaType([
+      "application/json",
+    ]);
+    requestContext.setHeaderParam("Content-Type", contentType);
+    const serializedBody = ObjectSerializer.stringify(
+      ObjectSerializer.serialize(exportRequest, "ExportRequest", ""),
+      contentType,
+    );
+    requestContext.setBody(serializedBody);
+    let authMethod: SecurityAuthentication | undefined;
+    // Apply auth methods
+    authMethod = _config.authMethods["fc"];
+    if (authMethod?.applySecurityAuthentication) {
+      await authMethod?.applySecurityAuthentication(requestContext);
+    }
+    const defaultAuth: SecurityAuthentication | undefined =
+      _options?.authMethods?.default ||
+      this.configuration?.authMethods?.default;
+    if (defaultAuth?.applySecurityAuthentication) {
+      await defaultAuth?.applySecurityAuthentication(requestContext);
+    }
+    return requestContext;
+  }
+
+  /**
      * Query the knowledge base
      
      * @param knowledgeBaseId A string that uniquely identifies the KnowledgeBase resource.
@@ -420,6 +474,49 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         "{" + "applicationId" + "}",
         encodeURIComponent(String(applicationId)),
       );
+
+    // Make Request Context
+    const requestContext = _config.baseServer.makeRequestContext(
+      localVarPath,
+      HttpMethod.DELETE,
+    );
+    requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8");
+
+    let authMethod: SecurityAuthentication | undefined;
+    // Apply auth methods
+    authMethod = _config.authMethods["fc"];
+    if (authMethod?.applySecurityAuthentication) {
+      await authMethod?.applySecurityAuthentication(requestContext);
+    }
+    const defaultAuth: SecurityAuthentication | undefined =
+      _options?.authMethods?.default ||
+      this.configuration?.authMethods?.default;
+    if (defaultAuth?.applySecurityAuthentication) {
+      await defaultAuth?.applySecurityAuthentication(requestContext);
+    }
+    return requestContext;
+  }
+
+  /**
+     * Delete an Export
+     
+     * @param exportId A string that uniquely identifies this export resource.
+     */
+  public async deleteAnExport(
+    exportId: string,
+    _options?: Configuration,
+  ): Promise<RequestContext> {
+    const _config = _options || this.configuration;
+    const { accountId } = this.configuration;
+
+    // verify required parameter 'exportId' is not null or undefined
+    if (exportId === null || exportId === undefined) {
+      throw new RequiredError("DefaultApi", "deleteAnExport", "exportId");
+    }
+    // Path Params
+    const localVarPath = "/Accounts/{accountId}/Exports/{exportId}"
+      .replace("{" + "accountId" + "}", encodeURIComponent(String(accountId)))
+      .replace("{" + "exportId" + "}", encodeURIComponent(String(exportId)));
 
     // Make Request Context
     const requestContext = _config.baseServer.makeRequestContext(
@@ -616,6 +713,49 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
           "{" + "recordingId" + "}",
           encodeURIComponent(String(recordingId)),
         );
+
+    // Make Request Context
+    const requestContext = _config.baseServer.makeRequestContext(
+      localVarPath,
+      HttpMethod.GET,
+    );
+    requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8");
+
+    let authMethod: SecurityAuthentication | undefined;
+    // Apply auth methods
+    authMethod = _config.authMethods["fc"];
+    if (authMethod?.applySecurityAuthentication) {
+      await authMethod?.applySecurityAuthentication(requestContext);
+    }
+    const defaultAuth: SecurityAuthentication | undefined =
+      _options?.authMethods?.default ||
+      this.configuration?.authMethods?.default;
+    if (defaultAuth?.applySecurityAuthentication) {
+      await defaultAuth?.applySecurityAuthentication(requestContext);
+    }
+    return requestContext;
+  }
+
+  /**
+     * Download an Export
+     
+     * @param exportId A string that uniquely identifies this export resource.
+     */
+  public async downloadAnExport(
+    exportId: string,
+    _options?: Configuration,
+  ): Promise<RequestContext> {
+    const _config = _options || this.configuration;
+    const { accountId } = this.configuration;
+
+    // verify required parameter 'exportId' is not null or undefined
+    if (exportId === null || exportId === undefined) {
+      throw new RequiredError("DefaultApi", "downloadAnExport", "exportId");
+    }
+    // Path Params
+    const localVarPath = "/Accounts/{accountId}/Exports/{exportId}/Download"
+      .replace("{" + "accountId" + "}", encodeURIComponent(String(accountId)))
+      .replace("{" + "exportId" + "}", encodeURIComponent(String(exportId)));
 
     // Make Request Context
     const requestContext = _config.baseServer.makeRequestContext(
@@ -1039,6 +1179,49 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         "{" + "applicationId" + "}",
         encodeURIComponent(String(applicationId)),
       );
+
+    // Make Request Context
+    const requestContext = _config.baseServer.makeRequestContext(
+      localVarPath,
+      HttpMethod.GET,
+    );
+    requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8");
+
+    let authMethod: SecurityAuthentication | undefined;
+    // Apply auth methods
+    authMethod = _config.authMethods["fc"];
+    if (authMethod?.applySecurityAuthentication) {
+      await authMethod?.applySecurityAuthentication(requestContext);
+    }
+    const defaultAuth: SecurityAuthentication | undefined =
+      _options?.authMethods?.default ||
+      this.configuration?.authMethods?.default;
+    if (defaultAuth?.applySecurityAuthentication) {
+      await defaultAuth?.applySecurityAuthentication(requestContext);
+    }
+    return requestContext;
+  }
+
+  /**
+     * Get an Export
+     
+     * @param exportId A string that uniquely identifies this export resource.
+     */
+  public async getAnExport(
+    exportId: string,
+    _options?: Configuration,
+  ): Promise<RequestContext> {
+    const _config = _options || this.configuration;
+    const { accountId } = this.configuration;
+
+    // verify required parameter 'exportId' is not null or undefined
+    if (exportId === null || exportId === undefined) {
+      throw new RequiredError("DefaultApi", "getAnExport", "exportId");
+    }
+    // Path Params
+    const localVarPath = "/Accounts/{accountId}/Exports/{exportId}"
+      .replace("{" + "accountId" + "}", encodeURIComponent(String(accountId)))
+      .replace("{" + "exportId" + "}", encodeURIComponent(String(exportId)));
 
     // Make Request Context
     const requestContext = _config.baseServer.makeRequestContext(
@@ -1931,6 +2114,8 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
      * @param endTime Only show Calls that ended at or before this time, given as YYYY-MM- DD hh:mm:ss.
      * @param parentCallId Only show Calls spawned by the call with this ID.
      * @param applicationId Only show calls belonging to the given applicationId. This parameter can be repeated to return calls from multiple Applications.
+     * @param riskScoreMin The minimum riskScore that should be included in the list.
+     * @param riskScoreMax The maximum riskScore that should be included in the list.
      */
   public async listCalls(
     active?: boolean,
@@ -1941,6 +2126,8 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
     endTime?: string,
     parentCallId?: string,
     applicationId?: Array<string>,
+    riskScoreMin?: number,
+    riskScoreMax?: number,
     _options?: Configuration,
   ): Promise<RequestContext> {
     const _config = _options || this.configuration;
@@ -2012,6 +2199,20 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
       requestContext.setQueryParam(
         "applicationId",
         ObjectSerializer.serialize(applicationId, "Array<string>", ""),
+      );
+    }
+    // Query Params
+    if (riskScoreMin !== undefined) {
+      requestContext.setQueryParam(
+        "riskScoreMin",
+        ObjectSerializer.serialize(riskScoreMin, "number", ""),
+      );
+    }
+    // Query Params
+    if (riskScoreMax !== undefined) {
+      requestContext.setQueryParam(
+        "riskScoreMax",
+        ObjectSerializer.serialize(riskScoreMax, "number", ""),
       );
     }
 
@@ -2155,6 +2356,62 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
       requestContext.setQueryParam(
         "dateUpdated",
         ObjectSerializer.serialize(dateUpdated, "string", ""),
+      );
+    }
+
+    let authMethod: SecurityAuthentication | undefined;
+    // Apply auth methods
+    authMethod = _config.authMethods["fc"];
+    if (authMethod?.applySecurityAuthentication) {
+      await authMethod?.applySecurityAuthentication(requestContext);
+    }
+    const defaultAuth: SecurityAuthentication | undefined =
+      _options?.authMethods?.default ||
+      this.configuration?.authMethods?.default;
+    if (defaultAuth?.applySecurityAuthentication) {
+      await defaultAuth?.applySecurityAuthentication(requestContext);
+    }
+    return requestContext;
+  }
+
+  /**
+     * List Exports
+     
+     * @param status Status of export
+     * @param cursor Used to reference pages of a list of exports
+     */
+  public async listExports(
+    status?: ExportStatus,
+    cursor?: string,
+    _options?: Configuration,
+  ): Promise<RequestContext> {
+    const _config = _options || this.configuration;
+    const { accountId } = this.configuration;
+
+    // Path Params
+    const localVarPath = "/Accounts/{accountId}/Exports".replace(
+      "{" + "accountId" + "}",
+      encodeURIComponent(String(accountId)),
+    );
+
+    // Make Request Context
+    const requestContext = _config.baseServer.makeRequestContext(
+      localVarPath,
+      HttpMethod.GET,
+    );
+    requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8");
+    // Query Params
+    if (status !== undefined) {
+      requestContext.setQueryParam(
+        "status",
+        ObjectSerializer.serialize(status, "ExportStatus", ""),
+      );
+    }
+    // Query Params
+    if (cursor !== undefined) {
+      requestContext.setQueryParam(
+        "cursor",
+        ObjectSerializer.serialize(cursor, "string", ""),
       );
     }
 
@@ -3549,6 +3806,44 @@ export class DefaultApiResponseProcessor {
    * Unwraps the actual response sent by the server from the response context and deserializes the response content
    * to the expected objects
    *
+   * @params response Response returned by the server for a request to createExport
+   * @throws ApiException if the response code was not in [200, 299]
+   */
+  public async createExport(response: ResponseContext): Promise<ExportResult> {
+    const contentType = ObjectSerializer.normalizeMediaType(
+      response.headers["content-type"],
+    );
+    if (isCodeInRange("200", response.httpStatusCode)) {
+      const body: ExportResult = ObjectSerializer.deserialize(
+        ObjectSerializer.parse(await response.body.text(), contentType),
+        "ExportResult",
+        "",
+      ) as ExportResult;
+      return body;
+    }
+
+    // Work around for missing responses in specification, e.g. for petstore.yaml
+    if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+      const body: ExportResult = ObjectSerializer.deserialize(
+        ObjectSerializer.parse(await response.body.text(), contentType),
+        "ExportResult",
+        "",
+      ) as ExportResult;
+      return body;
+    }
+
+    throw new ApiException<string | Buffer | undefined>(
+      response.httpStatusCode,
+      "Unknown API Status Code!",
+      await response.getBodyAsAny(),
+      response.headers,
+    );
+  }
+
+  /**
+   * Unwraps the actual response sent by the server from the response context and deserializes the response content
+   * to the expected objects
+   *
    * @params response Response returned by the server for a request to createKnowledgeBaseCompletion
    * @throws ApiException if the response code was not in [200, 299]
    */
@@ -3626,6 +3921,39 @@ export class DefaultApiResponseProcessor {
    * @throws ApiException if the response code was not in [200, 299]
    */
   public async deleteAnApplication(response: ResponseContext): Promise<void> {
+    const contentType = ObjectSerializer.normalizeMediaType(
+      response.headers["content-type"],
+    );
+    if (isCodeInRange("204", response.httpStatusCode)) {
+      return;
+    }
+
+    // Work around for missing responses in specification, e.g. for petstore.yaml
+    if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+      const body: void = ObjectSerializer.deserialize(
+        ObjectSerializer.parse(await response.body.text(), contentType),
+        "void",
+        "",
+      ) as void;
+      return body;
+    }
+
+    throw new ApiException<string | Buffer | undefined>(
+      response.httpStatusCode,
+      "Unknown API Status Code!",
+      await response.getBodyAsAny(),
+      response.headers,
+    );
+  }
+
+  /**
+   * Unwraps the actual response sent by the server from the response context and deserializes the response content
+   * to the expected objects
+   *
+   * @params response Response returned by the server for a request to deleteAnExport
+   * @throws ApiException if the response code was not in [200, 299]
+   */
+  public async deleteAnExport(response: ResponseContext): Promise<void> {
     const contentType = ObjectSerializer.normalizeMediaType(
       response.headers["content-type"],
     );
@@ -3790,6 +4118,44 @@ export class DefaultApiResponseProcessor {
         "HttpFile",
         "binary",
       ) as HttpFile;
+      return body;
+    }
+
+    throw new ApiException<string | Buffer | undefined>(
+      response.httpStatusCode,
+      "Unknown API Status Code!",
+      await response.getBodyAsAny(),
+      response.headers,
+    );
+  }
+
+  /**
+   * Unwraps the actual response sent by the server from the response context and deserializes the response content
+   * to the expected objects
+   *
+   * @params response Response returned by the server for a request to downloadAnExport
+   * @throws ApiException if the response code was not in [200, 299]
+   */
+  public async downloadAnExport(response: ResponseContext): Promise<string> {
+    const contentType = ObjectSerializer.normalizeMediaType(
+      response.headers["content-type"],
+    );
+    if (isCodeInRange("200", response.httpStatusCode)) {
+      const body: string = ObjectSerializer.deserialize(
+        ObjectSerializer.parse(await response.body.text(), contentType),
+        "string",
+        "",
+      ) as string;
+      return body;
+    }
+
+    // Work around for missing responses in specification, e.g. for petstore.yaml
+    if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+      const body: string = ObjectSerializer.deserialize(
+        ObjectSerializer.parse(await response.body.text(), contentType),
+        "string",
+        "",
+      ) as string;
       return body;
     }
 
@@ -4140,6 +4506,44 @@ export class DefaultApiResponseProcessor {
         "ApplicationResult",
         "",
       ) as ApplicationResult;
+      return body;
+    }
+
+    throw new ApiException<string | Buffer | undefined>(
+      response.httpStatusCode,
+      "Unknown API Status Code!",
+      await response.getBodyAsAny(),
+      response.headers,
+    );
+  }
+
+  /**
+   * Unwraps the actual response sent by the server from the response context and deserializes the response content
+   * to the expected objects
+   *
+   * @params response Response returned by the server for a request to getAnExport
+   * @throws ApiException if the response code was not in [200, 299]
+   */
+  public async getAnExport(response: ResponseContext): Promise<ExportResult> {
+    const contentType = ObjectSerializer.normalizeMediaType(
+      response.headers["content-type"],
+    );
+    if (isCodeInRange("200", response.httpStatusCode)) {
+      const body: ExportResult = ObjectSerializer.deserialize(
+        ObjectSerializer.parse(await response.body.text(), contentType),
+        "ExportResult",
+        "",
+      ) as ExportResult;
+      return body;
+    }
+
+    // Work around for missing responses in specification, e.g. for petstore.yaml
+    if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+      const body: ExportResult = ObjectSerializer.deserialize(
+        ObjectSerializer.parse(await response.body.text(), contentType),
+        "ExportResult",
+        "",
+      ) as ExportResult;
       return body;
     }
 
@@ -4932,6 +5336,44 @@ export class DefaultApiResponseProcessor {
         "ConferenceList",
         "",
       ) as ConferenceList;
+      return body;
+    }
+
+    throw new ApiException<string | Buffer | undefined>(
+      response.httpStatusCode,
+      "Unknown API Status Code!",
+      await response.getBodyAsAny(),
+      response.headers,
+    );
+  }
+
+  /**
+   * Unwraps the actual response sent by the server from the response context and deserializes the response content
+   * to the expected objects
+   *
+   * @params response Response returned by the server for a request to listExports
+   * @throws ApiException if the response code was not in [200, 299]
+   */
+  public async listExports(response: ResponseContext): Promise<ExportList> {
+    const contentType = ObjectSerializer.normalizeMediaType(
+      response.headers["content-type"],
+    );
+    if (isCodeInRange("200", response.httpStatusCode)) {
+      const body: ExportList = ObjectSerializer.deserialize(
+        ObjectSerializer.parse(await response.body.text(), contentType),
+        "ExportList",
+        "",
+      ) as ExportList;
+      return body;
+    }
+
+    // Work around for missing responses in specification, e.g. for petstore.yaml
+    if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+      const body: ExportList = ObjectSerializer.deserialize(
+        ObjectSerializer.parse(await response.body.text(), contentType),
+        "ExportList",
+        "",
+      ) as ExportList;
       return body;
     }
 

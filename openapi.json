@@ -1968,7 +1968,7 @@
               },
               "alias": {
                 "description": "Descriptive name for the Conference. ",
-                "type": "boolean"
+                "type": "string"
               },
               "playBeep": {
                 "$ref": "#/components/schemas/PlayBeep"
@@ -1985,6 +1985,10 @@
               "waitUrl": {
                 "description": "If specified, this URL provides the custom hold music for the Conference when it is in the populated state. This attribute is always fetched using HTTP GET and is fetched just once – when the Conference is created. The URL must be an audio file that is reachable and readable by FreeClimb.",
                 "format": "uri",
+                "type": "string"
+              },
+              "parentCallId": {
+                "description": "ID of the Call that created this leg (child call).",
                 "type": "string"
               }
             }
@@ -3113,7 +3117,7 @@
                 "description": "If the Call was inbound, this is the ID of the IncomingPhoneNumber that received the Call (DNIS). If the Call was outbound, this is the ID of the phone number from which the Call was placed (ANI).",
                 "nullable": true
               },
-              "callStatus": {
+              "status": {
                 "$ref": "#/components/schemas/CallStatus"
               },
               "startTime": {
@@ -4828,6 +4832,163 @@
             "minimum": 1
           }
         }
+      },
+      "ExportStatus": {
+        "type": "string",
+        "description": "platform export status",
+        "enum": [
+          "intaking",
+          "queued",
+          "inProgress",
+          "completed",
+          "failed",
+          "deleted"
+        ]
+      },
+      "ExportResourceType": {
+        "type": "string",
+        "description": "platform resource type",
+        "enum": ["Messages", "Calls"]
+      },
+      "ExportOutputType": {
+        "type": "string",
+        "description": "output type of the export",
+        "enum": ["csv"]
+      },
+      "ExportResult": {
+        "type": "object",
+        "required": [
+          "accountId",
+          "uri",
+          "dateCreated",
+          "dateUpdated",
+          "revision",
+          "exportId",
+          "status",
+          "size",
+          "resourceType",
+          "query",
+          "format",
+          "output"
+        ],
+        "properties": {
+          "accountId": {
+            "type": "string",
+            "description": "String that uniquely identifies this account resource.",
+            "nullable": true
+          },
+          "uri": {
+            "type": "string",
+            "format": "uri-reference"
+          },
+          "dateCreated": {
+            "type": "string"
+          },
+          "dateUpdated": {
+            "type": "string"
+          },
+          "revision": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "exportId": {
+            "type": "string",
+            "description": "String that uniquely identifies this export resource",
+            "nullable": true
+          },
+          "status": {
+            "$ref": "#/components/schemas/ExportStatus"
+          },
+          "size": {
+            "type": "integer"
+          },
+          "resourceType": {
+            "$ref": "#/components/schemas/ExportResourceType"
+          },
+          "query": {
+            "description": "Query params used to filter exported documents",
+            "type": "object"
+          },
+          "format": {
+            "description": "Desired fields of exported documents",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "output": {
+            "type": "object",
+            "required": ["type"],
+            "properties": {
+              "type": {
+                "$ref": "#/components/schemas/ExportOutputType"
+              }
+            }
+          }
+        },
+        "example": {
+          "accountId": "AC3ff5d5aed7fde9e6659673d850cbd18ea8bfca78",
+          "uri": "/Accounts/AC3ff5d5aed7fde9e6659673d850cbd18ea8bfca78/Exports/EX4d7500862e3abf4b9f4da24d54f559d3024252f8",
+          "dateCreated": "Wed, 26 Jun 2024 15:45:06 UTC",
+          "dateUpdated": "Wed, 26 Jun 2024 15:45:06 UTC",
+          "revision": 1,
+          "exportId": "EX4d7500862e3abf4b9f4da24d54f559d3024252f8",
+          "status": "completed",
+          "size": 12893786,
+          "resourceType": "Messages",
+          "query": {
+            "direction": "inbound"
+          },
+          "format": ["messageId", "dateUpdated", "segmentCount", "status"],
+          "output": {
+            "type": "csv"
+          }
+        }
+      },
+      "ExportList": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/PaginationModel"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "exports": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ExportResult"
+                },
+                "nullable": true
+              }
+            }
+          }
+        ]
+      },
+      "ExportRequest": {
+        "type": "object",
+        "required": ["resourceType", "output"],
+        "properties": {
+          "resourceType": {
+            "$ref": "#/components/schemas/ExportResourceType"
+          },
+          "format": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "output": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "$ref": "#/components/schemas/ExportOutputType"
+              }
+            }
+          },
+          "query": {
+            "type": "object"
+          }
+        }
       }
     }
   },
@@ -5652,6 +5813,24 @@
           },
           {
             "$ref": "#/components/parameters/AccountId"
+          },
+          {
+            "name": "riskScoreMin",
+            "in": "query",
+            "description": "The minimum riskScore that should be included in the list.",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "riskScoreMax",
+            "in": "query",
+            "description": "The maximum riskScore that should be included in the list.",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
           }
         ],
         "deprecated": false,
@@ -7328,6 +7507,171 @@
           }
         },
         "deprecated": false
+      }
+    },
+    "/Accounts/{accountId}/Exports": {
+      "get": {
+        "tags": [],
+        "summary": "List Exports",
+        "operationId": "list-exports",
+        "responses": {
+          "200": {
+            "description": "Successful retrieved export list",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExportList"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/AccountId"
+          },
+          {
+            "schema": {
+              "$ref": "#/components/schemas/ExportStatus"
+            },
+            "in": "query",
+            "name": "status",
+            "description": "Status of export"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "cursor",
+            "description": "Used to reference pages of a list of exports"
+          }
+        ]
+      },
+      "post": {
+        "summary": "Create an Export",
+        "operationId": "create-export",
+        "tags": [],
+        "requestBody": {
+          "description": "A JSON object containing export creation parameters",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ExportRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Export successfully created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExportResult"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/AccountId"
+          }
+        ]
+      }
+    },
+    "/Accounts/{accountId}/Exports/{exportId}": {
+      "get": {
+        "tags": [],
+        "summary": "Get an Export",
+        "operationId": "get-an-export",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/AccountId"
+          },
+          {
+            "name": "exportId",
+            "in": "path",
+            "description": "A string that uniquely identifies this export resource.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "deprecated": false,
+        "responses": {
+          "200": {
+            "description": "Export Details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExportResult"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [],
+        "summary": "Delete an Export",
+        "operationId": "delete-an-export",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/AccountId"
+          },
+          {
+            "name": "exportId",
+            "in": "path",
+            "description": "A string that uniquely identifies this export resource.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "deprecated": false,
+        "responses": {
+          "204": {
+            "description": "Successful Export deletion"
+          }
+        }
+      }
+    },
+    "/Accounts/{accountId}/Exports/{exportId}/Download": {
+      "get": {
+        "tags": [],
+        "summary": "Download an Export",
+        "operationId": "download-an-export",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/AccountId"
+          },
+          {
+            "name": "exportId",
+            "in": "path",
+            "description": "A string that uniquely identifies this export resource.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "deprecated": false,
+        "responses": {
+          "200": {
+            "description": "Export Details",
+            "content": {
+              "text/csv": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
       }
     }
   },

@@ -6,12 +6,13 @@ describe("CreateConference", () => {
     const Klass = freeclimb.CreateConference;
     let model: freeclimb.CreateConference = new freeclimb.CreateConference({
       actionUrl: "https://123.abc",
-      alias: true,
+      alias: "test_alias",
 
       playBeep: freeclimb.PlayBeep.ALWAYS,
       record: true,
       statusCallbackUrl: "https://123.abc",
       waitUrl: "https://123.abc",
+      parentCallId: "test_parentCallId",
     });
     describe("CreateConference class test", () => {
       it("resolves to the class type upon initialization", () => {
@@ -27,7 +28,7 @@ describe("CreateConference", () => {
     });
     describe(".alias", () => {
       it("resolves to particular value on initialization", () => {
-        const value = true;
+        const value = "test_alias";
         expect(model.alias).toBe(value);
       });
     });
@@ -53,6 +54,12 @@ describe("CreateConference", () => {
       it("resolves to particular value on initialization", () => {
         const value = "https://123.abc";
         expect(model.waitUrl).toBe(value);
+      });
+    });
+    describe(".parentCallId", () => {
+      it("resolves to particular value on initialization", () => {
+        const value = "test_parentCallId";
+        expect(model.parentCallId).toBe(value);
       });
     });
   });
@@ -60,12 +67,13 @@ describe("CreateConference", () => {
     const Klass = freeclimb.CreateConference;
     let model: freeclimb.CreateConference = new freeclimb.CreateConference({
       actionUrl: "",
-      alias: false,
+      alias: "",
 
       playBeep: freeclimb.PlayBeep.ALWAYS,
       record: false,
       statusCallbackUrl: "",
       waitUrl: "",
+      parentCallId: "",
     });
     describe("CreateConference class test", () => {
       it("resolves to the class type upon initialization", () => {
@@ -81,7 +89,7 @@ describe("CreateConference", () => {
     });
     describe(".alias", () => {
       it("resolves to particular value on initialization", () => {
-        const value = false;
+        const value = "";
         expect(model.alias).toBe(value);
       });
     });
@@ -107,6 +115,12 @@ describe("CreateConference", () => {
       it("resolves to particular value on initialization", () => {
         const value = "";
         expect(model.waitUrl).toBe(value);
+      });
+    });
+    describe(".parentCallId", () => {
+      it("resolves to particular value on initialization", () => {
+        const value = "";
+        expect(model.parentCallId).toBe(value);
       });
     });
   });
@@ -162,6 +176,14 @@ describe("CreateConference", () => {
           (attribute) => attribute.name === "waitUrl",
         )?.defaultValue;
         expect(model.waitUrl).toBe(value);
+      });
+    });
+    describe("#parentCallId", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "parentCallId",
+        )?.defaultValue;
+        expect(model.parentCallId).toBe(value);
       });
     });
   });

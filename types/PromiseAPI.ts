@@ -42,6 +42,14 @@ import { CreateWebRTCToken } from "../models/CreateWebRTCToken";
 import { Dequeue } from "../models/Dequeue";
 import { DequeueWebhook } from "../models/DequeueWebhook";
 import { Enqueue } from "../models/Enqueue";
+import { ExportList } from "../models/ExportList";
+import { ExportOutputType } from "../models/ExportOutputType";
+import { ExportRequest } from "../models/ExportRequest";
+import { ExportRequestOutput } from "../models/ExportRequestOutput";
+import { ExportResourceType } from "../models/ExportResourceType";
+import { ExportResult } from "../models/ExportResult";
+import { ExportResultOutput } from "../models/ExportResultOutput";
+import { ExportStatus } from "../models/ExportStatus";
 import { FilterLogsRequest } from "../models/FilterLogsRequest";
 import { GetDigits } from "../models/GetDigits";
 import { GetDigitsReason } from "../models/GetDigitsReason";
@@ -223,6 +231,20 @@ export class PromiseDefaultApi {
   }
 
   /**
+     * Create an Export
+     
+     * @param exportRequest A JSON object containing export creation parameters
+     
+     */
+  public createExport(
+    exportRequest?: ExportRequest,
+    _options?: Configuration,
+  ): Promise<ExportResult> {
+    const result = this.api.createExport(exportRequest, _options);
+    return result.toPromise();
+  }
+
+  /**
      * Query the knowledge base
      
      * @param knowledgeBaseId A string that uniquely identifies the KnowledgeBase resource.
@@ -268,6 +290,20 @@ export class PromiseDefaultApi {
     _options?: Configuration,
   ): Promise<void> {
     const result = this.api.deleteAnApplication(applicationId, _options);
+    return result.toPromise();
+  }
+
+  /**
+     * Delete an Export
+     
+     * @param exportId A string that uniquely identifies this export resource.
+     
+     */
+  public deleteAnExport(
+    exportId: string,
+    _options?: Configuration,
+  ): Promise<void> {
+    const result = this.api.deleteAnExport(exportId, _options);
     return result.toPromise();
   }
 
@@ -327,6 +363,20 @@ export class PromiseDefaultApi {
     _options?: Configuration,
   ): Promise<HttpFile> {
     const result = this.api.downloadARecordingFile(recordingId, _options);
+    return result.toPromise();
+  }
+
+  /**
+     * Download an Export
+     
+     * @param exportId A string that uniquely identifies this export resource.
+     
+     */
+  public downloadAnExport(
+    exportId: string,
+    _options?: Configuration,
+  ): Promise<string> {
+    const result = this.api.downloadAnExport(exportId, _options);
     return result.toPromise();
   }
 
@@ -454,6 +504,20 @@ export class PromiseDefaultApi {
     _options?: Configuration,
   ): Promise<ApplicationResult> {
     const result = this.api.getAnApplication(applicationId, _options);
+    return result.toPromise();
+  }
+
+  /**
+     * Get an Export
+     
+     * @param exportId A string that uniquely identifies this export resource.
+     
+     */
+  public getAnExport(
+    exportId: string,
+    _options?: Configuration,
+  ): Promise<ExportResult> {
+    const result = this.api.getAnExport(exportId, _options);
     return result.toPromise();
   }
 
@@ -745,6 +809,10 @@ export class PromiseDefaultApi {
      
      * @param applicationId Only show calls belonging to the given applicationId. This parameter can be repeated to return calls from multiple Applications.
      
+     * @param riskScoreMin The minimum riskScore that should be included in the list.
+     
+     * @param riskScoreMax The maximum riskScore that should be included in the list.
+     
      */
   public listCalls(
     active?: boolean,
@@ -755,6 +823,8 @@ export class PromiseDefaultApi {
     endTime?: string,
     parentCallId?: string,
     applicationId?: Array<string>,
+    riskScoreMin?: number,
+    riskScoreMax?: number,
     _options?: Configuration,
   ): Promise<CallList> {
     const result = this.api.listCalls(
@@ -766,6 +836,8 @@ export class PromiseDefaultApi {
       endTime,
       parentCallId,
       applicationId,
+      riskScoreMin,
+      riskScoreMax,
       _options,
     );
     return result.toPromise();
@@ -822,6 +894,23 @@ export class PromiseDefaultApi {
       dateUpdated,
       _options,
     );
+    return result.toPromise();
+  }
+
+  /**
+     * List Exports
+     
+     * @param status Status of export
+     
+     * @param cursor Used to reference pages of a list of exports
+     
+     */
+  public listExports(
+    status?: ExportStatus,
+    cursor?: string,
+    _options?: Configuration,
+  ): Promise<ExportList> {
+    const result = this.api.listExports(status, cursor, _options);
     return result.toPromise();
   }
 

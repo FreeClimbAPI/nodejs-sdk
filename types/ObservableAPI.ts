@@ -43,6 +43,14 @@ import { CreateWebRTCToken } from "../models/CreateWebRTCToken";
 import { Dequeue } from "../models/Dequeue";
 import { DequeueWebhook } from "../models/DequeueWebhook";
 import { Enqueue } from "../models/Enqueue";
+import { ExportList } from "../models/ExportList";
+import { ExportOutputType } from "../models/ExportOutputType";
+import { ExportRequest } from "../models/ExportRequest";
+import { ExportRequestOutput } from "../models/ExportRequestOutput";
+import { ExportResourceType } from "../models/ExportResourceType";
+import { ExportResult } from "../models/ExportResult";
+import { ExportResultOutput } from "../models/ExportResultOutput";
+import { ExportStatus } from "../models/ExportStatus";
 import { FilterLogsRequest } from "../models/FilterLogsRequest";
 import { GetDigits } from "../models/GetDigits";
 import { GetDigitsReason } from "../models/GetDigitsReason";
@@ -342,6 +350,50 @@ export class ObservableDefaultApi {
   }
 
   /**
+     * Create an Export
+     
+     * @param exportRequest A JSON object containing export creation parameters
+     
+     */
+  public createExport(
+    exportRequest?: ExportRequest,
+    _options?: Configuration,
+  ): Observable<ExportResult> {
+    const requestContextPromise = this.requestFactory.createExport(
+      exportRequest,
+      _options,
+    );
+
+    // build promise chain
+    let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+    for (let middleware of this.configuration.middleware) {
+      middlewarePreObservable = middlewarePreObservable.pipe(
+        mergeMap((ctx: RequestContext) => middleware.pre(ctx)),
+      );
+    }
+
+    return middlewarePreObservable
+      .pipe(
+        mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx)),
+      )
+      .pipe(
+        mergeMap((response: ResponseContext) => {
+          let middlewarePostObservable = of(response);
+          for (let middleware of this.configuration.middleware) {
+            middlewarePostObservable = middlewarePostObservable.pipe(
+              mergeMap((rsp: ResponseContext) => middleware.post(rsp)),
+            );
+          }
+          return middlewarePostObservable.pipe(
+            map((rsp: ResponseContext) =>
+              this.responseProcessor.createExport(rsp),
+            ),
+          );
+        }),
+      );
+  }
+
+  /**
      * Query the knowledge base
      
      * @param knowledgeBaseId A string that uniquely identifies the KnowledgeBase resource.
@@ -472,6 +524,50 @@ export class ObservableDefaultApi {
           return middlewarePostObservable.pipe(
             map((rsp: ResponseContext) =>
               this.responseProcessor.deleteAnApplication(rsp),
+            ),
+          );
+        }),
+      );
+  }
+
+  /**
+     * Delete an Export
+     
+     * @param exportId A string that uniquely identifies this export resource.
+     
+     */
+  public deleteAnExport(
+    exportId: string,
+    _options?: Configuration,
+  ): Observable<void> {
+    const requestContextPromise = this.requestFactory.deleteAnExport(
+      exportId,
+      _options,
+    );
+
+    // build promise chain
+    let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+    for (let middleware of this.configuration.middleware) {
+      middlewarePreObservable = middlewarePreObservable.pipe(
+        mergeMap((ctx: RequestContext) => middleware.pre(ctx)),
+      );
+    }
+
+    return middlewarePreObservable
+      .pipe(
+        mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx)),
+      )
+      .pipe(
+        mergeMap((response: ResponseContext) => {
+          let middlewarePostObservable = of(response);
+          for (let middleware of this.configuration.middleware) {
+            middlewarePostObservable = middlewarePostObservable.pipe(
+              mergeMap((rsp: ResponseContext) => middleware.post(rsp)),
+            );
+          }
+          return middlewarePostObservable.pipe(
+            map((rsp: ResponseContext) =>
+              this.responseProcessor.deleteAnExport(rsp),
             ),
           );
         }),
@@ -652,6 +748,50 @@ export class ObservableDefaultApi {
           return middlewarePostObservable.pipe(
             map((rsp: ResponseContext) =>
               this.responseProcessor.downloadARecordingFile(rsp),
+            ),
+          );
+        }),
+      );
+  }
+
+  /**
+     * Download an Export
+     
+     * @param exportId A string that uniquely identifies this export resource.
+     
+     */
+  public downloadAnExport(
+    exportId: string,
+    _options?: Configuration,
+  ): Observable<string> {
+    const requestContextPromise = this.requestFactory.downloadAnExport(
+      exportId,
+      _options,
+    );
+
+    // build promise chain
+    let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+    for (let middleware of this.configuration.middleware) {
+      middlewarePreObservable = middlewarePreObservable.pipe(
+        mergeMap((ctx: RequestContext) => middleware.pre(ctx)),
+      );
+    }
+
+    return middlewarePreObservable
+      .pipe(
+        mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx)),
+      )
+      .pipe(
+        mergeMap((response: ResponseContext) => {
+          let middlewarePostObservable = of(response);
+          for (let middleware of this.configuration.middleware) {
+            middlewarePostObservable = middlewarePostObservable.pipe(
+              mergeMap((rsp: ResponseContext) => middleware.post(rsp)),
+            );
+          }
+          return middlewarePostObservable.pipe(
+            map((rsp: ResponseContext) =>
+              this.responseProcessor.downloadAnExport(rsp),
             ),
           );
         }),
@@ -1046,6 +1186,50 @@ export class ObservableDefaultApi {
           return middlewarePostObservable.pipe(
             map((rsp: ResponseContext) =>
               this.responseProcessor.getAnApplication(rsp),
+            ),
+          );
+        }),
+      );
+  }
+
+  /**
+     * Get an Export
+     
+     * @param exportId A string that uniquely identifies this export resource.
+     
+     */
+  public getAnExport(
+    exportId: string,
+    _options?: Configuration,
+  ): Observable<ExportResult> {
+    const requestContextPromise = this.requestFactory.getAnExport(
+      exportId,
+      _options,
+    );
+
+    // build promise chain
+    let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+    for (let middleware of this.configuration.middleware) {
+      middlewarePreObservable = middlewarePreObservable.pipe(
+        mergeMap((ctx: RequestContext) => middleware.pre(ctx)),
+      );
+    }
+
+    return middlewarePreObservable
+      .pipe(
+        mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx)),
+      )
+      .pipe(
+        mergeMap((response: ResponseContext) => {
+          let middlewarePostObservable = of(response);
+          for (let middleware of this.configuration.middleware) {
+            middlewarePostObservable = middlewarePostObservable.pipe(
+              mergeMap((rsp: ResponseContext) => middleware.post(rsp)),
+            );
+          }
+          return middlewarePostObservable.pipe(
+            map((rsp: ResponseContext) =>
+              this.responseProcessor.getAnExport(rsp),
             ),
           );
         }),
@@ -1838,6 +2022,10 @@ export class ObservableDefaultApi {
      
      * @param applicationId Only show calls belonging to the given applicationId. This parameter can be repeated to return calls from multiple Applications.
      
+     * @param riskScoreMin The minimum riskScore that should be included in the list.
+     
+     * @param riskScoreMax The maximum riskScore that should be included in the list.
+     
      */
   public listCalls(
     active?: boolean,
@@ -1848,6 +2036,8 @@ export class ObservableDefaultApi {
     endTime?: string,
     parentCallId?: string,
     applicationId?: Array<string>,
+    riskScoreMin?: number,
+    riskScoreMax?: number,
     _options?: Configuration,
   ): Observable<CallList> {
     const requestContextPromise = this.requestFactory.listCalls(
@@ -1859,6 +2049,8 @@ export class ObservableDefaultApi {
       endTime,
       parentCallId,
       applicationId,
+      riskScoreMin,
+      riskScoreMax,
       _options,
     );
 
@@ -1993,6 +2185,54 @@ export class ObservableDefaultApi {
           return middlewarePostObservable.pipe(
             map((rsp: ResponseContext) =>
               this.responseProcessor.listConferences(rsp),
+            ),
+          );
+        }),
+      );
+  }
+
+  /**
+     * List Exports
+     
+     * @param status Status of export
+     
+     * @param cursor Used to reference pages of a list of exports
+     
+     */
+  public listExports(
+    status?: ExportStatus,
+    cursor?: string,
+    _options?: Configuration,
+  ): Observable<ExportList> {
+    const requestContextPromise = this.requestFactory.listExports(
+      status,
+      cursor,
+      _options,
+    );
+
+    // build promise chain
+    let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+    for (let middleware of this.configuration.middleware) {
+      middlewarePreObservable = middlewarePreObservable.pipe(
+        mergeMap((ctx: RequestContext) => middleware.pre(ctx)),
+      );
+    }
+
+    return middlewarePreObservable
+      .pipe(
+        mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx)),
+      )
+      .pipe(
+        mergeMap((response: ResponseContext) => {
+          let middlewarePostObservable = of(response);
+          for (let middleware of this.configuration.middleware) {
+            middlewarePostObservable = middlewarePostObservable.pipe(
+              mergeMap((rsp: ResponseContext) => middleware.post(rsp)),
+            );
+          }
+          return middlewarePostObservable.pipe(
+            map((rsp: ResponseContext) =>
+              this.responseProcessor.listExports(rsp),
             ),
           );
         }),

@@ -8,13 +8,16 @@ All URIs are relative to *https://www.freeclimb.com/apiserver*
 | [**createAConference**](DefaultApi.md#createAConference)                         | **POST** /Accounts/{accountId}/Conferences                                        | Create a Conference                     |
 | [**createAQueue**](DefaultApi.md#createAQueue)                                   | **POST** /Accounts/{accountId}/Queues                                             | Create a Queue                          |
 | [**createAnApplication**](DefaultApi.md#createAnApplication)                     | **POST** /Accounts/{accountId}/Applications                                       | Create an application                   |
+| [**createExport**](DefaultApi.md#createExport)                                   | **POST** /Accounts/{accountId}/Exports                                            | Create an Export                        |
 | [**createKnowledgeBaseCompletion**](DefaultApi.md#createKnowledgeBaseCompletion) | **POST** /Accounts/{accountId}/KnowledgeBases/{knowledgeBaseId}/Completion        | Query the knowledge base                |
 | [**deleteARecording**](DefaultApi.md#deleteARecording)                           | **DELETE** /Accounts/{accountId}/Recordings/{recordingId}                         | Delete a Recording                      |
 | [**deleteAnApplication**](DefaultApi.md#deleteAnApplication)                     | **DELETE** /Accounts/{accountId}/Applications/{applicationId}                     | Delete an application                   |
+| [**deleteAnExport**](DefaultApi.md#deleteAnExport)                               | **DELETE** /Accounts/{accountId}/Exports/{exportId}                               | Delete an Export                        |
 | [**deleteAnIncomingNumber**](DefaultApi.md#deleteAnIncomingNumber)               | **DELETE** /Accounts/{accountId}/IncomingPhoneNumbers/{phoneNumberId}             | Delete an Incoming Number               |
 | [**dequeueAMember**](DefaultApi.md#dequeueAMember)                               | **POST** /Accounts/{accountId}/Queues/{queueId}/Members/{callId}                  | Dequeue a Member                        |
 | [**dequeueHeadMember**](DefaultApi.md#dequeueHeadMember)                         | **POST** /Accounts/{accountId}/Queues/{queueId}/Members/Front                     | Dequeue Head Member                     |
 | [**downloadARecordingFile**](DefaultApi.md#downloadARecordingFile)               | **GET** /Accounts/{accountId}/Recordings/{recordingId}/Download                   | Download a Recording File               |
+| [**downloadAnExport**](DefaultApi.md#downloadAnExport)                           | **GET** /Accounts/{accountId}/Exports/{exportId}/Download                         | Download an Export                      |
 | [**filterLogs**](DefaultApi.md#filterLogs)                                       | **POST** /Accounts/{accountId}/Logs                                               | Filter Logs                             |
 | [**getACall**](DefaultApi.md#getACall)                                           | **GET** /Accounts/{accountId}/Calls/{callId}                                      | Get a Call                              |
 | [**getAConference**](DefaultApi.md#getAConference)                               | **GET** /Accounts/{accountId}/Conferences/{conferenceId}                          | Get a Conference                        |
@@ -24,6 +27,7 @@ All URIs are relative to *https://www.freeclimb.com/apiserver*
 | [**getARecording**](DefaultApi.md#getARecording)                                 | **GET** /Accounts/{accountId}/Recordings/{recordingId}                            | Get a Recording                         |
 | [**getAnAccount**](DefaultApi.md#getAnAccount)                                   | **GET** /Accounts/{accountId}                                                     | Get an Account                          |
 | [**getAnApplication**](DefaultApi.md#getAnApplication)                           | **GET** /Accounts/{accountId}/Applications/{applicationId}                        | Get an Application                      |
+| [**getAnExport**](DefaultApi.md#getAnExport)                                     | **GET** /Accounts/{accountId}/Exports/{exportId}                                  | Get an Export                           |
 | [**getAnIncomingNumber**](DefaultApi.md#getAnIncomingNumber)                     | **GET** /Accounts/{accountId}/IncomingPhoneNumbers/{phoneNumberId}                | Get an Incoming Number                  |
 | [**getAnSmsMessage**](DefaultApi.md#getAnSmsMessage)                             | **GET** /Accounts/{accountId}/Messages/{messageId}                                | Get an SMS Message                      |
 | [**getHeadMember**](DefaultApi.md#getHeadMember)                                 | **GET** /Accounts/{accountId}/Queues/{queueId}/Members/Front                      | Get Head Member                         |
@@ -44,6 +48,7 @@ All URIs are relative to *https://www.freeclimb.com/apiserver*
 | [**listCalls**](DefaultApi.md#listCalls)                                         | **GET** /Accounts/{accountId}/Calls                                               | List Calls                              |
 | [**listConferenceRecordings**](DefaultApi.md#listConferenceRecordings)           | **GET** /Accounts/{accountId}/Conferences/{conferenceId}/Recordings               | List Conference Recordings              |
 | [**listConferences**](DefaultApi.md#listConferences)                             | **GET** /Accounts/{accountId}/Conferences                                         | List Conferences                        |
+| [**listExports**](DefaultApi.md#listExports)                                     | **GET** /Accounts/{accountId}/Exports                                             | List Exports                            |
 | [**listIncomingNumbers**](DefaultApi.md#listIncomingNumbers)                     | **GET** /Accounts/{accountId}/IncomingPhoneNumbers                                | List Incoming Numbers                   |
 | [**listMembers**](DefaultApi.md#listMembers)                                     | **GET** /Accounts/{accountId}/Queues/{queueId}/Members                            | List Members                            |
 | [**listParticipants**](DefaultApi.md#listParticipants)                           | **GET** /Accounts/{accountId}/Conferences/{conferenceId}/Participants             | List Participants                       |
@@ -308,6 +313,69 @@ apiInstance
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
+# **createExport**
+
+> ExportResult createExport()
+
+### Example
+
+```typescript
+import { freeclimb } from "@freeclimb/sdk";
+import * as fs from "fs";
+
+const configuration = freeclimb.createConfiguration({
+  accountId: "YOUR_ACCOUNT_ID",
+  apiKey: "YOUR_API_KEY",
+});
+const apiInstance = new freeclimb.DefaultApi(configuration);
+
+let body: freeclimb.DefaultApiCreateExportRequest = {
+  // ExportRequest | A JSON object containing export creation parameters (optional)
+  exportRequest: {
+    resourceType: "Messages",
+    format: ["format_example"],
+    output: {
+      type: "csv",
+    },
+    query: {},
+  },
+};
+
+apiInstance
+  .createExport(body)
+  .then((data: any) => {
+    console.log("API called successfully. Returned data: " + data);
+  })
+  .catch((error: any) => console.error(error));
+```
+
+### Parameters
+
+| Name              | Type              | Description                                         | Notes |
+| ----------------- | ----------------- | --------------------------------------------------- | ----- |
+| **exportRequest** | **ExportRequest** | A JSON object containing export creation parameters |
+
+### Return type
+
+**ExportResult**
+
+### Authorization
+
+[fc](README.md#fc)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description                 | Response headers |
+| ----------- | --------------------------- | ---------------- |
+| **200**     | Export successfully created | -                |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
 # **createKnowledgeBaseCompletion**
 
 > CompletionResult createKnowledgeBaseCompletion()
@@ -479,6 +547,62 @@ apiInstance
 | Status code | Description                     | Response headers |
 | ----------- | ------------------------------- | ---------------- |
 | **204**     | Successful application deletion | -                |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **deleteAnExport**
+
+> void deleteAnExport()
+
+### Example
+
+```typescript
+import { freeclimb } from "@freeclimb/sdk";
+import * as fs from "fs";
+
+const configuration = freeclimb.createConfiguration({
+  accountId: "YOUR_ACCOUNT_ID",
+  apiKey: "YOUR_API_KEY",
+});
+const apiInstance = new freeclimb.DefaultApi(configuration);
+
+let body: freeclimb.DefaultApiDeleteAnExportRequest = {
+  // string | A string that uniquely identifies this export resource.
+  exportId: "exportId_example",
+};
+
+apiInstance
+  .deleteAnExport(body)
+  .then((data: any) => {
+    console.log("API called successfully. Returned data: " + data);
+  })
+  .catch((error: any) => console.error(error));
+```
+
+### Parameters
+
+| Name         | Type         | Description                                             | Notes                 |
+| ------------ | ------------ | ------------------------------------------------------- | --------------------- |
+| **exportId** | [**string**] | A string that uniquely identifies this export resource. | defaults to undefined |
+
+### Return type
+
+**void**
+
+### Authorization
+
+[fc](README.md#fc)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+### HTTP response details
+
+| Status code | Description                | Response headers |
+| ----------- | -------------------------- | ---------------- |
+| **204**     | Successful Export deletion | -                |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -707,6 +831,62 @@ apiInstance
 | Status code | Description                                                      | Response headers |
 | ----------- | ---------------------------------------------------------------- | ---------------- |
 | **200**     | Download a Recording file represented with audio/x-wav mime-type | -                |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **downloadAnExport**
+
+> string downloadAnExport()
+
+### Example
+
+```typescript
+import { freeclimb } from "@freeclimb/sdk";
+import * as fs from "fs";
+
+const configuration = freeclimb.createConfiguration({
+  accountId: "YOUR_ACCOUNT_ID",
+  apiKey: "YOUR_API_KEY",
+});
+const apiInstance = new freeclimb.DefaultApi(configuration);
+
+let body: freeclimb.DefaultApiDownloadAnExportRequest = {
+  // string | A string that uniquely identifies this export resource.
+  exportId: "exportId_example",
+};
+
+apiInstance
+  .downloadAnExport(body)
+  .then((data: any) => {
+    console.log("API called successfully. Returned data: " + data);
+  })
+  .catch((error: any) => console.error(error));
+```
+
+### Parameters
+
+| Name         | Type         | Description                                             | Notes                 |
+| ------------ | ------------ | ------------------------------------------------------- | --------------------- |
+| **exportId** | [**string**] | A string that uniquely identifies this export resource. | defaults to undefined |
+
+### Return type
+
+**string**
+
+### Authorization
+
+[fc](README.md#fc)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: text/csv
+
+### HTTP response details
+
+| Status code | Description    | Response headers |
+| ----------- | -------------- | ---------------- |
+| **200**     | Export Details | -                |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -1214,6 +1394,62 @@ apiInstance
 | Status code | Description         | Response headers |
 | ----------- | ------------------- | ---------------- |
 | **200**     | Application Details | -                |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **getAnExport**
+
+> ExportResult getAnExport()
+
+### Example
+
+```typescript
+import { freeclimb } from "@freeclimb/sdk";
+import * as fs from "fs";
+
+const configuration = freeclimb.createConfiguration({
+  accountId: "YOUR_ACCOUNT_ID",
+  apiKey: "YOUR_API_KEY",
+});
+const apiInstance = new freeclimb.DefaultApi(configuration);
+
+let body: freeclimb.DefaultApiGetAnExportRequest = {
+  // string | A string that uniquely identifies this export resource.
+  exportId: "exportId_example",
+};
+
+apiInstance
+  .getAnExport(body)
+  .then((data: any) => {
+    console.log("API called successfully. Returned data: " + data);
+  })
+  .catch((error: any) => console.error(error));
+```
+
+### Parameters
+
+| Name         | Type         | Description                                             | Notes                 |
+| ------------ | ------------ | ------------------------------------------------------- | --------------------- |
+| **exportId** | [**string**] | A string that uniquely identifies this export resource. | defaults to undefined |
+
+### Return type
+
+**ExportResult**
+
+### Authorization
+
+[fc](README.md#fc)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description    | Response headers |
+| ----------- | -------------- | ---------------- |
+| **200**     | Export Details | -                |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -2228,6 +2464,12 @@ let body: freeclimb.DefaultApiListCallsRequest = {
 
   // Array<string> | Only show calls belonging to the given applicationId. This parameter can be repeated to return calls from multiple Applications. (optional)
   applicationId: ["AP62ECB020842930cc01FFCCfeEe150AC32DcAEc8a"],
+
+  // number | The minimum riskScore that should be included in the list. (optional)
+  riskScoreMin: 1,
+
+  // number | The maximum riskScore that should be included in the list. (optional)
+  riskScoreMax: 1,
 };
 
 apiInstance
@@ -2250,6 +2492,8 @@ apiInstance
 | **endTime**       | [**string**]            | Only show Calls that ended at or before this time, given as YYYY-MM- DD hh:mm:ss.                                                                                                                                             | (optional) defaults to undefined |
 | **parentCallId**  | [**string**]            | Only show Calls spawned by the call with this ID.                                                                                                                                                                             | (optional) defaults to undefined |
 | **applicationId** | **Array&lt;string&gt;** | Only show calls belonging to the given applicationId. This parameter can be repeated to return calls from multiple Applications.                                                                                              | (optional) defaults to undefined |
+| **riskScoreMin**  | [**number**]            | The minimum riskScore that should be included in the list.                                                                                                                                                                    | (optional) defaults to undefined |
+| **riskScoreMax**  | [**number**]            | The maximum riskScore that should be included in the list.                                                                                                                                                                    | (optional) defaults to undefined |
 
 ### Return type
 
@@ -2401,6 +2645,66 @@ apiInstance
 | Status code | Description         | Response headers |
 | ----------- | ------------------- | ---------------- |
 | **200**     | List of Conferences | -                |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **listExports**
+
+> ExportList listExports()
+
+### Example
+
+```typescript
+import { freeclimb } from "@freeclimb/sdk";
+import * as fs from "fs";
+
+const configuration = freeclimb.createConfiguration({
+  accountId: "YOUR_ACCOUNT_ID",
+  apiKey: "YOUR_API_KEY",
+});
+const apiInstance = new freeclimb.DefaultApi(configuration);
+
+let body: freeclimb.DefaultApiListExportsRequest = {
+  // ExportStatus | Status of export (optional)
+  status: "intaking",
+
+  // string | Used to reference pages of a list of exports (optional)
+  cursor: "cursor_example",
+};
+
+apiInstance
+  .listExports(body)
+  .then((data: any) => {
+    console.log("API called successfully. Returned data: " + data);
+  })
+  .catch((error: any) => console.error(error));
+```
+
+### Parameters
+
+| Name       | Type             | Description                                  | Notes                            |
+| ---------- | ---------------- | -------------------------------------------- | -------------------------------- |
+| **status** | **ExportStatus** | Status of export                             | (optional) defaults to undefined |
+| **cursor** | [**string**]     | Used to reference pages of a list of exports | (optional) defaults to undefined |
+
+### Return type
+
+**ExportList**
+
+### Authorization
+
+[fc](README.md#fc)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description                      | Response headers |
+| ----------- | -------------------------------- | ---------------- |
+| **200**     | Successful retrieved export list | -                |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 

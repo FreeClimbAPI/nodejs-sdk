@@ -27,11 +27,12 @@ interface AttributeType {
 }
 interface ArgumentsType {
   actionUrl: string;
-  alias?: boolean;
+  alias?: string;
   playBeep?: PlayBeep;
   record?: boolean;
   statusCallbackUrl?: string;
   waitUrl?: string;
+  parentCallId?: string;
 }
 export class CreateConference extends PerclCommand {
   /**
@@ -41,7 +42,7 @@ export class CreateConference extends PerclCommand {
   /**
    * Descriptive name for the Conference.
    */
-  "alias"?: boolean;
+  "alias"?: string;
   "playBeep"?: PlayBeep;
   /**
    * When set to `true`, the entire Conference is recorded. The `statusCallbackUrl` of the Conference will receive a `conferenceRecordingEnded` Webhook when the Conference transitions from the `inProgress` to empty state.
@@ -55,6 +56,10 @@ export class CreateConference extends PerclCommand {
    * If specified, this URL provides the custom hold music for the Conference when it is in the populated state. This attribute is always fetched using HTTP GET and is fetched just once – when the Conference is created. The URL must be an audio file that is reachable and readable by FreeClimb.
    */
   "waitUrl"?: string;
+  /**
+   * ID of the Call that created this leg (child call).
+   */
+  "parentCallId"?: string;
 
   static readonly discriminator: string | undefined = "command";
 
@@ -70,7 +75,7 @@ export class CreateConference extends PerclCommand {
     {
       name: "alias",
       baseName: "alias",
-      type: "boolean",
+      type: "string",
       format: "",
 
       defaultValue: undefined,
@@ -107,6 +112,14 @@ export class CreateConference extends PerclCommand {
 
       defaultValue: undefined,
     },
+    {
+      name: "parentCallId",
+      baseName: "parentCallId",
+      type: "string",
+      format: "",
+
+      defaultValue: undefined,
+    },
   ];
 
   static getAttributeTypeMap(): AttributeType[] {
@@ -126,10 +139,11 @@ export class CreateConference extends PerclCommand {
       ) as T;
     };
     this["actionUrl"] = assign<string>("actionUrl");
-    this["alias"] = assign<boolean>("alias");
+    this["alias"] = assign<string>("alias");
     this["playBeep"] = assign<PlayBeep>("playBeep");
     this["record"] = assign<boolean>("record");
     this["statusCallbackUrl"] = assign<string>("statusCallbackUrl");
     this["waitUrl"] = assign<string>("waitUrl");
+    this["parentCallId"] = assign<string>("parentCallId");
   }
 }

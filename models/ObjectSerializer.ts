@@ -38,6 +38,14 @@ export * from "./CreateWebRTCToken";
 export * from "./Dequeue";
 export * from "./DequeueWebhook";
 export * from "./Enqueue";
+export * from "./ExportList";
+export * from "./ExportOutputType";
+export * from "./ExportRequest";
+export * from "./ExportRequestOutput";
+export * from "./ExportResourceType";
+export * from "./ExportResult";
+export * from "./ExportResultOutput";
+export * from "./ExportStatus";
 export * from "./FilterLogsRequest";
 export * from "./GetDigits";
 export * from "./GetDigitsReason";
@@ -179,6 +187,14 @@ import { CreateWebRTCToken } from "./CreateWebRTCToken";
 import { Dequeue } from "./Dequeue";
 import { DequeueWebhook } from "./DequeueWebhook";
 import { Enqueue } from "./Enqueue";
+import { ExportList } from "./ExportList";
+import { ExportOutputType } from "./ExportOutputType";
+import { ExportRequest } from "./ExportRequest";
+import { ExportRequestOutput } from "./ExportRequestOutput";
+import { ExportResourceType } from "./ExportResourceType";
+import { ExportResult } from "./ExportResult";
+import { ExportResultOutput } from "./ExportResultOutput";
+import { ExportStatus } from "./ExportStatus";
 import { FilterLogsRequest } from "./FilterLogsRequest";
 import { GetDigits } from "./GetDigits";
 import { GetDigitsReason } from "./GetDigitsReason";
@@ -308,6 +324,9 @@ let enumsMap: Set<string> = new Set<string>([
   "CallStatus",
   "CompletionResultStatus",
   "ConferenceStatus",
+  "ExportOutputType",
+  "ExportResourceType",
+  "ExportStatus",
   "GetDigitsReason",
   "GetSpeechReason",
   "GrammarFileBuiltIn",
@@ -368,6 +387,11 @@ let typeMap: { [index: string]: any } = {
   Dequeue: Dequeue,
   DequeueWebhook: DequeueWebhook,
   Enqueue: Enqueue,
+  ExportList: ExportList,
+  ExportRequest: ExportRequest,
+  ExportRequestOutput: ExportRequestOutput,
+  ExportResult: ExportResult,
+  ExportResultOutput: ExportResultOutput,
   FilterLogsRequest: FilterLogsRequest,
   GetDigits: GetDigits,
   GetDigitsWebhook: GetDigitsWebhook,
