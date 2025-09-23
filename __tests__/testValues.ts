@@ -14,6 +14,11 @@ import {
   CreateConferenceRequest,
   UpdateConferenceParticipantRequest,
   QueueRequest,
+  ExportStatus,
+  ExportResourceType,
+  ExportRequest,
+  ExportRequestOutput,
+  ExportOutputType,
 } from "../index";
 
 export const parameters = {
@@ -77,6 +82,8 @@ export const parameters = {
     endTime: "TEST_END_TIME",
     parentCallId: "TEST_PARENT_CALL_ID",
     applicationId: ["AP0000000000000000000000000000000000000000"],
+    riskScoreMin: 1,
+    riskScoreMax: 90,
   },
   listCallRecordings: {
     callId: "TEST_CALL_ID",
@@ -185,6 +192,16 @@ export const parameters = {
   getTollFreeSmsCampaign: {
     campaignId: "TEST_CAMPAIGN_ID",
   },
+  listExports: {
+    status: ExportStatus.COMPLETED,
+    cursor: "TEST_CURSOR",
+  },
+  getAnExport: {
+    exportId: "TEST_EXPORT_ID",
+  },
+  downloadAnExport: {
+    exportId: "TEST_EXPORT_ID",
+  },
 };
 
 export const requestBody = {
@@ -232,5 +249,13 @@ export const requestBody = {
     from: "TEST_FROM_NUMBER",
     to: "TEST_TO_NUMBER",
     text: "TEST_TEXT",
+  }),
+  createExport: new ExportRequest({
+    resourceType: ExportResourceType.MESSAGES,
+    format: [],
+    output: new ExportRequestOutput({
+      type: ExportOutputType.CSV,
+    }),
+    query: {},
   }),
 };

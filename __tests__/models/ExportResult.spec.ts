@@ -18,7 +18,10 @@ describe("ExportResult", () => {
       resourceType: freeclimb.ExportResourceType.MESSAGES,
       query: {},
       format: [],
-      output: {},
+
+      output: new freeclimb.ExportResultOutput({
+        type: null as any,
+      }),
     });
     describe("ExportResult class test", () => {
       it("resolves to the class type upon initialization", () => {
@@ -93,7 +96,9 @@ describe("ExportResult", () => {
     });
     describe(".output", () => {
       it("resolves to particular value on initialization", () => {
-        const value = {};
+        const value = new freeclimb.ExportResultOutput({
+          type: null as any,
+        });
         expect(model.output).toStrictEqual(value);
       });
     });
@@ -114,7 +119,10 @@ describe("ExportResult", () => {
       resourceType: freeclimb.ExportResourceType.MESSAGES,
       query: {},
       format: [],
-      output: {},
+
+      output: new freeclimb.ExportResultOutput({
+        type: null as any,
+      }),
     });
     describe("ExportResult class test", () => {
       it("resolves to the class type upon initialization", () => {
@@ -189,7 +197,9 @@ describe("ExportResult", () => {
     });
     describe(".output", () => {
       it("resolves to particular value on initialization", () => {
-        const value = {};
+        const value = new freeclimb.ExportResultOutput({
+          type: null as any,
+        });
         expect(model.output).toStrictEqual(value);
       });
     });
@@ -210,7 +220,10 @@ describe("ExportResult", () => {
       resourceType: freeclimb.ExportResourceType.MESSAGES,
       query: {},
       format: [],
-      output: {},
+
+      output: new freeclimb.ExportResultOutput({
+        type: null as any,
+      }),
     };
     let model: freeclimb.ExportResult = new freeclimb.ExportResult(
       constructorArguments,

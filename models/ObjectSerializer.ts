@@ -678,6 +678,9 @@ export class ObjectSerializer {
     if (mediaType === "text/plain") {
       return rawData;
     }
+    if (mediaType === "text/csv") {
+      return rawData;
+    }
 
     throw new Error(
       "The mediaType " +
