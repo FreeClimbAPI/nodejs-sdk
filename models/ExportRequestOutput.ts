@@ -21,10 +21,10 @@ interface AttributeType {
   defaultValue: any;
 }
 interface ArgumentsType {
-  type?: ExportOutputType;
+  type: ExportOutputType;
 }
 export class ExportRequestOutput {
-  "type"?: ExportOutputType;
+  "type": ExportOutputType;
 
   static readonly discriminator: string | undefined = undefined;
 

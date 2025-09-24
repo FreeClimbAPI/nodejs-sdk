@@ -15,7 +15,7 @@ None
 
 ### Added
 
-- Add models for KnowledgeBase ExportResult and ExportRequest
+- Add models for ExportResult and ExportRequest
 
 ### Changed
 

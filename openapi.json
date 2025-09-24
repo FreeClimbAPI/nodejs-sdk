@@ -4855,6 +4855,15 @@
         "description": "output type of the export",
         "enum": ["csv"]
       },
+      "ExportRequestOutput": {
+        "type": "object",
+        "required": ["type"],
+        "properties": {
+          "type": {
+            "$ref": "#/components/schemas/ExportOutputType"
+          }
+        }
+      },
       "ExportResultOutput": {
         "type": "object",
         "required": ["type"],
@@ -4981,12 +4990,7 @@
             }
           },
           "output": {
-            "type": "object",
-            "properties": {
-              "type": {
-                "$ref": "#/components/schemas/ExportOutputType"
-              }
-            }
+            "$ref": "#/components/schemas/ExportRequestOutput"
           },
           "query": {
             "type": "object"
