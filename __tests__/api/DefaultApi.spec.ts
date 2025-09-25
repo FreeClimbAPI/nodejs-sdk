@@ -213,6 +213,8 @@ describe("DefaultApi", () => {
       const endTime = parameters.listCalls.endTime;
       const parentCallId = parameters.listCalls.parentCallId;
       const applicationId = parameters.listCalls.applicationId;
+      const riskScoreMin = parameters.listCalls.riskScoreMin;
+      const riskScoreMax = parameters.listCalls.riskScoreMax;
 
       let response = await apiInstance.listCalls(
         active,
@@ -223,6 +225,8 @@ describe("DefaultApi", () => {
         endTime,
         parentCallId,
         applicationId,
+        riskScoreMin,
+        riskScoreMax,
       );
 
       expect(response).toBeInstanceOf(freeclimb.CallList);
@@ -603,6 +607,43 @@ describe("DefaultApi", () => {
       let response = await apiInstance.getTollFreeSmsCampaign(campaignId);
 
       expect(response).toBeInstanceOf(freeclimb.SMSTollFreeCampaign);
+    });
+  });
+  describe("#listExports", () => {
+    test("returns an instance of freeclimb.ExportList", async () => {
+      const status = parameters.listExports.status;
+      const cursor = parameters.listExports.cursor;
+
+      let response = await apiInstance.listExports(status, cursor);
+
+      expect(response).toBeInstanceOf(freeclimb.ExportList);
+    });
+  });
+  describe("#createExport", () => {
+    test("returns an instance of freeclimb.ExportResult", async () => {
+      let body = requestBody.createExport;
+
+      let response = await apiInstance.createExport(body);
+
+      expect(response).toBeInstanceOf(freeclimb.ExportResult);
+    });
+  });
+  describe("#getAnExport", () => {
+    test("returns an instance of freeclimb.ExportResult", async () => {
+      const exportId = parameters.getAnExport.exportId;
+
+      let response = await apiInstance.getAnExport(exportId);
+
+      expect(response).toBeInstanceOf(freeclimb.ExportResult);
+    });
+  });
+  describe("#downloadAnExport", () => {
+    test("returns an instance of string", async () => {
+      const exportId = parameters.downloadAnExport.exportId;
+
+      let response = await apiInstance.downloadAnExport(exportId);
+
+      expect(typeof response).toBe("string");
     });
   });
 });

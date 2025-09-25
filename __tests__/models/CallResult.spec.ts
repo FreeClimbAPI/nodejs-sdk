@@ -16,7 +16,7 @@ describe("CallResult", () => {
       to: "test_to",
       phoneNumberId: "test_phoneNumberId",
 
-      callStatus: freeclimb.CallStatus.QUEUED,
+      status: freeclimb.CallStatus.QUEUED,
       startTime: "test_startTime",
       connectTime: "test_connectTime",
       endTime: "test_endTime",
@@ -95,10 +95,10 @@ describe("CallResult", () => {
         expect(model.phoneNumberId).toBe(value);
       });
     });
-    describe(".callStatus", () => {
+    describe(".status", () => {
       it("resolves to particular value on initialization", () => {
         const value = "queued";
-        expect(model.callStatus).toBe(value);
+        expect(model.status).toBe(value);
       });
     });
     describe(".startTime", () => {
@@ -171,7 +171,7 @@ describe("CallResult", () => {
       to: "",
       phoneNumberId: "",
 
-      callStatus: freeclimb.CallStatus.QUEUED,
+      status: freeclimb.CallStatus.QUEUED,
       startTime: "",
       connectTime: "",
       endTime: "",
@@ -250,10 +250,10 @@ describe("CallResult", () => {
         expect(model.phoneNumberId).toBe(value);
       });
     });
-    describe(".callStatus", () => {
+    describe(".status", () => {
       it("resolves to particular value on initialization", () => {
         const value = "queued";
-        expect(model.callStatus).toBe(value);
+        expect(model.status).toBe(value);
       });
     });
     describe(".startTime", () => {
@@ -372,12 +372,12 @@ describe("CallResult", () => {
         expect(model.phoneNumberId).toBe(value);
       });
     });
-    describe("#callStatus", () => {
+    describe("#status", () => {
       it("resolves to default value on initialization if no value is provided", () => {
         const value = Klass.attributeTypeMap.find(
-          (attribute) => attribute.name === "callStatus",
+          (attribute) => attribute.name === "status",
         )?.defaultValue;
-        expect(model.callStatus).toBe(value);
+        expect(model.status).toBe(value);
       });
     });
     describe("#startTime", () => {

@@ -52,6 +52,14 @@ models/CreateWebRTCToken.ts
 models/Dequeue.ts
 models/DequeueWebhook.ts
 models/Enqueue.ts
+models/ExportList.ts
+models/ExportOutputType.ts
+models/ExportRequest.ts
+models/ExportRequestOutput.ts
+models/ExportResourceType.ts
+models/ExportResult.ts
+models/ExportResultOutput.ts
+models/ExportStatus.ts
 models/FilterLogsRequest.ts
 models/GetDigits.ts
 models/GetDigitsReason.ts

@@ -33,7 +33,7 @@ interface ArgumentsType {
   from?: string;
   to?: string;
   phoneNumberId?: string;
-  callStatus?: CallStatus;
+  status?: CallStatus;
   startTime?: string;
   connectTime?: string;
   endTime?: string;
@@ -85,7 +85,7 @@ export class CallResult {
    * If the Call was inbound, this is the ID of the IncomingPhoneNumber that received the Call (DNIS). If the Call was outbound, this is the ID of the phone number from which the Call was placed (ANI).
    */
   "phoneNumberId"?: string;
-  "callStatus"?: CallStatus;
+  "status"?: CallStatus;
   /**
    * Start time of the Call (GMT) in RFC 1123 format (e.g., Mon, 15 Jun 2009 20:45:30 GMT). Empty if the Call has not yet been dialed.
    */
@@ -201,8 +201,8 @@ export class CallResult {
       defaultValue: undefined,
     },
     {
-      name: "callStatus",
-      baseName: "callStatus",
+      name: "status",
+      baseName: "status",
       type: "CallStatus",
       format: "",
 
@@ -304,7 +304,7 @@ export class CallResult {
     this["from"] = assign<string>("from");
     this["to"] = assign<string>("to");
     this["phoneNumberId"] = assign<string>("phoneNumberId");
-    this["callStatus"] = assign<CallStatus>("callStatus");
+    this["status"] = assign<CallStatus>("status");
     this["startTime"] = assign<string>("startTime");
     this["connectTime"] = assign<string>("connectTime");
     this["endTime"] = assign<string>("endTime");

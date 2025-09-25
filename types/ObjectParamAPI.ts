@@ -42,6 +42,14 @@ import { CreateWebRTCToken } from "../models/CreateWebRTCToken";
 import { Dequeue } from "../models/Dequeue";
 import { DequeueWebhook } from "../models/DequeueWebhook";
 import { Enqueue } from "../models/Enqueue";
+import { ExportList } from "../models/ExportList";
+import { ExportOutputType } from "../models/ExportOutputType";
+import { ExportRequest } from "../models/ExportRequest";
+import { ExportRequestOutput } from "../models/ExportRequestOutput";
+import { ExportResourceType } from "../models/ExportResourceType";
+import { ExportResult } from "../models/ExportResult";
+import { ExportResultOutput } from "../models/ExportResultOutput";
+import { ExportStatus } from "../models/ExportStatus";
 import { FilterLogsRequest } from "../models/FilterLogsRequest";
 import { GetDigits } from "../models/GetDigits";
 import { GetDigitsReason } from "../models/GetDigitsReason";
@@ -185,6 +193,15 @@ export interface DefaultApiCreateAnApplicationRequest {
   applicationRequest?: ApplicationRequest;
 }
 
+export interface DefaultApiCreateExportRequest {
+  /**
+   * A JSON object containing export creation parameters
+   * @type ExportRequest
+   * @memberof DefaultApicreateExport
+   */
+  exportRequest?: ExportRequest;
+}
+
 export interface DefaultApiCreateKnowledgeBaseCompletionRequest {
   /**
    * A string that uniquely identifies the KnowledgeBase resource.
@@ -217,6 +234,15 @@ export interface DefaultApiDeleteAnApplicationRequest {
    * @memberof DefaultApideleteAnApplication
    */
   applicationId: string;
+}
+
+export interface DefaultApiDeleteAnExportRequest {
+  /**
+   * A string that uniquely identifies this export resource.
+   * @type string
+   * @memberof DefaultApideleteAnExport
+   */
+  exportId: string;
 }
 
 export interface DefaultApiDeleteAnIncomingNumberRequest {
@@ -260,6 +286,15 @@ export interface DefaultApiDownloadARecordingFileRequest {
    * @memberof DefaultApidownloadARecordingFile
    */
   recordingId: string;
+}
+
+export interface DefaultApiDownloadAnExportRequest {
+  /**
+   * A string that uniquely identifies this export resource.
+   * @type string
+   * @memberof DefaultApidownloadAnExport
+   */
+  exportId: string;
 }
 
 export interface DefaultApiFilterLogsRequest {
@@ -348,6 +383,15 @@ export interface DefaultApiGetAnApplicationRequest {
    * @memberof DefaultApigetAnApplication
    */
   applicationId: string;
+}
+
+export interface DefaultApiGetAnExportRequest {
+  /**
+   * A string that uniquely identifies this export resource.
+   * @type string
+   * @memberof DefaultApigetAnExport
+   */
+  exportId: string;
 }
 
 export interface DefaultApiGetAnIncomingNumberRequest {
@@ -608,6 +652,20 @@ export interface DefaultApiListCallsRequest {
    * @memberof DefaultApilistCalls
    */
   applicationId?: Array<string>;
+
+  /**
+   * The minimum riskScore that should be included in the list.
+   * @type number
+   * @memberof DefaultApilistCalls
+   */
+  riskScoreMin?: number;
+
+  /**
+   * The maximum riskScore that should be included in the list.
+   * @type number
+   * @memberof DefaultApilistCalls
+   */
+  riskScoreMax?: number;
 }
 
 export interface DefaultApiListConferenceRecordingsRequest {
@@ -661,6 +719,22 @@ export interface DefaultApiListConferencesRequest {
    * @memberof DefaultApilistConferences
    */
   dateUpdated?: string;
+}
+
+export interface DefaultApiListExportsRequest {
+  /**
+   * Status of export
+   * @type ExportStatus
+   * @memberof DefaultApilistExports
+   */
+  status?: ExportStatus;
+
+  /**
+   * Used to reference pages of a list of exports
+   * @type string
+   * @memberof DefaultApilistExports
+   */
+  cursor?: string;
 }
 
 export interface DefaultApiListIncomingNumbersRequest {
@@ -1127,6 +1201,17 @@ export class ObjectDefaultApi {
   }
 
   /**
+   * Create an Export
+   * @param param the request object
+   */
+  public createExport(
+    param: DefaultApiCreateExportRequest,
+    options?: Configuration,
+  ): Promise<ExportResult> {
+    return this.api.createExport(param.exportRequest, options).toPromise();
+  }
+
+  /**
    * Query the knowledge base
    * @param param the request object
    */
@@ -1165,6 +1250,17 @@ export class ObjectDefaultApi {
     return this.api
       .deleteAnApplication(param.applicationId, options)
       .toPromise();
+  }
+
+  /**
+   * Delete an Export
+   * @param param the request object
+   */
+  public deleteAnExport(
+    param: DefaultApiDeleteAnExportRequest,
+    options?: Configuration,
+  ): Promise<void> {
+    return this.api.deleteAnExport(param.exportId, options).toPromise();
   }
 
   /**
@@ -1215,6 +1311,17 @@ export class ObjectDefaultApi {
     return this.api
       .downloadARecordingFile(param.recordingId, options)
       .toPromise();
+  }
+
+  /**
+   * Download an Export
+   * @param param the request object
+   */
+  public downloadAnExport(
+    param: DefaultApiDownloadAnExportRequest,
+    options?: Configuration,
+  ): Promise<string> {
+    return this.api.downloadAnExport(param.exportId, options).toPromise();
   }
 
   /**
@@ -1318,6 +1425,17 @@ export class ObjectDefaultApi {
     options?: Configuration,
   ): Promise<ApplicationResult> {
     return this.api.getAnApplication(param.applicationId, options).toPromise();
+  }
+
+  /**
+   * Get an Export
+   * @param param the request object
+   */
+  public getAnExport(
+    param: DefaultApiGetAnExportRequest,
+    options?: Configuration,
+  ): Promise<ExportResult> {
+    return this.api.getAnExport(param.exportId, options).toPromise();
   }
 
   /**
@@ -1549,6 +1667,8 @@ export class ObjectDefaultApi {
         param.endTime,
         param.parentCallId,
         param.applicationId,
+        param.riskScoreMin,
+        param.riskScoreMax,
         options,
       )
       .toPromise();
@@ -1588,6 +1708,19 @@ export class ObjectDefaultApi {
         param.dateUpdated,
         options,
       )
+      .toPromise();
+  }
+
+  /**
+   * List Exports
+   * @param param the request object
+   */
+  public listExports(
+    param: DefaultApiListExportsRequest,
+    options?: Configuration,
+  ): Promise<ExportList> {
+    return this.api
+      .listExports(param.status, param.cursor, options)
       .toPromise();
   }
 
