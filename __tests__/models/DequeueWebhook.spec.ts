@@ -5,19 +5,19 @@ describe("DequeueWebhook", () => {
   describe("Test with truthy values", () => {
     const Klass = freeclimb.DequeueWebhook;
     let model: freeclimb.DequeueWebhook = new freeclimb.DequeueWebhook({
-      requestType: "test_requestType",
-      callId: "test_callId",
-      accountId: "test_accountId",
-      from: "test_from",
-      to: "test_to",
+      ["requestType"]: "test_requestType",
+      ["callId"]: "test_callId",
+      ["accountId"]: "test_accountId",
+      ["from"]: "test_from",
+      ["to"]: "test_to",
 
-      callStatus: freeclimb.CallStatus.QUEUED,
+      ["callStatus"]: freeclimb.CallStatus.QUEUED,
 
-      direction: freeclimb.CallDirection.INBOUND,
-      conferenceId: "test_conferenceId",
-      queueId: "test_queueId",
-      queueResult: "test_queueResult",
-      queueTime: 1,
+      ["direction"]: freeclimb.CallDirection.INBOUND,
+      ["conferenceId"]: "test_conferenceId",
+      ["queueId"]: "test_queueId",
+      ["queueResult"]: "test_queueResult",
+      ["queueTime"]: 1,
     });
     describe("DequeueWebhook class test", () => {
       it("resolves to the class type upon initialization", () => {
@@ -28,67 +28,67 @@ describe("DequeueWebhook", () => {
     describe(".requestType", () => {
       it("resolves to particular value on initialization", () => {
         const value = "test_requestType";
-        expect(model.requestType).toBe(value);
+        expect(model["requestType"]).toBe(value);
       });
     });
     describe(".callId", () => {
       it("resolves to particular value on initialization", () => {
         const value = "test_callId";
-        expect(model.callId).toBe(value);
+        expect(model["callId"]).toBe(value);
       });
     });
     describe(".accountId", () => {
       it("resolves to particular value on initialization", () => {
         const value = "test_accountId";
-        expect(model.accountId).toBe(value);
+        expect(model["accountId"]).toBe(value);
       });
     });
     describe(".from", () => {
       it("resolves to particular value on initialization", () => {
         const value = "test_from";
-        expect(model.from).toBe(value);
+        expect(model["from"]).toBe(value);
       });
     });
     describe(".to", () => {
       it("resolves to particular value on initialization", () => {
         const value = "test_to";
-        expect(model.to).toBe(value);
+        expect(model["to"]).toBe(value);
       });
     });
     describe(".callStatus", () => {
       it("resolves to particular value on initialization", () => {
         const value = "queued";
-        expect(model.callStatus).toBe(value);
+        expect(model["callStatus"]).toBe(value);
       });
     });
     describe(".direction", () => {
       it("resolves to particular value on initialization", () => {
         const value = "inbound";
-        expect(model.direction).toBe(value);
+        expect(model["direction"]).toBe(value);
       });
     });
     describe(".conferenceId", () => {
       it("resolves to particular value on initialization", () => {
         const value = "test_conferenceId";
-        expect(model.conferenceId).toBe(value);
+        expect(model["conferenceId"]).toBe(value);
       });
     });
     describe(".queueId", () => {
       it("resolves to particular value on initialization", () => {
         const value = "test_queueId";
-        expect(model.queueId).toBe(value);
+        expect(model["queueId"]).toBe(value);
       });
     });
     describe(".queueResult", () => {
       it("resolves to particular value on initialization", () => {
         const value = "test_queueResult";
-        expect(model.queueResult).toBe(value);
+        expect(model["queueResult"]).toBe(value);
       });
     });
     describe(".queueTime", () => {
       it("resolves to particular value on initialization", () => {
         const value = 1;
-        expect(model.queueTime).toBe(value);
+        expect(model["queueTime"]).toBe(value);
       });
     });
     describe(".deserialize", () => {
@@ -102,19 +102,19 @@ describe("DequeueWebhook", () => {
   describe("Test with falsy values", () => {
     const Klass = freeclimb.DequeueWebhook;
     let model: freeclimb.DequeueWebhook = new freeclimb.DequeueWebhook({
-      requestType: "",
-      callId: "",
-      accountId: "",
-      from: "",
-      to: "",
+      ["requestType"]: "",
+      ["callId"]: "",
+      ["accountId"]: "",
+      ["from"]: "",
+      ["to"]: "",
 
-      callStatus: freeclimb.CallStatus.QUEUED,
+      ["callStatus"]: freeclimb.CallStatus.QUEUED,
 
-      direction: freeclimb.CallDirection.INBOUND,
-      conferenceId: "",
-      queueId: "",
-      queueResult: "",
-      queueTime: 0,
+      ["direction"]: freeclimb.CallDirection.INBOUND,
+      ["conferenceId"]: "",
+      ["queueId"]: "",
+      ["queueResult"]: "",
+      ["queueTime"]: 0,
     });
     describe("DequeueWebhook class test", () => {
       it("resolves to the class type upon initialization", () => {
@@ -125,67 +125,67 @@ describe("DequeueWebhook", () => {
     describe(".requestType", () => {
       it("resolves to particular value on initialization", () => {
         const value = "";
-        expect(model.requestType).toBe(value);
+        expect(model["requestType"]).toBe(value);
       });
     });
     describe(".callId", () => {
       it("resolves to particular value on initialization", () => {
         const value = "";
-        expect(model.callId).toBe(value);
+        expect(model["callId"]).toBe(value);
       });
     });
     describe(".accountId", () => {
       it("resolves to particular value on initialization", () => {
         const value = "";
-        expect(model.accountId).toBe(value);
+        expect(model["accountId"]).toBe(value);
       });
     });
     describe(".from", () => {
       it("resolves to particular value on initialization", () => {
         const value = "";
-        expect(model.from).toBe(value);
+        expect(model["from"]).toBe(value);
       });
     });
     describe(".to", () => {
       it("resolves to particular value on initialization", () => {
         const value = "";
-        expect(model.to).toBe(value);
+        expect(model["to"]).toBe(value);
       });
     });
     describe(".callStatus", () => {
       it("resolves to particular value on initialization", () => {
         const value = "queued";
-        expect(model.callStatus).toBe(value);
+        expect(model["callStatus"]).toBe(value);
       });
     });
     describe(".direction", () => {
       it("resolves to particular value on initialization", () => {
         const value = "inbound";
-        expect(model.direction).toBe(value);
+        expect(model["direction"]).toBe(value);
       });
     });
     describe(".conferenceId", () => {
       it("resolves to particular value on initialization", () => {
         const value = "";
-        expect(model.conferenceId).toBe(value);
+        expect(model["conferenceId"]).toBe(value);
       });
     });
     describe(".queueId", () => {
       it("resolves to particular value on initialization", () => {
         const value = "";
-        expect(model.queueId).toBe(value);
+        expect(model["queueId"]).toBe(value);
       });
     });
     describe(".queueResult", () => {
       it("resolves to particular value on initialization", () => {
         const value = "";
-        expect(model.queueResult).toBe(value);
+        expect(model["queueResult"]).toBe(value);
       });
     });
     describe(".queueTime", () => {
       it("resolves to particular value on initialization", () => {
         const value = 0;
-        expect(model.queueTime).toBe(value);
+        expect(model["queueTime"]).toBe(value);
       });
     });
     describe(".deserialize", () => {
@@ -208,7 +208,7 @@ describe("DequeueWebhook", () => {
         const value = Klass.attributeTypeMap.find(
           (attribute) => attribute.name === "requestType",
         )?.defaultValue;
-        expect(model.requestType).toBe(value);
+        expect(model["requestType"]).toBe(value);
       });
     });
     describe("#callId", () => {
@@ -216,7 +216,7 @@ describe("DequeueWebhook", () => {
         const value = Klass.attributeTypeMap.find(
           (attribute) => attribute.name === "callId",
         )?.defaultValue;
-        expect(model.callId).toBe(value);
+        expect(model["callId"]).toBe(value);
       });
     });
     describe("#accountId", () => {
@@ -224,7 +224,7 @@ describe("DequeueWebhook", () => {
         const value = Klass.attributeTypeMap.find(
           (attribute) => attribute.name === "accountId",
         )?.defaultValue;
-        expect(model.accountId).toBe(value);
+        expect(model["accountId"]).toBe(value);
       });
     });
     describe("#from", () => {
@@ -232,7 +232,7 @@ describe("DequeueWebhook", () => {
         const value = Klass.attributeTypeMap.find(
           (attribute) => attribute.name === "from",
         )?.defaultValue;
-        expect(model.from).toBe(value);
+        expect(model["from"]).toBe(value);
       });
     });
     describe("#to", () => {
@@ -240,7 +240,7 @@ describe("DequeueWebhook", () => {
         const value = Klass.attributeTypeMap.find(
           (attribute) => attribute.name === "to",
         )?.defaultValue;
-        expect(model.to).toBe(value);
+        expect(model["to"]).toBe(value);
       });
     });
     describe("#callStatus", () => {
@@ -248,7 +248,7 @@ describe("DequeueWebhook", () => {
         const value = Klass.attributeTypeMap.find(
           (attribute) => attribute.name === "callStatus",
         )?.defaultValue;
-        expect(model.callStatus).toBe(value);
+        expect(model["callStatus"]).toBe(value);
       });
     });
     describe("#direction", () => {
@@ -256,7 +256,7 @@ describe("DequeueWebhook", () => {
         const value = Klass.attributeTypeMap.find(
           (attribute) => attribute.name === "direction",
         )?.defaultValue;
-        expect(model.direction).toBe(value);
+        expect(model["direction"]).toBe(value);
       });
     });
     describe("#conferenceId", () => {
@@ -264,7 +264,7 @@ describe("DequeueWebhook", () => {
         const value = Klass.attributeTypeMap.find(
           (attribute) => attribute.name === "conferenceId",
         )?.defaultValue;
-        expect(model.conferenceId).toBe(value);
+        expect(model["conferenceId"]).toBe(value);
       });
     });
     describe("#queueId", () => {
@@ -272,7 +272,7 @@ describe("DequeueWebhook", () => {
         const value = Klass.attributeTypeMap.find(
           (attribute) => attribute.name === "queueId",
         )?.defaultValue;
-        expect(model.queueId).toBe(value);
+        expect(model["queueId"]).toBe(value);
       });
     });
     describe("#queueResult", () => {
@@ -280,7 +280,7 @@ describe("DequeueWebhook", () => {
         const value = Klass.attributeTypeMap.find(
           (attribute) => attribute.name === "queueResult",
         )?.defaultValue;
-        expect(model.queueResult).toBe(value);
+        expect(model["queueResult"]).toBe(value);
       });
     });
     describe("#queueTime", () => {
@@ -288,7 +288,7 @@ describe("DequeueWebhook", () => {
         const value = Klass.attributeTypeMap.find(
           (attribute) => attribute.name === "queueTime",
         )?.defaultValue;
-        expect(model.queueTime).toBe(value);
+        expect(model["queueTime"]).toBe(value);
       });
     });
   });

@@ -25,6 +25,13 @@ interface AttributeType {
   defaultValue: any;
 }
 interface ArgumentsType {
+  /**
+    * CodegenProperty{openApiType='integer', baseName='length', complexType='null', getter='getLength', setter='setLength', description='Length in milliseconds. FreeClimb will wait silently before continuing on.', dataType='number', datatypeWithEnum='number', dataFormat='null', name='length', min='null', max='null', defaultValue='undefined', defaultValueWithParam=' = data.length;', baseType='number', containerType='null', containerTypeMapped='null', title='null', unescapedDescription='Length in milliseconds. FreeClimb will wait silently before continuing on.', maxLength=null, minLength=null, pattern='null', example='1', jsonSchema='{
+  "description" : "Length in milliseconds. FreeClimb will wait silently before continuing on.",
+  "type" : "integer",
+  "x-is-required" : true
+}', minimum='null', maximum='null', exclusiveMinimum=false, exclusiveMaximum=false, required=true, deprecated=false, hasMoreNonReadOnly=false, isPrimitiveType=true, isModel=false, isContainer=false, isString=false, isNumeric=true, isInteger=true, isShort=false, isLong=false, isUnboundedInteger=true, isNumber=false, isFloat=false, isDouble=false, isDecimal=false, isByteArray=false, isBinary=false, isFile=false, isBoolean=false, isDate=false, isDateTime=false, isUuid=false, isUri=false, isEmail=false, isPassword=false, isFreeFormObject=false, isArray=false, isMap=false, isOptional=false, isEnum=false, isInnerEnum=false, isEnumRef=false, isAnyType=false, isReadOnly=false, isWriteOnly=false, isNullable=false, isSelfReference=false, isCircularReference=false, isDiscriminator=false, isNew=false, isOverridden=false, _enum=null, allowableValues=null, items=null, additionalProperties=null, vars=[], requiredVars=[], mostInnerItems=null, vendorExtensions={x-is-required=true}, hasValidation=false, isInherited=false, discriminatorValue='null', nameInCamelCase='length', nameInPascalCase='Length', nameInSnakeCase='LENGTH', enumName='null', maxItems=null, minItems=null, maxProperties=null, minProperties=null, uniqueItems=false, uniqueItemsBoolean=null, multipleOf=null, isXmlAttribute=false, xmlPrefix='null', xmlName='null', xmlNamespace='null', isXmlWrapped=false, isNull=false, isVoid=false, getAdditionalPropertiesIsAnyType=false, getHasVars=false, getHasRequired=false, getHasDiscriminatorWithNonEmptyMapping=false, composedSchemas=null, hasMultipleTypes=false, hasSanitizedName=false, requiredVarsMap=null, ref=null, schemaIsFromAdditionalProperties=false, isBooleanSchemaTrue=false, isBooleanSchemaFalse=false, format=null, dependentRequired=null, contains=null}
+     */
   length: number;
 }
 export class Pause extends PerclCommand {

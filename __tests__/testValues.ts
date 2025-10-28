@@ -19,6 +19,9 @@ import {
   ExportRequest,
   ExportRequestOutput,
   ExportOutputType,
+  ModifyBlobRequest,
+  CreateBlobRequest,
+  ReplaceBlobRequest,
 } from "../index";
 
 export const parameters = {
@@ -202,6 +205,18 @@ export const parameters = {
   downloadAnExport: {
     exportId: "TEST_EXPORT_ID",
   },
+  getBlob: {
+    blobId: "BL0123456789abcdefABCDEF0123456789abcdef00",
+  },
+  deleteBlob: {
+    blobId: "BL0123456789abcdefABCDEF0123456789abcdef00",
+  },
+  modifyBlob: {
+    blobId: "BL0123456789abcdefABCDEF0123456789abcdef00",
+  },
+  replaceBlob: {
+    blobId: "BL0123456789abcdefABCDEF0123456789abcdef00",
+  },
 };
 
 export const requestBody = {
@@ -257,5 +272,15 @@ export const requestBody = {
       type: ExportOutputType.CSV,
     }),
     query: {},
+  }),
+  createBlob: new CreateBlobRequest({
+    blob: {},
+  }),
+  modifyBlob: new ModifyBlobRequest({
+    blob: {},
+    alias: "TEST_ALIAS",
+  }),
+  replaceBlob: new ReplaceBlobRequest({
+    blob: {},
   }),
 };

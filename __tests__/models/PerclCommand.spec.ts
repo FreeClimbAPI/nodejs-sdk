@@ -32,7 +32,7 @@ describe("PerclCommand", () => {
         const value = Klass.attributeTypeMap.find(
           (attribute) => attribute.name === "command",
         )?.defaultValue;
-        expect(model.command).toBe(value);
+        expect(model["command"]).toBe(value);
       });
     });
   });

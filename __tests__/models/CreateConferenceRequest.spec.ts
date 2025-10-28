@@ -6,12 +6,12 @@ describe("CreateConferenceRequest", () => {
     const Klass = freeclimb.CreateConferenceRequest;
     let model: freeclimb.CreateConferenceRequest =
       new freeclimb.CreateConferenceRequest({
-        alias: "test_alias",
+        ["alias"]: "test_alias",
 
-        playBeep: freeclimb.PlayBeep.ALWAYS,
-        record: true,
-        waitUrl: "https://123.abc",
-        statusCallbackUrl: "https://123.abc",
+        ["playBeep"]: freeclimb.PlayBeep.ALWAYS,
+        ["record"]: true,
+        ["waitUrl"]: "https://123.abc",
+        ["statusCallbackUrl"]: "https://123.abc",
       });
     describe("CreateConferenceRequest class test", () => {
       it("resolves to the class type upon initialization", () => {
@@ -21,31 +21,31 @@ describe("CreateConferenceRequest", () => {
     describe(".alias", () => {
       it("resolves to particular value on initialization", () => {
         const value = "test_alias";
-        expect(model.alias).toBe(value);
+        expect(model["alias"]).toBe(value);
       });
     });
     describe(".playBeep", () => {
       it("resolves to particular value on initialization", () => {
         const value = "always";
-        expect(model.playBeep).toBe(value);
+        expect(model["playBeep"]).toBe(value);
       });
     });
     describe(".record", () => {
       it("resolves to particular value on initialization", () => {
         const value = true;
-        expect(model.record).toBe(value);
+        expect(model["record"]).toBe(value);
       });
     });
     describe(".waitUrl", () => {
       it("resolves to particular value on initialization", () => {
         const value = "https://123.abc";
-        expect(model.waitUrl).toBe(value);
+        expect(model["waitUrl"]).toBe(value);
       });
     });
     describe(".statusCallbackUrl", () => {
       it("resolves to particular value on initialization", () => {
         const value = "https://123.abc";
-        expect(model.statusCallbackUrl).toBe(value);
+        expect(model["statusCallbackUrl"]).toBe(value);
       });
     });
   });
@@ -53,12 +53,12 @@ describe("CreateConferenceRequest", () => {
     const Klass = freeclimb.CreateConferenceRequest;
     let model: freeclimb.CreateConferenceRequest =
       new freeclimb.CreateConferenceRequest({
-        alias: "",
+        ["alias"]: "",
 
-        playBeep: freeclimb.PlayBeep.ALWAYS,
-        record: false,
-        waitUrl: "",
-        statusCallbackUrl: "",
+        ["playBeep"]: freeclimb.PlayBeep.ALWAYS,
+        ["record"]: false,
+        ["waitUrl"]: "",
+        ["statusCallbackUrl"]: "",
       });
     describe("CreateConferenceRequest class test", () => {
       it("resolves to the class type upon initialization", () => {
@@ -68,38 +68,38 @@ describe("CreateConferenceRequest", () => {
     describe(".alias", () => {
       it("resolves to particular value on initialization", () => {
         const value = "";
-        expect(model.alias).toBe(value);
+        expect(model["alias"]).toBe(value);
       });
     });
     describe(".playBeep", () => {
       it("resolves to particular value on initialization", () => {
         const value = "always";
-        expect(model.playBeep).toBe(value);
+        expect(model["playBeep"]).toBe(value);
       });
     });
     describe(".record", () => {
       it("resolves to particular value on initialization", () => {
         const value = false;
-        expect(model.record).toBe(value);
+        expect(model["record"]).toBe(value);
       });
     });
     describe(".waitUrl", () => {
       it("resolves to particular value on initialization", () => {
         const value = "";
-        expect(model.waitUrl).toBe(value);
+        expect(model["waitUrl"]).toBe(value);
       });
     });
     describe(".statusCallbackUrl", () => {
       it("resolves to particular value on initialization", () => {
         const value = "";
-        expect(model.statusCallbackUrl).toBe(value);
+        expect(model["statusCallbackUrl"]).toBe(value);
       });
     });
   });
   describe("Test with only required values", () => {
     const Klass = freeclimb.CreateConferenceRequest;
     let constructorArguments = {
-      statusCallbackUrl: "https://123.abc",
+      ["statusCallbackUrl"]: "https://123.abc",
     };
     let model: freeclimb.CreateConferenceRequest =
       new freeclimb.CreateConferenceRequest(constructorArguments);
@@ -109,7 +109,7 @@ describe("CreateConferenceRequest", () => {
         const value = Klass.attributeTypeMap.find(
           (attribute) => attribute.name === "alias",
         )?.defaultValue;
-        expect(model.alias).toBe(value);
+        expect(model["alias"]).toBe(value);
       });
     });
     describe("#playBeep", () => {
@@ -117,7 +117,7 @@ describe("CreateConferenceRequest", () => {
         const value = Klass.attributeTypeMap.find(
           (attribute) => attribute.name === "playBeep",
         )?.defaultValue;
-        expect(model.playBeep).toBe(value);
+        expect(model["playBeep"]).toBe(value);
       });
     });
     describe("#record", () => {
@@ -125,7 +125,7 @@ describe("CreateConferenceRequest", () => {
         const value = Klass.attributeTypeMap.find(
           (attribute) => attribute.name === "record",
         )?.defaultValue;
-        expect(model.record).toBe(value);
+        expect(model["record"]).toBe(value);
       });
     });
     describe("#waitUrl", () => {
@@ -133,12 +133,12 @@ describe("CreateConferenceRequest", () => {
         const value = Klass.attributeTypeMap.find(
           (attribute) => attribute.name === "waitUrl",
         )?.defaultValue;
-        expect(model.waitUrl).toBe(value);
+        expect(model["waitUrl"]).toBe(value);
       });
     });
     describe("#statusCallbackUrl", () => {
       it("resolves to initialization value", () => {
-        expect(model.statusCallbackUrl).toBe(
+        expect(model["statusCallbackUrl"]).toBe(
           constructorArguments["statusCallbackUrl"],
         );
       });

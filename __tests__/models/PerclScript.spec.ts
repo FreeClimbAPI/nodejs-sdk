@@ -5,7 +5,7 @@ describe("PerclScript", () => {
   describe("Test with truthy values", () => {
     const Klass = freeclimb.PerclScript;
     let model: freeclimb.PerclScript = new freeclimb.PerclScript({
-      commands: [],
+      ["commands"]: [],
     });
     describe("PerclScript class test", () => {
       it("resolves to the class type upon initialization", () => {
@@ -15,14 +15,14 @@ describe("PerclScript", () => {
     describe(".commands", () => {
       it("resolves to particular value on initialization", () => {
         const value: freeclimb.PerclCommand[] = [];
-        expect(model.commands).toStrictEqual(value);
+        expect(model["commands"]).toStrictEqual(value);
       });
     });
   });
   describe("Test with falsy values", () => {
     const Klass = freeclimb.PerclScript;
     let model: freeclimb.PerclScript = new freeclimb.PerclScript({
-      commands: [],
+      ["commands"]: [],
     });
     describe("PerclScript class test", () => {
       it("resolves to the class type upon initialization", () => {
@@ -32,7 +32,7 @@ describe("PerclScript", () => {
     describe(".commands", () => {
       it("resolves to particular value on initialization", () => {
         const value: freeclimb.PerclCommand[] = [];
-        expect(model.commands).toStrictEqual(value);
+        expect(model["commands"]).toStrictEqual(value);
       });
     });
   });
@@ -48,7 +48,7 @@ describe("PerclScript", () => {
         const value = Klass.attributeTypeMap.find(
           (attribute) => attribute.name === "commands",
         )?.defaultValue;
-        expect(model.commands).toBe(value);
+        expect(model["commands"]).toBe(value);
       });
     });
   });

@@ -5,9 +5,9 @@ describe("SendDigits", () => {
   describe("Test with truthy values", () => {
     const Klass = freeclimb.SendDigits;
     let model: freeclimb.SendDigits = new freeclimb.SendDigits({
-      digits: "test_digits",
-      pauseMs: 1,
-      privacyMode: true,
+      ["digits"]: "test_digits",
+      ["pauseMs"]: 1,
+      ["privacyMode"]: true,
     });
     describe("SendDigits class test", () => {
       it("resolves to the class type upon initialization", () => {
@@ -18,28 +18,28 @@ describe("SendDigits", () => {
     describe(".digits", () => {
       it("resolves to particular value on initialization", () => {
         const value = "test_digits";
-        expect(model.digits).toBe(value);
+        expect(model["digits"]).toBe(value);
       });
     });
     describe(".pauseMs", () => {
       it("resolves to particular value on initialization", () => {
         const value = 1;
-        expect(model.pauseMs).toBe(value);
+        expect(model["pauseMs"]).toBe(value);
       });
     });
     describe(".privacyMode", () => {
       it("resolves to particular value on initialization", () => {
         const value = true;
-        expect(model.privacyMode).toBe(value);
+        expect(model["privacyMode"]).toBe(value);
       });
     });
   });
   describe("Test with falsy values", () => {
     const Klass = freeclimb.SendDigits;
     let model: freeclimb.SendDigits = new freeclimb.SendDigits({
-      digits: "",
-      pauseMs: 0,
-      privacyMode: false,
+      ["digits"]: "",
+      ["pauseMs"]: 0,
+      ["privacyMode"]: false,
     });
     describe("SendDigits class test", () => {
       it("resolves to the class type upon initialization", () => {
@@ -50,26 +50,26 @@ describe("SendDigits", () => {
     describe(".digits", () => {
       it("resolves to particular value on initialization", () => {
         const value = "";
-        expect(model.digits).toBe(value);
+        expect(model["digits"]).toBe(value);
       });
     });
     describe(".pauseMs", () => {
       it("resolves to particular value on initialization", () => {
         const value = 0;
-        expect(model.pauseMs).toBe(value);
+        expect(model["pauseMs"]).toBe(value);
       });
     });
     describe(".privacyMode", () => {
       it("resolves to particular value on initialization", () => {
         const value = false;
-        expect(model.privacyMode).toBe(value);
+        expect(model["privacyMode"]).toBe(value);
       });
     });
   });
   describe("Test with only required values", () => {
     const Klass = freeclimb.SendDigits;
     let constructorArguments = {
-      digits: "test_digits",
+      ["digits"]: "test_digits",
     };
     let model: freeclimb.SendDigits = new freeclimb.SendDigits(
       constructorArguments,
@@ -77,7 +77,7 @@ describe("SendDigits", () => {
 
     describe("#digits", () => {
       it("resolves to initialization value", () => {
-        expect(model.digits).toBe(constructorArguments["digits"]);
+        expect(model["digits"]).toBe(constructorArguments["digits"]);
       });
     });
     describe("#pauseMs", () => {
@@ -85,7 +85,7 @@ describe("SendDigits", () => {
         const value = Klass.attributeTypeMap.find(
           (attribute) => attribute.name === "pauseMs",
         )?.defaultValue;
-        expect(model.pauseMs).toBe(value);
+        expect(model["pauseMs"]).toBe(value);
       });
     });
     describe("#privacyMode", () => {
@@ -93,7 +93,7 @@ describe("SendDigits", () => {
         const value = Klass.attributeTypeMap.find(
           (attribute) => attribute.name === "privacyMode",
         )?.defaultValue;
-        expect(model.privacyMode).toBe(value);
+        expect(model["privacyMode"]).toBe(value);
       });
     });
   });

@@ -6,18 +6,18 @@ describe("OutDialApiConnectWebhook", () => {
     const Klass = freeclimb.OutDialApiConnectWebhook;
     let model: freeclimb.OutDialApiConnectWebhook =
       new freeclimb.OutDialApiConnectWebhook({
-        requestType: "test_requestType",
-        accountId: "test_accountId",
-        callId: "test_callId",
-        from: "test_from",
-        to: "test_to",
+        ["requestType"]: "test_requestType",
+        ["accountId"]: "test_accountId",
+        ["callId"]: "test_callId",
+        ["from"]: "test_from",
+        ["to"]: "test_to",
 
-        callStatus: freeclimb.CallStatus.QUEUED,
+        ["callStatus"]: freeclimb.CallStatus.QUEUED,
 
-        direction: freeclimb.CallDirection.INBOUND,
-        conferenceId: "test_conferenceId",
-        queueId: "test_queueId",
-        parentCallId: "test_parentCallId",
+        ["direction"]: freeclimb.CallDirection.INBOUND,
+        ["conferenceId"]: "test_conferenceId",
+        ["queueId"]: "test_queueId",
+        ["parentCallId"]: "test_parentCallId",
       });
     describe("OutDialApiConnectWebhook class test", () => {
       it("resolves to the class type upon initialization", () => {
@@ -28,61 +28,61 @@ describe("OutDialApiConnectWebhook", () => {
     describe(".requestType", () => {
       it("resolves to particular value on initialization", () => {
         const value = "test_requestType";
-        expect(model.requestType).toBe(value);
+        expect(model["requestType"]).toBe(value);
       });
     });
     describe(".accountId", () => {
       it("resolves to particular value on initialization", () => {
         const value = "test_accountId";
-        expect(model.accountId).toBe(value);
+        expect(model["accountId"]).toBe(value);
       });
     });
     describe(".callId", () => {
       it("resolves to particular value on initialization", () => {
         const value = "test_callId";
-        expect(model.callId).toBe(value);
+        expect(model["callId"]).toBe(value);
       });
     });
     describe(".from", () => {
       it("resolves to particular value on initialization", () => {
         const value = "test_from";
-        expect(model.from).toBe(value);
+        expect(model["from"]).toBe(value);
       });
     });
     describe(".to", () => {
       it("resolves to particular value on initialization", () => {
         const value = "test_to";
-        expect(model.to).toBe(value);
+        expect(model["to"]).toBe(value);
       });
     });
     describe(".callStatus", () => {
       it("resolves to particular value on initialization", () => {
         const value = "queued";
-        expect(model.callStatus).toBe(value);
+        expect(model["callStatus"]).toBe(value);
       });
     });
     describe(".direction", () => {
       it("resolves to particular value on initialization", () => {
         const value = "inbound";
-        expect(model.direction).toBe(value);
+        expect(model["direction"]).toBe(value);
       });
     });
     describe(".conferenceId", () => {
       it("resolves to particular value on initialization", () => {
         const value = "test_conferenceId";
-        expect(model.conferenceId).toBe(value);
+        expect(model["conferenceId"]).toBe(value);
       });
     });
     describe(".queueId", () => {
       it("resolves to particular value on initialization", () => {
         const value = "test_queueId";
-        expect(model.queueId).toBe(value);
+        expect(model["queueId"]).toBe(value);
       });
     });
     describe(".parentCallId", () => {
       it("resolves to particular value on initialization", () => {
         const value = "test_parentCallId";
-        expect(model.parentCallId).toBe(value);
+        expect(model["parentCallId"]).toBe(value);
       });
     });
     describe(".deserialize", () => {
@@ -99,18 +99,18 @@ describe("OutDialApiConnectWebhook", () => {
     const Klass = freeclimb.OutDialApiConnectWebhook;
     let model: freeclimb.OutDialApiConnectWebhook =
       new freeclimb.OutDialApiConnectWebhook({
-        requestType: "",
-        accountId: "",
-        callId: "",
-        from: "",
-        to: "",
+        ["requestType"]: "",
+        ["accountId"]: "",
+        ["callId"]: "",
+        ["from"]: "",
+        ["to"]: "",
 
-        callStatus: freeclimb.CallStatus.QUEUED,
+        ["callStatus"]: freeclimb.CallStatus.QUEUED,
 
-        direction: freeclimb.CallDirection.INBOUND,
-        conferenceId: "",
-        queueId: "",
-        parentCallId: "",
+        ["direction"]: freeclimb.CallDirection.INBOUND,
+        ["conferenceId"]: "",
+        ["queueId"]: "",
+        ["parentCallId"]: "",
       });
     describe("OutDialApiConnectWebhook class test", () => {
       it("resolves to the class type upon initialization", () => {
@@ -121,61 +121,61 @@ describe("OutDialApiConnectWebhook", () => {
     describe(".requestType", () => {
       it("resolves to particular value on initialization", () => {
         const value = "";
-        expect(model.requestType).toBe(value);
+        expect(model["requestType"]).toBe(value);
       });
     });
     describe(".accountId", () => {
       it("resolves to particular value on initialization", () => {
         const value = "";
-        expect(model.accountId).toBe(value);
+        expect(model["accountId"]).toBe(value);
       });
     });
     describe(".callId", () => {
       it("resolves to particular value on initialization", () => {
         const value = "";
-        expect(model.callId).toBe(value);
+        expect(model["callId"]).toBe(value);
       });
     });
     describe(".from", () => {
       it("resolves to particular value on initialization", () => {
         const value = "";
-        expect(model.from).toBe(value);
+        expect(model["from"]).toBe(value);
       });
     });
     describe(".to", () => {
       it("resolves to particular value on initialization", () => {
         const value = "";
-        expect(model.to).toBe(value);
+        expect(model["to"]).toBe(value);
       });
     });
     describe(".callStatus", () => {
       it("resolves to particular value on initialization", () => {
         const value = "queued";
-        expect(model.callStatus).toBe(value);
+        expect(model["callStatus"]).toBe(value);
       });
     });
     describe(".direction", () => {
       it("resolves to particular value on initialization", () => {
         const value = "inbound";
-        expect(model.direction).toBe(value);
+        expect(model["direction"]).toBe(value);
       });
     });
     describe(".conferenceId", () => {
       it("resolves to particular value on initialization", () => {
         const value = "";
-        expect(model.conferenceId).toBe(value);
+        expect(model["conferenceId"]).toBe(value);
       });
     });
     describe(".queueId", () => {
       it("resolves to particular value on initialization", () => {
         const value = "";
-        expect(model.queueId).toBe(value);
+        expect(model["queueId"]).toBe(value);
       });
     });
     describe(".parentCallId", () => {
       it("resolves to particular value on initialization", () => {
         const value = "";
-        expect(model.parentCallId).toBe(value);
+        expect(model["parentCallId"]).toBe(value);
       });
     });
     describe(".deserialize", () => {
@@ -199,7 +199,7 @@ describe("OutDialApiConnectWebhook", () => {
         const value = Klass.attributeTypeMap.find(
           (attribute) => attribute.name === "requestType",
         )?.defaultValue;
-        expect(model.requestType).toBe(value);
+        expect(model["requestType"]).toBe(value);
       });
     });
     describe("#accountId", () => {
@@ -207,7 +207,7 @@ describe("OutDialApiConnectWebhook", () => {
         const value = Klass.attributeTypeMap.find(
           (attribute) => attribute.name === "accountId",
         )?.defaultValue;
-        expect(model.accountId).toBe(value);
+        expect(model["accountId"]).toBe(value);
       });
     });
     describe("#callId", () => {
@@ -215,7 +215,7 @@ describe("OutDialApiConnectWebhook", () => {
         const value = Klass.attributeTypeMap.find(
           (attribute) => attribute.name === "callId",
         )?.defaultValue;
-        expect(model.callId).toBe(value);
+        expect(model["callId"]).toBe(value);
       });
     });
     describe("#from", () => {
@@ -223,7 +223,7 @@ describe("OutDialApiConnectWebhook", () => {
         const value = Klass.attributeTypeMap.find(
           (attribute) => attribute.name === "from",
         )?.defaultValue;
-        expect(model.from).toBe(value);
+        expect(model["from"]).toBe(value);
       });
     });
     describe("#to", () => {
@@ -231,7 +231,7 @@ describe("OutDialApiConnectWebhook", () => {
         const value = Klass.attributeTypeMap.find(
           (attribute) => attribute.name === "to",
         )?.defaultValue;
-        expect(model.to).toBe(value);
+        expect(model["to"]).toBe(value);
       });
     });
     describe("#callStatus", () => {
@@ -239,7 +239,7 @@ describe("OutDialApiConnectWebhook", () => {
         const value = Klass.attributeTypeMap.find(
           (attribute) => attribute.name === "callStatus",
         )?.defaultValue;
-        expect(model.callStatus).toBe(value);
+        expect(model["callStatus"]).toBe(value);
       });
     });
     describe("#direction", () => {
@@ -247,7 +247,7 @@ describe("OutDialApiConnectWebhook", () => {
         const value = Klass.attributeTypeMap.find(
           (attribute) => attribute.name === "direction",
         )?.defaultValue;
-        expect(model.direction).toBe(value);
+        expect(model["direction"]).toBe(value);
       });
     });
     describe("#conferenceId", () => {
@@ -255,7 +255,7 @@ describe("OutDialApiConnectWebhook", () => {
         const value = Klass.attributeTypeMap.find(
           (attribute) => attribute.name === "conferenceId",
         )?.defaultValue;
-        expect(model.conferenceId).toBe(value);
+        expect(model["conferenceId"]).toBe(value);
       });
     });
     describe("#queueId", () => {
@@ -263,7 +263,7 @@ describe("OutDialApiConnectWebhook", () => {
         const value = Klass.attributeTypeMap.find(
           (attribute) => attribute.name === "queueId",
         )?.defaultValue;
-        expect(model.queueId).toBe(value);
+        expect(model["queueId"]).toBe(value);
       });
     });
     describe("#parentCallId", () => {
@@ -271,7 +271,7 @@ describe("OutDialApiConnectWebhook", () => {
         const value = Klass.attributeTypeMap.find(
           (attribute) => attribute.name === "parentCallId",
         )?.defaultValue;
-        expect(model.parentCallId).toBe(value);
+        expect(model["parentCallId"]).toBe(value);
       });
     });
   });

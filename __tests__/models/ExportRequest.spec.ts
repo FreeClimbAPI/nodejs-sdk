@@ -5,13 +5,13 @@ describe("ExportRequest", () => {
   describe("Test with truthy values", () => {
     const Klass = freeclimb.ExportRequest;
     let model: freeclimb.ExportRequest = new freeclimb.ExportRequest({
-      resourceType: freeclimb.ExportResourceType.MESSAGES,
-      format: [],
+      ["resourceType"]: freeclimb.ExportResourceType.MESSAGES,
+      ["format"]: [],
 
-      output: new freeclimb.ExportRequestOutput({
-        type: null as any,
+      ["output"]: new freeclimb.ExportRequestOutput({
+        ["type"]: null as any,
       }),
-      query: {},
+      ["query"]: {},
     });
     describe("ExportRequest class test", () => {
       it("resolves to the class type upon initialization", () => {
@@ -21,13 +21,13 @@ describe("ExportRequest", () => {
     describe(".resourceType", () => {
       it("resolves to particular value on initialization", () => {
         const value = "Messages";
-        expect(model.resourceType).toBe(value);
+        expect(model["resourceType"]).toBe(value);
       });
     });
     describe(".format", () => {
       it("resolves to particular value on initialization", () => {
         const value: any[] = [];
-        expect(model.format).toStrictEqual(value);
+        expect(model["format"]).toStrictEqual(value);
       });
     });
     describe(".output", () => {
@@ -35,26 +35,26 @@ describe("ExportRequest", () => {
         const value = new freeclimb.ExportRequestOutput({
           type: null as any,
         });
-        expect(model.output).toStrictEqual(value);
+        expect(model["output"]).toStrictEqual(value);
       });
     });
     describe(".query", () => {
       it("resolves to particular value on initialization", () => {
         const value = {};
-        expect(model.query).toStrictEqual(value);
+        expect(model["query"]).toStrictEqual(value);
       });
     });
   });
   describe("Test with falsy values", () => {
     const Klass = freeclimb.ExportRequest;
     let model: freeclimb.ExportRequest = new freeclimb.ExportRequest({
-      resourceType: freeclimb.ExportResourceType.MESSAGES,
-      format: [],
+      ["resourceType"]: freeclimb.ExportResourceType.MESSAGES,
+      ["format"]: [],
 
-      output: new freeclimb.ExportRequestOutput({
-        type: null as any,
+      ["output"]: new freeclimb.ExportRequestOutput({
+        ["type"]: null as any,
       }),
-      query: {},
+      ["query"]: {},
     });
     describe("ExportRequest class test", () => {
       it("resolves to the class type upon initialization", () => {
@@ -64,37 +64,37 @@ describe("ExportRequest", () => {
     describe(".resourceType", () => {
       it("resolves to particular value on initialization", () => {
         const value = "Messages";
-        expect(model.resourceType).toBe(value);
+        expect(model["resourceType"]).toBe(value);
       });
     });
     describe(".format", () => {
       it("resolves to particular value on initialization", () => {
         const value: any[] = [];
-        expect(model.format).toStrictEqual(value);
+        expect(model["format"]).toStrictEqual(value);
       });
     });
     describe(".output", () => {
       it("resolves to particular value on initialization", () => {
         const value = new freeclimb.ExportRequestOutput({
-          type: null as any,
+          ["type"]: null as any,
         });
-        expect(model.output).toStrictEqual(value);
+        expect(model["output"]).toStrictEqual(value);
       });
     });
     describe(".query", () => {
       it("resolves to particular value on initialization", () => {
         const value = {};
-        expect(model.query).toStrictEqual(value);
+        expect(model["query"]).toStrictEqual(value);
       });
     });
   });
   describe("Test with only required values", () => {
     const Klass = freeclimb.ExportRequest;
     let constructorArguments = {
-      resourceType: freeclimb.ExportResourceType.MESSAGES,
+      ["resourceType"]: freeclimb.ExportResourceType.MESSAGES,
 
-      output: new freeclimb.ExportRequestOutput({
-        type: null as any,
+      ["output"]: new freeclimb.ExportRequestOutput({
+        ["type"]: null as any,
       }),
     };
     let model: freeclimb.ExportRequest = new freeclimb.ExportRequest(
@@ -103,7 +103,9 @@ describe("ExportRequest", () => {
 
     describe("#resourceType", () => {
       it("resolves to initialization value", () => {
-        expect(model.resourceType).toBe(constructorArguments["resourceType"]);
+        expect(model["resourceType"]).toBe(
+          constructorArguments["resourceType"],
+        );
       });
     });
     describe("#format", () => {
@@ -111,12 +113,12 @@ describe("ExportRequest", () => {
         const value = Klass.attributeTypeMap.find(
           (attribute) => attribute.name === "format",
         )?.defaultValue;
-        expect(model.format).toBe(value);
+        expect(model["format"]).toBe(value);
       });
     });
     describe("#output", () => {
       it("resolves to initialization value", () => {
-        expect(model.output).toBe(constructorArguments["output"]);
+        expect(model["output"]).toBe(constructorArguments["output"]);
       });
     });
     describe("#query", () => {
@@ -124,7 +126,7 @@ describe("ExportRequest", () => {
         const value = Klass.attributeTypeMap.find(
           (attribute) => attribute.name === "query",
         )?.defaultValue;
-        expect(model.query).toBe(value);
+        expect(model["query"]).toBe(value);
       });
     });
   });

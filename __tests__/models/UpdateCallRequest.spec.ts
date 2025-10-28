@@ -5,7 +5,7 @@ describe("UpdateCallRequest", () => {
   describe("Test with truthy values", () => {
     const Klass = freeclimb.UpdateCallRequest;
     let model: freeclimb.UpdateCallRequest = new freeclimb.UpdateCallRequest({
-      status: freeclimb.UpdateCallRequestStatus.CANCELED,
+      ["status"]: freeclimb.UpdateCallRequestStatus.CANCELED,
     });
     describe("UpdateCallRequest class test", () => {
       it("resolves to the class type upon initialization", () => {
@@ -15,14 +15,14 @@ describe("UpdateCallRequest", () => {
     describe(".status", () => {
       it("resolves to particular value on initialization", () => {
         const value = "canceled";
-        expect(model.status).toBe(value);
+        expect(model["status"]).toBe(value);
       });
     });
   });
   describe("Test with falsy values", () => {
     const Klass = freeclimb.UpdateCallRequest;
     let model: freeclimb.UpdateCallRequest = new freeclimb.UpdateCallRequest({
-      status: freeclimb.UpdateCallRequestStatus.CANCELED,
+      ["status"]: freeclimb.UpdateCallRequestStatus.CANCELED,
     });
     describe("UpdateCallRequest class test", () => {
       it("resolves to the class type upon initialization", () => {
@@ -32,14 +32,14 @@ describe("UpdateCallRequest", () => {
     describe(".status", () => {
       it("resolves to particular value on initialization", () => {
         const value = "canceled";
-        expect(model.status).toBe(value);
+        expect(model["status"]).toBe(value);
       });
     });
   });
   describe("Test with only required values", () => {
     const Klass = freeclimb.UpdateCallRequest;
     let constructorArguments = {
-      status: freeclimb.UpdateCallRequestStatus.CANCELED,
+      ["status"]: freeclimb.UpdateCallRequestStatus.CANCELED,
     };
     let model: freeclimb.UpdateCallRequest = new freeclimb.UpdateCallRequest(
       constructorArguments,
@@ -47,7 +47,7 @@ describe("UpdateCallRequest", () => {
 
     describe("#status", () => {
       it("resolves to initialization value", () => {
-        expect(model.status).toBe(constructorArguments["status"]);
+        expect(model["status"]).toBe(constructorArguments["status"]);
       });
     });
   });

@@ -23,7 +23,9 @@
         "description": "ID of the account",
         "required": true,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "pattern": "AC[0-9a-fA-F]{40}",
+          "example": "AC170e4c66d358aa1755931da0452561933d1b8fd5"
         }
       },
       "Capabilities.Voice": {
@@ -80,6 +82,17 @@
       }
     },
     "schemas": {
+      "accountId": {
+        "type": "string",
+        "pattern": "AC[0-9a-fA-F]{40}",
+        "example": "AC0534faec6b32da45f36166674d65b3903f784141"
+      },
+      "blobId": {
+        "type": "string",
+        "description": "Identifier which can be used to reference this blob in future interations.",
+        "pattern": "BL[0-9a-fA-F]{40}",
+        "example": "BL88615a9b4ca7e9aad57d9057773fc74268b9caf7"
+      },
       "AccountStatus": {
         "type": "string",
         "enum": ["closed", "suspended", "active"],
@@ -2419,11 +2432,29 @@
             "$ref": "#/components/schemas/PerclCommand"
           },
           {
-            "required": [],
             "type": "object",
             "properties": {}
           }
         ]
+      },
+      "TTSEngineName": {
+        "description": "The engine to use for the TTS. The complete list of valid values for the engine attribute is shown below.",
+        "type": "string",
+        "enum": ["freeclimb.standard", "freeclimb.neural", "ElevenLabs"]
+      },
+      "TTSEngine": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "$ref": "#/components/schemas/TTSEngineName"
+          },
+          "parameters": {
+            "description": "Parameters for the TTS engine. The parameters are specific to the engine and are documented in the engine's documentation.",
+            "type": "object",
+            "properties": {},
+            "additionalProperties": true
+          }
+        }
       },
       "Say": {
         "description": "The `Say` command provides Text-To-Speech (TTS) support. It converts text to speech and then renders it in a female voice back to the caller. `Say` is useful in cases where it's difficult to pre-record a prompt for any reason. `Say` does not allow barge-in unless nested within a `GetSpeech` command. The file will always be played to completion unless nested.",
@@ -2433,7 +2464,6 @@
           },
           {
             "required": ["text"],
-            "type": "object",
             "properties": {
               "text": {
                 "description": "The message to be played to the caller using TTS. The size of the string is limited to 4 KB (or 4,096 bytes). An empty string will cause the command to be skipped.",
@@ -2442,6 +2472,9 @@
               "language": {
                 "description": "Language and (by implication) the locale to use. This implies the accent and pronunciations to be usde for the TTS. The complete list of valid values for the language attribute is shown below.",
                 "type": "string"
+              },
+              "engine": {
+                "$ref": "#/components/schemas/TTSEngine"
               },
               "loop": {
                 "description": "Number of times the text is said. Specifying '0' causes the `Say` action to loop until the Call is hung up.",
@@ -2489,7 +2522,6 @@
             "$ref": "#/components/schemas/PerclCommand"
           },
           {
-            "required": [],
             "type": "object",
             "properties": {
               "listen": {
@@ -2507,7 +2539,6 @@
             "$ref": "#/components/schemas/PerclCommand"
           },
           {
-            "required": [],
             "type": "object",
             "properties": {
               "talk": {
@@ -2525,7 +2556,6 @@
             "$ref": "#/components/schemas/PerclCommand"
           },
           {
-            "required": [],
             "type": "object",
             "properties": {
               "dtmfPassThrough": {
@@ -2585,7 +2615,6 @@
             "$ref": "#/components/schemas/PerclCommand"
           },
           {
-            "required": [],
             "type": "object",
             "properties": {}
           }
@@ -4996,6 +5025,240 @@
             "type": "object"
           }
         }
+      },
+      "CreateBlobRequest": {
+        "type": "object",
+        "required": ["blob"],
+        "properties": {
+          "alias": {
+            "type": "string",
+            "description": "Custom identifier for this blob that is unique for the owning account. It will be set to the blobId by default if not provided.",
+            "maxLength": 64
+          },
+          "expiresAt": {
+            "type": "string",
+            "description": "An RFC3339 timestamp with millisecond resolution. This timestamp defines the time at which this blob will delete itself. It must not be more than 48 hours in the future and will default to 9 hours in the future if not provided.",
+            "example": "2006-01-02T15:04:05.000Z"
+          },
+          "blob": {
+            "type": "object"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ModifyBlobRequest": {
+        "type": "object",
+        "required": ["blob"],
+        "properties": {
+          "blob": {
+            "type": "object"
+          },
+          "alias": {
+            "type": "string",
+            "description": "Custom identifier for this blob that is unique for the owning account. It will be set to the blobId by default if not provided.",
+            "maxLength": 64
+          }
+        }
+      },
+      "ReplaceBlobRequest": {
+        "type": "object",
+        "required": ["blob"],
+        "properties": {
+          "blob": {
+            "type": "object"
+          }
+        }
+      },
+      "BlobResult": {
+        "type": "object",
+        "properties": {
+          "blobId": {
+            "$ref": "#/components/schemas/blobId"
+          },
+          "accountId": {
+            "$ref": "#/components/schemas/accountId"
+          },
+          "alias": {
+            "type": "string",
+            "description": "Custom identifier for this blob that is unique for the owning account. It will be set to the blobId by default if not provided in the creation request.",
+            "maxLength": 64
+          },
+          "revision": {
+            "type": "integer"
+          },
+          "dateCreated": {
+            "type": "string",
+            "format": "date-time",
+            "description": "An RFC3339 timestamp with millisecond resolution. It represents the time this blob was created."
+          },
+          "dateUpdated": {
+            "type": "string",
+            "format": "date-time",
+            "description": "An RFC3339 timestamp with millisecond resolution. It represents the time this blob was last modified, which at creation will always equal dateCreated."
+          },
+          "expiresAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "An RFC3339 timestamp with millisecond resolution. It represents the time at which this blob will expire and self delete."
+          },
+          "blob": {
+            "type": "object",
+            "description": "Blob content"
+          }
+        }
+      },
+      "BlobListResponse": {
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/PaginationModel"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "blobs": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/BlobResult"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "PlatformError": {
+        "description": "Standard error structure returned by platform.",
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer"
+          },
+          "call": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string",
+            "format": "uri-reference"
+          },
+          "details": {
+            "type": "object"
+          }
+        },
+        "example": {
+          "code": 0,
+          "call": "Internal Failure",
+          "url": "https://docs.freeclimb.com/reference/error-and-warning-dictionary#0"
+        }
+      }
+    },
+    "responses": {
+      "success204": {
+        "description": "Successful operation"
+      },
+      "error400": {
+        "description": "Generic platform bad request.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/PlatformError"
+            },
+            "example": {
+              "code": 80,
+              "call": "Missing Required Parameter(s)",
+              "url": "https://docs.freeclimb.com/reference/error-and-warning-dictionary#80"
+            }
+          }
+        }
+      },
+      "error404": {
+        "description": "Generic platform not found error.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/PlatformError"
+            },
+            "example": {
+              "code": 1,
+              "call": "Not Found",
+              "url": "https://docs.freeclimb.com/reference/error-and-warning-dictionary#1"
+            }
+          }
+        }
+      },
+      "error409": {
+        "description": "Generic platform status conflict error.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/PlatformError"
+            },
+            "example": {
+              "code": 108,
+              "call": "ResourceConflict",
+              "url": "https://docs.freeclimb.com/reference/error-and-warning-dictionary#108"
+            }
+          }
+        }
+      },
+      "error413": {
+        "description": "Generic platform status request entity too large.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/PlatformError"
+            },
+            "example": {
+              "code": 3,
+              "call": "BadRequestBody",
+              "url": "https://docs.freeclimb.com/reference/error-and-warning-dictionary#3"
+            }
+          }
+        }
+      },
+      "error422": {
+        "description": "Generic platform unprocessible entity response.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/PlatformError"
+            },
+            "example": {
+              "code": 9,
+              "call": "Invalid JSON",
+              "url": "https://docs.freeclimb.com/reference/error-and-warning-dictionary#9"
+            }
+          }
+        }
+      },
+      "error500": {
+        "description": "Generic platform internal error.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/PlatformError"
+            },
+            "example": {
+              "code": 0,
+              "call": "Internal Failure",
+              "url": "https://docs.freeclimb.com/reference/error-and-warning-dictionary#0"
+            }
+          }
+        }
+      },
+      "error504": {
+        "description": "gateway timeout error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/PlatformError"
+            },
+            "example": {
+              "code": 0,
+              "call": "Internal Failure",
+              "url": "https://docs.freeclimb.com/reference/error-and-warning-dictionary#0"
+            }
+          }
+        }
       }
     }
   },
@@ -5007,7 +5270,7 @@
   "paths": {
     "/Accounts/{accountId}": {
       "get": {
-        "tags": [],
+        "tags": ["Accounts"],
         "summary": "Get an Account",
         "operationId": "get-an-account",
         "parameters": [
@@ -5030,7 +5293,7 @@
         }
       },
       "post": {
-        "tags": [],
+        "tags": ["Accounts"],
         "summary": "Manage an account",
         "operationId": "update-an-account",
         "parameters": [
@@ -5057,7 +5320,7 @@
     },
     "/Accounts/{accountId}/Applications/{applicationId}": {
       "get": {
-        "tags": [],
+        "tags": ["Applications"],
         "summary": "Get an Application",
         "operationId": "get-an-application",
         "parameters": [
@@ -5089,7 +5352,7 @@
         }
       },
       "post": {
-        "tags": [],
+        "tags": ["Applications"],
         "summary": "Update an application",
         "operationId": "update-an-application",
         "parameters": [
@@ -5131,7 +5394,7 @@
         }
       },
       "delete": {
-        "tags": [],
+        "tags": ["Applications"],
         "summary": "Delete an application",
         "operationId": "delete-an-application",
         "parameters": [
@@ -5158,7 +5421,7 @@
     },
     "/Accounts/{accountId}/Applications": {
       "get": {
-        "tags": [],
+        "tags": ["Applications"],
         "summary": "List applications",
         "operationId": "list-applications",
         "parameters": [
@@ -5190,7 +5453,7 @@
         }
       },
       "post": {
-        "tags": [],
+        "tags": ["Applications"],
         "summary": "Create an application",
         "operationId": "create-an-application",
         "parameters": [
@@ -5225,7 +5488,7 @@
     },
     "/AvailablePhoneNumbers": {
       "get": {
-        "tags": [],
+        "tags": ["AvailablePhoneNumbers"],
         "summary": "List available numbers",
         "operationId": "list-available-numbers",
         "parameters": [
@@ -5309,7 +5572,7 @@
     },
     "/Accounts/{accountId}/IncomingPhoneNumbers/{phoneNumberId}": {
       "get": {
-        "tags": [],
+        "tags": ["IncomingPhoneNumbers"],
         "summary": "Get an Incoming Number",
         "operationId": "get-an-incoming-number",
         "parameters": [
@@ -5341,7 +5604,7 @@
         }
       },
       "post": {
-        "tags": [],
+        "tags": ["IncomingPhoneNumbers"],
         "summary": "Update an Incoming Number",
         "operationId": "update-an-incoming-number",
         "parameters": [
@@ -5383,7 +5646,7 @@
         }
       },
       "delete": {
-        "tags": [],
+        "tags": ["IncomingPhoneNumbers"],
         "summary": "Delete an Incoming Number",
         "operationId": "delete-an-incoming-number",
         "parameters": [
@@ -5410,7 +5673,7 @@
     },
     "/Accounts/{accountId}/IncomingPhoneNumbers": {
       "get": {
-        "tags": [],
+        "tags": ["IncomingPhoneNumbers"],
         "summary": "List Incoming Numbers",
         "operationId": "list-incoming-numbers",
         "parameters": [
@@ -5552,7 +5815,7 @@
         }
       },
       "post": {
-        "tags": [],
+        "tags": ["IncomingPhoneNumbers"],
         "summary": "Buy a Phone Number",
         "operationId": "buy-a-phone-number",
         "parameters": [
@@ -5588,7 +5851,7 @@
     },
     "/Accounts/{accountId}/KnowledgeBases/{knowledgeBaseId}/Completion": {
       "post": {
-        "tags": [],
+        "tags": ["KnowledgeBases"],
         "summary": "Query the knowledge base",
         "operationId": "create-knowledge-base-completion",
         "parameters": [
@@ -5632,7 +5895,7 @@
     },
     "/Accounts/{accountId}/Calls/{callId}": {
       "get": {
-        "tags": [],
+        "tags": ["Calls"],
         "summary": "Get a Call",
         "operationId": "get-a-call",
         "parameters": [
@@ -5664,7 +5927,7 @@
         }
       },
       "post": {
-        "tags": [],
+        "tags": ["Calls"],
         "summary": "Update a Live Call",
         "operationId": "update-a-live-call",
         "parameters": [
@@ -5702,7 +5965,7 @@
     },
     "/Accounts/{accountId}/Calls": {
       "post": {
-        "tags": [],
+        "tags": ["Calls"],
         "summary": "Make a Call",
         "operationId": "make-a-call",
         "parameters": [
@@ -5735,7 +5998,7 @@
         }
       },
       "get": {
-        "tags": [],
+        "tags": ["Calls"],
         "summary": "List Calls",
         "operationId": "list-calls",
         "parameters": [
@@ -5857,7 +6120,7 @@
     },
     "/Accounts/{accountId}/Calls/{callId}/Recordings": {
       "get": {
-        "tags": [],
+        "tags": ["Calls"],
         "summary": "List Call Recordings",
         "operationId": "list-call-recordings",
         "parameters": [
@@ -5900,7 +6163,7 @@
     },
     "/Accounts/{accountId}/Calls/{callId}/Logs": {
       "get": {
-        "tags": [],
+        "tags": ["Calls"],
         "summary": "List Call Logs",
         "operationId": "list-call-logs",
         "parameters": [
@@ -5934,6 +6197,7 @@
     },
     "/Accounts/{accountId}/Calls/WebRTC/Token": {
       "post": {
+        "tags": ["Calls"],
         "summary": "Make a JWT for WebRTC calling",
         "operationId": "make-a-webrtc-jwt",
         "parameters": [
@@ -5969,7 +6233,7 @@
     },
     "/Accounts/{accountId}/Conferences": {
       "post": {
-        "tags": [],
+        "tags": ["Conferences"],
         "summary": "Create a Conference",
         "operationId": "create-a-conference",
         "parameters": [
@@ -6002,7 +6266,7 @@
         }
       },
       "get": {
-        "tags": [],
+        "tags": ["Conferences"],
         "summary": "List Conferences",
         "operationId": "list-conferences",
         "parameters": [
@@ -6063,7 +6327,7 @@
     },
     "/Accounts/{accountId}/Conferences/{conferenceId}": {
       "post": {
-        "tags": [],
+        "tags": ["Conferences"],
         "summary": "Update a Conference",
         "operationId": "update-a-conference",
         "parameters": [
@@ -6098,7 +6362,7 @@
         }
       },
       "get": {
-        "tags": [],
+        "tags": ["Conferences"],
         "summary": "Get a Conference",
         "operationId": "get-a-conference",
         "parameters": [
@@ -6132,7 +6396,7 @@
     },
     "/Accounts/{accountId}/Conferences/{conferenceId}/Participants/{callId}": {
       "post": {
-        "tags": [],
+        "tags": ["Conferences"],
         "summary": "Update a Participant",
         "operationId": "update-a-participant",
         "parameters": [
@@ -6183,7 +6447,7 @@
         }
       },
       "get": {
-        "tags": [],
+        "tags": ["Conferences"],
         "summary": "Get a Participant",
         "operationId": "get-a-participant",
         "parameters": [
@@ -6224,7 +6488,7 @@
         }
       },
       "delete": {
-        "tags": [],
+        "tags": ["Conferences"],
         "summary": "Remove a Participant",
         "operationId": "remove-a-participant",
         "parameters": [
@@ -6260,7 +6524,7 @@
     },
     "/Accounts/{accountId}/Conferences/{conferenceId}/Participants": {
       "get": {
-        "tags": [],
+        "tags": ["Conferences"],
         "summary": "List Participants",
         "operationId": "list-participants",
         "parameters": [
@@ -6321,7 +6585,7 @@
     },
     "/Accounts/{accountId}/Conferences/{conferenceId}/Recordings": {
       "get": {
-        "tags": [],
+        "tags": ["Conferences"],
         "summary": "List Conference Recordings",
         "operationId": "list-conference-recordings",
         "parameters": [
@@ -6373,7 +6637,7 @@
     },
     "/Accounts/{accountId}/Queues/{queueId}": {
       "post": {
-        "tags": [],
+        "tags": ["Queues"],
         "summary": "Update a Queue",
         "operationId": "update-a-queue",
         "parameters": [
@@ -6415,7 +6679,7 @@
         }
       },
       "get": {
-        "tags": [],
+        "tags": ["Queues"],
         "summary": "Get a Queue",
         "operationId": "get-a-queue",
         "parameters": [
@@ -6449,7 +6713,7 @@
     },
     "/Accounts/{accountId}/Queues": {
       "get": {
-        "tags": [],
+        "tags": ["Queues"],
         "summary": "List Active Queues",
         "operationId": "list-active-queues",
         "parameters": [
@@ -6481,7 +6745,7 @@
         }
       },
       "post": {
-        "tags": [],
+        "tags": ["Queues"],
         "summary": "Create a Queue",
         "operationId": "create-a-queue",
         "parameters": [
@@ -6516,7 +6780,7 @@
     },
     "/Accounts/{accountId}/Queues/{queueId}/Members/Front": {
       "get": {
-        "tags": [],
+        "tags": ["Queues"],
         "summary": "Get Head Member",
         "operationId": "get-head-member",
         "parameters": [
@@ -6548,7 +6812,7 @@
         }
       },
       "post": {
-        "tags": [],
+        "tags": ["Queues"],
         "summary": "Dequeue Head Member",
         "operationId": "dequeue-head-member",
         "parameters": [
@@ -6582,7 +6846,7 @@
     },
     "/Accounts/{accountId}/Queues/{queueId}/Members": {
       "get": {
-        "tags": [],
+        "tags": ["Queues"],
         "summary": "List Members",
         "operationId": "list-members",
         "parameters": [
@@ -6616,7 +6880,7 @@
     },
     "/Accounts/{accountId}/Queues/{queueId}/Members/{callId}": {
       "get": {
-        "tags": [],
+        "tags": ["Queues"],
         "summary": "Get a Member",
         "operationId": "get-a-member",
         "parameters": [
@@ -6657,7 +6921,7 @@
         }
       },
       "post": {
-        "tags": [],
+        "tags": ["Queues"],
         "summary": "Dequeue a Member",
         "operationId": "dequeue-a-member",
         "parameters": [
@@ -6700,7 +6964,7 @@
     },
     "/Accounts/{accountId}/Logs": {
       "get": {
-        "tags": [],
+        "tags": ["Logs"],
         "summary": "List All Account Logs",
         "operationId": "list-all-account-logs",
         "parameters": [
@@ -6723,7 +6987,7 @@
         }
       },
       "post": {
-        "tags": [],
+        "tags": ["Logs"],
         "summary": "Filter Logs",
         "operationId": "filter-logs",
         "parameters": [
@@ -6759,7 +7023,7 @@
     },
     "/Accounts/{accountId}/Recordings": {
       "get": {
-        "tags": [],
+        "tags": ["Recordings"],
         "summary": "List Recordings",
         "operationId": "list-recordings",
         "parameters": [
@@ -6811,7 +7075,7 @@
     },
     "/Accounts/{accountId}/Recordings/{recordingId}": {
       "get": {
-        "tags": [],
+        "tags": ["Recordings"],
         "summary": "Get a Recording",
         "operationId": "get-a-recording",
         "parameters": [
@@ -6843,7 +7107,7 @@
         "deprecated": false
       },
       "delete": {
-        "tags": [],
+        "tags": ["Recordings"],
         "summary": "Delete a Recording",
         "operationId": "delete-a-recording",
         "parameters": [
@@ -6870,7 +7134,7 @@
     },
     "/Accounts/{accountId}/Recordings/{recordingId}/Stream": {
       "get": {
-        "tags": [],
+        "tags": ["Recordings"],
         "summary": "Stream a Recording File",
         "operationId": "stream-a-recording-file",
         "parameters": [
@@ -6889,9 +7153,9 @@
         ],
         "responses": {
           "200": {
-            "description": "Streaming a Recording represented with audio/x-wav mime-type",
+            "description": "Streaming a Recording represented with audio/wav mime-type",
             "content": {
-              "audio/x-wav": {
+              "audio/wav": {
                 "schema": {
                   "type": "string",
                   "format": "binary"
@@ -6905,7 +7169,7 @@
     },
     "/Accounts/{accountId}/Recordings/{recordingId}/Download": {
       "get": {
-        "tags": [],
+        "tags": ["Recordings"],
         "summary": "Download a Recording File",
         "operationId": "download-a-recording-file",
         "parameters": [
@@ -6924,9 +7188,9 @@
         ],
         "responses": {
           "200": {
-            "description": "Download a Recording file represented with audio/x-wav mime-type",
+            "description": "Download a Recording file represented with audio/wav mime-type",
             "content": {
-              "audio/x-wav": {
+              "audio/wav": {
                 "schema": {
                   "type": "string",
                   "format": "binary"
@@ -6940,7 +7204,7 @@
     },
     "/Accounts/{accountId}/Messages": {
       "get": {
-        "tags": [],
+        "tags": ["Messages"],
         "summary": "List SMS Messages",
         "operationId": "list-sms-messages",
         "parameters": [
@@ -7035,7 +7299,7 @@
         "deprecated": false
       },
       "post": {
-        "tags": [],
+        "tags": ["Messages"],
         "summary": "Send an SMS Message",
         "operationId": "send-an-sms-message",
         "parameters": [
@@ -7071,7 +7335,7 @@
     },
     "/Accounts/{accountId}/Messages/{messageId}": {
       "get": {
-        "tags": [],
+        "tags": ["Messages"],
         "summary": "Get an SMS Message",
         "operationId": "get-an-sms-message",
         "parameters": [
@@ -7105,7 +7369,7 @@
     },
     "/Accounts/{accountId}/Messages/10DLC/Campaigns": {
       "get": {
-        "tags": [],
+        "tags": ["Messages"],
         "summary": "Get list of SMS 10DLC Campaigns",
         "operationId": "get-tenDLC-sms-campaigns",
         "parameters": [
@@ -7183,7 +7447,7 @@
     },
     "/Accounts/{accountId}/Messages/10DLC/Campaigns/{campaignId}": {
       "get": {
-        "tags": [],
+        "tags": ["Messages"],
         "summary": "Get a 10DLC SMS Campaign",
         "operationId": "get-tenDLC-sms-campaign",
         "parameters": [
@@ -7217,7 +7481,7 @@
     },
     "/Accounts/{accountId}/Messages/10DLC/PartnerCampaigns": {
       "get": {
-        "tags": [],
+        "tags": ["Messages"],
         "summary": "Get list of SMS 10DLC Partner Campaigns",
         "operationId": "get-tenDLC-sms-partnerCampaigns",
         "parameters": [
@@ -7304,7 +7568,7 @@
     },
     "/Accounts/{accountId}/Messages/10DLC/PartnerCampaigns/{campaignId}": {
       "get": {
-        "tags": [],
+        "tags": ["Messages"],
         "summary": "Get a 10DLC SMS Partner Campaign",
         "operationId": "get-tenDLC-sms-partnerCampaign",
         "parameters": [
@@ -7338,7 +7602,7 @@
     },
     "/Accounts/{accountId}/Messages/10DLC/Brands": {
       "get": {
-        "tags": [],
+        "tags": ["Messages"],
         "summary": "Get list of SMS 10DLC Brands",
         "operationId": "get-tenDLC-sms-brands",
         "parameters": [
@@ -7405,7 +7669,7 @@
     },
     "/Accounts/{accountId}/Messages/10DLC/Brands/{brandId}": {
       "get": {
-        "tags": [],
+        "tags": ["Messages"],
         "summary": "Get a 10DLC SMS Brand",
         "operationId": "get-tenDLC-sms-brand",
         "parameters": [
@@ -7439,7 +7703,7 @@
     },
     "/Accounts/{accountId}/Messages/TollFree/Campaigns": {
       "get": {
-        "tags": [],
+        "tags": ["Messages"],
         "summary": "Get list of TollFree Campaigns",
         "operationId": "get-tollFree-sms-campaigns",
         "parameters": [
@@ -7484,7 +7748,7 @@
     },
     "/Accounts/{accountId}/Messages/TollFree/Campaigns/{campaignId}": {
       "get": {
-        "tags": [],
+        "tags": ["Messages"],
         "summary": "Get a TollFree SMS Campaign",
         "operationId": "get-tollFree-sms-campaign",
         "parameters": [
@@ -7518,7 +7782,7 @@
     },
     "/Accounts/{accountId}/Exports": {
       "get": {
-        "tags": [],
+        "tags": ["Exports"],
         "summary": "List Exports",
         "operationId": "list-exports",
         "responses": {
@@ -7558,7 +7822,7 @@
       "post": {
         "summary": "Create an Export",
         "operationId": "create-export",
-        "tags": [],
+        "tags": ["Exports"],
         "requestBody": {
           "description": "A JSON object containing export creation parameters",
           "content": {
@@ -7590,7 +7854,7 @@
     },
     "/Accounts/{accountId}/Exports/{exportId}": {
       "get": {
-        "tags": [],
+        "tags": ["Exports"],
         "summary": "Get an Export",
         "operationId": "get-an-export",
         "parameters": [
@@ -7622,7 +7886,7 @@
         }
       },
       "delete": {
-        "tags": [],
+        "tags": ["Exports"],
         "summary": "Delete an Export",
         "operationId": "delete-an-export",
         "parameters": [
@@ -7649,7 +7913,7 @@
     },
     "/Accounts/{accountId}/Exports/{exportId}/Download": {
       "get": {
-        "tags": [],
+        "tags": ["Exports"],
         "summary": "Download an Export",
         "operationId": "download-an-export",
         "parameters": [
@@ -7680,8 +7944,559 @@
           }
         }
       }
+    },
+    "/Accounts/{accountId}/Blobs": {
+      "summary": "Operations affecting the whole set of Blobs belonging to an account.",
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AccountId"
+        }
+      ],
+      "get": {
+        "summary": "List Blobs belonging to an account.",
+        "description": "List Blobs belonging to an account. Results are returned in paginated lists mirroring other listing features in the API.",
+        "tags": ["Blobs"],
+        "responses": {
+          "200": {
+            "description": "Single page of blob list results.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BlobListResponse"
+                },
+                "example": {
+                  "total": 2,
+                  "start": 0,
+                  "end": 1,
+                  "page": 0,
+                  "numPages": 1,
+                  "pageSize": 100,
+                  "nextPageUri": null,
+                  "blobs": [
+                    {
+                      "blobId": "BL387ec3f6e03b340553f35f29c8f118cdf3eae08a",
+                      "accountId": "AC3ff5d5aed7fde9e6659673d850cbd18ea8bfca78",
+                      "alias": "my-blob-alias",
+                      "revision": 1,
+                      "dateCreated": "2006-01-02T15:04:05.000Z",
+                      "dateUpdated": "2006-01-02T15:04:05.000Z",
+                      "expiresAt": "2006-01-02T15:04:05.000Z",
+                      "blob": {
+                        "field0": "value0",
+                        "field1": 1,
+                        "field2": true
+                      }
+                    },
+                    {
+                      "blobId": "BL487ec3f6e03b340553f35f29c8f118cdf3eae08b",
+                      "accountId": "AC3ff5d5aed7fde9e6659673d850cbd18ea8bfca78",
+                      "alias": "another-blob",
+                      "revision": 1,
+                      "dateCreated": "2006-01-02T16:04:05.000Z",
+                      "dateUpdated": "2006-01-02T16:04:05.000Z",
+                      "expiresAt": "2006-01-02T16:04:05.000Z",
+                      "blob": {
+                        "data": "example"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/error400"
+          },
+          "500": {
+            "$ref": "#/components/responses/error500"
+          },
+          "504": {
+            "$ref": "#/components/responses/error504"
+          }
+        },
+        "operationId": "list-blobs",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "alias",
+            "description": "Filter blobs by alias"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "cursor",
+            "description": "Used to reference pages of a list of blobs"
+          }
+        ]
+      },
+      "post": {
+        "tags": ["Blobs"],
+        "summary": "Create a Blob",
+        "description": "Create a new Blob belonging to the requesting account.",
+        "operationId": "create-blob",
+        "requestBody": {
+          "description": "An object defining a new blob. A request body must be provided but the blob may be empty.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateBlobRequest"
+              },
+              "examples": {
+                "plain_empty_blob": {
+                  "value": {
+                    "blob": {}
+                  }
+                },
+                "setting_blob_content": {
+                  "value": {
+                    "blob": {
+                      "key0": "value0",
+                      "key1": 1,
+                      "key2": {
+                        "keyA": true,
+                        "keyB": [1, 1, 2, 3, 5, 8, 13, 21]
+                      }
+                    }
+                  }
+                },
+                "setting_alias_blob": {
+                  "value": {
+                    "alias": "my_custom_blob_identifier",
+                    "blob": {
+                      "key": "value"
+                    }
+                  }
+                },
+                "setting_expiresAt_blob": {
+                  "value": {
+                    "expiresAt": "2025-01-04T15:04:05.060Z",
+                    "blob": {
+                      "key": 45
+                    }
+                  }
+                },
+                "setting_everything_blob": {
+                  "value": {
+                    "alias": "my_custom_blob_identifier",
+                    "expiresAt": "2025-01-04T15:04:05.060Z",
+                    "blob": {
+                      "key0": "value",
+                      "key1": 45
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful creation of a new blob.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BlobResult"
+                },
+                "examples": {
+                  "plain_empty_blob": {
+                    "value": {
+                      "revision": 1,
+                      "dateCreated": "2025-01-02T15:04:05.000Z",
+                      "dateUpdated": "2025-01-02T15:04:05.000Z",
+                      "accountId": "AC387ec3f6e03b340553f35f29c8f118cdf3eae08a",
+                      "alias": "BL387ec3f6e03b340553f35f29c8f118cdf3eae08a",
+                      "blobId": "BL387ec3f6e03b340553f35f29c8f118cdf3eae08a",
+                      "expiresAt": "2025-01-03T00:04:05.000Z",
+                      "blob": {}
+                    }
+                  },
+                  "setting_blob_content": {
+                    "value": {
+                      "revision": 1,
+                      "dateCreated": "2025-01-02T15:04:05.000Z",
+                      "dateUpdated": "2025-01-02T15:04:05.000Z",
+                      "accountId": "AC387ec3f6e03b340553f35f29c8f118cdf3eae08a",
+                      "alias": "BL387ec3f6e03b340553f35f29c8f118cdf3eae08a",
+                      "blobId": "BL387ec3f6e03b340553f35f29c8f118cdf3eae08a",
+                      "expiresAt": "2025-01-03T00:04:05.000Z",
+                      "blob": {
+                        "key0": "value0",
+                        "key1": 1,
+                        "key2": {
+                          "keyA": true,
+                          "keyB": [1, 1, 2, 3, 5, 8, 13, 21]
+                        }
+                      }
+                    }
+                  },
+                  "setting_alias_blob": {
+                    "value": {
+                      "revision": 1,
+                      "dateCreated": "2025-01-02T15:04:05.000Z",
+                      "dateUpdated": "2025-01-02T15:04:05.000Z",
+                      "accountId": "AC387ec3f6e03b340553f35f29c8f118cdf3eae08a",
+                      "alias": "my_custom_blob_identifier",
+                      "blobId": "BL387ec3f6e03b340553f35f29c8f118cdf3eae08a",
+                      "expiresAt": "2025-01-03T00:04:05.000Z",
+                      "blob": {
+                        "key": "value"
+                      }
+                    }
+                  },
+                  "setting_expiresAt_blob": {
+                    "value": {
+                      "revision": 1,
+                      "dateCreated": "2025-01-02T15:04:05.000Z",
+                      "dateUpdated": "2025-01-02T15:04:05.000Z",
+                      "accountId": "AC387ec3f6e03b340553f35f29c8f118cdf3eae08a",
+                      "alias": "BL387ec3f6e03b340553f35f29c8f118cdf3eae08a",
+                      "blobId": "BL387ec3f6e03b340553f35f29c8f118cdf3eae08a",
+                      "expiresAt": "2025-01-04T15:04:05.060Z",
+                      "blob": {
+                        "key": 45
+                      }
+                    }
+                  },
+                  "setting_everything_blob": {
+                    "value": {
+                      "revision": 1,
+                      "dateCreated": "2025-01-02T15:04:05.000Z",
+                      "dateUpdated": "2025-01-02T15:04:05.000Z",
+                      "accountId": "AC387ec3f6e03b340553f35f29c8f118cdf3eae08a",
+                      "blobId": "BL387ec3f6e03b340553f35f29c8f118cdf3eae08a",
+                      "alias": "my_custom_blob_identifier",
+                      "expiresAt": "2025-01-04T15:04:05.060Z",
+                      "blob": {
+                        "key0": "value",
+                        "key1": 45
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/error400"
+          },
+          "409": {
+            "description": "A blob with the provided alias already exists oln the requesting account and so this new blob is rejected as there cannot be duplicate alises.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlatformError"
+                },
+                "example": {
+                  "code": 108,
+                  "call": "Request conflicts with another resource",
+                  "url": "https://docs.freeclimb.com/reference/error-and-warning-dictionary#108",
+                  "details": {
+                    "explanation": "alias already exists for another blob on this account"
+                  }
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "The blob exceeded one of the size limits. Either it itself is too large or it would push the total sum of all blobs over the account's limit.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlatformError"
+                },
+                "example": {
+                  "code": 80,
+                  "call": "Missing Required Parameter(s)",
+                  "url": "https://docs.freeclimb.com/reference/error-and-warning-dictionary#80",
+                  "details": {
+                    "explanation": "blob exceeds per-blob size limit"
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "$ref": "#/components/responses/error422"
+          },
+          "500": {
+            "$ref": "#/components/responses/error500"
+          }
+        }
+      }
+    },
+    "/Accounts/{accountId}/Blobs/{blobId}": {
+      "summary": "Operations affecting an individual blob belonging to an account.",
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/AccountId"
+        },
+        {
+          "name": "blobId",
+          "in": "path",
+          "description": "String that uniquely identifies this Blob resource.",
+          "required": true,
+          "schema": {
+            "$ref": "#/components/schemas/blobId"
+          }
+        }
+      ],
+      "get": {
+        "summary": "Get Blob",
+        "tags": ["Blobs"],
+        "responses": {
+          "200": {
+            "description": "Retrieve a Blob.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BlobResult"
+                },
+                "example": {
+                  "blobId": "BL387ec3f6e03b340553f35f29c8f118cdf3eae08a",
+                  "accountId": "AC3ff5d5aed7fde9e6659673d850cbd18ea8bfca78",
+                  "alias": "my-blob-alias",
+                  "revision": 1,
+                  "dateCreated": "2006-01-02T15:04:05.000Z",
+                  "dateUpdated": "2006-01-02T15:04:05.000Z",
+                  "expiresAt": "2006-01-02T15:04:05.000Z",
+                  "blob": {
+                    "field0": "value0",
+                    "field1": 1,
+                    "field2": true
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/error404"
+          },
+          "500": {
+            "$ref": "#/components/responses/error500"
+          },
+          "504": {
+            "$ref": "#/components/responses/error504"
+          }
+        },
+        "operationId": "get-blob",
+        "description": "Retrieves a specified blob"
+      },
+      "delete": {
+        "summary": "Delete Blob",
+        "tags": ["Blobs"],
+        "responses": {
+          "200": {
+            "description": "Blob keys deleted successfully, remaining blob returned.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BlobResult"
+                }
+              }
+            }
+          },
+          "204": {
+            "$ref": "#/components/responses/success204"
+          },
+          "404": {
+            "$ref": "#/components/responses/error404"
+          },
+          "422": {
+            "$ref": "#/components/responses/error422"
+          },
+          "500": {
+            "$ref": "#/components/responses/error500"
+          },
+          "504": {
+            "$ref": "#/components/responses/error504"
+          }
+        },
+        "operationId": "delete-blob",
+        "description": "Deletes a blob or specific keys from a blob. If no keys are specified in the request body, the entire blob is deleted (returns 204). If specific keys are provided, only those keys are removed and the remaining blob is returned (returns 200)."
+      },
+      "patch": {
+        "summary": "Modify Blob",
+        "tags": ["Blobs"],
+        "responses": {
+          "200": {
+            "description": "Blob keys successfully modified, updated blob returned.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BlobResult"
+                },
+                "example": {
+                  "blobId": "BL387ec3f6e03b340553f35f29c8f118cdf3eae08a",
+                  "accountId": "AC3ff5d5aed7fde9e6659673d850cbd18ea8bfca78",
+                  "alias": "new_conversation_id",
+                  "revision": 2,
+                  "dateCreated": "2006-01-02T15:04:05.000Z",
+                  "dateUpdated": "2006-01-02T15:04:05.000Z",
+                  "expiresAt": "2006-01-02T15:04:05.000Z",
+                  "blob": {
+                    "field0": "value0_redux",
+                    "field4": "value4"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/error404"
+          },
+          "409": {
+            "$ref": "#/components/responses/error409"
+          },
+          "413": {
+            "$ref": "#/components/responses/error413"
+          },
+          "500": {
+            "$ref": "#/components/responses/error500"
+          }
+        },
+        "operationId": "modify-blob",
+        "requestBody": {
+          "description": "Request body to specify keys to modify. Or new keys to add onto the already existing blob",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModifyBlobRequest"
+              },
+              "example": {
+                "alias": "new_conversation_id",
+                "blob": {
+                  "field0": "value0_redux",
+                  "field4": "value4"
+                }
+              }
+            }
+          }
+        },
+        "description": "Modifys a pre existing blob by either adding new fields, or modifying existing fields"
+      },
+      "put": {
+        "summary": "Replace Blob",
+        "tags": ["Blobs"],
+        "responses": {
+          "200": {
+            "description": "Replaces all keys in blob with those provided.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BlobResult"
+                },
+                "example": {
+                  "blobId": "BL387ec3f6e03b340553f35f29c8f118cdf3eae08a",
+                  "accountId": "AC3ff5d5aed7fde9e6659673d850cbd18ea8bfca78",
+                  "alias": "new_conversation_id",
+                  "revision": 2,
+                  "dateCreated": "2006-01-02T15:04:05.000Z",
+                  "dateUpdated": "2006-01-02T15:04:05.000Z",
+                  "expiresAt": "2006-01-02T15:04:05.000Z",
+                  "blob": {
+                    "field0": "value0_redux",
+                    "field4": "value4"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/error404"
+          },
+          "409": {
+            "$ref": "#/components/responses/error409"
+          },
+          "413": {
+            "$ref": "#/components/responses/error413"
+          },
+          "500": {
+            "$ref": "#/components/responses/error500"
+          }
+        },
+        "operationId": "replace-blob",
+        "requestBody": {
+          "description": "JSON object containing blob key the contents of which will be used to override the enitre blob contents.",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReplaceBlobRequest"
+              },
+              "example": {
+                "blob": {
+                  "field0": "value0_redux",
+                  "field4": "value4"
+                }
+              }
+            }
+          }
+        },
+        "description": "Replaces the blob content with the provided values."
+      }
     }
   },
+  "tags": [
+    {
+      "name": "Accounts",
+      "description": "API for managing whole Accounts"
+    },
+    {
+      "name": "Applications",
+      "description": "API for managing Applications"
+    },
+    {
+      "name": "AvailablePhoneNumbers",
+      "description": "API for managing AvailablePhoneNumbers"
+    },
+    {
+      "name": "IncomingPhoneNumbers",
+      "description": "API for managing IncomingPhoneNumbers"
+    },
+    {
+      "name": "KnowledgeBases",
+      "description": "API for managing KnowledgeBases"
+    },
+    {
+      "name": "Calls",
+      "description": "API for managing Calls"
+    },
+    {
+      "name": "Conferences",
+      "description": "API for managing Conferences"
+    },
+    {
+      "name": "Queues",
+      "description": "API for managing Queues"
+    },
+    {
+      "name": "Logs",
+      "description": "API for managing Logs"
+    },
+    {
+      "name": "Recordings",
+      "description": "API for managing Recordings"
+    },
+    {
+      "name": "Messages",
+      "description": "API for managing Messages"
+    },
+    {
+      "name": "Exports",
+      "description": "API for managing Exports"
+    },
+    {
+      "name": "Blobs",
+      "description": "API for managing Blobs"
+    }
+  ],
   "x-headers": [],
   "x-explorer-enabled": true,
   "x-proxy-enabled": true,

@@ -6,9 +6,9 @@ describe("UpdateConferenceParticipantRequest", () => {
     const Klass = freeclimb.UpdateConferenceParticipantRequest;
     let model: freeclimb.UpdateConferenceParticipantRequest =
       new freeclimb.UpdateConferenceParticipantRequest({
-        talk: true,
-        listen: true,
-        dtmfPassThrough: true,
+        ["talk"]: true,
+        ["listen"]: true,
+        ["dtmfPassThrough"]: true,
       });
     describe("UpdateConferenceParticipantRequest class test", () => {
       it("resolves to the class type upon initialization", () => {
@@ -20,19 +20,19 @@ describe("UpdateConferenceParticipantRequest", () => {
     describe(".talk", () => {
       it("resolves to particular value on initialization", () => {
         const value = true;
-        expect(model.talk).toBe(value);
+        expect(model["talk"]).toBe(value);
       });
     });
     describe(".listen", () => {
       it("resolves to particular value on initialization", () => {
         const value = true;
-        expect(model.listen).toBe(value);
+        expect(model["listen"]).toBe(value);
       });
     });
     describe(".dtmfPassThrough", () => {
       it("resolves to particular value on initialization", () => {
         const value = true;
-        expect(model.dtmfPassThrough).toBe(value);
+        expect(model["dtmfPassThrough"]).toBe(value);
       });
     });
   });
@@ -40,9 +40,9 @@ describe("UpdateConferenceParticipantRequest", () => {
     const Klass = freeclimb.UpdateConferenceParticipantRequest;
     let model: freeclimb.UpdateConferenceParticipantRequest =
       new freeclimb.UpdateConferenceParticipantRequest({
-        talk: false,
-        listen: false,
-        dtmfPassThrough: false,
+        ["talk"]: false,
+        ["listen"]: false,
+        ["dtmfPassThrough"]: false,
       });
     describe("UpdateConferenceParticipantRequest class test", () => {
       it("resolves to the class type upon initialization", () => {
@@ -54,19 +54,19 @@ describe("UpdateConferenceParticipantRequest", () => {
     describe(".talk", () => {
       it("resolves to particular value on initialization", () => {
         const value = false;
-        expect(model.talk).toBe(value);
+        expect(model["talk"]).toBe(value);
       });
     });
     describe(".listen", () => {
       it("resolves to particular value on initialization", () => {
         const value = false;
-        expect(model.listen).toBe(value);
+        expect(model["listen"]).toBe(value);
       });
     });
     describe(".dtmfPassThrough", () => {
       it("resolves to particular value on initialization", () => {
         const value = false;
-        expect(model.dtmfPassThrough).toBe(value);
+        expect(model["dtmfPassThrough"]).toBe(value);
       });
     });
   });
@@ -81,7 +81,7 @@ describe("UpdateConferenceParticipantRequest", () => {
         const value = Klass.attributeTypeMap.find(
           (attribute) => attribute.name === "talk",
         )?.defaultValue;
-        expect(model.talk).toBe(value);
+        expect(model["talk"]).toBe(value);
       });
     });
     describe("#listen", () => {
@@ -89,7 +89,7 @@ describe("UpdateConferenceParticipantRequest", () => {
         const value = Klass.attributeTypeMap.find(
           (attribute) => attribute.name === "listen",
         )?.defaultValue;
-        expect(model.listen).toBe(value);
+        expect(model["listen"]).toBe(value);
       });
     });
     describe("#dtmfPassThrough", () => {
@@ -97,7 +97,7 @@ describe("UpdateConferenceParticipantRequest", () => {
         const value = Klass.attributeTypeMap.find(
           (attribute) => attribute.name === "dtmfPassThrough",
         )?.defaultValue;
-        expect(model.dtmfPassThrough).toBe(value);
+        expect(model["dtmfPassThrough"]).toBe(value);
       });
     });
   });

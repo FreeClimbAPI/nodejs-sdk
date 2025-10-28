@@ -5,7 +5,7 @@ describe("Reject", () => {
   describe("Test with truthy values", () => {
     const Klass = freeclimb.Reject;
     let model: freeclimb.Reject = new freeclimb.Reject({
-      reason: "test_reason",
+      ["reason"]: "test_reason",
     });
     describe("Reject class test", () => {
       it("resolves to the class type upon initialization", () => {
@@ -16,14 +16,14 @@ describe("Reject", () => {
     describe(".reason", () => {
       it("resolves to particular value on initialization", () => {
         const value = "test_reason";
-        expect(model.reason).toBe(value);
+        expect(model["reason"]).toBe(value);
       });
     });
   });
   describe("Test with falsy values", () => {
     const Klass = freeclimb.Reject;
     let model: freeclimb.Reject = new freeclimb.Reject({
-      reason: "",
+      ["reason"]: "",
     });
     describe("Reject class test", () => {
       it("resolves to the class type upon initialization", () => {
@@ -34,7 +34,7 @@ describe("Reject", () => {
     describe(".reason", () => {
       it("resolves to particular value on initialization", () => {
         const value = "";
-        expect(model.reason).toBe(value);
+        expect(model["reason"]).toBe(value);
       });
     });
   });
@@ -48,7 +48,7 @@ describe("Reject", () => {
         const value = Klass.attributeTypeMap.find(
           (attribute) => attribute.name === "reason",
         )?.defaultValue;
-        expect(model.reason).toBe(value);
+        expect(model["reason"]).toBe(value);
       });
     });
   });

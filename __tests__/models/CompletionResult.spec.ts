@@ -5,9 +5,9 @@ describe("CompletionResult", () => {
   describe("Test with truthy values", () => {
     const Klass = freeclimb.CompletionResult;
     let model: freeclimb.CompletionResult = new freeclimb.CompletionResult({
-      response: "test_response",
+      ["response"]: "test_response",
 
-      status: freeclimb.CompletionResultStatus.SUCCESS,
+      ["status"]: freeclimb.CompletionResultStatus.SUCCESS,
     });
     describe("CompletionResult class test", () => {
       it("resolves to the class type upon initialization", () => {
@@ -17,22 +17,22 @@ describe("CompletionResult", () => {
     describe(".response", () => {
       it("resolves to particular value on initialization", () => {
         const value = "test_response";
-        expect(model.response).toBe(value);
+        expect(model["response"]).toBe(value);
       });
     });
     describe(".status", () => {
       it("resolves to particular value on initialization", () => {
         const value = "success";
-        expect(model.status).toBe(value);
+        expect(model["status"]).toBe(value);
       });
     });
   });
   describe("Test with falsy values", () => {
     const Klass = freeclimb.CompletionResult;
     let model: freeclimb.CompletionResult = new freeclimb.CompletionResult({
-      response: "",
+      ["response"]: "",
 
-      status: freeclimb.CompletionResultStatus.SUCCESS,
+      ["status"]: freeclimb.CompletionResultStatus.SUCCESS,
     });
     describe("CompletionResult class test", () => {
       it("resolves to the class type upon initialization", () => {
@@ -42,22 +42,22 @@ describe("CompletionResult", () => {
     describe(".response", () => {
       it("resolves to particular value on initialization", () => {
         const value = "";
-        expect(model.response).toBe(value);
+        expect(model["response"]).toBe(value);
       });
     });
     describe(".status", () => {
       it("resolves to particular value on initialization", () => {
         const value = "success";
-        expect(model.status).toBe(value);
+        expect(model["status"]).toBe(value);
       });
     });
   });
   describe("Test with only required values", () => {
     const Klass = freeclimb.CompletionResult;
     let constructorArguments = {
-      response: "test_response",
+      ["response"]: "test_response",
 
-      status: freeclimb.CompletionResultStatus.SUCCESS,
+      ["status"]: freeclimb.CompletionResultStatus.SUCCESS,
     };
     let model: freeclimb.CompletionResult = new freeclimb.CompletionResult(
       constructorArguments,
@@ -65,12 +65,12 @@ describe("CompletionResult", () => {
 
     describe("#response", () => {
       it("resolves to initialization value", () => {
-        expect(model.response).toBe(constructorArguments["response"]);
+        expect(model["response"]).toBe(constructorArguments["response"]);
       });
     });
     describe("#status", () => {
       it("resolves to initialization value", () => {
-        expect(model.status).toBe(constructorArguments["status"]);
+        expect(model["status"]).toBe(constructorArguments["status"]);
       });
     });
   });
