@@ -24,13 +24,6 @@ interface AttributeType {
   defaultValue: any;
 }
 interface ArgumentsType {
-  /**
-    * CodegenProperty{openApiType='string', baseName='campaignId', complexType='null', getter='getCampaignId', setter='setCampaignId', description='alphanumeric identifier for the TollFree campaign associated with this number', dataType='string', datatypeWithEnum='string', dataFormat='null', name='campaignId', min='null', max='null', defaultValue='undefined', defaultValueWithParam=' = data.campaignId;', baseType='string', containerType='null', containerTypeMapped='null', title='null', unescapedDescription='alphanumeric identifier for the TollFree campaign associated with this number', maxLength=null, minLength=null, pattern='null', example='"string_example"', jsonSchema='{
-  "description" : "alphanumeric identifier for the TollFree campaign associated with this number",
-  "type" : "string",
-  "x-is-required" : true
-}', minimum='null', maximum='null', exclusiveMinimum=false, exclusiveMaximum=false, required=true, deprecated=false, hasMoreNonReadOnly=false, isPrimitiveType=true, isModel=false, isContainer=false, isString=true, isNumeric=false, isInteger=false, isShort=false, isLong=false, isUnboundedInteger=false, isNumber=false, isFloat=false, isDouble=false, isDecimal=false, isByteArray=false, isBinary=false, isFile=false, isBoolean=false, isDate=false, isDateTime=false, isUuid=false, isUri=false, isEmail=false, isPassword=false, isFreeFormObject=false, isArray=false, isMap=false, isOptional=false, isEnum=false, isInnerEnum=false, isEnumRef=false, isAnyType=false, isReadOnly=false, isWriteOnly=false, isNullable=false, isSelfReference=false, isCircularReference=false, isDiscriminator=false, isNew=false, isOverridden=null, _enum=null, allowableValues=null, items=null, additionalProperties=null, vars=[], requiredVars=[], mostInnerItems=null, vendorExtensions={x-is-required=true}, hasValidation=false, isInherited=false, discriminatorValue='null', nameInCamelCase='campaignId', nameInPascalCase='CampaignId', nameInSnakeCase='CAMPAIGN_ID', enumName='null', maxItems=null, minItems=null, maxProperties=null, minProperties=null, uniqueItems=false, uniqueItemsBoolean=null, multipleOf=null, isXmlAttribute=false, xmlPrefix='null', xmlName='null', xmlNamespace='null', isXmlWrapped=false, isNull=false, isVoid=false, getAdditionalPropertiesIsAnyType=false, getHasVars=false, getHasRequired=false, getHasDiscriminatorWithNonEmptyMapping=false, composedSchemas=null, hasMultipleTypes=false, hasSanitizedName=false, requiredVarsMap=null, ref=null, schemaIsFromAdditionalProperties=false, isBooleanSchemaTrue=false, isBooleanSchemaFalse=false, format=null, dependentRequired=null, contains=null}
-     */
   campaignId: string;
 }
 export class TFN {
