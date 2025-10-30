@@ -5,7 +5,7 @@ describe("SetListen", () => {
   describe("Test with truthy values", () => {
     const Klass = freeclimb.SetListen;
     let model: freeclimb.SetListen = new freeclimb.SetListen({
-      listen: true,
+      ["listen"]: true,
     });
     describe("SetListen class test", () => {
       it("resolves to the class type upon initialization", () => {
@@ -16,14 +16,14 @@ describe("SetListen", () => {
     describe(".listen", () => {
       it("resolves to particular value on initialization", () => {
         const value = true;
-        expect(model.listen).toBe(value);
+        expect(model["listen"]).toBe(value);
       });
     });
   });
   describe("Test with falsy values", () => {
     const Klass = freeclimb.SetListen;
     let model: freeclimb.SetListen = new freeclimb.SetListen({
-      listen: false,
+      ["listen"]: false,
     });
     describe("SetListen class test", () => {
       it("resolves to the class type upon initialization", () => {
@@ -34,7 +34,7 @@ describe("SetListen", () => {
     describe(".listen", () => {
       it("resolves to particular value on initialization", () => {
         const value = false;
-        expect(model.listen).toBe(value);
+        expect(model["listen"]).toBe(value);
       });
     });
   });
@@ -50,7 +50,7 @@ describe("SetListen", () => {
         const value = Klass.attributeTypeMap.find(
           (attribute) => attribute.name === "listen",
         )?.defaultValue;
-        expect(model.listen).toBe(value);
+        expect(model["listen"]).toBe(value);
       });
     });
   });

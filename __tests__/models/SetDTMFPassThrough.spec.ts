@@ -5,7 +5,7 @@ describe("SetDTMFPassThrough", () => {
   describe("Test with truthy values", () => {
     const Klass = freeclimb.SetDTMFPassThrough;
     let model: freeclimb.SetDTMFPassThrough = new freeclimb.SetDTMFPassThrough({
-      dtmfPassThrough: true,
+      ["dtmfPassThrough"]: true,
     });
     describe("SetDTMFPassThrough class test", () => {
       it("resolves to the class type upon initialization", () => {
@@ -16,14 +16,14 @@ describe("SetDTMFPassThrough", () => {
     describe(".dtmfPassThrough", () => {
       it("resolves to particular value on initialization", () => {
         const value = true;
-        expect(model.dtmfPassThrough).toBe(value);
+        expect(model["dtmfPassThrough"]).toBe(value);
       });
     });
   });
   describe("Test with falsy values", () => {
     const Klass = freeclimb.SetDTMFPassThrough;
     let model: freeclimb.SetDTMFPassThrough = new freeclimb.SetDTMFPassThrough({
-      dtmfPassThrough: false,
+      ["dtmfPassThrough"]: false,
     });
     describe("SetDTMFPassThrough class test", () => {
       it("resolves to the class type upon initialization", () => {
@@ -34,7 +34,7 @@ describe("SetDTMFPassThrough", () => {
     describe(".dtmfPassThrough", () => {
       it("resolves to particular value on initialization", () => {
         const value = false;
-        expect(model.dtmfPassThrough).toBe(value);
+        expect(model["dtmfPassThrough"]).toBe(value);
       });
     });
   });
@@ -50,7 +50,7 @@ describe("SetDTMFPassThrough", () => {
         const value = Klass.attributeTypeMap.find(
           (attribute) => attribute.name === "dtmfPassThrough",
         )?.defaultValue;
-        expect(model.dtmfPassThrough).toBe(value);
+        expect(model["dtmfPassThrough"]).toBe(value);
       });
     });
   });

@@ -26,6 +26,8 @@ models/ApplicationResult.ts
 models/AvailableNumber.ts
 models/AvailableNumberList.ts
 models/BargeInReason.ts
+models/BlobListResponse.ts
+models/BlobResult.ts
 models/BuyIncomingNumberRequest.ts
 models/CallControlWebhook.ts
 models/CallDirection.ts
@@ -45,6 +47,7 @@ models/ConferenceRecordingStatusWebhook.ts
 models/ConferenceResult.ts
 models/ConferenceStatus.ts
 models/ConferenceStatusWebhook.ts
+models/CreateBlobRequest.ts
 models/CreateConference.ts
 models/CreateConferenceRequest.ts
 models/CreateConferenceWebhook.ts
@@ -90,6 +93,7 @@ models/MessageResult.ts
 models/MessageStatus.ts
 models/MessageStatusWebhook.ts
 models/MessagesList.ts
+models/ModifyBlobRequest.ts
 models/MutableResourceModel.ts
 models/ObjectSerializer.ts
 models/OutDial.ts
@@ -101,6 +105,7 @@ models/Park.ts
 models/Pause.ts
 models/PerclCommand.ts
 models/PerclScript.ts
+models/PlatformError.ts
 models/Play.ts
 models/PlayBeep.ts
 models/PlayEarlyMedia.ts
@@ -121,6 +126,7 @@ models/RedirectWebhook.ts
 models/Reject.ts
 models/RemoveFromConference.ts
 models/RemoveFromQueueNotificationWebhook.ts
+models/ReplaceBlobRequest.ts
 models/RequestType.ts
 models/SMSTenDLCBrand.ts
 models/SMSTenDLCBrandAltBusinessIdType.ts
@@ -148,6 +154,8 @@ models/Sms.ts
 models/StartRecordCall.ts
 models/TFN.ts
 models/TFNCampaign.ts
+models/TTSEngine.ts
+models/TTSEngineName.ts
 models/TerminateConference.ts
 models/TranscribeReason.ts
 models/TranscribeTermReason.ts

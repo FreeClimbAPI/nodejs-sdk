@@ -6,9 +6,9 @@ describe("TranscribeUtteranceRecord", () => {
     const Klass = freeclimb.TranscribeUtteranceRecord;
     let model: freeclimb.TranscribeUtteranceRecord =
       new freeclimb.TranscribeUtteranceRecord({
-        saveRecording: true,
-        maxLengthSec: 1,
-        rcrdTerminationSilenceTimeMs: 1,
+        ["saveRecording"]: true,
+        ["maxLengthSec"]: 1,
+        ["rcrdTerminationSilenceTimeMs"]: 1,
       });
     describe("TranscribeUtteranceRecord class test", () => {
       it("resolves to the class type upon initialization", () => {
@@ -18,19 +18,19 @@ describe("TranscribeUtteranceRecord", () => {
     describe(".saveRecording", () => {
       it("resolves to particular value on initialization", () => {
         const value = true;
-        expect(model.saveRecording).toBe(value);
+        expect(model["saveRecording"]).toBe(value);
       });
     });
     describe(".maxLengthSec", () => {
       it("resolves to particular value on initialization", () => {
         const value = 1;
-        expect(model.maxLengthSec).toBe(value);
+        expect(model["maxLengthSec"]).toBe(value);
       });
     });
     describe(".rcrdTerminationSilenceTimeMs", () => {
       it("resolves to particular value on initialization", () => {
         const value = 1;
-        expect(model.rcrdTerminationSilenceTimeMs).toBe(value);
+        expect(model["rcrdTerminationSilenceTimeMs"]).toBe(value);
       });
     });
   });
@@ -38,9 +38,9 @@ describe("TranscribeUtteranceRecord", () => {
     const Klass = freeclimb.TranscribeUtteranceRecord;
     let model: freeclimb.TranscribeUtteranceRecord =
       new freeclimb.TranscribeUtteranceRecord({
-        saveRecording: false,
-        maxLengthSec: 0,
-        rcrdTerminationSilenceTimeMs: 0,
+        ["saveRecording"]: false,
+        ["maxLengthSec"]: 0,
+        ["rcrdTerminationSilenceTimeMs"]: 0,
       });
     describe("TranscribeUtteranceRecord class test", () => {
       it("resolves to the class type upon initialization", () => {
@@ -50,19 +50,19 @@ describe("TranscribeUtteranceRecord", () => {
     describe(".saveRecording", () => {
       it("resolves to particular value on initialization", () => {
         const value = false;
-        expect(model.saveRecording).toBe(value);
+        expect(model["saveRecording"]).toBe(value);
       });
     });
     describe(".maxLengthSec", () => {
       it("resolves to particular value on initialization", () => {
         const value = 0;
-        expect(model.maxLengthSec).toBe(value);
+        expect(model["maxLengthSec"]).toBe(value);
       });
     });
     describe(".rcrdTerminationSilenceTimeMs", () => {
       it("resolves to particular value on initialization", () => {
         const value = 0;
-        expect(model.rcrdTerminationSilenceTimeMs).toBe(value);
+        expect(model["rcrdTerminationSilenceTimeMs"]).toBe(value);
       });
     });
   });
@@ -77,7 +77,7 @@ describe("TranscribeUtteranceRecord", () => {
         const value = Klass.attributeTypeMap.find(
           (attribute) => attribute.name === "saveRecording",
         )?.defaultValue;
-        expect(model.saveRecording).toBe(value);
+        expect(model["saveRecording"]).toBe(value);
       });
     });
     describe("#maxLengthSec", () => {
@@ -85,7 +85,7 @@ describe("TranscribeUtteranceRecord", () => {
         const value = Klass.attributeTypeMap.find(
           (attribute) => attribute.name === "maxLengthSec",
         )?.defaultValue;
-        expect(model.maxLengthSec).toBe(value);
+        expect(model["maxLengthSec"]).toBe(value);
       });
     });
     describe("#rcrdTerminationSilenceTimeMs", () => {
@@ -93,7 +93,7 @@ describe("TranscribeUtteranceRecord", () => {
         const value = Klass.attributeTypeMap.find(
           (attribute) => attribute.name === "rcrdTerminationSilenceTimeMs",
         )?.defaultValue;
-        expect(model.rcrdTerminationSilenceTimeMs).toBe(value);
+        expect(model["rcrdTerminationSilenceTimeMs"]).toBe(value);
       });
     });
   });

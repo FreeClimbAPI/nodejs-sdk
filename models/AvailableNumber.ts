@@ -24,8 +24,6 @@ interface ArgumentsType {
   capabilities?: Capabilities;
   campaignId?: string;
   phoneNumber?: string;
-  voiceEnabled?: boolean;
-  smsEnabled?: boolean;
   region?: string;
   country?: string;
 }
@@ -39,14 +37,6 @@ export class AvailableNumber {
    * The phone number, in E.164 format (+ country code and phone number: +18003608245).
    */
   "phoneNumber"?: string;
-  /**
-   * Typically set to true for all numbers.
-   */
-  "voiceEnabled"?: boolean;
-  /**
-   * Indicates whether the phone number can send and receive SMS messages.
-   */
-  "smsEnabled"?: boolean;
   /**
    * The state or province of this phone number.
    */
@@ -79,22 +69,6 @@ export class AvailableNumber {
       name: "phoneNumber",
       baseName: "phoneNumber",
       type: "string",
-      format: "",
-
-      defaultValue: undefined,
-    },
-    {
-      name: "voiceEnabled",
-      baseName: "voiceEnabled",
-      type: "boolean",
-      format: "",
-
-      defaultValue: undefined,
-    },
-    {
-      name: "smsEnabled",
-      baseName: "smsEnabled",
-      type: "boolean",
       format: "",
 
       defaultValue: undefined,
@@ -133,8 +107,6 @@ export class AvailableNumber {
     this["capabilities"] = assign<Capabilities>("capabilities");
     this["campaignId"] = assign<string>("campaignId");
     this["phoneNumber"] = assign<string>("phoneNumber");
-    this["voiceEnabled"] = assign<boolean>("voiceEnabled");
-    this["smsEnabled"] = assign<boolean>("smsEnabled");
     this["region"] = assign<string>("region");
     this["country"] = assign<string>("country");
   }

@@ -17,6 +17,8 @@ import { ApplicationResult } from "../models/ApplicationResult";
 import { AvailableNumber } from "../models/AvailableNumber";
 import { AvailableNumberList } from "../models/AvailableNumberList";
 import { BargeInReason } from "../models/BargeInReason";
+import { BlobListResponse } from "../models/BlobListResponse";
+import { BlobResult } from "../models/BlobResult";
 import { BuyIncomingNumberRequest } from "../models/BuyIncomingNumberRequest";
 import { CallControlWebhook } from "../models/CallControlWebhook";
 import { CallDirection } from "../models/CallDirection";
@@ -36,6 +38,7 @@ import { ConferenceRecordingStatusWebhook } from "../models/ConferenceRecordingS
 import { ConferenceResult } from "../models/ConferenceResult";
 import { ConferenceStatus } from "../models/ConferenceStatus";
 import { ConferenceStatusWebhook } from "../models/ConferenceStatusWebhook";
+import { CreateBlobRequest } from "../models/CreateBlobRequest";
 import { CreateConference } from "../models/CreateConference";
 import { CreateConferenceRequest } from "../models/CreateConferenceRequest";
 import { CreateConferenceWebhook } from "../models/CreateConferenceWebhook";
@@ -81,6 +84,7 @@ import { MessageResult } from "../models/MessageResult";
 import { MessageStatus } from "../models/MessageStatus";
 import { MessageStatusWebhook } from "../models/MessageStatusWebhook";
 import { MessagesList } from "../models/MessagesList";
+import { ModifyBlobRequest } from "../models/ModifyBlobRequest";
 import { MutableResourceModel } from "../models/MutableResourceModel";
 import { OutDial } from "../models/OutDial";
 import { OutDialApiConnectWebhook } from "../models/OutDialApiConnectWebhook";
@@ -91,6 +95,7 @@ import { Park } from "../models/Park";
 import { Pause } from "../models/Pause";
 import { PerclCommand } from "../models/PerclCommand";
 import { PerclScript } from "../models/PerclScript";
+import { PlatformError } from "../models/PlatformError";
 import { Play } from "../models/Play";
 import { PlayBeep } from "../models/PlayBeep";
 import { PlayEarlyMedia } from "../models/PlayEarlyMedia";
@@ -111,6 +116,7 @@ import { RedirectWebhook } from "../models/RedirectWebhook";
 import { Reject } from "../models/Reject";
 import { RemoveFromConference } from "../models/RemoveFromConference";
 import { RemoveFromQueueNotificationWebhook } from "../models/RemoveFromQueueNotificationWebhook";
+import { ReplaceBlobRequest } from "../models/ReplaceBlobRequest";
 import { RequestType } from "../models/RequestType";
 import { SMSTenDLCBrand } from "../models/SMSTenDLCBrand";
 import { SMSTenDLCBrandAltBusinessIdType } from "../models/SMSTenDLCBrandAltBusinessIdType";
@@ -138,6 +144,8 @@ import { Sms } from "../models/Sms";
 import { StartRecordCall } from "../models/StartRecordCall";
 import { TFN } from "../models/TFN";
 import { TFNCampaign } from "../models/TFNCampaign";
+import { TTSEngine } from "../models/TTSEngine";
+import { TTSEngineName } from "../models/TTSEngineName";
 import { TerminateConference } from "../models/TerminateConference";
 import { TranscribeReason } from "../models/TranscribeReason";
 import { TranscribeTermReason } from "../models/TranscribeTermReason";
@@ -343,6 +351,51 @@ export class ObservableDefaultApi {
           return middlewarePostObservable.pipe(
             map((rsp: ResponseContext) =>
               this.responseProcessor.createAnApplication(rsp),
+            ),
+          );
+        }),
+      );
+  }
+
+  /**
+     * Create a new Blob belonging to the requesting account.
+     * Create a Blob
+     
+     * @param createBlobRequest An object defining a new blob. A request body must be provided but the blob may be empty.
+     
+     */
+  public createBlob(
+    createBlobRequest: CreateBlobRequest,
+    _options?: Configuration,
+  ): Observable<BlobResult> {
+    const requestContextPromise = this.requestFactory.createBlob(
+      createBlobRequest,
+      _options,
+    );
+
+    // build promise chain
+    let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+    for (let middleware of this.configuration.middleware) {
+      middlewarePreObservable = middlewarePreObservable.pipe(
+        mergeMap((ctx: RequestContext) => middleware.pre(ctx)),
+      );
+    }
+
+    return middlewarePreObservable
+      .pipe(
+        mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx)),
+      )
+      .pipe(
+        mergeMap((response: ResponseContext) => {
+          let middlewarePostObservable = of(response);
+          for (let middleware of this.configuration.middleware) {
+            middlewarePostObservable = middlewarePostObservable.pipe(
+              mergeMap((rsp: ResponseContext) => middleware.post(rsp)),
+            );
+          }
+          return middlewarePostObservable.pipe(
+            map((rsp: ResponseContext) =>
+              this.responseProcessor.createBlob(rsp),
             ),
           );
         }),
@@ -612,6 +665,51 @@ export class ObservableDefaultApi {
           return middlewarePostObservable.pipe(
             map((rsp: ResponseContext) =>
               this.responseProcessor.deleteAnIncomingNumber(rsp),
+            ),
+          );
+        }),
+      );
+  }
+
+  /**
+     * Deletes a blob or specific keys from a blob. If no keys are specified in the request body, the entire blob is deleted (returns 204). If specific keys are provided, only those keys are removed and the remaining blob is returned (returns 200).
+     * Delete Blob
+     
+     * @param blobId String that uniquely identifies this Blob resource.
+     
+     */
+  public deleteBlob(
+    blobId: string,
+    _options?: Configuration,
+  ): Observable<void | BlobResult> {
+    const requestContextPromise = this.requestFactory.deleteBlob(
+      blobId,
+      _options,
+    );
+
+    // build promise chain
+    let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+    for (let middleware of this.configuration.middleware) {
+      middlewarePreObservable = middlewarePreObservable.pipe(
+        mergeMap((ctx: RequestContext) => middleware.pre(ctx)),
+      );
+    }
+
+    return middlewarePreObservable
+      .pipe(
+        mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx)),
+      )
+      .pipe(
+        mergeMap((response: ResponseContext) => {
+          let middlewarePostObservable = of(response);
+          for (let middleware of this.configuration.middleware) {
+            middlewarePostObservable = middlewarePostObservable.pipe(
+              mergeMap((rsp: ResponseContext) => middleware.post(rsp)),
+            );
+          }
+          return middlewarePostObservable.pipe(
+            map((rsp: ResponseContext) =>
+              this.responseProcessor.deleteBlob(rsp),
             ),
           );
         }),
@@ -1325,6 +1423,46 @@ export class ObservableDefaultApi {
   }
 
   /**
+     * Retrieves a specified blob
+     * Get Blob
+     
+     * @param blobId String that uniquely identifies this Blob resource.
+     
+     */
+  public getBlob(
+    blobId: string,
+    _options?: Configuration,
+  ): Observable<BlobResult> {
+    const requestContextPromise = this.requestFactory.getBlob(blobId, _options);
+
+    // build promise chain
+    let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+    for (let middleware of this.configuration.middleware) {
+      middlewarePreObservable = middlewarePreObservable.pipe(
+        mergeMap((ctx: RequestContext) => middleware.pre(ctx)),
+      );
+    }
+
+    return middlewarePreObservable
+      .pipe(
+        mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx)),
+      )
+      .pipe(
+        mergeMap((response: ResponseContext) => {
+          let middlewarePostObservable = of(response);
+          for (let middleware of this.configuration.middleware) {
+            middlewarePostObservable = middlewarePostObservable.pipe(
+              mergeMap((rsp: ResponseContext) => middleware.post(rsp)),
+            );
+          }
+          return middlewarePostObservable.pipe(
+            map((rsp: ResponseContext) => this.responseProcessor.getBlob(rsp)),
+          );
+        }),
+      );
+  }
+
+  /**
      * Get Head Member
      
      * @param queueId String that uniquely identifies the Queue that the Member belongs to.
@@ -1912,6 +2050,43 @@ export class ObservableDefaultApi {
   }
 
   /**
+     * List Blobs belonging to an account. Results are returned in paginated lists mirroring other listing features in the API.
+     * List Blobs belonging to an account.
+     
+     */
+  public listBlobs(_options?: Configuration): Observable<BlobListResponse> {
+    const requestContextPromise = this.requestFactory.listBlobs(_options);
+
+    // build promise chain
+    let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+    for (let middleware of this.configuration.middleware) {
+      middlewarePreObservable = middlewarePreObservable.pipe(
+        mergeMap((ctx: RequestContext) => middleware.pre(ctx)),
+      );
+    }
+
+    return middlewarePreObservable
+      .pipe(
+        mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx)),
+      )
+      .pipe(
+        mergeMap((response: ResponseContext) => {
+          let middlewarePostObservable = of(response);
+          for (let middleware of this.configuration.middleware) {
+            middlewarePostObservable = middlewarePostObservable.pipe(
+              mergeMap((rsp: ResponseContext) => middleware.post(rsp)),
+            );
+          }
+          return middlewarePostObservable.pipe(
+            map((rsp: ResponseContext) =>
+              this.responseProcessor.listBlobs(rsp),
+            ),
+          );
+        }),
+      );
+  }
+
+  /**
      * List Call Logs
      
      * @param callId String that uniquely identifies this call resource.
@@ -2254,10 +2429,6 @@ export class ObservableDefaultApi {
      
      * @param hasApplication Indication of whether the phone number has an application linked to it.
      
-     * @param voiceEnabled Indicates whether the phone number can handle Calls. Typically set to true for all numbers.
-     
-     * @param smsEnabled Indication of whether the phone number can handle sending and receiving SMS messages. Typically set to true for all numbers.
-     
      * @param hasCampaign Indication of whether the phone number has a campaign associated with it
      
      * @param capabilitiesVoice 
@@ -2282,8 +2453,6 @@ export class ObservableDefaultApi {
     country?: string,
     applicationId?: string,
     hasApplication?: boolean,
-    voiceEnabled?: boolean,
-    smsEnabled?: boolean,
     hasCampaign?: boolean,
     capabilitiesVoice?: boolean,
     capabilitiesSms?: boolean,
@@ -2301,8 +2470,6 @@ export class ObservableDefaultApi {
       country,
       applicationId,
       hasApplication,
-      voiceEnabled,
-      smsEnabled,
       hasCampaign,
       capabilitiesVoice,
       capabilitiesSms,
@@ -2656,6 +2823,55 @@ export class ObservableDefaultApi {
   }
 
   /**
+     * Modifys a pre existing blob by either adding new fields, or modifying existing fields
+     * Modify Blob
+     
+     * @param blobId String that uniquely identifies this Blob resource.
+     
+     * @param modifyBlobRequest Request body to specify keys to modify. Or new keys to add onto the already existing blob
+     
+     */
+  public modifyBlob(
+    blobId: string,
+    modifyBlobRequest: ModifyBlobRequest,
+    _options?: Configuration,
+  ): Observable<BlobResult> {
+    const requestContextPromise = this.requestFactory.modifyBlob(
+      blobId,
+      modifyBlobRequest,
+      _options,
+    );
+
+    // build promise chain
+    let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+    for (let middleware of this.configuration.middleware) {
+      middlewarePreObservable = middlewarePreObservable.pipe(
+        mergeMap((ctx: RequestContext) => middleware.pre(ctx)),
+      );
+    }
+
+    return middlewarePreObservable
+      .pipe(
+        mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx)),
+      )
+      .pipe(
+        mergeMap((response: ResponseContext) => {
+          let middlewarePostObservable = of(response);
+          for (let middleware of this.configuration.middleware) {
+            middlewarePostObservable = middlewarePostObservable.pipe(
+              mergeMap((rsp: ResponseContext) => middleware.post(rsp)),
+            );
+          }
+          return middlewarePostObservable.pipe(
+            map((rsp: ResponseContext) =>
+              this.responseProcessor.modifyBlob(rsp),
+            ),
+          );
+        }),
+      );
+  }
+
+  /**
      * Remove a Participant
      
      * @param conferenceId ID of the conference this participant is in.
@@ -2697,6 +2913,55 @@ export class ObservableDefaultApi {
           return middlewarePostObservable.pipe(
             map((rsp: ResponseContext) =>
               this.responseProcessor.removeAParticipant(rsp),
+            ),
+          );
+        }),
+      );
+  }
+
+  /**
+     * Replaces the blob content with the provided values.
+     * Replace Blob
+     
+     * @param blobId String that uniquely identifies this Blob resource.
+     
+     * @param replaceBlobRequest JSON object containing blob key the contents of which will be used to override the enitre blob contents.
+     
+     */
+  public replaceBlob(
+    blobId: string,
+    replaceBlobRequest: ReplaceBlobRequest,
+    _options?: Configuration,
+  ): Observable<BlobResult> {
+    const requestContextPromise = this.requestFactory.replaceBlob(
+      blobId,
+      replaceBlobRequest,
+      _options,
+    );
+
+    // build promise chain
+    let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+    for (let middleware of this.configuration.middleware) {
+      middlewarePreObservable = middlewarePreObservable.pipe(
+        mergeMap((ctx: RequestContext) => middleware.pre(ctx)),
+      );
+    }
+
+    return middlewarePreObservable
+      .pipe(
+        mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx)),
+      )
+      .pipe(
+        mergeMap((response: ResponseContext) => {
+          let middlewarePostObservable = of(response);
+          for (let middleware of this.configuration.middleware) {
+            middlewarePostObservable = middlewarePostObservable.pipe(
+              mergeMap((rsp: ResponseContext) => middleware.post(rsp)),
+            );
+          }
+          return middlewarePostObservable.pipe(
+            map((rsp: ResponseContext) =>
+              this.responseProcessor.replaceBlob(rsp),
             ),
           );
         }),

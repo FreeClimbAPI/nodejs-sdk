@@ -6,11 +6,11 @@ describe("UpdateConferenceRequest", () => {
     const Klass = freeclimb.UpdateConferenceRequest;
     let model: freeclimb.UpdateConferenceRequest =
       new freeclimb.UpdateConferenceRequest({
-        alias: "test_alias",
+        ["alias"]: "test_alias",
 
-        playBeep: freeclimb.PlayBeep.ALWAYS,
+        ["playBeep"]: freeclimb.PlayBeep.ALWAYS,
 
-        status: freeclimb.UpdateConferenceRequestStatus.EMPTY,
+        ["status"]: freeclimb.UpdateConferenceRequestStatus.EMPTY,
       });
     describe("UpdateConferenceRequest class test", () => {
       it("resolves to the class type upon initialization", () => {
@@ -20,19 +20,19 @@ describe("UpdateConferenceRequest", () => {
     describe(".alias", () => {
       it("resolves to particular value on initialization", () => {
         const value = "test_alias";
-        expect(model.alias).toBe(value);
+        expect(model["alias"]).toBe(value);
       });
     });
     describe(".playBeep", () => {
       it("resolves to particular value on initialization", () => {
         const value = "always";
-        expect(model.playBeep).toBe(value);
+        expect(model["playBeep"]).toBe(value);
       });
     });
     describe(".status", () => {
       it("resolves to particular value on initialization", () => {
         const value = "empty";
-        expect(model.status).toBe(value);
+        expect(model["status"]).toBe(value);
       });
     });
   });
@@ -40,11 +40,11 @@ describe("UpdateConferenceRequest", () => {
     const Klass = freeclimb.UpdateConferenceRequest;
     let model: freeclimb.UpdateConferenceRequest =
       new freeclimb.UpdateConferenceRequest({
-        alias: "",
+        ["alias"]: "",
 
-        playBeep: freeclimb.PlayBeep.ALWAYS,
+        ["playBeep"]: freeclimb.PlayBeep.ALWAYS,
 
-        status: freeclimb.UpdateConferenceRequestStatus.EMPTY,
+        ["status"]: freeclimb.UpdateConferenceRequestStatus.EMPTY,
       });
     describe("UpdateConferenceRequest class test", () => {
       it("resolves to the class type upon initialization", () => {
@@ -54,19 +54,19 @@ describe("UpdateConferenceRequest", () => {
     describe(".alias", () => {
       it("resolves to particular value on initialization", () => {
         const value = "";
-        expect(model.alias).toBe(value);
+        expect(model["alias"]).toBe(value);
       });
     });
     describe(".playBeep", () => {
       it("resolves to particular value on initialization", () => {
         const value = "always";
-        expect(model.playBeep).toBe(value);
+        expect(model["playBeep"]).toBe(value);
       });
     });
     describe(".status", () => {
       it("resolves to particular value on initialization", () => {
         const value = "empty";
-        expect(model.status).toBe(value);
+        expect(model["status"]).toBe(value);
       });
     });
   });
@@ -81,7 +81,7 @@ describe("UpdateConferenceRequest", () => {
         const value = Klass.attributeTypeMap.find(
           (attribute) => attribute.name === "alias",
         )?.defaultValue;
-        expect(model.alias).toBe(value);
+        expect(model["alias"]).toBe(value);
       });
     });
     describe("#playBeep", () => {
@@ -89,7 +89,7 @@ describe("UpdateConferenceRequest", () => {
         const value = Klass.attributeTypeMap.find(
           (attribute) => attribute.name === "playBeep",
         )?.defaultValue;
-        expect(model.playBeep).toBe(value);
+        expect(model["playBeep"]).toBe(value);
       });
     });
     describe("#status", () => {
@@ -97,7 +97,7 @@ describe("UpdateConferenceRequest", () => {
         const value = Klass.attributeTypeMap.find(
           (attribute) => attribute.name === "status",
         )?.defaultValue;
-        expect(model.status).toBe(value);
+        expect(model["status"]).toBe(value);
       });
     });
   });

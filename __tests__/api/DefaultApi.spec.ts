@@ -5,7 +5,7 @@ import { parameters, requestBody } from "../testValues";
 
 describe("DefaultApi", () => {
   let apiInstance: freeclimb.DefaultApi;
-  const accountId = "YOUR_ACCOUNT_ID";
+  const accountId = "AC0123456789abcdefABCDEF0123456789abcdef00";
   beforeAll(() => {
     const configuration = freeclimb.createConfiguration({
       baseServer: new freeclimb.ServerConfiguration<{}>(
@@ -125,8 +125,6 @@ describe("DefaultApi", () => {
       const country = parameters.listIncomingNumbers.country;
       const applicationId = parameters.listIncomingNumbers.applicationId;
       const hasApplication = parameters.listIncomingNumbers.hasApplication;
-      const voiceEnabled = parameters.listIncomingNumbers.voiceEnabled;
-      const smsEnabled = parameters.listIncomingNumbers.smsEnabled;
       const hasCampaign = parameters.listIncomingNumbers.hasCampaign;
       const capabilitiesVoice =
         parameters.listIncomingNumbers.capabilitiesVoice;
@@ -147,8 +145,6 @@ describe("DefaultApi", () => {
         country,
         applicationId,
         hasApplication,
-        voiceEnabled,
-        smsEnabled,
         hasCampaign,
         capabilitiesVoice,
         capabilitiesSms,
@@ -644,6 +640,60 @@ describe("DefaultApi", () => {
       let response = await apiInstance.downloadAnExport(exportId);
 
       expect(typeof response).toBe("string");
+    });
+  });
+  describe("#listBlobs", () => {
+    test("returns an instance of freeclimb.BlobListResponse", async () => {
+      let response = await apiInstance.listBlobs();
+
+      expect(response).toBeInstanceOf(freeclimb.BlobListResponse);
+    });
+  });
+  describe("#createBlob", () => {
+    test("returns an instance of freeclimb.BlobResult", async () => {
+      let body = requestBody.createBlob;
+
+      let response = await apiInstance.createBlob(body);
+
+      expect(response).toBeInstanceOf(freeclimb.BlobResult);
+    });
+  });
+  describe("#getBlob", () => {
+    test("returns an instance of freeclimb.BlobResult", async () => {
+      const blobId = parameters.getBlob.blobId;
+
+      let response = await apiInstance.getBlob(blobId);
+
+      expect(response).toBeInstanceOf(freeclimb.BlobResult);
+    });
+  });
+  describe("#deleteBlob", () => {
+    test("returns an instance of freeclimb.BlobResult", async () => {
+      const blobId = parameters.deleteBlob.blobId;
+
+      let response = await apiInstance.deleteBlob(blobId);
+
+      expect(response).toBeInstanceOf(freeclimb.BlobResult);
+    });
+  });
+  describe("#modifyBlob", () => {
+    test("returns an instance of freeclimb.BlobResult", async () => {
+      const blobId = parameters.modifyBlob.blobId;
+      let body = requestBody.modifyBlob;
+
+      let response = await apiInstance.modifyBlob(blobId, body);
+
+      expect(response).toBeInstanceOf(freeclimb.BlobResult);
+    });
+  });
+  describe("#replaceBlob", () => {
+    test("returns an instance of freeclimb.BlobResult", async () => {
+      const blobId = parameters.replaceBlob.blobId;
+      let body = requestBody.replaceBlob;
+
+      let response = await apiInstance.replaceBlob(blobId, body);
+
+      expect(response).toBeInstanceOf(freeclimb.BlobResult);
     });
   });
 });

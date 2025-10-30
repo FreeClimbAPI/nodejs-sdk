@@ -16,6 +16,8 @@ import { ApplicationResult } from "../models/ApplicationResult";
 import { AvailableNumber } from "../models/AvailableNumber";
 import { AvailableNumberList } from "../models/AvailableNumberList";
 import { BargeInReason } from "../models/BargeInReason";
+import { BlobListResponse } from "../models/BlobListResponse";
+import { BlobResult } from "../models/BlobResult";
 import { BuyIncomingNumberRequest } from "../models/BuyIncomingNumberRequest";
 import { CallControlWebhook } from "../models/CallControlWebhook";
 import { CallDirection } from "../models/CallDirection";
@@ -35,6 +37,7 @@ import { ConferenceRecordingStatusWebhook } from "../models/ConferenceRecordingS
 import { ConferenceResult } from "../models/ConferenceResult";
 import { ConferenceStatus } from "../models/ConferenceStatus";
 import { ConferenceStatusWebhook } from "../models/ConferenceStatusWebhook";
+import { CreateBlobRequest } from "../models/CreateBlobRequest";
 import { CreateConference } from "../models/CreateConference";
 import { CreateConferenceRequest } from "../models/CreateConferenceRequest";
 import { CreateConferenceWebhook } from "../models/CreateConferenceWebhook";
@@ -80,6 +83,7 @@ import { MessageResult } from "../models/MessageResult";
 import { MessageStatus } from "../models/MessageStatus";
 import { MessageStatusWebhook } from "../models/MessageStatusWebhook";
 import { MessagesList } from "../models/MessagesList";
+import { ModifyBlobRequest } from "../models/ModifyBlobRequest";
 import { MutableResourceModel } from "../models/MutableResourceModel";
 import { OutDial } from "../models/OutDial";
 import { OutDialApiConnectWebhook } from "../models/OutDialApiConnectWebhook";
@@ -90,6 +94,7 @@ import { Park } from "../models/Park";
 import { Pause } from "../models/Pause";
 import { PerclCommand } from "../models/PerclCommand";
 import { PerclScript } from "../models/PerclScript";
+import { PlatformError } from "../models/PlatformError";
 import { Play } from "../models/Play";
 import { PlayBeep } from "../models/PlayBeep";
 import { PlayEarlyMedia } from "../models/PlayEarlyMedia";
@@ -110,6 +115,7 @@ import { RedirectWebhook } from "../models/RedirectWebhook";
 import { Reject } from "../models/Reject";
 import { RemoveFromConference } from "../models/RemoveFromConference";
 import { RemoveFromQueueNotificationWebhook } from "../models/RemoveFromQueueNotificationWebhook";
+import { ReplaceBlobRequest } from "../models/ReplaceBlobRequest";
 import { RequestType } from "../models/RequestType";
 import { SMSTenDLCBrand } from "../models/SMSTenDLCBrand";
 import { SMSTenDLCBrandAltBusinessIdType } from "../models/SMSTenDLCBrandAltBusinessIdType";
@@ -137,6 +143,8 @@ import { Sms } from "../models/Sms";
 import { StartRecordCall } from "../models/StartRecordCall";
 import { TFN } from "../models/TFN";
 import { TFNCampaign } from "../models/TFNCampaign";
+import { TTSEngine } from "../models/TTSEngine";
+import { TTSEngineName } from "../models/TTSEngineName";
 import { TerminateConference } from "../models/TerminateConference";
 import { TranscribeReason } from "../models/TranscribeReason";
 import { TranscribeTermReason } from "../models/TranscribeTermReason";
@@ -191,6 +199,15 @@ export interface DefaultApiCreateAnApplicationRequest {
    * @memberof DefaultApicreateAnApplication
    */
   applicationRequest?: ApplicationRequest;
+}
+
+export interface DefaultApiCreateBlobRequest {
+  /**
+   * An object defining a new blob. A request body must be provided but the blob may be empty.
+   * @type CreateBlobRequest
+   * @memberof DefaultApicreateBlob
+   */
+  createBlobRequest: CreateBlobRequest;
 }
 
 export interface DefaultApiCreateExportRequest {
@@ -252,6 +269,15 @@ export interface DefaultApiDeleteAnIncomingNumberRequest {
    * @memberof DefaultApideleteAnIncomingNumber
    */
   phoneNumberId: string;
+}
+
+export interface DefaultApiDeleteBlobRequest {
+  /**
+   * String that uniquely identifies this Blob resource.
+   * @type string
+   * @memberof DefaultApideleteBlob
+   */
+  blobId: string;
 }
 
 export interface DefaultApiDequeueAMemberRequest {
@@ -412,6 +438,15 @@ export interface DefaultApiGetAnSmsMessageRequest {
   messageId: string;
 }
 
+export interface DefaultApiGetBlobRequest {
+  /**
+   * String that uniquely identifies this Blob resource.
+   * @type string
+   * @memberof DefaultApigetBlob
+   */
+  blobId: string;
+}
+
 export interface DefaultApiGetHeadMemberRequest {
   /**
    * String that uniquely identifies the Queue that the Member belongs to.
@@ -570,6 +605,8 @@ export interface DefaultApiListAvailableNumbersRequest {
    */
   capabilitiesShortCode?: boolean;
 }
+
+export interface DefaultApiListBlobsRequest {}
 
 export interface DefaultApiListCallLogsRequest {
   /**
@@ -781,20 +818,6 @@ export interface DefaultApiListIncomingNumbersRequest {
   hasApplication?: boolean;
 
   /**
-   * Indicates whether the phone number can handle Calls. Typically set to true for all numbers.
-   * @type boolean
-   * @memberof DefaultApilistIncomingNumbers
-   */
-  voiceEnabled?: boolean;
-
-  /**
-   * Indication of whether the phone number can handle sending and receiving SMS messages. Typically set to true for all numbers.
-   * @type boolean
-   * @memberof DefaultApilistIncomingNumbers
-   */
-  smsEnabled?: boolean;
-
-  /**
    * Indication of whether the phone number has a campaign associated with it
    * @type boolean
    * @memberof DefaultApilistIncomingNumbers
@@ -989,6 +1012,22 @@ export interface DefaultApiMakeAWebrtcJwtRequest {
   createWebRTCToken: CreateWebRTCToken;
 }
 
+export interface DefaultApiModifyBlobRequest {
+  /**
+   * String that uniquely identifies this Blob resource.
+   * @type string
+   * @memberof DefaultApimodifyBlob
+   */
+  blobId: string;
+
+  /**
+   * Request body to specify keys to modify. Or new keys to add onto the already existing blob
+   * @type ModifyBlobRequest
+   * @memberof DefaultApimodifyBlob
+   */
+  modifyBlobRequest: ModifyBlobRequest;
+}
+
 export interface DefaultApiRemoveAParticipantRequest {
   /**
    * ID of the conference this participant is in.
@@ -1003,6 +1042,22 @@ export interface DefaultApiRemoveAParticipantRequest {
    * @memberof DefaultApiremoveAParticipant
    */
   callId: string;
+}
+
+export interface DefaultApiReplaceBlobRequest {
+  /**
+   * String that uniquely identifies this Blob resource.
+   * @type string
+   * @memberof DefaultApireplaceBlob
+   */
+  blobId: string;
+
+  /**
+   * JSON object containing blob key the contents of which will be used to override the enitre blob contents.
+   * @type ReplaceBlobRequest
+   * @memberof DefaultApireplaceBlob
+   */
+  replaceBlobRequest: ReplaceBlobRequest;
 }
 
 export interface DefaultApiSendAnSmsMessageRequest {
@@ -1201,6 +1256,18 @@ export class ObjectDefaultApi {
   }
 
   /**
+   * Create a new Blob belonging to the requesting account.
+   * Create a Blob
+   * @param param the request object
+   */
+  public createBlob(
+    param: DefaultApiCreateBlobRequest,
+    options?: Configuration,
+  ): Promise<BlobResult> {
+    return this.api.createBlob(param.createBlobRequest, options).toPromise();
+  }
+
+  /**
    * Create an Export
    * @param param the request object
    */
@@ -1274,6 +1341,18 @@ export class ObjectDefaultApi {
     return this.api
       .deleteAnIncomingNumber(param.phoneNumberId, options)
       .toPromise();
+  }
+
+  /**
+   * Deletes a blob or specific keys from a blob. If no keys are specified in the request body, the entire blob is deleted (returns 204). If specific keys are provided, only those keys are removed and the remaining blob is returned (returns 200).
+   * Delete Blob
+   * @param param the request object
+   */
+  public deleteBlob(
+    param: DefaultApiDeleteBlobRequest,
+    options?: Configuration,
+  ): Promise<void | BlobResult> {
+    return this.api.deleteBlob(param.blobId, options).toPromise();
   }
 
   /**
@@ -1463,6 +1542,18 @@ export class ObjectDefaultApi {
   }
 
   /**
+   * Retrieves a specified blob
+   * Get Blob
+   * @param param the request object
+   */
+  public getBlob(
+    param: DefaultApiGetBlobRequest,
+    options?: Configuration,
+  ): Promise<BlobResult> {
+    return this.api.getBlob(param.blobId, options).toPromise();
+  }
+
+  /**
    * Get Head Member
    * @param param the request object
    */
@@ -1626,6 +1717,18 @@ export class ObjectDefaultApi {
   }
 
   /**
+   * List Blobs belonging to an account. Results are returned in paginated lists mirroring other listing features in the API.
+   * List Blobs belonging to an account.
+   * @param param the request object
+   */
+  public listBlobs(
+    param: DefaultApiListBlobsRequest,
+    options?: Configuration,
+  ): Promise<BlobListResponse> {
+    return this.api.listBlobs(options).toPromise();
+  }
+
+  /**
    * List Call Logs
    * @param param the request object
    */
@@ -1740,8 +1843,6 @@ export class ObjectDefaultApi {
         param.country,
         param.applicationId,
         param.hasApplication,
-        param.voiceEnabled,
-        param.smsEnabled,
         param.hasCampaign,
         param.capabilitiesVoice,
         param.capabilitiesSms,
@@ -1851,6 +1952,20 @@ export class ObjectDefaultApi {
   }
 
   /**
+   * Modifys a pre existing blob by either adding new fields, or modifying existing fields
+   * Modify Blob
+   * @param param the request object
+   */
+  public modifyBlob(
+    param: DefaultApiModifyBlobRequest,
+    options?: Configuration,
+  ): Promise<BlobResult> {
+    return this.api
+      .modifyBlob(param.blobId, param.modifyBlobRequest, options)
+      .toPromise();
+  }
+
+  /**
    * Remove a Participant
    * @param param the request object
    */
@@ -1860,6 +1975,20 @@ export class ObjectDefaultApi {
   ): Promise<void> {
     return this.api
       .removeAParticipant(param.conferenceId, param.callId, options)
+      .toPromise();
+  }
+
+  /**
+   * Replaces the blob content with the provided values.
+   * Replace Blob
+   * @param param the request object
+   */
+  public replaceBlob(
+    param: DefaultApiReplaceBlobRequest,
+    options?: Configuration,
+  ): Promise<BlobResult> {
+    return this.api
+      .replaceBlob(param.blobId, param.replaceBlobRequest, options)
       .toPromise();
   }
 

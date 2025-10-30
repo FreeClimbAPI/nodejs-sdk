@@ -35,8 +35,6 @@ interface ArgumentsType {
   alias?: string;
   region?: string;
   country?: string;
-  voiceEnabled?: boolean;
-  smsEnabled?: boolean;
   offnet?: boolean;
   tfn?: TFN;
 }
@@ -90,14 +88,6 @@ export class IncomingNumberResult {
    * Country of this phone number.
    */
   "country"?: string;
-  /**
-   * Indicates whether the phone number can handle Calls. Typically set to true for all numbers.
-   */
-  "voiceEnabled"?: boolean;
-  /**
-   * Indication of whether the phone number can handle sending and receiving SMS messages. Typically set to true for all numbers.
-   */
-  "smsEnabled"?: boolean;
   /**
    * The offnet field is a boolean representing whether the number is offnet registered or not. This field will be rendered only for requests to the IncomingPhone number resource.
    */
@@ -212,22 +202,6 @@ export class IncomingNumberResult {
       defaultValue: undefined,
     },
     {
-      name: "voiceEnabled",
-      baseName: "voiceEnabled",
-      type: "boolean",
-      format: "",
-
-      defaultValue: undefined,
-    },
-    {
-      name: "smsEnabled",
-      baseName: "smsEnabled",
-      type: "boolean",
-      format: "",
-
-      defaultValue: undefined,
-    },
-    {
       name: "offnet",
       baseName: "offnet",
       type: "boolean",
@@ -271,8 +245,6 @@ export class IncomingNumberResult {
     this["alias"] = assign<string>("alias");
     this["region"] = assign<string>("region");
     this["country"] = assign<string>("country");
-    this["voiceEnabled"] = assign<boolean>("voiceEnabled");
-    this["smsEnabled"] = assign<boolean>("smsEnabled");
     this["offnet"] = assign<boolean>("offnet");
     this["tfn"] = assign<TFN>("tfn");
   }

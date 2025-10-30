@@ -20,6 +20,8 @@ import { ApplicationList } from "../models/ApplicationList";
 import { ApplicationRequest } from "../models/ApplicationRequest";
 import { ApplicationResult } from "../models/ApplicationResult";
 import { AvailableNumberList } from "../models/AvailableNumberList";
+import { BlobListResponse } from "../models/BlobListResponse";
+import { BlobResult } from "../models/BlobResult";
 import { BuyIncomingNumberRequest } from "../models/BuyIncomingNumberRequest";
 import { CallList } from "../models/CallList";
 import { CallResult } from "../models/CallResult";
@@ -30,6 +32,7 @@ import { ConferenceList } from "../models/ConferenceList";
 import { ConferenceParticipantList } from "../models/ConferenceParticipantList";
 import { ConferenceParticipantResult } from "../models/ConferenceParticipantResult";
 import { ConferenceResult } from "../models/ConferenceResult";
+import { CreateBlobRequest } from "../models/CreateBlobRequest";
 import { CreateConferenceRequest } from "../models/CreateConferenceRequest";
 import { CreateWebRTCToken } from "../models/CreateWebRTCToken";
 import { ExportList } from "../models/ExportList";
@@ -46,6 +49,8 @@ import { MessageDirection } from "../models/MessageDirection";
 import { MessageRequest } from "../models/MessageRequest";
 import { MessageResult } from "../models/MessageResult";
 import { MessagesList } from "../models/MessagesList";
+import { ModifyBlobRequest } from "../models/ModifyBlobRequest";
+import { PlatformError } from "../models/PlatformError";
 import { QueueList } from "../models/QueueList";
 import { QueueMember } from "../models/QueueMember";
 import { QueueMemberList } from "../models/QueueMemberList";
@@ -53,6 +58,7 @@ import { QueueRequest } from "../models/QueueRequest";
 import { QueueResult } from "../models/QueueResult";
 import { RecordingList } from "../models/RecordingList";
 import { RecordingResult } from "../models/RecordingResult";
+import { ReplaceBlobRequest } from "../models/ReplaceBlobRequest";
 import { SMSTenDLCBrand } from "../models/SMSTenDLCBrand";
 import { SMSTenDLCBrandsListResult } from "../models/SMSTenDLCBrandsListResult";
 import { SMSTenDLCCampaign } from "../models/SMSTenDLCCampaign";
@@ -270,6 +276,61 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
     requestContext.setHeaderParam("Content-Type", contentType);
     const serializedBody = ObjectSerializer.stringify(
       ObjectSerializer.serialize(applicationRequest, "ApplicationRequest", ""),
+      contentType,
+    );
+    requestContext.setBody(serializedBody);
+    let authMethod: SecurityAuthentication | undefined;
+    // Apply auth methods
+    authMethod = _config.authMethods["fc"];
+    if (authMethod?.applySecurityAuthentication) {
+      await authMethod?.applySecurityAuthentication(requestContext);
+    }
+    const defaultAuth: SecurityAuthentication | undefined =
+      _options?.authMethods?.default ||
+      this.configuration?.authMethods?.default;
+    if (defaultAuth?.applySecurityAuthentication) {
+      await defaultAuth?.applySecurityAuthentication(requestContext);
+    }
+    return requestContext;
+  }
+
+  /**
+     * Create a new Blob belonging to the requesting account.
+     * Create a Blob
+     
+     * @param createBlobRequest An object defining a new blob. A request body must be provided but the blob may be empty.
+     */
+  public async createBlob(
+    createBlobRequest: CreateBlobRequest,
+    _options?: Configuration,
+  ): Promise<RequestContext> {
+    const _config = _options || this.configuration;
+    const { accountId } = this.configuration;
+
+    // verify required parameter 'createBlobRequest' is not null or undefined
+    if (createBlobRequest === null || createBlobRequest === undefined) {
+      throw new RequiredError("DefaultApi", "createBlob", "createBlobRequest");
+    }
+    // Path Params
+    const localVarPath = "/Accounts/{accountId}/Blobs".replace(
+      "{" + "accountId" + "}",
+      encodeURIComponent(String(accountId)),
+    );
+
+    // Make Request Context
+    const requestContext = _config.baseServer.makeRequestContext(
+      localVarPath,
+      HttpMethod.POST,
+    );
+    requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8");
+
+    // Body Params
+    const contentType = ObjectSerializer.getPreferredMediaType([
+      "application/json",
+    ]);
+    requestContext.setHeaderParam("Content-Type", contentType);
+    const serializedBody = ObjectSerializer.stringify(
+      ObjectSerializer.serialize(createBlobRequest, "CreateBlobRequest", ""),
       contentType,
     );
     requestContext.setBody(serializedBody);
@@ -568,6 +629,50 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
           "{" + "phoneNumberId" + "}",
           encodeURIComponent(String(phoneNumberId)),
         );
+
+    // Make Request Context
+    const requestContext = _config.baseServer.makeRequestContext(
+      localVarPath,
+      HttpMethod.DELETE,
+    );
+    requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8");
+
+    let authMethod: SecurityAuthentication | undefined;
+    // Apply auth methods
+    authMethod = _config.authMethods["fc"];
+    if (authMethod?.applySecurityAuthentication) {
+      await authMethod?.applySecurityAuthentication(requestContext);
+    }
+    const defaultAuth: SecurityAuthentication | undefined =
+      _options?.authMethods?.default ||
+      this.configuration?.authMethods?.default;
+    if (defaultAuth?.applySecurityAuthentication) {
+      await defaultAuth?.applySecurityAuthentication(requestContext);
+    }
+    return requestContext;
+  }
+
+  /**
+     * Deletes a blob or specific keys from a blob. If no keys are specified in the request body, the entire blob is deleted (returns 204). If specific keys are provided, only those keys are removed and the remaining blob is returned (returns 200).
+     * Delete Blob
+     
+     * @param blobId String that uniquely identifies this Blob resource.
+     */
+  public async deleteBlob(
+    blobId: string,
+    _options?: Configuration,
+  ): Promise<RequestContext> {
+    const _config = _options || this.configuration;
+    const { accountId } = this.configuration;
+
+    // verify required parameter 'blobId' is not null or undefined
+    if (blobId === null || blobId === undefined) {
+      throw new RequiredError("DefaultApi", "deleteBlob", "blobId");
+    }
+    // Path Params
+    const localVarPath = "/Accounts/{accountId}/Blobs/{blobId}"
+      .replace("{" + "accountId" + "}", encodeURIComponent(String(accountId)))
+      .replace("{" + "blobId" + "}", encodeURIComponent(String(blobId)));
 
     // Make Request Context
     const requestContext = _config.baseServer.makeRequestContext(
@@ -1340,6 +1445,50 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
   }
 
   /**
+     * Retrieves a specified blob
+     * Get Blob
+     
+     * @param blobId String that uniquely identifies this Blob resource.
+     */
+  public async getBlob(
+    blobId: string,
+    _options?: Configuration,
+  ): Promise<RequestContext> {
+    const _config = _options || this.configuration;
+    const { accountId } = this.configuration;
+
+    // verify required parameter 'blobId' is not null or undefined
+    if (blobId === null || blobId === undefined) {
+      throw new RequiredError("DefaultApi", "getBlob", "blobId");
+    }
+    // Path Params
+    const localVarPath = "/Accounts/{accountId}/Blobs/{blobId}"
+      .replace("{" + "accountId" + "}", encodeURIComponent(String(accountId)))
+      .replace("{" + "blobId" + "}", encodeURIComponent(String(blobId)));
+
+    // Make Request Context
+    const requestContext = _config.baseServer.makeRequestContext(
+      localVarPath,
+      HttpMethod.GET,
+    );
+    requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8");
+
+    let authMethod: SecurityAuthentication | undefined;
+    // Apply auth methods
+    authMethod = _config.authMethods["fc"];
+    if (authMethod?.applySecurityAuthentication) {
+      await authMethod?.applySecurityAuthentication(requestContext);
+    }
+    const defaultAuth: SecurityAuthentication | undefined =
+      _options?.authMethods?.default ||
+      this.configuration?.authMethods?.default;
+    if (defaultAuth?.applySecurityAuthentication) {
+      await defaultAuth?.applySecurityAuthentication(requestContext);
+    }
+    return requestContext;
+  }
+
+  /**
      * Get Head Member
      
      * @param queueId String that uniquely identifies the Queue that the Member belongs to.
@@ -2009,6 +2158,43 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
   }
 
   /**
+     * List Blobs belonging to an account. Results are returned in paginated lists mirroring other listing features in the API.
+     * List Blobs belonging to an account.
+     
+     */
+  public async listBlobs(_options?: Configuration): Promise<RequestContext> {
+    const _config = _options || this.configuration;
+    const { accountId } = this.configuration;
+
+    // Path Params
+    const localVarPath = "/Accounts/{accountId}/Blobs".replace(
+      "{" + "accountId" + "}",
+      encodeURIComponent(String(accountId)),
+    );
+
+    // Make Request Context
+    const requestContext = _config.baseServer.makeRequestContext(
+      localVarPath,
+      HttpMethod.GET,
+    );
+    requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8");
+
+    let authMethod: SecurityAuthentication | undefined;
+    // Apply auth methods
+    authMethod = _config.authMethods["fc"];
+    if (authMethod?.applySecurityAuthentication) {
+      await authMethod?.applySecurityAuthentication(requestContext);
+    }
+    const defaultAuth: SecurityAuthentication | undefined =
+      _options?.authMethods?.default ||
+      this.configuration?.authMethods?.default;
+    if (defaultAuth?.applySecurityAuthentication) {
+      await defaultAuth?.applySecurityAuthentication(requestContext);
+    }
+    return requestContext;
+  }
+
+  /**
      * List Call Logs
      
      * @param callId String that uniquely identifies this call resource.
@@ -2439,8 +2625,6 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
      * @param country Country of this phone number.
      * @param applicationId ID of the Application that FreeClimb should contact if a Call or SMS arrives for this phone number or a Call from this number is placed. An incoming phone number is not useful until associated with an applicationId.
      * @param hasApplication Indication of whether the phone number has an application linked to it.
-     * @param voiceEnabled Indicates whether the phone number can handle Calls. Typically set to true for all numbers.
-     * @param smsEnabled Indication of whether the phone number can handle sending and receiving SMS messages. Typically set to true for all numbers.
      * @param hasCampaign Indication of whether the phone number has a campaign associated with it
      * @param capabilitiesVoice 
      * @param capabilitiesSms 
@@ -2457,8 +2641,6 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
     country?: string,
     applicationId?: string,
     hasApplication?: boolean,
-    voiceEnabled?: boolean,
-    smsEnabled?: boolean,
     hasCampaign?: boolean,
     capabilitiesVoice?: boolean,
     capabilitiesSms?: boolean,
@@ -2524,20 +2706,6 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
       requestContext.setQueryParam(
         "hasApplication",
         ObjectSerializer.serialize(hasApplication, "boolean", ""),
-      );
-    }
-    // Query Params
-    if (voiceEnabled !== undefined) {
-      requestContext.setQueryParam(
-        "voiceEnabled",
-        ObjectSerializer.serialize(voiceEnabled, "boolean", ""),
-      );
-    }
-    // Query Params
-    if (smsEnabled !== undefined) {
-      requestContext.setQueryParam(
-        "smsEnabled",
-        ObjectSerializer.serialize(smsEnabled, "boolean", ""),
       );
     }
     // Query Params
@@ -3013,6 +3181,66 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
   }
 
   /**
+     * Modifys a pre existing blob by either adding new fields, or modifying existing fields
+     * Modify Blob
+     
+     * @param blobId String that uniquely identifies this Blob resource.
+     * @param modifyBlobRequest Request body to specify keys to modify. Or new keys to add onto the already existing blob
+     */
+  public async modifyBlob(
+    blobId: string,
+    modifyBlobRequest: ModifyBlobRequest,
+    _options?: Configuration,
+  ): Promise<RequestContext> {
+    const _config = _options || this.configuration;
+    const { accountId } = this.configuration;
+
+    // verify required parameter 'blobId' is not null or undefined
+    if (blobId === null || blobId === undefined) {
+      throw new RequiredError("DefaultApi", "modifyBlob", "blobId");
+    }
+    // verify required parameter 'modifyBlobRequest' is not null or undefined
+    if (modifyBlobRequest === null || modifyBlobRequest === undefined) {
+      throw new RequiredError("DefaultApi", "modifyBlob", "modifyBlobRequest");
+    }
+    // Path Params
+    const localVarPath = "/Accounts/{accountId}/Blobs/{blobId}"
+      .replace("{" + "accountId" + "}", encodeURIComponent(String(accountId)))
+      .replace("{" + "blobId" + "}", encodeURIComponent(String(blobId)));
+
+    // Make Request Context
+    const requestContext = _config.baseServer.makeRequestContext(
+      localVarPath,
+      HttpMethod.PATCH,
+    );
+    requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8");
+
+    // Body Params
+    const contentType = ObjectSerializer.getPreferredMediaType([
+      "application/json",
+    ]);
+    requestContext.setHeaderParam("Content-Type", contentType);
+    const serializedBody = ObjectSerializer.stringify(
+      ObjectSerializer.serialize(modifyBlobRequest, "ModifyBlobRequest", ""),
+      contentType,
+    );
+    requestContext.setBody(serializedBody);
+    let authMethod: SecurityAuthentication | undefined;
+    // Apply auth methods
+    authMethod = _config.authMethods["fc"];
+    if (authMethod?.applySecurityAuthentication) {
+      await authMethod?.applySecurityAuthentication(requestContext);
+    }
+    const defaultAuth: SecurityAuthentication | undefined =
+      _options?.authMethods?.default ||
+      this.configuration?.authMethods?.default;
+    if (defaultAuth?.applySecurityAuthentication) {
+      await defaultAuth?.applySecurityAuthentication(requestContext);
+    }
+    return requestContext;
+  }
+
+  /**
      * Remove a Participant
      
      * @param conferenceId ID of the conference this participant is in.
@@ -3055,6 +3283,70 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
     );
     requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8");
 
+    let authMethod: SecurityAuthentication | undefined;
+    // Apply auth methods
+    authMethod = _config.authMethods["fc"];
+    if (authMethod?.applySecurityAuthentication) {
+      await authMethod?.applySecurityAuthentication(requestContext);
+    }
+    const defaultAuth: SecurityAuthentication | undefined =
+      _options?.authMethods?.default ||
+      this.configuration?.authMethods?.default;
+    if (defaultAuth?.applySecurityAuthentication) {
+      await defaultAuth?.applySecurityAuthentication(requestContext);
+    }
+    return requestContext;
+  }
+
+  /**
+     * Replaces the blob content with the provided values.
+     * Replace Blob
+     
+     * @param blobId String that uniquely identifies this Blob resource.
+     * @param replaceBlobRequest JSON object containing blob key the contents of which will be used to override the enitre blob contents.
+     */
+  public async replaceBlob(
+    blobId: string,
+    replaceBlobRequest: ReplaceBlobRequest,
+    _options?: Configuration,
+  ): Promise<RequestContext> {
+    const _config = _options || this.configuration;
+    const { accountId } = this.configuration;
+
+    // verify required parameter 'blobId' is not null or undefined
+    if (blobId === null || blobId === undefined) {
+      throw new RequiredError("DefaultApi", "replaceBlob", "blobId");
+    }
+    // verify required parameter 'replaceBlobRequest' is not null or undefined
+    if (replaceBlobRequest === null || replaceBlobRequest === undefined) {
+      throw new RequiredError(
+        "DefaultApi",
+        "replaceBlob",
+        "replaceBlobRequest",
+      );
+    }
+    // Path Params
+    const localVarPath = "/Accounts/{accountId}/Blobs/{blobId}"
+      .replace("{" + "accountId" + "}", encodeURIComponent(String(accountId)))
+      .replace("{" + "blobId" + "}", encodeURIComponent(String(blobId)));
+
+    // Make Request Context
+    const requestContext = _config.baseServer.makeRequestContext(
+      localVarPath,
+      HttpMethod.PUT,
+    );
+    requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8");
+
+    // Body Params
+    const contentType = ObjectSerializer.getPreferredMediaType([
+      "application/json",
+    ]);
+    requestContext.setHeaderParam("Content-Type", contentType);
+    const serializedBody = ObjectSerializer.stringify(
+      ObjectSerializer.serialize(replaceBlobRequest, "ReplaceBlobRequest", ""),
+      contentType,
+    );
+    requestContext.setBody(serializedBody);
     let authMethod: SecurityAuthentication | undefined;
     // Apply auth methods
     authMethod = _config.authMethods["fc"];
@@ -3806,6 +4098,109 @@ export class DefaultApiResponseProcessor {
    * Unwraps the actual response sent by the server from the response context and deserializes the response content
    * to the expected objects
    *
+   * @params response Response returned by the server for a request to createBlob
+   * @throws ApiException if the response code was not in [200, 299]
+   */
+  public async createBlob(response: ResponseContext): Promise<BlobResult> {
+    const contentType = ObjectSerializer.normalizeMediaType(
+      response.headers["content-type"],
+    );
+    if (isCodeInRange("201", response.httpStatusCode)) {
+      const body: BlobResult = ObjectSerializer.deserialize(
+        ObjectSerializer.parse(await response.body.text(), contentType),
+        "BlobResult",
+        "",
+      ) as BlobResult;
+      return body;
+    }
+    if (isCodeInRange("400", response.httpStatusCode)) {
+      const body: PlatformError = ObjectSerializer.deserialize(
+        ObjectSerializer.parse(await response.body.text(), contentType),
+        "PlatformError",
+        "",
+      ) as PlatformError;
+      throw new ApiException<PlatformError>(
+        400,
+        "Generic platform bad request.",
+        body,
+        response.headers,
+      );
+    }
+    if (isCodeInRange("409", response.httpStatusCode)) {
+      const body: PlatformError = ObjectSerializer.deserialize(
+        ObjectSerializer.parse(await response.body.text(), contentType),
+        "PlatformError",
+        "",
+      ) as PlatformError;
+      throw new ApiException<PlatformError>(
+        409,
+        "A blob with the provided alias already exists oln the requesting account and so this new blob is rejected as there cannot be duplicate alises.",
+        body,
+        response.headers,
+      );
+    }
+    if (isCodeInRange("413", response.httpStatusCode)) {
+      const body: PlatformError = ObjectSerializer.deserialize(
+        ObjectSerializer.parse(await response.body.text(), contentType),
+        "PlatformError",
+        "",
+      ) as PlatformError;
+      throw new ApiException<PlatformError>(
+        413,
+        "The blob exceeded one of the size limits. Either it itself is too large or it would push the total sum of all blobs over the account\&#39;s limit.",
+        body,
+        response.headers,
+      );
+    }
+    if (isCodeInRange("422", response.httpStatusCode)) {
+      const body: PlatformError = ObjectSerializer.deserialize(
+        ObjectSerializer.parse(await response.body.text(), contentType),
+        "PlatformError",
+        "",
+      ) as PlatformError;
+      throw new ApiException<PlatformError>(
+        422,
+        "Generic platform unprocessible entity response.",
+        body,
+        response.headers,
+      );
+    }
+    if (isCodeInRange("500", response.httpStatusCode)) {
+      const body: PlatformError = ObjectSerializer.deserialize(
+        ObjectSerializer.parse(await response.body.text(), contentType),
+        "PlatformError",
+        "",
+      ) as PlatformError;
+      throw new ApiException<PlatformError>(
+        500,
+        "Generic platform internal error.",
+        body,
+        response.headers,
+      );
+    }
+
+    // Work around for missing responses in specification, e.g. for petstore.yaml
+    if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+      const body: BlobResult = ObjectSerializer.deserialize(
+        ObjectSerializer.parse(await response.body.text(), contentType),
+        "BlobResult",
+        "",
+      ) as BlobResult;
+      return body;
+    }
+
+    throw new ApiException<string | Buffer | undefined>(
+      response.httpStatusCode,
+      "Unknown API Status Code!",
+      await response.getBodyAsAny(),
+      response.headers,
+    );
+  }
+
+  /**
+   * Unwraps the actual response sent by the server from the response context and deserializes the response content
+   * to the expected objects
+   *
    * @params response Response returned by the server for a request to createExport
    * @throws ApiException if the response code was not in [200, 299]
    */
@@ -4003,6 +4398,101 @@ export class DefaultApiResponseProcessor {
         "void",
         "",
       ) as void;
+      return body;
+    }
+
+    throw new ApiException<string | Buffer | undefined>(
+      response.httpStatusCode,
+      "Unknown API Status Code!",
+      await response.getBodyAsAny(),
+      response.headers,
+    );
+  }
+
+  /**
+   * Unwraps the actual response sent by the server from the response context and deserializes the response content
+   * to the expected objects
+   *
+   * @params response Response returned by the server for a request to deleteBlob
+   * @throws ApiException if the response code was not in [200, 299]
+   */
+  public async deleteBlob(
+    response: ResponseContext,
+  ): Promise<void | BlobResult> {
+    const contentType = ObjectSerializer.normalizeMediaType(
+      response.headers["content-type"],
+    );
+    if (isCodeInRange("200", response.httpStatusCode)) {
+      const body: BlobResult = ObjectSerializer.deserialize(
+        ObjectSerializer.parse(await response.body.text(), contentType),
+        "BlobResult",
+        "",
+      ) as BlobResult;
+      return body;
+    }
+    if (isCodeInRange("204", response.httpStatusCode)) {
+      return;
+    }
+    if (isCodeInRange("404", response.httpStatusCode)) {
+      const body: PlatformError = ObjectSerializer.deserialize(
+        ObjectSerializer.parse(await response.body.text(), contentType),
+        "PlatformError",
+        "",
+      ) as PlatformError;
+      throw new ApiException<PlatformError>(
+        404,
+        "Generic platform not found error.",
+        body,
+        response.headers,
+      );
+    }
+    if (isCodeInRange("422", response.httpStatusCode)) {
+      const body: PlatformError = ObjectSerializer.deserialize(
+        ObjectSerializer.parse(await response.body.text(), contentType),
+        "PlatformError",
+        "",
+      ) as PlatformError;
+      throw new ApiException<PlatformError>(
+        422,
+        "Generic platform unprocessible entity response.",
+        body,
+        response.headers,
+      );
+    }
+    if (isCodeInRange("500", response.httpStatusCode)) {
+      const body: PlatformError = ObjectSerializer.deserialize(
+        ObjectSerializer.parse(await response.body.text(), contentType),
+        "PlatformError",
+        "",
+      ) as PlatformError;
+      throw new ApiException<PlatformError>(
+        500,
+        "Generic platform internal error.",
+        body,
+        response.headers,
+      );
+    }
+    if (isCodeInRange("504", response.httpStatusCode)) {
+      const body: PlatformError = ObjectSerializer.deserialize(
+        ObjectSerializer.parse(await response.body.text(), contentType),
+        "PlatformError",
+        "",
+      ) as PlatformError;
+      throw new ApiException<PlatformError>(
+        504,
+        "gateway timeout error",
+        body,
+        response.headers,
+      );
+    }
+
+    // Work around for missing responses in specification, e.g. for petstore.yaml
+    if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+      const body: void | BlobResult = ObjectSerializer.deserialize(
+        ObjectSerializer.parse(await response.body.text(), contentType),
+        "void | BlobResult",
+        "",
+      ) as void | BlobResult;
       return body;
     }
 
@@ -4639,6 +5129,83 @@ export class DefaultApiResponseProcessor {
    * Unwraps the actual response sent by the server from the response context and deserializes the response content
    * to the expected objects
    *
+   * @params response Response returned by the server for a request to getBlob
+   * @throws ApiException if the response code was not in [200, 299]
+   */
+  public async getBlob(response: ResponseContext): Promise<BlobResult> {
+    const contentType = ObjectSerializer.normalizeMediaType(
+      response.headers["content-type"],
+    );
+    if (isCodeInRange("200", response.httpStatusCode)) {
+      const body: BlobResult = ObjectSerializer.deserialize(
+        ObjectSerializer.parse(await response.body.text(), contentType),
+        "BlobResult",
+        "",
+      ) as BlobResult;
+      return body;
+    }
+    if (isCodeInRange("404", response.httpStatusCode)) {
+      const body: PlatformError = ObjectSerializer.deserialize(
+        ObjectSerializer.parse(await response.body.text(), contentType),
+        "PlatformError",
+        "",
+      ) as PlatformError;
+      throw new ApiException<PlatformError>(
+        404,
+        "Generic platform not found error.",
+        body,
+        response.headers,
+      );
+    }
+    if (isCodeInRange("500", response.httpStatusCode)) {
+      const body: PlatformError = ObjectSerializer.deserialize(
+        ObjectSerializer.parse(await response.body.text(), contentType),
+        "PlatformError",
+        "",
+      ) as PlatformError;
+      throw new ApiException<PlatformError>(
+        500,
+        "Generic platform internal error.",
+        body,
+        response.headers,
+      );
+    }
+    if (isCodeInRange("504", response.httpStatusCode)) {
+      const body: PlatformError = ObjectSerializer.deserialize(
+        ObjectSerializer.parse(await response.body.text(), contentType),
+        "PlatformError",
+        "",
+      ) as PlatformError;
+      throw new ApiException<PlatformError>(
+        504,
+        "gateway timeout error",
+        body,
+        response.headers,
+      );
+    }
+
+    // Work around for missing responses in specification, e.g. for petstore.yaml
+    if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+      const body: BlobResult = ObjectSerializer.deserialize(
+        ObjectSerializer.parse(await response.body.text(), contentType),
+        "BlobResult",
+        "",
+      ) as BlobResult;
+      return body;
+    }
+
+    throw new ApiException<string | Buffer | undefined>(
+      response.httpStatusCode,
+      "Unknown API Status Code!",
+      await response.getBodyAsAny(),
+      response.headers,
+    );
+  }
+
+  /**
+   * Unwraps the actual response sent by the server from the response context and deserializes the response content
+   * to the expected objects
+   *
    * @params response Response returned by the server for a request to getHeadMember
    * @throws ApiException if the response code was not in [200, 299]
    */
@@ -5140,6 +5707,83 @@ export class DefaultApiResponseProcessor {
         "AvailableNumberList",
         "",
       ) as AvailableNumberList;
+      return body;
+    }
+
+    throw new ApiException<string | Buffer | undefined>(
+      response.httpStatusCode,
+      "Unknown API Status Code!",
+      await response.getBodyAsAny(),
+      response.headers,
+    );
+  }
+
+  /**
+   * Unwraps the actual response sent by the server from the response context and deserializes the response content
+   * to the expected objects
+   *
+   * @params response Response returned by the server for a request to listBlobs
+   * @throws ApiException if the response code was not in [200, 299]
+   */
+  public async listBlobs(response: ResponseContext): Promise<BlobListResponse> {
+    const contentType = ObjectSerializer.normalizeMediaType(
+      response.headers["content-type"],
+    );
+    if (isCodeInRange("200", response.httpStatusCode)) {
+      const body: BlobListResponse = ObjectSerializer.deserialize(
+        ObjectSerializer.parse(await response.body.text(), contentType),
+        "BlobListResponse",
+        "",
+      ) as BlobListResponse;
+      return body;
+    }
+    if (isCodeInRange("400", response.httpStatusCode)) {
+      const body: PlatformError = ObjectSerializer.deserialize(
+        ObjectSerializer.parse(await response.body.text(), contentType),
+        "PlatformError",
+        "",
+      ) as PlatformError;
+      throw new ApiException<PlatformError>(
+        400,
+        "Generic platform bad request.",
+        body,
+        response.headers,
+      );
+    }
+    if (isCodeInRange("500", response.httpStatusCode)) {
+      const body: PlatformError = ObjectSerializer.deserialize(
+        ObjectSerializer.parse(await response.body.text(), contentType),
+        "PlatformError",
+        "",
+      ) as PlatformError;
+      throw new ApiException<PlatformError>(
+        500,
+        "Generic platform internal error.",
+        body,
+        response.headers,
+      );
+    }
+    if (isCodeInRange("504", response.httpStatusCode)) {
+      const body: PlatformError = ObjectSerializer.deserialize(
+        ObjectSerializer.parse(await response.body.text(), contentType),
+        "PlatformError",
+        "",
+      ) as PlatformError;
+      throw new ApiException<PlatformError>(
+        504,
+        "gateway timeout error",
+        body,
+        response.headers,
+      );
+    }
+
+    // Work around for missing responses in specification, e.g. for petstore.yaml
+    if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+      const body: BlobListResponse = ObjectSerializer.deserialize(
+        ObjectSerializer.parse(await response.body.text(), contentType),
+        "BlobListResponse",
+        "",
+      ) as BlobListResponse;
       return body;
     }
 
@@ -5665,6 +6309,96 @@ export class DefaultApiResponseProcessor {
    * Unwraps the actual response sent by the server from the response context and deserializes the response content
    * to the expected objects
    *
+   * @params response Response returned by the server for a request to modifyBlob
+   * @throws ApiException if the response code was not in [200, 299]
+   */
+  public async modifyBlob(response: ResponseContext): Promise<BlobResult> {
+    const contentType = ObjectSerializer.normalizeMediaType(
+      response.headers["content-type"],
+    );
+    if (isCodeInRange("200", response.httpStatusCode)) {
+      const body: BlobResult = ObjectSerializer.deserialize(
+        ObjectSerializer.parse(await response.body.text(), contentType),
+        "BlobResult",
+        "",
+      ) as BlobResult;
+      return body;
+    }
+    if (isCodeInRange("404", response.httpStatusCode)) {
+      const body: PlatformError = ObjectSerializer.deserialize(
+        ObjectSerializer.parse(await response.body.text(), contentType),
+        "PlatformError",
+        "",
+      ) as PlatformError;
+      throw new ApiException<PlatformError>(
+        404,
+        "Generic platform not found error.",
+        body,
+        response.headers,
+      );
+    }
+    if (isCodeInRange("409", response.httpStatusCode)) {
+      const body: PlatformError = ObjectSerializer.deserialize(
+        ObjectSerializer.parse(await response.body.text(), contentType),
+        "PlatformError",
+        "",
+      ) as PlatformError;
+      throw new ApiException<PlatformError>(
+        409,
+        "Generic platform status conflict error.",
+        body,
+        response.headers,
+      );
+    }
+    if (isCodeInRange("413", response.httpStatusCode)) {
+      const body: PlatformError = ObjectSerializer.deserialize(
+        ObjectSerializer.parse(await response.body.text(), contentType),
+        "PlatformError",
+        "",
+      ) as PlatformError;
+      throw new ApiException<PlatformError>(
+        413,
+        "Generic platform status request entity too large.",
+        body,
+        response.headers,
+      );
+    }
+    if (isCodeInRange("500", response.httpStatusCode)) {
+      const body: PlatformError = ObjectSerializer.deserialize(
+        ObjectSerializer.parse(await response.body.text(), contentType),
+        "PlatformError",
+        "",
+      ) as PlatformError;
+      throw new ApiException<PlatformError>(
+        500,
+        "Generic platform internal error.",
+        body,
+        response.headers,
+      );
+    }
+
+    // Work around for missing responses in specification, e.g. for petstore.yaml
+    if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+      const body: BlobResult = ObjectSerializer.deserialize(
+        ObjectSerializer.parse(await response.body.text(), contentType),
+        "BlobResult",
+        "",
+      ) as BlobResult;
+      return body;
+    }
+
+    throw new ApiException<string | Buffer | undefined>(
+      response.httpStatusCode,
+      "Unknown API Status Code!",
+      await response.getBodyAsAny(),
+      response.headers,
+    );
+  }
+
+  /**
+   * Unwraps the actual response sent by the server from the response context and deserializes the response content
+   * to the expected objects
+   *
    * @params response Response returned by the server for a request to removeAParticipant
    * @throws ApiException if the response code was not in [200, 299]
    */
@@ -5683,6 +6417,96 @@ export class DefaultApiResponseProcessor {
         "void",
         "",
       ) as void;
+      return body;
+    }
+
+    throw new ApiException<string | Buffer | undefined>(
+      response.httpStatusCode,
+      "Unknown API Status Code!",
+      await response.getBodyAsAny(),
+      response.headers,
+    );
+  }
+
+  /**
+   * Unwraps the actual response sent by the server from the response context and deserializes the response content
+   * to the expected objects
+   *
+   * @params response Response returned by the server for a request to replaceBlob
+   * @throws ApiException if the response code was not in [200, 299]
+   */
+  public async replaceBlob(response: ResponseContext): Promise<BlobResult> {
+    const contentType = ObjectSerializer.normalizeMediaType(
+      response.headers["content-type"],
+    );
+    if (isCodeInRange("200", response.httpStatusCode)) {
+      const body: BlobResult = ObjectSerializer.deserialize(
+        ObjectSerializer.parse(await response.body.text(), contentType),
+        "BlobResult",
+        "",
+      ) as BlobResult;
+      return body;
+    }
+    if (isCodeInRange("404", response.httpStatusCode)) {
+      const body: PlatformError = ObjectSerializer.deserialize(
+        ObjectSerializer.parse(await response.body.text(), contentType),
+        "PlatformError",
+        "",
+      ) as PlatformError;
+      throw new ApiException<PlatformError>(
+        404,
+        "Generic platform not found error.",
+        body,
+        response.headers,
+      );
+    }
+    if (isCodeInRange("409", response.httpStatusCode)) {
+      const body: PlatformError = ObjectSerializer.deserialize(
+        ObjectSerializer.parse(await response.body.text(), contentType),
+        "PlatformError",
+        "",
+      ) as PlatformError;
+      throw new ApiException<PlatformError>(
+        409,
+        "Generic platform status conflict error.",
+        body,
+        response.headers,
+      );
+    }
+    if (isCodeInRange("413", response.httpStatusCode)) {
+      const body: PlatformError = ObjectSerializer.deserialize(
+        ObjectSerializer.parse(await response.body.text(), contentType),
+        "PlatformError",
+        "",
+      ) as PlatformError;
+      throw new ApiException<PlatformError>(
+        413,
+        "Generic platform status request entity too large.",
+        body,
+        response.headers,
+      );
+    }
+    if (isCodeInRange("500", response.httpStatusCode)) {
+      const body: PlatformError = ObjectSerializer.deserialize(
+        ObjectSerializer.parse(await response.body.text(), contentType),
+        "PlatformError",
+        "",
+      ) as PlatformError;
+      throw new ApiException<PlatformError>(
+        500,
+        "Generic platform internal error.",
+        body,
+        response.headers,
+      );
+    }
+
+    // Work around for missing responses in specification, e.g. for petstore.yaml
+    if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+      const body: BlobResult = ObjectSerializer.deserialize(
+        ObjectSerializer.parse(await response.body.text(), contentType),
+        "BlobResult",
+        "",
+      ) as BlobResult;
       return body;
     }
 

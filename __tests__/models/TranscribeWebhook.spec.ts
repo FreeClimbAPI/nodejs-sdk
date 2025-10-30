@@ -5,33 +5,33 @@ describe("TranscribeWebhook", () => {
   describe("Test with truthy values", () => {
     const Klass = freeclimb.TranscribeWebhook;
     let model: freeclimb.TranscribeWebhook = new freeclimb.TranscribeWebhook({
-      requestType: "test_requestType",
-      accountId: "test_accountId",
-      callId: "test_callId",
-      from: "test_from",
-      to: "test_to",
-      recordingId: "test_recordingId",
-      recordingUrl: "https://123.abc",
-      recordingSize: 1,
-      recordingFormat: "test_recordingFormat",
-      recordingDurationMs: 1,
+      ["requestType"]: "test_requestType",
+      ["accountId"]: "test_accountId",
+      ["callId"]: "test_callId",
+      ["from"]: "test_from",
+      ["to"]: "test_to",
+      ["recordingId"]: "test_recordingId",
+      ["recordingUrl"]: "https://123.abc",
+      ["recordingSize"]: 1,
+      ["recordingFormat"]: "test_recordingFormat",
+      ["recordingDurationMs"]: 1,
 
-      termReason: freeclimb.TranscribeTermReason.ERROR,
+      ["termReason"]: freeclimb.TranscribeTermReason.ERROR,
 
-      recordTermReason: freeclimb.RecordUtteranceTermReason.FINISH_KEY,
-      digit: "test_digit",
-      privacyForLogging: true,
-      privacyForRecording: true,
+      ["recordTermReason"]: freeclimb.RecordUtteranceTermReason.FINISH_KEY,
+      ["digit"]: "test_digit",
+      ["privacyForLogging"]: true,
+      ["privacyForRecording"]: true,
 
-      bargeInReason: freeclimb.BargeInReason.NO_BARGE_IN,
-      bargedInPromptNo: 1,
-      bargedInPromptMs: 1,
-      bargedInPromptLoopNo: 1,
-      bargeInTimeMs: 1,
-      transcript: "test_transcript",
+      ["bargeInReason"]: freeclimb.BargeInReason.NO_BARGE_IN,
+      ["bargedInPromptNo"]: 1,
+      ["bargedInPromptMs"]: 1,
+      ["bargedInPromptLoopNo"]: 1,
+      ["bargeInTimeMs"]: 1,
+      ["transcript"]: "test_transcript",
 
-      transcribeReason: freeclimb.TranscribeReason.INTERNAL_ERROR,
-      transcriptionDurationMs: 1,
+      ["transcribeReason"]: freeclimb.TranscribeReason.INTERNAL_ERROR,
+      ["transcriptionDurationMs"]: 1,
     });
     describe("TranscribeWebhook class test", () => {
       it("resolves to the class type upon initialization", () => {
@@ -42,139 +42,139 @@ describe("TranscribeWebhook", () => {
     describe(".requestType", () => {
       it("resolves to particular value on initialization", () => {
         const value = "test_requestType";
-        expect(model.requestType).toBe(value);
+        expect(model["requestType"]).toBe(value);
       });
     });
     describe(".accountId", () => {
       it("resolves to particular value on initialization", () => {
         const value = "test_accountId";
-        expect(model.accountId).toBe(value);
+        expect(model["accountId"]).toBe(value);
       });
     });
     describe(".callId", () => {
       it("resolves to particular value on initialization", () => {
         const value = "test_callId";
-        expect(model.callId).toBe(value);
+        expect(model["callId"]).toBe(value);
       });
     });
     describe(".from", () => {
       it("resolves to particular value on initialization", () => {
         const value = "test_from";
-        expect(model.from).toBe(value);
+        expect(model["from"]).toBe(value);
       });
     });
     describe(".to", () => {
       it("resolves to particular value on initialization", () => {
         const value = "test_to";
-        expect(model.to).toBe(value);
+        expect(model["to"]).toBe(value);
       });
     });
     describe(".recordingId", () => {
       it("resolves to particular value on initialization", () => {
         const value = "test_recordingId";
-        expect(model.recordingId).toBe(value);
+        expect(model["recordingId"]).toBe(value);
       });
     });
     describe(".recordingUrl", () => {
       it("resolves to particular value on initialization", () => {
         const value = "https://123.abc";
-        expect(model.recordingUrl).toBe(value);
+        expect(model["recordingUrl"]).toBe(value);
       });
     });
     describe(".recordingSize", () => {
       it("resolves to particular value on initialization", () => {
         const value = 1;
-        expect(model.recordingSize).toBe(value);
+        expect(model["recordingSize"]).toBe(value);
       });
     });
     describe(".recordingFormat", () => {
       it("resolves to particular value on initialization", () => {
         const value = "test_recordingFormat";
-        expect(model.recordingFormat).toBe(value);
+        expect(model["recordingFormat"]).toBe(value);
       });
     });
     describe(".recordingDurationMs", () => {
       it("resolves to particular value on initialization", () => {
         const value = 1;
-        expect(model.recordingDurationMs).toBe(value);
+        expect(model["recordingDurationMs"]).toBe(value);
       });
     });
     describe(".termReason", () => {
       it("resolves to particular value on initialization", () => {
         const value = "error";
-        expect(model.termReason).toBe(value);
+        expect(model["termReason"]).toBe(value);
       });
     });
     describe(".recordTermReason", () => {
       it("resolves to particular value on initialization", () => {
         const value = "finishKey";
-        expect(model.recordTermReason).toBe(value);
+        expect(model["recordTermReason"]).toBe(value);
       });
     });
     describe(".digit", () => {
       it("resolves to particular value on initialization", () => {
         const value = "test_digit";
-        expect(model.digit).toBe(value);
+        expect(model["digit"]).toBe(value);
       });
     });
     describe(".privacyForLogging", () => {
       it("resolves to particular value on initialization", () => {
         const value = true;
-        expect(model.privacyForLogging).toBe(value);
+        expect(model["privacyForLogging"]).toBe(value);
       });
     });
     describe(".privacyForRecording", () => {
       it("resolves to particular value on initialization", () => {
         const value = true;
-        expect(model.privacyForRecording).toBe(value);
+        expect(model["privacyForRecording"]).toBe(value);
       });
     });
     describe(".bargeInReason", () => {
       it("resolves to particular value on initialization", () => {
         const value = "noBargeIn";
-        expect(model.bargeInReason).toBe(value);
+        expect(model["bargeInReason"]).toBe(value);
       });
     });
     describe(".bargedInPromptNo", () => {
       it("resolves to particular value on initialization", () => {
         const value = 1;
-        expect(model.bargedInPromptNo).toBe(value);
+        expect(model["bargedInPromptNo"]).toBe(value);
       });
     });
     describe(".bargedInPromptMs", () => {
       it("resolves to particular value on initialization", () => {
         const value = 1;
-        expect(model.bargedInPromptMs).toBe(value);
+        expect(model["bargedInPromptMs"]).toBe(value);
       });
     });
     describe(".bargedInPromptLoopNo", () => {
       it("resolves to particular value on initialization", () => {
         const value = 1;
-        expect(model.bargedInPromptLoopNo).toBe(value);
+        expect(model["bargedInPromptLoopNo"]).toBe(value);
       });
     });
     describe(".bargeInTimeMs", () => {
       it("resolves to particular value on initialization", () => {
         const value = 1;
-        expect(model.bargeInTimeMs).toBe(value);
+        expect(model["bargeInTimeMs"]).toBe(value);
       });
     });
     describe(".transcript", () => {
       it("resolves to particular value on initialization", () => {
         const value = "test_transcript";
-        expect(model.transcript).toBe(value);
+        expect(model["transcript"]).toBe(value);
       });
     });
     describe(".transcribeReason", () => {
       it("resolves to particular value on initialization", () => {
         const value = "internalError";
-        expect(model.transcribeReason).toBe(value);
+        expect(model["transcribeReason"]).toBe(value);
       });
     });
     describe(".transcriptionDurationMs", () => {
       it("resolves to particular value on initialization", () => {
         const value = 1;
-        expect(model.transcriptionDurationMs).toBe(value);
+        expect(model["transcriptionDurationMs"]).toBe(value);
       });
     });
     describe(".deserialize", () => {
@@ -190,33 +190,33 @@ describe("TranscribeWebhook", () => {
   describe("Test with falsy values", () => {
     const Klass = freeclimb.TranscribeWebhook;
     let model: freeclimb.TranscribeWebhook = new freeclimb.TranscribeWebhook({
-      requestType: "",
-      accountId: "",
-      callId: "",
-      from: "",
-      to: "",
-      recordingId: "",
-      recordingUrl: "",
-      recordingSize: 0,
-      recordingFormat: "",
-      recordingDurationMs: 0,
+      ["requestType"]: "",
+      ["accountId"]: "",
+      ["callId"]: "",
+      ["from"]: "",
+      ["to"]: "",
+      ["recordingId"]: "",
+      ["recordingUrl"]: "",
+      ["recordingSize"]: 0,
+      ["recordingFormat"]: "",
+      ["recordingDurationMs"]: 0,
 
-      termReason: freeclimb.TranscribeTermReason.ERROR,
+      ["termReason"]: freeclimb.TranscribeTermReason.ERROR,
 
-      recordTermReason: freeclimb.RecordUtteranceTermReason.FINISH_KEY,
-      digit: "",
-      privacyForLogging: false,
-      privacyForRecording: false,
+      ["recordTermReason"]: freeclimb.RecordUtteranceTermReason.FINISH_KEY,
+      ["digit"]: "",
+      ["privacyForLogging"]: false,
+      ["privacyForRecording"]: false,
 
-      bargeInReason: freeclimb.BargeInReason.NO_BARGE_IN,
-      bargedInPromptNo: 0,
-      bargedInPromptMs: 0,
-      bargedInPromptLoopNo: 0,
-      bargeInTimeMs: 0,
-      transcript: "",
+      ["bargeInReason"]: freeclimb.BargeInReason.NO_BARGE_IN,
+      ["bargedInPromptNo"]: 0,
+      ["bargedInPromptMs"]: 0,
+      ["bargedInPromptLoopNo"]: 0,
+      ["bargeInTimeMs"]: 0,
+      ["transcript"]: "",
 
-      transcribeReason: freeclimb.TranscribeReason.INTERNAL_ERROR,
-      transcriptionDurationMs: 0,
+      ["transcribeReason"]: freeclimb.TranscribeReason.INTERNAL_ERROR,
+      ["transcriptionDurationMs"]: 0,
     });
     describe("TranscribeWebhook class test", () => {
       it("resolves to the class type upon initialization", () => {
@@ -227,139 +227,139 @@ describe("TranscribeWebhook", () => {
     describe(".requestType", () => {
       it("resolves to particular value on initialization", () => {
         const value = "";
-        expect(model.requestType).toBe(value);
+        expect(model["requestType"]).toBe(value);
       });
     });
     describe(".accountId", () => {
       it("resolves to particular value on initialization", () => {
         const value = "";
-        expect(model.accountId).toBe(value);
+        expect(model["accountId"]).toBe(value);
       });
     });
     describe(".callId", () => {
       it("resolves to particular value on initialization", () => {
         const value = "";
-        expect(model.callId).toBe(value);
+        expect(model["callId"]).toBe(value);
       });
     });
     describe(".from", () => {
       it("resolves to particular value on initialization", () => {
         const value = "";
-        expect(model.from).toBe(value);
+        expect(model["from"]).toBe(value);
       });
     });
     describe(".to", () => {
       it("resolves to particular value on initialization", () => {
         const value = "";
-        expect(model.to).toBe(value);
+        expect(model["to"]).toBe(value);
       });
     });
     describe(".recordingId", () => {
       it("resolves to particular value on initialization", () => {
         const value = "";
-        expect(model.recordingId).toBe(value);
+        expect(model["recordingId"]).toBe(value);
       });
     });
     describe(".recordingUrl", () => {
       it("resolves to particular value on initialization", () => {
         const value = "";
-        expect(model.recordingUrl).toBe(value);
+        expect(model["recordingUrl"]).toBe(value);
       });
     });
     describe(".recordingSize", () => {
       it("resolves to particular value on initialization", () => {
         const value = 0;
-        expect(model.recordingSize).toBe(value);
+        expect(model["recordingSize"]).toBe(value);
       });
     });
     describe(".recordingFormat", () => {
       it("resolves to particular value on initialization", () => {
         const value = "";
-        expect(model.recordingFormat).toBe(value);
+        expect(model["recordingFormat"]).toBe(value);
       });
     });
     describe(".recordingDurationMs", () => {
       it("resolves to particular value on initialization", () => {
         const value = 0;
-        expect(model.recordingDurationMs).toBe(value);
+        expect(model["recordingDurationMs"]).toBe(value);
       });
     });
     describe(".termReason", () => {
       it("resolves to particular value on initialization", () => {
         const value = "error";
-        expect(model.termReason).toBe(value);
+        expect(model["termReason"]).toBe(value);
       });
     });
     describe(".recordTermReason", () => {
       it("resolves to particular value on initialization", () => {
         const value = "finishKey";
-        expect(model.recordTermReason).toBe(value);
+        expect(model["recordTermReason"]).toBe(value);
       });
     });
     describe(".digit", () => {
       it("resolves to particular value on initialization", () => {
         const value = "";
-        expect(model.digit).toBe(value);
+        expect(model["digit"]).toBe(value);
       });
     });
     describe(".privacyForLogging", () => {
       it("resolves to particular value on initialization", () => {
         const value = false;
-        expect(model.privacyForLogging).toBe(value);
+        expect(model["privacyForLogging"]).toBe(value);
       });
     });
     describe(".privacyForRecording", () => {
       it("resolves to particular value on initialization", () => {
         const value = false;
-        expect(model.privacyForRecording).toBe(value);
+        expect(model["privacyForRecording"]).toBe(value);
       });
     });
     describe(".bargeInReason", () => {
       it("resolves to particular value on initialization", () => {
         const value = "noBargeIn";
-        expect(model.bargeInReason).toBe(value);
+        expect(model["bargeInReason"]).toBe(value);
       });
     });
     describe(".bargedInPromptNo", () => {
       it("resolves to particular value on initialization", () => {
         const value = 0;
-        expect(model.bargedInPromptNo).toBe(value);
+        expect(model["bargedInPromptNo"]).toBe(value);
       });
     });
     describe(".bargedInPromptMs", () => {
       it("resolves to particular value on initialization", () => {
         const value = 0;
-        expect(model.bargedInPromptMs).toBe(value);
+        expect(model["bargedInPromptMs"]).toBe(value);
       });
     });
     describe(".bargedInPromptLoopNo", () => {
       it("resolves to particular value on initialization", () => {
         const value = 0;
-        expect(model.bargedInPromptLoopNo).toBe(value);
+        expect(model["bargedInPromptLoopNo"]).toBe(value);
       });
     });
     describe(".bargeInTimeMs", () => {
       it("resolves to particular value on initialization", () => {
         const value = 0;
-        expect(model.bargeInTimeMs).toBe(value);
+        expect(model["bargeInTimeMs"]).toBe(value);
       });
     });
     describe(".transcript", () => {
       it("resolves to particular value on initialization", () => {
         const value = "";
-        expect(model.transcript).toBe(value);
+        expect(model["transcript"]).toBe(value);
       });
     });
     describe(".transcribeReason", () => {
       it("resolves to particular value on initialization", () => {
         const value = "internalError";
-        expect(model.transcribeReason).toBe(value);
+        expect(model["transcribeReason"]).toBe(value);
       });
     });
     describe(".transcriptionDurationMs", () => {
       it("resolves to particular value on initialization", () => {
         const value = 0;
-        expect(model.transcriptionDurationMs).toBe(value);
+        expect(model["transcriptionDurationMs"]).toBe(value);
       });
     });
     describe(".deserialize", () => {
@@ -384,7 +384,7 @@ describe("TranscribeWebhook", () => {
         const value = Klass.attributeTypeMap.find(
           (attribute) => attribute.name === "requestType",
         )?.defaultValue;
-        expect(model.requestType).toBe(value);
+        expect(model["requestType"]).toBe(value);
       });
     });
     describe("#accountId", () => {
@@ -392,7 +392,7 @@ describe("TranscribeWebhook", () => {
         const value = Klass.attributeTypeMap.find(
           (attribute) => attribute.name === "accountId",
         )?.defaultValue;
-        expect(model.accountId).toBe(value);
+        expect(model["accountId"]).toBe(value);
       });
     });
     describe("#callId", () => {
@@ -400,7 +400,7 @@ describe("TranscribeWebhook", () => {
         const value = Klass.attributeTypeMap.find(
           (attribute) => attribute.name === "callId",
         )?.defaultValue;
-        expect(model.callId).toBe(value);
+        expect(model["callId"]).toBe(value);
       });
     });
     describe("#from", () => {
@@ -408,7 +408,7 @@ describe("TranscribeWebhook", () => {
         const value = Klass.attributeTypeMap.find(
           (attribute) => attribute.name === "from",
         )?.defaultValue;
-        expect(model.from).toBe(value);
+        expect(model["from"]).toBe(value);
       });
     });
     describe("#to", () => {
@@ -416,7 +416,7 @@ describe("TranscribeWebhook", () => {
         const value = Klass.attributeTypeMap.find(
           (attribute) => attribute.name === "to",
         )?.defaultValue;
-        expect(model.to).toBe(value);
+        expect(model["to"]).toBe(value);
       });
     });
     describe("#recordingId", () => {
@@ -424,7 +424,7 @@ describe("TranscribeWebhook", () => {
         const value = Klass.attributeTypeMap.find(
           (attribute) => attribute.name === "recordingId",
         )?.defaultValue;
-        expect(model.recordingId).toBe(value);
+        expect(model["recordingId"]).toBe(value);
       });
     });
     describe("#recordingUrl", () => {
@@ -432,7 +432,7 @@ describe("TranscribeWebhook", () => {
         const value = Klass.attributeTypeMap.find(
           (attribute) => attribute.name === "recordingUrl",
         )?.defaultValue;
-        expect(model.recordingUrl).toBe(value);
+        expect(model["recordingUrl"]).toBe(value);
       });
     });
     describe("#recordingSize", () => {
@@ -440,7 +440,7 @@ describe("TranscribeWebhook", () => {
         const value = Klass.attributeTypeMap.find(
           (attribute) => attribute.name === "recordingSize",
         )?.defaultValue;
-        expect(model.recordingSize).toBe(value);
+        expect(model["recordingSize"]).toBe(value);
       });
     });
     describe("#recordingFormat", () => {
@@ -448,7 +448,7 @@ describe("TranscribeWebhook", () => {
         const value = Klass.attributeTypeMap.find(
           (attribute) => attribute.name === "recordingFormat",
         )?.defaultValue;
-        expect(model.recordingFormat).toBe(value);
+        expect(model["recordingFormat"]).toBe(value);
       });
     });
     describe("#recordingDurationMs", () => {
@@ -456,7 +456,7 @@ describe("TranscribeWebhook", () => {
         const value = Klass.attributeTypeMap.find(
           (attribute) => attribute.name === "recordingDurationMs",
         )?.defaultValue;
-        expect(model.recordingDurationMs).toBe(value);
+        expect(model["recordingDurationMs"]).toBe(value);
       });
     });
     describe("#termReason", () => {
@@ -464,7 +464,7 @@ describe("TranscribeWebhook", () => {
         const value = Klass.attributeTypeMap.find(
           (attribute) => attribute.name === "termReason",
         )?.defaultValue;
-        expect(model.termReason).toBe(value);
+        expect(model["termReason"]).toBe(value);
       });
     });
     describe("#recordTermReason", () => {
@@ -472,7 +472,7 @@ describe("TranscribeWebhook", () => {
         const value = Klass.attributeTypeMap.find(
           (attribute) => attribute.name === "recordTermReason",
         )?.defaultValue;
-        expect(model.recordTermReason).toBe(value);
+        expect(model["recordTermReason"]).toBe(value);
       });
     });
     describe("#digit", () => {
@@ -480,7 +480,7 @@ describe("TranscribeWebhook", () => {
         const value = Klass.attributeTypeMap.find(
           (attribute) => attribute.name === "digit",
         )?.defaultValue;
-        expect(model.digit).toBe(value);
+        expect(model["digit"]).toBe(value);
       });
     });
     describe("#privacyForLogging", () => {
@@ -488,7 +488,7 @@ describe("TranscribeWebhook", () => {
         const value = Klass.attributeTypeMap.find(
           (attribute) => attribute.name === "privacyForLogging",
         )?.defaultValue;
-        expect(model.privacyForLogging).toBe(value);
+        expect(model["privacyForLogging"]).toBe(value);
       });
     });
     describe("#privacyForRecording", () => {
@@ -496,7 +496,7 @@ describe("TranscribeWebhook", () => {
         const value = Klass.attributeTypeMap.find(
           (attribute) => attribute.name === "privacyForRecording",
         )?.defaultValue;
-        expect(model.privacyForRecording).toBe(value);
+        expect(model["privacyForRecording"]).toBe(value);
       });
     });
     describe("#bargeInReason", () => {
@@ -504,7 +504,7 @@ describe("TranscribeWebhook", () => {
         const value = Klass.attributeTypeMap.find(
           (attribute) => attribute.name === "bargeInReason",
         )?.defaultValue;
-        expect(model.bargeInReason).toBe(value);
+        expect(model["bargeInReason"]).toBe(value);
       });
     });
     describe("#bargedInPromptNo", () => {
@@ -512,7 +512,7 @@ describe("TranscribeWebhook", () => {
         const value = Klass.attributeTypeMap.find(
           (attribute) => attribute.name === "bargedInPromptNo",
         )?.defaultValue;
-        expect(model.bargedInPromptNo).toBe(value);
+        expect(model["bargedInPromptNo"]).toBe(value);
       });
     });
     describe("#bargedInPromptMs", () => {
@@ -520,7 +520,7 @@ describe("TranscribeWebhook", () => {
         const value = Klass.attributeTypeMap.find(
           (attribute) => attribute.name === "bargedInPromptMs",
         )?.defaultValue;
-        expect(model.bargedInPromptMs).toBe(value);
+        expect(model["bargedInPromptMs"]).toBe(value);
       });
     });
     describe("#bargedInPromptLoopNo", () => {
@@ -528,7 +528,7 @@ describe("TranscribeWebhook", () => {
         const value = Klass.attributeTypeMap.find(
           (attribute) => attribute.name === "bargedInPromptLoopNo",
         )?.defaultValue;
-        expect(model.bargedInPromptLoopNo).toBe(value);
+        expect(model["bargedInPromptLoopNo"]).toBe(value);
       });
     });
     describe("#bargeInTimeMs", () => {
@@ -536,7 +536,7 @@ describe("TranscribeWebhook", () => {
         const value = Klass.attributeTypeMap.find(
           (attribute) => attribute.name === "bargeInTimeMs",
         )?.defaultValue;
-        expect(model.bargeInTimeMs).toBe(value);
+        expect(model["bargeInTimeMs"]).toBe(value);
       });
     });
     describe("#transcript", () => {
@@ -544,7 +544,7 @@ describe("TranscribeWebhook", () => {
         const value = Klass.attributeTypeMap.find(
           (attribute) => attribute.name === "transcript",
         )?.defaultValue;
-        expect(model.transcript).toBe(value);
+        expect(model["transcript"]).toBe(value);
       });
     });
     describe("#transcribeReason", () => {
@@ -552,7 +552,7 @@ describe("TranscribeWebhook", () => {
         const value = Klass.attributeTypeMap.find(
           (attribute) => attribute.name === "transcribeReason",
         )?.defaultValue;
-        expect(model.transcribeReason).toBe(value);
+        expect(model["transcribeReason"]).toBe(value);
       });
     });
     describe("#transcriptionDurationMs", () => {
@@ -560,7 +560,7 @@ describe("TranscribeWebhook", () => {
         const value = Klass.attributeTypeMap.find(
           (attribute) => attribute.name === "transcriptionDurationMs",
         )?.defaultValue;
-        expect(model.transcriptionDurationMs).toBe(value);
+        expect(model["transcriptionDurationMs"]).toBe(value);
       });
     });
   });

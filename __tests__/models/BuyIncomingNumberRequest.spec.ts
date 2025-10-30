@@ -6,9 +6,9 @@ describe("BuyIncomingNumberRequest", () => {
     const Klass = freeclimb.BuyIncomingNumberRequest;
     let model: freeclimb.BuyIncomingNumberRequest =
       new freeclimb.BuyIncomingNumberRequest({
-        phoneNumber: "test_phoneNumber",
-        alias: "test_alias",
-        applicationId: "test_applicationId",
+        ["phoneNumber"]: "test_phoneNumber",
+        ["alias"]: "test_alias",
+        ["applicationId"]: "test_applicationId",
       });
     describe("BuyIncomingNumberRequest class test", () => {
       it("resolves to the class type upon initialization", () => {
@@ -18,19 +18,19 @@ describe("BuyIncomingNumberRequest", () => {
     describe(".phoneNumber", () => {
       it("resolves to particular value on initialization", () => {
         const value = "test_phoneNumber";
-        expect(model.phoneNumber).toBe(value);
+        expect(model["phoneNumber"]).toBe(value);
       });
     });
     describe(".alias", () => {
       it("resolves to particular value on initialization", () => {
         const value = "test_alias";
-        expect(model.alias).toBe(value);
+        expect(model["alias"]).toBe(value);
       });
     });
     describe(".applicationId", () => {
       it("resolves to particular value on initialization", () => {
         const value = "test_applicationId";
-        expect(model.applicationId).toBe(value);
+        expect(model["applicationId"]).toBe(value);
       });
     });
   });
@@ -38,9 +38,9 @@ describe("BuyIncomingNumberRequest", () => {
     const Klass = freeclimb.BuyIncomingNumberRequest;
     let model: freeclimb.BuyIncomingNumberRequest =
       new freeclimb.BuyIncomingNumberRequest({
-        phoneNumber: "",
-        alias: "",
-        applicationId: "",
+        ["phoneNumber"]: "",
+        ["alias"]: "",
+        ["applicationId"]: "",
       });
     describe("BuyIncomingNumberRequest class test", () => {
       it("resolves to the class type upon initialization", () => {
@@ -50,33 +50,33 @@ describe("BuyIncomingNumberRequest", () => {
     describe(".phoneNumber", () => {
       it("resolves to particular value on initialization", () => {
         const value = "";
-        expect(model.phoneNumber).toBe(value);
+        expect(model["phoneNumber"]).toBe(value);
       });
     });
     describe(".alias", () => {
       it("resolves to particular value on initialization", () => {
         const value = "";
-        expect(model.alias).toBe(value);
+        expect(model["alias"]).toBe(value);
       });
     });
     describe(".applicationId", () => {
       it("resolves to particular value on initialization", () => {
         const value = "";
-        expect(model.applicationId).toBe(value);
+        expect(model["applicationId"]).toBe(value);
       });
     });
   });
   describe("Test with only required values", () => {
     const Klass = freeclimb.BuyIncomingNumberRequest;
     let constructorArguments = {
-      phoneNumber: "test_phoneNumber",
+      ["phoneNumber"]: "test_phoneNumber",
     };
     let model: freeclimb.BuyIncomingNumberRequest =
       new freeclimb.BuyIncomingNumberRequest(constructorArguments);
 
     describe("#phoneNumber", () => {
       it("resolves to initialization value", () => {
-        expect(model.phoneNumber).toBe(constructorArguments["phoneNumber"]);
+        expect(model["phoneNumber"]).toBe(constructorArguments["phoneNumber"]);
       });
     });
     describe("#alias", () => {
@@ -84,7 +84,7 @@ describe("BuyIncomingNumberRequest", () => {
         const value = Klass.attributeTypeMap.find(
           (attribute) => attribute.name === "alias",
         )?.defaultValue;
-        expect(model.alias).toBe(value);
+        expect(model["alias"]).toBe(value);
       });
     });
     describe("#applicationId", () => {
@@ -92,7 +92,7 @@ describe("BuyIncomingNumberRequest", () => {
         const value = Klass.attributeTypeMap.find(
           (attribute) => attribute.name === "applicationId",
         )?.defaultValue;
-        expect(model.applicationId).toBe(value);
+        expect(model["applicationId"]).toBe(value);
       });
     });
   });

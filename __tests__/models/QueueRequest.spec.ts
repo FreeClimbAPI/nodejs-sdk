@@ -5,8 +5,8 @@ describe("QueueRequest", () => {
   describe("Test with truthy values", () => {
     const Klass = freeclimb.QueueRequest;
     let model: freeclimb.QueueRequest = new freeclimb.QueueRequest({
-      alias: "test_alias",
-      maxSize: 1,
+      ["alias"]: "test_alias",
+      ["maxSize"]: 1,
     });
     describe("QueueRequest class test", () => {
       it("resolves to the class type upon initialization", () => {
@@ -16,21 +16,21 @@ describe("QueueRequest", () => {
     describe(".alias", () => {
       it("resolves to particular value on initialization", () => {
         const value = "test_alias";
-        expect(model.alias).toBe(value);
+        expect(model["alias"]).toBe(value);
       });
     });
     describe(".maxSize", () => {
       it("resolves to particular value on initialization", () => {
         const value = 1;
-        expect(model.maxSize).toBe(value);
+        expect(model["maxSize"]).toBe(value);
       });
     });
   });
   describe("Test with falsy values", () => {
     const Klass = freeclimb.QueueRequest;
     let model: freeclimb.QueueRequest = new freeclimb.QueueRequest({
-      alias: "",
-      maxSize: 0,
+      ["alias"]: "",
+      ["maxSize"]: 0,
     });
     describe("QueueRequest class test", () => {
       it("resolves to the class type upon initialization", () => {
@@ -40,13 +40,13 @@ describe("QueueRequest", () => {
     describe(".alias", () => {
       it("resolves to particular value on initialization", () => {
         const value = "";
-        expect(model.alias).toBe(value);
+        expect(model["alias"]).toBe(value);
       });
     });
     describe(".maxSize", () => {
       it("resolves to particular value on initialization", () => {
         const value = 0;
-        expect(model.maxSize).toBe(value);
+        expect(model["maxSize"]).toBe(value);
       });
     });
   });
@@ -62,7 +62,7 @@ describe("QueueRequest", () => {
         const value = Klass.attributeTypeMap.find(
           (attribute) => attribute.name === "alias",
         )?.defaultValue;
-        expect(model.alias).toBe(value);
+        expect(model["alias"]).toBe(value);
       });
     });
     describe("#maxSize", () => {
@@ -70,7 +70,7 @@ describe("QueueRequest", () => {
         const value = Klass.attributeTypeMap.find(
           (attribute) => attribute.name === "maxSize",
         )?.defaultValue;
-        expect(model.maxSize).toBe(value);
+        expect(model["maxSize"]).toBe(value);
       });
     });
   });

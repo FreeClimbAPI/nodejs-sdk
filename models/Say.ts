@@ -11,6 +11,7 @@
  */
 
 import { PerclCommand } from "./../models/PerclCommand";
+import { TTSEngine } from "./../models/TTSEngine";
 import { HttpFile } from "../http/http";
 
 /**
@@ -27,6 +28,7 @@ interface AttributeType {
 interface ArgumentsType {
   text: string;
   language?: string;
+  engine?: TTSEngine;
   loop?: number;
   privacyMode?: boolean;
 }
@@ -39,6 +41,7 @@ export class Say extends PerclCommand {
    * Language and (by implication) the locale to use. This implies the accent and pronunciations to be usde for the TTS. The complete list of valid values for the language attribute is shown below.
    */
   "language"?: string;
+  "engine"?: TTSEngine;
   /**
    * Number of times the text is said. Specifying \'0\' causes the `Say` action to loop until the Call is hung up.
    */
@@ -63,6 +66,14 @@ export class Say extends PerclCommand {
       name: "language",
       baseName: "language",
       type: "string",
+      format: "",
+
+      defaultValue: undefined,
+    },
+    {
+      name: "engine",
+      baseName: "engine",
+      type: "TTSEngine",
       format: "",
 
       defaultValue: undefined,
@@ -100,6 +111,7 @@ export class Say extends PerclCommand {
     };
     this["text"] = assign<string>("text");
     this["language"] = assign<string>("language");
+    this["engine"] = assign<TTSEngine>("engine");
     this["loop"] = assign<number>("loop");
     this["privacyMode"] = assign<boolean>("privacyMode");
   }

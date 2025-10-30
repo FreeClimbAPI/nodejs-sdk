@@ -16,6 +16,8 @@ import { ApplicationResult } from "../models/ApplicationResult";
 import { AvailableNumber } from "../models/AvailableNumber";
 import { AvailableNumberList } from "../models/AvailableNumberList";
 import { BargeInReason } from "../models/BargeInReason";
+import { BlobListResponse } from "../models/BlobListResponse";
+import { BlobResult } from "../models/BlobResult";
 import { BuyIncomingNumberRequest } from "../models/BuyIncomingNumberRequest";
 import { CallControlWebhook } from "../models/CallControlWebhook";
 import { CallDirection } from "../models/CallDirection";
@@ -35,6 +37,7 @@ import { ConferenceRecordingStatusWebhook } from "../models/ConferenceRecordingS
 import { ConferenceResult } from "../models/ConferenceResult";
 import { ConferenceStatus } from "../models/ConferenceStatus";
 import { ConferenceStatusWebhook } from "../models/ConferenceStatusWebhook";
+import { CreateBlobRequest } from "../models/CreateBlobRequest";
 import { CreateConference } from "../models/CreateConference";
 import { CreateConferenceRequest } from "../models/CreateConferenceRequest";
 import { CreateConferenceWebhook } from "../models/CreateConferenceWebhook";
@@ -80,6 +83,7 @@ import { MessageResult } from "../models/MessageResult";
 import { MessageStatus } from "../models/MessageStatus";
 import { MessageStatusWebhook } from "../models/MessageStatusWebhook";
 import { MessagesList } from "../models/MessagesList";
+import { ModifyBlobRequest } from "../models/ModifyBlobRequest";
 import { MutableResourceModel } from "../models/MutableResourceModel";
 import { OutDial } from "../models/OutDial";
 import { OutDialApiConnectWebhook } from "../models/OutDialApiConnectWebhook";
@@ -90,6 +94,7 @@ import { Park } from "../models/Park";
 import { Pause } from "../models/Pause";
 import { PerclCommand } from "../models/PerclCommand";
 import { PerclScript } from "../models/PerclScript";
+import { PlatformError } from "../models/PlatformError";
 import { Play } from "../models/Play";
 import { PlayBeep } from "../models/PlayBeep";
 import { PlayEarlyMedia } from "../models/PlayEarlyMedia";
@@ -110,6 +115,7 @@ import { RedirectWebhook } from "../models/RedirectWebhook";
 import { Reject } from "../models/Reject";
 import { RemoveFromConference } from "../models/RemoveFromConference";
 import { RemoveFromQueueNotificationWebhook } from "../models/RemoveFromQueueNotificationWebhook";
+import { ReplaceBlobRequest } from "../models/ReplaceBlobRequest";
 import { RequestType } from "../models/RequestType";
 import { SMSTenDLCBrand } from "../models/SMSTenDLCBrand";
 import { SMSTenDLCBrandAltBusinessIdType } from "../models/SMSTenDLCBrandAltBusinessIdType";
@@ -137,6 +143,8 @@ import { Sms } from "../models/Sms";
 import { StartRecordCall } from "../models/StartRecordCall";
 import { TFN } from "../models/TFN";
 import { TFNCampaign } from "../models/TFNCampaign";
+import { TTSEngine } from "../models/TTSEngine";
+import { TTSEngineName } from "../models/TTSEngineName";
 import { TerminateConference } from "../models/TerminateConference";
 import { TranscribeReason } from "../models/TranscribeReason";
 import { TranscribeTermReason } from "../models/TranscribeTermReason";
@@ -231,6 +239,21 @@ export class PromiseDefaultApi {
   }
 
   /**
+     * Create a new Blob belonging to the requesting account.
+     * Create a Blob
+     
+     * @param createBlobRequest An object defining a new blob. A request body must be provided but the blob may be empty.
+     
+     */
+  public createBlob(
+    createBlobRequest: CreateBlobRequest,
+    _options?: Configuration,
+  ): Promise<BlobResult> {
+    const result = this.api.createBlob(createBlobRequest, _options);
+    return result.toPromise();
+  }
+
+  /**
      * Create an Export
      
      * @param exportRequest A JSON object containing export creation parameters
@@ -318,6 +341,21 @@ export class PromiseDefaultApi {
     _options?: Configuration,
   ): Promise<void> {
     const result = this.api.deleteAnIncomingNumber(phoneNumberId, _options);
+    return result.toPromise();
+  }
+
+  /**
+     * Deletes a blob or specific keys from a blob. If no keys are specified in the request body, the entire blob is deleted (returns 204). If specific keys are provided, only those keys are removed and the remaining blob is returned (returns 200).
+     * Delete Blob
+     
+     * @param blobId String that uniquely identifies this Blob resource.
+     
+     */
+  public deleteBlob(
+    blobId: string,
+    _options?: Configuration,
+  ): Promise<void | BlobResult> {
+    const result = this.api.deleteBlob(blobId, _options);
     return result.toPromise();
   }
 
@@ -550,6 +588,21 @@ export class PromiseDefaultApi {
   }
 
   /**
+     * Retrieves a specified blob
+     * Get Blob
+     
+     * @param blobId String that uniquely identifies this Blob resource.
+     
+     */
+  public getBlob(
+    blobId: string,
+    _options?: Configuration,
+  ): Promise<BlobResult> {
+    const result = this.api.getBlob(blobId, _options);
+    return result.toPromise();
+  }
+
+  /**
      * Get Head Member
      
      * @param queueId String that uniquely identifies the Queue that the Member belongs to.
@@ -760,6 +813,16 @@ export class PromiseDefaultApi {
   }
 
   /**
+     * List Blobs belonging to an account. Results are returned in paginated lists mirroring other listing features in the API.
+     * List Blobs belonging to an account.
+     
+     */
+  public listBlobs(_options?: Configuration): Promise<BlobListResponse> {
+    const result = this.api.listBlobs(_options);
+    return result.toPromise();
+  }
+
+  /**
      * List Call Logs
      
      * @param callId String that uniquely identifies this call resource.
@@ -929,10 +992,6 @@ export class PromiseDefaultApi {
      
      * @param hasApplication Indication of whether the phone number has an application linked to it.
      
-     * @param voiceEnabled Indicates whether the phone number can handle Calls. Typically set to true for all numbers.
-     
-     * @param smsEnabled Indication of whether the phone number can handle sending and receiving SMS messages. Typically set to true for all numbers.
-     
      * @param hasCampaign Indication of whether the phone number has a campaign associated with it
      
      * @param capabilitiesVoice 
@@ -957,8 +1016,6 @@ export class PromiseDefaultApi {
     country?: string,
     applicationId?: string,
     hasApplication?: boolean,
-    voiceEnabled?: boolean,
-    smsEnabled?: boolean,
     hasCampaign?: boolean,
     capabilitiesVoice?: boolean,
     capabilitiesSms?: boolean,
@@ -976,8 +1033,6 @@ export class PromiseDefaultApi {
       country,
       applicationId,
       hasApplication,
-      voiceEnabled,
-      smsEnabled,
       hasCampaign,
       capabilitiesVoice,
       capabilitiesSms,
@@ -1133,6 +1188,24 @@ export class PromiseDefaultApi {
   }
 
   /**
+     * Modifys a pre existing blob by either adding new fields, or modifying existing fields
+     * Modify Blob
+     
+     * @param blobId String that uniquely identifies this Blob resource.
+     
+     * @param modifyBlobRequest Request body to specify keys to modify. Or new keys to add onto the already existing blob
+     
+     */
+  public modifyBlob(
+    blobId: string,
+    modifyBlobRequest: ModifyBlobRequest,
+    _options?: Configuration,
+  ): Promise<BlobResult> {
+    const result = this.api.modifyBlob(blobId, modifyBlobRequest, _options);
+    return result.toPromise();
+  }
+
+  /**
      * Remove a Participant
      
      * @param conferenceId ID of the conference this participant is in.
@@ -1146,6 +1219,24 @@ export class PromiseDefaultApi {
     _options?: Configuration,
   ): Promise<void> {
     const result = this.api.removeAParticipant(conferenceId, callId, _options);
+    return result.toPromise();
+  }
+
+  /**
+     * Replaces the blob content with the provided values.
+     * Replace Blob
+     
+     * @param blobId String that uniquely identifies this Blob resource.
+     
+     * @param replaceBlobRequest JSON object containing blob key the contents of which will be used to override the enitre blob contents.
+     
+     */
+  public replaceBlob(
+    blobId: string,
+    replaceBlobRequest: ReplaceBlobRequest,
+    _options?: Configuration,
+  ): Promise<BlobResult> {
+    const result = this.api.replaceBlob(blobId, replaceBlobRequest, _options);
     return result.toPromise();
   }
 

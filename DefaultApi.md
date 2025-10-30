@@ -8,12 +8,14 @@ All URIs are relative to *https://www.freeclimb.com/apiserver*
 | [**createAConference**](DefaultApi.md#createAConference)                         | **POST** /Accounts/{accountId}/Conferences                                        | Create a Conference                     |
 | [**createAQueue**](DefaultApi.md#createAQueue)                                   | **POST** /Accounts/{accountId}/Queues                                             | Create a Queue                          |
 | [**createAnApplication**](DefaultApi.md#createAnApplication)                     | **POST** /Accounts/{accountId}/Applications                                       | Create an application                   |
+| [**createBlob**](DefaultApi.md#createBlob)                                       | **POST** /Accounts/{accountId}/Blobs                                              | Create a Blob                           |
 | [**createExport**](DefaultApi.md#createExport)                                   | **POST** /Accounts/{accountId}/Exports                                            | Create an Export                        |
 | [**createKnowledgeBaseCompletion**](DefaultApi.md#createKnowledgeBaseCompletion) | **POST** /Accounts/{accountId}/KnowledgeBases/{knowledgeBaseId}/Completion        | Query the knowledge base                |
 | [**deleteARecording**](DefaultApi.md#deleteARecording)                           | **DELETE** /Accounts/{accountId}/Recordings/{recordingId}                         | Delete a Recording                      |
 | [**deleteAnApplication**](DefaultApi.md#deleteAnApplication)                     | **DELETE** /Accounts/{accountId}/Applications/{applicationId}                     | Delete an application                   |
 | [**deleteAnExport**](DefaultApi.md#deleteAnExport)                               | **DELETE** /Accounts/{accountId}/Exports/{exportId}                               | Delete an Export                        |
 | [**deleteAnIncomingNumber**](DefaultApi.md#deleteAnIncomingNumber)               | **DELETE** /Accounts/{accountId}/IncomingPhoneNumbers/{phoneNumberId}             | Delete an Incoming Number               |
+| [**deleteBlob**](DefaultApi.md#deleteBlob)                                       | **DELETE** /Accounts/{accountId}/Blobs/{blobId}                                   | Delete Blob                             |
 | [**dequeueAMember**](DefaultApi.md#dequeueAMember)                               | **POST** /Accounts/{accountId}/Queues/{queueId}/Members/{callId}                  | Dequeue a Member                        |
 | [**dequeueHeadMember**](DefaultApi.md#dequeueHeadMember)                         | **POST** /Accounts/{accountId}/Queues/{queueId}/Members/Front                     | Dequeue Head Member                     |
 | [**downloadARecordingFile**](DefaultApi.md#downloadARecordingFile)               | **GET** /Accounts/{accountId}/Recordings/{recordingId}/Download                   | Download a Recording File               |
@@ -30,6 +32,7 @@ All URIs are relative to *https://www.freeclimb.com/apiserver*
 | [**getAnExport**](DefaultApi.md#getAnExport)                                     | **GET** /Accounts/{accountId}/Exports/{exportId}                                  | Get an Export                           |
 | [**getAnIncomingNumber**](DefaultApi.md#getAnIncomingNumber)                     | **GET** /Accounts/{accountId}/IncomingPhoneNumbers/{phoneNumberId}                | Get an Incoming Number                  |
 | [**getAnSmsMessage**](DefaultApi.md#getAnSmsMessage)                             | **GET** /Accounts/{accountId}/Messages/{messageId}                                | Get an SMS Message                      |
+| [**getBlob**](DefaultApi.md#getBlob)                                             | **GET** /Accounts/{accountId}/Blobs/{blobId}                                      | Get Blob                                |
 | [**getHeadMember**](DefaultApi.md#getHeadMember)                                 | **GET** /Accounts/{accountId}/Queues/{queueId}/Members/Front                      | Get Head Member                         |
 | [**getTenDLCSmsBrand**](DefaultApi.md#getTenDLCSmsBrand)                         | **GET** /Accounts/{accountId}/Messages/10DLC/Brands/{brandId}                     | Get a 10DLC SMS Brand                   |
 | [**getTenDLCSmsBrands**](DefaultApi.md#getTenDLCSmsBrands)                       | **GET** /Accounts/{accountId}/Messages/10DLC/Brands                               | Get list of SMS 10DLC Brands            |
@@ -43,6 +46,7 @@ All URIs are relative to *https://www.freeclimb.com/apiserver*
 | [**listAllAccountLogs**](DefaultApi.md#listAllAccountLogs)                       | **GET** /Accounts/{accountId}/Logs                                                | List All Account Logs                   |
 | [**listApplications**](DefaultApi.md#listApplications)                           | **GET** /Accounts/{accountId}/Applications                                        | List applications                       |
 | [**listAvailableNumbers**](DefaultApi.md#listAvailableNumbers)                   | **GET** /AvailablePhoneNumbers                                                    | List available numbers                  |
+| [**listBlobs**](DefaultApi.md#listBlobs)                                         | **GET** /Accounts/{accountId}/Blobs                                               | List Blobs belonging to an account.     |
 | [**listCallLogs**](DefaultApi.md#listCallLogs)                                   | **GET** /Accounts/{accountId}/Calls/{callId}/Logs                                 | List Call Logs                          |
 | [**listCallRecordings**](DefaultApi.md#listCallRecordings)                       | **GET** /Accounts/{accountId}/Calls/{callId}/Recordings                           | List Call Recordings                    |
 | [**listCalls**](DefaultApi.md#listCalls)                                         | **GET** /Accounts/{accountId}/Calls                                               | List Calls                              |
@@ -56,7 +60,9 @@ All URIs are relative to *https://www.freeclimb.com/apiserver*
 | [**listSmsMessages**](DefaultApi.md#listSmsMessages)                             | **GET** /Accounts/{accountId}/Messages                                            | List SMS Messages                       |
 | [**makeACall**](DefaultApi.md#makeACall)                                         | **POST** /Accounts/{accountId}/Calls                                              | Make a Call                             |
 | [**makeAWebrtcJwt**](DefaultApi.md#makeAWebrtcJwt)                               | **POST** /Accounts/{accountId}/Calls/WebRTC/Token                                 | Make a JWT for WebRTC calling           |
+| [**modifyBlob**](DefaultApi.md#modifyBlob)                                       | **PATCH** /Accounts/{accountId}/Blobs/{blobId}                                    | Modify Blob                             |
 | [**removeAParticipant**](DefaultApi.md#removeAParticipant)                       | **DELETE** /Accounts/{accountId}/Conferences/{conferenceId}/Participants/{callId} | Remove a Participant                    |
+| [**replaceBlob**](DefaultApi.md#replaceBlob)                                     | **PUT** /Accounts/{accountId}/Blobs/{blobId}                                      | Replace Blob                            |
 | [**sendAnSmsMessage**](DefaultApi.md#sendAnSmsMessage)                           | **POST** /Accounts/{accountId}/Messages                                           | Send an SMS Message                     |
 | [**streamARecordingFile**](DefaultApi.md#streamARecordingFile)                   | **GET** /Accounts/{accountId}/Recordings/{recordingId}/Stream                     | Stream a Recording File                 |
 | [**updateAConference**](DefaultApi.md#updateAConference)                         | **POST** /Accounts/{accountId}/Conferences/{conferenceId}                         | Update a Conference                     |
@@ -310,6 +316,73 @@ apiInstance
 | Status code | Description                     | Response headers |
 | ----------- | ------------------------------- | ---------------- |
 | **201**     | Application successfuly created | -                |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **createBlob**
+
+> BlobResult createBlob(createBlobRequest)
+
+Create a new Blob belonging to the requesting account.
+
+### Example
+
+```typescript
+import { freeclimb } from "@freeclimb/sdk";
+import * as fs from "fs";
+
+const configuration = freeclimb.createConfiguration({
+  accountId: "YOUR_ACCOUNT_ID",
+  apiKey: "YOUR_API_KEY",
+});
+const apiInstance = new freeclimb.DefaultApi(configuration);
+
+let body: freeclimb.DefaultApiCreateBlobRequest = {
+  // CreateBlobRequest | An object defining a new blob. A request body must be provided but the blob may be empty.
+  createBlobRequest: {
+    alias: "alias_example",
+    expiresAt: "2006-01-02T15:04:05.000Z",
+    blob: {},
+  },
+};
+
+apiInstance
+  .createBlob(body)
+  .then((data: any) => {
+    console.log("API called successfully. Returned data: " + data);
+  })
+  .catch((error: any) => console.error(error));
+```
+
+### Parameters
+
+| Name                  | Type                  | Description                                                                               | Notes |
+| --------------------- | --------------------- | ----------------------------------------------------------------------------------------- | ----- |
+| **createBlobRequest** | **CreateBlobRequest** | An object defining a new blob. A request body must be provided but the blob may be empty. |
+
+### Return type
+
+**BlobResult**
+
+### Authorization
+
+[fc](README.md#fc)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description                                                                                                                                        | Response headers |
+| ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------- |
+| **201**     | Successful creation of a new blob.                                                                                                                 | -                |
+| **400**     | Generic platform bad request.                                                                                                                      | -                |
+| **409**     | A blob with the provided alias already exists oln the requesting account and so this new blob is rejected as there cannot be duplicate alises.     | -                |
+| **413**     | The blob exceeded one of the size limits. Either it itself is too large or it would push the total sum of all blobs over the account\&#39;s limit. | -                |
+| **422**     | Generic platform unprocessible entity response.                                                                                                    | -                |
+| **500**     | Generic platform internal error.                                                                                                                   | -                |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -662,6 +735,69 @@ apiInstance
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
+# **deleteBlob**
+
+> void | BlobResult deleteBlob()
+
+Deletes a blob or specific keys from a blob. If no keys are specified in the request body, the entire blob is deleted (returns 204). If specific keys are provided, only those keys are removed and the remaining blob is returned (returns 200).
+
+### Example
+
+```typescript
+import { freeclimb } from "@freeclimb/sdk";
+import * as fs from "fs";
+
+const configuration = freeclimb.createConfiguration({
+  accountId: "YOUR_ACCOUNT_ID",
+  apiKey: "YOUR_API_KEY",
+});
+const apiInstance = new freeclimb.DefaultApi(configuration);
+
+let body: freeclimb.DefaultApiDeleteBlobRequest = {
+  // string | String that uniquely identifies this Blob resource.
+  blobId: "BL88615a9b4ca7e9aad57d9057773fc74268b9caf7",
+};
+
+apiInstance
+  .deleteBlob(body)
+  .then((data: any) => {
+    console.log("API called successfully. Returned data: " + data);
+  })
+  .catch((error: any) => console.error(error));
+```
+
+### Parameters
+
+| Name       | Type         | Description                                         | Notes                 |
+| ---------- | ------------ | --------------------------------------------------- | --------------------- |
+| **blobId** | [**string**] | String that uniquely identifies this Blob resource. | defaults to undefined |
+
+### Return type
+
+**void | BlobResult**
+
+### Authorization
+
+[fc](README.md#fc)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description                                              | Response headers |
+| ----------- | -------------------------------------------------------- | ---------------- |
+| **200**     | Blob keys deleted successfully, remaining blob returned. | -                |
+| **204**     | Successful operation                                     | -                |
+| **404**     | Generic platform not found error.                        | -                |
+| **422**     | Generic platform unprocessible entity response.          | -                |
+| **500**     | Generic platform internal error.                         | -                |
+| **504**     | gateway timeout error                                    | -                |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
 # **dequeueAMember**
 
 > QueueMember dequeueAMember()
@@ -824,13 +960,13 @@ apiInstance
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: audio/x-wav
+- **Accept**: audio/wav
 
 ### HTTP response details
 
-| Status code | Description                                                      | Response headers |
-| ----------- | ---------------------------------------------------------------- | ---------------- |
-| **200**     | Download a Recording file represented with audio/x-wav mime-type | -                |
+| Status code | Description                                                    | Response headers |
+| ----------- | -------------------------------------------------------------- | ---------------- |
+| **200**     | Download a Recording file represented with audio/wav mime-type | -                |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -1562,6 +1698,67 @@ apiInstance
 | Status code | Description                                                 | Response headers |
 | ----------- | ----------------------------------------------------------- | ---------------- |
 | **200**     | The specific SMS message that’s been processed by FreeClimb | -                |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **getBlob**
+
+> BlobResult getBlob()
+
+Retrieves a specified blob
+
+### Example
+
+```typescript
+import { freeclimb } from "@freeclimb/sdk";
+import * as fs from "fs";
+
+const configuration = freeclimb.createConfiguration({
+  accountId: "YOUR_ACCOUNT_ID",
+  apiKey: "YOUR_API_KEY",
+});
+const apiInstance = new freeclimb.DefaultApi(configuration);
+
+let body: freeclimb.DefaultApiGetBlobRequest = {
+  // string | String that uniquely identifies this Blob resource.
+  blobId: "BL88615a9b4ca7e9aad57d9057773fc74268b9caf7",
+};
+
+apiInstance
+  .getBlob(body)
+  .then((data: any) => {
+    console.log("API called successfully. Returned data: " + data);
+  })
+  .catch((error: any) => console.error(error));
+```
+
+### Parameters
+
+| Name       | Type         | Description                                         | Notes                 |
+| ---------- | ------------ | --------------------------------------------------- | --------------------- |
+| **blobId** | [**string**] | String that uniquely identifies this Blob resource. | defaults to undefined |
+
+### Return type
+
+**BlobResult**
+
+### Authorization
+
+[fc](README.md#fc)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description                       | Response headers |
+| ----------- | --------------------------------- | ---------------- |
+| **200**     | Retrieve a Blob.                  | -                |
+| **404**     | Generic platform not found error. | -                |
+| **500**     | Generic platform internal error.  | -                |
+| **504**     | gateway timeout error             | -                |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -2308,6 +2505,60 @@ apiInstance
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
+# **listBlobs**
+
+> BlobListResponse listBlobs()
+
+List Blobs belonging to an account. Results are returned in paginated lists mirroring other listing features in the API.
+
+### Example
+
+```typescript
+import { freeclimb } from "@freeclimb/sdk";
+import * as fs from "fs";
+
+const configuration = freeclimb.createConfiguration({
+  accountId: "YOUR_ACCOUNT_ID",
+  apiKey: "YOUR_API_KEY",
+});
+const apiInstance = new freeclimb.DefaultApi(configuration);
+
+let body: freeclimb.DefaultApiListBlobsRequest = {};
+
+apiInstance
+  .listBlobs(body)
+  .then((data: any) => {
+    console.log("API called successfully. Returned data: " + data);
+  })
+  .catch((error: any) => console.error(error));
+```
+
+### Parameters
+
+### Return type
+
+**BlobListResponse**
+
+### Authorization
+
+[fc](README.md#fc)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description                       | Response headers |
+| ----------- | --------------------------------- | ---------------- |
+| **200**     | Single page of blob list results. | -                |
+| **400**     | Generic platform bad request.     | -                |
+| **500**     | Generic platform internal error.  | -                |
+| **504**     | gateway timeout error             | -                |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
 # **listCallLogs**
 
 > LogList listCallLogs()
@@ -2743,12 +2994,6 @@ let body: freeclimb.DefaultApiListIncomingNumbersRequest = {
   // boolean | Indication of whether the phone number has an application linked to it. (optional)
   hasApplication: false,
 
-  // boolean | Indicates whether the phone number can handle Calls. Typically set to true for all numbers. (optional)
-  voiceEnabled: true,
-
-  // boolean | Indication of whether the phone number can handle sending and receiving SMS messages. Typically set to true for all numbers. (optional)
-  smsEnabled: true,
-
   // boolean | Indication of whether the phone number has a campaign associated with it (optional)
   hasCampaign: true,
 
@@ -2792,8 +3037,6 @@ apiInstance
 | **country**               | [**string**]  | Country of this phone number.                                                                                                                                                                                           | (optional) defaults to undefined |
 | **applicationId**         | [**string**]  | ID of the Application that FreeClimb should contact if a Call or SMS arrives for this phone number or a Call from this number is placed. An incoming phone number is not useful until associated with an applicationId. | (optional) defaults to undefined |
 | **hasApplication**        | [**boolean**] | Indication of whether the phone number has an application linked to it.                                                                                                                                                 | (optional) defaults to false     |
-| **voiceEnabled**          | [**boolean**] | Indicates whether the phone number can handle Calls. Typically set to true for all numbers.                                                                                                                             | (optional) defaults to true      |
-| **smsEnabled**            | [**boolean**] | Indication of whether the phone number can handle sending and receiving SMS messages. Typically set to true for all numbers.                                                                                            | (optional) defaults to true      |
 | **hasCampaign**           | [**boolean**] | Indication of whether the phone number has a campaign associated with it                                                                                                                                                | (optional) defaults to undefined |
 | **capabilitiesVoice**     | [**boolean**] |                                                                                                                                                                                                                         | (optional) defaults to undefined |
 | **capabilitiesSms**       | [**boolean**] |                                                                                                                                                                                                                         | (optional) defaults to undefined |
@@ -3223,6 +3466,75 @@ apiInstance
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
+# **modifyBlob**
+
+> BlobResult modifyBlob(modifyBlobRequest)
+
+Modifys a pre existing blob by either adding new fields, or modifying existing fields
+
+### Example
+
+```typescript
+import { freeclimb } from "@freeclimb/sdk";
+import * as fs from "fs";
+
+const configuration = freeclimb.createConfiguration({
+  accountId: "YOUR_ACCOUNT_ID",
+  apiKey: "YOUR_API_KEY",
+});
+const apiInstance = new freeclimb.DefaultApi(configuration);
+
+let body: freeclimb.DefaultApiModifyBlobRequest = {
+  // string | String that uniquely identifies this Blob resource.
+  blobId: "BL88615a9b4ca7e9aad57d9057773fc74268b9caf7",
+
+  // ModifyBlobRequest | Request body to specify keys to modify. Or new keys to add onto the already existing blob
+  modifyBlobRequest: {
+    blob: {},
+    alias: "alias_example",
+  },
+};
+
+apiInstance
+  .modifyBlob(body)
+  .then((data: any) => {
+    console.log("API called successfully. Returned data: " + data);
+  })
+  .catch((error: any) => console.error(error));
+```
+
+### Parameters
+
+| Name                  | Type                  | Description                                                                               | Notes                 |
+| --------------------- | --------------------- | ----------------------------------------------------------------------------------------- | --------------------- |
+| **modifyBlobRequest** | **ModifyBlobRequest** | Request body to specify keys to modify. Or new keys to add onto the already existing blob |
+| **blobId**            | [**string**]          | String that uniquely identifies this Blob resource.                                       | defaults to undefined |
+
+### Return type
+
+**BlobResult**
+
+### Authorization
+
+[fc](README.md#fc)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description                                             | Response headers |
+| ----------- | ------------------------------------------------------- | ---------------- |
+| **200**     | Blob keys successfully modified, updated blob returned. | -                |
+| **404**     | Generic platform not found error.                       | -                |
+| **409**     | Generic platform status conflict error.                 | -                |
+| **413**     | Generic platform status request entity too large.       | -                |
+| **500**     | Generic platform internal error.                        | -                |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
 # **removeAParticipant**
 
 > void removeAParticipant()
@@ -3280,6 +3592,74 @@ apiInstance
 | Status code | Description                                 | Response headers |
 | ----------- | ------------------------------------------- | ---------------- |
 | **204**     | Successfully deleted conference participant | -                |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **replaceBlob**
+
+> BlobResult replaceBlob(replaceBlobRequest)
+
+Replaces the blob content with the provided values.
+
+### Example
+
+```typescript
+import { freeclimb } from "@freeclimb/sdk";
+import * as fs from "fs";
+
+const configuration = freeclimb.createConfiguration({
+  accountId: "YOUR_ACCOUNT_ID",
+  apiKey: "YOUR_API_KEY",
+});
+const apiInstance = new freeclimb.DefaultApi(configuration);
+
+let body: freeclimb.DefaultApiReplaceBlobRequest = {
+  // string | String that uniquely identifies this Blob resource.
+  blobId: "BL88615a9b4ca7e9aad57d9057773fc74268b9caf7",
+
+  // ReplaceBlobRequest | JSON object containing blob key the contents of which will be used to override the enitre blob contents.
+  replaceBlobRequest: {
+    blob: {},
+  },
+};
+
+apiInstance
+  .replaceBlob(body)
+  .then((data: any) => {
+    console.log("API called successfully. Returned data: " + data);
+  })
+  .catch((error: any) => console.error(error));
+```
+
+### Parameters
+
+| Name                   | Type                   | Description                                                                                              | Notes                 |
+| ---------------------- | ---------------------- | -------------------------------------------------------------------------------------------------------- | --------------------- |
+| **replaceBlobRequest** | **ReplaceBlobRequest** | JSON object containing blob key the contents of which will be used to override the enitre blob contents. |
+| **blobId**             | [**string**]           | String that uniquely identifies this Blob resource.                                                      | defaults to undefined |
+
+### Return type
+
+**BlobResult**
+
+### Authorization
+
+[fc](README.md#fc)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description                                       | Response headers |
+| ----------- | ------------------------------------------------- | ---------------- |
+| **200**     | Replaces all keys in blob with those provided.    | -                |
+| **404**     | Generic platform not found error.                 | -                |
+| **409**     | Generic platform status conflict error.           | -                |
+| **413**     | Generic platform status request entity too large. | -                |
+| **500**     | Generic platform internal error.                  | -                |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -3385,13 +3765,13 @@ apiInstance
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: audio/x-wav
+- **Accept**: audio/wav
 
 ### HTTP response details
 
-| Status code | Description                                                  | Response headers |
-| ----------- | ------------------------------------------------------------ | ---------------- |
-| **200**     | Streaming a Recording represented with audio/x-wav mime-type | -                |
+| Status code | Description                                                | Response headers |
+| ----------- | ---------------------------------------------------------- | ---------------- |
+| **200**     | Streaming a Recording represented with audio/wav mime-type | -                |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 

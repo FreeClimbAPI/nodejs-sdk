@@ -12,6 +12,8 @@ export * from "./ApplicationResult";
 export * from "./AvailableNumber";
 export * from "./AvailableNumberList";
 export * from "./BargeInReason";
+export * from "./BlobListResponse";
+export * from "./BlobResult";
 export * from "./BuyIncomingNumberRequest";
 export * from "./CallControlWebhook";
 export * from "./CallDirection";
@@ -31,6 +33,7 @@ export * from "./ConferenceRecordingStatusWebhook";
 export * from "./ConferenceResult";
 export * from "./ConferenceStatus";
 export * from "./ConferenceStatusWebhook";
+export * from "./CreateBlobRequest";
 export * from "./CreateConference";
 export * from "./CreateConferenceRequest";
 export * from "./CreateConferenceWebhook";
@@ -76,6 +79,7 @@ export * from "./MessageResult";
 export * from "./MessageStatus";
 export * from "./MessageStatusWebhook";
 export * from "./MessagesList";
+export * from "./ModifyBlobRequest";
 export * from "./MutableResourceModel";
 export * from "./OutDial";
 export * from "./OutDialApiConnectWebhook";
@@ -86,6 +90,7 @@ export * from "./Park";
 export * from "./Pause";
 export * from "./PerclCommand";
 export * from "./PerclScript";
+export * from "./PlatformError";
 export * from "./Play";
 export * from "./PlayBeep";
 export * from "./PlayEarlyMedia";
@@ -106,6 +111,7 @@ export * from "./RedirectWebhook";
 export * from "./Reject";
 export * from "./RemoveFromConference";
 export * from "./RemoveFromQueueNotificationWebhook";
+export * from "./ReplaceBlobRequest";
 export * from "./RequestType";
 export * from "./SMSTenDLCBrand";
 export * from "./SMSTenDLCBrandAltBusinessIdType";
@@ -133,6 +139,8 @@ export * from "./Sms";
 export * from "./StartRecordCall";
 export * from "./TFN";
 export * from "./TFNCampaign";
+export * from "./TTSEngine";
+export * from "./TTSEngineName";
 export * from "./TerminateConference";
 export * from "./TranscribeReason";
 export * from "./TranscribeTermReason";
@@ -161,6 +169,8 @@ import { ApplicationResult } from "./ApplicationResult";
 import { AvailableNumber } from "./AvailableNumber";
 import { AvailableNumberList } from "./AvailableNumberList";
 import { BargeInReason } from "./BargeInReason";
+import { BlobListResponse } from "./BlobListResponse";
+import { BlobResult } from "./BlobResult";
 import { BuyIncomingNumberRequest } from "./BuyIncomingNumberRequest";
 import { CallControlWebhook } from "./CallControlWebhook";
 import { CallDirection } from "./CallDirection";
@@ -180,6 +190,7 @@ import { ConferenceRecordingStatusWebhook } from "./ConferenceRecordingStatusWeb
 import { ConferenceResult } from "./ConferenceResult";
 import { ConferenceStatus } from "./ConferenceStatus";
 import { ConferenceStatusWebhook } from "./ConferenceStatusWebhook";
+import { CreateBlobRequest } from "./CreateBlobRequest";
 import { CreateConference } from "./CreateConference";
 import { CreateConferenceRequest } from "./CreateConferenceRequest";
 import { CreateConferenceWebhook } from "./CreateConferenceWebhook";
@@ -225,6 +236,7 @@ import { MessageResult } from "./MessageResult";
 import { MessageStatus } from "./MessageStatus";
 import { MessageStatusWebhook } from "./MessageStatusWebhook";
 import { MessagesList } from "./MessagesList";
+import { ModifyBlobRequest } from "./ModifyBlobRequest";
 import { MutableResourceModel } from "./MutableResourceModel";
 import { OutDial } from "./OutDial";
 import { OutDialApiConnectWebhook } from "./OutDialApiConnectWebhook";
@@ -235,6 +247,7 @@ import { Park } from "./Park";
 import { Pause } from "./Pause";
 import { PerclCommand } from "./PerclCommand";
 import { PerclScript } from "./PerclScript";
+import { PlatformError } from "./PlatformError";
 import { Play } from "./Play";
 import { PlayBeep } from "./PlayBeep";
 import { PlayEarlyMedia } from "./PlayEarlyMedia";
@@ -255,6 +268,7 @@ import { RedirectWebhook } from "./RedirectWebhook";
 import { Reject } from "./Reject";
 import { RemoveFromConference } from "./RemoveFromConference";
 import { RemoveFromQueueNotificationWebhook } from "./RemoveFromQueueNotificationWebhook";
+import { ReplaceBlobRequest } from "./ReplaceBlobRequest";
 import { RequestType } from "./RequestType";
 import { SMSTenDLCBrand } from "./SMSTenDLCBrand";
 import { SMSTenDLCBrandAltBusinessIdType } from "./SMSTenDLCBrandAltBusinessIdType";
@@ -282,6 +296,8 @@ import { Sms } from "./Sms";
 import { StartRecordCall } from "./StartRecordCall";
 import { TFN } from "./TFN";
 import { TFNCampaign } from "./TFNCampaign";
+import { TTSEngine } from "./TTSEngine";
+import { TTSEngineName } from "./TTSEngineName";
 import { TerminateConference } from "./TerminateConference";
 import { TranscribeReason } from "./TranscribeReason";
 import { TranscribeTermReason } from "./TranscribeTermReason";
@@ -349,6 +365,7 @@ let enumsMap: Set<string> = new Set<string>([
   "SMSTenDLCCampaignStatus",
   "SMSTenDLCPartnerCampaignStatus",
   "SMSTollFreeCampaignRegistrationStatus",
+  "TTSEngineName",
   "TranscribeReason",
   "TranscribeTermReason",
   "UpdateCallRequestStatus",
@@ -366,6 +383,8 @@ let typeMap: { [index: string]: any } = {
   ApplicationResult: ApplicationResult,
   AvailableNumber: AvailableNumber,
   AvailableNumberList: AvailableNumberList,
+  BlobListResponse: BlobListResponse,
+  BlobResult: BlobResult,
   BuyIncomingNumberRequest: BuyIncomingNumberRequest,
   CallControlWebhook: CallControlWebhook,
   CallList: CallList,
@@ -380,6 +399,7 @@ let typeMap: { [index: string]: any } = {
   ConferenceRecordingStatusWebhook: ConferenceRecordingStatusWebhook,
   ConferenceResult: ConferenceResult,
   ConferenceStatusWebhook: ConferenceStatusWebhook,
+  CreateBlobRequest: CreateBlobRequest,
   CreateConference: CreateConference,
   CreateConferenceRequest: CreateConferenceRequest,
   CreateConferenceWebhook: CreateConferenceWebhook,
@@ -412,6 +432,7 @@ let typeMap: { [index: string]: any } = {
   MessageResult: MessageResult,
   MessageStatusWebhook: MessageStatusWebhook,
   MessagesList: MessagesList,
+  ModifyBlobRequest: ModifyBlobRequest,
   MutableResourceModel: MutableResourceModel,
   OutDial: OutDial,
   OutDialApiConnectWebhook: OutDialApiConnectWebhook,
@@ -422,6 +443,7 @@ let typeMap: { [index: string]: any } = {
   Pause: Pause,
   PerclCommand: PerclCommand,
   PerclScript: PerclScript,
+  PlatformError: PlatformError,
   Play: Play,
   PlayEarlyMedia: PlayEarlyMedia,
   QueueList: QueueList,
@@ -439,6 +461,7 @@ let typeMap: { [index: string]: any } = {
   Reject: Reject,
   RemoveFromConference: RemoveFromConference,
   RemoveFromQueueNotificationWebhook: RemoveFromQueueNotificationWebhook,
+  ReplaceBlobRequest: ReplaceBlobRequest,
   SMSTenDLCBrand: SMSTenDLCBrand,
   SMSTenDLCBrandsListResult: SMSTenDLCBrandsListResult,
   SMSTenDLCCampaign: SMSTenDLCCampaign,
@@ -457,6 +480,7 @@ let typeMap: { [index: string]: any } = {
   StartRecordCall: StartRecordCall,
   TFN: TFN,
   TFNCampaign: TFNCampaign,
+  TTSEngine: TTSEngine,
   TerminateConference: TerminateConference,
   TranscribeUtterance: TranscribeUtterance,
   TranscribeUtteranceRecord: TranscribeUtteranceRecord,

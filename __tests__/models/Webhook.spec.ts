@@ -30,7 +30,7 @@ describe("Webhook", () => {
         const value = Klass.attributeTypeMap.find(
           (attribute) => attribute.name === "requestType",
         )?.defaultValue;
-        expect(model.requestType).toBe(value);
+        expect(model["requestType"]).toBe(value);
       });
     });
   });
