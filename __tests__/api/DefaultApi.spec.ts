@@ -201,6 +201,7 @@ describe("DefaultApi", () => {
   });
   describe("#listCalls", () => {
     test("returns an instance of freeclimb.CallList", async () => {
+      const usedAudioStream = parameters.listCalls.usedAudioStream;
       const active = parameters.listCalls.active;
       const to = parameters.listCalls.to;
       const from = parameters.listCalls.from;
@@ -213,6 +214,7 @@ describe("DefaultApi", () => {
       const riskScoreMax = parameters.listCalls.riskScoreMax;
 
       let response = await apiInstance.listCalls(
+        usedAudioStream,
         active,
         to,
         from,
@@ -232,8 +234,15 @@ describe("DefaultApi", () => {
     test("returns an instance of freeclimb.RecordingList", async () => {
       const callId = parameters.listCallRecordings.callId;
       const dateCreated = parameters.listCallRecordings.dateCreated;
+      const startTime = parameters.listCallRecordings.startTime;
+      const endTime = parameters.listCallRecordings.endTime;
 
-      let response = await apiInstance.listCallRecordings(callId, dateCreated);
+      let response = await apiInstance.listCallRecordings(
+        callId,
+        dateCreated,
+        startTime,
+        endTime,
+      );
 
       expect(response).toBeInstanceOf(freeclimb.RecordingList);
     });
@@ -338,11 +347,15 @@ describe("DefaultApi", () => {
       const conferenceId = parameters.listConferenceRecordings.conferenceId;
       const callId = parameters.listConferenceRecordings.callId;
       const dateCreated = parameters.listConferenceRecordings.dateCreated;
+      const startTime = parameters.listConferenceRecordings.startTime;
+      const endTime = parameters.listConferenceRecordings.endTime;
 
       let response = await apiInstance.listConferenceRecordings(
         conferenceId,
         callId,
         dateCreated,
+        startTime,
+        endTime,
       );
 
       expect(response).toBeInstanceOf(freeclimb.RecordingList);
@@ -453,11 +466,15 @@ describe("DefaultApi", () => {
       const callId = parameters.listRecordings.callId;
       const conferenceId = parameters.listRecordings.conferenceId;
       const dateCreated = parameters.listRecordings.dateCreated;
+      const startTime = parameters.listRecordings.startTime;
+      const endTime = parameters.listRecordings.endTime;
 
       let response = await apiInstance.listRecordings(
         callId,
         conferenceId,
         dateCreated,
+        startTime,
+        endTime,
       );
 
       expect(response).toBeInstanceOf(freeclimb.RecordingList);

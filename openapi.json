@@ -3175,6 +3175,11 @@
                 "description": "Length of time that the Call was connected in seconds. Measures time between connectTime and endTime. This value is empty for busy, failed, unanswered or ongoing Calls.",
                 "nullable": true
               },
+              "audioStreamDuration": {
+                "type": "integer",
+                "description": "Length of time that the Call used the audio stream in seconds. This value is empty or zero when the Call did not use the audio stream.",
+                "nullable": true
+              },
               "direction": {
                 "$ref": "#/components/schemas/CallDirection"
               },
@@ -6004,6 +6009,16 @@
         "operationId": "list-calls",
         "parameters": [
           {
+            "name": "usedAudioStream",
+            "in": "query",
+            "description": "If usedAudioStream is set to true then all calls that have a audioStreamDuration > 0 will be returned ",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
             "name": "active",
             "in": "query",
             "description": "If active is set to true then all calls of the nature queued, ringing, inProgress are returned in the query.",
@@ -6142,6 +6157,24 @@
             "in": "path",
             "description": "String that uniquely identifies this call resource.",
             "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "startTime",
+            "in": "query",
+            "description": "Only show Recordings created at or after this time, given as YYYY-MM-DD hh:mm:ss.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "endTime",
+            "in": "query",
+            "description": "Only show Recordings created at or before this time, given as YYYY-MM-DD hh:mm:ss.",
+            "required": false,
             "schema": {
               "type": "string"
             }
@@ -6619,6 +6652,24 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "name": "startTime",
+            "in": "query",
+            "description": "Only show Recordings created at or after this time, given as YYYY-MM-DD hh:mm:ss.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "endTime",
+            "in": "query",
+            "description": "Only show Recordings created at or before this time, given as YYYY-MM-DD hh:mm:ss.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -6766,7 +6817,7 @@
         },
         "deprecated": false,
         "responses": {
-          "200": {
+          "201": {
             "description": "Successfuly created queue",
             "content": {
               "application/json": {
@@ -7057,6 +7108,24 @@
           },
           {
             "$ref": "#/components/parameters/AccountId"
+          },
+          {
+            "name": "startTime",
+            "in": "query",
+            "description": "Only show Recordings created at or after this time, given as YYYY-MM-DD hh:mm:ss.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "endTime",
+            "in": "query",
+            "description": "Only show Recordings created at or before this time, given as YYYY-MM-DD hh:mm:ss.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {

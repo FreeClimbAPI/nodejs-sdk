@@ -20,7 +20,7 @@ describe("ExportResult", () => {
       ["format"]: [],
 
       ["output"]: new freeclimb.ExportResultOutput({
-        ["type"]: null as any,
+        type: null as any,
       }),
     });
     describe("ExportResult class test", () => {
@@ -121,7 +121,7 @@ describe("ExportResult", () => {
       ["format"]: [],
 
       ["output"]: new freeclimb.ExportResultOutput({
-        ["type"]: null as any,
+        type: null as any,
       }),
     });
     describe("ExportResult class test", () => {
@@ -198,7 +198,7 @@ describe("ExportResult", () => {
     describe(".output", () => {
       it("resolves to particular value on initialization", () => {
         const value = new freeclimb.ExportResultOutput({
-          ["type"]: null as any,
+          type: null as any,
         });
         expect(model["output"]).toStrictEqual(value);
       });
@@ -222,7 +222,7 @@ describe("ExportResult", () => {
       ["format"]: [],
 
       ["output"]: new freeclimb.ExportResultOutput({
-        ["type"]: null as any,
+        type: null as any,
       }),
     };
     let model: freeclimb.ExportResult = new freeclimb.ExportResult(

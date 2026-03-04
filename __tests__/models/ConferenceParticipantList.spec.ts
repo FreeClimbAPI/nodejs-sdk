@@ -79,7 +79,7 @@ describe("ConferenceParticipantList", () => {
         ["page"]: 0,
         ["numPages"]: 0,
         ["pageSize"]: 0,
-        ["nextPageUri"]: "",
+        nextPageUri: "",
         ["participants"]: [],
       });
     describe("ConferenceParticipantList class test", () => {

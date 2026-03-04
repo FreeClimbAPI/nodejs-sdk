@@ -77,7 +77,7 @@ describe("LogList", () => {
       ["page"]: 0,
       ["numPages"]: 0,
       ["pageSize"]: 0,
-      ["nextPageUri"]: "",
+      nextPageUri: "",
       ["logs"]: [],
     });
     describe("LogList class test", () => {

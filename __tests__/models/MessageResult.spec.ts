@@ -24,7 +24,7 @@ describe("MessageResult", () => {
       ["mediaUrls"]: [],
 
       ["tfn"]: new freeclimb.TFN({
-        ["campaignId"]: null as any,
+        campaignId: null as any,
       }),
       ["phoneNumberId"]: "test_phoneNumberId",
       ["applicationId"]: "test_applicationId",
@@ -154,9 +154,9 @@ describe("MessageResult", () => {
   describe("Test with falsy values", () => {
     const Klass = freeclimb.MessageResult;
     let model: freeclimb.MessageResult = new freeclimb.MessageResult({
-      ["uri"]: "",
-      ["dateCreated"]: "",
-      ["dateUpdated"]: "",
+      uri: "",
+      dateCreated: "",
+      dateUpdated: "",
       ["revision"]: 0,
       ["accountId"]: "",
       ["messageId"]: "",
@@ -173,7 +173,7 @@ describe("MessageResult", () => {
       ["mediaUrls"]: [],
 
       ["tfn"]: new freeclimb.TFN({
-        ["campaignId"]: null as any,
+        campaignId: null as any,
       }),
       ["phoneNumberId"]: "",
       ["applicationId"]: "",
@@ -282,7 +282,7 @@ describe("MessageResult", () => {
     describe(".tfn", () => {
       it("resolves to particular value on initialization", () => {
         const value = new freeclimb.TFN({
-          ["campaignId"]: null as any,
+          campaignId: null as any,
         });
         expect(model["tfn"]).toStrictEqual(value);
       });

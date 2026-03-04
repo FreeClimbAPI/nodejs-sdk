@@ -12,11 +12,11 @@ describe("IncomingNumberResult", () => {
         ["revision"]: 1,
 
         ["capabilities"]: new freeclimb.Capabilities({
-          ["voice"]: null as any,
-          ["sms"]: null as any,
-          ["tollFree"]: null as any,
-          ["tenDLC"]: null as any,
-          ["shortCode"]: null as any,
+          voice: null as any,
+          sms: null as any,
+          tollFree: null as any,
+          tenDLC: null as any,
+          shortCode: null as any,
         }),
         ["campaignId"]: "test_campaignId",
         ["phoneNumberId"]: "test_phoneNumberId",
@@ -29,7 +29,7 @@ describe("IncomingNumberResult", () => {
         ["offnet"]: true,
 
         ["tfn"]: new freeclimb.TFN({
-          ["campaignId"]: null as any,
+          campaignId: null as any,
         }),
       });
     describe("IncomingNumberResult class test", () => {
@@ -140,17 +140,17 @@ describe("IncomingNumberResult", () => {
     const Klass = freeclimb.IncomingNumberResult;
     let model: freeclimb.IncomingNumberResult =
       new freeclimb.IncomingNumberResult({
-        ["uri"]: "",
-        ["dateCreated"]: "",
-        ["dateUpdated"]: "",
+        uri: "",
+        dateCreated: "",
+        dateUpdated: "",
         ["revision"]: 0,
 
         ["capabilities"]: new freeclimb.Capabilities({
-          ["voice"]: null as any,
-          ["sms"]: null as any,
-          ["tollFree"]: null as any,
-          ["tenDLC"]: null as any,
-          ["shortCode"]: null as any,
+          voice: null as any,
+          sms: null as any,
+          tollFree: null as any,
+          tenDLC: null as any,
+          shortCode: null as any,
         }),
         ["campaignId"]: "",
         ["phoneNumberId"]: "",
@@ -163,7 +163,7 @@ describe("IncomingNumberResult", () => {
         ["offnet"]: false,
 
         ["tfn"]: new freeclimb.TFN({
-          ["campaignId"]: null as any,
+          campaignId: null as any,
         }),
       });
     describe("IncomingNumberResult class test", () => {
@@ -198,11 +198,11 @@ describe("IncomingNumberResult", () => {
     describe(".capabilities", () => {
       it("resolves to particular value on initialization", () => {
         const value = new freeclimb.Capabilities({
-          ["voice"]: null as any,
-          ["sms"]: null as any,
-          ["tollFree"]: null as any,
-          ["tenDLC"]: null as any,
-          ["shortCode"]: null as any,
+          voice: null as any,
+          sms: null as any,
+          tollFree: null as any,
+          tenDLC: null as any,
+          shortCode: null as any,
         });
         expect(model["capabilities"]).toStrictEqual(value);
       });
@@ -264,7 +264,7 @@ describe("IncomingNumberResult", () => {
     describe(".tfn", () => {
       it("resolves to particular value on initialization", () => {
         const value = new freeclimb.TFN({
-          ["campaignId"]: null as any,
+          campaignId: null as any,
         });
         expect(model["tfn"]).toStrictEqual(value);
       });

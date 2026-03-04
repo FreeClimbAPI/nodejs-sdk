@@ -116,9 +116,9 @@ describe("ConferenceResult", () => {
   describe("Test with falsy values", () => {
     const Klass = freeclimb.ConferenceResult;
     let model: freeclimb.ConferenceResult = new freeclimb.ConferenceResult({
-      ["uri"]: "",
-      ["dateCreated"]: "",
-      ["dateUpdated"]: "",
+      uri: "",
+      dateCreated: "",
+      dateUpdated: "",
       ["revision"]: 0,
       ["conferenceId"]: "",
       ["accountId"]: "",

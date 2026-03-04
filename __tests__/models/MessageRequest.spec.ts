@@ -78,9 +78,9 @@ describe("MessageRequest", () => {
   describe("Test with falsy values", () => {
     const Klass = freeclimb.MessageRequest;
     let model: freeclimb.MessageRequest = new freeclimb.MessageRequest({
-      ["uri"]: "",
-      ["dateCreated"]: "",
-      ["dateUpdated"]: "",
+      uri: "",
+      dateCreated: "",
+      dateUpdated: "",
       ["revision"]: 0,
       ["from"]: "",
       ["to"]: "",

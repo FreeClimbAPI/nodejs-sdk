@@ -843,18 +843,32 @@ export class PromiseDefaultApi {
      
      * @param dateCreated Only show recordings created on the specified date, in the form *YYYY-MM-DD*.
      
+     * @param startTime Only show Recordings created at or after this time, given as YYYY-MM-DD hh:mm:ss.
+     
+     * @param endTime Only show Recordings created at or before this time, given as YYYY-MM-DD hh:mm:ss.
+     
      */
   public listCallRecordings(
     callId: string,
     dateCreated?: string,
+    startTime?: string,
+    endTime?: string,
     _options?: Configuration,
   ): Promise<RecordingList> {
-    const result = this.api.listCallRecordings(callId, dateCreated, _options);
+    const result = this.api.listCallRecordings(
+      callId,
+      dateCreated,
+      startTime,
+      endTime,
+      _options,
+    );
     return result.toPromise();
   }
 
   /**
      * List Calls
+     
+     * @param usedAudioStream If usedAudioStream is set to true then all calls that have a audioStreamDuration &gt; 0 will be returned 
      
      * @param active If active is set to true then all calls of the nature queued, ringing, inProgress are returned in the query.
      
@@ -878,6 +892,7 @@ export class PromiseDefaultApi {
      
      */
   public listCalls(
+    usedAudioStream?: boolean,
     active?: boolean,
     to?: string,
     _from?: string,
@@ -891,6 +906,7 @@ export class PromiseDefaultApi {
     _options?: Configuration,
   ): Promise<CallList> {
     const result = this.api.listCalls(
+      usedAudioStream,
       active,
       to,
       _from,
@@ -915,17 +931,25 @@ export class PromiseDefaultApi {
      
      * @param dateCreated Only show Recordings created on this date, formatted as *YYYY-MM-DD*.
      
+     * @param startTime Only show Recordings created at or after this time, given as YYYY-MM-DD hh:mm:ss.
+     
+     * @param endTime Only show Recordings created at or before this time, given as YYYY-MM-DD hh:mm:ss.
+     
      */
   public listConferenceRecordings(
     conferenceId: string,
     callId?: string,
     dateCreated?: string,
+    startTime?: string,
+    endTime?: string,
     _options?: Configuration,
   ): Promise<RecordingList> {
     const result = this.api.listConferenceRecordings(
       conferenceId,
       callId,
       dateCreated,
+      startTime,
+      endTime,
       _options,
     );
     return result.toPromise();
@@ -1098,17 +1122,25 @@ export class PromiseDefaultApi {
      
      * @param dateCreated Only show Recordings created on this date, formatted as *YYYY-MM-DD*.
      
+     * @param startTime Only show Recordings created at or after this time, given as YYYY-MM-DD hh:mm:ss.
+     
+     * @param endTime Only show Recordings created at or before this time, given as YYYY-MM-DD hh:mm:ss.
+     
      */
   public listRecordings(
     callId?: string,
     conferenceId?: string,
     dateCreated?: string,
+    startTime?: string,
+    endTime?: string,
     _options?: Configuration,
   ): Promise<RecordingList> {
     const result = this.api.listRecordings(
       callId,
       conferenceId,
       dateCreated,
+      startTime,
+      endTime,
       _options,
     );
     return result.toPromise();

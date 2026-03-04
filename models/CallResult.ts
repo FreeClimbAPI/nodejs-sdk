@@ -39,6 +39,7 @@ interface ArgumentsType {
   endTime?: string;
   duration?: number;
   connectDuration?: number;
+  audioStreamDuration?: number;
   direction?: CallDirection;
   answeredBy?: AnsweredBy;
   subresourceUris?: any;
@@ -106,6 +107,10 @@ export class CallResult {
    * Length of time that the Call was connected in seconds. Measures time between connectTime and endTime. This value is empty for busy, failed, unanswered or ongoing Calls.
    */
   "connectDuration"?: number;
+  /**
+   * Length of time that the Call used the audio stream in seconds. This value is empty or zero when the Call did not use the audio stream.
+   */
+  "audioStreamDuration"?: number;
   "direction"?: CallDirection;
   "answeredBy"?: AnsweredBy;
   /**
@@ -249,6 +254,14 @@ export class CallResult {
       defaultValue: undefined,
     },
     {
+      name: "audioStreamDuration",
+      baseName: "audioStreamDuration",
+      type: "number",
+      format: "",
+
+      defaultValue: undefined,
+    },
+    {
       name: "direction",
       baseName: "direction",
       type: "CallDirection",
@@ -310,6 +323,7 @@ export class CallResult {
     this["endTime"] = assign<string>("endTime");
     this["duration"] = assign<number>("duration");
     this["connectDuration"] = assign<number>("connectDuration");
+    this["audioStreamDuration"] = assign<number>("audioStreamDuration");
     this["direction"] = assign<CallDirection>("direction");
     this["answeredBy"] = assign<AnsweredBy>("answeredBy");
     this["subresourceUris"] = assign<any>("subresourceUris");

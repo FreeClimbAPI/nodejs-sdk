@@ -22,6 +22,7 @@ describe("CallResult", () => {
       ["endTime"]: "test_endTime",
       ["duration"]: 1,
       ["connectDuration"]: 1,
+      ["audioStreamDuration"]: 1,
 
       ["direction"]: freeclimb.CallDirection.INBOUND,
 
@@ -131,6 +132,12 @@ describe("CallResult", () => {
         expect(model["connectDuration"]).toBe(value);
       });
     });
+    describe(".audioStreamDuration", () => {
+      it("resolves to particular value on initialization", () => {
+        const value = 1;
+        expect(model["audioStreamDuration"]).toBe(value);
+      });
+    });
     describe(".direction", () => {
       it("resolves to particular value on initialization", () => {
         const value = "inbound";
@@ -160,9 +167,9 @@ describe("CallResult", () => {
   describe("Test with falsy values", () => {
     const Klass = freeclimb.CallResult;
     let model: freeclimb.CallResult = new freeclimb.CallResult({
-      ["uri"]: "",
-      ["dateCreated"]: "",
-      ["dateUpdated"]: "",
+      uri: "",
+      dateCreated: "",
+      dateUpdated: "",
       ["revision"]: 0,
       ["callId"]: "",
       ["parentCallId"]: "",
@@ -177,6 +184,7 @@ describe("CallResult", () => {
       ["endTime"]: "",
       ["duration"]: 0,
       ["connectDuration"]: 0,
+      ["audioStreamDuration"]: 0,
 
       ["direction"]: freeclimb.CallDirection.INBOUND,
 
@@ -284,6 +292,12 @@ describe("CallResult", () => {
       it("resolves to particular value on initialization", () => {
         const value = 0;
         expect(model["connectDuration"]).toBe(value);
+      });
+    });
+    describe(".audioStreamDuration", () => {
+      it("resolves to particular value on initialization", () => {
+        const value = 0;
+        expect(model["audioStreamDuration"]).toBe(value);
       });
     });
     describe(".direction", () => {
@@ -418,6 +432,14 @@ describe("CallResult", () => {
           (attribute) => attribute.name === "connectDuration",
         )?.defaultValue;
         expect(model["connectDuration"]).toBe(value);
+      });
+    });
+    describe("#audioStreamDuration", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "audioStreamDuration",
+        )?.defaultValue;
+        expect(model["audioStreamDuration"]).toBe(value);
       });
     });
     describe("#direction", () => {

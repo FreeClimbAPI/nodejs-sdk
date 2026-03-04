@@ -79,7 +79,7 @@ describe("SMSTollFreeCampaignsListResult", () => {
         ["page"]: 0,
         ["numPages"]: 0,
         ["pageSize"]: 0,
-        ["nextPageUri"]: "",
+        nextPageUri: "",
         ["brands"]: [],
       });
     describe("SMSTollFreeCampaignsListResult class test", () => {

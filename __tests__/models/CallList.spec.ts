@@ -77,7 +77,7 @@ describe("CallList", () => {
       ["page"]: 0,
       ["numPages"]: 0,
       ["pageSize"]: 0,
-      ["nextPageUri"]: "",
+      nextPageUri: "",
       ["calls"]: [],
     });
     describe("CallList class test", () => {

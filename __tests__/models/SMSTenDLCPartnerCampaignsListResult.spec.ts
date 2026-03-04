@@ -81,7 +81,7 @@ describe("SMSTenDLCPartnerCampaignsListResult", () => {
         ["page"]: 0,
         ["numPages"]: 0,
         ["pageSize"]: 0,
-        ["nextPageUri"]: "",
+        nextPageUri: "",
         ["partnerCampaigns"]: [],
       });
     describe("SMSTenDLCPartnerCampaignsListResult class test", () => {
