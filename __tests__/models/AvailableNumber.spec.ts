@@ -14,6 +14,7 @@ describe("AvailableNumber", () => {
       }),
       ["campaignId"]: "test_campaignId",
       ["phoneNumber"]: "test_phoneNumber",
+      ["alias"]: "test_alias",
       ["region"]: "test_region",
       ["country"]: "test_country",
     });
@@ -46,6 +47,12 @@ describe("AvailableNumber", () => {
         expect(model["phoneNumber"]).toBe(value);
       });
     });
+    describe(".alias", () => {
+      it("resolves to particular value on initialization", () => {
+        const value = "test_alias";
+        expect(model["alias"]).toBe(value);
+      });
+    });
     describe(".region", () => {
       it("resolves to particular value on initialization", () => {
         const value = "test_region";
@@ -71,6 +78,7 @@ describe("AvailableNumber", () => {
       }),
       ["campaignId"]: "",
       ["phoneNumber"]: "",
+      ["alias"]: "",
       ["region"]: "",
       ["country"]: "",
     });
@@ -101,6 +109,12 @@ describe("AvailableNumber", () => {
       it("resolves to particular value on initialization", () => {
         const value = "";
         expect(model["phoneNumber"]).toBe(value);
+      });
+    });
+    describe(".alias", () => {
+      it("resolves to particular value on initialization", () => {
+        const value = "";
+        expect(model["alias"]).toBe(value);
       });
     });
     describe(".region", () => {
@@ -145,6 +159,14 @@ describe("AvailableNumber", () => {
           (attribute) => attribute.name === "phoneNumber",
         )?.defaultValue;
         expect(model["phoneNumber"]).toBe(value);
+      });
+    });
+    describe("#alias", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "alias",
+        )?.defaultValue;
+        expect(model["alias"]).toBe(value);
       });
     });
     describe("#region", () => {

@@ -2321,6 +2321,7 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
      * @param applicationId Only show calls belonging to the given applicationId. This parameter can be repeated to return calls from multiple Applications.
      * @param riskScoreMin The minimum riskScore that should be included in the list.
      * @param riskScoreMax The maximum riskScore that should be included in the list.
+     * @param webRTC Only show Calls that were originated via WebRTC.
      */
   public async listCalls(
     usedAudioStream?: boolean,
@@ -2334,6 +2335,7 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
     applicationId?: Array<string>,
     riskScoreMin?: number,
     riskScoreMax?: number,
+    webRTC?: boolean,
     _options?: Configuration,
   ): Promise<RequestContext> {
     const _config = _options || this.configuration;
@@ -2426,6 +2428,13 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
       requestContext.setQueryParam(
         "riskScoreMax",
         ObjectSerializer.serialize(riskScoreMax, "number", ""),
+      );
+    }
+    // Query Params
+    if (webRTC !== undefined) {
+      requestContext.setQueryParam(
+        "webRTC",
+        ObjectSerializer.serialize(webRTC, "boolean", ""),
       );
     }
 

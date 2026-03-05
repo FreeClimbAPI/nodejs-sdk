@@ -20,6 +20,7 @@ export * from "./CallDirection";
 export * from "./CallEndedReason";
 export * from "./CallList";
 export * from "./CallResult";
+export * from "./CallResultAllOfSubresourceUris";
 export * from "./CallStatus";
 export * from "./CallStatusWebhook";
 export * from "./Capabilities";
@@ -177,6 +178,7 @@ import { CallDirection } from "./CallDirection";
 import { CallEndedReason } from "./CallEndedReason";
 import { CallList } from "./CallList";
 import { CallResult } from "./CallResult";
+import { CallResultAllOfSubresourceUris } from "./CallResultAllOfSubresourceUris";
 import { CallStatus } from "./CallStatus";
 import { CallStatusWebhook } from "./CallStatusWebhook";
 import { Capabilities } from "./Capabilities";
@@ -389,6 +391,7 @@ let typeMap: { [index: string]: any } = {
   CallControlWebhook: CallControlWebhook,
   CallList: CallList,
   CallResult: CallResult,
+  CallResultAllOfSubresourceUris: CallResultAllOfSubresourceUris,
   CallStatusWebhook: CallStatusWebhook,
   Capabilities: Capabilities,
   CompletionRequest: CompletionRequest,

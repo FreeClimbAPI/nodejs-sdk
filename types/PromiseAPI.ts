@@ -24,6 +24,7 @@ import { CallDirection } from "../models/CallDirection";
 import { CallEndedReason } from "../models/CallEndedReason";
 import { CallList } from "../models/CallList";
 import { CallResult } from "../models/CallResult";
+import { CallResultAllOfSubresourceUris } from "../models/CallResultAllOfSubresourceUris";
 import { CallStatus } from "../models/CallStatus";
 import { CallStatusWebhook } from "../models/CallStatusWebhook";
 import { Capabilities } from "../models/Capabilities";
@@ -890,6 +891,8 @@ export class PromiseDefaultApi {
      
      * @param riskScoreMax The maximum riskScore that should be included in the list.
      
+     * @param webRTC Only show Calls that were originated via WebRTC.
+     
      */
   public listCalls(
     usedAudioStream?: boolean,
@@ -903,6 +906,7 @@ export class PromiseDefaultApi {
     applicationId?: Array<string>,
     riskScoreMin?: number,
     riskScoreMax?: number,
+    webRTC?: boolean,
     _options?: Configuration,
   ): Promise<CallList> {
     const result = this.api.listCalls(
@@ -917,6 +921,7 @@ export class PromiseDefaultApi {
       applicationId,
       riskScoreMin,
       riskScoreMax,
+      webRTC,
       _options,
     );
     return result.toPromise();

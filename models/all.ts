@@ -20,6 +20,7 @@ export * from "./CallDirection";
 export * from "./CallEndedReason";
 export * from "./CallList";
 export * from "./CallResult";
+export * from "./CallResultAllOfSubresourceUris";
 export * from "./CallStatus";
 export * from "./CallStatusWebhook";
 export * from "./Capabilities";

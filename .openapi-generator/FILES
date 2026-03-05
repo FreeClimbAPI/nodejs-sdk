@@ -34,6 +34,7 @@ models/CallDirection.ts
 models/CallEndedReason.ts
 models/CallList.ts
 models/CallResult.ts
+models/CallResultAllOfSubresourceUris.ts
 models/CallStatus.ts
 models/CallStatusWebhook.ts
 models/Capabilities.ts

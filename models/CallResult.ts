@@ -12,6 +12,7 @@
 
 import { AnsweredBy } from "./../models/AnsweredBy";
 import { CallDirection } from "./../models/CallDirection";
+import { CallResultAllOfSubresourceUris } from "./../models/CallResultAllOfSubresourceUris";
 import { CallStatus } from "./../models/CallStatus";
 import { HttpFile } from "../http/http";
 
@@ -27,6 +28,8 @@ interface ArgumentsType {
   dateCreated?: string;
   dateUpdated?: string;
   revision?: number;
+  dateCreatedISO?: Date;
+  dateUpdatedISO?: Date;
   callId?: string;
   parentCallId?: string;
   accountId?: string;
@@ -35,14 +38,19 @@ interface ArgumentsType {
   phoneNumberId?: string;
   status?: CallStatus;
   startTime?: string;
+  startTimeISO?: Date;
   connectTime?: string;
+  connectTimeISO?: Date;
   endTime?: string;
+  endTimeISO?: Date;
   duration?: number;
   connectDuration?: number;
   audioStreamDuration?: number;
   direction?: CallDirection;
   answeredBy?: AnsweredBy;
-  subresourceUris?: any;
+  callerName?: string;
+  webRTC?: boolean;
+  subresourceUris?: CallResultAllOfSubresourceUris;
   applicationId?: string;
 }
 export class CallResult {
@@ -62,6 +70,14 @@ export class CallResult {
    * Revision count for the resource. This count is set to 1 on creation and is incremented every time it is updated.
    */
   "revision"?: number;
+  /**
+   * The date that this resource was created in ISO 8601 format (e.g., 2022-01-01T00:00:00.000Z).
+   */
+  "dateCreatedISO"?: Date;
+  /**
+   * The date that this resource was last updated in ISO 8601 format (e.g., 2022-01-01T00:00:00.000Z).
+   */
+  "dateUpdatedISO"?: Date;
   /**
    * String that uniquely identifies this Call resource.
    */
@@ -92,13 +108,25 @@ export class CallResult {
    */
   "startTime"?: string;
   /**
+   * Start time of the Call in ISO 8601 format (e.g., 2022-01-01T00:00:00.000Z). Empty if the Call has not yet been dialed.
+   */
+  "startTimeISO"?: Date;
+  /**
    * Time the Call was answered (GMT) in RFC 1123 format (e.g., Mon, 15 Jun 2009 20:45:30 GMT). Empty if the Call has not yet been dialed.
    */
   "connectTime"?: string;
   /**
+   * Time the Call was answered in ISO 8601 format (e.g., 2022-01-01T00:00:00.000Z). Empty if the Call has not yet been dialed.
+   */
+  "connectTimeISO"?: Date;
+  /**
    * End time of the Call (GMT) in RFC 1123 format (e.g., Mon, 15 Jun 2009 20:45:30 GMT). Empty if the Call did not complete successfully.
    */
   "endTime"?: string;
+  /**
+   * End time of the Call in ISO 8601 format (e.g., 2022-01-01T00:00:00.000Z). Empty if the Call did not complete successfully.
+   */
+  "endTimeISO"?: Date;
   /**
    * Total length of the Call in seconds. Measures time between startTime and endTime. This value is empty for busy, failed, unanswered or ongoing Calls.
    */
@@ -114,9 +142,14 @@ export class CallResult {
   "direction"?: CallDirection;
   "answeredBy"?: AnsweredBy;
   /**
-   * The list of subresources for this Call. These include things like logs and recordings associated with the Call.
+   * The caller ID name (CNAM) for this Call. Empty if unavailable.
    */
-  "subresourceUris"?: any;
+  "callerName"?: string;
+  /**
+   * Indicates whether this Call was initiated via WebRTC.
+   */
+  "webRTC"?: boolean;
+  "subresourceUris"?: CallResultAllOfSubresourceUris;
   /**
    * ApplicationId associated with the Call.
    */
@@ -154,6 +187,22 @@ export class CallResult {
       baseName: "revision",
       type: "number",
       format: "",
+
+      defaultValue: undefined,
+    },
+    {
+      name: "dateCreatedISO",
+      baseName: "dateCreatedISO",
+      type: "Date",
+      format: "date-time",
+
+      defaultValue: undefined,
+    },
+    {
+      name: "dateUpdatedISO",
+      baseName: "dateUpdatedISO",
+      type: "Date",
+      format: "date-time",
 
       defaultValue: undefined,
     },
@@ -222,6 +271,14 @@ export class CallResult {
       defaultValue: undefined,
     },
     {
+      name: "startTimeISO",
+      baseName: "startTimeISO",
+      type: "Date",
+      format: "date-time",
+
+      defaultValue: undefined,
+    },
+    {
       name: "connectTime",
       baseName: "connectTime",
       type: "string",
@@ -230,10 +287,26 @@ export class CallResult {
       defaultValue: undefined,
     },
     {
+      name: "connectTimeISO",
+      baseName: "connectTimeISO",
+      type: "Date",
+      format: "date-time",
+
+      defaultValue: undefined,
+    },
+    {
       name: "endTime",
       baseName: "endTime",
       type: "string",
       format: "",
+
+      defaultValue: undefined,
+    },
+    {
+      name: "endTimeISO",
+      baseName: "endTimeISO",
+      type: "Date",
+      format: "date-time",
 
       defaultValue: undefined,
     },
@@ -278,9 +351,25 @@ export class CallResult {
       defaultValue: undefined,
     },
     {
+      name: "callerName",
+      baseName: "callerName",
+      type: "string",
+      format: "",
+
+      defaultValue: undefined,
+    },
+    {
+      name: "webRTC",
+      baseName: "webRTC",
+      type: "boolean",
+      format: "",
+
+      defaultValue: undefined,
+    },
+    {
       name: "subresourceUris",
       baseName: "subresourceUris",
-      type: "any",
+      type: "CallResultAllOfSubresourceUris",
       format: "",
 
       defaultValue: undefined,
@@ -311,6 +400,8 @@ export class CallResult {
     this["dateCreated"] = assign<string>("dateCreated");
     this["dateUpdated"] = assign<string>("dateUpdated");
     this["revision"] = assign<number>("revision");
+    this["dateCreatedISO"] = assign<Date>("dateCreatedISO");
+    this["dateUpdatedISO"] = assign<Date>("dateUpdatedISO");
     this["callId"] = assign<string>("callId");
     this["parentCallId"] = assign<string>("parentCallId");
     this["accountId"] = assign<string>("accountId");
@@ -319,14 +410,20 @@ export class CallResult {
     this["phoneNumberId"] = assign<string>("phoneNumberId");
     this["status"] = assign<CallStatus>("status");
     this["startTime"] = assign<string>("startTime");
+    this["startTimeISO"] = assign<Date>("startTimeISO");
     this["connectTime"] = assign<string>("connectTime");
+    this["connectTimeISO"] = assign<Date>("connectTimeISO");
     this["endTime"] = assign<string>("endTime");
+    this["endTimeISO"] = assign<Date>("endTimeISO");
     this["duration"] = assign<number>("duration");
     this["connectDuration"] = assign<number>("connectDuration");
     this["audioStreamDuration"] = assign<number>("audioStreamDuration");
     this["direction"] = assign<CallDirection>("direction");
     this["answeredBy"] = assign<AnsweredBy>("answeredBy");
-    this["subresourceUris"] = assign<any>("subresourceUris");
+    this["callerName"] = assign<string>("callerName");
+    this["webRTC"] = assign<boolean>("webRTC");
+    this["subresourceUris"] =
+      assign<CallResultAllOfSubresourceUris>("subresourceUris");
     this["applicationId"] = assign<string>("applicationId");
   }
 }

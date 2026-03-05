@@ -24,6 +24,7 @@ import { CallDirection } from "../models/CallDirection";
 import { CallEndedReason } from "../models/CallEndedReason";
 import { CallList } from "../models/CallList";
 import { CallResult } from "../models/CallResult";
+import { CallResultAllOfSubresourceUris } from "../models/CallResultAllOfSubresourceUris";
 import { CallStatus } from "../models/CallStatus";
 import { CallStatusWebhook } from "../models/CallStatusWebhook";
 import { Capabilities } from "../models/Capabilities";
@@ -724,6 +725,13 @@ export interface DefaultApiListCallsRequest {
    * @memberof DefaultApilistCalls
    */
   riskScoreMax?: number;
+
+  /**
+   * Only show Calls that were originated via WebRTC.
+   * @type boolean
+   * @memberof DefaultApilistCalls
+   */
+  webRTC?: boolean;
 }
 
 export interface DefaultApiListConferenceRecordingsRequest {
@@ -1828,6 +1836,7 @@ export class ObjectDefaultApi {
         param.applicationId,
         param.riskScoreMin,
         param.riskScoreMax,
+        param.webRTC,
         options,
       )
       .toPromise();

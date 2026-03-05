@@ -88,6 +88,7 @@ export const parameters = {
     riskScoreMin: 1,
     riskScoreMax: 90,
     usedAudioStream: true,
+    webRtc: true,
   },
   listCallRecordings: {
     callId: "TEST_CALL_ID",

@@ -2732,6 +2732,9 @@ let body: freeclimb.DefaultApiListCallsRequest = {
 
   // number | The maximum riskScore that should be included in the list. (optional)
   riskScoreMax: 1,
+
+  // boolean | Only show Calls that were originated via WebRTC. (optional)
+  webRTC: false,
 };
 
 apiInstance
@@ -2757,6 +2760,7 @@ apiInstance
 | **applicationId**   | **Array&lt;string&gt;** | Only show calls belonging to the given applicationId. This parameter can be repeated to return calls from multiple Applications.                                                                                              | (optional) defaults to undefined |
 | **riskScoreMin**    | [**number**]            | The minimum riskScore that should be included in the list.                                                                                                                                                                    | (optional) defaults to undefined |
 | **riskScoreMax**    | [**number**]            | The maximum riskScore that should be included in the list.                                                                                                                                                                    | (optional) defaults to undefined |
+| **webRTC**          | [**boolean**]           | Only show Calls that were originated via WebRTC.                                                                                                                                                                              | (optional) defaults to false     |
 
 ### Return type
 

@@ -212,6 +212,7 @@ describe("DefaultApi", () => {
       const applicationId = parameters.listCalls.applicationId;
       const riskScoreMin = parameters.listCalls.riskScoreMin;
       const riskScoreMax = parameters.listCalls.riskScoreMax;
+      const webRtc = parameters.listCalls.webRtc;
 
       let response = await apiInstance.listCalls(
         usedAudioStream,
@@ -225,6 +226,7 @@ describe("DefaultApi", () => {
         applicationId,
         riskScoreMin,
         riskScoreMax,
+        webRtc,
       );
 
       expect(response).toBeInstanceOf(freeclimb.CallList);
