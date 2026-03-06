@@ -3114,6 +3114,21 @@
           }
         }
       },
+      "CallResultAllOfSubresourceUris": {
+        "type": "object",
+        "description": "The list of subresources for this Call. These include things like logs and recordings associated with the Call.",
+        "nullable": true,
+        "properties": {
+          "logs": {
+            "type": "string",
+            "description": "The URI for the logs associated with this Call."
+          },
+          "recordings": {
+            "type": "string",
+            "description": "The URI for the recordings associated with this Call."
+          }
+        }
+      },
       "CallResult": {
         "allOf": [
           {
@@ -3232,19 +3247,7 @@
                 "nullable": true
               },
               "subresourceUris": {
-                "type": "object",
-                "description": "The list of subresources for this Call. These include things like logs and recordings associated with the Call.",
-                "nullable": true,
-                "properties": {
-                  "logs": {
-                    "type": "string",
-                    "description": "The URI for the logs associated with this Call."
-                  },
-                  "recordings": {
-                    "type": "string",
-                    "description": "The URI for the recordings associated with this Call."
-                  }
-                }
+                "$ref": "#/components/schemas/CallResultAllOfSubresourceUris"
               },
               "applicationId": {
                 "type": "string",

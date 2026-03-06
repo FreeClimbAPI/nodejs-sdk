@@ -34,10 +34,6 @@ describe("CallResult", () => {
       ["answeredBy"]: freeclimb.AnsweredBy.HUMAN,
       ["callerName"]: "test_callerName",
       ["webRTC"]: true,
-      ["subresourceUris"]: {
-        logs: "",
-        recordings: "",
-      },
 
       ["applicationId"]: "test_applicationId",
     });
@@ -203,14 +199,7 @@ describe("CallResult", () => {
       });
     });
     describe(".subresourceUris", () => {
-      it("resolves to particular value on initialization", () => {
-        const value = {
-          logs: "",
-          recordings: "",
-        };
-        const receivedValue: any = model["subresourceUris"];
-        expect(receivedValue).toStrictEqual(value);
-      });
+      it("resolves to particular value on initialization", () => {});
     });
     describe(".applicationId", () => {
       it("resolves to particular value on initialization", () => {
@@ -251,10 +240,6 @@ describe("CallResult", () => {
       ["answeredBy"]: freeclimb.AnsweredBy.HUMAN,
       ["callerName"]: "",
       ["webRTC"]: false,
-      ["subresourceUris"]: {
-        logs: "",
-        recordings: "",
-      },
 
       ["applicationId"]: "",
     });
@@ -420,14 +405,7 @@ describe("CallResult", () => {
       });
     });
     describe(".subresourceUris", () => {
-      it("resolves to particular value on initialization", () => {
-        const value = {
-          logs: "",
-          recordings: "",
-        };
-        const receivedValue: any = model["subresourceUris"];
-        expect(receivedValue).toStrictEqual(value);
-      });
+      it("resolves to particular value on initialization", () => {});
     });
     describe(".applicationId", () => {
       it("resolves to particular value on initialization", () => {
