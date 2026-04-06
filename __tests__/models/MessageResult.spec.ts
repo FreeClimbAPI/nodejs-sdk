@@ -154,9 +154,9 @@ describe("MessageResult", () => {
   describe("Test with falsy values", () => {
     const Klass = freeclimb.MessageResult;
     let model: freeclimb.MessageResult = new freeclimb.MessageResult({
-      uri: "",
-      dateCreated: "",
-      dateUpdated: "",
+      ["uri"]: "",
+      ["dateCreated"]: "",
+      ["dateUpdated"]: "",
       ["revision"]: 0,
       ["accountId"]: "",
       ["messageId"]: "",

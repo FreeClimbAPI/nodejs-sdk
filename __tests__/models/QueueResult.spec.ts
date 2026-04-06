@@ -100,9 +100,9 @@ describe("QueueResult", () => {
   describe("Test with falsy values", () => {
     const Klass = freeclimb.QueueResult;
     let model: freeclimb.QueueResult = new freeclimb.QueueResult({
-      uri: "",
-      dateCreated: "",
-      dateUpdated: "",
+      ["uri"]: "",
+      ["dateCreated"]: "",
+      ["dateUpdated"]: "",
       ["revision"]: 0,
       ["accountId"]: "",
       ["queueId"]: "",

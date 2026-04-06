@@ -77,7 +77,7 @@ describe("QueueList", () => {
       ["page"]: 0,
       ["numPages"]: 0,
       ["pageSize"]: 0,
-      nextPageUri: "",
+      ["nextPageUri"]: "",
       ["queues"]: [],
     });
     describe("QueueList class test", () => {

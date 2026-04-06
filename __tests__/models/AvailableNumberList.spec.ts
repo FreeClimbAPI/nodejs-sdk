@@ -79,7 +79,7 @@ describe("AvailableNumberList", () => {
         ["page"]: 0,
         ["numPages"]: 0,
         ["pageSize"]: 0,
-        nextPageUri: "",
+        ["nextPageUri"]: "",
         ["availablePhoneNumbers"]: [],
       });
     describe("AvailableNumberList class test", () => {

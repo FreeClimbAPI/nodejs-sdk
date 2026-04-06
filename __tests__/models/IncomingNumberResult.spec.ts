@@ -140,9 +140,9 @@ describe("IncomingNumberResult", () => {
     const Klass = freeclimb.IncomingNumberResult;
     let model: freeclimb.IncomingNumberResult =
       new freeclimb.IncomingNumberResult({
-        uri: "",
-        dateCreated: "",
-        dateUpdated: "",
+        ["uri"]: "",
+        ["dateCreated"]: "",
+        ["dateUpdated"]: "",
         ["revision"]: 0,
 
         ["capabilities"]: new freeclimb.Capabilities({

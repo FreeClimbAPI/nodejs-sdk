@@ -77,7 +77,7 @@ describe("RecordingList", () => {
       ["page"]: 0,
       ["numPages"]: 0,
       ["pageSize"]: 0,
-      nextPageUri: "",
+      ["nextPageUri"]: "",
       ["recordings"]: [],
     });
     describe("RecordingList class test", () => {

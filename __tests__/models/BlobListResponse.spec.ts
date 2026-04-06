@@ -77,7 +77,7 @@ describe("BlobListResponse", () => {
       ["page"]: 0,
       ["numPages"]: 0,
       ["pageSize"]: 0,
-      nextPageUri: "",
+      ["nextPageUri"]: "",
       ["blobs"]: [],
     });
     describe("BlobListResponse class test", () => {

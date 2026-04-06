@@ -94,9 +94,9 @@ describe("ConferenceParticipantResult", () => {
     const Klass = freeclimb.ConferenceParticipantResult;
     let model: freeclimb.ConferenceParticipantResult =
       new freeclimb.ConferenceParticipantResult({
-        uri: "",
-        dateCreated: "",
-        dateUpdated: "",
+        ["uri"]: "",
+        ["dateCreated"]: "",
+        ["dateUpdated"]: "",
         ["revision"]: 0,
         ["accountId"]: "",
         ["conferenceId"]: "",

@@ -77,7 +77,7 @@ describe("IncomingNumberList", () => {
       ["page"]: 0,
       ["numPages"]: 0,
       ["pageSize"]: 0,
-      nextPageUri: "",
+      ["nextPageUri"]: "",
       ["incomingPhoneNumbers"]: [],
     });
     describe("IncomingNumberList class test", () => {

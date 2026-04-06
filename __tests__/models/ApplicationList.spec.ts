@@ -77,7 +77,7 @@ describe("ApplicationList", () => {
       ["page"]: 0,
       ["numPages"]: 0,
       ["pageSize"]: 0,
-      nextPageUri: "",
+      ["nextPageUri"]: "",
       ["applications"]: [],
     });
     describe("ApplicationList class test", () => {

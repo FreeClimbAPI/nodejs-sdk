@@ -211,9 +211,9 @@ describe("CallResult", () => {
   describe("Test with falsy values", () => {
     const Klass = freeclimb.CallResult;
     let model: freeclimb.CallResult = new freeclimb.CallResult({
-      uri: "",
-      dateCreated: "",
-      dateUpdated: "",
+      ["uri"]: "",
+      ["dateCreated"]: "",
+      ["dateUpdated"]: "",
       ["revision"]: 0,
       ["dateCreatedISO"]: undefined,
       ["dateUpdatedISO"]: undefined,

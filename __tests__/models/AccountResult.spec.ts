@@ -95,9 +95,9 @@ describe("AccountResult", () => {
   describe("Test with falsy values", () => {
     const Klass = freeclimb.AccountResult;
     let model: freeclimb.AccountResult = new freeclimb.AccountResult({
-      uri: "",
-      dateCreated: "",
-      dateUpdated: "",
+      ["uri"]: "",
+      ["dateCreated"]: "",
+      ["dateUpdated"]: "",
       ["revision"]: 0,
       ["accountId"]: "",
       ["apiKey"]: "",

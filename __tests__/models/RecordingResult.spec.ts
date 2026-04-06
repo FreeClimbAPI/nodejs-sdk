@@ -78,9 +78,9 @@ describe("RecordingResult", () => {
   describe("Test with falsy values", () => {
     const Klass = freeclimb.RecordingResult;
     let model: freeclimb.RecordingResult = new freeclimb.RecordingResult({
-      uri: "",
-      dateCreated: "",
-      dateUpdated: "",
+      ["uri"]: "",
+      ["dateCreated"]: "",
+      ["dateUpdated"]: "",
       ["revision"]: 0,
       ["recordingId"]: "",
       ["accountId"]: "",
