@@ -14,6 +14,8 @@ import { AnsweredBy } from "../models/AnsweredBy";
 import { ApplicationList } from "../models/ApplicationList";
 import { ApplicationRequest } from "../models/ApplicationRequest";
 import { ApplicationResult } from "../models/ApplicationResult";
+import { AudioStream } from "../models/AudioStream";
+import { AudioStreamWebhook } from "../models/AudioStreamWebhook";
 import { AvailableNumber } from "../models/AvailableNumber";
 import { AvailableNumberList } from "../models/AvailableNumberList";
 import { BargeInReason } from "../models/BargeInReason";

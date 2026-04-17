@@ -9,6 +9,8 @@ export * from "./AnsweredBy";
 export * from "./ApplicationList";
 export * from "./ApplicationRequest";
 export * from "./ApplicationResult";
+export * from "./AudioStream";
+export * from "./AudioStreamWebhook";
 export * from "./AvailableNumber";
 export * from "./AvailableNumberList";
 export * from "./BargeInReason";
@@ -167,6 +169,8 @@ import { AnsweredBy } from "./AnsweredBy";
 import { ApplicationList } from "./ApplicationList";
 import { ApplicationRequest } from "./ApplicationRequest";
 import { ApplicationResult } from "./ApplicationResult";
+import { AudioStream } from "./AudioStream";
+import { AudioStreamWebhook } from "./AudioStreamWebhook";
 import { AvailableNumber } from "./AvailableNumber";
 import { AvailableNumberList } from "./AvailableNumberList";
 import { BargeInReason } from "./BargeInReason";
@@ -383,6 +387,8 @@ let typeMap: { [index: string]: any } = {
   ApplicationList: ApplicationList,
   ApplicationRequest: ApplicationRequest,
   ApplicationResult: ApplicationResult,
+  AudioStream: AudioStream,
+  AudioStreamWebhook: AudioStreamWebhook,
   AvailableNumber: AvailableNumber,
   AvailableNumberList: AvailableNumberList,
   BlobListResponse: BlobListResponse,

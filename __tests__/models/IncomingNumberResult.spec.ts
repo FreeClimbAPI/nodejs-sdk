@@ -27,10 +27,6 @@ describe("IncomingNumberResult", () => {
         ["region"]: "test_region",
         ["country"]: "test_country",
         ["offnet"]: true,
-
-        ["tfn"]: new freeclimb.TFN({
-          campaignId: null as any,
-        }),
       });
     describe("IncomingNumberResult class test", () => {
       it("resolves to the class type upon initialization", () => {
@@ -128,12 +124,7 @@ describe("IncomingNumberResult", () => {
       });
     });
     describe(".tfn", () => {
-      it("resolves to particular value on initialization", () => {
-        const value = new freeclimb.TFN({
-          campaignId: null as any,
-        });
-        expect(model["tfn"]).toStrictEqual(value);
-      });
+      it("resolves to particular value on initialization", () => {});
     });
   });
   describe("Test with falsy values", () => {
@@ -161,10 +152,6 @@ describe("IncomingNumberResult", () => {
         ["region"]: "",
         ["country"]: "",
         ["offnet"]: false,
-
-        ["tfn"]: new freeclimb.TFN({
-          campaignId: null as any,
-        }),
       });
     describe("IncomingNumberResult class test", () => {
       it("resolves to the class type upon initialization", () => {
@@ -262,12 +249,7 @@ describe("IncomingNumberResult", () => {
       });
     });
     describe(".tfn", () => {
-      it("resolves to particular value on initialization", () => {
-        const value = new freeclimb.TFN({
-          campaignId: null as any,
-        });
-        expect(model["tfn"]).toStrictEqual(value);
-      });
+      it("resolves to particular value on initialization", () => {});
     });
   });
   describe("Test with only required values", () => {

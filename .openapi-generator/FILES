@@ -23,6 +23,8 @@ models/AnsweredBy.ts
 models/ApplicationList.ts
 models/ApplicationRequest.ts
 models/ApplicationResult.ts
+models/AudioStream.ts
+models/AudioStreamWebhook.ts
 models/AvailableNumber.ts
 models/AvailableNumberList.ts
 models/BargeInReason.ts

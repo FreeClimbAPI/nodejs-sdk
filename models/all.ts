@@ -9,6 +9,8 @@ export * from "./AnsweredBy";
 export * from "./ApplicationList";
 export * from "./ApplicationRequest";
 export * from "./ApplicationResult";
+export * from "./AudioStream";
+export * from "./AudioStreamWebhook";
 export * from "./AvailableNumber";
 export * from "./AvailableNumberList";
 export * from "./BargeInReason";

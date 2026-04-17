@@ -72,6 +72,11 @@ describe("RequestType", () => {
         );
       });
     });
+    describe(".AUDIO_STREAM", () => {
+      it("resolves to correct value for AUDIO_STREAM enum property", () => {
+        expect(freeclimb.RequestType.AUDIO_STREAM).toBe("audioStream");
+      });
+    });
     describe(".REMOVE_FROM_QUEUE_NOTIFICATION", () => {
       it("resolves to correct value for REMOVE_FROM_QUEUE_NOTIFICATION enum property", () => {
         expect(freeclimb.RequestType.REMOVE_FROM_QUEUE_NOTIFICATION).toBe(

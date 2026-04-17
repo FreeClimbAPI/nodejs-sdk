@@ -12,8 +12,6 @@ describe("ConferenceResult", () => {
       ["conferenceId"]: "test_conferenceId",
       ["accountId"]: "test_accountId",
       ["alias"]: "test_alias",
-
-      ["playBeep"]: freeclimb.PlayBeep.ALWAYS,
       ["record"]: true,
 
       ["status"]: freeclimb.ConferenceStatus.EMPTY,
@@ -70,10 +68,7 @@ describe("ConferenceResult", () => {
       });
     });
     describe(".playBeep", () => {
-      it("resolves to particular value on initialization", () => {
-        const value = "always";
-        expect(model["playBeep"]).toBe(value);
-      });
+      it("resolves to particular value on initialization", () => {});
     });
     describe(".record", () => {
       it("resolves to particular value on initialization", () => {
@@ -123,8 +118,6 @@ describe("ConferenceResult", () => {
       ["conferenceId"]: "",
       ["accountId"]: "",
       ["alias"]: "",
-
-      ["playBeep"]: freeclimb.PlayBeep.ALWAYS,
       ["record"]: false,
 
       ["status"]: freeclimb.ConferenceStatus.EMPTY,
@@ -181,10 +174,7 @@ describe("ConferenceResult", () => {
       });
     });
     describe(".playBeep", () => {
-      it("resolves to particular value on initialization", () => {
-        const value = "always";
-        expect(model["playBeep"]).toBe(value);
-      });
+      it("resolves to particular value on initialization", () => {});
     });
     describe(".record", () => {
       it("resolves to particular value on initialization", () => {

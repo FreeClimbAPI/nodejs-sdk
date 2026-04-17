@@ -66,6 +66,9 @@ export class ConferenceResult {
    * A description for this Conference.
    */
   "alias"?: string;
+  /**
+   * Setting that controls when a beep is played. One of: always, never, entryOnly, exitOnly. Defaults to always.
+   */
   "playBeep"?: PlayBeep;
   /**
    * Flag indicating whether recording is enabled for this Conference.
