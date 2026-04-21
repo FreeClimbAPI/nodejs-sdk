@@ -9,7 +9,7 @@ describe("ExportRequest", () => {
       ["format"]: [],
 
       ["output"]: new freeclimb.ExportRequestOutput({
-        ["type"]: null as any,
+        type: null as any,
       }),
       ["query"]: {},
     });
@@ -52,7 +52,7 @@ describe("ExportRequest", () => {
       ["format"]: [],
 
       ["output"]: new freeclimb.ExportRequestOutput({
-        ["type"]: null as any,
+        type: null as any,
       }),
       ["query"]: {},
     });
@@ -76,7 +76,7 @@ describe("ExportRequest", () => {
     describe(".output", () => {
       it("resolves to particular value on initialization", () => {
         const value = new freeclimb.ExportRequestOutput({
-          ["type"]: null as any,
+          type: null as any,
         });
         expect(model["output"]).toStrictEqual(value);
       });
@@ -94,7 +94,7 @@ describe("ExportRequest", () => {
       ["resourceType"]: freeclimb.ExportResourceType.MESSAGES,
 
       ["output"]: new freeclimb.ExportRequestOutput({
-        ["type"]: null as any,
+        type: null as any,
       }),
     };
     let model: freeclimb.ExportRequest = new freeclimb.ExportRequest(

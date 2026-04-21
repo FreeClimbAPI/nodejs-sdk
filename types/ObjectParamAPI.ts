@@ -13,6 +13,8 @@ import { AnsweredBy } from "../models/AnsweredBy";
 import { ApplicationList } from "../models/ApplicationList";
 import { ApplicationRequest } from "../models/ApplicationRequest";
 import { ApplicationResult } from "../models/ApplicationResult";
+import { AudioStream } from "../models/AudioStream";
+import { AudioStreamWebhook } from "../models/AudioStreamWebhook";
 import { AvailableNumber } from "../models/AvailableNumber";
 import { AvailableNumberList } from "../models/AvailableNumberList";
 import { BargeInReason } from "../models/BargeInReason";
@@ -24,6 +26,7 @@ import { CallDirection } from "../models/CallDirection";
 import { CallEndedReason } from "../models/CallEndedReason";
 import { CallList } from "../models/CallList";
 import { CallResult } from "../models/CallResult";
+import { CallResultAllOfSubresourceUris } from "../models/CallResultAllOfSubresourceUris";
 import { CallStatus } from "../models/CallStatus";
 import { CallStatusWebhook } from "../models/CallStatusWebhook";
 import { Capabilities } from "../models/Capabilities";
@@ -631,9 +634,30 @@ export interface DefaultApiListCallRecordingsRequest {
    * @memberof DefaultApilistCallRecordings
    */
   dateCreated?: string;
+
+  /**
+   * Only show Recordings created at or after this time, given as YYYY-MM-DD hh:mm:ss.
+   * @type string
+   * @memberof DefaultApilistCallRecordings
+   */
+  startTime?: string;
+
+  /**
+   * Only show Recordings created at or before this time, given as YYYY-MM-DD hh:mm:ss.
+   * @type string
+   * @memberof DefaultApilistCallRecordings
+   */
+  endTime?: string;
 }
 
 export interface DefaultApiListCallsRequest {
+  /**
+   * If usedAudioStream is set to true then all calls that have a audioStreamDuration &gt; 0 will be returned
+   * @type boolean
+   * @memberof DefaultApilistCalls
+   */
+  usedAudioStream?: boolean;
+
   /**
    * If active is set to true then all calls of the nature queued, ringing, inProgress are returned in the query.
    * @type boolean
@@ -703,6 +727,13 @@ export interface DefaultApiListCallsRequest {
    * @memberof DefaultApilistCalls
    */
   riskScoreMax?: number;
+
+  /**
+   * Only show Calls that were originated via WebRTC.
+   * @type boolean
+   * @memberof DefaultApilistCalls
+   */
+  webRTC?: boolean;
 }
 
 export interface DefaultApiListConferenceRecordingsRequest {
@@ -726,6 +757,20 @@ export interface DefaultApiListConferenceRecordingsRequest {
    * @memberof DefaultApilistConferenceRecordings
    */
   dateCreated?: string;
+
+  /**
+   * Only show Recordings created at or after this time, given as YYYY-MM-DD hh:mm:ss.
+   * @type string
+   * @memberof DefaultApilistConferenceRecordings
+   */
+  startTime?: string;
+
+  /**
+   * Only show Recordings created at or before this time, given as YYYY-MM-DD hh:mm:ss.
+   * @type string
+   * @memberof DefaultApilistConferenceRecordings
+   */
+  endTime?: string;
 }
 
 export interface DefaultApiListConferencesRequest {
@@ -934,6 +979,20 @@ export interface DefaultApiListRecordingsRequest {
    * @memberof DefaultApilistRecordings
    */
   dateCreated?: string;
+
+  /**
+   * Only show Recordings created at or after this time, given as YYYY-MM-DD hh:mm:ss.
+   * @type string
+   * @memberof DefaultApilistRecordings
+   */
+  startTime?: string;
+
+  /**
+   * Only show Recordings created at or before this time, given as YYYY-MM-DD hh:mm:ss.
+   * @type string
+   * @memberof DefaultApilistRecordings
+   */
+  endTime?: string;
 }
 
 export interface DefaultApiListSmsMessagesRequest {
@@ -1748,7 +1807,13 @@ export class ObjectDefaultApi {
     options?: Configuration,
   ): Promise<RecordingList> {
     return this.api
-      .listCallRecordings(param.callId, param.dateCreated, options)
+      .listCallRecordings(
+        param.callId,
+        param.dateCreated,
+        param.startTime,
+        param.endTime,
+        options,
+      )
       .toPromise();
   }
 
@@ -1762,6 +1827,7 @@ export class ObjectDefaultApi {
   ): Promise<CallList> {
     return this.api
       .listCalls(
+        param.usedAudioStream,
         param.active,
         param.to,
         param._from,
@@ -1772,6 +1838,7 @@ export class ObjectDefaultApi {
         param.applicationId,
         param.riskScoreMin,
         param.riskScoreMax,
+        param.webRTC,
         options,
       )
       .toPromise();
@@ -1790,6 +1857,8 @@ export class ObjectDefaultApi {
         param.conferenceId,
         param.callId,
         param.dateCreated,
+        param.startTime,
+        param.endTime,
         options,
       )
       .toPromise();
@@ -1899,6 +1968,8 @@ export class ObjectDefaultApi {
         param.callId,
         param.conferenceId,
         param.dateCreated,
+        param.startTime,
+        param.endTime,
         options,
       )
       .toPromise();

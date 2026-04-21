@@ -251,7 +251,7 @@ apiInstance
 
 | Status code | Description               | Response headers |
 | ----------- | ------------------------- | ---------------- |
-| **200**     | Successfuly created queue | -                |
+| **201**     | Successfuly created queue | -                |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -2637,6 +2637,12 @@ let body: freeclimb.DefaultApiListCallRecordingsRequest = {
 
   // string | Only show recordings created on the specified date, in the form *YYYY-MM-DD*. (optional)
   dateCreated: "dateCreated_example",
+
+  // string | Only show Recordings created at or after this time, given as YYYY-MM-DD hh:mm:ss. (optional)
+  startTime: "startTime_example",
+
+  // string | Only show Recordings created at or before this time, given as YYYY-MM-DD hh:mm:ss. (optional)
+  endTime: "endTime_example",
 };
 
 apiInstance
@@ -2649,10 +2655,12 @@ apiInstance
 
 ### Parameters
 
-| Name            | Type         | Description                                                                   | Notes                            |
-| --------------- | ------------ | ----------------------------------------------------------------------------- | -------------------------------- |
-| **callId**      | [**string**] | String that uniquely identifies this call resource.                           | defaults to undefined            |
-| **dateCreated** | [**string**] | Only show recordings created on the specified date, in the form _YYYY-MM-DD_. | (optional) defaults to undefined |
+| Name            | Type         | Description                                                                        | Notes                            |
+| --------------- | ------------ | ---------------------------------------------------------------------------------- | -------------------------------- |
+| **callId**      | [**string**] | String that uniquely identifies this call resource.                                | defaults to undefined            |
+| **dateCreated** | [**string**] | Only show recordings created on the specified date, in the form _YYYY-MM-DD_.      | (optional) defaults to undefined |
+| **startTime**   | [**string**] | Only show Recordings created at or after this time, given as YYYY-MM-DD hh:mm:ss.  | (optional) defaults to undefined |
+| **endTime**     | [**string**] | Only show Recordings created at or before this time, given as YYYY-MM-DD hh:mm:ss. | (optional) defaults to undefined |
 
 ### Return type
 
@@ -2692,6 +2700,9 @@ const configuration = freeclimb.createConfiguration({
 const apiInstance = new freeclimb.DefaultApi(configuration);
 
 let body: freeclimb.DefaultApiListCallsRequest = {
+  // boolean | If usedAudioStream is set to true then all calls that have a audioStreamDuration > 0 will be returned  (optional)
+  usedAudioStream: false,
+
   // boolean | If active is set to true then all calls of the nature queued, ringing, inProgress are returned in the query. (optional)
   active: false,
 
@@ -2721,6 +2732,9 @@ let body: freeclimb.DefaultApiListCallsRequest = {
 
   // number | The maximum riskScore that should be included in the list. (optional)
   riskScoreMax: 1,
+
+  // boolean | Only show Calls that were originated via WebRTC. (optional)
+  webRTC: false,
 };
 
 apiInstance
@@ -2733,18 +2747,20 @@ apiInstance
 
 ### Parameters
 
-| Name              | Type                    | Description                                                                                                                                                                                                                   | Notes                            |
-| ----------------- | ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------- |
-| **active**        | [**boolean**]           | If active is set to true then all calls of the nature queued, ringing, inProgress are returned in the query.                                                                                                                  | (optional) defaults to false     |
-| **to**            | [**string**]            | Only show Calls to this phone number.                                                                                                                                                                                         | (optional) defaults to undefined |
-| **\_from**        | [**string**]            | Only show Calls from this phone number.                                                                                                                                                                                       | (optional) defaults to undefined |
-| **status**        | **CallStatus**          | Only show Calls currently in this status. May be &#x60;queued&#x60;, &#x60;ringing&#x60;, &#x60;inProgress&#x60;, &#x60;canceled&#x60;, &#x60;completed&#x60;, &#x60;failed&#x60;, &#x60;busy&#x60;, or &#x60;noAnswer&#x60;. | (optional) defaults to undefined |
-| **startTime**     | [**string**]            | Only show Calls that started at or after this time, given as YYYY-MM-DD hh:mm:ss.                                                                                                                                             | (optional) defaults to undefined |
-| **endTime**       | [**string**]            | Only show Calls that ended at or before this time, given as YYYY-MM- DD hh:mm:ss.                                                                                                                                             | (optional) defaults to undefined |
-| **parentCallId**  | [**string**]            | Only show Calls spawned by the call with this ID.                                                                                                                                                                             | (optional) defaults to undefined |
-| **applicationId** | **Array&lt;string&gt;** | Only show calls belonging to the given applicationId. This parameter can be repeated to return calls from multiple Applications.                                                                                              | (optional) defaults to undefined |
-| **riskScoreMin**  | [**number**]            | The minimum riskScore that should be included in the list.                                                                                                                                                                    | (optional) defaults to undefined |
-| **riskScoreMax**  | [**number**]            | The maximum riskScore that should be included in the list.                                                                                                                                                                    | (optional) defaults to undefined |
+| Name                | Type                    | Description                                                                                                                                                                                                                   | Notes                            |
+| ------------------- | ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------- |
+| **usedAudioStream** | [**boolean**]           | If usedAudioStream is set to true then all calls that have a audioStreamDuration &gt; 0 will be returned                                                                                                                      | (optional) defaults to false     |
+| **active**          | [**boolean**]           | If active is set to true then all calls of the nature queued, ringing, inProgress are returned in the query.                                                                                                                  | (optional) defaults to false     |
+| **to**              | [**string**]            | Only show Calls to this phone number.                                                                                                                                                                                         | (optional) defaults to undefined |
+| **\_from**          | [**string**]            | Only show Calls from this phone number.                                                                                                                                                                                       | (optional) defaults to undefined |
+| **status**          | **CallStatus**          | Only show Calls currently in this status. May be &#x60;queued&#x60;, &#x60;ringing&#x60;, &#x60;inProgress&#x60;, &#x60;canceled&#x60;, &#x60;completed&#x60;, &#x60;failed&#x60;, &#x60;busy&#x60;, or &#x60;noAnswer&#x60;. | (optional) defaults to undefined |
+| **startTime**       | [**string**]            | Only show Calls that started at or after this time, given as YYYY-MM-DD hh:mm:ss.                                                                                                                                             | (optional) defaults to undefined |
+| **endTime**         | [**string**]            | Only show Calls that ended at or before this time, given as YYYY-MM- DD hh:mm:ss.                                                                                                                                             | (optional) defaults to undefined |
+| **parentCallId**    | [**string**]            | Only show Calls spawned by the call with this ID.                                                                                                                                                                             | (optional) defaults to undefined |
+| **applicationId**   | **Array&lt;string&gt;** | Only show calls belonging to the given applicationId. This parameter can be repeated to return calls from multiple Applications.                                                                                              | (optional) defaults to undefined |
+| **riskScoreMin**    | [**number**]            | The minimum riskScore that should be included in the list.                                                                                                                                                                    | (optional) defaults to undefined |
+| **riskScoreMax**    | [**number**]            | The maximum riskScore that should be included in the list.                                                                                                                                                                    | (optional) defaults to undefined |
+| **webRTC**          | [**boolean**]           | Only show Calls that were originated via WebRTC.                                                                                                                                                                              | (optional) defaults to false     |
 
 ### Return type
 
@@ -2792,6 +2808,12 @@ let body: freeclimb.DefaultApiListConferenceRecordingsRequest = {
 
   // string | Only show Recordings created on this date, formatted as *YYYY-MM-DD*. (optional)
   dateCreated: "dateCreated_example",
+
+  // string | Only show Recordings created at or after this time, given as YYYY-MM-DD hh:mm:ss. (optional)
+  startTime: "startTime_example",
+
+  // string | Only show Recordings created at or before this time, given as YYYY-MM-DD hh:mm:ss. (optional)
+  endTime: "endTime_example",
 };
 
 apiInstance
@@ -2804,11 +2826,13 @@ apiInstance
 
 ### Parameters
 
-| Name             | Type         | Description                                                           | Notes                            |
-| ---------------- | ------------ | --------------------------------------------------------------------- | -------------------------------- |
-| **conferenceId** | [**string**] | Show only Recordings made during the conference with this ID.         | defaults to undefined            |
-| **callId**       | [**string**] | Show only Recordings made during the Call with this ID.               | (optional) defaults to undefined |
-| **dateCreated**  | [**string**] | Only show Recordings created on this date, formatted as _YYYY-MM-DD_. | (optional) defaults to undefined |
+| Name             | Type         | Description                                                                        | Notes                            |
+| ---------------- | ------------ | ---------------------------------------------------------------------------------- | -------------------------------- |
+| **conferenceId** | [**string**] | Show only Recordings made during the conference with this ID.                      | defaults to undefined            |
+| **callId**       | [**string**] | Show only Recordings made during the Call with this ID.                            | (optional) defaults to undefined |
+| **dateCreated**  | [**string**] | Only show Recordings created on this date, formatted as _YYYY-MM-DD_.              | (optional) defaults to undefined |
+| **startTime**    | [**string**] | Only show Recordings created at or after this time, given as YYYY-MM-DD hh:mm:ss.  | (optional) defaults to undefined |
+| **endTime**      | [**string**] | Only show Recordings created at or before this time, given as YYYY-MM-DD hh:mm:ss. | (optional) defaults to undefined |
 
 ### Return type
 
@@ -3216,6 +3240,12 @@ let body: freeclimb.DefaultApiListRecordingsRequest = {
 
   // string | Only show Recordings created on this date, formatted as *YYYY-MM-DD*. (optional)
   dateCreated: "dateCreated_example",
+
+  // string | Only show Recordings created at or after this time, given as YYYY-MM-DD hh:mm:ss. (optional)
+  startTime: "startTime_example",
+
+  // string | Only show Recordings created at or before this time, given as YYYY-MM-DD hh:mm:ss. (optional)
+  endTime: "endTime_example",
 };
 
 apiInstance
@@ -3228,11 +3258,13 @@ apiInstance
 
 ### Parameters
 
-| Name             | Type         | Description                                                           | Notes                            |
-| ---------------- | ------------ | --------------------------------------------------------------------- | -------------------------------- |
-| **callId**       | [**string**] | Show only Recordings made during the Call with this ID.               | (optional) defaults to undefined |
-| **conferenceId** | [**string**] | Show only Recordings made during the conference with this ID.         | (optional) defaults to undefined |
-| **dateCreated**  | [**string**] | Only show Recordings created on this date, formatted as _YYYY-MM-DD_. | (optional) defaults to undefined |
+| Name             | Type         | Description                                                                        | Notes                            |
+| ---------------- | ------------ | ---------------------------------------------------------------------------------- | -------------------------------- |
+| **callId**       | [**string**] | Show only Recordings made during the Call with this ID.                            | (optional) defaults to undefined |
+| **conferenceId** | [**string**] | Show only Recordings made during the conference with this ID.                      | (optional) defaults to undefined |
+| **dateCreated**  | [**string**] | Only show Recordings created on this date, formatted as _YYYY-MM-DD_.              | (optional) defaults to undefined |
+| **startTime**    | [**string**] | Only show Recordings created at or after this time, given as YYYY-MM-DD hh:mm:ss.  | (optional) defaults to undefined |
+| **endTime**      | [**string**] | Only show Recordings created at or before this time, given as YYYY-MM-DD hh:mm:ss. | (optional) defaults to undefined |
 
 ### Return type
 

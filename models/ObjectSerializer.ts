@@ -9,6 +9,8 @@ export * from "./AnsweredBy";
 export * from "./ApplicationList";
 export * from "./ApplicationRequest";
 export * from "./ApplicationResult";
+export * from "./AudioStream";
+export * from "./AudioStreamWebhook";
 export * from "./AvailableNumber";
 export * from "./AvailableNumberList";
 export * from "./BargeInReason";
@@ -20,6 +22,7 @@ export * from "./CallDirection";
 export * from "./CallEndedReason";
 export * from "./CallList";
 export * from "./CallResult";
+export * from "./CallResultAllOfSubresourceUris";
 export * from "./CallStatus";
 export * from "./CallStatusWebhook";
 export * from "./Capabilities";
@@ -166,6 +169,8 @@ import { AnsweredBy } from "./AnsweredBy";
 import { ApplicationList } from "./ApplicationList";
 import { ApplicationRequest } from "./ApplicationRequest";
 import { ApplicationResult } from "./ApplicationResult";
+import { AudioStream } from "./AudioStream";
+import { AudioStreamWebhook } from "./AudioStreamWebhook";
 import { AvailableNumber } from "./AvailableNumber";
 import { AvailableNumberList } from "./AvailableNumberList";
 import { BargeInReason } from "./BargeInReason";
@@ -177,6 +182,7 @@ import { CallDirection } from "./CallDirection";
 import { CallEndedReason } from "./CallEndedReason";
 import { CallList } from "./CallList";
 import { CallResult } from "./CallResult";
+import { CallResultAllOfSubresourceUris } from "./CallResultAllOfSubresourceUris";
 import { CallStatus } from "./CallStatus";
 import { CallStatusWebhook } from "./CallStatusWebhook";
 import { Capabilities } from "./Capabilities";
@@ -381,6 +387,8 @@ let typeMap: { [index: string]: any } = {
   ApplicationList: ApplicationList,
   ApplicationRequest: ApplicationRequest,
   ApplicationResult: ApplicationResult,
+  AudioStream: AudioStream,
+  AudioStreamWebhook: AudioStreamWebhook,
   AvailableNumber: AvailableNumber,
   AvailableNumberList: AvailableNumberList,
   BlobListResponse: BlobListResponse,
@@ -389,6 +397,7 @@ let typeMap: { [index: string]: any } = {
   CallControlWebhook: CallControlWebhook,
   CallList: CallList,
   CallResult: CallResult,
+  CallResultAllOfSubresourceUris: CallResultAllOfSubresourceUris,
   CallStatusWebhook: CallStatusWebhook,
   Capabilities: Capabilities,
   CompletionRequest: CompletionRequest,

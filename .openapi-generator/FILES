@@ -23,6 +23,8 @@ models/AnsweredBy.ts
 models/ApplicationList.ts
 models/ApplicationRequest.ts
 models/ApplicationResult.ts
+models/AudioStream.ts
+models/AudioStreamWebhook.ts
 models/AvailableNumber.ts
 models/AvailableNumberList.ts
 models/BargeInReason.ts
@@ -34,6 +36,7 @@ models/CallDirection.ts
 models/CallEndedReason.ts
 models/CallList.ts
 models/CallResult.ts
+models/CallResultAllOfSubresourceUris.ts
 models/CallStatus.ts
 models/CallStatusWebhook.ts
 models/Capabilities.ts

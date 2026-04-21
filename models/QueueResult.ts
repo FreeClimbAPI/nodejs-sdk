@@ -30,6 +30,7 @@ interface ArgumentsType {
   maxSize?: number;
   currentSize?: number;
   averageQueueRemovalTime?: number;
+  averageWaitTime?: number;
   subresourceUris?: any;
 }
 export class QueueResult {
@@ -73,6 +74,10 @@ export class QueueResult {
    * The average amount of time (in seconds) for a call to be removed from the queue.
    */
   "averageQueueRemovalTime"?: number;
+  /**
+   * The average wait time (in seconds) of all Calls in the Queue.
+   */
+  "averageWaitTime"?: number;
   /**
    * List of subresources for this Queue (which includes Queue members).
    */
@@ -162,6 +167,14 @@ export class QueueResult {
       defaultValue: undefined,
     },
     {
+      name: "averageWaitTime",
+      baseName: "averageWaitTime",
+      type: "number",
+      format: "",
+
+      defaultValue: undefined,
+    },
+    {
       name: "subresourceUris",
       baseName: "subresourceUris",
       type: "any",
@@ -193,6 +206,7 @@ export class QueueResult {
     this["maxSize"] = assign<number>("maxSize");
     this["currentSize"] = assign<number>("currentSize");
     this["averageQueueRemovalTime"] = assign<number>("averageQueueRemovalTime");
+    this["averageWaitTime"] = assign<number>("averageWaitTime");
     this["subresourceUris"] = assign<any>("subresourceUris");
   }
 }

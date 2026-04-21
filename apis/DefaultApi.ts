@@ -2242,10 +2242,14 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
      
      * @param callId String that uniquely identifies this call resource.
      * @param dateCreated Only show recordings created on the specified date, in the form *YYYY-MM-DD*.
+     * @param startTime Only show Recordings created at or after this time, given as YYYY-MM-DD hh:mm:ss.
+     * @param endTime Only show Recordings created at or before this time, given as YYYY-MM-DD hh:mm:ss.
      */
   public async listCallRecordings(
     callId: string,
     dateCreated?: string,
+    startTime?: string,
+    endTime?: string,
     _options?: Configuration,
   ): Promise<RequestContext> {
     const _config = _options || this.configuration;
@@ -2273,6 +2277,20 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         ObjectSerializer.serialize(dateCreated, "string", ""),
       );
     }
+    // Query Params
+    if (startTime !== undefined) {
+      requestContext.setQueryParam(
+        "startTime",
+        ObjectSerializer.serialize(startTime, "string", ""),
+      );
+    }
+    // Query Params
+    if (endTime !== undefined) {
+      requestContext.setQueryParam(
+        "endTime",
+        ObjectSerializer.serialize(endTime, "string", ""),
+      );
+    }
 
     let authMethod: SecurityAuthentication | undefined;
     // Apply auth methods
@@ -2292,6 +2310,7 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
   /**
      * List Calls
      
+     * @param usedAudioStream If usedAudioStream is set to true then all calls that have a audioStreamDuration &gt; 0 will be returned 
      * @param active If active is set to true then all calls of the nature queued, ringing, inProgress are returned in the query.
      * @param to Only show Calls to this phone number.
      * @param _from Only show Calls from this phone number.
@@ -2302,8 +2321,10 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
      * @param applicationId Only show calls belonging to the given applicationId. This parameter can be repeated to return calls from multiple Applications.
      * @param riskScoreMin The minimum riskScore that should be included in the list.
      * @param riskScoreMax The maximum riskScore that should be included in the list.
+     * @param webRTC Only show Calls that were originated via WebRTC.
      */
   public async listCalls(
+    usedAudioStream?: boolean,
     active?: boolean,
     to?: string,
     _from?: string,
@@ -2314,6 +2335,7 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
     applicationId?: Array<string>,
     riskScoreMin?: number,
     riskScoreMax?: number,
+    webRTC?: boolean,
     _options?: Configuration,
   ): Promise<RequestContext> {
     const _config = _options || this.configuration;
@@ -2331,6 +2353,13 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
       HttpMethod.GET,
     );
     requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8");
+    // Query Params
+    if (usedAudioStream !== undefined) {
+      requestContext.setQueryParam(
+        "usedAudioStream",
+        ObjectSerializer.serialize(usedAudioStream, "boolean", ""),
+      );
+    }
     // Query Params
     if (active !== undefined) {
       requestContext.setQueryParam(
@@ -2401,6 +2430,13 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
         ObjectSerializer.serialize(riskScoreMax, "number", ""),
       );
     }
+    // Query Params
+    if (webRTC !== undefined) {
+      requestContext.setQueryParam(
+        "webRTC",
+        ObjectSerializer.serialize(webRTC, "boolean", ""),
+      );
+    }
 
     let authMethod: SecurityAuthentication | undefined;
     // Apply auth methods
@@ -2423,11 +2459,15 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
      * @param conferenceId Show only Recordings made during the conference with this ID.
      * @param callId Show only Recordings made during the Call with this ID.
      * @param dateCreated Only show Recordings created on this date, formatted as *YYYY-MM-DD*.
+     * @param startTime Only show Recordings created at or after this time, given as YYYY-MM-DD hh:mm:ss.
+     * @param endTime Only show Recordings created at or before this time, given as YYYY-MM-DD hh:mm:ss.
      */
   public async listConferenceRecordings(
     conferenceId: string,
     callId?: string,
     dateCreated?: string,
+    startTime?: string,
+    endTime?: string,
     _options?: Configuration,
   ): Promise<RequestContext> {
     const _config = _options || this.configuration;
@@ -2468,6 +2508,20 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
       requestContext.setQueryParam(
         "dateCreated",
         ObjectSerializer.serialize(dateCreated, "string", ""),
+      );
+    }
+    // Query Params
+    if (startTime !== undefined) {
+      requestContext.setQueryParam(
+        "startTime",
+        ObjectSerializer.serialize(startTime, "string", ""),
+      );
+    }
+    // Query Params
+    if (endTime !== undefined) {
+      requestContext.setQueryParam(
+        "endTime",
+        ObjectSerializer.serialize(endTime, "string", ""),
       );
     }
 
@@ -2903,11 +2957,15 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
      * @param callId Show only Recordings made during the Call with this ID.
      * @param conferenceId Show only Recordings made during the conference with this ID.
      * @param dateCreated Only show Recordings created on this date, formatted as *YYYY-MM-DD*.
+     * @param startTime Only show Recordings created at or after this time, given as YYYY-MM-DD hh:mm:ss.
+     * @param endTime Only show Recordings created at or before this time, given as YYYY-MM-DD hh:mm:ss.
      */
   public async listRecordings(
     callId?: string,
     conferenceId?: string,
     dateCreated?: string,
+    startTime?: string,
+    endTime?: string,
     _options?: Configuration,
   ): Promise<RequestContext> {
     const _config = _options || this.configuration;
@@ -2944,6 +3002,20 @@ export class DefaultApiRequestFactory extends BaseAPIRequestFactory {
       requestContext.setQueryParam(
         "dateCreated",
         ObjectSerializer.serialize(dateCreated, "string", ""),
+      );
+    }
+    // Query Params
+    if (startTime !== undefined) {
+      requestContext.setQueryParam(
+        "startTime",
+        ObjectSerializer.serialize(startTime, "string", ""),
+      );
+    }
+    // Query Params
+    if (endTime !== undefined) {
+      requestContext.setQueryParam(
+        "endTime",
+        ObjectSerializer.serialize(endTime, "string", ""),
       );
     }
 
@@ -4027,7 +4099,7 @@ export class DefaultApiResponseProcessor {
     const contentType = ObjectSerializer.normalizeMediaType(
       response.headers["content-type"],
     );
-    if (isCodeInRange("200", response.httpStatusCode)) {
+    if (isCodeInRange("201", response.httpStatusCode)) {
       const body: QueueResult = ObjectSerializer.deserialize(
         ObjectSerializer.parse(await response.body.text(), contentType),
         "QueueResult",

@@ -6,14 +6,15 @@ describe("AvailableNumber", () => {
     const Klass = freeclimb.AvailableNumber;
     let model: freeclimb.AvailableNumber = new freeclimb.AvailableNumber({
       ["capabilities"]: new freeclimb.Capabilities({
-        ["voice"]: null as any,
-        ["sms"]: null as any,
-        ["tollFree"]: null as any,
-        ["tenDLC"]: null as any,
-        ["shortCode"]: null as any,
+        voice: null as any,
+        sms: null as any,
+        tollFree: null as any,
+        tenDLC: null as any,
+        shortCode: null as any,
       }),
       ["campaignId"]: "test_campaignId",
       ["phoneNumber"]: "test_phoneNumber",
+      ["alias"]: "test_alias",
       ["region"]: "test_region",
       ["country"]: "test_country",
     });
@@ -46,6 +47,12 @@ describe("AvailableNumber", () => {
         expect(model["phoneNumber"]).toBe(value);
       });
     });
+    describe(".alias", () => {
+      it("resolves to particular value on initialization", () => {
+        const value = "test_alias";
+        expect(model["alias"]).toBe(value);
+      });
+    });
     describe(".region", () => {
       it("resolves to particular value on initialization", () => {
         const value = "test_region";
@@ -63,14 +70,15 @@ describe("AvailableNumber", () => {
     const Klass = freeclimb.AvailableNumber;
     let model: freeclimb.AvailableNumber = new freeclimb.AvailableNumber({
       ["capabilities"]: new freeclimb.Capabilities({
-        ["voice"]: null as any,
-        ["sms"]: null as any,
-        ["tollFree"]: null as any,
-        ["tenDLC"]: null as any,
-        ["shortCode"]: null as any,
+        voice: null as any,
+        sms: null as any,
+        tollFree: null as any,
+        tenDLC: null as any,
+        shortCode: null as any,
       }),
       ["campaignId"]: "",
       ["phoneNumber"]: "",
+      ["alias"]: "",
       ["region"]: "",
       ["country"]: "",
     });
@@ -82,11 +90,11 @@ describe("AvailableNumber", () => {
     describe(".capabilities", () => {
       it("resolves to particular value on initialization", () => {
         const value = new freeclimb.Capabilities({
-          ["voice"]: null as any,
-          ["sms"]: null as any,
-          ["tollFree"]: null as any,
-          ["tenDLC"]: null as any,
-          ["shortCode"]: null as any,
+          voice: null as any,
+          sms: null as any,
+          tollFree: null as any,
+          tenDLC: null as any,
+          shortCode: null as any,
         });
         expect(model["capabilities"]).toStrictEqual(value);
       });
@@ -101,6 +109,12 @@ describe("AvailableNumber", () => {
       it("resolves to particular value on initialization", () => {
         const value = "";
         expect(model["phoneNumber"]).toBe(value);
+      });
+    });
+    describe(".alias", () => {
+      it("resolves to particular value on initialization", () => {
+        const value = "";
+        expect(model["alias"]).toBe(value);
       });
     });
     describe(".region", () => {
@@ -145,6 +159,14 @@ describe("AvailableNumber", () => {
           (attribute) => attribute.name === "phoneNumber",
         )?.defaultValue;
         expect(model["phoneNumber"]).toBe(value);
+      });
+    });
+    describe("#alias", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "alias",
+        )?.defaultValue;
+        expect(model["alias"]).toBe(value);
       });
     });
     describe("#region", () => {

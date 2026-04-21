@@ -87,10 +87,14 @@ export const parameters = {
     applicationId: ["AP0000000000000000000000000000000000000000"],
     riskScoreMin: 1,
     riskScoreMax: 90,
+    usedAudioStream: true,
+    webRtc: true,
   },
   listCallRecordings: {
     callId: "TEST_CALL_ID",
     dateCreated: "TEST_DATE_CREATED",
+    startTime: "TEST_DATE_STARTED",
+    endTime: "TEST_DATE_ENDED",
   },
   listCallLogs: {
     callId: "TEST_CALL_ID",
@@ -123,6 +127,8 @@ export const parameters = {
     conferenceId: "TEST_CONFERENCE_ID",
     callId: "TEST_CALL_ID",
     dateCreated: "TEST_DATE_CREATED",
+    startTime: "TEST_DATE_STARTED",
+    endTime: "TEST_DATE_ENDED",
   },
   updateAQueue: {
     queueId: "TEST_QUEUE_ID",
@@ -154,6 +160,8 @@ export const parameters = {
     callId: "TEST_CALL_ID",
     conferenceId: "TEST_CONFERENCE_ID",
     dateCreated: "TEST_DATE_CREATED",
+    startTime: "TEST_DATE_STARTED",
+    endTime: "TEST_DATE_ENDED",
   },
   getARecording: {
     recordingId: "TEST_RECORDING_ID",

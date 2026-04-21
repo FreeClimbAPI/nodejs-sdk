@@ -14,6 +14,8 @@ import { AnsweredBy } from "../models/AnsweredBy";
 import { ApplicationList } from "../models/ApplicationList";
 import { ApplicationRequest } from "../models/ApplicationRequest";
 import { ApplicationResult } from "../models/ApplicationResult";
+import { AudioStream } from "../models/AudioStream";
+import { AudioStreamWebhook } from "../models/AudioStreamWebhook";
 import { AvailableNumber } from "../models/AvailableNumber";
 import { AvailableNumberList } from "../models/AvailableNumberList";
 import { BargeInReason } from "../models/BargeInReason";
@@ -25,6 +27,7 @@ import { CallDirection } from "../models/CallDirection";
 import { CallEndedReason } from "../models/CallEndedReason";
 import { CallList } from "../models/CallList";
 import { CallResult } from "../models/CallResult";
+import { CallResultAllOfSubresourceUris } from "../models/CallResultAllOfSubresourceUris";
 import { CallStatus } from "../models/CallStatus";
 import { CallStatusWebhook } from "../models/CallStatusWebhook";
 import { Capabilities } from "../models/Capabilities";
@@ -2137,15 +2140,23 @@ export class ObservableDefaultApi {
      
      * @param dateCreated Only show recordings created on the specified date, in the form *YYYY-MM-DD*.
      
+     * @param startTime Only show Recordings created at or after this time, given as YYYY-MM-DD hh:mm:ss.
+     
+     * @param endTime Only show Recordings created at or before this time, given as YYYY-MM-DD hh:mm:ss.
+     
      */
   public listCallRecordings(
     callId: string,
     dateCreated?: string,
+    startTime?: string,
+    endTime?: string,
     _options?: Configuration,
   ): Observable<RecordingList> {
     const requestContextPromise = this.requestFactory.listCallRecordings(
       callId,
       dateCreated,
+      startTime,
+      endTime,
       _options,
     );
 
@@ -2181,6 +2192,8 @@ export class ObservableDefaultApi {
   /**
      * List Calls
      
+     * @param usedAudioStream If usedAudioStream is set to true then all calls that have a audioStreamDuration &gt; 0 will be returned 
+     
      * @param active If active is set to true then all calls of the nature queued, ringing, inProgress are returned in the query.
      
      * @param to Only show Calls to this phone number.
@@ -2201,8 +2214,11 @@ export class ObservableDefaultApi {
      
      * @param riskScoreMax The maximum riskScore that should be included in the list.
      
+     * @param webRTC Only show Calls that were originated via WebRTC.
+     
      */
   public listCalls(
+    usedAudioStream?: boolean,
     active?: boolean,
     to?: string,
     _from?: string,
@@ -2213,9 +2229,11 @@ export class ObservableDefaultApi {
     applicationId?: Array<string>,
     riskScoreMin?: number,
     riskScoreMax?: number,
+    webRTC?: boolean,
     _options?: Configuration,
   ): Observable<CallList> {
     const requestContextPromise = this.requestFactory.listCalls(
+      usedAudioStream,
       active,
       to,
       _from,
@@ -2226,6 +2244,7 @@ export class ObservableDefaultApi {
       applicationId,
       riskScoreMin,
       riskScoreMax,
+      webRTC,
       _options,
     );
 
@@ -2267,17 +2286,25 @@ export class ObservableDefaultApi {
      
      * @param dateCreated Only show Recordings created on this date, formatted as *YYYY-MM-DD*.
      
+     * @param startTime Only show Recordings created at or after this time, given as YYYY-MM-DD hh:mm:ss.
+     
+     * @param endTime Only show Recordings created at or before this time, given as YYYY-MM-DD hh:mm:ss.
+     
      */
   public listConferenceRecordings(
     conferenceId: string,
     callId?: string,
     dateCreated?: string,
+    startTime?: string,
+    endTime?: string,
     _options?: Configuration,
   ): Observable<RecordingList> {
     const requestContextPromise = this.requestFactory.listConferenceRecordings(
       conferenceId,
       callId,
       dateCreated,
+      startTime,
+      endTime,
       _options,
     );
 
@@ -2619,17 +2646,25 @@ export class ObservableDefaultApi {
      
      * @param dateCreated Only show Recordings created on this date, formatted as *YYYY-MM-DD*.
      
+     * @param startTime Only show Recordings created at or after this time, given as YYYY-MM-DD hh:mm:ss.
+     
+     * @param endTime Only show Recordings created at or before this time, given as YYYY-MM-DD hh:mm:ss.
+     
      */
   public listRecordings(
     callId?: string,
     conferenceId?: string,
     dateCreated?: string,
+    startTime?: string,
+    endTime?: string,
     _options?: Configuration,
   ): Observable<RecordingList> {
     const requestContextPromise = this.requestFactory.listRecordings(
       callId,
       conferenceId,
       dateCreated,
+      startTime,
+      endTime,
       _options,
     );
 

@@ -15,6 +15,7 @@ describe("QueueResult", () => {
       ["maxSize"]: 1,
       ["currentSize"]: 1,
       ["averageQueueRemovalTime"]: 1,
+      ["averageWaitTime"]: 1,
       ["subresourceUris"]: {},
     });
     describe("QueueResult class test", () => {
@@ -82,6 +83,12 @@ describe("QueueResult", () => {
         expect(model["averageQueueRemovalTime"]).toBe(value);
       });
     });
+    describe(".averageWaitTime", () => {
+      it("resolves to particular value on initialization", () => {
+        const value = 1;
+        expect(model["averageWaitTime"]).toBe(value);
+      });
+    });
     describe(".subresourceUris", () => {
       it("resolves to particular value on initialization", () => {
         const value = {};
@@ -103,6 +110,7 @@ describe("QueueResult", () => {
       ["maxSize"]: 0,
       ["currentSize"]: 0,
       ["averageQueueRemovalTime"]: 0,
+      ["averageWaitTime"]: 0,
       ["subresourceUris"]: {},
     });
     describe("QueueResult class test", () => {
@@ -168,6 +176,12 @@ describe("QueueResult", () => {
       it("resolves to particular value on initialization", () => {
         const value = 0;
         expect(model["averageQueueRemovalTime"]).toBe(value);
+      });
+    });
+    describe(".averageWaitTime", () => {
+      it("resolves to particular value on initialization", () => {
+        const value = 0;
+        expect(model["averageWaitTime"]).toBe(value);
       });
     });
     describe(".subresourceUris", () => {
@@ -236,6 +250,14 @@ describe("QueueResult", () => {
           (attribute) => attribute.name === "averageQueueRemovalTime",
         )?.defaultValue;
         expect(model["averageQueueRemovalTime"]).toBe(value);
+      });
+    });
+    describe("#averageWaitTime", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "averageWaitTime",
+        )?.defaultValue;
+        expect(model["averageWaitTime"]).toBe(value);
       });
     });
     describe("#subresourceUris", () => {

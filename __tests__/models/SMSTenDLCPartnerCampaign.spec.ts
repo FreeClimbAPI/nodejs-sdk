@@ -37,8 +37,8 @@ describe("SMSTenDLCPartnerCampaign", () => {
         ["optoutMessage"]: "test_optoutMessage",
 
         ["brand"]: new freeclimb.SMSTenDLCPartnerCampaignBrand({
-          ["email"]: null as any,
-          ["phone"]: null as any,
+          email: null as any,
+          phone: null as any,
         }),
       });
     describe("SMSTenDLCPartnerCampaign class test", () => {
@@ -259,8 +259,8 @@ describe("SMSTenDLCPartnerCampaign", () => {
         ["optoutMessage"]: "",
 
         ["brand"]: new freeclimb.SMSTenDLCPartnerCampaignBrand({
-          ["email"]: null as any,
-          ["phone"]: null as any,
+          email: null as any,
+          phone: null as any,
         }),
       });
     describe("SMSTenDLCPartnerCampaign class test", () => {
@@ -439,8 +439,8 @@ describe("SMSTenDLCPartnerCampaign", () => {
     describe(".brand", () => {
       it("resolves to particular value on initialization", () => {
         const value = new freeclimb.SMSTenDLCPartnerCampaignBrand({
-          ["email"]: null as any,
-          ["phone"]: null as any,
+          email: null as any,
+          phone: null as any,
         });
         expect(model["brand"]).toStrictEqual(value);
       });

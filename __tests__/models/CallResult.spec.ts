@@ -9,6 +9,8 @@ describe("CallResult", () => {
       ["dateCreated"]: "test_dateCreated",
       ["dateUpdated"]: "test_dateUpdated",
       ["revision"]: 1,
+      ["dateCreatedISO"]: new Date("December 17, 1995 03:24:00"),
+      ["dateUpdatedISO"]: new Date("December 17, 1995 03:24:00"),
       ["callId"]: "test_callId",
       ["parentCallId"]: "test_parentCallId",
       ["accountId"]: "test_accountId",
@@ -18,15 +20,20 @@ describe("CallResult", () => {
 
       ["status"]: freeclimb.CallStatus.QUEUED,
       ["startTime"]: "test_startTime",
+      ["startTimeISO"]: new Date("December 17, 1995 03:24:00"),
       ["connectTime"]: "test_connectTime",
+      ["connectTimeISO"]: new Date("December 17, 1995 03:24:00"),
       ["endTime"]: "test_endTime",
+      ["endTimeISO"]: new Date("December 17, 1995 03:24:00"),
       ["duration"]: 1,
       ["connectDuration"]: 1,
+      ["audioStreamDuration"]: 1,
 
       ["direction"]: freeclimb.CallDirection.INBOUND,
 
       ["answeredBy"]: freeclimb.AnsweredBy.HUMAN,
-      ["subresourceUris"]: {},
+      ["callerName"]: "test_callerName",
+      ["webRTC"]: true,
 
       ["applicationId"]: "test_applicationId",
     });
@@ -57,6 +64,18 @@ describe("CallResult", () => {
       it("resolves to particular value on initialization", () => {
         const value = 1;
         expect(model["revision"]).toBe(value);
+      });
+    });
+    describe(".dateCreatedISO", () => {
+      it("resolves to particular value on initialization", () => {
+        const value = new Date("December 17, 1995 03:24:00");
+        expect(model["dateCreatedISO"]).toStrictEqual(value);
+      });
+    });
+    describe(".dateUpdatedISO", () => {
+      it("resolves to particular value on initialization", () => {
+        const value = new Date("December 17, 1995 03:24:00");
+        expect(model["dateUpdatedISO"]).toStrictEqual(value);
       });
     });
     describe(".callId", () => {
@@ -107,16 +126,34 @@ describe("CallResult", () => {
         expect(model["startTime"]).toBe(value);
       });
     });
+    describe(".startTimeISO", () => {
+      it("resolves to particular value on initialization", () => {
+        const value = new Date("December 17, 1995 03:24:00");
+        expect(model["startTimeISO"]).toStrictEqual(value);
+      });
+    });
     describe(".connectTime", () => {
       it("resolves to particular value on initialization", () => {
         const value = "test_connectTime";
         expect(model["connectTime"]).toBe(value);
       });
     });
+    describe(".connectTimeISO", () => {
+      it("resolves to particular value on initialization", () => {
+        const value = new Date("December 17, 1995 03:24:00");
+        expect(model["connectTimeISO"]).toStrictEqual(value);
+      });
+    });
     describe(".endTime", () => {
       it("resolves to particular value on initialization", () => {
         const value = "test_endTime";
         expect(model["endTime"]).toBe(value);
+      });
+    });
+    describe(".endTimeISO", () => {
+      it("resolves to particular value on initialization", () => {
+        const value = new Date("December 17, 1995 03:24:00");
+        expect(model["endTimeISO"]).toStrictEqual(value);
       });
     });
     describe(".duration", () => {
@@ -131,6 +168,12 @@ describe("CallResult", () => {
         expect(model["connectDuration"]).toBe(value);
       });
     });
+    describe(".audioStreamDuration", () => {
+      it("resolves to particular value on initialization", () => {
+        const value = 1;
+        expect(model["audioStreamDuration"]).toBe(value);
+      });
+    });
     describe(".direction", () => {
       it("resolves to particular value on initialization", () => {
         const value = "inbound";
@@ -143,12 +186,20 @@ describe("CallResult", () => {
         expect(model["answeredBy"]).toBe(value);
       });
     });
-    describe(".subresourceUris", () => {
+    describe(".callerName", () => {
       it("resolves to particular value on initialization", () => {
-        const value = {};
-        const receivedValue: any = model["subresourceUris"];
-        expect(receivedValue).toStrictEqual(value);
+        const value = "test_callerName";
+        expect(model["callerName"]).toBe(value);
       });
+    });
+    describe(".webRTC", () => {
+      it("resolves to particular value on initialization", () => {
+        const value = true;
+        expect(model["webRTC"]).toBe(value);
+      });
+    });
+    describe(".subresourceUris", () => {
+      it("resolves to particular value on initialization", () => {});
     });
     describe(".applicationId", () => {
       it("resolves to particular value on initialization", () => {
@@ -164,6 +215,8 @@ describe("CallResult", () => {
       ["dateCreated"]: "",
       ["dateUpdated"]: "",
       ["revision"]: 0,
+      ["dateCreatedISO"]: undefined,
+      ["dateUpdatedISO"]: undefined,
       ["callId"]: "",
       ["parentCallId"]: "",
       ["accountId"]: "",
@@ -173,15 +226,20 @@ describe("CallResult", () => {
 
       ["status"]: freeclimb.CallStatus.QUEUED,
       ["startTime"]: "",
+      ["startTimeISO"]: undefined,
       ["connectTime"]: "",
+      ["connectTimeISO"]: undefined,
       ["endTime"]: "",
+      ["endTimeISO"]: undefined,
       ["duration"]: 0,
       ["connectDuration"]: 0,
+      ["audioStreamDuration"]: 0,
 
       ["direction"]: freeclimb.CallDirection.INBOUND,
 
       ["answeredBy"]: freeclimb.AnsweredBy.HUMAN,
-      ["subresourceUris"]: {},
+      ["callerName"]: "",
+      ["webRTC"]: false,
 
       ["applicationId"]: "",
     });
@@ -212,6 +270,18 @@ describe("CallResult", () => {
       it("resolves to particular value on initialization", () => {
         const value = 0;
         expect(model["revision"]).toBe(value);
+      });
+    });
+    describe(".dateCreatedISO", () => {
+      it("resolves to particular value on initialization", () => {
+        const value = undefined;
+        expect(model["dateCreatedISO"]).toStrictEqual(value);
+      });
+    });
+    describe(".dateUpdatedISO", () => {
+      it("resolves to particular value on initialization", () => {
+        const value = undefined;
+        expect(model["dateUpdatedISO"]).toStrictEqual(value);
       });
     });
     describe(".callId", () => {
@@ -262,16 +332,34 @@ describe("CallResult", () => {
         expect(model["startTime"]).toBe(value);
       });
     });
+    describe(".startTimeISO", () => {
+      it("resolves to particular value on initialization", () => {
+        const value = undefined;
+        expect(model["startTimeISO"]).toStrictEqual(value);
+      });
+    });
     describe(".connectTime", () => {
       it("resolves to particular value on initialization", () => {
         const value = "";
         expect(model["connectTime"]).toBe(value);
       });
     });
+    describe(".connectTimeISO", () => {
+      it("resolves to particular value on initialization", () => {
+        const value = undefined;
+        expect(model["connectTimeISO"]).toStrictEqual(value);
+      });
+    });
     describe(".endTime", () => {
       it("resolves to particular value on initialization", () => {
         const value = "";
         expect(model["endTime"]).toBe(value);
+      });
+    });
+    describe(".endTimeISO", () => {
+      it("resolves to particular value on initialization", () => {
+        const value = undefined;
+        expect(model["endTimeISO"]).toStrictEqual(value);
       });
     });
     describe(".duration", () => {
@@ -286,6 +374,12 @@ describe("CallResult", () => {
         expect(model["connectDuration"]).toBe(value);
       });
     });
+    describe(".audioStreamDuration", () => {
+      it("resolves to particular value on initialization", () => {
+        const value = 0;
+        expect(model["audioStreamDuration"]).toBe(value);
+      });
+    });
     describe(".direction", () => {
       it("resolves to particular value on initialization", () => {
         const value = "inbound";
@@ -298,12 +392,20 @@ describe("CallResult", () => {
         expect(model["answeredBy"]).toBe(value);
       });
     });
-    describe(".subresourceUris", () => {
+    describe(".callerName", () => {
       it("resolves to particular value on initialization", () => {
-        const value = {};
-        const receivedValue: any = model["subresourceUris"];
-        expect(receivedValue).toStrictEqual(value);
+        const value = "";
+        expect(model["callerName"]).toBe(value);
       });
+    });
+    describe(".webRTC", () => {
+      it("resolves to particular value on initialization", () => {
+        const value = false;
+        expect(model["webRTC"]).toBe(value);
+      });
+    });
+    describe(".subresourceUris", () => {
+      it("resolves to particular value on initialization", () => {});
     });
     describe(".applicationId", () => {
       it("resolves to particular value on initialization", () => {
@@ -324,6 +426,22 @@ describe("CallResult", () => {
       constructorArguments,
     );
 
+    describe("#dateCreatedISO", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "dateCreatedISO",
+        )?.defaultValue;
+        expect(model["dateCreatedISO"]).toBe(value);
+      });
+    });
+    describe("#dateUpdatedISO", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "dateUpdatedISO",
+        )?.defaultValue;
+        expect(model["dateUpdatedISO"]).toBe(value);
+      });
+    });
     describe("#callId", () => {
       it("resolves to default value on initialization if no value is provided", () => {
         const value = Klass.attributeTypeMap.find(
@@ -388,6 +506,14 @@ describe("CallResult", () => {
         expect(model["startTime"]).toBe(value);
       });
     });
+    describe("#startTimeISO", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "startTimeISO",
+        )?.defaultValue;
+        expect(model["startTimeISO"]).toBe(value);
+      });
+    });
     describe("#connectTime", () => {
       it("resolves to default value on initialization if no value is provided", () => {
         const value = Klass.attributeTypeMap.find(
@@ -396,12 +522,28 @@ describe("CallResult", () => {
         expect(model["connectTime"]).toBe(value);
       });
     });
+    describe("#connectTimeISO", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "connectTimeISO",
+        )?.defaultValue;
+        expect(model["connectTimeISO"]).toBe(value);
+      });
+    });
     describe("#endTime", () => {
       it("resolves to default value on initialization if no value is provided", () => {
         const value = Klass.attributeTypeMap.find(
           (attribute) => attribute.name === "endTime",
         )?.defaultValue;
         expect(model["endTime"]).toBe(value);
+      });
+    });
+    describe("#endTimeISO", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "endTimeISO",
+        )?.defaultValue;
+        expect(model["endTimeISO"]).toBe(value);
       });
     });
     describe("#duration", () => {
@@ -420,6 +562,14 @@ describe("CallResult", () => {
         expect(model["connectDuration"]).toBe(value);
       });
     });
+    describe("#audioStreamDuration", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "audioStreamDuration",
+        )?.defaultValue;
+        expect(model["audioStreamDuration"]).toBe(value);
+      });
+    });
     describe("#direction", () => {
       it("resolves to default value on initialization if no value is provided", () => {
         const value = Klass.attributeTypeMap.find(
@@ -434,6 +584,22 @@ describe("CallResult", () => {
           (attribute) => attribute.name === "answeredBy",
         )?.defaultValue;
         expect(model["answeredBy"]).toBe(value);
+      });
+    });
+    describe("#callerName", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "callerName",
+        )?.defaultValue;
+        expect(model["callerName"]).toBe(value);
+      });
+    });
+    describe("#webRTC", () => {
+      it("resolves to default value on initialization if no value is provided", () => {
+        const value = Klass.attributeTypeMap.find(
+          (attribute) => attribute.name === "webRTC",
+        )?.defaultValue;
+        expect(model["webRTC"]).toBe(value);
       });
     });
     describe("#subresourceUris", () => {
