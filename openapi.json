@@ -6145,7 +6145,7 @@
         },
         "deprecated": false,
         "responses": {
-          "200": {
+          "202": {
             "description": "Call that was created",
             "content": {
               "application/json": {
