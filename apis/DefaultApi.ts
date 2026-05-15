@@ -6312,7 +6312,7 @@ export class DefaultApiResponseProcessor {
     const contentType = ObjectSerializer.normalizeMediaType(
       response.headers["content-type"],
     );
-    if (isCodeInRange("200", response.httpStatusCode)) {
+    if (isCodeInRange("202", response.httpStatusCode)) {
       const body: CallResult = ObjectSerializer.deserialize(
         ObjectSerializer.parse(await response.body.text(), contentType),
         "CallResult",

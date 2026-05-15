@@ -1,6 +1,6 @@
 {
   "name": "@freeclimb/sdk",
-  "version": "4.4.0",
+  "version": "4.4.1",
   "description": "OpenAPI client for @freeclimb/sdk",
   "author": "OpenAPI-Generator Contributors",
   "keywords": [
@@ -34,7 +34,7 @@
     "btoa": "^1.2.1",
     "crypto": "^1.0.1",
     "es6-promise": "^4.2.4",
-    "fast-xml-parser": "^5.3.8",
+    "fast-xml-parser": "^5.7.0",
     "form-data": "^2.5.0",
     "json5": "^2.2.3",
     "jsonpath-plus": "^10.3.0",
@@ -57,6 +57,18 @@
   "resolutions": {
     "@stoplight/json": "3.20.0",
     "braces": "^3.0.3",
-    "micromatch": "^4.0.8"
+    "micromatch": "^4.0.8",
+    "minimatch": "^3.1.3",
+    "lodash": "^4.18.0",
+    "fast-xml-parser": "^5.7.0",
+    "fast-xml-builder": "^1.1.7",
+    "picomatch": "^4.0.4",
+    "fast-uri": "^3.1.2",
+    "ajv": "^8.18.0",
+    "yaml": "^1.10.3",
+    "js-yaml": "^3.14.2",
+    "handlebars": "^4.7.9",
+    "brace-expansion": "^1.1.13",
+    "@babel/plugin-transform-modules-systemjs": "^7.29.4"
   }
 }
