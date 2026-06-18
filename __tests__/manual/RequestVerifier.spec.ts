@@ -11,7 +11,7 @@ describe("RequestVerifier", () => {
         const signingSecret: string =
           "sigsec_ead6d3b6904196c60835d039e91b3341c77a7793";
         const requestHeader: string =
-          "t=1679944186,v1=c3957749baf61df4b1506802579cc69a74c77a1ae21447b930e5a704f9ec4120,v1=1ba18712726898fbbe48cd862dd096a709f7ad761a5bab14bda9ac24d963a6a8";
+          "t=1679944186,v1=2f33654710a27e57828fa8556c2ed47c7a324aca88f155e296579e2ae851ce7b,v1=1ba18712726898fbbe48cd862dd096a709f7ad761a5bab14bda9ac24d963a6a8";
         expect(() => {
           RequestVerifier.verifyRequestSignature(
             requestBody,
@@ -29,7 +29,7 @@ describe("RequestVerifier", () => {
       test("throws 'Error with request header, signatures are not present'", () => {
         const tolerance: number = 5 * 60;
         const requestBody: string =
-          '{"accountId":"AC1334ffb694cd8d969f51cddf5f7c9b478546d50c","callId":"CAccb0b00506553cda09b51c5477f672a49e0b2213","callStatus":"ringing","conferenceId":null,"direction":"inbound","from":"+13121000109","parentCallId":null,"queueId":null,"requestType":"inboundCall","to":"+13121000096"}';
+          '{"accountId":"AC0123456789abcdefABCDEF0123456789abcdef00","callId":"CA0123456789abcdefABCDEF0123456789abcdef00","callStatus":"ringing","conferenceId":null,"direction":"inbound","from":"+13121000109","parentCallId":null,"queueId":null,"requestType":"inboundCall","to":"+13121000096"}';
         const signingSecret: string =
           "sigsec_ead6d3b6904196c60835d039e91b3341c77a7793";
         const requestHeader: string = "t=1679944186,";
@@ -47,11 +47,11 @@ describe("RequestVerifier", () => {
       test("throws 'Error with request header, timestamp is not present'", () => {
         const tolerance: number = 5 * 60;
         const requestBody: string =
-          '{"accountId":"AC1334ffb694cd8d969f51cddf5f7c9b478546d50c","callId":"CAccb0b00506553cda09b51c5477f672a49e0b2213","callStatus":"ringing","conferenceId":null,"direction":"inbound","from":"+13121000109","parentCallId":null,"queueId":null,"requestType":"inboundCall","to":"+13121000096"}';
+          '{"accountId":"AC0123456789abcdefABCDEF0123456789abcdef00","callId":"CA0123456789abcdefABCDEF0123456789abcdef00","callStatus":"ringing","conferenceId":null,"direction":"inbound","from":"+13121000109","parentCallId":null,"queueId":null,"requestType":"inboundCall","to":"+13121000096"}';
         const signingSecret: string =
           "sigsec_ead6d3b6904196c60835d039e91b3341c77a7793";
         const requestHeader: string =
-          "v1=c3957749baf61df4b1506802579cc69a74c77a1ae21447b930e5a704f9ec4120,v1=1ba18712726898fbbe48cd862dd096a709f7ad761a5bab14bda9ac24d963a6a8";
+          "v1=2f33654710a27e57828fa8556c2ed47c7a324aca88f155e296579e2ae851ce7b,v1=1ba18712726898fbbe48cd862dd096a709f7ad761a5bab14bda9ac24d963a6a8";
         expect(() => {
           RequestVerifier.verifyRequestSignature(
             requestBody,
@@ -66,7 +66,7 @@ describe("RequestVerifier", () => {
       test("throws 'Error with request header, Request header is empty'", () => {
         const tolerance: number = 5 * 60;
         const requestBody: string =
-          '{"accountId":"AC1334ffb694cd8d969f51cddf5f7c9b478546d50c","callId":"CAccb0b00506553cda09b51c5477f672a49e0b2213","callStatus":"ringing","conferenceId":null,"direction":"inbound","from":"+13121000109","parentCallId":null,"queueId":null,"requestType":"inboundCall","to":"+13121000096"}';
+          '{"accountId":"AC0123456789abcdefABCDEF0123456789abcdef00","callId":"CA0123456789abcdefABCDEF0123456789abcdef00","callStatus":"ringing","conferenceId":null,"direction":"inbound","from":"+13121000109","parentCallId":null,"queueId":null,"requestType":"inboundCall","to":"+13121000096"}';
         const signingSecret: string =
           "sigsec_ead6d3b6904196c60835d039e91b3341c77a7793";
         const requestHeader: string = "";
@@ -86,10 +86,10 @@ describe("RequestVerifier", () => {
       test("throws 'Signing secret cannot be empty or null'", () => {
         const tolerance: number = 5 * 60;
         const requestBody: string =
-          '{"accountId":"AC1334ffb694cd8d969f51cddf5f7c9b478546d50c","callId":"CAccb0b00506553cda09b51c5477f672a49e0b2213","callStatus":"ringing","conferenceId":null,"direction":"inbound","from":"+13121000109","parentCallId":null,"queueId":null,"requestType":"inboundCall","to":"+13121000096"}';
+          '{"accountId":"AC0123456789abcdefABCDEF0123456789abcdef00","callId":"CA0123456789abcdefABCDEF0123456789abcdef00","callStatus":"ringing","conferenceId":null,"direction":"inbound","from":"+13121000109","parentCallId":null,"queueId":null,"requestType":"inboundCall","to":"+13121000096"}';
         const signingSecret: string = "";
         const requestHeader: string =
-          "t=1679944186,v1=c3957749baf61df4b1506802579cc69a74c77a1ae21447b930e5a704f9ec4120,v1=1ba18712726898fbbe48cd862dd096a709f7ad761a5bab14bda9ac24d963a6a8";
+          "t=1679944186,v1=2f33654710a27e57828fa8556c2ed47c7a324aca88f155e296579e2ae851ce7b,v1=1ba18712726898fbbe48cd862dd096a709f7ad761a5bab14bda9ac24d963a6a8";
         expect(() => {
           RequestVerifier.verifyRequestSignature(
             requestBody,
@@ -107,11 +107,11 @@ describe("RequestVerifier", () => {
       test("throws 'Tolerance value must be a positive integer'", () => {
         const tolerance: number = NaN;
         const requestBody: string =
-          '{"accountId":"AC1334ffb694cd8d969f51cddf5f7c9b478546d50c","callId":"CAccb0b00506553cda09b51c5477f672a49e0b2213","callStatus":"ringing","conferenceId":null,"direction":"inbound","from":"+13121000109","parentCallId":null,"queueId":null,"requestType":"inboundCall","to":"+13121000096"}';
+          '{"accountId":"AC0123456789abcdefABCDEF0123456789abcdef00","callId":"CA0123456789abcdefABCDEF0123456789abcdef00","callStatus":"ringing","conferenceId":null,"direction":"inbound","from":"+13121000109","parentCallId":null,"queueId":null,"requestType":"inboundCall","to":"+13121000096"}';
         const signingSecret: string =
           "sigsec_ead6d3b6904196c60835d039e91b3341c77a7793";
         const requestHeader: string =
-          "t=1679944186,v1=c3957749baf61df4b1506802579cc69a74c77a1ae21447b930e5a704f9ec4120,v1=1ba18712726898fbbe48cd862dd096a709f7ad761a5bab14bda9ac24d963a6a8";
+          "t=1679944186,v1=2f33654710a27e57828fa8556c2ed47c7a324aca88f155e296579e2ae851ce7b,v1=1ba18712726898fbbe48cd862dd096a709f7ad761a5bab14bda9ac24d963a6a8";
         expect(() => {
           RequestVerifier.verifyRequestSignature(
             requestBody,
@@ -126,11 +126,11 @@ describe("RequestVerifier", () => {
       test("throws 'Tolerance value must be a positive integer'", () => {
         const tolerance: number = -5;
         const requestBody: string =
-          '{"accountId":"AC1334ffb694cd8d969f51cddf5f7c9b478546d50c","callId":"CAccb0b00506553cda09b51c5477f672a49e0b2213","callStatus":"ringing","conferenceId":null,"direction":"inbound","from":"+13121000109","parentCallId":null,"queueId":null,"requestType":"inboundCall","to":"+13121000096"}';
+          '{"accountId":"AC0123456789abcdefABCDEF0123456789abcdef00","callId":"CA0123456789abcdefABCDEF0123456789abcdef00","callStatus":"ringing","conferenceId":null,"direction":"inbound","from":"+13121000109","parentCallId":null,"queueId":null,"requestType":"inboundCall","to":"+13121000096"}';
         const signingSecret: string =
           "sigsec_ead6d3b6904196c60835d039e91b3341c77a7793";
         const requestHeader: string =
-          "t=1679944186,v1=c3957749baf61df4b1506802579cc69a74c77a1ae21447b930e5a704f9ec4120,v1=1ba18712726898fbbe48cd862dd096a709f7ad761a5bab14bda9ac24d963a6a8";
+          "t=1679944186,v1=2f33654710a27e57828fa8556c2ed47c7a324aca88f155e296579e2ae851ce7b,v1=1ba18712726898fbbe48cd862dd096a709f7ad761a5bab14bda9ac24d963a6a8";
         expect(() => {
           RequestVerifier.verifyRequestSignature(
             requestBody,
@@ -145,11 +145,11 @@ describe("RequestVerifier", () => {
       test("throws 'Tolerance value must be a positive integer'", () => {
         const tolerance: number = 0;
         const requestBody: string =
-          '{"accountId":"AC1334ffb694cd8d969f51cddf5f7c9b478546d50c","callId":"CAccb0b00506553cda09b51c5477f672a49e0b2213","callStatus":"ringing","conferenceId":null,"direction":"inbound","from":"+13121000109","parentCallId":null,"queueId":null,"requestType":"inboundCall","to":"+13121000096"}';
+          '{"accountId":"AC0123456789abcdefABCDEF0123456789abcdef00","callId":"CA0123456789abcdefABCDEF0123456789abcdef00","callStatus":"ringing","conferenceId":null,"direction":"inbound","from":"+13121000109","parentCallId":null,"queueId":null,"requestType":"inboundCall","to":"+13121000096"}';
         const signingSecret: string =
           "sigsec_ead6d3b6904196c60835d039e91b3341c77a7793";
         const requestHeader: string =
-          "t=1679944186,v1=c3957749baf61df4b1506802579cc69a74c77a1ae21447b930e5a704f9ec4120,v1=1ba18712726898fbbe48cd862dd096a709f7ad761a5bab14bda9ac24d963a6a8";
+          "t=1679944186,v1=2f33654710a27e57828fa8556c2ed47c7a324aca88f155e296579e2ae851ce7b,v1=1ba18712726898fbbe48cd862dd096a709f7ad761a5bab14bda9ac24d963a6a8";
         expect(() => {
           RequestVerifier.verifyRequestSignature(
             requestBody,
@@ -164,11 +164,11 @@ describe("RequestVerifier", () => {
       test("throws 'Tolerance value must be a positive integer'", () => {
         const tolerance: number = Number.MAX_SAFE_INTEGER;
         const requestBody: string =
-          '{"accountId":"AC1334ffb694cd8d969f51cddf5f7c9b478546d50c","callId":"CAccb0b00506553cda09b51c5477f672a49e0b2213","callStatus":"ringing","conferenceId":null,"direction":"inbound","from":"+13121000109","parentCallId":null,"queueId":null,"requestType":"inboundCall","to":"+13121000096"}';
+          '{"accountId":"AC0123456789abcdefABCDEF0123456789abcdef00","callId":"CA0123456789abcdefABCDEF0123456789abcdef00","callStatus":"ringing","conferenceId":null,"direction":"inbound","from":"+13121000109","parentCallId":null,"queueId":null,"requestType":"inboundCall","to":"+13121000096"}';
         const signingSecret: string =
           "sigsec_ead6d3b6904196c60835d039e91b3341c77a7793";
         const requestHeader: string =
-          "t=1679944186,v1=c3957749baf61df4b1506802579cc69a74c77a1ae21447b930e5a704f9ec4120,v1=1ba18712726898fbbe48cd862dd096a709f7ad761a5bab14bda9ac24d963a6a8";
+          "t=1679944186,v1=2f33654710a27e57828fa8556c2ed47c7a324aca88f155e296579e2ae851ce7b,v1=1ba18712726898fbbe48cd862dd096a709f7ad761a5bab14bda9ac24d963a6a8";
         expect(() => {
           RequestVerifier.verifyRequestSignature(
             requestBody,
@@ -188,7 +188,7 @@ describe("RequestVerifier", () => {
         const timeCalcuation: number = currentTime - 6 * 60 * 1000;
         const tolerance: number = 5 * 60 * 1000;
         const requestBody: string =
-          '{"accountId":"AC1334ffb694cd8d969f51cddf5f7c9b478546d50c","callId":"CAccb0b00506553cda09b51c5477f672a49e0b2213","callStatus":"ringing","conferenceId":null,"direction":"inbound","from":"+13121000109","parentCallId":null,"queueId":null,"requestType":"inboundCall","to":"+13121000096"}';
+          '{"accountId":"AC0123456789abcdefABCDEF0123456789abcdef00","callId":"CA0123456789abcdefABCDEF0123456789abcdef00","callStatus":"ringing","conferenceId":null,"direction":"inbound","from":"+13121000109","parentCallId":null,"queueId":null,"requestType":"inboundCall","to":"+13121000096"}';
         const signingSecret: string =
           "sigsec_ead6d3b6904196c60835d039e91b3341c77a7793";
         const requestHeader: string =
@@ -220,13 +220,13 @@ describe("RequestVerifier", () => {
         const currentTime = moment().unix();
         const tolerance: number = 5 * 60;
         const requestBody: string =
-          '{"accountId":"AC1334ffb694cd8d969f51cddf5f7c9b478546d50c","callId":"CAccb0b00506553cda09b51c5477f672a49e0b2213","callStatus":"ringing","conferenceId":null,"direction":"inbound","from":"+13121000109","parentCallId":null,"queueId":null,"requestType":"inboundCall","to":"+13121000096"}';
+          '{"accountId":"AC0123456789abcdefABCDEF0123456789abcdef00","callId":"CA0123456789abcdefABCDEF0123456789abcdef00","callStatus":"ringing","conferenceId":null,"direction":"inbound","from":"+13121000109","parentCallId":null,"queueId":null,"requestType":"inboundCall","to":"+13121000096"}';
         const signingSecret: string =
           "sigsec_ead6d3b6904196c60835d039e91b3341c77a7794";
         const requestHeader: string =
           "t=" +
           currentTime.toString() +
-          ",v1=c3957749baf61df4b1506802579cc69a74c77a1ae21447b930e5a704f9ec4120,v1=1ba18712726898fbbe48cd862dd096a709f7ad761a5bab14bda9ac24d963a6a8";
+          ",v1=2f33654710a27e57828fa8556c2ed47c7a324aca88f155e296579e2ae851ce7b,v1=1ba18712726898fbbe48cd862dd096a709f7ad761a5bab14bda9ac24d963a6a8";
         expect(() => {
           RequestVerifier.verifyRequestSignature(
             requestBody,
@@ -246,11 +246,11 @@ describe("RequestVerifier", () => {
       test("No errors are thrown", () => {
         const tolerance: number = 5 * 60;
         const requestBody: string =
-          '{"accountId":"AC1334ffb694cd8d969f51cddf5f7c9b478546d50c","callId":"CAccb0b00506553cda09b51c5477f672a49e0b2213","callStatus":"ringing","conferenceId":null,"direction":"inbound","from":"+13121000109","parentCallId":null,"queueId":null,"requestType":"inboundCall","to":"+13121000096"}';
+          '{"accountId":"AC0123456789abcdefABCDEF0123456789abcdef00","callId":"CA0123456789abcdefABCDEF0123456789abcdef00","callStatus":"ringing","conferenceId":null,"direction":"inbound","from":"+13121000109","parentCallId":null,"queueId":null,"requestType":"inboundCall","to":"+13121000096"}';
         const signingSecret: string =
           "sigsec_ead6d3b6904196c60835d039e91b3341c77a7793";
         const requestHeader: string =
-          "t=2130000000,v1=c3957749baf61df4b1506802579cc69a74c77a1ae21447b930e5a704f9ec4120,v1=6835006e70c9b9f610e8fb3a8b36b52b3f28c12d0a2dab75091c46ca7ec11b20";
+          "t=2130000000,v1=2f33654710a27e57828fa8556c2ed47c7a324aca88f155e296579e2ae851ce7b,v1=7239961b8aa1212ed50408e206602d0d6b13590f48fcab22dd1aae47069e8820";
         expect(() => {
           RequestVerifier.verifyRequestSignature(
             requestBody,
