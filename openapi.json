@@ -25,7 +25,7 @@
         "schema": {
           "type": "string",
           "pattern": "AC[0-9a-fA-F]{40}",
-          "example": "AC170e4c66d358aa1755931da0452561933d1b8fd5"
+          "example": "AC0123456789abcdefABCDEF0123456789abcdef00"
         }
       },
       "Capabilities.Voice": {
@@ -85,13 +85,13 @@
       "accountId": {
         "type": "string",
         "pattern": "AC[0-9a-fA-F]{40}",
-        "example": "AC0534faec6b32da45f36166674d65b3903f784141"
+        "example": "AC0123456789abcdefABCDEF0123456789abcdef01"
       },
       "blobId": {
         "type": "string",
         "description": "Identifier which can be used to reference this blob in future interations.",
         "pattern": "BL[0-9a-fA-F]{40}",
-        "example": "BL88615a9b4ca7e9aad57d9057773fc74268b9caf7"
+        "example": "BL0123456789abcdefABCDEF0123456789abcdef02"
       },
       "AccountStatus": {
         "type": "string",
@@ -2832,11 +2832,13 @@
         "properties": {
           "alias": {
             "type": "string",
-            "description": "Description for this account."
+            "description": "Description for this account.",
+            "example": "My Account"
           },
           "label": {
             "type": "string",
-            "description": "Group to which this account belongs."
+            "description": "Group to which this account belongs.",
+            "example": "My Label"
           }
         }
       },
@@ -2951,43 +2953,50 @@
         "properties": {
           "alias": {
             "type": "string",
-            "description": "A human readable description of the application, with maximum length 64 characters."
+            "description": "A human readable description of the application, with maximum length 64 characters.",
+            "example": "Customer Support Line"
           },
           "voiceUrl": {
             "type": "string",
             "description": "The URL that FreeClimb will request when an inbound call arrives on a phone number assigned to this application. Used only for inbound calls.",
             "format": "uri",
-            "nullable": true
+            "nullable": true,
+            "example": "https://www.myapp.com/voice"
           },
           "voiceFallbackUrl": {
             "type": "string",
             "description": "The URL that FreeClimb will request if it times out waiting for a response from the voiceUrl. Used for inbound calls only. Note: A PerCL response is expected to control the inbound call.",
             "format": "uri",
-            "nullable": true
+            "nullable": true,
+            "example": "https://www.myapp.com/voiceFallback"
           },
           "callConnectUrl": {
             "type": "string",
             "description": "The URL that FreeClimb will request when an outbound call request is complete. Used for outbound calls only.  Note: A PerCL response is expected if the outbound call is connected (status=InProgress) to control the call.",
             "format": "uri",
-            "nullable": true
+            "nullable": true,
+            "example": "https://www.myapp.com/callConnect"
           },
           "statusCallbackUrl": {
             "type": "string",
             "description": "The URL that FreeClimb will request to pass call status (such as call ended) to the application.  Note: This is a notification only; any PerCL returned will be ignored.",
             "format": "uri",
-            "nullable": true
+            "nullable": true,
+            "example": "https://www.myapp.com/status"
           },
           "smsUrl": {
             "type": "string",
             "description": "The URL that FreeClimb will request when a phone number assigned to this application receives an incoming SMS message. Used for inbound SMS only.  Note: Any PerCL returned will be ignored.",
             "format": "uri",
-            "nullable": true
+            "nullable": true,
+            "example": "https://www.myapp.com/sms"
           },
           "smsFallbackUrl": {
             "type": "string",
             "description": "The URL that FreeClimb will request if it times out waiting for a response from the smsUrl. Used for inbound SMS only.  Note: Any PerCL returned will be ignored.",
             "format": "uri",
-            "nullable": true
+            "nullable": true,
+            "example": "https://www.myapp.com/smsFallback"
           }
         }
       },
@@ -3155,16 +3164,19 @@
         "properties": {
           "applicationId": {
             "type": "string",
-            "description": "ID of the Application that should handle calls to this number."
+            "description": "ID of the Application that should handle calls to this number.",
+            "example": "AP0123456789abcdefABCDEF0123456789abcdef03"
           },
           "alias": {
             "type": "string",
-            "description": "Description for this phone number."
+            "description": "Description for this phone number.",
+            "example": "Main Office Line"
           },
           "campaignId": {
             "type": "string",
             "description": "The campaign ID generated by the campaign registry",
-            "nullable": true
+            "nullable": true,
+            "example": "CX56XX4"
           }
         }
       },
@@ -3193,15 +3205,18 @@
         "properties": {
           "phoneNumber": {
             "type": "string",
-            "description": "Phone number to purchase in E.164 format (as returned in the list of Available Phone Numbers)."
+            "description": "Phone number to purchase in E.164 format (as returned in the list of Available Phone Numbers).",
+            "example": "+12025551234"
           },
           "alias": {
             "type": "string",
-            "description": "Description for this new incoming phone number (max 64 characters)."
+            "description": "Description for this new incoming phone number (max 64 characters).",
+            "example": "Main Office Line"
           },
           "applicationId": {
             "type": "string",
-            "description": "ID of the application that should handle phone calls to the number."
+            "description": "ID of the application that should handle phone calls to the number.",
+            "example": "AP0123456789abcdefABCDEF0123456789abcdef03"
           }
         }
       },
@@ -3364,47 +3379,57 @@
         "properties": {
           "from": {
             "type": "string",
-            "description": "Phone number to use as the caller ID. This can be: (a) The To or From number provided in FreeClimb's initial request to your app or (b) Any incoming phone number you have purchased from FreeClimb."
+            "description": "Phone number to use as the caller ID. This can be: (a) The To or From number provided in FreeClimb's initial request to your app or (b) Any incoming phone number you have purchased from FreeClimb.",
+            "example": "+12025551234"
           },
           "to": {
             "type": "string",
-            "description": "Phone number to place the Call to."
+            "description": "Phone number to place the Call to.",
+            "example": "+13035559876"
           },
           "applicationId": {
             "type": "string",
-            "description": "Required if no `parentCallId` or `callConnectUrl` has been provided. ID of the application FreeClimb should use to handle this phone call. FreeClimb will use the `callConnectUrl` and `statusCallbackUrl` set on the application unless the `callConnectUrl` attribute is also provided with the request. In this case, the URL specified in that `callConnectUrl` attribute will be used as a replacement of the `callConnectUrl` originally assigned in the application. If the `callConnectUrl` is not set as either an attribute of the request or as part of the specified application, an error will be provided. The application’s voiceUrl parameter is not used for outbound calls."
+            "description": "Required if no `parentCallId` or `callConnectUrl` has been provided. ID of the application FreeClimb should use to handle this phone call. FreeClimb will use the `callConnectUrl` and `statusCallbackUrl` set on the application unless the `callConnectUrl` attribute is also provided with the request. In this case, the URL specified in that `callConnectUrl` attribute will be used as a replacement of the `callConnectUrl` originally assigned in the application. If the `callConnectUrl` is not set as either an attribute of the request or as part of the specified application, an error will be provided. The application’s voiceUrl parameter is not used for outbound calls.",
+            "example": "AP0123456789abcdefABCDEF0123456789abcdef03"
           },
           "sendDigits": {
             "type": "string",
-            "description": "String of digits to dial after connecting to the number. It can include digits `0-9`, `*`, and `#`, and allows embedding a pause between the output of individual digits. The default pause is 500 milliseconds. So, a string such as *1234#* will be played in 2 seconds because of the 4 standard pauses implied within the string. A custom pause is specified by including a positive integer wrapped in curly braces: {n}. For more information, see **sendDigits examples** below."
+            "description": "String of digits to dial after connecting to the number. It can include digits `0-9`, `*`, and `#`, and allows embedding a pause between the output of individual digits. The default pause is 500 milliseconds. So, a string such as *1234#* will be played in 2 seconds because of the 4 standard pauses implied within the string. A custom pause is specified by including a positive integer wrapped in curly braces: {n}. For more information, see **sendDigits examples** below.",
+            "example": "1234#"
           },
           "ifMachine": {
             "type": "string",
-            "description": "Specifies how FreeClimb should handle this Call if an answering machine answers it."
+            "description": "Specifies how FreeClimb should handle this Call if an answering machine answers it.",
+            "example": "redirect"
           },
           "ifMachineUrl": {
             "type": "string",
             "description": "This attribute specifies a URL to which FreeClimb will make a POST request when an answering machine or a fax machine is detected. This URL is required if the ifMachine flag is set to redirect. When ifMachine is set to hangup, ifMachineUrl must not be included in the request. For more information, see **ifMachineUrl example** below.",
-            "format": "uri"
+            "format": "uri",
+            "example": "https://www.myapp.com/ifMachine"
           },
           "timeout": {
             "type": "integer",
             "description": "Number of seconds that FreeClimb should allow the phone to ring before assuming there is no answer. Default is 30 seconds. Maximum allowed ring-time is determined by the target phone's provider. Note that most providers limit ring-time to 120 seconds.",
             "default": 30,
-            "format": "int32"
+            "format": "int32",
+            "example": 30
           },
           "parentCallId": {
             "type": "string",
-            "description": "Required if no `applicationId` or `callConnectUrl` has been provided. The ID of the parent Call in the case that this new Call is meant to be treated as a child of an existing Call. This attribute should be included when possible to reduce latency when adding child calls to Conferences containing the parent Call. A call can only be used as a parent once the call is in progress or as an inbound call that is still ringing. An outbound call is considered to be in progress once the `outdialConnect` or `outdialApiConnect` webhook is invoked. An inbound call is ringing when the inbound webhook is invoked. If a `callConnectUrl` attribute is also included with the `parentCallId` in the request, this URL will be used as a replacement of the `callConnectUrl` originally assigned in the parent call."
+            "description": "Required if no `applicationId` or `callConnectUrl` has been provided. The ID of the parent Call in the case that this new Call is meant to be treated as a child of an existing Call. This attribute should be included when possible to reduce latency when adding child calls to Conferences containing the parent Call. A call can only be used as a parent once the call is in progress or as an inbound call that is still ringing. An outbound call is considered to be in progress once the `outdialConnect` or `outdialApiConnect` webhook is invoked. An inbound call is ringing when the inbound webhook is invoked. If a `callConnectUrl` attribute is also included with the `parentCallId` in the request, this URL will be used as a replacement of the `callConnectUrl` originally assigned in the parent call.",
+            "example": "CA0123456789abcdefABCDEF0123456789abcdef04"
           },
           "privacyMode": {
             "type": "boolean",
-            "description": "Activate privacy mode in order to obscure log data that can potentially expose private information."
+            "description": "Activate privacy mode in order to obscure log data that can potentially expose private information.",
+            "example": false
           },
           "callConnectUrl": {
             "type": "string",
             "description": "The URL that FreeClimb should use to handle this phone call. If an applicationId or parentCallId have already been provided, this callConnectUrl attribute will be used as a replacement of the callConnectUrl originally assigned in the application or parent call.",
-            "format": "uri"
+            "format": "uri",
+            "example": "https://www.myapp.com/callConnect"
           }
         }
       },
@@ -3633,20 +3658,24 @@
             "properties": {
               "from": {
                 "type": "string",
-                "description": "Phone number to use as the sender. This must be an incoming phone number that you have purchased from FreeClimb."
+                "description": "Phone number to use as the sender. This must be an incoming phone number that you have purchased from FreeClimb.",
+                "example": "+12025551234"
               },
               "to": {
                 "type": "string",
-                "description": "Phone number to receive the message. Must be within FreeClimb's service area."
+                "description": "Phone number to receive the message. Must be within FreeClimb's service area.",
+                "example": "+13035559876"
               },
               "text": {
                 "type": "string",
-                "description": "Text contained in the message (maximum 160 characters).   **Note:** For text, only ASCII characters are supported."
+                "description": "Text contained in the message (maximum 160 characters).   **Note:** For text, only ASCII characters are supported.",
+                "example": "Hello from FreeClimb!"
               },
               "notificationUrl": {
                 "type": "string",
                 "description": "When the Message changes status, this URL is invoked using HTTP POST with the messageStatus parameters.  **Note:** This is a notification only; any PerCL returned is ignored.",
-                "format": "uri"
+                "format": "uri",
+                "example": "https://www.myapp.com/messageStatus"
               },
               "mediaUrls": {
                 "type": "array",
@@ -3655,7 +3684,8 @@
                   "type": "string",
                   "format": "uri"
                 },
-                "nullable": true
+                "nullable": true,
+                "example": ["https://www.myapp.com/image.jpg"]
               }
             }
           }
@@ -3668,7 +3698,8 @@
           "query": {
             "type": "string",
             "maxLength": 2000,
-            "description": "Question to ask the Knowledge Base"
+            "description": "Question to ask the Knowledge Base",
+            "example": "What are your business hours?"
           }
         }
       },
@@ -3850,24 +3881,28 @@
         "properties": {
           "alias": {
             "type": "string",
-            "description": "A description for this Conference. Maximum 64 characters."
+            "description": "A description for this Conference. Maximum 64 characters.",
+            "example": "Customer Conference"
           },
           "playBeep": {
             "$ref": "#/components/schemas/PlayBeep"
           },
           "record": {
             "type": "boolean",
-            "description": "Setting to `true` records the entire Conference."
+            "description": "Setting to `true` records the entire Conference.",
+            "example": false
           },
           "waitUrl": {
             "type": "string",
             "description": "If specified, a URL for the audio file that provides custom hold music for the Conference when it is in the populated state. Otherwise, FreeClimb uses a system default audio file. This is always fetched using HTTP GET and is fetched just once &mdash; when the Conference is created.",
-            "format": "uri"
+            "format": "uri",
+            "example": "https://www.myapp.com/waitMusic"
           },
           "statusCallbackUrl": {
             "type": "string",
             "description": "This URL is invoked when the status of the Conference changes. For more information, see **statusCallbackUrl** (below).",
-            "format": "uri"
+            "format": "uri",
+            "example": "https://www.myapp.com/conferenceStatus"
           }
         }
       },
@@ -3876,7 +3911,8 @@
         "properties": {
           "alias": {
             "type": "string",
-            "description": "Description for this conference. Maximum 64 characters."
+            "description": "Description for this conference. Maximum 64 characters.",
+            "example": "Customer Conference"
           },
           "playBeep": {
             "$ref": "#/components/schemas/PlayBeep"
@@ -3938,15 +3974,18 @@
         "properties": {
           "talk": {
             "type": "boolean",
-            "description": "(Optional) Default is `true`. Setting to `false` mutes the Participant. FreeClimb returns an error and ignores any other value."
+            "description": "(Optional) Default is `true`. Setting to `false` mutes the Participant. FreeClimb returns an error and ignores any other value.",
+            "example": true
           },
           "listen": {
             "type": "boolean",
-            "description": "(Optional) Default is `true`. Setting to `false` silences the Conference for this Participant. FreeClimb returns an error and ignores any other value."
+            "description": "(Optional) Default is `true`. Setting to `false` silences the Conference for this Participant. FreeClimb returns an error and ignores any other value.",
+            "example": true
           },
           "dtmfPassThrough": {
             "type": "boolean",
-            "description": "(Optional) Default is `true`. Setting to `false` mutes dtmf audio for this Participant. FreeClimb returns an error and ignores any other value."
+            "description": "(Optional) Default is `true`. Setting to `false` mutes dtmf audio for this Participant. FreeClimb returns an error and ignores any other value.",
+            "example": true
           }
         }
       },
@@ -4026,13 +4065,15 @@
         "properties": {
           "alias": {
             "type": "string",
-            "description": "Description for this Queue. Max length is 64 characters."
+            "description": "Description for this Queue. Max length is 64 characters.",
+            "example": "Support Queue"
           },
           "maxSize": {
             "type": "integer",
             "description": "Maximum number of calls this queue can hold. Default is 100. Maximum is 1000. **Note:** Reducing the maxSize of a Queue causes the Queue to reject incoming requests until it shrinks below the new value of maxSize.",
             "default": 100,
-            "format": "int32"
+            "format": "int32",
+            "example": 100
           }
         }
       },
@@ -4110,7 +4151,8 @@
         "properties": {
           "pql": {
             "type": "string",
-            "description": "The filter query for retrieving logs. See **Performance Query Language** below."
+            "description": "The filter query for retrieving logs. See **Performance Query Language** below.",
+            "example": "2020-06-22T19:42:53.376Z < timestamp < 2020-06-23T19:42:53.376Z"
           }
         }
       },
@@ -4333,7 +4375,7 @@
         },
         "example": {
           "campaignId": "CX56XX4",
-          "accountId": "ACe39970fb7c31c747c67148900b4d9da60a41e532",
+          "accountId": "AC0123456789abcdefABCDEF0123456789abcdef05",
           "cspId": "SX56XX4",
           "brandId": "BX56XX4",
           "usecase": "2FA",
@@ -4533,7 +4575,7 @@
         },
         "example": {
           "campaignId": "CX56XX4",
-          "accountId": "ACe39970fb7c31c747c67148900b4d9da60a41e532",
+          "accountId": "AC0123456789abcdefABCDEF0123456789abcdef05",
           "brandId": "BX56XX4",
           "usecase": "2FA",
           "description": "mock campaign.",
@@ -4832,7 +4874,7 @@
         "example": {
           "mock": true,
           "optionalAttributes": {},
-          "accountId": "AC1234512345123451234512345123451234512345",
+          "accountId": "AC0123456789abcdefABCDEF0123456789abcdef06",
           "brandId": "BVCEBIJ",
           "cspId": "SKGC6G0",
           "firstName": "",
@@ -5128,12 +5170,12 @@
           }
         },
         "example": {
-          "accountId": "AC3ff5d5aed7fde9e6659673d850cbd18ea8bfca78",
-          "uri": "/Accounts/AC3ff5d5aed7fde9e6659673d850cbd18ea8bfca78/Exports/EX4d7500862e3abf4b9f4da24d54f559d3024252f8",
+          "accountId": "AC0123456789abcdefABCDEF0123456789abcdef07",
+          "uri": "/Accounts/AC0123456789abcdefABCDEF0123456789abcdef07/Exports/EX0123456789abcdefABCDEF0123456789abcdef08",
           "dateCreated": "Wed, 26 Jun 2024 15:45:06 UTC",
           "dateUpdated": "Wed, 26 Jun 2024 15:45:06 UTC",
           "revision": 1,
-          "exportId": "EX4d7500862e3abf4b9f4da24d54f559d3024252f8",
+          "exportId": "EX0123456789abcdefABCDEF0123456789abcdef08",
           "status": "completed",
           "size": 12893786,
           "resourceType": "Messages",
@@ -5176,13 +5218,17 @@
             "type": "array",
             "items": {
               "type": "string"
-            }
+            },
+            "example": ["messageId", "dateUpdated", "status"]
           },
           "output": {
             "$ref": "#/components/schemas/ExportRequestOutput"
           },
           "query": {
-            "type": "object"
+            "type": "object",
+            "example": {
+              "direction": "inbound"
+            }
           }
         }
       },
@@ -5193,7 +5239,8 @@
           "alias": {
             "type": "string",
             "description": "Custom identifier for this blob that is unique for the owning account. It will be set to the blobId by default if not provided.",
-            "maxLength": 64
+            "maxLength": 64,
+            "example": "customer-profile"
           },
           "expiresAt": {
             "type": "string",
@@ -5201,7 +5248,11 @@
             "example": "2006-01-02T15:04:05.000Z"
           },
           "blob": {
-            "type": "object"
+            "type": "object",
+            "example": {
+              "firstName": "John",
+              "lastName": "Doe"
+            }
           }
         },
         "additionalProperties": false
@@ -5211,12 +5262,17 @@
         "required": ["blob"],
         "properties": {
           "blob": {
-            "type": "object"
+            "type": "object",
+            "example": {
+              "firstName": "John",
+              "lastName": "Doe"
+            }
           },
           "alias": {
             "type": "string",
             "description": "Custom identifier for this blob that is unique for the owning account. It will be set to the blobId by default if not provided.",
-            "maxLength": 64
+            "maxLength": 64,
+            "example": "customer-profile"
           }
         }
       },
@@ -5225,7 +5281,11 @@
         "required": ["blob"],
         "properties": {
           "blob": {
-            "type": "object"
+            "type": "object",
+            "example": {
+              "firstName": "John",
+              "lastName": "Doe"
+            }
           }
         }
       },
@@ -6247,7 +6307,8 @@
               "maxItems": 16,
               "items": {
                 "type": "string",
-                "pattern": "^AP[0-9a-fA-F]{40}$"
+                "pattern": "^AP[0-9a-fA-F]{40}$",
+                "example": "AP0123456789abcdefABCDEF0123456789abcdef03"
               }
             }
           },
@@ -7639,7 +7700,7 @@
                   "campaigns": [
                     {
                       "campaignId": "C3TMRFL",
-                      "accountId": "ACe39970fb7c31c747c67148900b4d9da60a41e532",
+                      "accountId": "AC0123456789abcdefABCDEF0123456789abcdef05",
                       "cspId": "SKGC6G0",
                       "brandId": "BVCEBIJ",
                       "usecase": "2FA",
@@ -7751,7 +7812,7 @@
                   "sharedCampaigns": [
                     {
                       "campaignId": "CX56XX4",
-                      "accountId": "ACe39970fb7c31c747c67148900b4d9da60a41e532",
+                      "accountId": "AC0123456789abcdefABCDEF0123456789abcdef05",
                       "brandId": "BX56XX4",
                       "usecase": "2FA",
                       "description": "mock campaign.",
@@ -7864,7 +7925,7 @@
                     {
                       "mock": true,
                       "optionalAttributes": {},
-                      "accountId": "AC1234512345123451234512345123451234512345",
+                      "accountId": "AC0123456789abcdefABCDEF0123456789abcdef06",
                       "brandId": "BVCEBIJ",
                       "cspId": "SKGC6G0",
                       "firstName": "",
@@ -7963,7 +8024,7 @@
                   "nextPageUri": null,
                   "tfnCampaigns": [
                     {
-                      "accountId": "ACe39970fb7c31c747c67148900b4d9da60a41e532",
+                      "accountId": "AC0123456789abcdefABCDEF0123456789abcdef05",
                       "campaignId": "cmptfn_387ec3f6e03b340553f35f29c8f118cdf3eae08a",
                       "useCase": "example use case",
                       "registrationStatus": "PENDING",
@@ -8208,8 +8269,8 @@
                   "nextPageUri": null,
                   "blobs": [
                     {
-                      "blobId": "BL387ec3f6e03b340553f35f29c8f118cdf3eae08a",
-                      "accountId": "AC3ff5d5aed7fde9e6659673d850cbd18ea8bfca78",
+                      "blobId": "BL0123456789abcdefABCDEF0123456789abcdef09",
+                      "accountId": "AC0123456789abcdefABCDEF0123456789abcdef07",
                       "alias": "my-blob-alias",
                       "revision": 1,
                       "dateCreated": "2006-01-02T15:04:05.000Z",
@@ -8222,8 +8283,8 @@
                       }
                     },
                     {
-                      "blobId": "BL487ec3f6e03b340553f35f29c8f118cdf3eae08b",
-                      "accountId": "AC3ff5d5aed7fde9e6659673d850cbd18ea8bfca78",
+                      "blobId": "BL0123456789abcdefABCDEF0123456789abcdef0a",
+                      "accountId": "AC0123456789abcdefABCDEF0123456789abcdef07",
                       "alias": "another-blob",
                       "revision": 1,
                       "dateCreated": "2006-01-02T16:04:05.000Z",
@@ -8343,9 +8404,9 @@
                       "revision": 1,
                       "dateCreated": "2025-01-02T15:04:05.000Z",
                       "dateUpdated": "2025-01-02T15:04:05.000Z",
-                      "accountId": "AC387ec3f6e03b340553f35f29c8f118cdf3eae08a",
-                      "alias": "BL387ec3f6e03b340553f35f29c8f118cdf3eae08a",
-                      "blobId": "BL387ec3f6e03b340553f35f29c8f118cdf3eae08a",
+                      "accountId": "AC0123456789abcdefABCDEF0123456789abcdef0b",
+                      "alias": "BL0123456789abcdefABCDEF0123456789abcdef09",
+                      "blobId": "BL0123456789abcdefABCDEF0123456789abcdef09",
                       "expiresAt": "2025-01-03T00:04:05.000Z",
                       "blob": {}
                     }
@@ -8355,9 +8416,9 @@
                       "revision": 1,
                       "dateCreated": "2025-01-02T15:04:05.000Z",
                       "dateUpdated": "2025-01-02T15:04:05.000Z",
-                      "accountId": "AC387ec3f6e03b340553f35f29c8f118cdf3eae08a",
-                      "alias": "BL387ec3f6e03b340553f35f29c8f118cdf3eae08a",
-                      "blobId": "BL387ec3f6e03b340553f35f29c8f118cdf3eae08a",
+                      "accountId": "AC0123456789abcdefABCDEF0123456789abcdef0b",
+                      "alias": "BL0123456789abcdefABCDEF0123456789abcdef09",
+                      "blobId": "BL0123456789abcdefABCDEF0123456789abcdef09",
                       "expiresAt": "2025-01-03T00:04:05.000Z",
                       "blob": {
                         "key0": "value0",
@@ -8374,9 +8435,9 @@
                       "revision": 1,
                       "dateCreated": "2025-01-02T15:04:05.000Z",
                       "dateUpdated": "2025-01-02T15:04:05.000Z",
-                      "accountId": "AC387ec3f6e03b340553f35f29c8f118cdf3eae08a",
+                      "accountId": "AC0123456789abcdefABCDEF0123456789abcdef0b",
                       "alias": "my_custom_blob_identifier",
-                      "blobId": "BL387ec3f6e03b340553f35f29c8f118cdf3eae08a",
+                      "blobId": "BL0123456789abcdefABCDEF0123456789abcdef09",
                       "expiresAt": "2025-01-03T00:04:05.000Z",
                       "blob": {
                         "key": "value"
@@ -8388,9 +8449,9 @@
                       "revision": 1,
                       "dateCreated": "2025-01-02T15:04:05.000Z",
                       "dateUpdated": "2025-01-02T15:04:05.000Z",
-                      "accountId": "AC387ec3f6e03b340553f35f29c8f118cdf3eae08a",
-                      "alias": "BL387ec3f6e03b340553f35f29c8f118cdf3eae08a",
-                      "blobId": "BL387ec3f6e03b340553f35f29c8f118cdf3eae08a",
+                      "accountId": "AC0123456789abcdefABCDEF0123456789abcdef0b",
+                      "alias": "BL0123456789abcdefABCDEF0123456789abcdef09",
+                      "blobId": "BL0123456789abcdefABCDEF0123456789abcdef09",
                       "expiresAt": "2025-01-04T15:04:05.060Z",
                       "blob": {
                         "key": 45
@@ -8402,8 +8463,8 @@
                       "revision": 1,
                       "dateCreated": "2025-01-02T15:04:05.000Z",
                       "dateUpdated": "2025-01-02T15:04:05.000Z",
-                      "accountId": "AC387ec3f6e03b340553f35f29c8f118cdf3eae08a",
-                      "blobId": "BL387ec3f6e03b340553f35f29c8f118cdf3eae08a",
+                      "accountId": "AC0123456789abcdefABCDEF0123456789abcdef0b",
+                      "blobId": "BL0123456789abcdefABCDEF0123456789abcdef09",
                       "alias": "my_custom_blob_identifier",
                       "expiresAt": "2025-01-04T15:04:05.060Z",
                       "blob": {
@@ -8492,8 +8553,8 @@
                   "$ref": "#/components/schemas/BlobResult"
                 },
                 "example": {
-                  "blobId": "BL387ec3f6e03b340553f35f29c8f118cdf3eae08a",
-                  "accountId": "AC3ff5d5aed7fde9e6659673d850cbd18ea8bfca78",
+                  "blobId": "BL0123456789abcdefABCDEF0123456789abcdef09",
+                  "accountId": "AC0123456789abcdefABCDEF0123456789abcdef07",
                   "alias": "my-blob-alias",
                   "revision": 1,
                   "dateCreated": "2006-01-02T15:04:05.000Z",
@@ -8566,8 +8627,8 @@
                   "$ref": "#/components/schemas/BlobResult"
                 },
                 "example": {
-                  "blobId": "BL387ec3f6e03b340553f35f29c8f118cdf3eae08a",
-                  "accountId": "AC3ff5d5aed7fde9e6659673d850cbd18ea8bfca78",
+                  "blobId": "BL0123456789abcdefABCDEF0123456789abcdef09",
+                  "accountId": "AC0123456789abcdefABCDEF0123456789abcdef07",
                   "alias": "new_conversation_id",
                   "revision": 2,
                   "dateCreated": "2006-01-02T15:04:05.000Z",
@@ -8627,8 +8688,8 @@
                   "$ref": "#/components/schemas/BlobResult"
                 },
                 "example": {
-                  "blobId": "BL387ec3f6e03b340553f35f29c8f118cdf3eae08a",
-                  "accountId": "AC3ff5d5aed7fde9e6659673d850cbd18ea8bfca78",
+                  "blobId": "BL0123456789abcdefABCDEF0123456789abcdef09",
+                  "accountId": "AC0123456789abcdefABCDEF0123456789abcdef07",
                   "alias": "new_conversation_id",
                   "revision": 2,
                   "dateCreated": "2006-01-02T15:04:05.000Z",

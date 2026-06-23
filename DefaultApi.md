@@ -93,9 +93,9 @@ const apiInstance = new freeclimb.DefaultApi(configuration);
 let body: freeclimb.DefaultApiBuyAPhoneNumberRequest = {
   // BuyIncomingNumberRequest | Incoming Number transaction details
   buyIncomingNumberRequest: {
-    phoneNumber: "phoneNumber_example",
-    alias: "alias_example",
-    applicationId: "applicationId_example",
+    phoneNumber: "+12025551234",
+    alias: "Main Office Line",
+    applicationId: "AP0123456789abcdefABCDEF0123456789abcdef03",
   },
 };
 
@@ -153,11 +153,11 @@ const apiInstance = new freeclimb.DefaultApi(configuration);
 let body: freeclimb.DefaultApiCreateAConferenceRequest = {
   // CreateConferenceRequest | Conference to create (optional)
   createConferenceRequest: {
-    alias: "alias_example",
+    alias: "Customer Conference",
     playBeep: "always",
-    record: true,
-    waitUrl: "waitUrl_example",
-    statusCallbackUrl: "statusCallbackUrl_example",
+    record: false,
+    waitUrl: "https://www.myapp.com/waitMusic",
+    statusCallbackUrl: "https://www.myapp.com/conferenceStatus",
   },
 };
 
@@ -215,7 +215,7 @@ const apiInstance = new freeclimb.DefaultApi(configuration);
 let body: freeclimb.DefaultApiCreateAQueueRequest = {
   // QueueRequest | Queue details used to create a queue (optional)
   queueRequest: {
-    alias: "alias_example",
+    alias: "Support Queue",
     maxSize: 100,
   },
 };
@@ -274,13 +274,13 @@ const apiInstance = new freeclimb.DefaultApi(configuration);
 let body: freeclimb.DefaultApiCreateAnApplicationRequest = {
   // ApplicationRequest | Application Details (optional)
   applicationRequest: {
-    alias: "alias_example",
-    voiceUrl: "voiceUrl_example",
-    voiceFallbackUrl: "voiceFallbackUrl_example",
-    callConnectUrl: "callConnectUrl_example",
-    statusCallbackUrl: "statusCallbackUrl_example",
-    smsUrl: "smsUrl_example",
-    smsFallbackUrl: "smsFallbackUrl_example",
+    alias: "Customer Support Line",
+    voiceUrl: "https://www.myapp.com/voice",
+    voiceFallbackUrl: "https://www.myapp.com/voiceFallback",
+    callConnectUrl: "https://www.myapp.com/callConnect",
+    statusCallbackUrl: "https://www.myapp.com/status",
+    smsUrl: "https://www.myapp.com/sms",
+    smsFallbackUrl: "https://www.myapp.com/smsFallback",
   },
 };
 
@@ -340,7 +340,7 @@ const apiInstance = new freeclimb.DefaultApi(configuration);
 let body: freeclimb.DefaultApiCreateBlobRequest = {
   // CreateBlobRequest | An object defining a new blob. A request body must be provided but the blob may be empty.
   createBlobRequest: {
-    alias: "alias_example",
+    alias: "customer-profile",
     expiresAt: "2006-01-02T15:04:05.000Z",
     blob: {},
   },
@@ -406,7 +406,7 @@ let body: freeclimb.DefaultApiCreateExportRequest = {
   // ExportRequest | A JSON object containing export creation parameters (optional)
   exportRequest: {
     resourceType: "Messages",
-    format: ["format_example"],
+    format: ["messageId", "dateUpdated", "status"],
     output: {
       type: "csv",
     },
@@ -471,7 +471,7 @@ let body: freeclimb.DefaultApiCreateKnowledgeBaseCompletionRequest = {
 
   // CompletionRequest | Completion request details (optional)
   completionRequest: {
-    query: "query_example",
+    query: "What are your business hours?",
   },
 };
 
@@ -755,7 +755,7 @@ const apiInstance = new freeclimb.DefaultApi(configuration);
 
 let body: freeclimb.DefaultApiDeleteBlobRequest = {
   // string | String that uniquely identifies this Blob resource.
-  blobId: "BL88615a9b4ca7e9aad57d9057773fc74268b9caf7",
+  blobId: "BL0123456789abcdefABCDEF0123456789abcdef02",
 };
 
 apiInstance
@@ -1045,7 +1045,7 @@ const apiInstance = new freeclimb.DefaultApi(configuration);
 let body: freeclimb.DefaultApiFilterLogsRequest = {
   // FilterLogsRequest | Filter logs request paramters
   filterLogsRequest: {
-    pql: "pql_example",
+    pql: "2020-06-22T19:42:53.376Z < timestamp < 2020-06-23T19:42:53.376Z",
   },
 };
 
@@ -1721,7 +1721,7 @@ const apiInstance = new freeclimb.DefaultApi(configuration);
 
 let body: freeclimb.DefaultApiGetBlobRequest = {
   // string | String that uniquely identifies this Blob resource.
-  blobId: "BL88615a9b4ca7e9aad57d9057773fc74268b9caf7",
+  blobId: "BL0123456789abcdefABCDEF0123456789abcdef02",
 };
 
 apiInstance
@@ -2725,7 +2725,7 @@ let body: freeclimb.DefaultApiListCallsRequest = {
   parentCallId: "parentCallId_example",
 
   // Array<string> | Only show calls belonging to the given applicationId. This parameter can be repeated to return calls from multiple Applications. (optional)
-  applicationId: ["AP62ECB020842930cc01FFCCfeEe150AC32DcAEc8a"],
+  applicationId: ["AP0123456789abcdefABCDEF0123456789abcdef03"],
 
   // number | The minimum riskScore that should be included in the list. (optional)
   riskScoreMin: 1,
@@ -3390,16 +3390,16 @@ const apiInstance = new freeclimb.DefaultApi(configuration);
 let body: freeclimb.DefaultApiMakeACallRequest = {
   // MakeCallRequest | Call details for making a call (optional)
   makeCallRequest: {
-    _from: "_from_example",
-    to: "to_example",
-    applicationId: "applicationId_example",
-    sendDigits: "sendDigits_example",
-    ifMachine: "ifMachine_example",
-    ifMachineUrl: "ifMachineUrl_example",
+    _from: "+12025551234",
+    to: "+13035559876",
+    applicationId: "AP0123456789abcdefABCDEF0123456789abcdef03",
+    sendDigits: "1234#",
+    ifMachine: "redirect",
+    ifMachineUrl: "https://www.myapp.com/ifMachine",
     timeout: 30,
-    parentCallId: "parentCallId_example",
-    privacyMode: true,
-    callConnectUrl: "callConnectUrl_example",
+    parentCallId: "CA0123456789abcdefABCDEF0123456789abcdef04",
+    privacyMode: false,
+    callConnectUrl: "https://www.myapp.com/callConnect",
   },
 };
 
@@ -3518,12 +3518,12 @@ const apiInstance = new freeclimb.DefaultApi(configuration);
 
 let body: freeclimb.DefaultApiModifyBlobRequest = {
   // string | String that uniquely identifies this Blob resource.
-  blobId: "BL88615a9b4ca7e9aad57d9057773fc74268b9caf7",
+  blobId: "BL0123456789abcdefABCDEF0123456789abcdef02",
 
   // ModifyBlobRequest | Request body to specify keys to modify. Or new keys to add onto the already existing blob
   modifyBlobRequest: {
     blob: {},
-    alias: "alias_example",
+    alias: "customer-profile",
   },
 };
 
@@ -3647,7 +3647,7 @@ const apiInstance = new freeclimb.DefaultApi(configuration);
 
 let body: freeclimb.DefaultApiReplaceBlobRequest = {
   // string | String that uniquely identifies this Blob resource.
-  blobId: "BL88615a9b4ca7e9aad57d9057773fc74268b9caf7",
+  blobId: "BL0123456789abcdefABCDEF0123456789abcdef02",
 
   // ReplaceBlobRequest | JSON object containing blob key the contents of which will be used to override the enitre blob contents.
   replaceBlobRequest: {
@@ -3829,7 +3829,7 @@ let body: freeclimb.DefaultApiUpdateAConferenceRequest = {
 
   // UpdateConferenceRequest | Conference Details to update (optional)
   updateConferenceRequest: {
-    alias: "alias_example",
+    alias: "Customer Conference",
     playBeep: "always",
     status: "empty",
   },
@@ -4023,7 +4023,7 @@ let body: freeclimb.DefaultApiUpdateAQueueRequest = {
 
   // QueueRequest | Queue Details to update (optional)
   queueRequest: {
-    alias: "alias_example",
+    alias: "Support Queue",
     maxSize: 100,
   },
 };
@@ -4083,8 +4083,8 @@ const apiInstance = new freeclimb.DefaultApi(configuration);
 let body: freeclimb.DefaultApiUpdateAnAccountRequest = {
   // AccountRequest | Account details to update (optional)
   accountRequest: {
-    alias: "alias_example",
-    label: "label_example",
+    alias: "My Account",
+    label: "My Label",
   },
 };
 
@@ -4145,13 +4145,13 @@ let body: freeclimb.DefaultApiUpdateAnApplicationRequest = {
 
   // ApplicationRequest | Application details to update. (optional)
   applicationRequest: {
-    alias: "alias_example",
-    voiceUrl: "voiceUrl_example",
-    voiceFallbackUrl: "voiceFallbackUrl_example",
-    callConnectUrl: "callConnectUrl_example",
-    statusCallbackUrl: "statusCallbackUrl_example",
-    smsUrl: "smsUrl_example",
-    smsFallbackUrl: "smsFallbackUrl_example",
+    alias: "Customer Support Line",
+    voiceUrl: "https://www.myapp.com/voice",
+    voiceFallbackUrl: "https://www.myapp.com/voiceFallback",
+    callConnectUrl: "https://www.myapp.com/callConnect",
+    statusCallbackUrl: "https://www.myapp.com/status",
+    smsUrl: "https://www.myapp.com/sms",
+    smsFallbackUrl: "https://www.myapp.com/smsFallback",
   },
 };
 
@@ -4213,9 +4213,9 @@ let body: freeclimb.DefaultApiUpdateAnIncomingNumberRequest = {
 
   // IncomingNumberRequest | Incoming Number details to update (optional)
   incomingNumberRequest: {
-    applicationId: "applicationId_example",
-    alias: "alias_example",
-    campaignId: "campaignId_example",
+    applicationId: "AP0123456789abcdefABCDEF0123456789abcdef03",
+    alias: "Main Office Line",
+    campaignId: "CX56XX4",
   },
 };
 
